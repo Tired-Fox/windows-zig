@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IServiceDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,13 +13,13 @@ pub const IServiceDeviceStatics = extern struct {
     pub fn GetDeviceSelector(self: *@This(), serviceType: ServiceDeviceType) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), serviceType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromServiceId(self: *@This(), serviceId: *Guid) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromServiceId(@ptrCast(self), serviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Portable.IServiceDeviceStatics";
@@ -37,8 +40,11 @@ pub const IServiceDeviceStatics = extern struct {
 };
 pub const IStorageDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -46,13 +52,13 @@ pub const IStorageDeviceStatics = extern struct {
     pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*StorageFolder {
         var _r: *StorageFolder = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Portable.IStorageDeviceStatics";
@@ -73,14 +79,11 @@ pub const IStorageDeviceStatics = extern struct {
 };
 pub const ServiceDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -108,14 +111,11 @@ pub const ServiceDeviceType = enum(i32) {
 };
 pub const StorageDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

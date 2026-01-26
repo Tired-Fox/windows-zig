@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPaymentAppCanMakePaymentTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,12 +13,12 @@ pub const IPaymentAppCanMakePaymentTriggerDetails = extern struct {
     pub fn getRequest(self: *@This()) core.HResult!*PaymentRequest {
         var _r: *PaymentRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReportCanMakePaymentResult(self: *@This(), value: *PaymentCanMakePaymentResult) core.HResult!void {
         const _c = self.vtable.ReportCanMakePaymentResult(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.IPaymentAppCanMakePaymentTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -35,8 +38,11 @@ pub const IPaymentAppCanMakePaymentTriggerDetails = extern struct {
 };
 pub const IPaymentAppManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -44,13 +50,13 @@ pub const IPaymentAppManager = extern struct {
     pub fn RegisterAsync(self: *@This(), supportedPaymentMethodIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RegisterAsync(@ptrCast(self), supportedPaymentMethodIds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnregisterAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UnregisterAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.IPaymentAppManager";
@@ -71,8 +77,11 @@ pub const IPaymentAppManager = extern struct {
 };
 pub const IPaymentAppManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -80,7 +89,7 @@ pub const IPaymentAppManagerStatics = extern struct {
     pub fn getCurrent(self: *@This()) core.HResult!*PaymentAppManager {
         var _r: *PaymentAppManager = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.IPaymentAppManagerStatics";
@@ -100,8 +109,11 @@ pub const IPaymentAppManagerStatics = extern struct {
 };
 pub const IPaymentTransaction = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -109,60 +121,60 @@ pub const IPaymentTransaction = extern struct {
     pub fn getPaymentRequest(self: *@This()) core.HResult!*PaymentRequest {
         var _r: *PaymentRequest = undefined;
         const _c = self.vtable.get_PaymentRequest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPayerEmail(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerEmail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPayerEmail(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PayerEmail(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPayerName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPayerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PayerName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPayerPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerPhoneNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPayerPhoneNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PayerPhoneNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UpdateShippingAddressAsync(self: *@This(), shippingAddress: *PaymentAddress) core.HResult!*IAsyncOperation(PaymentRequestChangedResult) {
         var _r: *IAsyncOperation(PaymentRequestChangedResult) = undefined;
         const _c = self.vtable.UpdateShippingAddressAsync(@ptrCast(self), shippingAddress, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateSelectedShippingOptionAsync(self: *@This(), selectedShippingOption: *PaymentShippingOption) core.HResult!*IAsyncOperation(PaymentRequestChangedResult) {
         var _r: *IAsyncOperation(PaymentRequestChangedResult) = undefined;
         const _c = self.vtable.UpdateSelectedShippingOptionAsync(@ptrCast(self), selectedShippingOption, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcceptAsync(self: *@This(), paymentToken: *PaymentToken) core.HResult!*IAsyncOperation(PaymentTransactionAcceptResult) {
         var _r: *IAsyncOperation(PaymentTransactionAcceptResult) = undefined;
         const _c = self.vtable.AcceptAsync(@ptrCast(self), paymentToken, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Reject(self: *@This()) core.HResult!void {
         const _c = self.vtable.Reject(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.IPaymentTransaction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -191,8 +203,11 @@ pub const IPaymentTransaction = extern struct {
 };
 pub const IPaymentTransactionAcceptResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -200,7 +215,7 @@ pub const IPaymentTransactionAcceptResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!PaymentRequestCompletionStatus {
         var _r: PaymentRequestCompletionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.IPaymentTransactionAcceptResult";
@@ -220,8 +235,11 @@ pub const IPaymentTransactionAcceptResult = extern struct {
 };
 pub const IPaymentTransactionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -229,7 +247,7 @@ pub const IPaymentTransactionStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PaymentTransaction) {
         var _r: *IAsyncOperation(PaymentTransaction) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.IPaymentTransactionStatics";
@@ -249,14 +267,11 @@ pub const IPaymentTransactionStatics = extern struct {
 };
 pub const PaymentAppCanMakePaymentTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -277,14 +292,11 @@ pub const PaymentAppCanMakePaymentTriggerDetails = extern struct {
 };
 pub const PaymentAppManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -310,14 +322,11 @@ pub const PaymentAppManager = extern struct {
 };
 pub const PaymentTransaction = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -379,14 +388,11 @@ pub const PaymentTransaction = extern struct {
 };
 pub const PaymentTransactionAcceptResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

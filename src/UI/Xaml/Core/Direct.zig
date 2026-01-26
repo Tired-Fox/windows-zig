@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IXamlDirect = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,260 +13,260 @@ pub const IXamlDirect = extern struct {
     pub fn GetObject(self: *@This(), xamlDirectObject: *IXamlDirectObject) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetObject(@ptrCast(self), xamlDirectObject, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetXamlDirectObject(self: *@This(), object: *IInspectable) core.HResult!*IXamlDirectObject {
         var _r: *IXamlDirectObject = undefined;
         const _c = self.vtable.GetXamlDirectObject(@ptrCast(self), object, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstance(self: *@This(), typeIndex: XamlTypeIndex) core.HResult!*IXamlDirectObject {
         var _r: *IXamlDirectObject = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), typeIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetObjectProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetObjectProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetXamlDirectObjectProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: *IXamlDirectObject) core.HResult!void {
         const _c = self.vtable.SetXamlDirectObjectProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetBooleanProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: bool) core.HResult!void {
         const _c = self.vtable.SetBooleanProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDoubleProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: f64) core.HResult!void {
         const _c = self.vtable.SetDoubleProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetInt32Property(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: i32) core.HResult!void {
         const _c = self.vtable.SetInt32Property(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetStringProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDateTimeProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: DateTime) core.HResult!void {
         const _c = self.vtable.SetDateTimeProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPointProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Point) core.HResult!void {
         const _c = self.vtable.SetPointProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetRectProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Rect) core.HResult!void {
         const _c = self.vtable.SetRectProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetSizeProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Size) core.HResult!void {
         const _c = self.vtable.SetSizeProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetTimeSpanProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: TimeSpan) core.HResult!void {
         const _c = self.vtable.SetTimeSpanProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetColorProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Color) core.HResult!void {
         const _c = self.vtable.SetColorProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetCornerRadiusProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: CornerRadius) core.HResult!void {
         const _c = self.vtable.SetCornerRadiusProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDurationProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Duration) core.HResult!void {
         const _c = self.vtable.SetDurationProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetGridLengthProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: GridLength) core.HResult!void {
         const _c = self.vtable.SetGridLengthProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetThicknessProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Thickness) core.HResult!void {
         const _c = self.vtable.SetThicknessProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetMatrixProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Matrix) core.HResult!void {
         const _c = self.vtable.SetMatrixProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetMatrix3DProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Matrix3D) core.HResult!void {
         const _c = self.vtable.SetMatrix3DProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetEnumProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: u32) core.HResult!void {
         const _c = self.vtable.SetEnumProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetObjectProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetObjectProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetXamlDirectObjectProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!*IXamlDirectObject {
         var _r: *IXamlDirectObject = undefined;
         const _c = self.vtable.GetXamlDirectObjectProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBooleanProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetBooleanProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDoubleProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetDoubleProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetInt32Property(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetInt32Property(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDateTimeProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.GetDateTimeProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPointProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetPointProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRectProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.GetRectProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSizeProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.GetSizeProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTimeSpanProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.GetTimeSpanProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetColorProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.GetColorProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCornerRadiusProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!CornerRadius {
         var _r: CornerRadius = undefined;
         const _c = self.vtable.GetCornerRadiusProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDurationProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Duration {
         var _r: Duration = undefined;
         const _c = self.vtable.GetDurationProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGridLengthProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!GridLength {
         var _r: GridLength = undefined;
         const _c = self.vtable.GetGridLengthProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetThicknessProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.GetThicknessProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMatrixProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Matrix {
         var _r: Matrix = undefined;
         const _c = self.vtable.GetMatrixProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMatrix3DProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!Matrix3D {
         var _r: Matrix3D = undefined;
         const _c = self.vtable.GetMatrix3DProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetEnumProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetEnumProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!void {
         const _c = self.vtable.ClearProperty(@ptrCast(self), xamlDirectObject, propertyIndex);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetCollectionCount(self: *@This(), xamlDirectObject: *IXamlDirectObject) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetCollectionCount(@ptrCast(self), xamlDirectObject, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetXamlDirectObjectFromCollectionAt(self: *@This(), xamlDirectObject: *IXamlDirectObject, index: u32) core.HResult!*IXamlDirectObject {
         var _r: *IXamlDirectObject = undefined;
         const _c = self.vtable.GetXamlDirectObjectFromCollectionAt(@ptrCast(self), xamlDirectObject, index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddToCollection(self: *@This(), xamlDirectObject: *IXamlDirectObject, value: *IXamlDirectObject) core.HResult!void {
         const _c = self.vtable.AddToCollection(@ptrCast(self), xamlDirectObject, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InsertIntoCollectionAt(self: *@This(), xamlDirectObject: *IXamlDirectObject, index: u32, value: *IXamlDirectObject) core.HResult!void {
         const _c = self.vtable.InsertIntoCollectionAt(@ptrCast(self), xamlDirectObject, index, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveFromCollection(self: *@This(), xamlDirectObject: *IXamlDirectObject, value: *IXamlDirectObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.RemoveFromCollection(@ptrCast(self), xamlDirectObject, value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveFromCollectionAt(self: *@This(), xamlDirectObject: *IXamlDirectObject, index: u32) core.HResult!void {
         const _c = self.vtable.RemoveFromCollectionAt(@ptrCast(self), xamlDirectObject, index);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearCollection(self: *@This(), xamlDirectObject: *IXamlDirectObject) core.HResult!void {
         const _c = self.vtable.ClearCollection(@ptrCast(self), xamlDirectObject);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddEventHandler(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable) core.HResult!void {
         const _c = self.vtable.AddEventHandler(@ptrCast(self), xamlDirectObject, eventIndex, handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddEventHandlerWithHandledEventsToo(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable, handledEventsToo: bool) core.HResult!void {
         const _c = self.vtable.AddEventHandlerWithHandledEventsToo(@ptrCast(self), xamlDirectObject, eventIndex, handler, handledEventsToo);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveEventHandler(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable) core.HResult!void {
         const _c = self.vtable.RemoveEventHandler(@ptrCast(self), xamlDirectObject, eventIndex, handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Core.Direct.IXamlDirect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -333,8 +336,11 @@ pub const IXamlDirect = extern struct {
 };
 pub const IXamlDirectObject = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -355,8 +361,11 @@ pub const IXamlDirectObject = extern struct {
 };
 pub const IXamlDirectStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -364,7 +373,7 @@ pub const IXamlDirectStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*XamlDirect {
         var _r: *XamlDirect = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Core.Direct.IXamlDirectStatics";
@@ -384,14 +393,11 @@ pub const IXamlDirectStatics = extern struct {
 };
 pub const XamlDirect = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

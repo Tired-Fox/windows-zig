@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const CoreDragDropManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -42,14 +39,11 @@ pub const CoreDragDropManager = extern struct {
 };
 pub const CoreDragInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -69,8 +63,7 @@ pub const CoreDragInfo = extern struct {
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var this: ?*ICoreDragInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDragInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreDragInfo2.IID, @ptrCast(&this));
         return try this.?.getAllowedOperations();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.CoreDragInfo";
@@ -81,14 +74,11 @@ pub const CoreDragInfo = extern struct {
 };
 pub const CoreDragOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -124,15 +114,13 @@ pub const CoreDragOperation = extern struct {
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var this: ?*ICoreDragOperation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDragOperation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreDragOperation2.IID, @ptrCast(&this));
         return try this.?.getAllowedOperations();
     }
     pub fn putAllowedOperations(self: *@This(), value: DataPackageOperation) core.HResult!void {
         var this: ?*ICoreDragOperation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDragOperation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreDragOperation2.IID, @ptrCast(&this));
         return try this.?.putAllowedOperations(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -152,14 +140,11 @@ pub const CoreDragUIContentMode = enum(i32) {
 };
 pub const CoreDragUIOverride = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -216,14 +201,11 @@ pub const CoreDragUIOverride = extern struct {
 };
 pub const CoreDropOperationTargetRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -240,8 +222,11 @@ pub const CoreDropOperationTargetRequestedEventArgs = extern struct {
 };
 pub const ICoreDragDropManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -249,22 +234,22 @@ pub const ICoreDragDropManager = extern struct {
     pub fn addTargetRequested(self: *@This(), value: *TypedEventHandler(CoreDragDropManager,CoreDropOperationTargetRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TargetRequested(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTargetRequested(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TargetRequested(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAreConcurrentOperationsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreConcurrentOperationsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAreConcurrentOperationsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AreConcurrentOperationsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDragDropManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -286,8 +271,11 @@ pub const ICoreDragDropManager = extern struct {
 };
 pub const ICoreDragDropManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -295,7 +283,7 @@ pub const ICoreDragDropManagerStatics = extern struct {
     pub fn GetForCurrentView(self: *@This()) core.HResult!*CoreDragDropManager {
         var _r: *CoreDragDropManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDragDropManagerStatics";
@@ -315,8 +303,11 @@ pub const ICoreDragDropManagerStatics = extern struct {
 };
 pub const ICoreDragInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -324,19 +315,19 @@ pub const ICoreDragInfo = extern struct {
     pub fn getData(self: *@This()) core.HResult!*DataPackageView {
         var _r: *DataPackageView = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModifiers(self: *@This()) core.HResult!DragDropModifiers {
         var _r: DragDropModifiers = undefined;
         const _c = self.vtable.get_Modifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDragInfo";
@@ -358,8 +349,11 @@ pub const ICoreDragInfo = extern struct {
 };
 pub const ICoreDragInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -367,7 +361,7 @@ pub const ICoreDragInfo2 = extern struct {
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var _r: DataPackageOperation = undefined;
         const _c = self.vtable.get_AllowedOperations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDragInfo2";
@@ -387,8 +381,11 @@ pub const ICoreDragInfo2 = extern struct {
 };
 pub const ICoreDragOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -396,35 +393,35 @@ pub const ICoreDragOperation = extern struct {
     pub fn getData(self: *@This()) core.HResult!*DataPackage {
         var _r: *DataPackage = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPointerId(self: *@This(), pointerId: u32) core.HResult!void {
         const _c = self.vtable.SetPointerId(@ptrCast(self), pointerId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDragUIContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const _c = self.vtable.SetDragUIContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDragUIContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
         const _c = self.vtable.SetDragUIContentFromSoftwareBitmapWithAnchorPoint(@ptrCast(self), softwareBitmap, anchorPoint);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDragUIContentMode(self: *@This()) core.HResult!CoreDragUIContentMode {
         var _r: CoreDragUIContentMode = undefined;
         const _c = self.vtable.get_DragUIContentMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDragUIContentMode(self: *@This(), value: CoreDragUIContentMode) core.HResult!void {
         const _c = self.vtable.put_DragUIContentMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncOperation(DataPackageOperation) {
         var _r: *IAsyncOperation(DataPackageOperation) = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDragOperation";
@@ -450,8 +447,11 @@ pub const ICoreDragOperation = extern struct {
 };
 pub const ICoreDragOperation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -459,12 +459,12 @@ pub const ICoreDragOperation2 = extern struct {
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var _r: DataPackageOperation = undefined;
         const _c = self.vtable.get_AllowedOperations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowedOperations(self: *@This(), value: DataPackageOperation) core.HResult!void {
         const _c = self.vtable.put_AllowedOperations(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDragOperation2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -484,63 +484,66 @@ pub const ICoreDragOperation2 = extern struct {
 };
 pub const ICoreDragUIOverride = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
         const _c = self.vtable.SetContentFromSoftwareBitmapWithAnchorPoint(@ptrCast(self), softwareBitmap, anchorPoint);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsContentVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsContentVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsContentVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsContentVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Caption(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCaptionVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCaptionVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCaptionVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCaptionVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsGlyphVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsGlyphVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsGlyphVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsGlyphVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const _c = self.vtable.Clear(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDragUIOverride";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -569,8 +572,11 @@ pub const ICoreDragUIOverride = extern struct {
 };
 pub const ICoreDropOperationTarget = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -578,25 +584,25 @@ pub const ICoreDropOperationTarget = extern struct {
     pub fn EnterAsync(self: *@This(), dragInfo: *CoreDragInfo, dragUIOverride: *CoreDragUIOverride) core.HResult!*IAsyncOperation(DataPackageOperation) {
         var _r: *IAsyncOperation(DataPackageOperation) = undefined;
         const _c = self.vtable.EnterAsync(@ptrCast(self), dragInfo, dragUIOverride, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OverAsync(self: *@This(), dragInfo: *CoreDragInfo, dragUIOverride: *CoreDragUIOverride) core.HResult!*IAsyncOperation(DataPackageOperation) {
         var _r: *IAsyncOperation(DataPackageOperation) = undefined;
         const _c = self.vtable.OverAsync(@ptrCast(self), dragInfo, dragUIOverride, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LeaveAsync(self: *@This(), dragInfo: *CoreDragInfo) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.LeaveAsync(@ptrCast(self), dragInfo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DropAsync(self: *@This(), dragInfo: *CoreDragInfo) core.HResult!*IAsyncOperation(DataPackageOperation) {
         var _r: *IAsyncOperation(DataPackageOperation) = undefined;
         const _c = self.vtable.DropAsync(@ptrCast(self), dragInfo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDropOperationTarget";
@@ -619,15 +625,18 @@ pub const ICoreDropOperationTarget = extern struct {
 };
 pub const ICoreDropOperationTargetRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetTarget(self: *@This(), target: *ICoreDropOperationTarget) core.HResult!void {
         const _c = self.vtable.SetTarget(@ptrCast(self), target);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.ICoreDropOperationTargetRequestedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

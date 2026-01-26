@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const CameraOptionsUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -23,15 +20,18 @@ pub const CameraOptionsUI = extern struct {
 };
 pub const ICameraOptionsUIStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Show(self: *@This(), mediaCapture: *MediaCapture) core.HResult!void {
         const _c = self.vtable.Show(@ptrCast(self), mediaCapture);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICameraOptionsUIStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50,14 +50,11 @@ pub const ICameraOptionsUIStatics = extern struct {
 };
 pub const AppCaptureAlternateShortcutKeys = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -145,85 +142,73 @@ pub const AppCaptureAlternateShortcutKeys = extern struct {
     pub fn putToggleMicrophoneCaptureKey(self: *@This(), value: VirtualKey) core.HResult!void {
         var this: ?*IAppCaptureAlternateShortcutKeys2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
         return try this.?.putToggleMicrophoneCaptureKey(value);
     }
     pub fn getToggleMicrophoneCaptureKey(self: *@This()) core.HResult!VirtualKey {
         var this: ?*IAppCaptureAlternateShortcutKeys2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
         return try this.?.getToggleMicrophoneCaptureKey();
     }
     pub fn putToggleMicrophoneCaptureKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         var this: ?*IAppCaptureAlternateShortcutKeys2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
         return try this.?.putToggleMicrophoneCaptureKeyModifiers(value);
     }
     pub fn getToggleMicrophoneCaptureKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var this: ?*IAppCaptureAlternateShortcutKeys2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys2.IID, @ptrCast(&this));
         return try this.?.getToggleMicrophoneCaptureKeyModifiers();
     }
     pub fn putToggleCameraCaptureKey(self: *@This(), value: VirtualKey) core.HResult!void {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.putToggleCameraCaptureKey(value);
     }
     pub fn getToggleCameraCaptureKey(self: *@This()) core.HResult!VirtualKey {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.getToggleCameraCaptureKey();
     }
     pub fn putToggleCameraCaptureKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.putToggleCameraCaptureKeyModifiers(value);
     }
     pub fn getToggleCameraCaptureKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.getToggleCameraCaptureKeyModifiers();
     }
     pub fn putToggleBroadcastKey(self: *@This(), value: VirtualKey) core.HResult!void {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.putToggleBroadcastKey(value);
     }
     pub fn getToggleBroadcastKey(self: *@This()) core.HResult!VirtualKey {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.getToggleBroadcastKey();
     }
     pub fn putToggleBroadcastKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.putToggleBroadcastKeyModifiers(value);
     }
     pub fn getToggleBroadcastKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var this: ?*IAppCaptureAlternateShortcutKeys3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureAlternateShortcutKeys3.IID, @ptrCast(&this));
         return try this.?.getToggleBroadcastKeyModifiers();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppCaptureAlternateShortcutKeys";
@@ -234,14 +219,11 @@ pub const AppCaptureAlternateShortcutKeys = extern struct {
 };
 pub const AppCaptureDurationGeneratedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -258,14 +240,11 @@ pub const AppCaptureDurationGeneratedEventArgs = extern struct {
 };
 pub const AppCaptureFileGeneratedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -286,14 +265,11 @@ pub const AppCaptureHistoricalBufferLengthUnit = enum(i32) {
 };
 pub const AppCaptureManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -317,14 +293,11 @@ pub const AppCaptureMicrophoneCaptureState = enum(i32) {
 };
 pub const AppCaptureMicrophoneCaptureStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -345,14 +318,11 @@ pub const AppCaptureMicrophoneCaptureStateChangedEventArgs = extern struct {
 };
 pub const AppCaptureRecordOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -418,14 +388,11 @@ pub const AppCaptureRecordingState = enum(i32) {
 };
 pub const AppCaptureRecordingStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -446,14 +413,11 @@ pub const AppCaptureRecordingStateChangedEventArgs = extern struct {
 };
 pub const AppCaptureServices = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -482,14 +446,11 @@ pub const AppCaptureServices = extern struct {
 };
 pub const AppCaptureSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -641,113 +602,97 @@ pub const AppCaptureSettings = extern struct {
     pub fn getIsGpuConstrained(self: *@This()) core.HResult!bool {
         var this: ?*IAppCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getIsGpuConstrained();
     }
     pub fn getAlternateShortcutKeys(self: *@This()) core.HResult!*AppCaptureAlternateShortcutKeys {
         var this: ?*IAppCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getAlternateShortcutKeys();
     }
     pub fn putIsMicrophoneCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppCaptureSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings3.IID, @ptrCast(&this));
         return try this.?.putIsMicrophoneCaptureEnabled(value);
     }
     pub fn getIsMicrophoneCaptureEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IAppCaptureSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings3.IID, @ptrCast(&this));
         return try this.?.getIsMicrophoneCaptureEnabled();
     }
     pub fn putIsMicrophoneCaptureEnabledByDefault(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.putIsMicrophoneCaptureEnabledByDefault(value);
     }
     pub fn getIsMicrophoneCaptureEnabledByDefault(self: *@This()) core.HResult!bool {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.getIsMicrophoneCaptureEnabledByDefault();
     }
     pub fn putSystemAudioGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.putSystemAudioGain(value);
     }
     pub fn getSystemAudioGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.getSystemAudioGain();
     }
     pub fn putMicrophoneGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.putMicrophoneGain(value);
     }
     pub fn getMicrophoneGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.getMicrophoneGain();
     }
     pub fn putVideoEncodingFrameRateMode(self: *@This(), value: AppCaptureVideoEncodingFrameRateMode) core.HResult!void {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.putVideoEncodingFrameRateMode(value);
     }
     pub fn getVideoEncodingFrameRateMode(self: *@This()) core.HResult!AppCaptureVideoEncodingFrameRateMode {
         var this: ?*IAppCaptureSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings4.IID, @ptrCast(&this));
         return try this.?.getVideoEncodingFrameRateMode();
     }
     pub fn putIsEchoCancellationEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppCaptureSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
         return try this.?.putIsEchoCancellationEnabled(value);
     }
     pub fn getIsEchoCancellationEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IAppCaptureSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
         return try this.?.getIsEchoCancellationEnabled();
     }
     pub fn putIsCursorImageCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppCaptureSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
         return try this.?.putIsCursorImageCaptureEnabled(value);
     }
     pub fn getIsCursorImageCaptureEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IAppCaptureSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCaptureSettings5.IID, @ptrCast(&this));
         return try this.?.getIsCursorImageCaptureEnabled();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppCaptureSettings";
@@ -758,14 +703,11 @@ pub const AppCaptureSettings = extern struct {
 };
 pub const AppCaptureState = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -836,110 +778,113 @@ pub const AppCaptureVideoEncodingResolutionMode = enum(i32) {
 };
 pub const IAppCaptureAlternateShortcutKeys = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putToggleGameBarKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_ToggleGameBarKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleGameBarKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_ToggleGameBarKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleGameBarKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_ToggleGameBarKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleGameBarKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_ToggleGameBarKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSaveHistoricalVideoKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_SaveHistoricalVideoKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSaveHistoricalVideoKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_SaveHistoricalVideoKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSaveHistoricalVideoKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_SaveHistoricalVideoKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSaveHistoricalVideoKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_SaveHistoricalVideoKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleRecordingKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_ToggleRecordingKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleRecordingKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_ToggleRecordingKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleRecordingKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_ToggleRecordingKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleRecordingKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_ToggleRecordingKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTakeScreenshotKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_TakeScreenshotKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTakeScreenshotKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_TakeScreenshotKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTakeScreenshotKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_TakeScreenshotKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTakeScreenshotKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_TakeScreenshotKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleRecordingIndicatorKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_ToggleRecordingIndicatorKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleRecordingIndicatorKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_ToggleRecordingIndicatorKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleRecordingIndicatorKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_ToggleRecordingIndicatorKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleRecordingIndicatorKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_ToggleRecordingIndicatorKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureAlternateShortcutKeys";
@@ -978,30 +923,33 @@ pub const IAppCaptureAlternateShortcutKeys = extern struct {
 };
 pub const IAppCaptureAlternateShortcutKeys2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putToggleMicrophoneCaptureKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_ToggleMicrophoneCaptureKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleMicrophoneCaptureKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_ToggleMicrophoneCaptureKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleMicrophoneCaptureKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_ToggleMicrophoneCaptureKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleMicrophoneCaptureKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_ToggleMicrophoneCaptureKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureAlternateShortcutKeys2";
@@ -1024,50 +972,53 @@ pub const IAppCaptureAlternateShortcutKeys2 = extern struct {
 };
 pub const IAppCaptureAlternateShortcutKeys3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putToggleCameraCaptureKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_ToggleCameraCaptureKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleCameraCaptureKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_ToggleCameraCaptureKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleCameraCaptureKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_ToggleCameraCaptureKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleCameraCaptureKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_ToggleCameraCaptureKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleBroadcastKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_ToggleBroadcastKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleBroadcastKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_ToggleBroadcastKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putToggleBroadcastKeyModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_ToggleBroadcastKeyModifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getToggleBroadcastKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_ToggleBroadcastKeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureAlternateShortcutKeys3";
@@ -1094,8 +1045,11 @@ pub const IAppCaptureAlternateShortcutKeys3 = extern struct {
 };
 pub const IAppCaptureDurationGeneratedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1103,7 +1057,7 @@ pub const IAppCaptureDurationGeneratedEventArgs = extern struct {
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureDurationGeneratedEventArgs";
@@ -1123,8 +1077,11 @@ pub const IAppCaptureDurationGeneratedEventArgs = extern struct {
 };
 pub const IAppCaptureFileGeneratedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1132,7 +1089,7 @@ pub const IAppCaptureFileGeneratedEventArgs = extern struct {
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureFileGeneratedEventArgs";
@@ -1152,8 +1109,11 @@ pub const IAppCaptureFileGeneratedEventArgs = extern struct {
 };
 pub const IAppCaptureManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1161,12 +1121,12 @@ pub const IAppCaptureManagerStatics = extern struct {
     pub fn GetCurrentSettings(self: *@This()) core.HResult!*AppCaptureSettings {
         var _r: *AppCaptureSettings = undefined;
         const _c = self.vtable.GetCurrentSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplySettings(self: *@This(), appCaptureSettings: *AppCaptureSettings) core.HResult!void {
         const _c = self.vtable.ApplySettings(@ptrCast(self), appCaptureSettings);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1186,8 +1146,11 @@ pub const IAppCaptureManagerStatics = extern struct {
 };
 pub const IAppCaptureMicrophoneCaptureStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1195,13 +1158,13 @@ pub const IAppCaptureMicrophoneCaptureStateChangedEventArgs = extern struct {
     pub fn getState(self: *@This()) core.HResult!AppCaptureMicrophoneCaptureState {
         var _r: AppCaptureMicrophoneCaptureState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureMicrophoneCaptureStateChangedEventArgs";
@@ -1222,75 +1185,78 @@ pub const IAppCaptureMicrophoneCaptureStateChangedEventArgs = extern struct {
 };
 pub const IAppCaptureRecordOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StopRecording(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopRecording(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getState(self: *@This()) core.HResult!AppCaptureRecordingState {
         var _r: AppCaptureRecordingState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsFileTruncated(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsFileTruncated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStateChanged(self: *@This(), value: *TypedEventHandler(AppCaptureRecordOperation,AppCaptureRecordingStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StateChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDurationGenerated(self: *@This(), value: *TypedEventHandler(AppCaptureRecordOperation,AppCaptureDurationGeneratedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DurationGenerated(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDurationGenerated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DurationGenerated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addFileGenerated(self: *@This(), value: *TypedEventHandler(AppCaptureRecordOperation,AppCaptureFileGeneratedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FileGenerated(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFileGenerated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FileGenerated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureRecordOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1320,8 +1286,11 @@ pub const IAppCaptureRecordOperation = extern struct {
 };
 pub const IAppCaptureRecordingStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1329,13 +1298,13 @@ pub const IAppCaptureRecordingStateChangedEventArgs = extern struct {
     pub fn getState(self: *@This()) core.HResult!AppCaptureRecordingState {
         var _r: AppCaptureRecordingState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureRecordingStateChangedEventArgs";
@@ -1356,8 +1325,11 @@ pub const IAppCaptureRecordingStateChangedEventArgs = extern struct {
 };
 pub const IAppCaptureServices = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1365,25 +1337,25 @@ pub const IAppCaptureServices = extern struct {
     pub fn Record(self: *@This()) core.HResult!*AppCaptureRecordOperation {
         var _r: *AppCaptureRecordOperation = undefined;
         const _c = self.vtable.Record(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RecordTimeSpan(self: *@This(), startTime: DateTime, duration: TimeSpan) core.HResult!*AppCaptureRecordOperation {
         var _r: *AppCaptureRecordOperation = undefined;
         const _c = self.vtable.RecordTimeSpan(@ptrCast(self), startTime, duration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanCapture(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCapture(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!*AppCaptureState {
         var _r: *AppCaptureState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureServices";
@@ -1406,194 +1378,197 @@ pub const IAppCaptureServices = extern struct {
 };
 pub const IAppCaptureSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putAppCaptureDestinationFolder(self: *@This(), value: *StorageFolder) core.HResult!void {
         const _c = self.vtable.put_AppCaptureDestinationFolder(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAppCaptureDestinationFolder(self: *@This()) core.HResult!*StorageFolder {
         var _r: *StorageFolder = undefined;
         const _c = self.vtable.get_AppCaptureDestinationFolder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAudioEncodingBitrate(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_AudioEncodingBitrate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioEncodingBitrate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AudioEncodingBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsAudioCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsAudioCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsAudioCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAudioCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomVideoEncodingBitrate(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CustomVideoEncodingBitrate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCustomVideoEncodingBitrate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CustomVideoEncodingBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomVideoEncodingHeight(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CustomVideoEncodingHeight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCustomVideoEncodingHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CustomVideoEncodingHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomVideoEncodingWidth(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CustomVideoEncodingWidth(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCustomVideoEncodingWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CustomVideoEncodingWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHistoricalBufferLength(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_HistoricalBufferLength(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHistoricalBufferLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_HistoricalBufferLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHistoricalBufferLengthUnit(self: *@This(), value: AppCaptureHistoricalBufferLengthUnit) core.HResult!void {
         const _c = self.vtable.put_HistoricalBufferLengthUnit(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHistoricalBufferLengthUnit(self: *@This()) core.HResult!AppCaptureHistoricalBufferLengthUnit {
         var _r: AppCaptureHistoricalBufferLengthUnit = undefined;
         const _c = self.vtable.get_HistoricalBufferLengthUnit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsHistoricalCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsHistoricalCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsHistoricalCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHistoricalCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsHistoricalCaptureOnBatteryAllowed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsHistoricalCaptureOnBatteryAllowed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsHistoricalCaptureOnBatteryAllowed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHistoricalCaptureOnBatteryAllowed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsHistoricalCaptureOnWirelessDisplayAllowed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsHistoricalCaptureOnWirelessDisplayAllowed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsHistoricalCaptureOnWirelessDisplayAllowed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHistoricalCaptureOnWirelessDisplayAllowed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaximumRecordLength(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_MaximumRecordLength(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaximumRecordLength(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_MaximumRecordLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScreenshotDestinationFolder(self: *@This(), value: *StorageFolder) core.HResult!void {
         const _c = self.vtable.put_ScreenshotDestinationFolder(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScreenshotDestinationFolder(self: *@This()) core.HResult!*StorageFolder {
         var _r: *StorageFolder = undefined;
         const _c = self.vtable.get_ScreenshotDestinationFolder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoEncodingBitrateMode(self: *@This(), value: AppCaptureVideoEncodingBitrateMode) core.HResult!void {
         const _c = self.vtable.put_VideoEncodingBitrateMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVideoEncodingBitrateMode(self: *@This()) core.HResult!AppCaptureVideoEncodingBitrateMode {
         var _r: AppCaptureVideoEncodingBitrateMode = undefined;
         const _c = self.vtable.get_VideoEncodingBitrateMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoEncodingResolutionMode(self: *@This(), value: AppCaptureVideoEncodingResolutionMode) core.HResult!void {
         const _c = self.vtable.put_VideoEncodingResolutionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVideoEncodingResolutionMode(self: *@This()) core.HResult!AppCaptureVideoEncodingResolutionMode {
         var _r: AppCaptureVideoEncodingResolutionMode = undefined;
         const _c = self.vtable.get_VideoEncodingResolutionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsAppCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsAppCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsAppCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAppCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCpuConstrained(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCpuConstrained(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDisabledByPolicy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDisabledByPolicy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsMemoryConstrained(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMemoryConstrained(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasHardwareEncoder(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasHardwareEncoder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureSettings";
@@ -1648,8 +1623,11 @@ pub const IAppCaptureSettings = extern struct {
 };
 pub const IAppCaptureSettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1657,13 +1635,13 @@ pub const IAppCaptureSettings2 = extern struct {
     pub fn getIsGpuConstrained(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsGpuConstrained(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAlternateShortcutKeys(self: *@This()) core.HResult!*AppCaptureAlternateShortcutKeys {
         var _r: *AppCaptureAlternateShortcutKeys = undefined;
         const _c = self.vtable.get_AlternateShortcutKeys(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureSettings2";
@@ -1684,20 +1662,23 @@ pub const IAppCaptureSettings2 = extern struct {
 };
 pub const IAppCaptureSettings3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putIsMicrophoneCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsMicrophoneCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsMicrophoneCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMicrophoneCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureSettings3";
@@ -1718,50 +1699,53 @@ pub const IAppCaptureSettings3 = extern struct {
 };
 pub const IAppCaptureSettings4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putIsMicrophoneCaptureEnabledByDefault(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsMicrophoneCaptureEnabledByDefault(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsMicrophoneCaptureEnabledByDefault(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMicrophoneCaptureEnabledByDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSystemAudioGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_SystemAudioGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSystemAudioGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_SystemAudioGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMicrophoneGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_MicrophoneGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMicrophoneGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MicrophoneGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoEncodingFrameRateMode(self: *@This(), value: AppCaptureVideoEncodingFrameRateMode) core.HResult!void {
         const _c = self.vtable.put_VideoEncodingFrameRateMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVideoEncodingFrameRateMode(self: *@This()) core.HResult!AppCaptureVideoEncodingFrameRateMode {
         var _r: AppCaptureVideoEncodingFrameRateMode = undefined;
         const _c = self.vtable.get_VideoEncodingFrameRateMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureSettings4";
@@ -1788,30 +1772,33 @@ pub const IAppCaptureSettings4 = extern struct {
 };
 pub const IAppCaptureSettings5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putIsEchoCancellationEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEchoCancellationEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsEchoCancellationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEchoCancellationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCursorImageCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCursorImageCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCursorImageCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCursorImageCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureSettings5";
@@ -1834,8 +1821,11 @@ pub const IAppCaptureSettings5 = extern struct {
 };
 pub const IAppCaptureState = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1843,60 +1833,60 @@ pub const IAppCaptureState = extern struct {
     pub fn getIsTargetRunning(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTargetRunning(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHistoricalCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHistoricalCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShouldCaptureMicrophone(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldCaptureMicrophone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShouldCaptureMicrophone(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShouldCaptureMicrophone(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RestartMicrophoneCapture(self: *@This()) core.HResult!void {
         const _c = self.vtable.RestartMicrophoneCapture(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMicrophoneCaptureState(self: *@This()) core.HResult!AppCaptureMicrophoneCaptureState {
         var _r: AppCaptureMicrophoneCaptureState = undefined;
         const _c = self.vtable.get_MicrophoneCaptureState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMicrophoneCaptureError(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MicrophoneCaptureError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addMicrophoneCaptureStateChanged(self: *@This(), value: *TypedEventHandler(AppCaptureState,AppCaptureMicrophoneCaptureStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MicrophoneCaptureStateChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMicrophoneCaptureStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MicrophoneCaptureStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCaptureTargetClosed(self: *@This(), value: *TypedEventHandler(AppCaptureState,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CaptureTargetClosed(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCaptureTargetClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CaptureTargetClosed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureState";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1929,14 +1919,11 @@ pub const AppCaptureMetadataPriority = enum(i32) {
 };
 pub const AppCaptureMetadataWriter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1988,8 +1975,7 @@ pub const AppCaptureMetadataWriter = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn init() core.HResult!*@This() {
@@ -2005,59 +1991,62 @@ pub const AppCaptureMetadataWriter = extern struct {
 };
 pub const IAppCaptureMetadataWriter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddStringEvent(self: *@This(), name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.AddStringEvent(@ptrCast(self), name, value, priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt32Event(self: *@This(), name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.AddInt32Event(@ptrCast(self), name, value, priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDoubleEvent(self: *@This(), name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.AddDoubleEvent(@ptrCast(self), name, value, priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartStringState(self: *@This(), name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.StartStringState(@ptrCast(self), name, value, priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartInt32State(self: *@This(), name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.StartInt32State(@ptrCast(self), name, value, priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartDoubleState(self: *@This(), name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.StartDoubleState(@ptrCast(self), name, value, priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopState(self: *@This(), name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.StopState(@ptrCast(self), name);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopAllStates(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopAllStates(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRemainingStorageBytesAvailable(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_RemainingStorageBytesAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addMetadataPurged(self: *@This(), handler: *TypedEventHandler(AppCaptureMetadataWriter,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MetadataPurged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMetadataPurged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MetadataPurged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureMetadataWriter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2107,14 +2096,11 @@ pub const GameBarCommandOrigin = enum(i32) {
 };
 pub const GameBarServices = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2163,14 +2149,11 @@ pub const GameBarServices = extern struct {
 };
 pub const GameBarServicesCommandEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2191,14 +2174,11 @@ pub const GameBarServicesCommandEventArgs = extern struct {
 };
 pub const GameBarServicesManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2224,14 +2204,11 @@ pub const GameBarServicesManager = extern struct {
 };
 pub const GameBarServicesManagerGameBarServicesCreatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2248,14 +2225,11 @@ pub const GameBarServicesManagerGameBarServicesCreatedEventArgs = extern struct 
 };
 pub const GameBarServicesTargetInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2291,8 +2265,11 @@ pub const GameBarTargetCapturePolicy = enum(i32) {
 };
 pub const IGameBarServices = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2300,50 +2277,50 @@ pub const IGameBarServices = extern struct {
     pub fn getTargetCapturePolicy(self: *@This()) core.HResult!GameBarTargetCapturePolicy {
         var _r: GameBarTargetCapturePolicy = undefined;
         const _c = self.vtable.get_TargetCapturePolicy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableCapture(self: *@This()) core.HResult!void {
         const _c = self.vtable.EnableCapture(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DisableCapture(self: *@This()) core.HResult!void {
         const _c = self.vtable.DisableCapture(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTargetInfo(self: *@This()) core.HResult!*GameBarServicesTargetInfo {
         var _r: *GameBarServicesTargetInfo = undefined;
         const _c = self.vtable.get_TargetInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppBroadcastServices(self: *@This()) core.HResult!*AppBroadcastServices {
         var _r: *AppBroadcastServices = undefined;
         const _c = self.vtable.get_AppBroadcastServices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppCaptureServices(self: *@This()) core.HResult!*AppCaptureServices {
         var _r: *AppCaptureServices = undefined;
         const _c = self.vtable.get_AppCaptureServices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addCommandReceived(self: *@This(), value: *TypedEventHandler(GameBarServices,GameBarServicesCommandEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CommandReceived(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCommandReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CommandReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IGameBarServices";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2370,8 +2347,11 @@ pub const IGameBarServices = extern struct {
 };
 pub const IGameBarServicesCommandEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2379,13 +2359,13 @@ pub const IGameBarServicesCommandEventArgs = extern struct {
     pub fn getCommand(self: *@This()) core.HResult!GameBarCommand {
         var _r: GameBarCommand = undefined;
         const _c = self.vtable.get_Command(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOrigin(self: *@This()) core.HResult!GameBarCommandOrigin {
         var _r: GameBarCommandOrigin = undefined;
         const _c = self.vtable.get_Origin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IGameBarServicesCommandEventArgs";
@@ -2406,8 +2386,11 @@ pub const IGameBarServicesCommandEventArgs = extern struct {
 };
 pub const IGameBarServicesManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2415,12 +2398,12 @@ pub const IGameBarServicesManager = extern struct {
     pub fn addGameBarServicesCreated(self: *@This(), value: *TypedEventHandler(GameBarServicesManager,GameBarServicesManagerGameBarServicesCreatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GameBarServicesCreated(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGameBarServicesCreated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GameBarServicesCreated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IGameBarServicesManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2440,8 +2423,11 @@ pub const IGameBarServicesManager = extern struct {
 };
 pub const IGameBarServicesManagerGameBarServicesCreatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2449,7 +2435,7 @@ pub const IGameBarServicesManagerGameBarServicesCreatedEventArgs = extern struct
     pub fn getGameBarServices(self: *@This()) core.HResult!*GameBarServices {
         var _r: *GameBarServices = undefined;
         const _c = self.vtable.get_GameBarServices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IGameBarServicesManagerGameBarServicesCreatedEventArgs";
@@ -2469,8 +2455,11 @@ pub const IGameBarServicesManagerGameBarServicesCreatedEventArgs = extern struct
 };
 pub const IGameBarServicesManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2478,7 +2467,7 @@ pub const IGameBarServicesManagerStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*GameBarServicesManager {
         var _r: *GameBarServicesManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IGameBarServicesManagerStatics";
@@ -2498,8 +2487,11 @@ pub const IGameBarServicesManagerStatics = extern struct {
 };
 pub const IGameBarServicesTargetInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2507,25 +2499,25 @@ pub const IGameBarServicesTargetInfo = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayMode(self: *@This()) core.HResult!GameBarServicesDisplayMode {
         var _r: GameBarServicesDisplayMode = undefined;
         const _c = self.vtable.get_DisplayMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IGameBarServicesTargetInfo";
@@ -2548,14 +2540,11 @@ pub const IGameBarServicesTargetInfo = extern struct {
 };
 pub const AdvancedCapturedPhoto = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2575,8 +2564,7 @@ pub const AdvancedCapturedPhoto = extern struct {
     pub fn getFrameBoundsRelativeToReferencePhoto(self: *@This()) core.HResult!*IReference(Rect) {
         var this: ?*IAdvancedCapturedPhoto2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedCapturedPhoto2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAdvancedCapturedPhoto2.IID, @ptrCast(&this));
         return try this.?.getFrameBoundsRelativeToReferencePhoto();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AdvancedCapturedPhoto";
@@ -2587,14 +2575,11 @@ pub const AdvancedCapturedPhoto = extern struct {
 };
 pub const AdvancedPhotoCapture = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2635,14 +2620,11 @@ pub const AdvancedPhotoCapture = extern struct {
 };
 pub const AppCapture = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2681,14 +2663,11 @@ pub const AppCapture = extern struct {
 };
 pub const CameraCaptureUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2737,14 +2716,11 @@ pub const CameraCaptureUIMode = enum(i32) {
 };
 pub const CameraCaptureUIPhotoCaptureSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2802,14 +2778,11 @@ pub const CameraCaptureUIPhotoFormat = enum(i32) {
 };
 pub const CameraCaptureUIVideoCaptureSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2858,14 +2831,11 @@ pub const CameraCaptureUIVideoFormat = enum(i32) {
 };
 pub const CapturedFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2881,120 +2851,103 @@ pub const CapturedFrame = extern struct {
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn putSize(self: *@This(), value: u64) core.HResult!void {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.putSize(value);
     }
     pub fn GetInputStreamAt(self: *@This(), position: u64) core.HResult!*IInputStream {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.GetInputStreamAt(position);
     }
     pub fn GetOutputStreamAt(self: *@This(), position: u64) core.HResult!*IOutputStream {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.GetOutputStreamAt(position);
     }
     pub fn getPosition(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getPosition();
     }
     pub fn Seek(self: *@This(), position: u64) core.HResult!void {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.Seek(position);
     }
     pub fn CloneStream(self: *@This()) core.HResult!*IRandomAccessStream {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.CloneStream();
     }
     pub fn getCanRead(self: *@This()) core.HResult!bool {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getCanRead();
     }
     pub fn getCanWrite(self: *@This()) core.HResult!bool {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getCanWrite();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
         var this: ?*IInputStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
         return try this.?.ReadAsync(buffer, count, options);
     }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
         return try this.?.WriteAsync(buffer);
     }
     pub fn FlushAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IOutputStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
         return try this.?.FlushAsync();
     }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentTypeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         return try this.?.getContentType();
     }
     pub fn getSoftwareBitmap(self: *@This()) core.HResult!*SoftwareBitmap {
         var this: ?*ICapturedFrameWithSoftwareBitmap = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameWithSoftwareBitmap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         return try this.?.getSoftwareBitmap();
     }
     pub fn getControlValues(self: *@This()) core.HResult!*CapturedFrameControlValues {
         var this: ?*ICapturedFrame2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrame2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrame2.IID, @ptrCast(&this));
         return try this.?.getControlValues();
     }
     pub fn getBitmapProperties(self: *@This()) core.HResult!*BitmapPropertySet {
         var this: ?*ICapturedFrame2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrame2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrame2.IID, @ptrCast(&this));
         return try this.?.getBitmapProperties();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.CapturedFrame";
@@ -3005,14 +2958,11 @@ pub const CapturedFrame = extern struct {
 };
 pub const CapturedFrameControlValues = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3056,36 +3006,31 @@ pub const CapturedFrameControlValues = extern struct {
     pub fn getFocusState(self: *@This()) core.HResult!*IReference(MediaCaptureFocusState) {
         var this: ?*ICapturedFrameControlValues2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
         return try this.?.getFocusState();
     }
     pub fn getIsoDigitalGain(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*ICapturedFrameControlValues2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
         return try this.?.getIsoDigitalGain();
     }
     pub fn getIsoAnalogGain(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*ICapturedFrameControlValues2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
         return try this.?.getIsoAnalogGain();
     }
     pub fn getSensorFrameRate(self: *@This()) core.HResult!*MediaRatio {
         var this: ?*ICapturedFrameControlValues2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
         return try this.?.getSensorFrameRate();
     }
     pub fn getWhiteBalanceGain(self: *@This()) core.HResult!*IReference(WhiteBalanceGain) {
         var this: ?*ICapturedFrameControlValues2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICapturedFrameControlValues2.IID, @ptrCast(&this));
         return try this.?.getWhiteBalanceGain();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.CapturedFrameControlValues";
@@ -3096,14 +3041,11 @@ pub const CapturedFrameControlValues = extern struct {
 };
 pub const CapturedPhoto = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3124,8 +3066,11 @@ pub const CapturedPhoto = extern struct {
 };
 pub const IAdvancedCapturedPhoto = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3133,19 +3078,19 @@ pub const IAdvancedCapturedPhoto = extern struct {
     pub fn getFrame(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Frame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMode(self: *@This()) core.HResult!AdvancedPhotoMode {
         var _r: AdvancedPhotoMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContext(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAdvancedCapturedPhoto";
@@ -3167,8 +3112,11 @@ pub const IAdvancedCapturedPhoto = extern struct {
 };
 pub const IAdvancedCapturedPhoto2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3176,7 +3124,7 @@ pub const IAdvancedCapturedPhoto2 = extern struct {
     pub fn getFrameBoundsRelativeToReferencePhoto(self: *@This()) core.HResult!*IReference(Rect) {
         var _r: *IReference(Rect) = undefined;
         const _c = self.vtable.get_FrameBoundsRelativeToReferencePhoto(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAdvancedCapturedPhoto2";
@@ -3196,8 +3144,11 @@ pub const IAdvancedCapturedPhoto2 = extern struct {
 };
 pub const IAdvancedPhotoCapture = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3205,39 +3156,39 @@ pub const IAdvancedPhotoCapture = extern struct {
     pub fn CaptureAsync(self: *@This()) core.HResult!*IAsyncOperation(AdvancedCapturedPhoto) {
         var _r: *IAsyncOperation(AdvancedCapturedPhoto) = undefined;
         const _c = self.vtable.CaptureAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CaptureAsyncWithContext(self: *@This(), context: *IInspectable) core.HResult!*IAsyncOperation(AdvancedCapturedPhoto) {
         var _r: *IAsyncOperation(AdvancedCapturedPhoto) = undefined;
         const _c = self.vtable.CaptureAsyncWithContext(@ptrCast(self), context, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addOptionalReferencePhotoCaptured(self: *@This(), handler: *TypedEventHandler(AdvancedPhotoCapture,OptionalReferencePhotoCapturedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_OptionalReferencePhotoCaptured(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeOptionalReferencePhotoCaptured(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_OptionalReferencePhotoCaptured(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAllPhotosCaptured(self: *@This(), handler: *TypedEventHandler(AdvancedPhotoCapture,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AllPhotosCaptured(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAllPhotosCaptured(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AllPhotosCaptured(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FinishAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.FinishAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAdvancedPhotoCapture";
@@ -3263,8 +3214,11 @@ pub const IAdvancedPhotoCapture = extern struct {
 };
 pub const IAppCapture = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3272,24 +3226,24 @@ pub const IAppCapture = extern struct {
     pub fn getIsCapturingAudio(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCapturingAudio(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCapturingVideo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCapturingVideo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addCapturingChanged(self: *@This(), handler: *TypedEventHandler(AppCapture,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CapturingChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCapturingChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CapturingChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCapture";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3311,8 +3265,11 @@ pub const IAppCapture = extern struct {
 };
 pub const IAppCaptureStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3320,7 +3277,7 @@ pub const IAppCaptureStatics = extern struct {
     pub fn GetForCurrentView(self: *@This()) core.HResult!*AppCapture {
         var _r: *AppCapture = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureStatics";
@@ -3340,8 +3297,11 @@ pub const IAppCaptureStatics = extern struct {
 };
 pub const IAppCaptureStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3349,7 +3309,7 @@ pub const IAppCaptureStatics2 = extern struct {
     pub fn SetAllowedAsync(self: *@This(), allowed: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetAllowedAsync(@ptrCast(self), allowed, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppCaptureStatics2";
@@ -3369,8 +3329,11 @@ pub const IAppCaptureStatics2 = extern struct {
 };
 pub const ICameraCaptureUI = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3378,19 +3341,19 @@ pub const ICameraCaptureUI = extern struct {
     pub fn getPhotoSettings(self: *@This()) core.HResult!*CameraCaptureUIPhotoCaptureSettings {
         var _r: *CameraCaptureUIPhotoCaptureSettings = undefined;
         const _c = self.vtable.get_PhotoSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoSettings(self: *@This()) core.HResult!*CameraCaptureUIVideoCaptureSettings {
         var _r: *CameraCaptureUIVideoCaptureSettings = undefined;
         const _c = self.vtable.get_VideoSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CaptureFileAsync(self: *@This(), mode: CameraCaptureUIMode) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.CaptureFileAsync(@ptrCast(self), mode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICameraCaptureUI";
@@ -3412,8 +3375,11 @@ pub const ICameraCaptureUI = extern struct {
 };
 pub const ICameraCaptureUIPhotoCaptureSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3421,52 +3387,52 @@ pub const ICameraCaptureUIPhotoCaptureSettings = extern struct {
     pub fn getFormat(self: *@This()) core.HResult!CameraCaptureUIPhotoFormat {
         var _r: CameraCaptureUIPhotoFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFormat(self: *@This(), value: CameraCaptureUIPhotoFormat) core.HResult!void {
         const _c = self.vtable.put_Format(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxResolution(self: *@This()) core.HResult!CameraCaptureUIMaxPhotoResolution {
         var _r: CameraCaptureUIMaxPhotoResolution = undefined;
         const _c = self.vtable.get_MaxResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxResolution(self: *@This(), value: CameraCaptureUIMaxPhotoResolution) core.HResult!void {
         const _c = self.vtable.put_MaxResolution(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCroppedSizeInPixels(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_CroppedSizeInPixels(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCroppedSizeInPixels(self: *@This(), value: Size) core.HResult!void {
         const _c = self.vtable.put_CroppedSizeInPixels(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCroppedAspectRatio(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_CroppedAspectRatio(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCroppedAspectRatio(self: *@This(), value: Size) core.HResult!void {
         const _c = self.vtable.put_CroppedAspectRatio(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowCropping(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowCropping(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowCropping(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowCropping(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICameraCaptureUIPhotoCaptureSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3494,8 +3460,11 @@ pub const ICameraCaptureUIPhotoCaptureSettings = extern struct {
 };
 pub const ICameraCaptureUIVideoCaptureSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3503,42 +3472,42 @@ pub const ICameraCaptureUIVideoCaptureSettings = extern struct {
     pub fn getFormat(self: *@This()) core.HResult!CameraCaptureUIVideoFormat {
         var _r: CameraCaptureUIVideoFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFormat(self: *@This(), value: CameraCaptureUIVideoFormat) core.HResult!void {
         const _c = self.vtable.put_Format(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxResolution(self: *@This()) core.HResult!CameraCaptureUIMaxVideoResolution {
         var _r: CameraCaptureUIMaxVideoResolution = undefined;
         const _c = self.vtable.get_MaxResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxResolution(self: *@This(), value: CameraCaptureUIMaxVideoResolution) core.HResult!void {
         const _c = self.vtable.put_MaxResolution(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxDurationInSeconds(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MaxDurationInSeconds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxDurationInSeconds(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_MaxDurationInSeconds(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowTrimming(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowTrimming(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowTrimming(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowTrimming(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICameraCaptureUIVideoCaptureSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3564,8 +3533,11 @@ pub const ICameraCaptureUIVideoCaptureSettings = extern struct {
 };
 pub const ICapturedFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3573,13 +3545,13 @@ pub const ICapturedFrame = extern struct {
     pub fn getWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICapturedFrame";
@@ -3600,8 +3572,11 @@ pub const ICapturedFrame = extern struct {
 };
 pub const ICapturedFrame2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3609,13 +3584,13 @@ pub const ICapturedFrame2 = extern struct {
     pub fn getControlValues(self: *@This()) core.HResult!*CapturedFrameControlValues {
         var _r: *CapturedFrameControlValues = undefined;
         const _c = self.vtable.get_ControlValues(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBitmapProperties(self: *@This()) core.HResult!*BitmapPropertySet {
         var _r: *BitmapPropertySet = undefined;
         const _c = self.vtable.get_BitmapProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICapturedFrame2";
@@ -3636,8 +3611,11 @@ pub const ICapturedFrame2 = extern struct {
 };
 pub const ICapturedFrameControlValues = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3645,55 +3623,55 @@ pub const ICapturedFrameControlValues = extern struct {
     pub fn getExposure(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExposureCompensation(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_ExposureCompensation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsoSpeed(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_IsoSpeed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFocus(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_Focus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSceneMode(self: *@This()) core.HResult!*IReference(CaptureSceneMode) {
         var _r: *IReference(CaptureSceneMode) = undefined;
         const _c = self.vtable.get_SceneMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFlashed(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_Flashed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFlashPowerPercent(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_FlashPowerPercent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWhiteBalance(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_WhiteBalance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZoomFactor(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_ZoomFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICapturedFrameControlValues";
@@ -3721,8 +3699,11 @@ pub const ICapturedFrameControlValues = extern struct {
 };
 pub const ICapturedFrameControlValues2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3730,31 +3711,31 @@ pub const ICapturedFrameControlValues2 = extern struct {
     pub fn getFocusState(self: *@This()) core.HResult!*IReference(MediaCaptureFocusState) {
         var _r: *IReference(MediaCaptureFocusState) = undefined;
         const _c = self.vtable.get_FocusState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsoDigitalGain(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_IsoDigitalGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsoAnalogGain(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_IsoAnalogGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSensorFrameRate(self: *@This()) core.HResult!*MediaRatio {
         var _r: *MediaRatio = undefined;
         const _c = self.vtable.get_SensorFrameRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWhiteBalanceGain(self: *@This()) core.HResult!*IReference(WhiteBalanceGain) {
         var _r: *IReference(WhiteBalanceGain) = undefined;
         const _c = self.vtable.get_WhiteBalanceGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICapturedFrameControlValues2";
@@ -3778,8 +3759,11 @@ pub const ICapturedFrameControlValues2 = extern struct {
 };
 pub const ICapturedFrameWithSoftwareBitmap = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3787,7 +3771,7 @@ pub const ICapturedFrameWithSoftwareBitmap = extern struct {
     pub fn getSoftwareBitmap(self: *@This()) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
         const _c = self.vtable.get_SoftwareBitmap(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICapturedFrameWithSoftwareBitmap";
@@ -3807,8 +3791,11 @@ pub const ICapturedFrameWithSoftwareBitmap = extern struct {
 };
 pub const ICapturedPhoto = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3816,13 +3803,13 @@ pub const ICapturedPhoto = extern struct {
     pub fn getFrame(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Frame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getThumbnail(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Thumbnail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ICapturedPhoto";
@@ -3843,8 +3830,11 @@ pub const ICapturedPhoto = extern struct {
 };
 pub const ILowLagMediaRecording = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3852,19 +3842,19 @@ pub const ILowLagMediaRecording = extern struct {
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FinishAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.FinishAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ILowLagMediaRecording";
@@ -3886,8 +3876,11 @@ pub const ILowLagMediaRecording = extern struct {
 };
 pub const ILowLagMediaRecording2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3895,13 +3888,13 @@ pub const ILowLagMediaRecording2 = extern struct {
     pub fn PauseAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.PauseAsync(@ptrCast(self), behavior, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResumeAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ResumeAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ILowLagMediaRecording2";
@@ -3922,8 +3915,11 @@ pub const ILowLagMediaRecording2 = extern struct {
 };
 pub const ILowLagMediaRecording3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3931,13 +3927,13 @@ pub const ILowLagMediaRecording3 = extern struct {
     pub fn PauseWithResultAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncOperation(MediaCapturePauseResult) {
         var _r: *IAsyncOperation(MediaCapturePauseResult) = undefined;
         const _c = self.vtable.PauseWithResultAsync(@ptrCast(self), behavior, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopWithResultAsync(self: *@This()) core.HResult!*IAsyncOperation(MediaCaptureStopResult) {
         var _r: *IAsyncOperation(MediaCaptureStopResult) = undefined;
         const _c = self.vtable.StopWithResultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ILowLagMediaRecording3";
@@ -3958,8 +3954,11 @@ pub const ILowLagMediaRecording3 = extern struct {
 };
 pub const ILowLagPhotoCapture = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3967,13 +3966,13 @@ pub const ILowLagPhotoCapture = extern struct {
     pub fn CaptureAsync(self: *@This()) core.HResult!*IAsyncOperation(CapturedPhoto) {
         var _r: *IAsyncOperation(CapturedPhoto) = undefined;
         const _c = self.vtable.CaptureAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FinishAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.FinishAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ILowLagPhotoCapture";
@@ -3994,8 +3993,11 @@ pub const ILowLagPhotoCapture = extern struct {
 };
 pub const ILowLagPhotoSequenceCapture = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4003,30 +4005,30 @@ pub const ILowLagPhotoSequenceCapture = extern struct {
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FinishAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.FinishAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addPhotoCaptured(self: *@This(), handler: *TypedEventHandler(LowLagPhotoSequenceCapture,PhotoCapturedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PhotoCaptured(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePhotoCaptured(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PhotoCaptured(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.ILowLagPhotoSequenceCapture";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4049,8 +4051,11 @@ pub const ILowLagPhotoSequenceCapture = extern struct {
 };
 pub const IMediaCapture = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4058,145 +4063,145 @@ pub const IMediaCapture = extern struct {
     pub fn InitializeAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InitializeAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn InitializeAsyncWithMediaCaptureInitializationSettings(self: *@This(), mediaCaptureInitializationSettings: *MediaCaptureInitializationSettings) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InitializeAsyncWithMediaCaptureInitializationSettings(@ptrCast(self), mediaCaptureInitializationSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartRecordToStorageFileAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, file: *IStorageFile) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartRecordToStorageFileAsync(@ptrCast(self), encodingProfile, file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartRecordToStreamAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, stream: *IRandomAccessStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartRecordToStreamAsync(@ptrCast(self), encodingProfile, stream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartRecordToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartRecordToCustomSinkAsync(@ptrCast(self), encodingProfile, customMediaSink, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopRecordAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopRecordAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CapturePhotoToStorageFileAsync(self: *@This(), ty: *ImageEncodingProperties, file: *IStorageFile) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CapturePhotoToStorageFileAsync(@ptrCast(self), ty, file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CapturePhotoToStreamAsync(self: *@This(), ty: *ImageEncodingProperties, stream: *IRandomAccessStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CapturePhotoToStreamAsync(@ptrCast(self), ty, stream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddEffectAsync(self: *@This(), mediaStreamType: MediaStreamType, effectActivationID: ?HSTRING, effectSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AddEffectAsync(@ptrCast(self), mediaStreamType, effectActivationID, effectSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearEffectsAsync(self: *@This(), mediaStreamType: MediaStreamType) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ClearEffectsAsync(@ptrCast(self), mediaStreamType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetEncoderProperty(self: *@This(), mediaStreamType: MediaStreamType, propertyId: *Guid, propertyValue: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetEncoderProperty(@ptrCast(self), mediaStreamType, propertyId, propertyValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetEncoderProperty(self: *@This(), mediaStreamType: MediaStreamType, propertyId: *Guid) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetEncoderProperty(@ptrCast(self), mediaStreamType, propertyId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addFailed(self: *@This(), errorEventHandler: *MediaCaptureFailedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Failed(@ptrCast(self), errorEventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFailed(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Failed(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addRecordLimitationExceeded(self: *@This(), recordLimitationExceededEventHandler: *RecordLimitationExceededEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RecordLimitationExceeded(@ptrCast(self), recordLimitationExceededEventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRecordLimitationExceeded(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RecordLimitationExceeded(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMediaCaptureSettings(self: *@This()) core.HResult!*MediaCaptureSettings {
         var _r: *MediaCaptureSettings = undefined;
         const _c = self.vtable.get_MediaCaptureSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAudioDeviceController(self: *@This()) core.HResult!*AudioDeviceController {
         var _r: *AudioDeviceController = undefined;
         const _c = self.vtable.get_AudioDeviceController(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoDeviceController(self: *@This()) core.HResult!*VideoDeviceController {
         var _r: *VideoDeviceController = undefined;
         const _c = self.vtable.get_VideoDeviceController(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPreviewMirroring(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.SetPreviewMirroring(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPreviewMirroring(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetPreviewMirroring(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPreviewRotation(self: *@This(), value: VideoRotation) core.HResult!void {
         const _c = self.vtable.SetPreviewRotation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPreviewRotation(self: *@This()) core.HResult!VideoRotation {
         var _r: VideoRotation = undefined;
         const _c = self.vtable.GetPreviewRotation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetRecordRotation(self: *@This(), value: VideoRotation) core.HResult!void {
         const _c = self.vtable.SetRecordRotation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetRecordRotation(self: *@This()) core.HResult!VideoRotation {
         var _r: VideoRotation = undefined;
         const _c = self.vtable.GetRecordRotation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapture";
@@ -4241,8 +4246,11 @@ pub const IMediaCapture = extern struct {
 };
 pub const IMediaCapture2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4250,43 +4258,43 @@ pub const IMediaCapture2 = extern struct {
     pub fn PrepareLowLagRecordToStorageFileAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, file: *IStorageFile) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var _r: *IAsyncOperation(LowLagMediaRecording) = undefined;
         const _c = self.vtable.PrepareLowLagRecordToStorageFileAsync(@ptrCast(self), encodingProfile, file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PrepareLowLagRecordToStreamAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var _r: *IAsyncOperation(LowLagMediaRecording) = undefined;
         const _c = self.vtable.PrepareLowLagRecordToStreamAsync(@ptrCast(self), encodingProfile, stream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PrepareLowLagRecordToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var _r: *IAsyncOperation(LowLagMediaRecording) = undefined;
         const _c = self.vtable.PrepareLowLagRecordToCustomSinkAsync(@ptrCast(self), encodingProfile, customMediaSink, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var _r: *IAsyncOperation(LowLagMediaRecording) = undefined;
         const _c = self.vtable.PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PrepareLowLagPhotoCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoCapture) {
         var _r: *IAsyncOperation(LowLagPhotoCapture) = undefined;
         const _c = self.vtable.PrepareLowLagPhotoCaptureAsync(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PrepareLowLagPhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoSequenceCapture) {
         var _r: *IAsyncOperation(LowLagPhotoSequenceCapture) = undefined;
         const _c = self.vtable.PrepareLowLagPhotoSequenceCaptureAsync(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetEncodingPropertiesAsync(self: *@This(), mediaStreamType: MediaStreamType, mediaEncodingProperties: *IMediaEncodingProperties, encoderProperties: *MediaPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetEncodingPropertiesAsync(@ptrCast(self), mediaStreamType, mediaEncodingProperties, encoderProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapture2";
@@ -4312,8 +4320,11 @@ pub const IMediaCapture2 = extern struct {
 };
 pub const IMediaCapture3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4321,28 +4332,28 @@ pub const IMediaCapture3 = extern struct {
     pub fn PrepareVariablePhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(VariablePhotoSequenceCapture) {
         var _r: *IAsyncOperation(VariablePhotoSequenceCapture) = undefined;
         const _c = self.vtable.PrepareVariablePhotoSequenceCaptureAsync(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addFocusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,MediaCaptureFocusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FocusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFocusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FocusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPhotoConfirmationCaptured(self: *@This(), handler: *TypedEventHandler(MediaCapture,PhotoConfirmationCapturedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PhotoConfirmationCaptured(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePhotoConfirmationCaptured(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PhotoConfirmationCaptured(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapture3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4365,8 +4376,11 @@ pub const IMediaCapture3 = extern struct {
 };
 pub const IMediaCapture4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4374,75 +4388,75 @@ pub const IMediaCapture4 = extern struct {
     pub fn AddAudioEffectAsync(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!*IAsyncOperation(IMediaExtension) {
         var _r: *IAsyncOperation(IMediaExtension) = undefined;
         const _c = self.vtable.AddAudioEffectAsync(@ptrCast(self), definition, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddVideoEffectAsync(self: *@This(), definition: *IVideoEffectDefinition, mediaStreamType: MediaStreamType) core.HResult!*IAsyncOperation(IMediaExtension) {
         var _r: *IAsyncOperation(IMediaExtension) = undefined;
         const _c = self.vtable.AddVideoEffectAsync(@ptrCast(self), definition, mediaStreamType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PauseRecordAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.PauseRecordAsync(@ptrCast(self), behavior, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResumeRecordAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ResumeRecordAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addCameraStreamStateChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CameraStreamStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCameraStreamStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CameraStreamStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCameraStreamState(self: *@This()) core.HResult!CameraStreamState {
         var _r: CameraStreamState = undefined;
         const _c = self.vtable.get_CameraStreamState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPreviewFrameAsync(self: *@This()) core.HResult!*IAsyncOperation(VideoFrame) {
         var _r: *IAsyncOperation(VideoFrame) = undefined;
         const _c = self.vtable.GetPreviewFrameAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPreviewFrameAsyncWithDestination(self: *@This(), destination: *VideoFrame) core.HResult!*IAsyncOperation(VideoFrame) {
         var _r: *IAsyncOperation(VideoFrame) = undefined;
         const _c = self.vtable.GetPreviewFrameAsyncWithDestination(@ptrCast(self), destination, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addThermalStatusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ThermalStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeThermalStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ThermalStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getThermalStatus(self: *@This()) core.HResult!MediaCaptureThermalStatus {
         var _r: MediaCaptureThermalStatus = undefined;
         const _c = self.vtable.get_ThermalStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PrepareAdvancedPhotoCaptureAsync(self: *@This(), encodingProperties: *ImageEncodingProperties) core.HResult!*IAsyncOperation(AdvancedPhotoCapture) {
         var _r: *IAsyncOperation(AdvancedPhotoCapture) = undefined;
         const _c = self.vtable.PrepareAdvancedPhotoCaptureAsync(@ptrCast(self), encodingProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapture4";
@@ -4474,8 +4488,11 @@ pub const IMediaCapture4 = extern struct {
 };
 pub const IMediaCapture5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4483,43 +4500,43 @@ pub const IMediaCapture5 = extern struct {
     pub fn RemoveEffectAsync(self: *@This(), effect: *IMediaExtension) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RemoveEffectAsync(@ptrCast(self), effect, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PauseRecordWithResultAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncOperation(MediaCapturePauseResult) {
         var _r: *IAsyncOperation(MediaCapturePauseResult) = undefined;
         const _c = self.vtable.PauseRecordWithResultAsync(@ptrCast(self), behavior, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopRecordWithResultAsync(self: *@This()) core.HResult!*IAsyncOperation(MediaCaptureStopResult) {
         var _r: *IAsyncOperation(MediaCaptureStopResult) = undefined;
         const _c = self.vtable.StopRecordWithResultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameSources(self: *@This()) core.HResult!*IMapView(?HSTRING,MediaFrameSource) {
         var _r: *IMapView(?HSTRING,MediaFrameSource) = undefined;
         const _c = self.vtable.get_FrameSources(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFrameReaderAsync(self: *@This(), inputSource: *MediaFrameSource) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var _r: *IAsyncOperation(MediaFrameReader) = undefined;
         const _c = self.vtable.CreateFrameReaderAsync(@ptrCast(self), inputSource, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var _r: *IAsyncOperation(MediaFrameReader) = undefined;
         const _c = self.vtable.CreateFrameReaderAsyncWithOutputSubtype(@ptrCast(self), inputSource, outputSubtype, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var _r: *IAsyncOperation(MediaFrameReader) = undefined;
         const _c = self.vtable.CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(@ptrCast(self), inputSource, outputSubtype, outputSize, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapture5";
@@ -4545,8 +4562,11 @@ pub const IMediaCapture5 = extern struct {
 };
 pub const IMediaCapture6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4554,17 +4574,17 @@ pub const IMediaCapture6 = extern struct {
     pub fn addCaptureDeviceExclusiveControlStatusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,MediaCaptureDeviceExclusiveControlStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CaptureDeviceExclusiveControlStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCaptureDeviceExclusiveControlStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CaptureDeviceExclusiveControlStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateMultiSourceFrameReaderAsync(self: *@This(), inputSources: *IIterable(MediaFrameSource)) core.HResult!*IAsyncOperation(MultiSourceMediaFrameReader) {
         var _r: *IAsyncOperation(MultiSourceMediaFrameReader) = undefined;
         const _c = self.vtable.CreateMultiSourceFrameReaderAsync(@ptrCast(self), inputSources, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapture6";
@@ -4586,8 +4606,11 @@ pub const IMediaCapture6 = extern struct {
 };
 pub const IMediaCapture7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4595,7 +4618,7 @@ pub const IMediaCapture7 = extern struct {
     pub fn CreateRelativePanelWatcher(self: *@This(), captureMode: StreamingCaptureMode, displayRegion: *DisplayRegion) core.HResult!*MediaCaptureRelativePanelWatcher {
         var _r: *MediaCaptureRelativePanelWatcher = undefined;
         const _c = self.vtable.CreateRelativePanelWatcher(@ptrCast(self), captureMode, displayRegion, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapture7";
@@ -4615,8 +4638,11 @@ pub const IMediaCapture7 = extern struct {
 };
 pub const IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4624,13 +4650,13 @@ pub const IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern str
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!MediaCaptureDeviceExclusiveControlStatus {
         var _r: MediaCaptureDeviceExclusiveControlStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs";
@@ -4651,8 +4677,11 @@ pub const IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern str
 };
 pub const IMediaCaptureFailedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4660,13 +4689,13 @@ pub const IMediaCaptureFailedEventArgs = extern struct {
     pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureFailedEventArgs";
@@ -4687,8 +4716,11 @@ pub const IMediaCaptureFailedEventArgs = extern struct {
 };
 pub const IMediaCaptureFocusChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4696,7 +4728,7 @@ pub const IMediaCaptureFocusChangedEventArgs = extern struct {
     pub fn getFocusState(self: *@This()) core.HResult!MediaCaptureFocusState {
         var _r: MediaCaptureFocusState = undefined;
         const _c = self.vtable.get_FocusState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureFocusChangedEventArgs";
@@ -4716,50 +4748,53 @@ pub const IMediaCaptureFocusChangedEventArgs = extern struct {
 };
 pub const IMediaCaptureInitializationSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putAudioDeviceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AudioDeviceId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoDeviceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_VideoDeviceId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStreamingCaptureMode(self: *@This(), value: StreamingCaptureMode) core.HResult!void {
         const _c = self.vtable.put_StreamingCaptureMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStreamingCaptureMode(self: *@This()) core.HResult!StreamingCaptureMode {
         var _r: StreamingCaptureMode = undefined;
         const _c = self.vtable.get_StreamingCaptureMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPhotoCaptureSource(self: *@This(), value: PhotoCaptureSource) core.HResult!void {
         const _c = self.vtable.put_PhotoCaptureSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPhotoCaptureSource(self: *@This()) core.HResult!PhotoCaptureSource {
         var _r: PhotoCaptureSource = undefined;
         const _c = self.vtable.get_PhotoCaptureSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureInitializationSettings";
@@ -4786,30 +4821,33 @@ pub const IMediaCaptureInitializationSettings = extern struct {
 };
 pub const IMediaCaptureInitializationSettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putMediaCategory(self: *@This(), value: MediaCategory) core.HResult!void {
         const _c = self.vtable.put_MediaCategory(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMediaCategory(self: *@This()) core.HResult!MediaCategory {
         var _r: MediaCategory = undefined;
         const _c = self.vtable.get_MediaCategory(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAudioProcessing(self: *@This(), value: AudioProcessing) core.HResult!void {
         const _c = self.vtable.put_AudioProcessing(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioProcessing(self: *@This()) core.HResult!AudioProcessing {
         var _r: AudioProcessing = undefined;
         const _c = self.vtable.get_AudioProcessing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureInitializationSettings2";
@@ -4832,30 +4870,33 @@ pub const IMediaCaptureInitializationSettings2 = extern struct {
 };
 pub const IMediaCaptureInitializationSettings3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putAudioSource(self: *@This(), value: *IMediaSource) core.HResult!void {
         const _c = self.vtable.put_AudioSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioSource(self: *@This()) core.HResult!*IMediaSource {
         var _r: *IMediaSource = undefined;
         const _c = self.vtable.get_AudioSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoSource(self: *@This(), value: *IMediaSource) core.HResult!void {
         const _c = self.vtable.put_VideoSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVideoSource(self: *@This()) core.HResult!*IMediaSource {
         var _r: *IMediaSource = undefined;
         const _c = self.vtable.get_VideoSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureInitializationSettings3";
@@ -4878,8 +4919,11 @@ pub const IMediaCaptureInitializationSettings3 = extern struct {
 };
 pub const IMediaCaptureInitializationSettings4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4887,42 +4931,42 @@ pub const IMediaCaptureInitializationSettings4 = extern struct {
     pub fn getVideoProfile(self: *@This()) core.HResult!*MediaCaptureVideoProfile {
         var _r: *MediaCaptureVideoProfile = undefined;
         const _c = self.vtable.get_VideoProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoProfile(self: *@This(), value: *MediaCaptureVideoProfile) core.HResult!void {
         const _c = self.vtable.put_VideoProfile(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPreviewMediaDescription(self: *@This()) core.HResult!*MediaCaptureVideoProfileMediaDescription {
         var _r: *MediaCaptureVideoProfileMediaDescription = undefined;
         const _c = self.vtable.get_PreviewMediaDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPreviewMediaDescription(self: *@This(), value: *MediaCaptureVideoProfileMediaDescription) core.HResult!void {
         const _c = self.vtable.put_PreviewMediaDescription(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRecordMediaDescription(self: *@This()) core.HResult!*MediaCaptureVideoProfileMediaDescription {
         var _r: *MediaCaptureVideoProfileMediaDescription = undefined;
         const _c = self.vtable.get_RecordMediaDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRecordMediaDescription(self: *@This(), value: *MediaCaptureVideoProfileMediaDescription) core.HResult!void {
         const _c = self.vtable.put_RecordMediaDescription(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPhotoMediaDescription(self: *@This()) core.HResult!*MediaCaptureVideoProfileMediaDescription {
         var _r: *MediaCaptureVideoProfileMediaDescription = undefined;
         const _c = self.vtable.get_PhotoMediaDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPhotoMediaDescription(self: *@This(), value: *MediaCaptureVideoProfileMediaDescription) core.HResult!void {
         const _c = self.vtable.put_PhotoMediaDescription(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureInitializationSettings4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4948,8 +4992,11 @@ pub const IMediaCaptureInitializationSettings4 = extern struct {
 };
 pub const IMediaCaptureInitializationSettings5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4957,32 +5004,32 @@ pub const IMediaCaptureInitializationSettings5 = extern struct {
     pub fn getSourceGroup(self: *@This()) core.HResult!*MediaFrameSourceGroup {
         var _r: *MediaFrameSourceGroup = undefined;
         const _c = self.vtable.get_SourceGroup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSourceGroup(self: *@This(), value: *MediaFrameSourceGroup) core.HResult!void {
         const _c = self.vtable.put_SourceGroup(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSharingMode(self: *@This()) core.HResult!MediaCaptureSharingMode {
         var _r: MediaCaptureSharingMode = undefined;
         const _c = self.vtable.get_SharingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSharingMode(self: *@This(), value: MediaCaptureSharingMode) core.HResult!void {
         const _c = self.vtable.put_SharingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMemoryPreference(self: *@This()) core.HResult!MediaCaptureMemoryPreference {
         var _r: MediaCaptureMemoryPreference = undefined;
         const _c = self.vtable.get_MemoryPreference(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMemoryPreference(self: *@This(), value: MediaCaptureMemoryPreference) core.HResult!void {
         const _c = self.vtable.put_MemoryPreference(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureInitializationSettings5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5006,8 +5053,11 @@ pub const IMediaCaptureInitializationSettings5 = extern struct {
 };
 pub const IMediaCaptureInitializationSettings6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5015,12 +5065,12 @@ pub const IMediaCaptureInitializationSettings6 = extern struct {
     pub fn getAlwaysPlaySystemShutterSound(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AlwaysPlaySystemShutterSound(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlwaysPlaySystemShutterSound(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AlwaysPlaySystemShutterSound(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureInitializationSettings6";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5040,8 +5090,11 @@ pub const IMediaCaptureInitializationSettings6 = extern struct {
 };
 pub const IMediaCaptureInitializationSettings7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5049,22 +5102,22 @@ pub const IMediaCaptureInitializationSettings7 = extern struct {
     pub fn getDeviceUriPasswordCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_DeviceUriPasswordCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDeviceUriPasswordCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_DeviceUriPasswordCredential(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDeviceUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_DeviceUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDeviceUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_DeviceUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureInitializationSettings7";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5086,8 +5139,11 @@ pub const IMediaCaptureInitializationSettings7 = extern struct {
 };
 pub const IMediaCapturePauseResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5095,13 +5151,13 @@ pub const IMediaCapturePauseResult = extern struct {
     pub fn getLastFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_LastFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRecordDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RecordDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCapturePauseResult";
@@ -5122,8 +5178,11 @@ pub const IMediaCapturePauseResult = extern struct {
 };
 pub const IMediaCaptureRelativePanelWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5131,26 +5190,26 @@ pub const IMediaCaptureRelativePanelWatcher = extern struct {
     pub fn getRelativePanel(self: *@This()) core.HResult!Panel {
         var _r: Panel = undefined;
         const _c = self.vtable.get_RelativePanel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addChanged(self: *@This(), handler: *TypedEventHandler(MediaCaptureRelativePanelWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Changed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Changed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureRelativePanelWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5173,8 +5232,11 @@ pub const IMediaCaptureRelativePanelWatcher = extern struct {
 };
 pub const IMediaCaptureSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5182,31 +5244,31 @@ pub const IMediaCaptureSettings = extern struct {
     pub fn getAudioDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStreamingCaptureMode(self: *@This()) core.HResult!StreamingCaptureMode {
         var _r: StreamingCaptureMode = undefined;
         const _c = self.vtable.get_StreamingCaptureMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhotoCaptureSource(self: *@This()) core.HResult!PhotoCaptureSource {
         var _r: PhotoCaptureSource = undefined;
         const _c = self.vtable.get_PhotoCaptureSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoDeviceCharacteristic(self: *@This()) core.HResult!VideoDeviceCharacteristic {
         var _r: VideoDeviceCharacteristic = undefined;
         const _c = self.vtable.get_VideoDeviceCharacteristic(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureSettings";
@@ -5230,8 +5292,11 @@ pub const IMediaCaptureSettings = extern struct {
 };
 pub const IMediaCaptureSettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5239,49 +5304,49 @@ pub const IMediaCaptureSettings2 = extern struct {
     pub fn getConcurrentRecordAndPhotoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ConcurrentRecordAndPhotoSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConcurrentRecordAndPhotoSequenceSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ConcurrentRecordAndPhotoSequenceSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCameraSoundRequiredForRegion(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CameraSoundRequiredForRegion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHorizontal35mmEquivalentFocalLength(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_Horizontal35mmEquivalentFocalLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPitchOffsetDegrees(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_PitchOffsetDegrees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVertical35mmEquivalentFocalLength(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_Vertical35mmEquivalentFocalLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMediaCategory(self: *@This()) core.HResult!MediaCategory {
         var _r: MediaCategory = undefined;
         const _c = self.vtable.get_MediaCategory(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAudioProcessing(self: *@This()) core.HResult!AudioProcessing {
         var _r: AudioProcessing = undefined;
         const _c = self.vtable.get_AudioProcessing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureSettings2";
@@ -5308,8 +5373,11 @@ pub const IMediaCaptureSettings2 = extern struct {
 };
 pub const IMediaCaptureSettings3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5317,7 +5385,7 @@ pub const IMediaCaptureSettings3 = extern struct {
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
         var _r: *IDirect3DDevice = undefined;
         const _c = self.vtable.get_Direct3D11Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureSettings3";
@@ -5337,8 +5405,11 @@ pub const IMediaCaptureSettings3 = extern struct {
 };
 pub const IMediaCaptureStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5346,25 +5417,25 @@ pub const IMediaCaptureStatics = extern struct {
     pub fn IsVideoProfileSupported(self: *@This(), videoDeviceId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsVideoProfileSupported(@ptrCast(self), videoDeviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllVideoProfiles(self: *@This(), videoDeviceId: ?HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         var _r: *IVectorView(MediaCaptureVideoProfile) = undefined;
         const _c = self.vtable.FindAllVideoProfiles(@ptrCast(self), videoDeviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindConcurrentProfiles(self: *@This(), videoDeviceId: ?HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         var _r: *IVectorView(MediaCaptureVideoProfile) = undefined;
         const _c = self.vtable.FindConcurrentProfiles(@ptrCast(self), videoDeviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindKnownVideoProfiles(self: *@This(), videoDeviceId: ?HSTRING, name: KnownVideoProfile) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         var _r: *IVectorView(MediaCaptureVideoProfile) = undefined;
         const _c = self.vtable.FindKnownVideoProfiles(@ptrCast(self), videoDeviceId, name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureStatics";
@@ -5387,8 +5458,11 @@ pub const IMediaCaptureStatics = extern struct {
 };
 pub const IMediaCaptureStopResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5396,13 +5470,13 @@ pub const IMediaCaptureStopResult = extern struct {
     pub fn getLastFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_LastFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRecordDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RecordDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureStopResult";
@@ -5423,8 +5497,11 @@ pub const IMediaCaptureStopResult = extern struct {
 };
 pub const IMediaCaptureVideoPreview = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5432,25 +5509,25 @@ pub const IMediaCaptureVideoPreview = extern struct {
     pub fn StartPreviewAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartPreviewAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartPreviewToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartPreviewToCustomSinkAsync(@ptrCast(self), encodingProfile, customMediaSink, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopPreviewAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopPreviewAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureVideoPreview";
@@ -5473,8 +5550,11 @@ pub const IMediaCaptureVideoPreview = extern struct {
 };
 pub const IMediaCaptureVideoProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5482,37 +5562,37 @@ pub const IMediaCaptureVideoProfile = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedPreviewMediaDescription(self: *@This()) core.HResult!*IVectorView(MediaCaptureVideoProfileMediaDescription) {
         var _r: *IVectorView(MediaCaptureVideoProfileMediaDescription) = undefined;
         const _c = self.vtable.get_SupportedPreviewMediaDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedRecordMediaDescription(self: *@This()) core.HResult!*IVectorView(MediaCaptureVideoProfileMediaDescription) {
         var _r: *IVectorView(MediaCaptureVideoProfileMediaDescription) = undefined;
         const _c = self.vtable.get_SupportedRecordMediaDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedPhotoMediaDescription(self: *@This()) core.HResult!*IVectorView(MediaCaptureVideoProfileMediaDescription) {
         var _r: *IVectorView(MediaCaptureVideoProfileMediaDescription) = undefined;
         const _c = self.vtable.get_SupportedPhotoMediaDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConcurrency(self: *@This()) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         var _r: *IVectorView(MediaCaptureVideoProfile) = undefined;
         const _c = self.vtable.GetConcurrency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureVideoProfile";
@@ -5537,8 +5617,11 @@ pub const IMediaCaptureVideoProfile = extern struct {
 };
 pub const IMediaCaptureVideoProfile2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5546,13 +5629,13 @@ pub const IMediaCaptureVideoProfile2 = extern struct {
     pub fn getFrameSourceInfos(self: *@This()) core.HResult!*IVectorView(MediaFrameSourceInfo) {
         var _r: *IVectorView(MediaFrameSourceInfo) = undefined;
         const _c = self.vtable.get_FrameSourceInfos(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var _r: *IMapView(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureVideoProfile2";
@@ -5573,8 +5656,11 @@ pub const IMediaCaptureVideoProfile2 = extern struct {
 };
 pub const IMediaCaptureVideoProfileMediaDescription = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5582,31 +5668,31 @@ pub const IMediaCaptureVideoProfileMediaDescription = extern struct {
     pub fn getWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameRate(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FrameRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsVariablePhotoSequenceSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVariablePhotoSequenceSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHdrVideoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHdrVideoSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureVideoProfileMediaDescription";
@@ -5630,8 +5716,11 @@ pub const IMediaCaptureVideoProfileMediaDescription = extern struct {
 };
 pub const IMediaCaptureVideoProfileMediaDescription2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5639,13 +5728,13 @@ pub const IMediaCaptureVideoProfileMediaDescription2 = extern struct {
     pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtype(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var _r: *IMapView(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IMediaCaptureVideoProfileMediaDescription2";
@@ -5666,8 +5755,11 @@ pub const IMediaCaptureVideoProfileMediaDescription2 = extern struct {
 };
 pub const IOptionalReferencePhotoCapturedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5675,13 +5767,13 @@ pub const IOptionalReferencePhotoCapturedEventArgs = extern struct {
     pub fn getFrame(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Frame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContext(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IOptionalReferencePhotoCapturedEventArgs";
@@ -5702,8 +5794,11 @@ pub const IOptionalReferencePhotoCapturedEventArgs = extern struct {
 };
 pub const IPhotoCapturedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5711,19 +5806,19 @@ pub const IPhotoCapturedEventArgs = extern struct {
     pub fn getFrame(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Frame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getThumbnail(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Thumbnail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCaptureTimeOffset(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_CaptureTimeOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IPhotoCapturedEventArgs";
@@ -5745,8 +5840,11 @@ pub const IPhotoCapturedEventArgs = extern struct {
 };
 pub const IPhotoConfirmationCapturedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5754,13 +5852,13 @@ pub const IPhotoConfirmationCapturedEventArgs = extern struct {
     pub fn getFrame(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Frame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCaptureTimeOffset(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_CaptureTimeOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IPhotoConfirmationCapturedEventArgs";
@@ -5781,8 +5879,11 @@ pub const IPhotoConfirmationCapturedEventArgs = extern struct {
 };
 pub const IVideoStreamConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5790,13 +5891,13 @@ pub const IVideoStreamConfiguration = extern struct {
     pub fn getInputProperties(self: *@This()) core.HResult!*VideoEncodingProperties {
         var _r: *VideoEncodingProperties = undefined;
         const _c = self.vtable.get_InputProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOutputProperties(self: *@This()) core.HResult!*VideoEncodingProperties {
         var _r: *VideoEncodingProperties = undefined;
         const _c = self.vtable.get_OutputProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IVideoStreamConfiguration";
@@ -5830,14 +5931,11 @@ pub const KnownVideoProfile = enum(i32) {
 };
 pub const LowLagMediaRecording = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5857,29 +5955,25 @@ pub const LowLagMediaRecording = extern struct {
     pub fn PauseAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncAction {
         var this: ?*ILowLagMediaRecording2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording2.IID, @ptrCast(&this));
         return try this.?.PauseAsync(behavior);
     }
     pub fn ResumeAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*ILowLagMediaRecording2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording2.IID, @ptrCast(&this));
         return try this.?.ResumeAsync();
     }
     pub fn PauseWithResultAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncOperation(MediaCapturePauseResult) {
         var this: ?*ILowLagMediaRecording3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording3.IID, @ptrCast(&this));
         return try this.?.PauseWithResultAsync(behavior);
     }
     pub fn StopWithResultAsync(self: *@This()) core.HResult!*IAsyncOperation(MediaCaptureStopResult) {
         var this: ?*ILowLagMediaRecording3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILowLagMediaRecording3.IID, @ptrCast(&this));
         return try this.?.StopWithResultAsync();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.LowLagMediaRecording";
@@ -5890,14 +5984,11 @@ pub const LowLagMediaRecording = extern struct {
 };
 pub const LowLagPhotoCapture = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5918,14 +6009,11 @@ pub const LowLagPhotoCapture = extern struct {
 };
 pub const LowLagPhotoSequenceCapture = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5958,14 +6046,11 @@ pub const LowLagPhotoSequenceCapture = extern struct {
 };
 pub const MediaCapture = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6077,288 +6162,247 @@ pub const MediaCapture = extern struct {
     pub fn StartPreviewAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
         return try this.?.StartPreviewAsync();
     }
     pub fn StartPreviewToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
         return try this.?.StartPreviewToCustomSinkAsync(encodingProfile, customMediaSink);
     }
     pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
         return try this.?.StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
     pub fn StopPreviewAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
         return try this.?.StopPreviewAsync();
     }
     pub fn PrepareLowLagRecordToStorageFileAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, file: *IStorageFile) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var this: ?*IMediaCapture2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         return try this.?.PrepareLowLagRecordToStorageFileAsync(encodingProfile, file);
     }
     pub fn PrepareLowLagRecordToStreamAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var this: ?*IMediaCapture2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         return try this.?.PrepareLowLagRecordToStreamAsync(encodingProfile, stream);
     }
     pub fn PrepareLowLagRecordToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var this: ?*IMediaCapture2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         return try this.?.PrepareLowLagRecordToCustomSinkAsync(encodingProfile, customMediaSink);
     }
     pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var this: ?*IMediaCapture2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         return try this.?.PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
     pub fn PrepareLowLagPhotoCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoCapture) {
         var this: ?*IMediaCapture2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         return try this.?.PrepareLowLagPhotoCaptureAsync(ty);
     }
     pub fn PrepareLowLagPhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoSequenceCapture) {
         var this: ?*IMediaCapture2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         return try this.?.PrepareLowLagPhotoSequenceCaptureAsync(ty);
     }
     pub fn SetEncodingPropertiesAsync(self: *@This(), mediaStreamType: MediaStreamType, mediaEncodingProperties: *IMediaEncodingProperties, encoderProperties: *MediaPropertySet) core.HResult!*IAsyncAction {
         var this: ?*IMediaCapture2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         return try this.?.SetEncodingPropertiesAsync(mediaStreamType, mediaEncodingProperties, encoderProperties);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn PrepareVariablePhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(VariablePhotoSequenceCapture) {
         var this: ?*IMediaCapture3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
         return try this.?.PrepareVariablePhotoSequenceCaptureAsync(ty);
     }
     pub fn addFocusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,MediaCaptureFocusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
         return try this.?.addFocusChanged(handler);
     }
     pub fn removeFocusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaCapture3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
         return try this.?.removeFocusChanged(token);
     }
     pub fn addPhotoConfirmationCaptured(self: *@This(), handler: *TypedEventHandler(MediaCapture,PhotoConfirmationCapturedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
         return try this.?.addPhotoConfirmationCaptured(handler);
     }
     pub fn removePhotoConfirmationCaptured(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaCapture3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
         return try this.?.removePhotoConfirmationCaptured(token);
     }
     pub fn AddAudioEffectAsync(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!*IAsyncOperation(IMediaExtension) {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.AddAudioEffectAsync(definition);
     }
     pub fn AddVideoEffectAsync(self: *@This(), definition: *IVideoEffectDefinition, mediaStreamType: MediaStreamType) core.HResult!*IAsyncOperation(IMediaExtension) {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.AddVideoEffectAsync(definition, mediaStreamType);
     }
     pub fn PauseRecordAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncAction {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.PauseRecordAsync(behavior);
     }
     pub fn ResumeRecordAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.ResumeRecordAsync();
     }
     pub fn addCameraStreamStateChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.addCameraStreamStateChanged(handler);
     }
     pub fn removeCameraStreamStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.removeCameraStreamStateChanged(token);
     }
     pub fn getCameraStreamState(self: *@This()) core.HResult!CameraStreamState {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.getCameraStreamState();
     }
     pub fn GetPreviewFrameAsync(self: *@This()) core.HResult!*IAsyncOperation(VideoFrame) {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.GetPreviewFrameAsync();
     }
     pub fn GetPreviewFrameAsyncWithDestination(self: *@This(), destination: *VideoFrame) core.HResult!*IAsyncOperation(VideoFrame) {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.GetPreviewFrameAsyncWithDestination(destination);
     }
     pub fn addThermalStatusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.addThermalStatusChanged(handler);
     }
     pub fn removeThermalStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.removeThermalStatusChanged(token);
     }
     pub fn getThermalStatus(self: *@This()) core.HResult!MediaCaptureThermalStatus {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.getThermalStatus();
     }
     pub fn PrepareAdvancedPhotoCaptureAsync(self: *@This(), encodingProperties: *ImageEncodingProperties) core.HResult!*IAsyncOperation(AdvancedPhotoCapture) {
         var this: ?*IMediaCapture4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         return try this.?.PrepareAdvancedPhotoCaptureAsync(encodingProperties);
     }
     pub fn RemoveEffectAsync(self: *@This(), effect: *IMediaExtension) core.HResult!*IAsyncAction {
         var this: ?*IMediaCapture5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         return try this.?.RemoveEffectAsync(effect);
     }
     pub fn PauseRecordWithResultAsync(self: *@This(), behavior: MediaCapturePauseBehavior) core.HResult!*IAsyncOperation(MediaCapturePauseResult) {
         var this: ?*IMediaCapture5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         return try this.?.PauseRecordWithResultAsync(behavior);
     }
     pub fn StopRecordWithResultAsync(self: *@This()) core.HResult!*IAsyncOperation(MediaCaptureStopResult) {
         var this: ?*IMediaCapture5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         return try this.?.StopRecordWithResultAsync();
     }
     pub fn getFrameSources(self: *@This()) core.HResult!*IMapView(?HSTRING,MediaFrameSource) {
         var this: ?*IMediaCapture5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         return try this.?.getFrameSources();
     }
     pub fn CreateFrameReaderAsync(self: *@This(), inputSource: *MediaFrameSource) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         return try this.?.CreateFrameReaderAsync(inputSource);
     }
     pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         return try this.?.CreateFrameReaderAsyncWithOutputSubtype(inputSource, outputSubtype);
     }
     pub fn CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         return try this.?.CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(inputSource, outputSubtype, outputSize);
     }
     pub fn addCaptureDeviceExclusiveControlStatusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,MediaCaptureDeviceExclusiveControlStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture6.IID, @ptrCast(&this));
         return try this.?.addCaptureDeviceExclusiveControlStatusChanged(handler);
     }
     pub fn removeCaptureDeviceExclusiveControlStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaCapture6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture6.IID, @ptrCast(&this));
         return try this.?.removeCaptureDeviceExclusiveControlStatusChanged(token);
     }
     pub fn CreateMultiSourceFrameReaderAsync(self: *@This(), inputSources: *IIterable(MediaFrameSource)) core.HResult!*IAsyncOperation(MultiSourceMediaFrameReader) {
         var this: ?*IMediaCapture6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture6.IID, @ptrCast(&this));
         return try this.?.CreateMultiSourceFrameReaderAsync(inputSources);
     }
     pub fn CreateRelativePanelWatcher(self: *@This(), captureMode: StreamingCaptureMode, displayRegion: *DisplayRegion) core.HResult!*MediaCaptureRelativePanelWatcher {
         var this: ?*IMediaCapture7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture7.IID, @ptrCast(&this));
         return try this.?.CreateRelativePanelWatcher(captureMode, displayRegion);
     }
     pub fn init() core.HResult!*@This() {
@@ -6399,14 +6443,11 @@ pub const MediaCaptureDeviceExclusiveControlStatus = enum(i32) {
 };
 pub const MediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6427,14 +6468,11 @@ pub const MediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern stru
 };
 pub const MediaCaptureFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6544,14 +6582,11 @@ pub const MediaCaptureFailedEventHandler = extern struct {
 };
 pub const MediaCaptureFocusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6568,14 +6603,11 @@ pub const MediaCaptureFocusChangedEventArgs = extern struct {
 };
 pub const MediaCaptureInitializationSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6615,197 +6647,169 @@ pub const MediaCaptureInitializationSettings = extern struct {
     pub fn putMediaCategory(self: *@This(), value: MediaCategory) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
         return try this.?.putMediaCategory(value);
     }
     pub fn getMediaCategory(self: *@This()) core.HResult!MediaCategory {
         var this: ?*IMediaCaptureInitializationSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
         return try this.?.getMediaCategory();
     }
     pub fn putAudioProcessing(self: *@This(), value: AudioProcessing) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
         return try this.?.putAudioProcessing(value);
     }
     pub fn getAudioProcessing(self: *@This()) core.HResult!AudioProcessing {
         var this: ?*IMediaCaptureInitializationSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings2.IID, @ptrCast(&this));
         return try this.?.getAudioProcessing();
     }
     pub fn putAudioSource(self: *@This(), value: *IMediaSource) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
         return try this.?.putAudioSource(value);
     }
     pub fn getAudioSource(self: *@This()) core.HResult!*IMediaSource {
         var this: ?*IMediaCaptureInitializationSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
         return try this.?.getAudioSource();
     }
     pub fn putVideoSource(self: *@This(), value: *IMediaSource) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
         return try this.?.putVideoSource(value);
     }
     pub fn getVideoSource(self: *@This()) core.HResult!*IMediaSource {
         var this: ?*IMediaCaptureInitializationSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings3.IID, @ptrCast(&this));
         return try this.?.getVideoSource();
     }
     pub fn getVideoProfile(self: *@This()) core.HResult!*MediaCaptureVideoProfile {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.getVideoProfile();
     }
     pub fn putVideoProfile(self: *@This(), value: *MediaCaptureVideoProfile) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.putVideoProfile(value);
     }
     pub fn getPreviewMediaDescription(self: *@This()) core.HResult!*MediaCaptureVideoProfileMediaDescription {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.getPreviewMediaDescription();
     }
     pub fn putPreviewMediaDescription(self: *@This(), value: *MediaCaptureVideoProfileMediaDescription) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.putPreviewMediaDescription(value);
     }
     pub fn getRecordMediaDescription(self: *@This()) core.HResult!*MediaCaptureVideoProfileMediaDescription {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.getRecordMediaDescription();
     }
     pub fn putRecordMediaDescription(self: *@This(), value: *MediaCaptureVideoProfileMediaDescription) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.putRecordMediaDescription(value);
     }
     pub fn getPhotoMediaDescription(self: *@This()) core.HResult!*MediaCaptureVideoProfileMediaDescription {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.getPhotoMediaDescription();
     }
     pub fn putPhotoMediaDescription(self: *@This(), value: *MediaCaptureVideoProfileMediaDescription) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings4.IID, @ptrCast(&this));
         return try this.?.putPhotoMediaDescription(value);
     }
     pub fn getSourceGroup(self: *@This()) core.HResult!*MediaFrameSourceGroup {
         var this: ?*IMediaCaptureInitializationSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
         return try this.?.getSourceGroup();
     }
     pub fn putSourceGroup(self: *@This(), value: *MediaFrameSourceGroup) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
         return try this.?.putSourceGroup(value);
     }
     pub fn getSharingMode(self: *@This()) core.HResult!MediaCaptureSharingMode {
         var this: ?*IMediaCaptureInitializationSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
         return try this.?.getSharingMode();
     }
     pub fn putSharingMode(self: *@This(), value: MediaCaptureSharingMode) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
         return try this.?.putSharingMode(value);
     }
     pub fn getMemoryPreference(self: *@This()) core.HResult!MediaCaptureMemoryPreference {
         var this: ?*IMediaCaptureInitializationSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
         return try this.?.getMemoryPreference();
     }
     pub fn putMemoryPreference(self: *@This(), value: MediaCaptureMemoryPreference) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings5.IID, @ptrCast(&this));
         return try this.?.putMemoryPreference(value);
     }
     pub fn getAlwaysPlaySystemShutterSound(self: *@This()) core.HResult!bool {
         var this: ?*IMediaCaptureInitializationSettings6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings6.IID, @ptrCast(&this));
         return try this.?.getAlwaysPlaySystemShutterSound();
     }
     pub fn putAlwaysPlaySystemShutterSound(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings6.IID, @ptrCast(&this));
         return try this.?.putAlwaysPlaySystemShutterSound(value);
     }
     pub fn getDeviceUriPasswordCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IMediaCaptureInitializationSettings7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
         return try this.?.getDeviceUriPasswordCredential();
     }
     pub fn putDeviceUriPasswordCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
         return try this.?.putDeviceUriPasswordCredential(value);
     }
     pub fn getDeviceUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IMediaCaptureInitializationSettings7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
         return try this.?.getDeviceUri();
     }
     pub fn putDeviceUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IMediaCaptureInitializationSettings7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureInitializationSettings7.IID, @ptrCast(&this));
         return try this.?.putDeviceUri(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -6825,14 +6829,11 @@ pub const MediaCaptureMemoryPreference = enum(i32) {
 };
 pub const MediaCapturePauseResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6848,8 +6849,7 @@ pub const MediaCapturePauseResult = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCapturePauseResult";
@@ -6860,14 +6860,11 @@ pub const MediaCapturePauseResult = extern struct {
 };
 pub const MediaCaptureRelativePanelWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6895,8 +6892,7 @@ pub const MediaCaptureRelativePanelWatcher = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCaptureRelativePanelWatcher";
@@ -6907,14 +6903,11 @@ pub const MediaCaptureRelativePanelWatcher = extern struct {
 };
 pub const MediaCaptureSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6942,64 +6935,55 @@ pub const MediaCaptureSettings = extern struct {
     pub fn getConcurrentRecordAndPhotoSupported(self: *@This()) core.HResult!bool {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getConcurrentRecordAndPhotoSupported();
     }
     pub fn getConcurrentRecordAndPhotoSequenceSupported(self: *@This()) core.HResult!bool {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getConcurrentRecordAndPhotoSequenceSupported();
     }
     pub fn getCameraSoundRequiredForRegion(self: *@This()) core.HResult!bool {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getCameraSoundRequiredForRegion();
     }
     pub fn getHorizontal35mmEquivalentFocalLength(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getHorizontal35mmEquivalentFocalLength();
     }
     pub fn getPitchOffsetDegrees(self: *@This()) core.HResult!*IReference(i32) {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getPitchOffsetDegrees();
     }
     pub fn getVertical35mmEquivalentFocalLength(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getVertical35mmEquivalentFocalLength();
     }
     pub fn getMediaCategory(self: *@This()) core.HResult!MediaCategory {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getMediaCategory();
     }
     pub fn getAudioProcessing(self: *@This()) core.HResult!AudioProcessing {
         var this: ?*IMediaCaptureSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings2.IID, @ptrCast(&this));
         return try this.?.getAudioProcessing();
     }
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
         var this: ?*IMediaCaptureSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureSettings3.IID, @ptrCast(&this));
         return try this.?.getDirect3D11Device();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCaptureSettings";
@@ -7014,14 +6998,11 @@ pub const MediaCaptureSharingMode = enum(i32) {
 };
 pub const MediaCaptureStopResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7037,8 +7018,7 @@ pub const MediaCaptureStopResult = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCaptureStopResult";
@@ -7053,14 +7033,11 @@ pub const MediaCaptureThermalStatus = enum(i32) {
 };
 pub const MediaCaptureVideoProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7092,15 +7069,13 @@ pub const MediaCaptureVideoProfile = extern struct {
     pub fn getFrameSourceInfos(self: *@This()) core.HResult!*IVectorView(MediaFrameSourceInfo) {
         var this: ?*IMediaCaptureVideoProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfile2.IID, @ptrCast(&this));
         return try this.?.getFrameSourceInfos();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var this: ?*IMediaCaptureVideoProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfile2.IID, @ptrCast(&this));
         return try this.?.getProperties();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCaptureVideoProfile";
@@ -7111,14 +7086,11 @@ pub const MediaCaptureVideoProfile = extern struct {
 };
 pub const MediaCaptureVideoProfileMediaDescription = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7146,15 +7118,13 @@ pub const MediaCaptureVideoProfileMediaDescription = extern struct {
     pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCaptureVideoProfileMediaDescription2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfileMediaDescription2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfileMediaDescription2.IID, @ptrCast(&this));
         return try this.?.getSubtype();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var this: ?*IMediaCaptureVideoProfileMediaDescription2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfileMediaDescription2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfileMediaDescription2.IID, @ptrCast(&this));
         return try this.?.getProperties();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCaptureVideoProfileMediaDescription";
@@ -7182,14 +7152,11 @@ pub const MediaStreamType = enum(i32) {
 };
 pub const OptionalReferencePhotoCapturedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7215,14 +7182,11 @@ pub const PhotoCaptureSource = enum(i32) {
 };
 pub const PhotoCapturedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7247,14 +7211,11 @@ pub const PhotoCapturedEventArgs = extern struct {
 };
 pub const PhotoConfirmationCapturedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7388,14 +7349,11 @@ pub const VideoRotation = enum(i32) {
 };
 pub const VideoStreamConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7421,14 +7379,11 @@ pub const WhiteBalanceGain = extern struct {
 };
 pub const AppBroadcastBackgroundService = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7492,78 +7447,67 @@ pub const AppBroadcastBackgroundService = extern struct {
     pub fn putBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.putBroadcastTitle(value);
     }
     pub fn getBroadcastLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.getBroadcastLanguage();
     }
     pub fn putBroadcastLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.putBroadcastLanguage(value);
     }
     pub fn getBroadcastChannel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.getBroadcastChannel();
     }
     pub fn putBroadcastChannel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.putBroadcastChannel(value);
     }
     pub fn addBroadcastTitleChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.addBroadcastTitleChanged(handler);
     }
     pub fn removeBroadcastTitleChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.removeBroadcastTitleChanged(token);
     }
     pub fn addBroadcastLanguageChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.addBroadcastLanguageChanged(handler);
     }
     pub fn removeBroadcastLanguageChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.removeBroadcastLanguageChanged(token);
     }
     pub fn addBroadcastChannelChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.addBroadcastChannelChanged(handler);
     }
     pub fn removeBroadcastChannelChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         return try this.?.removeBroadcastChannelChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppBroadcastBackgroundService";
@@ -7574,14 +7518,11 @@ pub const AppBroadcastBackgroundService = extern struct {
 };
 pub const AppBroadcastBackgroundServiceSignInInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7629,15 +7570,13 @@ pub const AppBroadcastBackgroundServiceSignInInfo = extern struct {
     pub fn addUserNameChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundServiceSignInInfo,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IAppBroadcastBackgroundServiceSignInInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundServiceSignInInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundServiceSignInInfo2.IID, @ptrCast(&this));
         return try this.?.addUserNameChanged(handler);
     }
     pub fn removeUserNameChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundServiceSignInInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundServiceSignInInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundServiceSignInInfo2.IID, @ptrCast(&this));
         return try this.?.removeUserNameChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppBroadcastBackgroundServiceSignInInfo";
@@ -7648,14 +7587,11 @@ pub const AppBroadcastBackgroundServiceSignInInfo = extern struct {
 };
 pub const AppBroadcastBackgroundServiceStreamInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7719,8 +7655,7 @@ pub const AppBroadcastBackgroundServiceStreamInfo = extern struct {
     pub fn ReportProblemWithStream(self: *@This()) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundServiceStreamInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundServiceStreamInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundServiceStreamInfo2.IID, @ptrCast(&this));
         return try this.?.ReportProblemWithStream();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppBroadcastBackgroundServiceStreamInfo";
@@ -7736,14 +7671,11 @@ pub const AppBroadcastCameraCaptureState = enum(i32) {
 };
 pub const AppBroadcastCameraCaptureStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7790,14 +7722,11 @@ pub const AppBroadcastExitBroadcastModeReason = enum(i32) {
 };
 pub const AppBroadcastGlobalSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7906,14 +7835,11 @@ pub const AppBroadcastGlobalSettings = extern struct {
 };
 pub const AppBroadcastHeartbeatRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7934,14 +7860,11 @@ pub const AppBroadcastHeartbeatRequestedEventArgs = extern struct {
 };
 pub const AppBroadcastManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7973,14 +7896,11 @@ pub const AppBroadcastMicrophoneCaptureState = enum(i32) {
 };
 pub const AppBroadcastMicrophoneCaptureStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8001,14 +7921,11 @@ pub const AppBroadcastMicrophoneCaptureStateChangedEventArgs = extern struct {
 };
 pub const AppBroadcastPlugIn = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8037,14 +7954,11 @@ pub const AppBroadcastPlugIn = extern struct {
 };
 pub const AppBroadcastPlugInManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8091,14 +8005,11 @@ pub const AppBroadcastPlugInState = enum(i32) {
 };
 pub const AppBroadcastPlugInStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8115,14 +8026,11 @@ pub const AppBroadcastPlugInStateChangedEventArgs = extern struct {
 };
 pub const AppBroadcastPreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8164,14 +8072,11 @@ pub const AppBroadcastPreviewState = enum(i32) {
 };
 pub const AppBroadcastPreviewStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8192,14 +8097,11 @@ pub const AppBroadcastPreviewStateChangedEventArgs = extern struct {
 };
 pub const AppBroadcastPreviewStreamReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8244,14 +8146,11 @@ pub const AppBroadcastPreviewStreamReader = extern struct {
 };
 pub const AppBroadcastPreviewStreamVideoFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8272,14 +8171,11 @@ pub const AppBroadcastPreviewStreamVideoFrame = extern struct {
 };
 pub const AppBroadcastPreviewStreamVideoHeader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8308,14 +8204,11 @@ pub const AppBroadcastPreviewStreamVideoHeader = extern struct {
 };
 pub const AppBroadcastProviderSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8384,14 +8277,11 @@ pub const AppBroadcastProviderSettings = extern struct {
 };
 pub const AppBroadcastServices = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8478,14 +8368,11 @@ pub const AppBroadcastSignInState = enum(i32) {
 };
 pub const AppBroadcastSignInStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8506,14 +8393,11 @@ pub const AppBroadcastSignInStateChangedEventArgs = extern struct {
 };
 pub const AppBroadcastState = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8666,14 +8550,11 @@ pub const AppBroadcastState = extern struct {
 };
 pub const AppBroadcastStreamAudioFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8694,14 +8575,11 @@ pub const AppBroadcastStreamAudioFrame = extern struct {
 };
 pub const AppBroadcastStreamAudioHeader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8734,14 +8612,11 @@ pub const AppBroadcastStreamAudioHeader = extern struct {
 };
 pub const AppBroadcastStreamReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8813,14 +8688,11 @@ pub const AppBroadcastStreamState = enum(i32) {
 };
 pub const AppBroadcastStreamStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8837,14 +8709,11 @@ pub const AppBroadcastStreamStateChangedEventArgs = extern struct {
 };
 pub const AppBroadcastStreamVideoFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8865,14 +8734,11 @@ pub const AppBroadcastStreamVideoFrame = extern struct {
 };
 pub const AppBroadcastStreamVideoHeader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8921,14 +8787,11 @@ pub const AppBroadcastTerminationReason = enum(i32) {
 };
 pub const AppBroadcastTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8953,14 +8816,11 @@ pub const AppBroadcastVideoEncodingResolutionMode = enum(i32) {
 };
 pub const AppBroadcastViewerCountChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8985,82 +8845,85 @@ pub const GameBarServicesDisplayMode = enum(i32) {
 };
 pub const IAppBroadcastBackgroundService = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putPlugInState(self: *@This(), value: AppBroadcastPlugInState) core.HResult!void {
         const _c = self.vtable.put_PlugInState(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlugInState(self: *@This()) core.HResult!AppBroadcastPlugInState {
         var _r: AppBroadcastPlugInState = undefined;
         const _c = self.vtable.get_PlugInState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignInInfo(self: *@This(), value: *AppBroadcastBackgroundServiceSignInInfo) core.HResult!void {
         const _c = self.vtable.put_SignInInfo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignInInfo(self: *@This()) core.HResult!*AppBroadcastBackgroundServiceSignInInfo {
         var _r: *AppBroadcastBackgroundServiceSignInInfo = undefined;
         const _c = self.vtable.get_SignInInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStreamInfo(self: *@This(), value: *AppBroadcastBackgroundServiceStreamInfo) core.HResult!void {
         const _c = self.vtable.put_StreamInfo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStreamInfo(self: *@This()) core.HResult!*AppBroadcastBackgroundServiceStreamInfo {
         var _r: *AppBroadcastBackgroundServiceStreamInfo = undefined;
         const _c = self.vtable.get_StreamInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastTitle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewerCount(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ViewerCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getViewerCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ViewerCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TerminateBroadcast(self: *@This(), reason: AppBroadcastTerminationReason, providerSpecificReason: u32) core.HResult!void {
         const _c = self.vtable.TerminateBroadcast(@ptrCast(self), reason, providerSpecificReason);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addHeartbeatRequested(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundService,AppBroadcastHeartbeatRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HeartbeatRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHeartbeatRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HeartbeatRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastBackgroundService";
@@ -9093,65 +8956,68 @@ pub const IAppBroadcastBackgroundService = extern struct {
 };
 pub const IAppBroadcastBackgroundService2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastTitle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBroadcastLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBroadcastLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastLanguage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBroadcastChannel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastChannel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBroadcastChannel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastChannel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addBroadcastTitleChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BroadcastTitleChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBroadcastTitleChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BroadcastTitleChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addBroadcastLanguageChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BroadcastLanguageChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBroadcastLanguageChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BroadcastLanguageChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addBroadcastChannelChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BroadcastChannelChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBroadcastChannelChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BroadcastChannelChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastBackgroundService2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9180,8 +9046,11 @@ pub const IAppBroadcastBackgroundService2 = extern struct {
 };
 pub const IAppBroadcastBackgroundServiceSignInInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9189,54 +9058,54 @@ pub const IAppBroadcastBackgroundServiceSignInInfo = extern struct {
     pub fn getSignInState(self: *@This()) core.HResult!AppBroadcastSignInState {
         var _r: AppBroadcastSignInState = undefined;
         const _c = self.vtable.get_SignInState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOAuthRequestUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_OAuthRequestUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOAuthRequestUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_OAuthRequestUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOAuthCallbackUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_OAuthCallbackUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOAuthCallbackUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_OAuthCallbackUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationResult(self: *@This()) core.HResult!*WebAuthenticationResult {
         var _r: *WebAuthenticationResult = undefined;
         const _c = self.vtable.get_AuthenticationResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addSignInStateChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundServiceSignInInfo,AppBroadcastSignInStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SignInStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSignInStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SignInStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastBackgroundServiceSignInInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9264,8 +9133,11 @@ pub const IAppBroadcastBackgroundServiceSignInInfo = extern struct {
 };
 pub const IAppBroadcastBackgroundServiceSignInInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9273,12 +9145,12 @@ pub const IAppBroadcastBackgroundServiceSignInInfo2 = extern struct {
     pub fn addUserNameChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundServiceSignInInfo,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UserNameChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUserNameChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UserNameChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastBackgroundServiceSignInInfo2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9298,8 +9170,11 @@ pub const IAppBroadcastBackgroundServiceSignInInfo2 = extern struct {
 };
 pub const IAppBroadcastBackgroundServiceStreamInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9307,74 +9182,74 @@ pub const IAppBroadcastBackgroundServiceStreamInfo = extern struct {
     pub fn getStreamState(self: *@This()) core.HResult!AppBroadcastStreamState {
         var _r: AppBroadcastStreamState = undefined;
         const _c = self.vtable.get_StreamState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredVideoEncodingBitrate(self: *@This(), value: u64) core.HResult!void {
         const _c = self.vtable.put_DesiredVideoEncodingBitrate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredVideoEncodingBitrate(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_DesiredVideoEncodingBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBandwidthTestBitrate(self: *@This(), value: u64) core.HResult!void {
         const _c = self.vtable.put_BandwidthTestBitrate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBandwidthTestBitrate(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BandwidthTestBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAudioCodec(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AudioCodec(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioCodec(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioCodec(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBroadcastStreamReader(self: *@This()) core.HResult!*AppBroadcastStreamReader {
         var _r: *AppBroadcastStreamReader = undefined;
         const _c = self.vtable.get_BroadcastStreamReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStreamStateChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundServiceStreamInfo,AppBroadcastStreamStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StreamStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStreamStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StreamStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVideoEncodingResolutionChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundServiceStreamInfo,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VideoEncodingResolutionChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVideoEncodingResolutionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VideoEncodingResolutionChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVideoEncodingBitrateChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastBackgroundServiceStreamInfo,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VideoEncodingBitrateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVideoEncodingBitrateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VideoEncodingBitrateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastBackgroundServiceStreamInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9406,15 +9281,18 @@ pub const IAppBroadcastBackgroundServiceStreamInfo = extern struct {
 };
 pub const IAppBroadcastBackgroundServiceStreamInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportProblemWithStream(self: *@This()) core.HResult!void {
         const _c = self.vtable.ReportProblemWithStream(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastBackgroundServiceStreamInfo2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9433,8 +9311,11 @@ pub const IAppBroadcastBackgroundServiceStreamInfo2 = extern struct {
 };
 pub const IAppBroadcastCameraCaptureStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9442,13 +9323,13 @@ pub const IAppBroadcastCameraCaptureStateChangedEventArgs = extern struct {
     pub fn getState(self: *@This()) core.HResult!AppBroadcastCameraCaptureState {
         var _r: AppBroadcastCameraCaptureState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastCameraCaptureStateChangedEventArgs";
@@ -9469,8 +9350,11 @@ pub const IAppBroadcastCameraCaptureStateChangedEventArgs = extern struct {
 };
 pub const IAppBroadcastGlobalSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9478,125 +9362,125 @@ pub const IAppBroadcastGlobalSettings = extern struct {
     pub fn getIsBroadcastEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBroadcastEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDisabledByPolicy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDisabledByPolicy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsGpuConstrained(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsGpuConstrained(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasHardwareEncoder(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasHardwareEncoder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsAudioCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsAudioCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsAudioCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAudioCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsMicrophoneCaptureEnabledByDefault(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsMicrophoneCaptureEnabledByDefault(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsMicrophoneCaptureEnabledByDefault(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMicrophoneCaptureEnabledByDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEchoCancellationEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEchoCancellationEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsEchoCancellationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEchoCancellationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSystemAudioGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_SystemAudioGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSystemAudioGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_SystemAudioGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMicrophoneGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_MicrophoneGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMicrophoneGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MicrophoneGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCameraCaptureEnabledByDefault(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCameraCaptureEnabledByDefault(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCameraCaptureEnabledByDefault(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCameraCaptureEnabledByDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedCameraId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SelectedCameraId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedCameraId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedCameraId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCameraOverlayLocation(self: *@This(), value: AppBroadcastCameraOverlayLocation) core.HResult!void {
         const _c = self.vtable.put_CameraOverlayLocation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCameraOverlayLocation(self: *@This()) core.HResult!AppBroadcastCameraOverlayLocation {
         var _r: AppBroadcastCameraOverlayLocation = undefined;
         const _c = self.vtable.get_CameraOverlayLocation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCameraOverlaySize(self: *@This(), value: AppBroadcastCameraOverlaySize) core.HResult!void {
         const _c = self.vtable.put_CameraOverlaySize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCameraOverlaySize(self: *@This()) core.HResult!AppBroadcastCameraOverlaySize {
         var _r: AppBroadcastCameraOverlaySize = undefined;
         const _c = self.vtable.get_CameraOverlaySize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCursorImageCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCursorImageCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCursorImageCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCursorImageCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastGlobalSettings";
@@ -9639,20 +9523,23 @@ pub const IAppBroadcastGlobalSettings = extern struct {
 };
 pub const IAppBroadcastHeartbeatRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastHeartbeatRequestedEventArgs";
@@ -9673,8 +9560,11 @@ pub const IAppBroadcastHeartbeatRequestedEventArgs = extern struct {
 };
 pub const IAppBroadcastManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9682,22 +9572,22 @@ pub const IAppBroadcastManagerStatics = extern struct {
     pub fn GetGlobalSettings(self: *@This()) core.HResult!*AppBroadcastGlobalSettings {
         var _r: *AppBroadcastGlobalSettings = undefined;
         const _c = self.vtable.GetGlobalSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplyGlobalSettings(self: *@This(), value: *AppBroadcastGlobalSettings) core.HResult!void {
         const _c = self.vtable.ApplyGlobalSettings(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetProviderSettings(self: *@This()) core.HResult!*AppBroadcastProviderSettings {
         var _r: *AppBroadcastProviderSettings = undefined;
         const _c = self.vtable.GetProviderSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplyProviderSettings(self: *@This(), value: *AppBroadcastProviderSettings) core.HResult!void {
         const _c = self.vtable.ApplyProviderSettings(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9719,8 +9609,11 @@ pub const IAppBroadcastManagerStatics = extern struct {
 };
 pub const IAppBroadcastMicrophoneCaptureStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9728,13 +9621,13 @@ pub const IAppBroadcastMicrophoneCaptureStateChangedEventArgs = extern struct {
     pub fn getState(self: *@This()) core.HResult!AppBroadcastMicrophoneCaptureState {
         var _r: AppBroadcastMicrophoneCaptureState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastMicrophoneCaptureStateChangedEventArgs";
@@ -9755,8 +9648,11 @@ pub const IAppBroadcastMicrophoneCaptureStateChangedEventArgs = extern struct {
 };
 pub const IAppBroadcastPlugIn = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9764,25 +9660,25 @@ pub const IAppBroadcastPlugIn = extern struct {
     pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderSettings(self: *@This()) core.HResult!*AppBroadcastProviderSettings {
         var _r: *AppBroadcastProviderSettings = undefined;
         const _c = self.vtable.get_ProviderSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLogo(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPlugIn";
@@ -9805,8 +9701,11 @@ pub const IAppBroadcastPlugIn = extern struct {
 };
 pub const IAppBroadcastPlugInManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9814,24 +9713,24 @@ pub const IAppBroadcastPlugInManager = extern struct {
     pub fn getIsBroadcastProviderAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBroadcastProviderAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlugInList(self: *@This()) core.HResult!*IVectorView(AppBroadcastPlugIn) {
         var _r: *IVectorView(AppBroadcastPlugIn) = undefined;
         const _c = self.vtable.get_PlugInList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultPlugIn(self: *@This()) core.HResult!*AppBroadcastPlugIn {
         var _r: *AppBroadcastPlugIn = undefined;
         const _c = self.vtable.get_DefaultPlugIn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDefaultPlugIn(self: *@This(), value: *AppBroadcastPlugIn) core.HResult!void {
         const _c = self.vtable.put_DefaultPlugIn(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPlugInManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9853,8 +9752,11 @@ pub const IAppBroadcastPlugInManager = extern struct {
 };
 pub const IAppBroadcastPlugInManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9862,13 +9764,13 @@ pub const IAppBroadcastPlugInManagerStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*AppBroadcastPlugInManager {
         var _r: *AppBroadcastPlugInManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*AppBroadcastPlugInManager {
         var _r: *AppBroadcastPlugInManager = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPlugInManagerStatics";
@@ -9889,8 +9791,11 @@ pub const IAppBroadcastPlugInManagerStatics = extern struct {
 };
 pub const IAppBroadcastPlugInStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9898,7 +9803,7 @@ pub const IAppBroadcastPlugInStateChangedEventArgs = extern struct {
     pub fn getPlugInState(self: *@This()) core.HResult!AppBroadcastPlugInState {
         var _r: AppBroadcastPlugInState = undefined;
         const _c = self.vtable.get_PlugInState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPlugInStateChangedEventArgs";
@@ -9918,42 +9823,45 @@ pub const IAppBroadcastPlugInStateChangedEventArgs = extern struct {
 };
 pub const IAppBroadcastPreview = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StopPreview(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopPreview(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPreviewState(self: *@This()) core.HResult!AppBroadcastPreviewState {
         var _r: AppBroadcastPreviewState = undefined;
         const _c = self.vtable.get_PreviewState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addPreviewStateChanged(self: *@This(), value: *TypedEventHandler(AppBroadcastPreview,AppBroadcastPreviewStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PreviewStateChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePreviewStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PreviewStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPreviewStreamReader(self: *@This()) core.HResult!*AppBroadcastPreviewStreamReader {
         var _r: *AppBroadcastPreviewStreamReader = undefined;
         const _c = self.vtable.get_PreviewStreamReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPreview";
@@ -9978,8 +9886,11 @@ pub const IAppBroadcastPreview = extern struct {
 };
 pub const IAppBroadcastPreviewStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9987,13 +9898,13 @@ pub const IAppBroadcastPreviewStateChangedEventArgs = extern struct {
     pub fn getPreviewState(self: *@This()) core.HResult!AppBroadcastPreviewState {
         var _r: AppBroadcastPreviewState = undefined;
         const _c = self.vtable.get_PreviewState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPreviewStateChangedEventArgs";
@@ -10014,8 +9925,11 @@ pub const IAppBroadcastPreviewStateChangedEventArgs = extern struct {
 };
 pub const IAppBroadcastPreviewStreamReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10023,48 +9937,48 @@ pub const IAppBroadcastPreviewStreamReader = extern struct {
     pub fn getVideoWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_VideoWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_VideoHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoStride(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_VideoStride(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_VideoBitmapPixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoBitmapAlphaMode(self: *@This()) core.HResult!BitmapAlphaMode {
         var _r: BitmapAlphaMode = undefined;
         const _c = self.vtable.get_VideoBitmapAlphaMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetNextVideoFrame(self: *@This()) core.HResult!*AppBroadcastPreviewStreamVideoFrame {
         var _r: *AppBroadcastPreviewStreamVideoFrame = undefined;
         const _c = self.vtable.TryGetNextVideoFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addVideoFrameArrived(self: *@This(), value: *TypedEventHandler(AppBroadcastPreviewStreamReader,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VideoFrameArrived(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVideoFrameArrived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VideoFrameArrived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPreviewStreamReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -10090,8 +10004,11 @@ pub const IAppBroadcastPreviewStreamReader = extern struct {
 };
 pub const IAppBroadcastPreviewStreamVideoFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10099,13 +10016,13 @@ pub const IAppBroadcastPreviewStreamVideoFrame = extern struct {
     pub fn getVideoHeader(self: *@This()) core.HResult!*AppBroadcastPreviewStreamVideoHeader {
         var _r: *AppBroadcastPreviewStreamVideoHeader = undefined;
         const _c = self.vtable.get_VideoHeader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoBuffer(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_VideoBuffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPreviewStreamVideoFrame";
@@ -10126,8 +10043,11 @@ pub const IAppBroadcastPreviewStreamVideoFrame = extern struct {
 };
 pub const IAppBroadcastPreviewStreamVideoHeader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10135,25 +10055,25 @@ pub const IAppBroadcastPreviewStreamVideoHeader = extern struct {
     pub fn getAbsoluteTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_AbsoluteTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRelativeTimestamp(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameId(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_FrameId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastPreviewStreamVideoHeader";
@@ -10176,80 +10096,83 @@ pub const IAppBroadcastPreviewStreamVideoHeader = extern struct {
 };
 pub const IAppBroadcastProviderSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putDefaultBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultBroadcastTitle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDefaultBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultBroadcastTitle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAudioEncodingBitrate(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_AudioEncodingBitrate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioEncodingBitrate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AudioEncodingBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomVideoEncodingBitrate(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CustomVideoEncodingBitrate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCustomVideoEncodingBitrate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CustomVideoEncodingBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomVideoEncodingHeight(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CustomVideoEncodingHeight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCustomVideoEncodingHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CustomVideoEncodingHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomVideoEncodingWidth(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CustomVideoEncodingWidth(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCustomVideoEncodingWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CustomVideoEncodingWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoEncodingBitrateMode(self: *@This(), value: AppBroadcastVideoEncodingBitrateMode) core.HResult!void {
         const _c = self.vtable.put_VideoEncodingBitrateMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVideoEncodingBitrateMode(self: *@This()) core.HResult!AppBroadcastVideoEncodingBitrateMode {
         var _r: AppBroadcastVideoEncodingBitrateMode = undefined;
         const _c = self.vtable.get_VideoEncodingBitrateMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVideoEncodingResolutionMode(self: *@This(), value: AppBroadcastVideoEncodingResolutionMode) core.HResult!void {
         const _c = self.vtable.put_VideoEncodingResolutionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVideoEncodingResolutionMode(self: *@This()) core.HResult!AppBroadcastVideoEncodingResolutionMode {
         var _r: AppBroadcastVideoEncodingResolutionMode = undefined;
         const _c = self.vtable.get_VideoEncodingResolutionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastProviderSettings";
@@ -10282,8 +10205,11 @@ pub const IAppBroadcastProviderSettings = extern struct {
 };
 pub const IAppBroadcastServices = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10291,77 +10217,77 @@ pub const IAppBroadcastServices = extern struct {
     pub fn getCaptureTargetType(self: *@This()) core.HResult!AppBroadcastCaptureTargetType {
         var _r: AppBroadcastCaptureTargetType = undefined;
         const _c = self.vtable.get_CaptureTargetType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCaptureTargetType(self: *@This(), value: AppBroadcastCaptureTargetType) core.HResult!void {
         const _c = self.vtable.put_CaptureTargetType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastTitle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastTitle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBroadcastLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBroadcastLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastLanguage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanCapture(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCapture(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnterBroadcastModeAsync(self: *@This(), plugIn: *AppBroadcastPlugIn) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.EnterBroadcastModeAsync(@ptrCast(self), plugIn, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ExitBroadcastMode(self: *@This(), reason: AppBroadcastExitBroadcastModeReason) core.HResult!void {
         const _c = self.vtable.ExitBroadcastMode(@ptrCast(self), reason);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartBroadcast(self: *@This()) core.HResult!void {
         const _c = self.vtable.StartBroadcast(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PauseBroadcast(self: *@This()) core.HResult!void {
         const _c = self.vtable.PauseBroadcast(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ResumeBroadcast(self: *@This()) core.HResult!void {
         const _c = self.vtable.ResumeBroadcast(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartPreview(self: *@This(), desiredSize: Size) core.HResult!*AppBroadcastPreview {
         var _r: *AppBroadcastPreview = undefined;
         const _c = self.vtable.StartPreview(@ptrCast(self), desiredSize, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!*AppBroadcastState {
         var _r: *AppBroadcastState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastServices";
@@ -10395,8 +10321,11 @@ pub const IAppBroadcastServices = extern struct {
 };
 pub const IAppBroadcastSignInStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10404,13 +10333,13 @@ pub const IAppBroadcastSignInStateChangedEventArgs = extern struct {
     pub fn getSignInState(self: *@This()) core.HResult!AppBroadcastSignInState {
         var _r: AppBroadcastSignInState = undefined;
         const _c = self.vtable.get_SignInState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResult(self: *@This()) core.HResult!AppBroadcastSignInResult {
         var _r: AppBroadcastSignInResult = undefined;
         const _c = self.vtable.get_Result(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastSignInStateChangedEventArgs";
@@ -10431,8 +10360,11 @@ pub const IAppBroadcastSignInStateChangedEventArgs = extern struct {
 };
 pub const IAppBroadcastState = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10440,188 +10372,188 @@ pub const IAppBroadcastState = extern struct {
     pub fn getIsCaptureTargetRunning(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCaptureTargetRunning(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewerCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ViewerCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShouldCaptureMicrophone(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldCaptureMicrophone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShouldCaptureMicrophone(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShouldCaptureMicrophone(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RestartMicrophoneCapture(self: *@This()) core.HResult!void {
         const _c = self.vtable.RestartMicrophoneCapture(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShouldCaptureCamera(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldCaptureCamera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShouldCaptureCamera(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShouldCaptureCamera(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RestartCameraCapture(self: *@This()) core.HResult!void {
         const _c = self.vtable.RestartCameraCapture(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEncodedVideoSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_EncodedVideoSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMicrophoneCaptureState(self: *@This()) core.HResult!AppBroadcastMicrophoneCaptureState {
         var _r: AppBroadcastMicrophoneCaptureState = undefined;
         const _c = self.vtable.get_MicrophoneCaptureState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMicrophoneCaptureError(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MicrophoneCaptureError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCameraCaptureState(self: *@This()) core.HResult!AppBroadcastCameraCaptureState {
         var _r: AppBroadcastCameraCaptureState = undefined;
         const _c = self.vtable.get_CameraCaptureState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCameraCaptureError(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CameraCaptureError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStreamState(self: *@This()) core.HResult!AppBroadcastStreamState {
         var _r: AppBroadcastStreamState = undefined;
         const _c = self.vtable.get_StreamState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlugInState(self: *@This()) core.HResult!AppBroadcastPlugInState {
         var _r: AppBroadcastPlugInState = undefined;
         const _c = self.vtable.get_PlugInState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOAuthRequestUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_OAuthRequestUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOAuthCallbackUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_OAuthCallbackUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationResult(self: *@This()) core.HResult!*WebAuthenticationResult {
         var _r: *WebAuthenticationResult = undefined;
         const _c = self.vtable.get_AuthenticationResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAuthenticationResult(self: *@This(), value: *WebAuthenticationResult) core.HResult!void {
         const _c = self.vtable.put_AuthenticationResult(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putSignInState(self: *@This(), value: AppBroadcastSignInState) core.HResult!void {
         const _c = self.vtable.put_SignInState(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignInState(self: *@This()) core.HResult!AppBroadcastSignInState {
         var _r: AppBroadcastSignInState = undefined;
         const _c = self.vtable.get_SignInState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTerminationReason(self: *@This()) core.HResult!AppBroadcastTerminationReason {
         var _r: AppBroadcastTerminationReason = undefined;
         const _c = self.vtable.get_TerminationReason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTerminationReasonPlugInSpecific(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TerminationReasonPlugInSpecific(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addViewerCountChanged(self: *@This(), value: *TypedEventHandler(AppBroadcastState,AppBroadcastViewerCountChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ViewerCountChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeViewerCountChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ViewerCountChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMicrophoneCaptureStateChanged(self: *@This(), value: *TypedEventHandler(AppBroadcastState,AppBroadcastMicrophoneCaptureStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MicrophoneCaptureStateChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMicrophoneCaptureStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MicrophoneCaptureStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCameraCaptureStateChanged(self: *@This(), value: *TypedEventHandler(AppBroadcastState,AppBroadcastCameraCaptureStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CameraCaptureStateChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCameraCaptureStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CameraCaptureStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPlugInStateChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastState,AppBroadcastPlugInStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PlugInStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePlugInStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PlugInStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStreamStateChanged(self: *@This(), handler: *TypedEventHandler(AppBroadcastState,AppBroadcastStreamStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StreamStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStreamStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StreamStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCaptureTargetClosed(self: *@This(), value: *TypedEventHandler(AppBroadcastState,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CaptureTargetClosed(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCaptureTargetClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CaptureTargetClosed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastState";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -10674,8 +10606,11 @@ pub const IAppBroadcastState = extern struct {
 };
 pub const IAppBroadcastStreamAudioFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10683,13 +10618,13 @@ pub const IAppBroadcastStreamAudioFrame = extern struct {
     pub fn getAudioHeader(self: *@This()) core.HResult!*AppBroadcastStreamAudioHeader {
         var _r: *AppBroadcastStreamAudioHeader = undefined;
         const _c = self.vtable.get_AudioHeader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAudioBuffer(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_AudioBuffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastStreamAudioFrame";
@@ -10710,8 +10645,11 @@ pub const IAppBroadcastStreamAudioFrame = extern struct {
 };
 pub const IAppBroadcastStreamAudioHeader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10719,31 +10657,31 @@ pub const IAppBroadcastStreamAudioHeader = extern struct {
     pub fn getAbsoluteTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_AbsoluteTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRelativeTimestamp(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasDiscontinuity(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasDiscontinuity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameId(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_FrameId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastStreamAudioHeader";
@@ -10767,8 +10705,11 @@ pub const IAppBroadcastStreamAudioHeader = extern struct {
 };
 pub const IAppBroadcastStreamReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10776,76 +10717,76 @@ pub const IAppBroadcastStreamReader = extern struct {
     pub fn getAudioChannels(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AudioChannels(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAudioSampleRate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AudioSampleRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAudioAacSequence(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_AudioAacSequence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAudioBitrate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AudioBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetNextAudioFrame(self: *@This()) core.HResult!*AppBroadcastStreamAudioFrame {
         var _r: *AppBroadcastStreamAudioFrame = undefined;
         const _c = self.vtable.TryGetNextAudioFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_VideoWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_VideoHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoBitrate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_VideoBitrate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetNextVideoFrame(self: *@This()) core.HResult!*AppBroadcastStreamVideoFrame {
         var _r: *AppBroadcastStreamVideoFrame = undefined;
         const _c = self.vtable.TryGetNextVideoFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAudioFrameArrived(self: *@This(), value: *TypedEventHandler(AppBroadcastStreamReader,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AudioFrameArrived(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAudioFrameArrived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AudioFrameArrived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVideoFrameArrived(self: *@This(), value: *TypedEventHandler(AppBroadcastStreamReader,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VideoFrameArrived(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVideoFrameArrived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VideoFrameArrived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastStreamReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -10876,8 +10817,11 @@ pub const IAppBroadcastStreamReader = extern struct {
 };
 pub const IAppBroadcastStreamStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10885,7 +10829,7 @@ pub const IAppBroadcastStreamStateChangedEventArgs = extern struct {
     pub fn getStreamState(self: *@This()) core.HResult!AppBroadcastStreamState {
         var _r: AppBroadcastStreamState = undefined;
         const _c = self.vtable.get_StreamState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastStreamStateChangedEventArgs";
@@ -10905,8 +10849,11 @@ pub const IAppBroadcastStreamStateChangedEventArgs = extern struct {
 };
 pub const IAppBroadcastStreamVideoFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10914,13 +10861,13 @@ pub const IAppBroadcastStreamVideoFrame = extern struct {
     pub fn getVideoHeader(self: *@This()) core.HResult!*AppBroadcastStreamVideoHeader {
         var _r: *AppBroadcastStreamVideoHeader = undefined;
         const _c = self.vtable.get_VideoHeader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoBuffer(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_VideoBuffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastStreamVideoFrame";
@@ -10941,8 +10888,11 @@ pub const IAppBroadcastStreamVideoFrame = extern struct {
 };
 pub const IAppBroadcastStreamVideoHeader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10950,37 +10900,37 @@ pub const IAppBroadcastStreamVideoHeader = extern struct {
     pub fn getAbsoluteTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_AbsoluteTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRelativeTimestamp(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsKeyFrame(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsKeyFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasDiscontinuity(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasDiscontinuity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameId(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_FrameId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastStreamVideoHeader";
@@ -11005,8 +10955,11 @@ pub const IAppBroadcastStreamVideoHeader = extern struct {
 };
 pub const IAppBroadcastTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11014,7 +10967,7 @@ pub const IAppBroadcastTriggerDetails = extern struct {
     pub fn getBackgroundService(self: *@This()) core.HResult!*AppBroadcastBackgroundService {
         var _r: *AppBroadcastBackgroundService = undefined;
         const _c = self.vtable.get_BackgroundService(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastTriggerDetails";
@@ -11034,8 +10987,11 @@ pub const IAppBroadcastTriggerDetails = extern struct {
 };
 pub const IAppBroadcastViewerCountChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11043,7 +10999,7 @@ pub const IAppBroadcastViewerCountChangedEventArgs = extern struct {
     pub fn getViewerCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ViewerCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.IAppBroadcastViewerCountChangedEventArgs";

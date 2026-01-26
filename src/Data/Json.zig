@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IJsonArray = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,31 +13,31 @@ pub const IJsonArray = extern struct {
     pub fn GetObjectAt(self: *@This(), index: u32) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.GetObjectAt(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetArrayAt(self: *@This(), index: u32) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.GetArrayAt(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetStringAt(self: *@This(), index: u32) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringAt(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNumberAt(self: *@This(), index: u32) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetNumberAt(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBooleanAt(self: *@This(), index: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetBooleanAt(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonArray";
@@ -58,8 +61,11 @@ pub const IJsonArray = extern struct {
 };
 pub const IJsonArrayStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -67,13 +73,13 @@ pub const IJsonArrayStatics = extern struct {
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryParse(self: *@This(), input: ?HSTRING, result: *JsonArray) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, result, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonArrayStatics";
@@ -94,8 +100,11 @@ pub const IJsonArrayStatics = extern struct {
 };
 pub const IJsonErrorStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -103,7 +112,7 @@ pub const IJsonErrorStatics2 = extern struct {
     pub fn GetJsonStatus(self: *@This(), hresult: i32) core.HResult!JsonErrorStatus {
         var _r: JsonErrorStatus = undefined;
         const _c = self.vtable.GetJsonStatus(@ptrCast(self), hresult, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonErrorStatics2";
@@ -123,8 +132,11 @@ pub const IJsonErrorStatics2 = extern struct {
 };
 pub const IJsonObject = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -132,41 +144,41 @@ pub const IJsonObject = extern struct {
     pub fn GetNamedValue(self: *@This(), name: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.GetNamedValue(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetNamedValue(self: *@This(), name: ?HSTRING, value: *IJsonValue) core.HResult!void {
         const _c = self.vtable.SetNamedValue(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetNamedObject(self: *@This(), name: ?HSTRING) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.GetNamedObject(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedArray(self: *@This(), name: ?HSTRING) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.GetNamedArray(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedString(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNamedString(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedNumber(self: *@This(), name: ?HSTRING) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetNamedNumber(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedBoolean(self: *@This(), name: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetNamedBoolean(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonObject";
@@ -192,8 +204,11 @@ pub const IJsonObject = extern struct {
 };
 pub const IJsonObjectStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -201,13 +216,13 @@ pub const IJsonObjectStatics = extern struct {
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryParse(self: *@This(), input: ?HSTRING, result: *JsonObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, result, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonObjectStatics";
@@ -228,8 +243,11 @@ pub const IJsonObjectStatics = extern struct {
 };
 pub const IJsonObjectWithDefaultValues = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -237,37 +255,37 @@ pub const IJsonObjectWithDefaultValues = extern struct {
     pub fn GetNamedValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.GetNamedValue(@ptrCast(self), name, defaultValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedObject(self: *@This(), name: ?HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.GetNamedObject(@ptrCast(self), name, defaultValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedString(self: *@This(), name: ?HSTRING, defaultValue: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNamedString(@ptrCast(self), name, defaultValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedArray(self: *@This(), name: ?HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.GetNamedArray(@ptrCast(self), name, defaultValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedNumber(self: *@This(), name: ?HSTRING, defaultValue: f64) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetNamedNumber(@ptrCast(self), name, defaultValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedBoolean(self: *@This(), name: ?HSTRING, defaultValue: bool) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetNamedBoolean(@ptrCast(self), name, defaultValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonObjectWithDefaultValues";
@@ -292,8 +310,11 @@ pub const IJsonObjectWithDefaultValues = extern struct {
 };
 pub const IJsonValue = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -301,43 +322,43 @@ pub const IJsonValue = extern struct {
     pub fn getValueType(self: *@This()) core.HResult!JsonValueType {
         var _r: JsonValueType = undefined;
         const _c = self.vtable.get_ValueType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Stringify(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Stringify(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNumber(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBoolean(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetBoolean(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetArray(self: *@This()) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.GetArray(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetObject(self: *@This()) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.GetObject(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonValue";
@@ -363,8 +384,11 @@ pub const IJsonValue = extern struct {
 };
 pub const IJsonValueStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -372,31 +396,31 @@ pub const IJsonValueStatics = extern struct {
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryParse(self: *@This(), input: ?HSTRING, result: *JsonValue) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, result, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateBooleanValue(self: *@This(), input: bool) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.CreateBooleanValue(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateNumberValue(self: *@This(), input: f64) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.CreateNumberValue(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateStringValue(self: *@This(), input: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.CreateStringValue(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonValueStatics";
@@ -420,8 +444,11 @@ pub const IJsonValueStatics = extern struct {
 };
 pub const IJsonValueStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -429,7 +456,7 @@ pub const IJsonValueStatics2 = extern struct {
     pub fn CreateNullValue(self: *@This()) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.CreateNullValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Json.IJsonValueStatics2";
@@ -449,14 +476,11 @@ pub const IJsonValueStatics2 = extern struct {
 };
 pub const JsonArray = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -484,99 +508,85 @@ pub const JsonArray = extern struct {
     pub fn getValueType(self: *@This()) core.HResult!JsonValueType {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.getValueType();
     }
     pub fn Stringify(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.Stringify();
     }
     pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetString();
     }
     pub fn GetNumber(self: *@This()) core.HResult!f64 {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetNumber();
     }
     pub fn GetBoolean(self: *@This()) core.HResult!bool {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetBoolean();
     }
     pub fn GetArray(self: *@This()) core.HResult!*JsonArray {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetArray();
     }
     pub fn GetObject(self: *@This()) core.HResult!*JsonObject {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetObject();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IVectorView(IJsonValue) {
         var this: ?*IVector(IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
         return try this.?.GetView();
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
         return try this.?.RemoveAt(index);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IVector(IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVector(IJsonValue).IID, @ptrCast(&this));
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IJsonValue) {
         var this: ?*IIterable(IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IJsonValue).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn init() core.HResult!*@This() {
@@ -601,14 +611,11 @@ pub const JsonArray = extern struct {
 };
 pub const JsonError = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -630,14 +637,11 @@ pub const JsonErrorStatus = enum(i32) {
 };
 pub const JsonObject = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -673,127 +677,109 @@ pub const JsonObject = extern struct {
     pub fn getValueType(self: *@This()) core.HResult!JsonValueType {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.getValueType();
     }
     pub fn Stringify(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.Stringify();
     }
     pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetString();
     }
     pub fn GetNumber(self: *@This()) core.HResult!f64 {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetNumber();
     }
     pub fn GetBoolean(self: *@This()) core.HResult!bool {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetBoolean();
     }
     pub fn GetArray(self: *@This()) core.HResult!*JsonArray {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetArray();
     }
     pub fn GetObject(self: *@This()) core.HResult!*JsonObject {
         var this: ?*IJsonValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         return try this.?.GetObject();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IJsonValue).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IJsonValue) {
         var this: ?*IMap(?HSTRING,IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IJsonValue).IID, @ptrCast(&this));
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(?HSTRING,IJsonValue) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IJsonValue).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IJsonValue).IID, @ptrCast(&this));
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IJsonValue)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IJsonValue)) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IJsonValue)).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IJsonValue)).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn GetNamedValueWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         return try this.?.GetNamedValueWithDefaultValue(name, defaultValue);
     }
     pub fn GetNamedObjectWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         return try this.?.GetNamedObjectWithDefaultValue(name, defaultValue);
     }
     pub fn GetNamedStringWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: ?HSTRING) core.HResult!?HSTRING {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         return try this.?.GetNamedStringWithDefaultValue(name, defaultValue);
     }
     pub fn GetNamedArrayWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         return try this.?.GetNamedArrayWithDefaultValue(name, defaultValue);
     }
     pub fn GetNamedNumberWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: f64) core.HResult!f64 {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         return try this.?.GetNamedNumberWithDefaultValue(name, defaultValue);
     }
     pub fn GetNamedBooleanWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: bool) core.HResult!bool {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         return try this.?.GetNamedBooleanWithDefaultValue(name, defaultValue);
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn init() core.HResult!*@This() {
@@ -818,14 +804,11 @@ pub const JsonObject = extern struct {
 };
 pub const JsonValue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -861,8 +844,7 @@ pub const JsonValue = extern struct {
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn Parse(input: ?HSTRING) core.HResult!*JsonValue {

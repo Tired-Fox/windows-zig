@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const FileExtensionVector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -36,8 +33,7 @@ pub const FileExtensionVector = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(?HSTRING) {
         var this: ?*IIterable(?HSTRING) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(?HSTRING).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(?HSTRING).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FileExtensionVector";
@@ -48,14 +44,11 @@ pub const FileExtensionVector = extern struct {
 };
 pub const FileOpenPicker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -63,29 +56,25 @@ pub const FileOpenPicker = extern struct {
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IFileOpenPicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker2.IID, @ptrCast(&this));
         return try this.?.getContinuationData();
     }
     pub fn PickSingleFileAndContinue(self: *@This()) core.HResult!void {
         var this: ?*IFileOpenPicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker2.IID, @ptrCast(&this));
         return try this.?.PickSingleFileAndContinue();
     }
     pub fn PickMultipleFilesAndContinue(self: *@This()) core.HResult!void {
         var this: ?*IFileOpenPicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker2.IID, @ptrCast(&this));
         return try this.?.PickMultipleFilesAndContinue();
     }
     pub fn PickSingleFileAsyncWithPickerOperationId(self: *@This(), pickerOperationId: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IFileOpenPickerWithOperationId = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPickerWithOperationId.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPickerWithOperationId.IID, @ptrCast(&this));
         return try this.?.PickSingleFileAsyncWithPickerOperationId(pickerOperationId);
     }
     pub fn getViewMode(self: *@This()) core.HResult!PickerViewMode {
@@ -135,8 +124,7 @@ pub const FileOpenPicker = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IFileOpenPicker3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPicker3.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn init() core.HResult!*@This() {
@@ -162,14 +150,11 @@ pub const FileOpenPicker = extern struct {
 };
 pub const FilePickerFileTypesOrderedMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -189,8 +174,7 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IVector(?HSTRING))) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IVector(?HSTRING))) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IVector(?HSTRING))).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IVector(?HSTRING))).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FilePickerFileTypesOrderedMap";
@@ -201,14 +185,11 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
 };
 pub const FilePickerSelectedFilesArray = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -220,8 +201,7 @@ pub const FilePickerSelectedFilesArray = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(StorageFile) {
         var this: ?*IIterable(StorageFile) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(StorageFile).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(StorageFile).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FilePickerSelectedFilesArray";
@@ -232,14 +212,11 @@ pub const FilePickerSelectedFilesArray = extern struct {
 };
 pub const FileSavePicker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -247,29 +224,25 @@ pub const FileSavePicker = extern struct {
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IFileSavePicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker2.IID, @ptrCast(&this));
         return try this.?.getContinuationData();
     }
     pub fn PickSaveFileAndContinue(self: *@This()) core.HResult!void {
         var this: ?*IFileSavePicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker2.IID, @ptrCast(&this));
         return try this.?.PickSaveFileAndContinue();
     }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileSavePicker3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker3.IID, @ptrCast(&this));
         return try this.?.getEnterpriseId();
     }
     pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IFileSavePicker3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker3.IID, @ptrCast(&this));
         return try this.?.putEnterpriseId(value);
     }
     pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
@@ -331,8 +304,7 @@ pub const FileSavePicker = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IFileSavePicker4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker4.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn init() core.HResult!*@This() {
@@ -353,14 +325,11 @@ pub const FileSavePicker = extern struct {
 };
 pub const FolderPicker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -368,15 +337,13 @@ pub const FolderPicker = extern struct {
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IFolderPicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFolderPicker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFolderPicker2.IID, @ptrCast(&this));
         return try this.?.getContinuationData();
     }
     pub fn PickFolderAndContinue(self: *@This()) core.HResult!void {
         var this: ?*IFolderPicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFolderPicker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFolderPicker2.IID, @ptrCast(&this));
         return try this.?.PickFolderAndContinue();
     }
     pub fn getViewMode(self: *@This()) core.HResult!PickerViewMode {
@@ -422,8 +389,7 @@ pub const FolderPicker = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IFolderPicker3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFolderPicker3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFolderPicker3.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn init() core.HResult!*@This() {
@@ -444,8 +410,11 @@ pub const FolderPicker = extern struct {
 };
 pub const IFileOpenPicker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -453,59 +422,59 @@ pub const IFileOpenPicker = extern struct {
     pub fn getViewMode(self: *@This()) core.HResult!PickerViewMode {
         var _r: PickerViewMode = undefined;
         const _c = self.vtable.get_ViewMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewMode(self: *@This(), value: PickerViewMode) core.HResult!void {
         const _c = self.vtable.put_ViewMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SettingsIdentifier(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuggestedStartLocation(self: *@This()) core.HResult!PickerLocationId {
         var _r: PickerLocationId = undefined;
         const _c = self.vtable.get_SuggestedStartLocation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuggestedStartLocation(self: *@This(), value: PickerLocationId) core.HResult!void {
         const _c = self.vtable.put_SuggestedStartLocation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CommitButtonText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FileTypeFilter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PickSingleFileAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.PickSingleFileAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PickMultipleFilesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
         var _r: *IAsyncOperation(IVectorView(StorageFile)) = undefined;
         const _c = self.vtable.PickMultipleFilesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileOpenPicker";
@@ -535,8 +504,11 @@ pub const IFileOpenPicker = extern struct {
 };
 pub const IFileOpenPicker2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -544,16 +516,16 @@ pub const IFileOpenPicker2 = extern struct {
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_ContinuationData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PickSingleFileAndContinue(self: *@This()) core.HResult!void {
         const _c = self.vtable.PickSingleFileAndContinue(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PickMultipleFilesAndContinue(self: *@This()) core.HResult!void {
         const _c = self.vtable.PickMultipleFilesAndContinue(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileOpenPicker2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -574,8 +546,11 @@ pub const IFileOpenPicker2 = extern struct {
 };
 pub const IFileOpenPicker3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -583,7 +558,7 @@ pub const IFileOpenPicker3 = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileOpenPicker3";
@@ -603,8 +578,11 @@ pub const IFileOpenPicker3 = extern struct {
 };
 pub const IFileOpenPickerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -612,7 +590,7 @@ pub const IFileOpenPickerStatics = extern struct {
     pub fn ResumePickSingleFileAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.ResumePickSingleFileAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileOpenPickerStatics";
@@ -632,8 +610,11 @@ pub const IFileOpenPickerStatics = extern struct {
 };
 pub const IFileOpenPickerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -641,7 +622,7 @@ pub const IFileOpenPickerStatics2 = extern struct {
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*FileOpenPicker {
         var _r: *FileOpenPicker = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileOpenPickerStatics2";
@@ -661,8 +642,11 @@ pub const IFileOpenPickerStatics2 = extern struct {
 };
 pub const IFileOpenPickerWithOperationId = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -670,7 +654,7 @@ pub const IFileOpenPickerWithOperationId = extern struct {
     pub fn PickSingleFileAsync(self: *@This(), pickerOperationId: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.PickSingleFileAsync(@ptrCast(self), pickerOperationId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileOpenPickerWithOperationId";
@@ -690,8 +674,11 @@ pub const IFileOpenPickerWithOperationId = extern struct {
 };
 pub const IFileSavePicker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -699,73 +686,73 @@ pub const IFileSavePicker = extern struct {
     pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SettingsIdentifier(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuggestedStartLocation(self: *@This()) core.HResult!PickerLocationId {
         var _r: PickerLocationId = undefined;
         const _c = self.vtable.get_SuggestedStartLocation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuggestedStartLocation(self: *@This(), value: PickerLocationId) core.HResult!void {
         const _c = self.vtable.put_SuggestedStartLocation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CommitButtonText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFileTypeChoices(self: *@This()) core.HResult!*IMap(?HSTRING,IVector(?HSTRING)) {
         var _r: *IMap(?HSTRING,IVector(?HSTRING)) = undefined;
         const _c = self.vtable.get_FileTypeChoices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultFileExtension(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultFileExtension(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDefaultFileExtension(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultFileExtension(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuggestedSaveFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_SuggestedSaveFile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuggestedSaveFile(self: *@This(), value: *StorageFile) core.HResult!void {
         const _c = self.vtable.put_SuggestedSaveFile(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuggestedFileName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SuggestedFileName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuggestedFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SuggestedFileName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PickSaveFileAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.PickSaveFileAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileSavePicker";
@@ -798,8 +785,11 @@ pub const IFileSavePicker = extern struct {
 };
 pub const IFileSavePicker2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -807,12 +797,12 @@ pub const IFileSavePicker2 = extern struct {
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_ContinuationData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PickSaveFileAndContinue(self: *@This()) core.HResult!void {
         const _c = self.vtable.PickSaveFileAndContinue(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileSavePicker2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -832,8 +822,11 @@ pub const IFileSavePicker2 = extern struct {
 };
 pub const IFileSavePicker3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -841,12 +834,12 @@ pub const IFileSavePicker3 = extern struct {
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EnterpriseId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileSavePicker3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -866,8 +859,11 @@ pub const IFileSavePicker3 = extern struct {
 };
 pub const IFileSavePicker4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -875,7 +871,7 @@ pub const IFileSavePicker4 = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileSavePicker4";
@@ -895,8 +891,11 @@ pub const IFileSavePicker4 = extern struct {
 };
 pub const IFileSavePickerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -904,7 +903,7 @@ pub const IFileSavePickerStatics = extern struct {
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*FileSavePicker {
         var _r: *FileSavePicker = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFileSavePickerStatics";
@@ -924,8 +923,11 @@ pub const IFileSavePickerStatics = extern struct {
 };
 pub const IFolderPicker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -933,53 +935,53 @@ pub const IFolderPicker = extern struct {
     pub fn getViewMode(self: *@This()) core.HResult!PickerViewMode {
         var _r: PickerViewMode = undefined;
         const _c = self.vtable.get_ViewMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewMode(self: *@This(), value: PickerViewMode) core.HResult!void {
         const _c = self.vtable.put_ViewMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SettingsIdentifier(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuggestedStartLocation(self: *@This()) core.HResult!PickerLocationId {
         var _r: PickerLocationId = undefined;
         const _c = self.vtable.get_SuggestedStartLocation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuggestedStartLocation(self: *@This(), value: PickerLocationId) core.HResult!void {
         const _c = self.vtable.put_SuggestedStartLocation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CommitButtonText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FileTypeFilter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PickSingleFolderAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFolder) {
         var _r: *IAsyncOperation(StorageFolder) = undefined;
         const _c = self.vtable.PickSingleFolderAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFolderPicker";
@@ -1008,8 +1010,11 @@ pub const IFolderPicker = extern struct {
 };
 pub const IFolderPicker2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1017,12 +1022,12 @@ pub const IFolderPicker2 = extern struct {
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_ContinuationData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PickFolderAndContinue(self: *@This()) core.HResult!void {
         const _c = self.vtable.PickFolderAndContinue(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFolderPicker2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1042,8 +1047,11 @@ pub const IFolderPicker2 = extern struct {
 };
 pub const IFolderPicker3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1051,7 +1059,7 @@ pub const IFolderPicker3 = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFolderPicker3";
@@ -1071,8 +1079,11 @@ pub const IFolderPicker3 = extern struct {
 };
 pub const IFolderPickerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1080,7 +1091,7 @@ pub const IFolderPickerStatics = extern struct {
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*FolderPicker {
         var _r: *FolderPicker = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.IFolderPickerStatics";

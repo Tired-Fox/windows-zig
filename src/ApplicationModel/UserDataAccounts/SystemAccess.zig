@@ -6,14 +6,11 @@ pub const DeviceAccountAuthenticationType = enum(i32) {
 };
 pub const DeviceAccountConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -149,393 +146,337 @@ pub const DeviceAccountConfiguration = extern struct {
     pub fn getIncomingServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIncomingServerCredential();
     }
     pub fn putIncomingServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putIncomingServerCredential(value);
     }
     pub fn getOutgoingServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getOutgoingServerCredential();
     }
     pub fn putOutgoingServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putOutgoingServerCredential(value);
     }
     pub fn getOAuthRefreshToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getOAuthRefreshToken();
     }
     pub fn putOAuthRefreshToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putOAuthRefreshToken(value);
     }
     pub fn getIsExternallyManaged(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIsExternallyManaged();
     }
     pub fn putIsExternallyManaged(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putIsExternallyManaged(value);
     }
     pub fn getAccountIconId(self: *@This()) core.HResult!DeviceAccountIconId {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getAccountIconId();
     }
     pub fn putAccountIconId(self: *@This(), value: DeviceAccountIconId) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putAccountIconId(value);
     }
     pub fn getAuthenticationType(self: *@This()) core.HResult!DeviceAccountAuthenticationType {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getAuthenticationType();
     }
     pub fn putAuthenticationType(self: *@This(), value: DeviceAccountAuthenticationType) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putAuthenticationType(value);
     }
     pub fn getIsSsoAuthenticationSupported(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIsSsoAuthenticationSupported();
     }
     pub fn getSsoAccountId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getSsoAccountId();
     }
     pub fn putSsoAccountId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putSsoAccountId(value);
     }
     pub fn getAlwaysDownloadFullMessage(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getAlwaysDownloadFullMessage();
     }
     pub fn putAlwaysDownloadFullMessage(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putAlwaysDownloadFullMessage(value);
     }
     pub fn getDoesPolicyAllowMailSync(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getDoesPolicyAllowMailSync();
     }
     pub fn getSyncScheduleKind(self: *@This()) core.HResult!DeviceAccountSyncScheduleKind {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getSyncScheduleKind();
     }
     pub fn putSyncScheduleKind(self: *@This(), value: DeviceAccountSyncScheduleKind) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putSyncScheduleKind(value);
     }
     pub fn getMailAgeFilter(self: *@This()) core.HResult!DeviceAccountMailAgeFilter {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getMailAgeFilter();
     }
     pub fn putMailAgeFilter(self: *@This(), value: DeviceAccountMailAgeFilter) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putMailAgeFilter(value);
     }
     pub fn getIsClientAuthenticationCertificateRequired(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIsClientAuthenticationCertificateRequired();
     }
     pub fn putIsClientAuthenticationCertificateRequired(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putIsClientAuthenticationCertificateRequired(value);
     }
     pub fn getAutoSelectAuthenticationCertificate(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getAutoSelectAuthenticationCertificate();
     }
     pub fn putAutoSelectAuthenticationCertificate(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putAutoSelectAuthenticationCertificate(value);
     }
     pub fn getAuthenticationCertificateId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getAuthenticationCertificateId();
     }
     pub fn putAuthenticationCertificateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putAuthenticationCertificateId(value);
     }
     pub fn getCardDavSyncScheduleKind(self: *@This()) core.HResult!DeviceAccountSyncScheduleKind {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getCardDavSyncScheduleKind();
     }
     pub fn putCardDavSyncScheduleKind(self: *@This(), value: DeviceAccountSyncScheduleKind) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putCardDavSyncScheduleKind(value);
     }
     pub fn getCalDavSyncScheduleKind(self: *@This()) core.HResult!DeviceAccountSyncScheduleKind {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getCalDavSyncScheduleKind();
     }
     pub fn putCalDavSyncScheduleKind(self: *@This(), value: DeviceAccountSyncScheduleKind) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putCalDavSyncScheduleKind(value);
     }
     pub fn getCardDavServerUrl(self: *@This()) core.HResult!*Uri {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getCardDavServerUrl();
     }
     pub fn putCardDavServerUrl(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putCardDavServerUrl(value);
     }
     pub fn getCardDavRequiresSsl(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getCardDavRequiresSsl();
     }
     pub fn putCardDavRequiresSsl(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putCardDavRequiresSsl(value);
     }
     pub fn getCalDavServerUrl(self: *@This()) core.HResult!*Uri {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getCalDavServerUrl();
     }
     pub fn putCalDavServerUrl(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putCalDavServerUrl(value);
     }
     pub fn getCalDavRequiresSsl(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getCalDavRequiresSsl();
     }
     pub fn putCalDavRequiresSsl(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putCalDavRequiresSsl(value);
     }
     pub fn getWasModifiedByUser(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getWasModifiedByUser();
     }
     pub fn putWasModifiedByUser(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putWasModifiedByUser(value);
     }
     pub fn getWasIncomingServerCertificateHashConfirmed(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getWasIncomingServerCertificateHashConfirmed();
     }
     pub fn putWasIncomingServerCertificateHashConfirmed(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putWasIncomingServerCertificateHashConfirmed(value);
     }
     pub fn getIncomingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIncomingServerCertificateHash();
     }
     pub fn putIncomingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putIncomingServerCertificateHash(value);
     }
     pub fn getIsOutgoingServerAuthenticationRequired(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIsOutgoingServerAuthenticationRequired();
     }
     pub fn putIsOutgoingServerAuthenticationRequired(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putIsOutgoingServerAuthenticationRequired(value);
     }
     pub fn getIsOutgoingServerAuthenticationEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIsOutgoingServerAuthenticationEnabled();
     }
     pub fn putIsOutgoingServerAuthenticationEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putIsOutgoingServerAuthenticationEnabled(value);
     }
     pub fn getWasOutgoingServerCertificateHashConfirmed(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getWasOutgoingServerCertificateHashConfirmed();
     }
     pub fn putWasOutgoingServerCertificateHashConfirmed(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putWasOutgoingServerCertificateHashConfirmed(value);
     }
     pub fn getOutgoingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getOutgoingServerCertificateHash();
     }
     pub fn putOutgoingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putOutgoingServerCertificateHash(value);
     }
     pub fn getIsSyncScheduleManagedBySystem(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.getIsSyncScheduleManagedBySystem();
     }
     pub fn putIsSyncScheduleManagedBySystem(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         return try this.?.putIsSyncScheduleManagedBySystem(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -580,8 +521,11 @@ pub const DeviceAccountSyncScheduleKind = enum(i32) {
 };
 pub const IDeviceAccountConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -589,162 +533,162 @@ pub const IDeviceAccountConfiguration = extern struct {
     pub fn getAccountName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAccountName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AccountName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceAccountTypeId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDeviceAccountTypeId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DeviceAccountTypeId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServerType(self: *@This()) core.HResult!DeviceAccountServerType {
         var _r: DeviceAccountServerType = undefined;
         const _c = self.vtable.get_ServerType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServerType(self: *@This(), value: DeviceAccountServerType) core.HResult!void {
         const _c = self.vtable.put_ServerType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEmailAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EmailAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEmailAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EmailAddress(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomain(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Domain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEmailSyncEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_EmailSyncEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEmailSyncEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_EmailSyncEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactsSyncEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ContactsSyncEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactsSyncEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ContactsSyncEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCalendarSyncEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CalendarSyncEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCalendarSyncEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CalendarSyncEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIncomingServerAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IncomingServerAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncomingServerAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IncomingServerAddress(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIncomingServerPort(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_IncomingServerPort(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncomingServerPort(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_IncomingServerPort(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIncomingServerRequiresSsl(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IncomingServerRequiresSsl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncomingServerRequiresSsl(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IncomingServerRequiresSsl(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIncomingServerUsername(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IncomingServerUsername(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncomingServerUsername(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IncomingServerUsername(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutgoingServerAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OutgoingServerAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutgoingServerAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerAddress(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutgoingServerPort(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_OutgoingServerPort(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutgoingServerPort(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerPort(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutgoingServerRequiresSsl(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_OutgoingServerRequiresSsl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutgoingServerRequiresSsl(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerRequiresSsl(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutgoingServerUsername(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OutgoingServerUsername(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutgoingServerUsername(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerUsername(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.SystemAccess.IDeviceAccountConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -794,8 +738,11 @@ pub const IDeviceAccountConfiguration = extern struct {
 };
 pub const IDeviceAccountConfiguration2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -803,284 +750,284 @@ pub const IDeviceAccountConfiguration2 = extern struct {
     pub fn getIncomingServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_IncomingServerCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncomingServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_IncomingServerCredential(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutgoingServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_OutgoingServerCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutgoingServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerCredential(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOAuthRefreshToken(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OAuthRefreshToken(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOAuthRefreshToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OAuthRefreshToken(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsExternallyManaged(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsExternallyManaged(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsExternallyManaged(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsExternallyManaged(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAccountIconId(self: *@This()) core.HResult!DeviceAccountIconId {
         var _r: DeviceAccountIconId = undefined;
         const _c = self.vtable.get_AccountIconId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAccountIconId(self: *@This(), value: DeviceAccountIconId) core.HResult!void {
         const _c = self.vtable.put_AccountIconId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAuthenticationType(self: *@This()) core.HResult!DeviceAccountAuthenticationType {
         var _r: DeviceAccountAuthenticationType = undefined;
         const _c = self.vtable.get_AuthenticationType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAuthenticationType(self: *@This(), value: DeviceAccountAuthenticationType) core.HResult!void {
         const _c = self.vtable.put_AuthenticationType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsSsoAuthenticationSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSsoAuthenticationSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSsoAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SsoAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSsoAccountId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SsoAccountId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAlwaysDownloadFullMessage(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AlwaysDownloadFullMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlwaysDownloadFullMessage(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AlwaysDownloadFullMessage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDoesPolicyAllowMailSync(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DoesPolicyAllowMailSync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSyncScheduleKind(self: *@This()) core.HResult!DeviceAccountSyncScheduleKind {
         var _r: DeviceAccountSyncScheduleKind = undefined;
         const _c = self.vtable.get_SyncScheduleKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSyncScheduleKind(self: *@This(), value: DeviceAccountSyncScheduleKind) core.HResult!void {
         const _c = self.vtable.put_SyncScheduleKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMailAgeFilter(self: *@This()) core.HResult!DeviceAccountMailAgeFilter {
         var _r: DeviceAccountMailAgeFilter = undefined;
         const _c = self.vtable.get_MailAgeFilter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMailAgeFilter(self: *@This(), value: DeviceAccountMailAgeFilter) core.HResult!void {
         const _c = self.vtable.put_MailAgeFilter(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsClientAuthenticationCertificateRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsClientAuthenticationCertificateRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsClientAuthenticationCertificateRequired(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsClientAuthenticationCertificateRequired(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAutoSelectAuthenticationCertificate(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutoSelectAuthenticationCertificate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutoSelectAuthenticationCertificate(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AutoSelectAuthenticationCertificate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAuthenticationCertificateId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AuthenticationCertificateId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAuthenticationCertificateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AuthenticationCertificateId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCardDavSyncScheduleKind(self: *@This()) core.HResult!DeviceAccountSyncScheduleKind {
         var _r: DeviceAccountSyncScheduleKind = undefined;
         const _c = self.vtable.get_CardDavSyncScheduleKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCardDavSyncScheduleKind(self: *@This(), value: DeviceAccountSyncScheduleKind) core.HResult!void {
         const _c = self.vtable.put_CardDavSyncScheduleKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCalDavSyncScheduleKind(self: *@This()) core.HResult!DeviceAccountSyncScheduleKind {
         var _r: DeviceAccountSyncScheduleKind = undefined;
         const _c = self.vtable.get_CalDavSyncScheduleKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCalDavSyncScheduleKind(self: *@This(), value: DeviceAccountSyncScheduleKind) core.HResult!void {
         const _c = self.vtable.put_CalDavSyncScheduleKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCardDavServerUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_CardDavServerUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCardDavServerUrl(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_CardDavServerUrl(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCardDavRequiresSsl(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CardDavRequiresSsl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCardDavRequiresSsl(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CardDavRequiresSsl(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCalDavServerUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_CalDavServerUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCalDavServerUrl(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_CalDavServerUrl(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCalDavRequiresSsl(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CalDavRequiresSsl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCalDavRequiresSsl(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CalDavRequiresSsl(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWasModifiedByUser(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_WasModifiedByUser(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWasModifiedByUser(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_WasModifiedByUser(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWasIncomingServerCertificateHashConfirmed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_WasIncomingServerCertificateHashConfirmed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWasIncomingServerCertificateHashConfirmed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_WasIncomingServerCertificateHashConfirmed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIncomingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IncomingServerCertificateHash(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncomingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IncomingServerCertificateHash(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsOutgoingServerAuthenticationRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOutgoingServerAuthenticationRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsOutgoingServerAuthenticationRequired(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsOutgoingServerAuthenticationRequired(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsOutgoingServerAuthenticationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOutgoingServerAuthenticationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsOutgoingServerAuthenticationEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsOutgoingServerAuthenticationEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWasOutgoingServerCertificateHashConfirmed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_WasOutgoingServerCertificateHashConfirmed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWasOutgoingServerCertificateHashConfirmed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_WasOutgoingServerCertificateHashConfirmed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutgoingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OutgoingServerCertificateHash(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutgoingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerCertificateHash(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsSyncScheduleManagedBySystem(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSyncScheduleManagedBySystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsSyncScheduleManagedBySystem(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsSyncScheduleManagedBySystem(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.SystemAccess.IDeviceAccountConfiguration2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1154,8 +1101,11 @@ pub const IDeviceAccountConfiguration2 = extern struct {
 };
 pub const IUserDataAccountSystemAccessManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1163,7 +1113,7 @@ pub const IUserDataAccountSystemAccessManagerStatics = extern struct {
     pub fn AddAndShowDeviceAccountsAsync(self: *@This(), accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.AddAndShowDeviceAccountsAsync(@ptrCast(self), accounts, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.SystemAccess.IUserDataAccountSystemAccessManagerStatics";
@@ -1183,8 +1133,11 @@ pub const IUserDataAccountSystemAccessManagerStatics = extern struct {
 };
 pub const IUserDataAccountSystemAccessManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1192,25 +1145,25 @@ pub const IUserDataAccountSystemAccessManagerStatics2 = extern struct {
     pub fn SuppressLocalAccountWithAccountAsync(self: *@This(), userDataAccountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SuppressLocalAccountWithAccountAsync(@ptrCast(self), userDataAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDeviceAccountAsync(self: *@This(), account: *DeviceAccountConfiguration) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CreateDeviceAccountAsync(@ptrCast(self), account, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteDeviceAccountAsync(self: *@This(), accountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteDeviceAccountAsync(@ptrCast(self), accountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceAccountConfigurationAsync(self: *@This(), accountId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceAccountConfiguration) {
         var _r: *IAsyncOperation(DeviceAccountConfiguration) = undefined;
         const _c = self.vtable.GetDeviceAccountConfigurationAsync(@ptrCast(self), accountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.SystemAccess.IUserDataAccountSystemAccessManagerStatics2";
@@ -1233,14 +1186,11 @@ pub const IUserDataAccountSystemAccessManagerStatics2 = extern struct {
 };
 pub const UserDataAccountSystemAccessManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

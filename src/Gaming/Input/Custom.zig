@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const GameControllerFactoryManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -46,14 +43,11 @@ pub const GipFirmwareUpdateProgress = extern struct {
 };
 pub const GipFirmwareUpdateResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -83,14 +77,11 @@ pub const GipFirmwareUpdateStatus = enum(i32) {
 };
 pub const GipGameControllerProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -110,36 +101,31 @@ pub const GipGameControllerProvider = extern struct {
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getFirmwareVersionInfo();
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareProductId();
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareVendorId();
     }
     pub fn getHardwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareVersionInfo();
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getIsConnected();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.GipGameControllerProvider";
@@ -155,14 +141,11 @@ pub const GipMessageClass = enum(i32) {
 };
 pub const HidGameControllerProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -190,36 +173,31 @@ pub const HidGameControllerProvider = extern struct {
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getFirmwareVersionInfo();
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareProductId();
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareVendorId();
     }
     pub fn getHardwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareVersionInfo();
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getIsConnected();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.HidGameControllerProvider";
@@ -230,8 +208,11 @@ pub const HidGameControllerProvider = extern struct {
 };
 pub const ICustomGameControllerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -239,16 +220,16 @@ pub const ICustomGameControllerFactory = extern struct {
     pub fn CreateGameController(self: *@This(), provider: *IGameControllerProvider) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateGameController(@ptrCast(self), provider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OnGameControllerAdded(self: *@This(), value: *IGameController) core.HResult!void {
         const _c = self.vtable.OnGameControllerAdded(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnGameControllerRemoved(self: *@This(), value: *IGameController) core.HResult!void {
         const _c = self.vtable.OnGameControllerRemoved(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.ICustomGameControllerFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -269,23 +250,26 @@ pub const ICustomGameControllerFactory = extern struct {
 };
 pub const IGameControllerFactoryManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterCustomFactoryForGipInterface(self: *@This(), factory: *ICustomGameControllerFactory, interfaceId: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterCustomFactoryForGipInterface(@ptrCast(self), factory, interfaceId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RegisterCustomFactoryForHardwareId(self: *@This(), factory: *ICustomGameControllerFactory, hardwareVendorId: u16, hardwareProductId: u16) core.HResult!void {
         const _c = self.vtable.RegisterCustomFactoryForHardwareId(@ptrCast(self), factory, hardwareVendorId, hardwareProductId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RegisterCustomFactoryForXusbType(self: *@This(), factory: *ICustomGameControllerFactory, xusbType: XusbDeviceType, xusbSubtype: XusbDeviceSubtype) core.HResult!void {
         const _c = self.vtable.RegisterCustomFactoryForXusbType(@ptrCast(self), factory, xusbType, xusbSubtype);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IGameControllerFactoryManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -306,8 +290,11 @@ pub const IGameControllerFactoryManagerStatics = extern struct {
 };
 pub const IGameControllerFactoryManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -315,7 +302,7 @@ pub const IGameControllerFactoryManagerStatics2 = extern struct {
     pub fn TryGetFactoryControllerFromGameController(self: *@This(), factory: *ICustomGameControllerFactory, gameController: *IGameController) core.HResult!*IGameController {
         var _r: *IGameController = undefined;
         const _c = self.vtable.TryGetFactoryControllerFromGameController(@ptrCast(self), factory, gameController, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IGameControllerFactoryManagerStatics2";
@@ -335,19 +322,22 @@ pub const IGameControllerFactoryManagerStatics2 = extern struct {
 };
 pub const IGameControllerInputSink = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnInputResumed(self: *@This(), timestamp: u64) core.HResult!void {
         const _c = self.vtable.OnInputResumed(@ptrCast(self), timestamp);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnInputSuspended(self: *@This(), timestamp: u64) core.HResult!void {
         const _c = self.vtable.OnInputSuspended(@ptrCast(self), timestamp);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IGameControllerInputSink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -367,8 +357,11 @@ pub const IGameControllerInputSink = extern struct {
 };
 pub const IGameControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -376,31 +369,31 @@ pub const IGameControllerProvider = extern struct {
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var _r: GameControllerVersionInfo = undefined;
         const _c = self.vtable.get_FirmwareVersionInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HardwareProductId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HardwareVendorId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHardwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var _r: GameControllerVersionInfo = undefined;
         const _c = self.vtable.get_HardwareVersionInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConnected(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IGameControllerProvider";
@@ -424,8 +417,11 @@ pub const IGameControllerProvider = extern struct {
 };
 pub const IGipFirmwareUpdateResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -433,19 +429,19 @@ pub const IGipFirmwareUpdateResult = extern struct {
     pub fn getExtendedErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFinalComponentId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_FinalComponentId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!GipFirmwareUpdateStatus {
         var _r: GipFirmwareUpdateStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IGipFirmwareUpdateResult";
@@ -467,19 +463,22 @@ pub const IGipFirmwareUpdateResult = extern struct {
 };
 pub const IGipGameControllerInputSink = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnKeyReceived(self: *@This(), timestamp: u64, keyCode: u8, isPressed: bool) core.HResult!void {
         const _c = self.vtable.OnKeyReceived(@ptrCast(self), timestamp, keyCode, isPressed);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnMessageReceived(self: *@This(), timestamp: u64, messageClass: GipMessageClass, messageId: u8, sequenceId: u8, messageBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.OnMessageReceived(@ptrCast(self), timestamp, messageClass, messageId, sequenceId, messageBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IGipGameControllerInputSink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -499,24 +498,27 @@ pub const IGipGameControllerInputSink = extern struct {
 };
 pub const IGipGameControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SendMessage(self: *@This(), messageClass: GipMessageClass, messageId: u8, messageBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.SendMessage(@ptrCast(self), messageClass, messageId, messageBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SendReceiveMessage(self: *@This(), messageClass: GipMessageClass, messageId: u8, requestMessageBuffer: [*]u8, responseMessageBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.SendReceiveMessage(@ptrCast(self), messageClass, messageId, requestMessageBuffer, responseMessageBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UpdateFirmwareAsync(self: *@This(), firmwareImage: *IInputStream) core.HResult!*IAsyncOperationWithProgress(GipFirmwareUpdateResult,GipFirmwareUpdateProgress) {
         var _r: *IAsyncOperationWithProgress(GipFirmwareUpdateResult,GipFirmwareUpdateProgress) = undefined;
         const _c = self.vtable.UpdateFirmwareAsync(@ptrCast(self), firmwareImage, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IGipGameControllerProvider";
@@ -538,15 +540,18 @@ pub const IGipGameControllerProvider = extern struct {
 };
 pub const IHidGameControllerInputSink = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnInputReportReceived(self: *@This(), timestamp: u64, reportId: u8, reportBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.OnInputReportReceived(@ptrCast(self), timestamp, reportId, reportBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IHidGameControllerInputSink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -565,8 +570,11 @@ pub const IHidGameControllerInputSink = extern struct {
 };
 pub const IHidGameControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -574,26 +582,26 @@ pub const IHidGameControllerProvider = extern struct {
     pub fn getUsageId(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_UsageId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsagePage(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_UsagePage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFeatureReport(self: *@This(), reportId: u8, reportBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.GetFeatureReport(@ptrCast(self), reportId, reportBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SendFeatureReport(self: *@This(), reportId: u8, reportBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.SendFeatureReport(@ptrCast(self), reportId, reportBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SendOutputReport(self: *@This(), reportId: u8, reportBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.SendOutputReport(@ptrCast(self), reportId, reportBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IHidGameControllerProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -616,15 +624,18 @@ pub const IHidGameControllerProvider = extern struct {
 };
 pub const IXusbGameControllerInputSink = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnInputReceived(self: *@This(), timestamp: u64, reportId: u8, inputBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.OnInputReceived(@ptrCast(self), timestamp, reportId, inputBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IXusbGameControllerInputSink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -643,15 +654,18 @@ pub const IXusbGameControllerInputSink = extern struct {
 };
 pub const IXusbGameControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetVibration(self: *@This(), lowFrequencyMotorSpeed: f64, highFrequencyMotorSpeed: f64) core.HResult!void {
         const _c = self.vtable.SetVibration(@ptrCast(self), lowFrequencyMotorSpeed, highFrequencyMotorSpeed);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.IXusbGameControllerProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -687,14 +701,11 @@ pub const XusbDeviceType = enum(i32) {
 };
 pub const XusbGameControllerProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -706,36 +717,31 @@ pub const XusbGameControllerProvider = extern struct {
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getFirmwareVersionInfo();
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareProductId();
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareVendorId();
     }
     pub fn getHardwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getHardwareVersionInfo();
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var this: ?*IGameControllerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         return try this.?.getIsConnected();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.XusbGameControllerProvider";

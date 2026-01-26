@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ISpatialSurfaceInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,31 +13,31 @@ pub const ISpatialSurfaceInfo = extern struct {
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpdateTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_UpdateTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetBounds(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*IReference(SpatialBoundingOrientedBox) {
         var _r: *IReference(SpatialBoundingOrientedBox) = undefined;
         const _c = self.vtable.TryGetBounds(@ptrCast(self), coordinateSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryComputeLatestMeshAsync(self: *@This(), maxTrianglesPerCubicMeter: f64) core.HResult!*IAsyncOperation(SpatialSurfaceMesh) {
         var _r: *IAsyncOperation(SpatialSurfaceMesh) = undefined;
         const _c = self.vtable.TryComputeLatestMeshAsync(@ptrCast(self), maxTrianglesPerCubicMeter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryComputeLatestMeshAsyncWithOptions(self: *@This(), maxTrianglesPerCubicMeter: f64, options: *SpatialSurfaceMeshOptions) core.HResult!*IAsyncOperation(SpatialSurfaceMesh) {
         var _r: *IAsyncOperation(SpatialSurfaceMesh) = undefined;
         const _c = self.vtable.TryComputeLatestMeshAsyncWithOptions(@ptrCast(self), maxTrianglesPerCubicMeter, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceInfo";
@@ -58,8 +61,11 @@ pub const ISpatialSurfaceInfo = extern struct {
 };
 pub const ISpatialSurfaceMesh = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -67,37 +73,37 @@ pub const ISpatialSurfaceMesh = extern struct {
     pub fn getSurfaceInfo(self: *@This()) core.HResult!*SpatialSurfaceInfo {
         var _r: *SpatialSurfaceInfo = undefined;
         const _c = self.vtable.get_SurfaceInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.get_CoordinateSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTriangleIndices(self: *@This()) core.HResult!*SpatialSurfaceMeshBuffer {
         var _r: *SpatialSurfaceMeshBuffer = undefined;
         const _c = self.vtable.get_TriangleIndices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVertexPositions(self: *@This()) core.HResult!*SpatialSurfaceMeshBuffer {
         var _r: *SpatialSurfaceMeshBuffer = undefined;
         const _c = self.vtable.get_VertexPositions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVertexPositionScale(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_VertexPositionScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVertexNormals(self: *@This()) core.HResult!*SpatialSurfaceMeshBuffer {
         var _r: *SpatialSurfaceMeshBuffer = undefined;
         const _c = self.vtable.get_VertexNormals(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceMesh";
@@ -122,8 +128,11 @@ pub const ISpatialSurfaceMesh = extern struct {
 };
 pub const ISpatialSurfaceMeshBuffer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -131,25 +140,25 @@ pub const ISpatialSurfaceMeshBuffer = extern struct {
     pub fn getFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStride(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Stride(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getElementCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ElementCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceMeshBuffer";
@@ -172,8 +181,11 @@ pub const ISpatialSurfaceMeshBuffer = extern struct {
 };
 pub const ISpatialSurfaceMeshOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -181,42 +193,42 @@ pub const ISpatialSurfaceMeshOptions = extern struct {
     pub fn getVertexPositionFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_VertexPositionFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVertexPositionFormat(self: *@This(), value: DirectXPixelFormat) core.HResult!void {
         const _c = self.vtable.put_VertexPositionFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTriangleIndexFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_TriangleIndexFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTriangleIndexFormat(self: *@This(), value: DirectXPixelFormat) core.HResult!void {
         const _c = self.vtable.put_TriangleIndexFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVertexNormalFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_VertexNormalFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVertexNormalFormat(self: *@This(), value: DirectXPixelFormat) core.HResult!void {
         const _c = self.vtable.put_VertexNormalFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIncludeVertexNormals(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IncludeVertexNormals(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncludeVertexNormals(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IncludeVertexNormals(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceMeshOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -242,8 +254,11 @@ pub const ISpatialSurfaceMeshOptions = extern struct {
 };
 pub const ISpatialSurfaceMeshOptionsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -251,19 +266,19 @@ pub const ISpatialSurfaceMeshOptionsStatics = extern struct {
     pub fn getSupportedVertexPositionFormats(self: *@This()) core.HResult!*IVectorView(DirectXPixelFormat) {
         var _r: *IVectorView(DirectXPixelFormat) = undefined;
         const _c = self.vtable.get_SupportedVertexPositionFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedTriangleIndexFormats(self: *@This()) core.HResult!*IVectorView(DirectXPixelFormat) {
         var _r: *IVectorView(DirectXPixelFormat) = undefined;
         const _c = self.vtable.get_SupportedTriangleIndexFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedVertexNormalFormats(self: *@This()) core.HResult!*IVectorView(DirectXPixelFormat) {
         var _r: *IVectorView(DirectXPixelFormat) = undefined;
         const _c = self.vtable.get_SupportedVertexNormalFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceMeshOptionsStatics";
@@ -285,8 +300,11 @@ pub const ISpatialSurfaceMeshOptionsStatics = extern struct {
 };
 pub const ISpatialSurfaceObserver = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -294,26 +312,26 @@ pub const ISpatialSurfaceObserver = extern struct {
     pub fn GetObservedSurfaces(self: *@This()) core.HResult!*IMapView(Guid,SpatialSurfaceInfo) {
         var _r: *IMapView(Guid,SpatialSurfaceInfo) = undefined;
         const _c = self.vtable.GetObservedSurfaces(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetBoundingVolume(self: *@This(), bounds: *SpatialBoundingVolume) core.HResult!void {
         const _c = self.vtable.SetBoundingVolume(@ptrCast(self), bounds);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetBoundingVolumes(self: *@This(), bounds: *IIterable(SpatialBoundingVolume)) core.HResult!void {
         const _c = self.vtable.SetBoundingVolumes(@ptrCast(self), bounds);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addObservedSurfacesChanged(self: *@This(), handler: *TypedEventHandler(SpatialSurfaceObserver,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ObservedSurfacesChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeObservedSurfacesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ObservedSurfacesChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceObserver";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -336,8 +354,11 @@ pub const ISpatialSurfaceObserver = extern struct {
 };
 pub const ISpatialSurfaceObserverStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -345,7 +366,7 @@ pub const ISpatialSurfaceObserverStatics = extern struct {
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(SpatialPerceptionAccessStatus) {
         var _r: *IAsyncOperation(SpatialPerceptionAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceObserverStatics";
@@ -365,8 +386,11 @@ pub const ISpatialSurfaceObserverStatics = extern struct {
 };
 pub const ISpatialSurfaceObserverStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -374,7 +398,7 @@ pub const ISpatialSurfaceObserverStatics2 = extern struct {
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.ISpatialSurfaceObserverStatics2";
@@ -394,14 +418,11 @@ pub const ISpatialSurfaceObserverStatics2 = extern struct {
 };
 pub const SpatialSurfaceInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -434,14 +455,11 @@ pub const SpatialSurfaceInfo = extern struct {
 };
 pub const SpatialSurfaceMesh = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -478,14 +496,11 @@ pub const SpatialSurfaceMesh = extern struct {
 };
 pub const SpatialSurfaceMeshBuffer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -514,14 +529,11 @@ pub const SpatialSurfaceMeshBuffer = extern struct {
 };
 pub const SpatialSurfaceMeshOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -584,14 +596,11 @@ pub const SpatialSurfaceMeshOptions = extern struct {
 };
 pub const SpatialSurfaceObserver = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

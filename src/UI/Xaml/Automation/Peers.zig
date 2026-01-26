@@ -6,14 +6,11 @@ pub const AccessibilityView = enum(i32) {
 };
 pub const AutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -153,491 +150,421 @@ pub const AutomationPeer = extern struct {
     pub fn Navigate(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.Navigate(direction);
     }
     pub fn GetElementFromPoint(self: *@This(), pointInWindowCoordinates: Point) core.HResult!*IInspectable {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.GetElementFromPoint(pointInWindowCoordinates);
     }
     pub fn GetFocusedElement(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.GetFocusedElement();
     }
     pub fn ShowContextMenu(self: *@This()) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.ShowContextMenu();
     }
     pub fn GetControlledPeers(self: *@This()) core.HResult!*IVectorView(AutomationPeer) {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.GetControlledPeers();
     }
     pub fn GetAnnotations(self: *@This()) core.HResult!*IVector(AutomationPeerAnnotation) {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.GetAnnotations();
     }
     pub fn SetParent(self: *@This(), peer: *AutomationPeer) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.SetParent(peer);
     }
     pub fn RaiseTextEditTextChangedEvent(self: *@This(), automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(?HSTRING)) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.RaiseTextEditTextChangedEvent(automationTextEditChangeType, changedData);
     }
     pub fn GetPositionInSet(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.GetPositionInSet();
     }
     pub fn GetSizeOfSet(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.GetSizeOfSet();
     }
     pub fn GetLevel(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.GetLevel();
     }
     pub fn RaiseStructureChangedEvent(self: *@This(), structureChangeType: AutomationStructureChangeType, child: *AutomationPeer) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         return try this.?.RaiseStructureChangedEvent(structureChangeType, child);
     }
     pub fn GetLandmarkType(self: *@This()) core.HResult!AutomationLandmarkType {
         var this: ?*IAutomationPeer4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer4.IID, @ptrCast(&this));
         return try this.?.GetLandmarkType();
     }
     pub fn GetLocalizedLandmarkType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeer4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer4.IID, @ptrCast(&this));
         return try this.?.GetLocalizedLandmarkType();
     }
     pub fn IsPeripheral(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeer5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
         return try this.?.IsPeripheral();
     }
     pub fn IsDataValidForForm(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeer5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
         return try this.?.IsDataValidForForm();
     }
     pub fn GetFullDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeer5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
         return try this.?.GetFullDescription();
     }
     pub fn GetCulture(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer6.IID, @ptrCast(&this));
         return try this.?.GetCulture();
     }
     pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) core.HResult!void {
         var this: ?*IAutomationPeer7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer7.IID, @ptrCast(&this));
         return try this.?.RaiseNotificationEvent(notificationKind, notificationProcessing, displayString, activityId);
     }
     pub fn GetHeadingLevel(self: *@This()) core.HResult!AutomationHeadingLevel {
         var this: ?*IAutomationPeer8 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer8.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer8.IID, @ptrCast(&this));
         return try this.?.GetHeadingLevel();
     }
     pub fn IsDialog(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeer9 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer9.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer9.IID, @ptrCast(&this));
         return try this.?.IsDialog();
     }
     pub fn PeerFromProvider(self: *@This(), provider: *IRawElementProviderSimple) core.HResult!*AutomationPeer {
         var this: ?*IAutomationPeerProtected = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerProtected.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerProtected.IID, @ptrCast(&this));
         return try this.?.PeerFromProvider(provider);
     }
     pub fn ProviderFromPeer(self: *@This(), peer: *AutomationPeer) core.HResult!*IRawElementProviderSimple {
         var this: ?*IAutomationPeerProtected = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerProtected.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerProtected.IID, @ptrCast(&this));
         return try this.?.ProviderFromPeer(peer);
     }
     pub fn GetPatternCore(self: *@This(), patternInterface: PatternInterface) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetPatternCore(patternInterface);
     }
     pub fn GetAcceleratorKeyCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetAcceleratorKeyCore();
     }
     pub fn GetAccessKeyCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetAccessKeyCore();
     }
     pub fn GetAutomationControlTypeCore(self: *@This()) core.HResult!AutomationControlType {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetAutomationControlTypeCore();
     }
     pub fn GetAutomationIdCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetAutomationIdCore();
     }
     pub fn GetBoundingRectangleCore(self: *@This()) core.HResult!Rect {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetBoundingRectangleCore();
     }
     pub fn GetChildrenCore(self: *@This()) core.HResult!*IVector(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetChildrenCore();
     }
     pub fn GetClassNameCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetClassNameCore();
     }
     pub fn GetClickablePointCore(self: *@This()) core.HResult!Point {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetClickablePointCore();
     }
     pub fn GetHelpTextCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetHelpTextCore();
     }
     pub fn GetItemStatusCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetItemStatusCore();
     }
     pub fn GetItemTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetItemTypeCore();
     }
     pub fn GetLabeledByCore(self: *@This()) core.HResult!*AutomationPeer {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetLabeledByCore();
     }
     pub fn GetLocalizedControlTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetLocalizedControlTypeCore();
     }
     pub fn GetNameCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetNameCore();
     }
     pub fn GetOrientationCore(self: *@This()) core.HResult!AutomationOrientation {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetOrientationCore();
     }
     pub fn HasKeyboardFocusCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.HasKeyboardFocusCore();
     }
     pub fn IsContentElementCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.IsContentElementCore();
     }
     pub fn IsControlElementCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.IsControlElementCore();
     }
     pub fn IsEnabledCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.IsEnabledCore();
     }
     pub fn IsKeyboardFocusableCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.IsKeyboardFocusableCore();
     }
     pub fn IsOffscreenCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.IsOffscreenCore();
     }
     pub fn IsPasswordCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.IsPasswordCore();
     }
     pub fn IsRequiredForFormCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.IsRequiredForFormCore();
     }
     pub fn SetFocusCore(self: *@This()) core.HResult!void {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.SetFocusCore();
     }
     pub fn GetPeerFromPointCore(self: *@This(), point: Point) core.HResult!*AutomationPeer {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetPeerFromPointCore(point);
     }
     pub fn GetLiveSettingCore(self: *@This()) core.HResult!AutomationLiveSetting {
         var this: ?*IAutomationPeerOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         return try this.?.GetLiveSettingCore();
     }
     pub fn ShowContextMenuCore(self: *@This()) core.HResult!void {
         var this: ?*IAutomationPeerOverrides2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides2.IID, @ptrCast(&this));
         return try this.?.ShowContextMenuCore();
     }
     pub fn GetControlledPeersCore(self: *@This()) core.HResult!*IVectorView(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides2.IID, @ptrCast(&this));
         return try this.?.GetControlledPeersCore();
     }
     pub fn NavigateCore(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         return try this.?.NavigateCore(direction);
     }
     pub fn GetElementFromPointCore(self: *@This(), pointInWindowCoordinates: Point) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         return try this.?.GetElementFromPointCore(pointInWindowCoordinates);
     }
     pub fn GetFocusedElementCore(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         return try this.?.GetFocusedElementCore();
     }
     pub fn GetAnnotationsCore(self: *@This()) core.HResult!*IVector(AutomationPeerAnnotation) {
         var this: ?*IAutomationPeerOverrides3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         return try this.?.GetAnnotationsCore();
     }
     pub fn GetPositionInSetCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         return try this.?.GetPositionInSetCore();
     }
     pub fn GetSizeOfSetCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         return try this.?.GetSizeOfSetCore();
     }
     pub fn GetLevelCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         return try this.?.GetLevelCore();
     }
     pub fn GetLandmarkTypeCore(self: *@This()) core.HResult!AutomationLandmarkType {
         var this: ?*IAutomationPeerOverrides4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides4.IID, @ptrCast(&this));
         return try this.?.GetLandmarkTypeCore();
     }
     pub fn GetLocalizedLandmarkTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides4.IID, @ptrCast(&this));
         return try this.?.GetLocalizedLandmarkTypeCore();
     }
     pub fn IsPeripheralCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         return try this.?.IsPeripheralCore();
     }
     pub fn IsDataValidForFormCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         return try this.?.IsDataValidForFormCore();
     }
     pub fn GetFullDescriptionCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         return try this.?.GetFullDescriptionCore();
     }
     pub fn GetDescribedByCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         return try this.?.GetDescribedByCore();
     }
     pub fn GetFlowsToCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         return try this.?.GetFlowsToCore();
     }
     pub fn GetFlowsFromCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         return try this.?.GetFlowsFromCore();
     }
     pub fn GetCultureCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides6.IID, @ptrCast(&this));
         return try this.?.GetCultureCore();
     }
     pub fn GetHeadingLevelCore(self: *@This()) core.HResult!AutomationHeadingLevel {
         var this: ?*IAutomationPeerOverrides8 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides8.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides8.IID, @ptrCast(&this));
         return try this.?.GetHeadingLevelCore();
     }
     pub fn IsDialogCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides9 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides9.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides9.IID, @ptrCast(&this));
         return try this.?.IsDialogCore();
     }
     pub fn GenerateRawElementProviderRuntimeId() core.HResult!RawElementProviderRuntimeId {
@@ -663,14 +590,11 @@ pub const AutomationPeer = extern struct {
 };
 pub const FrameworkElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -701,14 +625,11 @@ pub const FrameworkElementAutomationPeer = extern struct {
 };
 pub const AppBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -716,99 +637,85 @@ pub const AppBarAutomationPeer = extern struct {
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.Toggle();
     }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Expand();
     }
     pub fn getIsModal(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getIsModal();
     }
     pub fn getIsTopmost(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getIsTopmost();
     }
     pub fn getMaximizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getMaximizable();
     }
     pub fn getMinimizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getMinimizable();
     }
     pub fn getInteractionState(self: *@This()) core.HResult!WindowInteractionState {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getInteractionState();
     }
     pub fn getVisualState(self: *@This()) core.HResult!WindowVisualState {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getVisualState();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn SetVisualState(self: *@This(), state: WindowVisualState) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.SetVisualState(state);
     }
     pub fn WaitForInputIdle(self: *@This(), milliseconds: i32) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.WaitForInputIdle(milliseconds);
     }
     pub fn CreateInstanceWithOwner(owner: *AppBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarAutomationPeer {
@@ -824,14 +731,11 @@ pub const AppBarAutomationPeer = extern struct {
 };
 pub const ButtonBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -849,14 +753,11 @@ pub const ButtonBaseAutomationPeer = extern struct {
 };
 pub const ButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -864,8 +765,7 @@ pub const ButtonAutomationPeer = extern struct {
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         return try this.?.Invoke();
     }
     pub fn CreateInstanceWithOwner(owner: *Button, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonAutomationPeer {
@@ -881,14 +781,11 @@ pub const ButtonAutomationPeer = extern struct {
 };
 pub const AppBarButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -896,22 +793,19 @@ pub const AppBarButtonAutomationPeer = extern struct {
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Expand();
     }
     pub fn CreateInstanceWithOwner(owner: *AppBarButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarButtonAutomationPeer {
@@ -927,14 +821,11 @@ pub const AppBarButtonAutomationPeer = extern struct {
 };
 pub const ToggleButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -942,15 +833,13 @@ pub const ToggleButtonAutomationPeer = extern struct {
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.Toggle();
     }
     pub fn CreateInstanceWithOwner(owner: *ToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButtonAutomationPeer {
@@ -966,14 +855,11 @@ pub const ToggleButtonAutomationPeer = extern struct {
 };
 pub const AppBarToggleButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -991,14 +877,11 @@ pub const AppBarToggleButtonAutomationPeer = extern struct {
 };
 pub const AutoSuggestBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1006,8 +889,7 @@ pub const AutoSuggestBoxAutomationPeer = extern struct {
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         return try this.?.Invoke();
     }
     pub fn CreateInstanceWithOwner(owner: *AutoSuggestBox) core.HResult!*AutoSuggestBoxAutomationPeer {
@@ -1149,14 +1031,11 @@ pub const AutomationOrientation = enum(i32) {
 };
 pub const AutomationPeerAnnotation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1216,14 +1095,11 @@ pub const AutomationStructureChangeType = enum(i32) {
 };
 pub const CalendarDatePickerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1231,29 +1107,25 @@ pub const CalendarDatePickerAutomationPeer = extern struct {
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         return try this.?.Invoke();
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         return try this.?.getIsReadOnly();
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         return try this.?.getValue();
     }
     pub fn SetValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         return try this.?.SetValue(value);
     }
     pub fn CreateInstanceWithOwner(owner: *CalendarDatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarDatePickerAutomationPeer {
@@ -1269,14 +1141,11 @@ pub const CalendarDatePickerAutomationPeer = extern struct {
 };
 pub const CaptureElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1294,14 +1163,11 @@ pub const CaptureElementAutomationPeer = extern struct {
 };
 pub const CheckBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1319,14 +1185,11 @@ pub const CheckBoxAutomationPeer = extern struct {
 };
 pub const RangeBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1334,50 +1197,43 @@ pub const RangeBaseAutomationPeer = extern struct {
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         return try this.?.getIsReadOnly();
     }
     pub fn getLargeChange(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         return try this.?.getLargeChange();
     }
     pub fn getMaximum(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         return try this.?.getMaximum();
     }
     pub fn getMinimum(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         return try this.?.getMinimum();
     }
     pub fn getSmallChange(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         return try this.?.getSmallChange();
     }
     pub fn getValue(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         return try this.?.getValue();
     }
     pub fn SetValue(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         return try this.?.SetValue(value);
     }
     pub fn CreateInstanceWithOwner(owner: *RangeBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBaseAutomationPeer {
@@ -1393,14 +1249,11 @@ pub const RangeBaseAutomationPeer = extern struct {
 };
 pub const SliderAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1418,14 +1271,11 @@ pub const SliderAutomationPeer = extern struct {
 };
 pub const ColorPickerSliderAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1443,14 +1293,11 @@ pub const ColorPickerSliderAutomationPeer = extern struct {
 };
 pub const ColorSpectrumAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1468,14 +1315,11 @@ pub const ColorSpectrumAutomationPeer = extern struct {
 };
 pub const ItemsControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1483,22 +1327,19 @@ pub const ItemsControlAutomationPeer = extern struct {
     pub fn CreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var this: ?*IItemsControlAutomationPeer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlAutomationPeer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IItemsControlAutomationPeer2.IID, @ptrCast(&this));
         return try this.?.CreateItemAutomationPeer(item);
     }
     pub fn OnCreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var this: ?*IItemsControlAutomationPeerOverrides2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlAutomationPeerOverrides2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IItemsControlAutomationPeerOverrides2.IID, @ptrCast(&this));
         return try this.?.OnCreateItemAutomationPeer(item);
     }
     pub fn FindItemByProperty(self: *@This(), startAfter: *IRawElementProviderSimple, automationProperty: *AutomationProperty, value: *IInspectable) core.HResult!*IRawElementProviderSimple {
         var this: ?*IItemContainerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IItemContainerProvider.IID, @ptrCast(&this));
         return try this.?.FindItemByProperty(startAfter, automationProperty, value);
     }
     pub fn CreateInstanceWithOwner(owner: *ItemsControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemsControlAutomationPeer {
@@ -1514,14 +1355,11 @@ pub const ItemsControlAutomationPeer = extern struct {
 };
 pub const SelectorAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1529,22 +1367,19 @@ pub const SelectorAutomationPeer = extern struct {
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.getCanSelectMultiple();
     }
     pub fn getIsSelectionRequired(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.getIsSelectionRequired();
     }
     pub fn GetSelection(self: *@This()) core.HResult![*]IRawElementProviderSimple {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.GetSelection();
     }
     pub fn CreateInstanceWithOwner(owner: *Selector, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorAutomationPeer {
@@ -1560,14 +1395,11 @@ pub const SelectorAutomationPeer = extern struct {
 };
 pub const ComboBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1575,106 +1407,91 @@ pub const ComboBoxAutomationPeer = extern struct {
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         return try this.?.getIsReadOnly();
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         return try this.?.getValue();
     }
     pub fn SetValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         return try this.?.SetValue(value);
     }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Expand();
     }
     pub fn getIsModal(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getIsModal();
     }
     pub fn getIsTopmost(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getIsTopmost();
     }
     pub fn getMaximizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getMaximizable();
     }
     pub fn getMinimizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getMinimizable();
     }
     pub fn getInteractionState(self: *@This()) core.HResult!WindowInteractionState {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getInteractionState();
     }
     pub fn getVisualState(self: *@This()) core.HResult!WindowVisualState {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.getVisualState();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn SetVisualState(self: *@This(), state: WindowVisualState) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.SetVisualState(state);
     }
     pub fn WaitForInputIdle(self: *@This(), milliseconds: i32) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         return try this.?.WaitForInputIdle(milliseconds);
     }
     pub fn CreateInstanceWithOwner(owner: *ComboBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxAutomationPeer {
@@ -1690,14 +1507,11 @@ pub const ComboBoxAutomationPeer = extern struct {
 };
 pub const ComboBoxItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1715,14 +1529,11 @@ pub const ComboBoxItemAutomationPeer = extern struct {
 };
 pub const ItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1738,8 +1549,7 @@ pub const ItemAutomationPeer = extern struct {
     pub fn Realize(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizedItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
         return try this.?.Realize();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ItemsControlAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemAutomationPeer {
@@ -1755,14 +1565,11 @@ pub const ItemAutomationPeer = extern struct {
 };
 pub const SelectorItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1770,36 +1577,31 @@ pub const SelectorItemAutomationPeer = extern struct {
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.Select();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *SelectorAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItemAutomationPeer {
@@ -1815,14 +1617,11 @@ pub const SelectorItemAutomationPeer = extern struct {
 };
 pub const ComboBoxItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1830,8 +1629,7 @@ pub const ComboBoxItemDataAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ComboBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemDataAutomationPeer {
@@ -1847,14 +1645,11 @@ pub const ComboBoxItemDataAutomationPeer = extern struct {
 };
 pub const DatePickerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1872,14 +1667,11 @@ pub const DatePickerAutomationPeer = extern struct {
 };
 pub const DatePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1892,14 +1684,11 @@ pub const DatePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const FlipViewAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1917,14 +1706,11 @@ pub const FlipViewAutomationPeer = extern struct {
 };
 pub const FlipViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1942,14 +1728,11 @@ pub const FlipViewItemAutomationPeer = extern struct {
 };
 pub const FlipViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1957,8 +1740,7 @@ pub const FlipViewItemDataAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *FlipViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemDataAutomationPeer {
@@ -1974,14 +1756,11 @@ pub const FlipViewItemDataAutomationPeer = extern struct {
 };
 pub const FlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1999,14 +1778,11 @@ pub const FlyoutPresenterAutomationPeer = extern struct {
 };
 pub const ListViewBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2014,15 +1790,13 @@ pub const ListViewBaseAutomationPeer = extern struct {
     pub fn getDropEffect(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDropTargetProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
         return try this.?.getDropEffect();
     }
     pub fn getDropEffects(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IDropTargetProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
         return try this.?.getDropEffects();
     }
     pub fn CreateInstanceWithOwner(owner: *ListViewBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseAutomationPeer {
@@ -2038,14 +1812,11 @@ pub const ListViewBaseAutomationPeer = extern struct {
 };
 pub const GridViewAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2063,14 +1834,11 @@ pub const GridViewAutomationPeer = extern struct {
 };
 pub const ListViewBaseHeaderItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2088,14 +1856,11 @@ pub const ListViewBaseHeaderItemAutomationPeer = extern struct {
 };
 pub const GridViewHeaderItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2113,14 +1878,11 @@ pub const GridViewHeaderItemAutomationPeer = extern struct {
 };
 pub const GridViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2138,14 +1900,11 @@ pub const GridViewItemAutomationPeer = extern struct {
 };
 pub const GridViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2153,8 +1912,7 @@ pub const GridViewItemDataAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *GridViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemDataAutomationPeer {
@@ -2170,14 +1928,11 @@ pub const GridViewItemDataAutomationPeer = extern struct {
 };
 pub const GroupItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2195,14 +1950,11 @@ pub const GroupItemAutomationPeer = extern struct {
 };
 pub const HubAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2220,14 +1972,11 @@ pub const HubAutomationPeer = extern struct {
 };
 pub const HubSectionAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2235,8 +1984,7 @@ pub const HubSectionAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn CreateInstanceWithOwner(owner: *HubSection, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubSectionAutomationPeer {
@@ -2252,14 +2000,11 @@ pub const HubSectionAutomationPeer = extern struct {
 };
 pub const HyperlinkButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2267,8 +2012,7 @@ pub const HyperlinkButtonAutomationPeer = extern struct {
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         return try this.?.Invoke();
     }
     pub fn CreateInstanceWithOwner(owner: *HyperlinkButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HyperlinkButtonAutomationPeer {
@@ -2284,8 +2028,11 @@ pub const HyperlinkButtonAutomationPeer = extern struct {
 };
 pub const IAppBarAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2306,8 +2053,11 @@ pub const IAppBarAutomationPeer = extern struct {
 };
 pub const IAppBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2315,7 +2065,7 @@ pub const IAppBarAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AppBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarAutomationPeer {
         var _r: *AppBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAppBarAutomationPeerFactory";
@@ -2335,8 +2085,11 @@ pub const IAppBarAutomationPeerFactory = extern struct {
 };
 pub const IAppBarButtonAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2357,8 +2110,11 @@ pub const IAppBarButtonAutomationPeer = extern struct {
 };
 pub const IAppBarButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2366,7 +2122,7 @@ pub const IAppBarButtonAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AppBarButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarButtonAutomationPeer {
         var _r: *AppBarButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAppBarButtonAutomationPeerFactory";
@@ -2386,8 +2142,11 @@ pub const IAppBarButtonAutomationPeerFactory = extern struct {
 };
 pub const IAppBarToggleButtonAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2408,8 +2167,11 @@ pub const IAppBarToggleButtonAutomationPeer = extern struct {
 };
 pub const IAppBarToggleButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2417,7 +2179,7 @@ pub const IAppBarToggleButtonAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AppBarToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarToggleButtonAutomationPeer {
         var _r: *AppBarToggleButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAppBarToggleButtonAutomationPeerFactory";
@@ -2437,8 +2199,11 @@ pub const IAppBarToggleButtonAutomationPeerFactory = extern struct {
 };
 pub const IAutoSuggestBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2459,8 +2224,11 @@ pub const IAutoSuggestBoxAutomationPeer = extern struct {
 };
 pub const IAutoSuggestBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2468,7 +2236,7 @@ pub const IAutoSuggestBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AutoSuggestBox) core.HResult!*AutoSuggestBoxAutomationPeer {
         var _r: *AutoSuggestBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutoSuggestBoxAutomationPeerFactory";
@@ -2488,8 +2256,11 @@ pub const IAutoSuggestBoxAutomationPeerFactory = extern struct {
 };
 pub const IAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2497,189 +2268,189 @@ pub const IAutomationPeer = extern struct {
     pub fn getEventsSource(self: *@This()) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.get_EventsSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEventsSource(self: *@This(), value: *AutomationPeer) core.HResult!void {
         const _c = self.vtable.put_EventsSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPattern(self: *@This(), patternInterface: PatternInterface) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetPattern(@ptrCast(self), patternInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RaiseAutomationEvent(self: *@This(), eventId: AutomationEvents) core.HResult!void {
         const _c = self.vtable.RaiseAutomationEvent(@ptrCast(self), eventId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RaisePropertyChangedEvent(self: *@This(), automationProperty: *AutomationProperty, oldValue: *IInspectable, newValue: *IInspectable) core.HResult!void {
         const _c = self.vtable.RaisePropertyChangedEvent(@ptrCast(self), automationProperty, oldValue, newValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetAcceleratorKey(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAcceleratorKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAccessKey(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAccessKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAutomationControlType(self: *@This()) core.HResult!AutomationControlType {
         var _r: AutomationControlType = undefined;
         const _c = self.vtable.GetAutomationControlType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAutomationId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAutomationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBoundingRectangle(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.GetBoundingRectangle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetChildren(self: *@This()) core.HResult!*IVector(AutomationPeer) {
         var _r: *IVector(AutomationPeer) = undefined;
         const _c = self.vtable.GetChildren(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetClassName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetClassName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetClickablePoint(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetClickablePoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetHelpText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetHelpText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemStatus(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLabeledBy(self: *@This()) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.GetLabeledBy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalizedControlType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedControlType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetOrientation(self: *@This()) core.HResult!AutomationOrientation {
         var _r: AutomationOrientation = undefined;
         const _c = self.vtable.GetOrientation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn HasKeyboardFocus(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasKeyboardFocus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsContentElement(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsContentElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsControlElement(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsControlElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsKeyboardFocusable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsKeyboardFocusable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsOffscreen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsOffscreen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsPassword(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPassword(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsRequiredForForm(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsRequiredForForm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetFocus(self: *@This()) core.HResult!void {
         const _c = self.vtable.SetFocus(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetParent(self: *@This()) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.GetParent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn InvalidatePeer(self: *@This()) core.HResult!void {
         const _c = self.vtable.InvalidatePeer(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPeerFromPoint(self: *@This(), point: Point) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.GetPeerFromPoint(@ptrCast(self), point, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLiveSetting(self: *@This()) core.HResult!AutomationLiveSetting {
         var _r: AutomationLiveSetting = undefined;
         const _c = self.vtable.GetLiveSetting(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer";
@@ -2731,8 +2502,11 @@ pub const IAutomationPeer = extern struct {
 };
 pub const IAutomationPeer2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2753,8 +2527,11 @@ pub const IAutomationPeer2 = extern struct {
 };
 pub const IAutomationPeer3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2762,66 +2539,66 @@ pub const IAutomationPeer3 = extern struct {
     pub fn Navigate(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.Navigate(@ptrCast(self), direction, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetElementFromPoint(self: *@This(), pointInWindowCoordinates: Point) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetElementFromPoint(@ptrCast(self), pointInWindowCoordinates, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFocusedElement(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowContextMenu(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowContextMenu(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetControlledPeers(self: *@This()) core.HResult!*IVectorView(AutomationPeer) {
         var _r: *IVectorView(AutomationPeer) = undefined;
         const _c = self.vtable.GetControlledPeers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAnnotations(self: *@This()) core.HResult!*IVector(AutomationPeerAnnotation) {
         var _r: *IVector(AutomationPeerAnnotation) = undefined;
         const _c = self.vtable.GetAnnotations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetParent(self: *@This(), peer: *AutomationPeer) core.HResult!void {
         const _c = self.vtable.SetParent(@ptrCast(self), peer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RaiseTextEditTextChangedEvent(self: *@This(), automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(?HSTRING)) core.HResult!void {
         const _c = self.vtable.RaiseTextEditTextChangedEvent(@ptrCast(self), automationTextEditChangeType, changedData);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPositionInSet(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetPositionInSet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSizeOfSet(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetSizeOfSet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLevel(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RaiseStructureChangedEvent(self: *@This(), structureChangeType: AutomationStructureChangeType, child: *AutomationPeer) core.HResult!void {
         const _c = self.vtable.RaiseStructureChangedEvent(@ptrCast(self), structureChangeType, child);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2851,8 +2628,11 @@ pub const IAutomationPeer3 = extern struct {
 };
 pub const IAutomationPeer4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2860,13 +2640,13 @@ pub const IAutomationPeer4 = extern struct {
     pub fn GetLandmarkType(self: *@This()) core.HResult!AutomationLandmarkType {
         var _r: AutomationLandmarkType = undefined;
         const _c = self.vtable.GetLandmarkType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalizedLandmarkType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedLandmarkType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer4";
@@ -2887,8 +2667,11 @@ pub const IAutomationPeer4 = extern struct {
 };
 pub const IAutomationPeer5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2896,19 +2679,19 @@ pub const IAutomationPeer5 = extern struct {
     pub fn IsPeripheral(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPeripheral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsDataValidForForm(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDataValidForForm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFullDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFullDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer5";
@@ -2930,8 +2713,11 @@ pub const IAutomationPeer5 = extern struct {
 };
 pub const IAutomationPeer6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2939,7 +2725,7 @@ pub const IAutomationPeer6 = extern struct {
     pub fn GetCulture(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetCulture(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer6";
@@ -2959,15 +2745,18 @@ pub const IAutomationPeer6 = extern struct {
 };
 pub const IAutomationPeer7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RaiseNotificationEvent(@ptrCast(self), notificationKind, notificationProcessing, displayString, activityId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer7";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2986,8 +2775,11 @@ pub const IAutomationPeer7 = extern struct {
 };
 pub const IAutomationPeer8 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2995,7 +2787,7 @@ pub const IAutomationPeer8 = extern struct {
     pub fn GetHeadingLevel(self: *@This()) core.HResult!AutomationHeadingLevel {
         var _r: AutomationHeadingLevel = undefined;
         const _c = self.vtable.GetHeadingLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer8";
@@ -3015,8 +2807,11 @@ pub const IAutomationPeer8 = extern struct {
 };
 pub const IAutomationPeer9 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3024,7 +2819,7 @@ pub const IAutomationPeer9 = extern struct {
     pub fn IsDialog(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDialog(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer9";
@@ -3044,8 +2839,11 @@ pub const IAutomationPeer9 = extern struct {
 };
 pub const IAutomationPeerAnnotation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3053,22 +2851,22 @@ pub const IAutomationPeerAnnotation = extern struct {
     pub fn getType(self: *@This()) core.HResult!AnnotationType {
         var _r: AnnotationType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putType(self: *@This(), value: AnnotationType) core.HResult!void {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPeer(self: *@This()) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.get_Peer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPeer(self: *@This(), value: *AutomationPeer) core.HResult!void {
         const _c = self.vtable.put_Peer(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerAnnotation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3090,8 +2888,11 @@ pub const IAutomationPeerAnnotation = extern struct {
 };
 pub const IAutomationPeerAnnotationFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3099,13 +2900,13 @@ pub const IAutomationPeerAnnotationFactory = extern struct {
     pub fn CreateInstance(self: *@This(), ty: AnnotationType) core.HResult!*AutomationPeerAnnotation {
         var _r: *AutomationPeerAnnotation = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithPeerParameter(self: *@This(), ty: AnnotationType, peer: *AutomationPeer) core.HResult!*AutomationPeerAnnotation {
         var _r: *AutomationPeerAnnotation = undefined;
         const _c = self.vtable.CreateWithPeerParameter(@ptrCast(self), ty, peer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerAnnotationFactory";
@@ -3126,8 +2927,11 @@ pub const IAutomationPeerAnnotationFactory = extern struct {
 };
 pub const IAutomationPeerAnnotationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3135,13 +2939,13 @@ pub const IAutomationPeerAnnotationStatics = extern struct {
     pub fn getTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPeerProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PeerProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerAnnotationStatics";
@@ -3162,8 +2966,11 @@ pub const IAutomationPeerAnnotationStatics = extern struct {
 };
 pub const IAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3171,7 +2978,7 @@ pub const IAutomationPeerFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerFactory";
@@ -3191,8 +2998,11 @@ pub const IAutomationPeerFactory = extern struct {
 };
 pub const IAutomationPeerOverrides = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3200,161 +3010,161 @@ pub const IAutomationPeerOverrides = extern struct {
     pub fn GetPatternCore(self: *@This(), patternInterface: PatternInterface) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetPatternCore(@ptrCast(self), patternInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAcceleratorKeyCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAcceleratorKeyCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAccessKeyCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAccessKeyCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAutomationControlTypeCore(self: *@This()) core.HResult!AutomationControlType {
         var _r: AutomationControlType = undefined;
         const _c = self.vtable.GetAutomationControlTypeCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAutomationIdCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAutomationIdCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBoundingRectangleCore(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.GetBoundingRectangleCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetChildrenCore(self: *@This()) core.HResult!*IVector(AutomationPeer) {
         var _r: *IVector(AutomationPeer) = undefined;
         const _c = self.vtable.GetChildrenCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetClassNameCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetClassNameCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetClickablePointCore(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetClickablePointCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetHelpTextCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetHelpTextCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemStatusCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemStatusCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemTypeCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemTypeCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLabeledByCore(self: *@This()) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.GetLabeledByCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalizedControlTypeCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedControlTypeCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNameCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNameCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetOrientationCore(self: *@This()) core.HResult!AutomationOrientation {
         var _r: AutomationOrientation = undefined;
         const _c = self.vtable.GetOrientationCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn HasKeyboardFocusCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasKeyboardFocusCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsContentElementCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsContentElementCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsControlElementCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsControlElementCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEnabledCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEnabledCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsKeyboardFocusableCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsKeyboardFocusableCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsOffscreenCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsOffscreenCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsPasswordCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPasswordCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsRequiredForFormCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsRequiredForFormCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetFocusCore(self: *@This()) core.HResult!void {
         const _c = self.vtable.SetFocusCore(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPeerFromPointCore(self: *@This(), point: Point) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.GetPeerFromPointCore(@ptrCast(self), point, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLiveSettingCore(self: *@This()) core.HResult!AutomationLiveSetting {
         var _r: AutomationLiveSetting = undefined;
         const _c = self.vtable.GetLiveSettingCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides";
@@ -3400,20 +3210,23 @@ pub const IAutomationPeerOverrides = extern struct {
 };
 pub const IAutomationPeerOverrides2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowContextMenuCore(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowContextMenuCore(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetControlledPeersCore(self: *@This()) core.HResult!*IVectorView(AutomationPeer) {
         var _r: *IVectorView(AutomationPeer) = undefined;
         const _c = self.vtable.GetControlledPeersCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides2";
@@ -3434,8 +3247,11 @@ pub const IAutomationPeerOverrides2 = extern struct {
 };
 pub const IAutomationPeerOverrides3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3443,43 +3259,43 @@ pub const IAutomationPeerOverrides3 = extern struct {
     pub fn NavigateCore(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.NavigateCore(@ptrCast(self), direction, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetElementFromPointCore(self: *@This(), pointInWindowCoordinates: Point) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetElementFromPointCore(@ptrCast(self), pointInWindowCoordinates, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFocusedElementCore(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetFocusedElementCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAnnotationsCore(self: *@This()) core.HResult!*IVector(AutomationPeerAnnotation) {
         var _r: *IVector(AutomationPeerAnnotation) = undefined;
         const _c = self.vtable.GetAnnotationsCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPositionInSetCore(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetPositionInSetCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSizeOfSetCore(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetSizeOfSetCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLevelCore(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetLevelCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides3";
@@ -3505,8 +3321,11 @@ pub const IAutomationPeerOverrides3 = extern struct {
 };
 pub const IAutomationPeerOverrides4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3514,13 +3333,13 @@ pub const IAutomationPeerOverrides4 = extern struct {
     pub fn GetLandmarkTypeCore(self: *@This()) core.HResult!AutomationLandmarkType {
         var _r: AutomationLandmarkType = undefined;
         const _c = self.vtable.GetLandmarkTypeCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalizedLandmarkTypeCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedLandmarkTypeCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides4";
@@ -3541,8 +3360,11 @@ pub const IAutomationPeerOverrides4 = extern struct {
 };
 pub const IAutomationPeerOverrides5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3550,37 +3372,37 @@ pub const IAutomationPeerOverrides5 = extern struct {
     pub fn IsPeripheralCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPeripheralCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsDataValidForFormCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDataValidForFormCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFullDescriptionCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFullDescriptionCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDescribedByCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var _r: *IIterable(AutomationPeer) = undefined;
         const _c = self.vtable.GetDescribedByCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFlowsToCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var _r: *IIterable(AutomationPeer) = undefined;
         const _c = self.vtable.GetFlowsToCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFlowsFromCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var _r: *IIterable(AutomationPeer) = undefined;
         const _c = self.vtable.GetFlowsFromCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides5";
@@ -3605,8 +3427,11 @@ pub const IAutomationPeerOverrides5 = extern struct {
 };
 pub const IAutomationPeerOverrides6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3614,7 +3439,7 @@ pub const IAutomationPeerOverrides6 = extern struct {
     pub fn GetCultureCore(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetCultureCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides6";
@@ -3634,8 +3459,11 @@ pub const IAutomationPeerOverrides6 = extern struct {
 };
 pub const IAutomationPeerOverrides8 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3643,7 +3471,7 @@ pub const IAutomationPeerOverrides8 = extern struct {
     pub fn GetHeadingLevelCore(self: *@This()) core.HResult!AutomationHeadingLevel {
         var _r: AutomationHeadingLevel = undefined;
         const _c = self.vtable.GetHeadingLevelCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides8";
@@ -3663,8 +3491,11 @@ pub const IAutomationPeerOverrides8 = extern struct {
 };
 pub const IAutomationPeerOverrides9 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3672,7 +3503,7 @@ pub const IAutomationPeerOverrides9 = extern struct {
     pub fn IsDialogCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDialogCore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides9";
@@ -3692,8 +3523,11 @@ pub const IAutomationPeerOverrides9 = extern struct {
 };
 pub const IAutomationPeerProtected = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3701,13 +3535,13 @@ pub const IAutomationPeerProtected = extern struct {
     pub fn PeerFromProvider(self: *@This(), provider: *IRawElementProviderSimple) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.PeerFromProvider(@ptrCast(self), provider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ProviderFromPeer(self: *@This(), peer: *AutomationPeer) core.HResult!*IRawElementProviderSimple {
         var _r: *IRawElementProviderSimple = undefined;
         const _c = self.vtable.ProviderFromPeer(@ptrCast(self), peer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerProtected";
@@ -3728,8 +3562,11 @@ pub const IAutomationPeerProtected = extern struct {
 };
 pub const IAutomationPeerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3737,7 +3574,7 @@ pub const IAutomationPeerStatics = extern struct {
     pub fn ListenerExists(self: *@This(), eventId: AutomationEvents) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ListenerExists(@ptrCast(self), eventId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerStatics";
@@ -3757,8 +3594,11 @@ pub const IAutomationPeerStatics = extern struct {
 };
 pub const IAutomationPeerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3766,7 +3606,7 @@ pub const IAutomationPeerStatics3 = extern struct {
     pub fn GenerateRawElementProviderRuntimeId(self: *@This()) core.HResult!RawElementProviderRuntimeId {
         var _r: RawElementProviderRuntimeId = undefined;
         const _c = self.vtable.GenerateRawElementProviderRuntimeId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeerStatics3";
@@ -3786,8 +3626,11 @@ pub const IAutomationPeerStatics3 = extern struct {
 };
 pub const IButtonAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3808,8 +3651,11 @@ pub const IButtonAutomationPeer = extern struct {
 };
 pub const IButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3817,7 +3663,7 @@ pub const IButtonAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Button, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonAutomationPeer {
         var _r: *ButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IButtonAutomationPeerFactory";
@@ -3837,8 +3683,11 @@ pub const IButtonAutomationPeerFactory = extern struct {
 };
 pub const IButtonBaseAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3859,8 +3708,11 @@ pub const IButtonBaseAutomationPeer = extern struct {
 };
 pub const IButtonBaseAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3868,7 +3720,7 @@ pub const IButtonBaseAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ButtonBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonBaseAutomationPeer {
         var _r: *ButtonBaseAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IButtonBaseAutomationPeerFactory";
@@ -3888,8 +3740,11 @@ pub const IButtonBaseAutomationPeerFactory = extern struct {
 };
 pub const ICalendarDatePickerAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3910,8 +3765,11 @@ pub const ICalendarDatePickerAutomationPeer = extern struct {
 };
 pub const ICalendarDatePickerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3919,7 +3777,7 @@ pub const ICalendarDatePickerAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *CalendarDatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarDatePickerAutomationPeer {
         var _r: *CalendarDatePickerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ICalendarDatePickerAutomationPeerFactory";
@@ -3939,8 +3797,11 @@ pub const ICalendarDatePickerAutomationPeerFactory = extern struct {
 };
 pub const ICaptureElementAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3961,8 +3822,11 @@ pub const ICaptureElementAutomationPeer = extern struct {
 };
 pub const ICaptureElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3970,7 +3834,7 @@ pub const ICaptureElementAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *CaptureElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CaptureElementAutomationPeer {
         var _r: *CaptureElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ICaptureElementAutomationPeerFactory";
@@ -3990,8 +3854,11 @@ pub const ICaptureElementAutomationPeerFactory = extern struct {
 };
 pub const ICheckBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4012,8 +3879,11 @@ pub const ICheckBoxAutomationPeer = extern struct {
 };
 pub const ICheckBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4021,7 +3891,7 @@ pub const ICheckBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *CheckBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CheckBoxAutomationPeer {
         var _r: *CheckBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ICheckBoxAutomationPeerFactory";
@@ -4041,8 +3911,11 @@ pub const ICheckBoxAutomationPeerFactory = extern struct {
 };
 pub const IColorPickerSliderAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4063,8 +3936,11 @@ pub const IColorPickerSliderAutomationPeer = extern struct {
 };
 pub const IColorPickerSliderAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4072,7 +3948,7 @@ pub const IColorPickerSliderAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ColorPickerSlider, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorPickerSliderAutomationPeer {
         var _r: *ColorPickerSliderAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IColorPickerSliderAutomationPeerFactory";
@@ -4092,8 +3968,11 @@ pub const IColorPickerSliderAutomationPeerFactory = extern struct {
 };
 pub const IColorSpectrumAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4114,8 +3993,11 @@ pub const IColorSpectrumAutomationPeer = extern struct {
 };
 pub const IColorSpectrumAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4123,7 +4005,7 @@ pub const IColorSpectrumAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ColorSpectrum, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorSpectrumAutomationPeer {
         var _r: *ColorSpectrumAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IColorSpectrumAutomationPeerFactory";
@@ -4143,8 +4025,11 @@ pub const IColorSpectrumAutomationPeerFactory = extern struct {
 };
 pub const IComboBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4165,8 +4050,11 @@ pub const IComboBoxAutomationPeer = extern struct {
 };
 pub const IComboBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4174,7 +4062,7 @@ pub const IComboBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ComboBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxAutomationPeer {
         var _r: *ComboBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IComboBoxAutomationPeerFactory";
@@ -4194,8 +4082,11 @@ pub const IComboBoxAutomationPeerFactory = extern struct {
 };
 pub const IComboBoxItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4216,8 +4107,11 @@ pub const IComboBoxItemAutomationPeer = extern struct {
 };
 pub const IComboBoxItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4225,7 +4119,7 @@ pub const IComboBoxItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ComboBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemAutomationPeer {
         var _r: *ComboBoxItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IComboBoxItemAutomationPeerFactory";
@@ -4245,8 +4139,11 @@ pub const IComboBoxItemAutomationPeerFactory = extern struct {
 };
 pub const IComboBoxItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4267,8 +4164,11 @@ pub const IComboBoxItemDataAutomationPeer = extern struct {
 };
 pub const IComboBoxItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4276,7 +4176,7 @@ pub const IComboBoxItemDataAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ComboBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemDataAutomationPeer {
         var _r: *ComboBoxItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IComboBoxItemDataAutomationPeerFactory";
@@ -4296,8 +4196,11 @@ pub const IComboBoxItemDataAutomationPeerFactory = extern struct {
 };
 pub const IDatePickerAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4318,8 +4221,11 @@ pub const IDatePickerAutomationPeer = extern struct {
 };
 pub const IDatePickerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4327,7 +4233,7 @@ pub const IDatePickerAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *DatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DatePickerAutomationPeer {
         var _r: *DatePickerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IDatePickerAutomationPeerFactory";
@@ -4347,8 +4253,11 @@ pub const IDatePickerAutomationPeerFactory = extern struct {
 };
 pub const IDatePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4369,8 +4278,11 @@ pub const IDatePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IFlipViewAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4391,8 +4303,11 @@ pub const IFlipViewAutomationPeer = extern struct {
 };
 pub const IFlipViewAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4400,7 +4315,7 @@ pub const IFlipViewAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FlipView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewAutomationPeer {
         var _r: *FlipViewAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlipViewAutomationPeerFactory";
@@ -4420,8 +4335,11 @@ pub const IFlipViewAutomationPeerFactory = extern struct {
 };
 pub const IFlipViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4442,8 +4360,11 @@ pub const IFlipViewItemAutomationPeer = extern struct {
 };
 pub const IFlipViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4451,7 +4372,7 @@ pub const IFlipViewItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FlipViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemAutomationPeer {
         var _r: *FlipViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlipViewItemAutomationPeerFactory";
@@ -4471,8 +4392,11 @@ pub const IFlipViewItemAutomationPeerFactory = extern struct {
 };
 pub const IFlipViewItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4493,8 +4417,11 @@ pub const IFlipViewItemDataAutomationPeer = extern struct {
 };
 pub const IFlipViewItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4502,7 +4429,7 @@ pub const IFlipViewItemDataAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *FlipViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemDataAutomationPeer {
         var _r: *FlipViewItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlipViewItemDataAutomationPeerFactory";
@@ -4522,8 +4449,11 @@ pub const IFlipViewItemDataAutomationPeerFactory = extern struct {
 };
 pub const IFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4544,8 +4474,11 @@ pub const IFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IFlyoutPresenterAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4553,7 +4486,7 @@ pub const IFlyoutPresenterAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutPresenterAutomationPeer {
         var _r: *FlyoutPresenterAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlyoutPresenterAutomationPeerFactory";
@@ -4573,8 +4506,11 @@ pub const IFlyoutPresenterAutomationPeerFactory = extern struct {
 };
 pub const IFrameworkElementAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4582,7 +4518,7 @@ pub const IFrameworkElementAutomationPeer = extern struct {
     pub fn getOwner(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Owner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFrameworkElementAutomationPeer";
@@ -4602,8 +4538,11 @@ pub const IFrameworkElementAutomationPeer = extern struct {
 };
 pub const IFrameworkElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4611,7 +4550,7 @@ pub const IFrameworkElementAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FrameworkElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FrameworkElementAutomationPeer {
         var _r: *FrameworkElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFrameworkElementAutomationPeerFactory";
@@ -4631,8 +4570,11 @@ pub const IFrameworkElementAutomationPeerFactory = extern struct {
 };
 pub const IFrameworkElementAutomationPeerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4640,13 +4582,13 @@ pub const IFrameworkElementAutomationPeerStatics = extern struct {
     pub fn FromElement(self: *@This(), element: *UIElement) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.FromElement(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreatePeerForElement(self: *@This(), element: *UIElement) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.CreatePeerForElement(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFrameworkElementAutomationPeerStatics";
@@ -4667,8 +4609,11 @@ pub const IFrameworkElementAutomationPeerStatics = extern struct {
 };
 pub const IGridViewAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4689,8 +4634,11 @@ pub const IGridViewAutomationPeer = extern struct {
 };
 pub const IGridViewAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4698,7 +4646,7 @@ pub const IGridViewAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GridView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewAutomationPeer {
         var _r: *GridViewAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewAutomationPeerFactory";
@@ -4718,8 +4666,11 @@ pub const IGridViewAutomationPeerFactory = extern struct {
 };
 pub const IGridViewHeaderItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4740,8 +4691,11 @@ pub const IGridViewHeaderItemAutomationPeer = extern struct {
 };
 pub const IGridViewHeaderItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4749,7 +4703,7 @@ pub const IGridViewHeaderItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GridViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewHeaderItemAutomationPeer {
         var _r: *GridViewHeaderItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewHeaderItemAutomationPeerFactory";
@@ -4769,8 +4723,11 @@ pub const IGridViewHeaderItemAutomationPeerFactory = extern struct {
 };
 pub const IGridViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4791,8 +4748,11 @@ pub const IGridViewItemAutomationPeer = extern struct {
 };
 pub const IGridViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4800,7 +4760,7 @@ pub const IGridViewItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GridViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemAutomationPeer {
         var _r: *GridViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewItemAutomationPeerFactory";
@@ -4820,8 +4780,11 @@ pub const IGridViewItemAutomationPeerFactory = extern struct {
 };
 pub const IGridViewItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4842,8 +4805,11 @@ pub const IGridViewItemDataAutomationPeer = extern struct {
 };
 pub const IGridViewItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4851,7 +4817,7 @@ pub const IGridViewItemDataAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *GridViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemDataAutomationPeer {
         var _r: *GridViewItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewItemDataAutomationPeerFactory";
@@ -4871,8 +4837,11 @@ pub const IGridViewItemDataAutomationPeerFactory = extern struct {
 };
 pub const IGroupItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4893,8 +4862,11 @@ pub const IGroupItemAutomationPeer = extern struct {
 };
 pub const IGroupItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4902,7 +4874,7 @@ pub const IGroupItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GroupItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GroupItemAutomationPeer {
         var _r: *GroupItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGroupItemAutomationPeerFactory";
@@ -4922,8 +4894,11 @@ pub const IGroupItemAutomationPeerFactory = extern struct {
 };
 pub const IHubAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4944,8 +4919,11 @@ pub const IHubAutomationPeer = extern struct {
 };
 pub const IHubAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4953,7 +4931,7 @@ pub const IHubAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Hub, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubAutomationPeer {
         var _r: *HubAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IHubAutomationPeerFactory";
@@ -4973,8 +4951,11 @@ pub const IHubAutomationPeerFactory = extern struct {
 };
 pub const IHubSectionAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4995,8 +4976,11 @@ pub const IHubSectionAutomationPeer = extern struct {
 };
 pub const IHubSectionAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5004,7 +4988,7 @@ pub const IHubSectionAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *HubSection, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubSectionAutomationPeer {
         var _r: *HubSectionAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IHubSectionAutomationPeerFactory";
@@ -5024,8 +5008,11 @@ pub const IHubSectionAutomationPeerFactory = extern struct {
 };
 pub const IHyperlinkButtonAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5046,8 +5033,11 @@ pub const IHyperlinkButtonAutomationPeer = extern struct {
 };
 pub const IHyperlinkButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5055,7 +5045,7 @@ pub const IHyperlinkButtonAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *HyperlinkButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HyperlinkButtonAutomationPeer {
         var _r: *HyperlinkButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IHyperlinkButtonAutomationPeerFactory";
@@ -5075,8 +5065,11 @@ pub const IHyperlinkButtonAutomationPeerFactory = extern struct {
 };
 pub const IImageAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5097,8 +5090,11 @@ pub const IImageAutomationPeer = extern struct {
 };
 pub const IImageAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5106,7 +5102,7 @@ pub const IImageAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Image, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ImageAutomationPeer {
         var _r: *ImageAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IImageAutomationPeerFactory";
@@ -5126,8 +5122,11 @@ pub const IImageAutomationPeerFactory = extern struct {
 };
 pub const IInkToolbarAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5148,8 +5147,11 @@ pub const IInkToolbarAutomationPeer = extern struct {
 };
 pub const IItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5157,13 +5159,13 @@ pub const IItemAutomationPeer = extern struct {
     pub fn getItem(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Item(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemsControlAutomationPeer(self: *@This()) core.HResult!*ItemsControlAutomationPeer {
         var _r: *ItemsControlAutomationPeer = undefined;
         const _c = self.vtable.get_ItemsControlAutomationPeer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IItemAutomationPeer";
@@ -5184,8 +5186,11 @@ pub const IItemAutomationPeer = extern struct {
 };
 pub const IItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5193,7 +5198,7 @@ pub const IItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ItemsControlAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemAutomationPeer {
         var _r: *ItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IItemAutomationPeerFactory";
@@ -5213,8 +5218,11 @@ pub const IItemAutomationPeerFactory = extern struct {
 };
 pub const IItemsControlAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5235,8 +5243,11 @@ pub const IItemsControlAutomationPeer = extern struct {
 };
 pub const IItemsControlAutomationPeer2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5244,7 +5255,7 @@ pub const IItemsControlAutomationPeer2 = extern struct {
     pub fn CreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var _r: *ItemAutomationPeer = undefined;
         const _c = self.vtable.CreateItemAutomationPeer(@ptrCast(self), item, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IItemsControlAutomationPeer2";
@@ -5264,8 +5275,11 @@ pub const IItemsControlAutomationPeer2 = extern struct {
 };
 pub const IItemsControlAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5273,7 +5287,7 @@ pub const IItemsControlAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ItemsControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemsControlAutomationPeer {
         var _r: *ItemsControlAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IItemsControlAutomationPeerFactory";
@@ -5293,8 +5307,11 @@ pub const IItemsControlAutomationPeerFactory = extern struct {
 };
 pub const IItemsControlAutomationPeerOverrides2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5302,7 +5319,7 @@ pub const IItemsControlAutomationPeerOverrides2 = extern struct {
     pub fn OnCreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var _r: *ItemAutomationPeer = undefined;
         const _c = self.vtable.OnCreateItemAutomationPeer(@ptrCast(self), item, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IItemsControlAutomationPeerOverrides2";
@@ -5322,8 +5339,11 @@ pub const IItemsControlAutomationPeerOverrides2 = extern struct {
 };
 pub const IListBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5344,8 +5364,11 @@ pub const IListBoxAutomationPeer = extern struct {
 };
 pub const IListBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5353,7 +5376,7 @@ pub const IListBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxAutomationPeer {
         var _r: *ListBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListBoxAutomationPeerFactory";
@@ -5373,8 +5396,11 @@ pub const IListBoxAutomationPeerFactory = extern struct {
 };
 pub const IListBoxItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5395,8 +5421,11 @@ pub const IListBoxItemAutomationPeer = extern struct {
 };
 pub const IListBoxItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5404,7 +5433,7 @@ pub const IListBoxItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemAutomationPeer {
         var _r: *ListBoxItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListBoxItemAutomationPeerFactory";
@@ -5424,8 +5453,11 @@ pub const IListBoxItemAutomationPeerFactory = extern struct {
 };
 pub const IListBoxItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5446,8 +5478,11 @@ pub const IListBoxItemDataAutomationPeer = extern struct {
 };
 pub const IListBoxItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5455,7 +5490,7 @@ pub const IListBoxItemDataAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ListBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemDataAutomationPeer {
         var _r: *ListBoxItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListBoxItemDataAutomationPeerFactory";
@@ -5475,8 +5510,11 @@ pub const IListBoxItemDataAutomationPeerFactory = extern struct {
 };
 pub const IListPickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5497,8 +5535,11 @@ pub const IListPickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IListViewAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5519,8 +5560,11 @@ pub const IListViewAutomationPeer = extern struct {
 };
 pub const IListViewAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5528,7 +5572,7 @@ pub const IListViewAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewAutomationPeer {
         var _r: *ListViewAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewAutomationPeerFactory";
@@ -5548,8 +5592,11 @@ pub const IListViewAutomationPeerFactory = extern struct {
 };
 pub const IListViewBaseAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5570,8 +5617,11 @@ pub const IListViewBaseAutomationPeer = extern struct {
 };
 pub const IListViewBaseAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5579,7 +5629,7 @@ pub const IListViewBaseAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseAutomationPeer {
         var _r: *ListViewBaseAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewBaseAutomationPeerFactory";
@@ -5599,8 +5649,11 @@ pub const IListViewBaseAutomationPeerFactory = extern struct {
 };
 pub const IListViewBaseHeaderItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5621,8 +5674,11 @@ pub const IListViewBaseHeaderItemAutomationPeer = extern struct {
 };
 pub const IListViewBaseHeaderItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5630,7 +5686,7 @@ pub const IListViewBaseHeaderItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewBaseHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseHeaderItemAutomationPeer {
         var _r: *ListViewBaseHeaderItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewBaseHeaderItemAutomationPeerFactory";
@@ -5650,8 +5706,11 @@ pub const IListViewBaseHeaderItemAutomationPeerFactory = extern struct {
 };
 pub const IListViewHeaderItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5672,8 +5731,11 @@ pub const IListViewHeaderItemAutomationPeer = extern struct {
 };
 pub const IListViewHeaderItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5681,7 +5743,7 @@ pub const IListViewHeaderItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewHeaderItemAutomationPeer {
         var _r: *ListViewHeaderItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewHeaderItemAutomationPeerFactory";
@@ -5701,8 +5763,11 @@ pub const IListViewHeaderItemAutomationPeerFactory = extern struct {
 };
 pub const IListViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5723,8 +5788,11 @@ pub const IListViewItemAutomationPeer = extern struct {
 };
 pub const IListViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5732,7 +5800,7 @@ pub const IListViewItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemAutomationPeer {
         var _r: *ListViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewItemAutomationPeerFactory";
@@ -5752,8 +5820,11 @@ pub const IListViewItemAutomationPeerFactory = extern struct {
 };
 pub const IListViewItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5774,8 +5845,11 @@ pub const IListViewItemDataAutomationPeer = extern struct {
 };
 pub const IListViewItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5783,7 +5857,7 @@ pub const IListViewItemDataAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ListViewBaseAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemDataAutomationPeer {
         var _r: *ListViewItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewItemDataAutomationPeerFactory";
@@ -5803,8 +5877,11 @@ pub const IListViewItemDataAutomationPeerFactory = extern struct {
 };
 pub const ILoopingSelectorAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5825,8 +5902,11 @@ pub const ILoopingSelectorAutomationPeer = extern struct {
 };
 pub const ILoopingSelectorItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5847,8 +5927,11 @@ pub const ILoopingSelectorItemAutomationPeer = extern struct {
 };
 pub const ILoopingSelectorItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5869,8 +5952,11 @@ pub const ILoopingSelectorItemDataAutomationPeer = extern struct {
 };
 pub const IMapControlAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5891,8 +5977,11 @@ pub const IMapControlAutomationPeer = extern struct {
 };
 pub const IMediaElementAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5913,8 +6002,11 @@ pub const IMediaElementAutomationPeer = extern struct {
 };
 pub const IMediaElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5922,7 +6014,7 @@ pub const IMediaElementAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MediaElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaElementAutomationPeer {
         var _r: *MediaElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMediaElementAutomationPeerFactory";
@@ -5942,8 +6034,11 @@ pub const IMediaElementAutomationPeerFactory = extern struct {
 };
 pub const IMediaPlayerElementAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5964,8 +6059,11 @@ pub const IMediaPlayerElementAutomationPeer = extern struct {
 };
 pub const IMediaPlayerElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5973,7 +6071,7 @@ pub const IMediaPlayerElementAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MediaPlayerElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaPlayerElementAutomationPeer {
         var _r: *MediaPlayerElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMediaPlayerElementAutomationPeerFactory";
@@ -5993,8 +6091,11 @@ pub const IMediaPlayerElementAutomationPeerFactory = extern struct {
 };
 pub const IMediaTransportControlsAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6015,8 +6116,11 @@ pub const IMediaTransportControlsAutomationPeer = extern struct {
 };
 pub const IMediaTransportControlsAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6024,7 +6128,7 @@ pub const IMediaTransportControlsAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MediaTransportControls, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaTransportControlsAutomationPeer {
         var _r: *MediaTransportControlsAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMediaTransportControlsAutomationPeerFactory";
@@ -6044,8 +6148,11 @@ pub const IMediaTransportControlsAutomationPeerFactory = extern struct {
 };
 pub const IMenuBarAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6066,8 +6173,11 @@ pub const IMenuBarAutomationPeer = extern struct {
 };
 pub const IMenuBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6075,7 +6185,7 @@ pub const IMenuBarAutomationPeerFactory = extern struct {
     pub fn CreateInstance(self: *@This(), owner: *MenuBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarAutomationPeer {
         var _r: *MenuBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuBarAutomationPeerFactory";
@@ -6095,8 +6205,11 @@ pub const IMenuBarAutomationPeerFactory = extern struct {
 };
 pub const IMenuBarItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6117,8 +6230,11 @@ pub const IMenuBarItemAutomationPeer = extern struct {
 };
 pub const IMenuBarItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6126,7 +6242,7 @@ pub const IMenuBarItemAutomationPeerFactory = extern struct {
     pub fn CreateInstance(self: *@This(), owner: *MenuBarItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarItemAutomationPeer {
         var _r: *MenuBarItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuBarItemAutomationPeerFactory";
@@ -6146,8 +6262,11 @@ pub const IMenuBarItemAutomationPeerFactory = extern struct {
 };
 pub const IMenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6168,8 +6287,11 @@ pub const IMenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const IMenuFlyoutItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6177,7 +6299,7 @@ pub const IMenuFlyoutItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutItemAutomationPeer {
         var _r: *MenuFlyoutItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuFlyoutItemAutomationPeerFactory";
@@ -6197,8 +6319,11 @@ pub const IMenuFlyoutItemAutomationPeerFactory = extern struct {
 };
 pub const IMenuFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6219,8 +6344,11 @@ pub const IMenuFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IMenuFlyoutPresenterAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6228,7 +6356,7 @@ pub const IMenuFlyoutPresenterAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MenuFlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutPresenterAutomationPeer {
         var _r: *MenuFlyoutPresenterAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuFlyoutPresenterAutomationPeerFactory";
@@ -6248,8 +6376,11 @@ pub const IMenuFlyoutPresenterAutomationPeerFactory = extern struct {
 };
 pub const INavigationViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6270,8 +6401,11 @@ pub const INavigationViewItemAutomationPeer = extern struct {
 };
 pub const INavigationViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6279,7 +6413,7 @@ pub const INavigationViewItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *NavigationViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemAutomationPeer {
         var _r: *NavigationViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.INavigationViewItemAutomationPeerFactory";
@@ -6299,8 +6433,11 @@ pub const INavigationViewItemAutomationPeerFactory = extern struct {
 };
 pub const IPasswordBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6321,8 +6458,11 @@ pub const IPasswordBoxAutomationPeer = extern struct {
 };
 pub const IPasswordBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6330,7 +6470,7 @@ pub const IPasswordBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *PasswordBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PasswordBoxAutomationPeer {
         var _r: *PasswordBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPasswordBoxAutomationPeerFactory";
@@ -6350,8 +6490,11 @@ pub const IPasswordBoxAutomationPeerFactory = extern struct {
 };
 pub const IPersonPictureAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6372,8 +6515,11 @@ pub const IPersonPictureAutomationPeer = extern struct {
 };
 pub const IPersonPictureAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6381,7 +6527,7 @@ pub const IPersonPictureAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *PersonPicture, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PersonPictureAutomationPeer {
         var _r: *PersonPictureAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPersonPictureAutomationPeerFactory";
@@ -6401,8 +6547,11 @@ pub const IPersonPictureAutomationPeerFactory = extern struct {
 };
 pub const IPickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6423,8 +6572,11 @@ pub const IPickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IPivotAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6445,8 +6597,11 @@ pub const IPivotAutomationPeer = extern struct {
 };
 pub const IPivotAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6454,7 +6609,7 @@ pub const IPivotAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Pivot) core.HResult!*PivotAutomationPeer {
         var _r: *PivotAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPivotAutomationPeerFactory";
@@ -6474,8 +6629,11 @@ pub const IPivotAutomationPeerFactory = extern struct {
 };
 pub const IPivotItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6496,8 +6654,11 @@ pub const IPivotItemAutomationPeer = extern struct {
 };
 pub const IPivotItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6505,7 +6666,7 @@ pub const IPivotItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *PivotItem) core.HResult!*PivotItemAutomationPeer {
         var _r: *PivotItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPivotItemAutomationPeerFactory";
@@ -6525,8 +6686,11 @@ pub const IPivotItemAutomationPeerFactory = extern struct {
 };
 pub const IPivotItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6547,8 +6711,11 @@ pub const IPivotItemDataAutomationPeer = extern struct {
 };
 pub const IPivotItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6556,7 +6723,7 @@ pub const IPivotItemDataAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *PivotAutomationPeer) core.HResult!*PivotItemDataAutomationPeer {
         var _r: *PivotItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPivotItemDataAutomationPeerFactory";
@@ -6576,8 +6743,11 @@ pub const IPivotItemDataAutomationPeerFactory = extern struct {
 };
 pub const IProgressBarAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6598,8 +6768,11 @@ pub const IProgressBarAutomationPeer = extern struct {
 };
 pub const IProgressBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6607,7 +6780,7 @@ pub const IProgressBarAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ProgressBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ProgressBarAutomationPeer {
         var _r: *ProgressBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IProgressBarAutomationPeerFactory";
@@ -6627,8 +6800,11 @@ pub const IProgressBarAutomationPeerFactory = extern struct {
 };
 pub const IProgressRingAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6649,8 +6825,11 @@ pub const IProgressRingAutomationPeer = extern struct {
 };
 pub const IProgressRingAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6658,7 +6837,7 @@ pub const IProgressRingAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ProgressRing, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ProgressRingAutomationPeer {
         var _r: *ProgressRingAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IProgressRingAutomationPeerFactory";
@@ -6678,8 +6857,11 @@ pub const IProgressRingAutomationPeerFactory = extern struct {
 };
 pub const IRadioButtonAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6700,8 +6882,11 @@ pub const IRadioButtonAutomationPeer = extern struct {
 };
 pub const IRadioButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6709,7 +6894,7 @@ pub const IRadioButtonAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RadioButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RadioButtonAutomationPeer {
         var _r: *RadioButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRadioButtonAutomationPeerFactory";
@@ -6729,8 +6914,11 @@ pub const IRadioButtonAutomationPeerFactory = extern struct {
 };
 pub const IRangeBaseAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6751,8 +6939,11 @@ pub const IRangeBaseAutomationPeer = extern struct {
 };
 pub const IRangeBaseAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6760,7 +6951,7 @@ pub const IRangeBaseAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RangeBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBaseAutomationPeer {
         var _r: *RangeBaseAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRangeBaseAutomationPeerFactory";
@@ -6780,8 +6971,11 @@ pub const IRangeBaseAutomationPeerFactory = extern struct {
 };
 pub const IRatingControlAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6802,8 +6996,11 @@ pub const IRatingControlAutomationPeer = extern struct {
 };
 pub const IRatingControlAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6811,7 +7008,7 @@ pub const IRatingControlAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RatingControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RatingControlAutomationPeer {
         var _r: *RatingControlAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRatingControlAutomationPeerFactory";
@@ -6831,8 +7028,11 @@ pub const IRatingControlAutomationPeerFactory = extern struct {
 };
 pub const IRepeatButtonAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6853,8 +7053,11 @@ pub const IRepeatButtonAutomationPeer = extern struct {
 };
 pub const IRepeatButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6862,7 +7065,7 @@ pub const IRepeatButtonAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RepeatButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RepeatButtonAutomationPeer {
         var _r: *RepeatButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRepeatButtonAutomationPeerFactory";
@@ -6882,8 +7085,11 @@ pub const IRepeatButtonAutomationPeerFactory = extern struct {
 };
 pub const IRichEditBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6904,8 +7110,11 @@ pub const IRichEditBoxAutomationPeer = extern struct {
 };
 pub const IRichEditBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6913,7 +7122,7 @@ pub const IRichEditBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RichEditBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichEditBoxAutomationPeer {
         var _r: *RichEditBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRichEditBoxAutomationPeerFactory";
@@ -6933,8 +7142,11 @@ pub const IRichEditBoxAutomationPeerFactory = extern struct {
 };
 pub const IRichTextBlockAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6955,8 +7167,11 @@ pub const IRichTextBlockAutomationPeer = extern struct {
 };
 pub const IRichTextBlockAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6964,7 +7179,7 @@ pub const IRichTextBlockAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RichTextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichTextBlockAutomationPeer {
         var _r: *RichTextBlockAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRichTextBlockAutomationPeerFactory";
@@ -6984,8 +7199,11 @@ pub const IRichTextBlockAutomationPeerFactory = extern struct {
 };
 pub const IRichTextBlockOverflowAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7006,8 +7224,11 @@ pub const IRichTextBlockOverflowAutomationPeer = extern struct {
 };
 pub const IRichTextBlockOverflowAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7015,7 +7236,7 @@ pub const IRichTextBlockOverflowAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RichTextBlockOverflow, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichTextBlockOverflowAutomationPeer {
         var _r: *RichTextBlockOverflowAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRichTextBlockOverflowAutomationPeerFactory";
@@ -7035,8 +7256,11 @@ pub const IRichTextBlockOverflowAutomationPeerFactory = extern struct {
 };
 pub const IScrollBarAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7057,8 +7281,11 @@ pub const IScrollBarAutomationPeer = extern struct {
 };
 pub const IScrollBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7066,7 +7293,7 @@ pub const IScrollBarAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ScrollBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollBarAutomationPeer {
         var _r: *ScrollBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IScrollBarAutomationPeerFactory";
@@ -7086,8 +7313,11 @@ pub const IScrollBarAutomationPeerFactory = extern struct {
 };
 pub const IScrollViewerAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7108,8 +7338,11 @@ pub const IScrollViewerAutomationPeer = extern struct {
 };
 pub const IScrollViewerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7117,7 +7350,7 @@ pub const IScrollViewerAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ScrollViewer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollViewerAutomationPeer {
         var _r: *ScrollViewerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IScrollViewerAutomationPeerFactory";
@@ -7137,8 +7370,11 @@ pub const IScrollViewerAutomationPeerFactory = extern struct {
 };
 pub const ISearchBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7159,8 +7395,11 @@ pub const ISearchBoxAutomationPeer = extern struct {
 };
 pub const ISearchBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7168,7 +7407,7 @@ pub const ISearchBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *SearchBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SearchBoxAutomationPeer {
         var _r: *SearchBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISearchBoxAutomationPeerFactory";
@@ -7188,8 +7427,11 @@ pub const ISearchBoxAutomationPeerFactory = extern struct {
 };
 pub const ISelectorAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7210,8 +7452,11 @@ pub const ISelectorAutomationPeer = extern struct {
 };
 pub const ISelectorAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7219,7 +7464,7 @@ pub const ISelectorAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Selector, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorAutomationPeer {
         var _r: *SelectorAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISelectorAutomationPeerFactory";
@@ -7239,8 +7484,11 @@ pub const ISelectorAutomationPeerFactory = extern struct {
 };
 pub const ISelectorItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7261,8 +7509,11 @@ pub const ISelectorItemAutomationPeer = extern struct {
 };
 pub const ISelectorItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7270,7 +7521,7 @@ pub const ISelectorItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *SelectorAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItemAutomationPeer {
         var _r: *SelectorItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISelectorItemAutomationPeerFactory";
@@ -7290,8 +7541,11 @@ pub const ISelectorItemAutomationPeerFactory = extern struct {
 };
 pub const ISemanticZoomAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7312,8 +7566,11 @@ pub const ISemanticZoomAutomationPeer = extern struct {
 };
 pub const ISemanticZoomAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7321,7 +7578,7 @@ pub const ISemanticZoomAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *SemanticZoom, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SemanticZoomAutomationPeer {
         var _r: *SemanticZoomAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISemanticZoomAutomationPeerFactory";
@@ -7341,8 +7598,11 @@ pub const ISemanticZoomAutomationPeerFactory = extern struct {
 };
 pub const ISettingsFlyoutAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7363,8 +7623,11 @@ pub const ISettingsFlyoutAutomationPeer = extern struct {
 };
 pub const ISettingsFlyoutAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7372,7 +7635,7 @@ pub const ISettingsFlyoutAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *SettingsFlyout, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SettingsFlyoutAutomationPeer {
         var _r: *SettingsFlyoutAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISettingsFlyoutAutomationPeerFactory";
@@ -7392,8 +7655,11 @@ pub const ISettingsFlyoutAutomationPeerFactory = extern struct {
 };
 pub const ISliderAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7414,8 +7680,11 @@ pub const ISliderAutomationPeer = extern struct {
 };
 pub const ISliderAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7423,7 +7692,7 @@ pub const ISliderAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Slider, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SliderAutomationPeer {
         var _r: *SliderAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISliderAutomationPeerFactory";
@@ -7443,8 +7712,11 @@ pub const ISliderAutomationPeerFactory = extern struct {
 };
 pub const ITextBlockAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7465,8 +7737,11 @@ pub const ITextBlockAutomationPeer = extern struct {
 };
 pub const ITextBlockAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7474,7 +7749,7 @@ pub const ITextBlockAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextBlockAutomationPeer {
         var _r: *TextBlockAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITextBlockAutomationPeerFactory";
@@ -7494,8 +7769,11 @@ pub const ITextBlockAutomationPeerFactory = extern struct {
 };
 pub const ITextBoxAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7516,8 +7794,11 @@ pub const ITextBoxAutomationPeer = extern struct {
 };
 pub const ITextBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7525,7 +7806,7 @@ pub const ITextBoxAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TextBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextBoxAutomationPeer {
         var _r: *TextBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITextBoxAutomationPeerFactory";
@@ -7545,8 +7826,11 @@ pub const ITextBoxAutomationPeerFactory = extern struct {
 };
 pub const IThumbAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7567,8 +7851,11 @@ pub const IThumbAutomationPeer = extern struct {
 };
 pub const IThumbAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7576,7 +7863,7 @@ pub const IThumbAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Thumb, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ThumbAutomationPeer {
         var _r: *ThumbAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IThumbAutomationPeerFactory";
@@ -7596,8 +7883,11 @@ pub const IThumbAutomationPeerFactory = extern struct {
 };
 pub const ITimePickerAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7618,8 +7908,11 @@ pub const ITimePickerAutomationPeer = extern struct {
 };
 pub const ITimePickerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7627,7 +7920,7 @@ pub const ITimePickerAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TimePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TimePickerAutomationPeer {
         var _r: *TimePickerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITimePickerAutomationPeerFactory";
@@ -7647,8 +7940,11 @@ pub const ITimePickerAutomationPeerFactory = extern struct {
 };
 pub const ITimePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7669,8 +7965,11 @@ pub const ITimePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IToggleButtonAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7691,8 +7990,11 @@ pub const IToggleButtonAutomationPeer = extern struct {
 };
 pub const IToggleButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7700,7 +8002,7 @@ pub const IToggleButtonAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButtonAutomationPeer {
         var _r: *ToggleButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IToggleButtonAutomationPeerFactory";
@@ -7720,8 +8022,11 @@ pub const IToggleButtonAutomationPeerFactory = extern struct {
 };
 pub const IToggleMenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7742,8 +8047,11 @@ pub const IToggleMenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const IToggleMenuFlyoutItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7751,7 +8059,7 @@ pub const IToggleMenuFlyoutItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ToggleMenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleMenuFlyoutItemAutomationPeer {
         var _r: *ToggleMenuFlyoutItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IToggleMenuFlyoutItemAutomationPeerFactory";
@@ -7771,8 +8079,11 @@ pub const IToggleMenuFlyoutItemAutomationPeerFactory = extern struct {
 };
 pub const IToggleSwitchAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7793,8 +8104,11 @@ pub const IToggleSwitchAutomationPeer = extern struct {
 };
 pub const IToggleSwitchAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7802,7 +8116,7 @@ pub const IToggleSwitchAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ToggleSwitch, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleSwitchAutomationPeer {
         var _r: *ToggleSwitchAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IToggleSwitchAutomationPeerFactory";
@@ -7822,8 +8136,11 @@ pub const IToggleSwitchAutomationPeerFactory = extern struct {
 };
 pub const ITreeViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7844,8 +8161,11 @@ pub const ITreeViewItemAutomationPeer = extern struct {
 };
 pub const ITreeViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7853,7 +8173,7 @@ pub const ITreeViewItemAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TreeViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewItemAutomationPeer {
         var _r: *TreeViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITreeViewItemAutomationPeerFactory";
@@ -7873,8 +8193,11 @@ pub const ITreeViewItemAutomationPeerFactory = extern struct {
 };
 pub const ITreeViewListAutomationPeer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7895,8 +8218,11 @@ pub const ITreeViewListAutomationPeer = extern struct {
 };
 pub const ITreeViewListAutomationPeerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7904,7 +8230,7 @@ pub const ITreeViewListAutomationPeerFactory = extern struct {
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TreeViewList, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewListAutomationPeer {
         var _r: *TreeViewListAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITreeViewListAutomationPeerFactory";
@@ -7924,14 +8250,11 @@ pub const ITreeViewListAutomationPeerFactory = extern struct {
 };
 pub const ImageAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7949,14 +8272,11 @@ pub const ImageAutomationPeer = extern struct {
 };
 pub const InkToolbarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7969,14 +8289,11 @@ pub const InkToolbarAutomationPeer = extern struct {
 };
 pub const ListBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7994,14 +8311,11 @@ pub const ListBoxAutomationPeer = extern struct {
 };
 pub const ListBoxItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8019,14 +8333,11 @@ pub const ListBoxItemAutomationPeer = extern struct {
 };
 pub const ListBoxItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8034,8 +8345,7 @@ pub const ListBoxItemDataAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ListBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemDataAutomationPeer {
@@ -8051,14 +8361,11 @@ pub const ListBoxItemDataAutomationPeer = extern struct {
 };
 pub const ListPickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8071,14 +8378,11 @@ pub const ListPickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const ListViewAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8096,14 +8400,11 @@ pub const ListViewAutomationPeer = extern struct {
 };
 pub const ListViewHeaderItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8121,14 +8422,11 @@ pub const ListViewHeaderItemAutomationPeer = extern struct {
 };
 pub const ListViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8146,14 +8444,11 @@ pub const ListViewItemAutomationPeer = extern struct {
 };
 pub const ListViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8161,8 +8456,7 @@ pub const ListViewItemDataAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ListViewBaseAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemDataAutomationPeer {
@@ -8178,14 +8472,11 @@ pub const ListViewItemDataAutomationPeer = extern struct {
 };
 pub const LoopingSelectorAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8193,106 +8484,91 @@ pub const LoopingSelectorAutomationPeer = extern struct {
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.getCanSelectMultiple();
     }
     pub fn getIsSelectionRequired(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.getIsSelectionRequired();
     }
     pub fn GetSelection(self: *@This()) core.HResult![*]IRawElementProviderSimple {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.GetSelection();
     }
     pub fn FindItemByProperty(self: *@This(), startAfter: *IRawElementProviderSimple, automationProperty: *AutomationProperty, value: *IInspectable) core.HResult!*IRawElementProviderSimple {
         var this: ?*IItemContainerProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IItemContainerProvider.IID, @ptrCast(&this));
         return try this.?.FindItemByProperty(startAfter, automationProperty, value);
     }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Expand();
     }
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.LoopingSelectorAutomationPeer";
@@ -8303,14 +8579,11 @@ pub const LoopingSelectorAutomationPeer = extern struct {
 };
 pub const LoopingSelectorItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8318,43 +8591,37 @@ pub const LoopingSelectorItemAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.Select();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.LoopingSelectorItemAutomationPeer";
@@ -8365,14 +8632,11 @@ pub const LoopingSelectorItemAutomationPeer = extern struct {
 };
 pub const LoopingSelectorItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8380,8 +8644,7 @@ pub const LoopingSelectorItemDataAutomationPeer = extern struct {
     pub fn Realize(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizedItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
         return try this.?.Realize();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.LoopingSelectorItemDataAutomationPeer";
@@ -8392,14 +8655,11 @@ pub const LoopingSelectorItemDataAutomationPeer = extern struct {
 };
 pub const MapControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8407,141 +8667,121 @@ pub const MapControlAutomationPeer = extern struct {
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
     }
     pub fn getCanZoom(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         return try this.?.getCanZoom();
     }
     pub fn getZoomLevel(self: *@This()) core.HResult!f64 {
         var this: ?*ITransformProvider2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         return try this.?.getZoomLevel();
     }
     pub fn getMaxZoom(self: *@This()) core.HResult!f64 {
         var this: ?*ITransformProvider2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         return try this.?.getMaxZoom();
     }
     pub fn getMinZoom(self: *@This()) core.HResult!f64 {
         var this: ?*ITransformProvider2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         return try this.?.getMinZoom();
     }
     pub fn Zoom(self: *@This(), zoom: f64) core.HResult!void {
         var this: ?*ITransformProvider2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         return try this.?.Zoom(zoom);
     }
     pub fn ZoomByUnit(self: *@This(), zoomUnit: ZoomUnit) core.HResult!void {
         var this: ?*ITransformProvider2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         return try this.?.ZoomByUnit(zoomUnit);
     }
     pub fn getCanMove(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         return try this.?.getCanMove();
     }
     pub fn getCanResize(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         return try this.?.getCanResize();
     }
     pub fn getCanRotate(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         return try this.?.getCanRotate();
     }
     pub fn Move(self: *@This(), x: f64, y: f64) core.HResult!void {
         var this: ?*ITransformProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         return try this.?.Move(x, y);
     }
     pub fn Resize(self: *@This(), width: f64, height: f64) core.HResult!void {
         var this: ?*ITransformProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         return try this.?.Resize(width, height);
     }
     pub fn Rotate(self: *@This(), degrees: f64) core.HResult!void {
         var this: ?*ITransformProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         return try this.?.Rotate(degrees);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MapControlAutomationPeer";
@@ -8552,14 +8792,11 @@ pub const MapControlAutomationPeer = extern struct {
 };
 pub const MediaElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8577,14 +8814,11 @@ pub const MediaElementAutomationPeer = extern struct {
 };
 pub const MediaPlayerElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8602,14 +8836,11 @@ pub const MediaPlayerElementAutomationPeer = extern struct {
 };
 pub const MediaTransportControlsAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8627,14 +8858,11 @@ pub const MediaTransportControlsAutomationPeer = extern struct {
 };
 pub const MenuBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8652,14 +8880,11 @@ pub const MenuBarAutomationPeer = extern struct {
 };
 pub const MenuBarItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8667,29 +8892,25 @@ pub const MenuBarItemAutomationPeer = extern struct {
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Expand();
     }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         return try this.?.Invoke();
     }
     pub fn CreateInstance(owner: *MenuBarItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarItemAutomationPeer {
@@ -8705,14 +8926,11 @@ pub const MenuBarItemAutomationPeer = extern struct {
 };
 pub const MenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8720,8 +8938,7 @@ pub const MenuFlyoutItemAutomationPeer = extern struct {
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         return try this.?.Invoke();
     }
     pub fn CreateInstanceWithOwner(owner: *MenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutItemAutomationPeer {
@@ -8737,14 +8954,11 @@ pub const MenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const MenuFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8762,14 +8976,11 @@ pub const MenuFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const NavigationViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8787,14 +8998,11 @@ pub const NavigationViewItemAutomationPeer = extern struct {
 };
 pub const PasswordBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8848,14 +9056,11 @@ pub const PatternInterface = enum(i32) {
 };
 pub const PersonPictureAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8873,14 +9078,11 @@ pub const PersonPictureAutomationPeer = extern struct {
 };
 pub const PickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8893,14 +9095,11 @@ pub const PickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const PivotAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8908,78 +9107,67 @@ pub const PivotAutomationPeer = extern struct {
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.getCanSelectMultiple();
     }
     pub fn getIsSelectionRequired(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.getIsSelectionRequired();
     }
     pub fn GetSelection(self: *@This()) core.HResult![*]IRawElementProviderSimple {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         return try this.?.GetSelection();
     }
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
     }
     pub fn CreateInstanceWithOwner(owner: *Pivot) core.HResult!*PivotAutomationPeer {
@@ -8995,14 +9183,11 @@ pub const PivotAutomationPeer = extern struct {
 };
 pub const PivotItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9020,14 +9205,11 @@ pub const PivotItemAutomationPeer = extern struct {
 };
 pub const PivotItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9035,50 +9217,43 @@ pub const PivotItemDataAutomationPeer = extern struct {
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         return try this.?.ScrollIntoView();
     }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.Select();
     }
     pub fn Realize(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizedItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
         return try this.?.Realize();
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *PivotAutomationPeer) core.HResult!*PivotItemDataAutomationPeer {
@@ -9094,14 +9269,11 @@ pub const PivotItemDataAutomationPeer = extern struct {
 };
 pub const ProgressBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9119,14 +9291,11 @@ pub const ProgressBarAutomationPeer = extern struct {
 };
 pub const ProgressRingAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9144,14 +9313,11 @@ pub const ProgressRingAutomationPeer = extern struct {
 };
 pub const RadioButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9159,36 +9325,31 @@ pub const RadioButtonAutomationPeer = extern struct {
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         return try this.?.Select();
     }
     pub fn CreateInstanceWithOwner(owner: *RadioButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RadioButtonAutomationPeer {
@@ -9204,14 +9365,11 @@ pub const RadioButtonAutomationPeer = extern struct {
 };
 pub const RatingControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9233,14 +9391,11 @@ pub const RawElementProviderRuntimeId = extern struct {
 };
 pub const RepeatButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9248,8 +9403,7 @@ pub const RepeatButtonAutomationPeer = extern struct {
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         return try this.?.Invoke();
     }
     pub fn CreateInstanceWithOwner(owner: *RepeatButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RepeatButtonAutomationPeer {
@@ -9265,14 +9419,11 @@ pub const RepeatButtonAutomationPeer = extern struct {
 };
 pub const RichEditBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9290,14 +9441,11 @@ pub const RichEditBoxAutomationPeer = extern struct {
 };
 pub const RichTextBlockAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9315,14 +9463,11 @@ pub const RichTextBlockAutomationPeer = extern struct {
 };
 pub const RichTextBlockOverflowAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9340,14 +9485,11 @@ pub const RichTextBlockOverflowAutomationPeer = extern struct {
 };
 pub const ScrollBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9365,14 +9507,11 @@ pub const ScrollBarAutomationPeer = extern struct {
 };
 pub const ScrollViewerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9380,57 +9519,49 @@ pub const ScrollViewerAutomationPeer = extern struct {
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
     }
     pub fn CreateInstanceWithOwner(owner: *ScrollViewer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollViewerAutomationPeer {
@@ -9446,14 +9577,11 @@ pub const ScrollViewerAutomationPeer = extern struct {
 };
 pub const SearchBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9471,14 +9599,11 @@ pub const SearchBoxAutomationPeer = extern struct {
 };
 pub const SemanticZoomAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9486,15 +9611,13 @@ pub const SemanticZoomAutomationPeer = extern struct {
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.Toggle();
     }
     pub fn CreateInstanceWithOwner(owner: *SemanticZoom, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SemanticZoomAutomationPeer {
@@ -9510,14 +9633,11 @@ pub const SemanticZoomAutomationPeer = extern struct {
 };
 pub const SettingsFlyoutAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9535,14 +9655,11 @@ pub const SettingsFlyoutAutomationPeer = extern struct {
 };
 pub const TextBlockAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9560,14 +9677,11 @@ pub const TextBlockAutomationPeer = extern struct {
 };
 pub const TextBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9585,14 +9699,11 @@ pub const TextBoxAutomationPeer = extern struct {
 };
 pub const ThumbAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9610,14 +9721,11 @@ pub const ThumbAutomationPeer = extern struct {
 };
 pub const TimePickerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9635,14 +9743,11 @@ pub const TimePickerAutomationPeer = extern struct {
 };
 pub const TimePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9655,14 +9760,11 @@ pub const TimePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9670,15 +9772,13 @@ pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.Toggle();
     }
     pub fn CreateInstanceWithOwner(owner: *ToggleMenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleMenuFlyoutItemAutomationPeer {
@@ -9694,14 +9794,11 @@ pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const ToggleSwitchAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9709,15 +9806,13 @@ pub const ToggleSwitchAutomationPeer = extern struct {
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         return try this.?.Toggle();
     }
     pub fn CreateInstanceWithOwner(owner: *ToggleSwitch, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleSwitchAutomationPeer {
@@ -9733,14 +9828,11 @@ pub const ToggleSwitchAutomationPeer = extern struct {
 };
 pub const TreeViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9748,22 +9840,19 @@ pub const TreeViewItemAutomationPeer = extern struct {
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         return try this.?.Expand();
     }
     pub fn CreateInstanceWithOwner(owner: *TreeViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewItemAutomationPeer {
@@ -9779,14 +9868,11 @@ pub const TreeViewItemAutomationPeer = extern struct {
 };
 pub const TreeViewListAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

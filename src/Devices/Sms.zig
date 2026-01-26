@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DeleteSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -28,36 +25,31 @@ pub const DeleteSmsMessageOperation = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getStatus();
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getErrorCode();
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Cancel();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.DeleteSmsMessageOperation";
@@ -68,14 +60,11 @@ pub const DeleteSmsMessageOperation = extern struct {
 };
 pub const DeleteSmsMessagesOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -95,36 +84,31 @@ pub const DeleteSmsMessagesOperation = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getStatus();
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getErrorCode();
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Cancel();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.DeleteSmsMessagesOperation";
@@ -135,14 +119,11 @@ pub const DeleteSmsMessagesOperation = extern struct {
 };
 pub const GetSmsDeviceOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -158,36 +139,31 @@ pub const GetSmsDeviceOperation = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getStatus();
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getErrorCode();
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Cancel();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsDeviceOperation";
@@ -198,14 +174,11 @@ pub const GetSmsDeviceOperation = extern struct {
 };
 pub const GetSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -221,36 +194,31 @@ pub const GetSmsMessageOperation = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getStatus();
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getErrorCode();
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Cancel();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsMessageOperation";
@@ -261,14 +229,11 @@ pub const GetSmsMessageOperation = extern struct {
 };
 pub const GetSmsMessagesOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -292,36 +257,31 @@ pub const GetSmsMessagesOperation = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getStatus();
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getErrorCode();
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Cancel();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsMessagesOperation";
@@ -332,8 +292,11 @@ pub const GetSmsMessagesOperation = extern struct {
 };
 pub const ISmsBinaryMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -341,22 +304,22 @@ pub const ISmsBinaryMessage = extern struct {
     pub fn getFormat(self: *@This()) core.HResult!SmsDataFormat {
         var _r: SmsDataFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFormat(self: *@This(), value: SmsDataFormat) core.HResult!void {
         const _c = self.vtable.put_Format(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetData(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetData(self: *@This(), value: [*]u8) core.HResult!void {
         const _c = self.vtable.SetData(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsBinaryMessage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -378,8 +341,11 @@ pub const ISmsBinaryMessage = extern struct {
 };
 pub const ISmsDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -387,58 +353,58 @@ pub const ISmsDevice = extern struct {
     pub fn SendMessageAsync(self: *@This(), message: *ISmsMessage) core.HResult!*SendSmsMessageOperation {
         var _r: *SendSmsMessageOperation = undefined;
         const _c = self.vtable.SendMessageAsync(@ptrCast(self), message, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CalculateLength(self: *@This(), message: *SmsTextMessage) core.HResult!SmsEncodedLength {
         var _r: SmsEncodedLength = undefined;
         const _c = self.vtable.CalculateLength(@ptrCast(self), message, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountPhoneNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var _r: CellularClass = undefined;
         const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageStore(self: *@This()) core.HResult!*SmsDeviceMessageStore {
         var _r: *SmsDeviceMessageStore = undefined;
         const _c = self.vtable.get_MessageStore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceStatus(self: *@This()) core.HResult!SmsDeviceStatus {
         var _r: SmsDeviceStatus = undefined;
         const _c = self.vtable.get_DeviceStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addSmsMessageReceived(self: *@This(), eventHandler: *SmsMessageReceivedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SmsMessageReceived(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSmsMessageReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SmsMessageReceived(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSmsDeviceStatusChanged(self: *@This(), eventHandler: *SmsDeviceStatusChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SmsDeviceStatusChanged(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSmsDeviceStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SmsDeviceStatusChanged(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -466,8 +432,11 @@ pub const ISmsDevice = extern struct {
 };
 pub const ISmsDeviceMessageStore = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -475,31 +444,31 @@ pub const ISmsDeviceMessageStore = extern struct {
     pub fn DeleteMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteMessageAsync(@ptrCast(self), messageId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteMessagesAsync(@ptrCast(self), messageFilter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncOperation(ISmsMessage) {
         var _r: *IAsyncOperation(ISmsMessage) = undefined;
         const _c = self.vtable.GetMessageAsync(@ptrCast(self), messageId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) {
         var _r: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = undefined;
         const _c = self.vtable.GetMessagesAsync(@ptrCast(self), messageFilter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxMessages(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxMessages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceMessageStore";
@@ -523,8 +492,11 @@ pub const ISmsDeviceMessageStore = extern struct {
 };
 pub const ISmsDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -532,19 +504,19 @@ pub const ISmsDeviceStatics = extern struct {
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         var _r: *IAsyncOperation(SmsDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(SmsDevice) {
         var _r: *IAsyncOperation(SmsDevice) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceStatics";
@@ -566,8 +538,11 @@ pub const ISmsDeviceStatics = extern struct {
 };
 pub const ISmsDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -575,7 +550,7 @@ pub const ISmsDeviceStatics2 = extern struct {
     pub fn FromNetworkAccountIdAsync(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         var _r: *IAsyncOperation(SmsDevice) = undefined;
         const _c = self.vtable.FromNetworkAccountIdAsync(@ptrCast(self), networkAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceStatics2";
@@ -595,8 +570,11 @@ pub const ISmsDeviceStatics2 = extern struct {
 };
 pub const ISmsMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -604,13 +582,13 @@ pub const ISmsMessage = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var _r: SmsMessageClass = undefined;
         const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessage";
@@ -631,8 +609,11 @@ pub const ISmsMessage = extern struct {
 };
 pub const ISmsMessageReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -640,13 +621,13 @@ pub const ISmsMessageReceivedEventArgs = extern struct {
     pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage {
         var _r: *SmsTextMessage = undefined;
         const _c = self.vtable.get_TextMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
         var _r: *SmsBinaryMessage = undefined;
         const _c = self.vtable.get_BinaryMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessageReceivedEventArgs";
@@ -667,8 +648,11 @@ pub const ISmsMessageReceivedEventArgs = extern struct {
 };
 pub const ISmsReceivedEventDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -676,13 +660,13 @@ pub const ISmsReceivedEventDetails = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageIndex(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MessageIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsReceivedEventDetails";
@@ -703,8 +687,11 @@ pub const ISmsReceivedEventDetails = extern struct {
 };
 pub const ISmsReceivedEventDetails2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -712,13 +699,13 @@ pub const ISmsReceivedEventDetails2 = extern struct {
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var _r: SmsMessageClass = undefined;
         const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
         var _r: *SmsBinaryMessage = undefined;
         const _c = self.vtable.get_BinaryMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsReceivedEventDetails2";
@@ -739,8 +726,11 @@ pub const ISmsReceivedEventDetails2 = extern struct {
 };
 pub const ISmsTextMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -748,71 +738,71 @@ pub const ISmsTextMessage = extern struct {
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPartReferenceId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PartReferenceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPartNumber(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PartNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPartCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PartCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_To(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_From(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEncoding(self: *@This()) core.HResult!SmsEncoding {
         var _r: SmsEncoding = undefined;
         const _c = self.vtable.get_Encoding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEncoding(self: *@This(), value: SmsEncoding) core.HResult!void {
         const _c = self.vtable.put_Encoding(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ToBinaryMessages(self: *@This(), format: SmsDataFormat) core.HResult!*IVectorView(ISmsBinaryMessage) {
         var _r: *IVectorView(ISmsBinaryMessage) = undefined;
         const _c = self.vtable.ToBinaryMessages(@ptrCast(self), format, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsTextMessage";
@@ -844,8 +834,11 @@ pub const ISmsTextMessage = extern struct {
 };
 pub const ISmsTextMessageStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -853,13 +846,13 @@ pub const ISmsTextMessageStatics = extern struct {
     pub fn FromBinaryMessage(self: *@This(), binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
         var _r: *SmsTextMessage = undefined;
         const _c = self.vtable.FromBinaryMessage(@ptrCast(self), binaryMessage, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromBinaryData(self: *@This(), format: SmsDataFormat, value: [*]u8) core.HResult!*SmsTextMessage {
         var _r: *SmsTextMessage = undefined;
         const _c = self.vtable.FromBinaryData(@ptrCast(self), format, value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsTextMessageStatics";
@@ -880,14 +873,11 @@ pub const ISmsTextMessageStatics = extern struct {
 };
 pub const SendSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -907,36 +897,31 @@ pub const SendSmsMessageOperation = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getStatus();
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.getErrorCode();
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Cancel();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IAsyncInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SendSmsMessageOperation";
@@ -947,14 +932,11 @@ pub const SendSmsMessageOperation = extern struct {
 };
 pub const SmsBinaryMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -978,15 +960,13 @@ pub const SmsBinaryMessage = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*ISmsMessage = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessage = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn init() core.HResult!*@This() {
@@ -1002,14 +982,11 @@ pub const SmsBinaryMessage = extern struct {
 };
 pub const SmsDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1080,14 +1057,11 @@ pub const SmsDevice = extern struct {
 };
 pub const SmsDeviceMessageStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1216,14 +1190,11 @@ pub const SmsMessageFilter = enum(i32) {
 };
 pub const SmsMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1333,14 +1304,11 @@ pub const SmsMessageReceivedEventHandler = extern struct {
 };
 pub const SmsReceivedEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1356,15 +1324,13 @@ pub const SmsReceivedEventDetails = extern struct {
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsReceivedEventDetails2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
         var this: ?*ISmsReceivedEventDetails2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
         return try this.?.getBinaryMessage();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsReceivedEventDetails";
@@ -1375,14 +1341,11 @@ pub const SmsReceivedEventDetails = extern struct {
 };
 pub const SmsTextMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1442,15 +1405,13 @@ pub const SmsTextMessage = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*ISmsMessage = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessage = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn init() core.HResult!*@This() {
@@ -1480,8 +1441,11 @@ pub const CellularClass = enum(i32) {
 };
 pub const ISmsAppMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1489,114 +1453,114 @@ pub const ISmsAppMessage = extern struct {
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_To(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCallbackNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallbackNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCallbackNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallbackNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDeliveryNotificationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDeliveryNotificationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDeliveryNotificationEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDeliveryNotificationEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRetryAttemptCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RetryAttemptCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRetryAttemptCount(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_RetryAttemptCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEncoding(self: *@This()) core.HResult!SmsEncoding {
         var _r: SmsEncoding = undefined;
         const _c = self.vtable.get_Encoding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEncoding(self: *@This(), value: SmsEncoding) core.HResult!void {
         const _c = self.vtable.put_Encoding(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPortNumber(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PortNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPortNumber(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_PortNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTeleserviceId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_TeleserviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTeleserviceId(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_TeleserviceId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProtocolId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ProtocolId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProtocolId(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ProtocolId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBinaryBody(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_BinaryBody(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBinaryBody(self: *@This(), value: *IBuffer) core.HResult!void {
         const _c = self.vtable.put_BinaryBody(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsAppMessage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1636,8 +1600,11 @@ pub const ISmsAppMessage = extern struct {
 };
 pub const ISmsBroadcastMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1645,61 +1612,61 @@ pub const ISmsBroadcastMessage = extern struct {
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannel(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGeographicalScope(self: *@This()) core.HResult!SmsGeographicalScope {
         var _r: SmsGeographicalScope = undefined;
         const _c = self.vtable.get_GeographicalScope(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageCode(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MessageCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpdateNumber(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_UpdateNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBroadcastType(self: *@This()) core.HResult!SmsBroadcastType {
         var _r: SmsBroadcastType = undefined;
         const _c = self.vtable.get_BroadcastType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEmergencyAlert(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEmergencyAlert(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsUserPopupRequested(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUserPopupRequested(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsBroadcastMessage";
@@ -1728,8 +1695,11 @@ pub const ISmsBroadcastMessage = extern struct {
 };
 pub const ISmsDevice2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1737,64 +1707,64 @@ pub const ISmsDevice2 = extern struct {
     pub fn getSmscAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmscAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSmscAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SmscAddress(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getParentDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ParentDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountPhoneNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var _r: CellularClass = undefined;
         const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceStatus(self: *@This()) core.HResult!SmsDeviceStatus {
         var _r: SmsDeviceStatus = undefined;
         const _c = self.vtable.get_DeviceStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CalculateLength(self: *@This(), message: *ISmsMessageBase) core.HResult!SmsEncodedLength {
         var _r: SmsEncodedLength = undefined;
         const _c = self.vtable.CalculateLength(@ptrCast(self), message, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendMessageAndGetResultAsync(self: *@This(), message: *ISmsMessageBase) core.HResult!*IAsyncOperation(SmsSendMessageResult) {
         var _r: *IAsyncOperation(SmsSendMessageResult) = undefined;
         const _c = self.vtable.SendMessageAndGetResultAsync(@ptrCast(self), message, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addDeviceStatusChanged(self: *@This(), eventHandler: *TypedEventHandler(SmsDevice2,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DeviceStatusChanged(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDeviceStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DeviceStatusChanged(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDevice2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1823,8 +1793,11 @@ pub const ISmsDevice2 = extern struct {
 };
 pub const ISmsDevice2Statics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1832,25 +1805,25 @@ pub const ISmsDevice2Statics = extern struct {
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*SmsDevice2 {
         var _r: *SmsDevice2 = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDefault(self: *@This()) core.HResult!*SmsDevice2 {
         var _r: *SmsDevice2 = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromParentId(self: *@This(), parentDeviceId: ?HSTRING) core.HResult!*SmsDevice2 {
         var _r: *SmsDevice2 = undefined;
         const _c = self.vtable.FromParentId(@ptrCast(self), parentDeviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDevice2Statics";
@@ -1873,8 +1846,11 @@ pub const ISmsDevice2Statics = extern struct {
 };
 pub const ISmsFilterRule = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1882,83 +1858,83 @@ pub const ISmsFilterRule = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var _r: SmsMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getImsiPrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ImsiPrefixes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DeviceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSenderNumbers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SenderNumbers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTextMessagePrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_TextMessagePrefixes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPortNumbers(self: *@This()) core.HResult!*IVector(i32) {
         var _r: *IVector(i32) = undefined;
         const _c = self.vtable.get_PortNumbers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var _r: CellularClass = undefined;
         const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCellularClass(self: *@This(), value: CellularClass) core.HResult!void {
         const _c = self.vtable.put_CellularClass(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProtocolIds(self: *@This()) core.HResult!*IVector(i32) {
         var _r: *IVector(i32) = undefined;
         const _c = self.vtable.get_ProtocolIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTeleserviceIds(self: *@This()) core.HResult!*IVector(i32) {
         var _r: *IVector(i32) = undefined;
         const _c = self.vtable.get_TeleserviceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWapApplicationIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_WapApplicationIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWapContentTypes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_WapContentTypes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBroadcastTypes(self: *@This()) core.HResult!*IVector(SmsBroadcastType) {
         var _r: *IVector(SmsBroadcastType) = undefined;
         const _c = self.vtable.get_BroadcastTypes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBroadcastChannels(self: *@This()) core.HResult!*IVector(i32) {
         var _r: *IVector(i32) = undefined;
         const _c = self.vtable.get_BroadcastChannels(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsFilterRule";
@@ -1991,8 +1967,11 @@ pub const ISmsFilterRule = extern struct {
 };
 pub const ISmsFilterRuleFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2000,7 +1979,7 @@ pub const ISmsFilterRuleFactory = extern struct {
     pub fn CreateFilterRule(self: *@This(), messageType: SmsMessageType) core.HResult!*SmsFilterRule {
         var _r: *SmsFilterRule = undefined;
         const _c = self.vtable.CreateFilterRule(@ptrCast(self), messageType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsFilterRuleFactory";
@@ -2020,8 +1999,11 @@ pub const ISmsFilterRuleFactory = extern struct {
 };
 pub const ISmsFilterRules = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2029,13 +2011,13 @@ pub const ISmsFilterRules = extern struct {
     pub fn getActionType(self: *@This()) core.HResult!SmsFilterActionType {
         var _r: SmsFilterActionType = undefined;
         const _c = self.vtable.get_ActionType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRules(self: *@This()) core.HResult!*IVector(SmsFilterRule) {
         var _r: *IVector(SmsFilterRule) = undefined;
         const _c = self.vtable.get_Rules(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsFilterRules";
@@ -2056,8 +2038,11 @@ pub const ISmsFilterRules = extern struct {
 };
 pub const ISmsFilterRulesFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2065,7 +2050,7 @@ pub const ISmsFilterRulesFactory = extern struct {
     pub fn CreateFilterRules(self: *@This(), actionType: SmsFilterActionType) core.HResult!*SmsFilterRules {
         var _r: *SmsFilterRules = undefined;
         const _c = self.vtable.CreateFilterRules(@ptrCast(self), actionType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsFilterRulesFactory";
@@ -2085,8 +2070,11 @@ pub const ISmsFilterRulesFactory = extern struct {
 };
 pub const ISmsMessageBase = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2094,31 +2082,31 @@ pub const ISmsMessageBase = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var _r: SmsMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var _r: CellularClass = undefined;
         const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var _r: SmsMessageClass = undefined;
         const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SimIccId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessageBase";
@@ -2142,8 +2130,11 @@ pub const ISmsMessageBase = extern struct {
 };
 pub const ISmsMessageReceivedTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2151,52 +2142,52 @@ pub const ISmsMessageReceivedTriggerDetails = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var _r: SmsMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage2 {
         var _r: *SmsTextMessage2 = undefined;
         const _c = self.vtable.get_TextMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWapMessage(self: *@This()) core.HResult!*SmsWapMessage {
         var _r: *SmsWapMessage = undefined;
         const _c = self.vtable.get_WapMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppMessage(self: *@This()) core.HResult!*SmsAppMessage {
         var _r: *SmsAppMessage = undefined;
         const _c = self.vtable.get_AppMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBroadcastMessage(self: *@This()) core.HResult!*SmsBroadcastMessage {
         var _r: *SmsBroadcastMessage = undefined;
         const _c = self.vtable.get_BroadcastMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVoicemailMessage(self: *@This()) core.HResult!*SmsVoicemailMessage {
         var _r: *SmsVoicemailMessage = undefined;
         const _c = self.vtable.get_VoicemailMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatusMessage(self: *@This()) core.HResult!*SmsStatusMessage {
         var _r: *SmsStatusMessage = undefined;
         const _c = self.vtable.get_StatusMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Drop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Drop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Accept(self: *@This()) core.HResult!void {
         const _c = self.vtable.Accept(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessageReceivedTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2223,8 +2214,11 @@ pub const ISmsMessageReceivedTriggerDetails = extern struct {
 };
 pub const ISmsMessageRegistration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2232,22 +2226,22 @@ pub const ISmsMessageRegistration = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Unregister(self: *@This()) core.HResult!void {
         const _c = self.vtable.Unregister(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMessageReceived(self: *@This(), eventHandler: *TypedEventHandler(SmsMessageRegistration,SmsMessageReceivedTriggerDetails)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MessageReceived(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMessageReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MessageReceived(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessageRegistration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2269,8 +2263,11 @@ pub const ISmsMessageRegistration = extern struct {
 };
 pub const ISmsMessageRegistrationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2278,13 +2275,13 @@ pub const ISmsMessageRegistrationStatics = extern struct {
     pub fn getAllRegistrations(self: *@This()) core.HResult!*IVectorView(SmsMessageRegistration) {
         var _r: *IVectorView(SmsMessageRegistration) = undefined;
         const _c = self.vtable.get_AllRegistrations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Register(self: *@This(), id: ?HSTRING, filterRules: *SmsFilterRules) core.HResult!*SmsMessageRegistration {
         var _r: *SmsMessageRegistration = undefined;
         const _c = self.vtable.Register(@ptrCast(self), id, filterRules, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessageRegistrationStatics";
@@ -2305,8 +2302,11 @@ pub const ISmsMessageRegistrationStatics = extern struct {
 };
 pub const ISmsSendMessageResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2314,43 +2314,43 @@ pub const ISmsSendMessageResult = extern struct {
     pub fn getIsSuccessful(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuccessful(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageReferenceNumbers(self: *@This()) core.HResult!*IVectorView(i32) {
         var _r: *IVectorView(i32) = undefined;
         const _c = self.vtable.get_MessageReferenceNumbers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var _r: CellularClass = undefined;
         const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModemErrorCode(self: *@This()) core.HResult!SmsModemErrorCode {
         var _r: SmsModemErrorCode = undefined;
         const _c = self.vtable.get_ModemErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsErrorTransient(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsErrorTransient(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkCauseCode(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_NetworkCauseCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransportFailureCause(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_TransportFailureCause(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsSendMessageResult";
@@ -2376,8 +2376,11 @@ pub const ISmsSendMessageResult = extern struct {
 };
 pub const ISmsStatusMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2385,43 +2388,43 @@ pub const ISmsStatusMessage = extern struct {
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageReferenceNumber(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MessageReferenceNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceCenterTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_ServiceCenterTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDischargeTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_DischargeTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsStatusMessage";
@@ -2447,8 +2450,11 @@ pub const ISmsStatusMessage = extern struct {
 };
 pub const ISmsTextMessage2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2456,85 +2462,85 @@ pub const ISmsTextMessage2 = extern struct {
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_To(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEncoding(self: *@This()) core.HResult!SmsEncoding {
         var _r: SmsEncoding = undefined;
         const _c = self.vtable.get_Encoding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEncoding(self: *@This(), value: SmsEncoding) core.HResult!void {
         const _c = self.vtable.put_Encoding(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCallbackNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallbackNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCallbackNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallbackNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDeliveryNotificationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDeliveryNotificationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDeliveryNotificationEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDeliveryNotificationEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRetryAttemptCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RetryAttemptCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRetryAttemptCount(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_RetryAttemptCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTeleserviceId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_TeleserviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProtocolId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ProtocolId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsTextMessage2";
@@ -2569,8 +2575,11 @@ pub const ISmsTextMessage2 = extern struct {
 };
 pub const ISmsVoicemailMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2578,25 +2587,25 @@ pub const ISmsVoicemailMessage = extern struct {
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageCount(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_MessageCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsVoicemailMessage";
@@ -2619,8 +2628,11 @@ pub const ISmsVoicemailMessage = extern struct {
 };
 pub const ISmsWapMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2628,43 +2640,43 @@ pub const ISmsWapMessage = extern struct {
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getApplicationId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBinaryBody(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_BinaryBody(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeaders(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsWapMessage";
@@ -2690,14 +2702,11 @@ pub const ISmsWapMessage = extern struct {
 };
 pub const SmsAppMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2793,36 +2802,31 @@ pub const SmsAppMessage = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageType();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getCellularClass();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getSimIccId();
     }
     pub fn init() core.HResult!*@This() {
@@ -2838,14 +2842,11 @@ pub const SmsAppMessage = extern struct {
 };
 pub const SmsBroadcastMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2893,36 +2894,31 @@ pub const SmsBroadcastMessage = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageType();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getCellularClass();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getSimIccId();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsBroadcastMessage";
@@ -2957,14 +2953,11 @@ pub const SmsDataFormat = enum(i32) {
 };
 pub const SmsDevice2 = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3074,14 +3067,11 @@ pub const SmsFilterActionType = enum(i32) {
 };
 pub const SmsFilterRule = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3155,14 +3145,11 @@ pub const SmsFilterRule = extern struct {
 };
 pub const SmsFilterRules = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3202,14 +3189,11 @@ pub const SmsMessageClass = enum(i32) {
 };
 pub const SmsMessageReceivedTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3258,14 +3242,11 @@ pub const SmsMessageReceivedTriggerDetails = extern struct {
 };
 pub const SmsMessageRegistration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3326,14 +3307,11 @@ pub const SmsModemErrorCode = enum(i32) {
 };
 pub const SmsSendMessageResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3374,14 +3352,11 @@ pub const SmsSendMessageResult = extern struct {
 };
 pub const SmsStatusMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3417,36 +3392,31 @@ pub const SmsStatusMessage = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageType();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getCellularClass();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getSimIccId();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsStatusMessage";
@@ -3457,14 +3427,11 @@ pub const SmsStatusMessage = extern struct {
 };
 pub const SmsTextMessage2 = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3536,36 +3503,31 @@ pub const SmsTextMessage2 = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageType();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getCellularClass();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getSimIccId();
     }
     pub fn init() core.HResult!*@This() {
@@ -3581,14 +3543,11 @@ pub const SmsTextMessage2 = extern struct {
 };
 pub const SmsVoicemailMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3612,36 +3571,31 @@ pub const SmsVoicemailMessage = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageType();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getCellularClass();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getSimIccId();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsVoicemailMessage";
@@ -3652,14 +3606,11 @@ pub const SmsVoicemailMessage = extern struct {
 };
 pub const SmsWapMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3695,36 +3646,31 @@ pub const SmsWapMessage = extern struct {
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageType();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getCellularClass();
     }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getMessageClass();
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         return try this.?.getSimIccId();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsWapMessage";

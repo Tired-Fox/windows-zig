@@ -90,8 +90,11 @@ pub const BindableVectorChangedEventHandler = extern struct {
 };
 pub const IBindableIterable = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -99,7 +102,7 @@ pub const IBindableIterable = extern struct {
     pub fn First(self: *@This()) core.HResult!*IBindableIterator {
         var _r: *IBindableIterator = undefined;
         const _c = self.vtable.First(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.IBindableIterable";
@@ -119,8 +122,11 @@ pub const IBindableIterable = extern struct {
 };
 pub const IBindableIterator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -128,19 +134,19 @@ pub const IBindableIterator = extern struct {
     pub fn getCurrent(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasCurrent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveNext(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.MoveNext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.IBindableIterator";
@@ -162,8 +168,11 @@ pub const IBindableIterator = extern struct {
 };
 pub const IBindableObservableVector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -171,12 +180,12 @@ pub const IBindableObservableVector = extern struct {
     pub fn addVectorChanged(self: *@This(), handler: *BindableVectorChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VectorChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVectorChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VectorChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.IBindableObservableVector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -196,8 +205,11 @@ pub const IBindableObservableVector = extern struct {
 };
 pub const IBindableVector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -205,50 +217,50 @@ pub const IBindableVector = extern struct {
     pub fn GetAt(self: *@This(), index: u32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetView(self: *@This()) core.HResult!*IBindableVectorView {
         var _r: *IBindableVectorView = undefined;
         const _c = self.vtable.GetView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IndexOf(self: *@This(), value: *IInspectable, index: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IndexOf(@ptrCast(self), value, index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAt(self: *@This(), index: u32, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetAt(@ptrCast(self), index, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InsertAt(self: *@This(), index: u32, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.InsertAt(@ptrCast(self), index, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         const _c = self.vtable.RemoveAt(@ptrCast(self), index);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Append(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.Append(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         const _c = self.vtable.RemoveAtEnd(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const _c = self.vtable.Clear(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.IBindableVector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -276,8 +288,11 @@ pub const IBindableVector = extern struct {
 };
 pub const IBindableVectorView = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -285,19 +300,19 @@ pub const IBindableVectorView = extern struct {
     pub fn GetAt(self: *@This(), index: u32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IndexOf(self: *@This(), value: *IInspectable, index: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IndexOf(@ptrCast(self), value, index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.IBindableVectorView";
@@ -319,8 +334,11 @@ pub const IBindableVectorView = extern struct {
 };
 pub const INotifyCollectionChanged = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -328,12 +346,12 @@ pub const INotifyCollectionChanged = extern struct {
     pub fn addCollectionChanged(self: *@This(), handler: *NotifyCollectionChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CollectionChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCollectionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CollectionChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.INotifyCollectionChanged";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -353,8 +371,11 @@ pub const INotifyCollectionChanged = extern struct {
 };
 pub const INotifyCollectionChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -362,31 +383,31 @@ pub const INotifyCollectionChangedEventArgs = extern struct {
     pub fn getAction(self: *@This()) core.HResult!NotifyCollectionChangedAction {
         var _r: NotifyCollectionChangedAction = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNewItems(self: *@This()) core.HResult!*IBindableVector {
         var _r: *IBindableVector = undefined;
         const _c = self.vtable.get_NewItems(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOldItems(self: *@This()) core.HResult!*IBindableVector {
         var _r: *IBindableVector = undefined;
         const _c = self.vtable.get_OldItems(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNewStartingIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_NewStartingIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOldStartingIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_OldStartingIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.INotifyCollectionChangedEventArgs";
@@ -410,8 +431,11 @@ pub const INotifyCollectionChangedEventArgs = extern struct {
 };
 pub const INotifyCollectionChangedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -419,7 +443,7 @@ pub const INotifyCollectionChangedEventArgsFactory = extern struct {
     pub fn CreateInstanceWithAllParameters(self: *@This(), action: NotifyCollectionChangedAction, newItems: *IBindableVector, oldItems: *IBindableVector, newIndex: i32, oldIndex: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NotifyCollectionChangedEventArgs {
         var _r: *NotifyCollectionChangedEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithAllParameters(@ptrCast(self), action, newItems, oldItems, newIndex, oldIndex, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.INotifyCollectionChangedEventArgsFactory";
@@ -446,14 +470,11 @@ pub const NotifyCollectionChangedAction = enum(i32) {
 };
 pub const NotifyCollectionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

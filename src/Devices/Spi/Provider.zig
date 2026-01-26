@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IProviderSpiConnectionSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,52 +13,52 @@ pub const IProviderSpiConnectionSettings = extern struct {
     pub fn getChipSelectLine(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ChipSelectLine(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putChipSelectLine(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ChipSelectLine(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMode(self: *@This()) core.HResult!ProviderSpiMode {
         var _r: ProviderSpiMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMode(self: *@This(), value: ProviderSpiMode) core.HResult!void {
         const _c = self.vtable.put_Mode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDataBitLength(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DataBitLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDataBitLength(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_DataBitLength(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getClockFrequency(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ClockFrequency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putClockFrequency(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ClockFrequency(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSharingMode(self: *@This()) core.HResult!ProviderSpiSharingMode {
         var _r: ProviderSpiSharingMode = undefined;
         const _c = self.vtable.get_SharingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSharingMode(self: *@This(), value: ProviderSpiSharingMode) core.HResult!void {
         const _c = self.vtable.put_SharingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.Provider.IProviderSpiConnectionSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -83,8 +86,11 @@ pub const IProviderSpiConnectionSettings = extern struct {
 };
 pub const IProviderSpiConnectionSettingsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -92,7 +98,7 @@ pub const IProviderSpiConnectionSettingsFactory = extern struct {
     pub fn Create(self: *@This(), chipSelectLine: i32) core.HResult!*ProviderSpiConnectionSettings {
         var _r: *ProviderSpiConnectionSettings = undefined;
         const _c = self.vtable.Create(@ptrCast(self), chipSelectLine, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.Provider.IProviderSpiConnectionSettingsFactory";
@@ -112,8 +118,11 @@ pub const IProviderSpiConnectionSettingsFactory = extern struct {
 };
 pub const ISpiControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -121,7 +130,7 @@ pub const ISpiControllerProvider = extern struct {
     pub fn GetDeviceProvider(self: *@This(), settings: *ProviderSpiConnectionSettings) core.HResult!*ISpiDeviceProvider {
         var _r: *ISpiDeviceProvider = undefined;
         const _c = self.vtable.GetDeviceProvider(@ptrCast(self), settings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.Provider.ISpiControllerProvider";
@@ -141,8 +150,11 @@ pub const ISpiControllerProvider = extern struct {
 };
 pub const ISpiDeviceProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -150,30 +162,30 @@ pub const ISpiDeviceProvider = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionSettings(self: *@This()) core.HResult!*ProviderSpiConnectionSettings {
         var _r: *ProviderSpiConnectionSettings = undefined;
         const _c = self.vtable.get_ConnectionSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Write(self: *@This(), buffer: [*]u8) core.HResult!void {
         const _c = self.vtable.Write(@ptrCast(self), buffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Read(self: *@This(), buffer: [*]u8) core.HResult!void {
         const _c = self.vtable.Read(@ptrCast(self), buffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TransferSequential(self: *@This(), writeBuffer: [*]u8, readBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.TransferSequential(@ptrCast(self), writeBuffer, readBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TransferFullDuplex(self: *@This(), writeBuffer: [*]u8, readBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.TransferFullDuplex(@ptrCast(self), writeBuffer, readBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.Provider.ISpiDeviceProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -197,8 +209,11 @@ pub const ISpiDeviceProvider = extern struct {
 };
 pub const ISpiProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -206,7 +221,7 @@ pub const ISpiProvider = extern struct {
     pub fn GetControllersAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ISpiControllerProvider)) {
         var _r: *IAsyncOperation(IVectorView(ISpiControllerProvider)) = undefined;
         const _c = self.vtable.GetControllersAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.Provider.ISpiProvider";
@@ -226,14 +241,11 @@ pub const ISpiProvider = extern struct {
 };
 pub const ProviderSpiConnectionSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPerceptionTimestamp = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,13 +13,13 @@ pub const IPerceptionTimestamp = extern struct {
     pub fn getTargetTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_TargetTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPredictionAmount(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_PredictionAmount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.IPerceptionTimestamp";
@@ -37,8 +40,11 @@ pub const IPerceptionTimestamp = extern struct {
 };
 pub const IPerceptionTimestamp2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -46,7 +52,7 @@ pub const IPerceptionTimestamp2 = extern struct {
     pub fn getSystemRelativeTargetTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativeTargetTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.IPerceptionTimestamp2";
@@ -66,8 +72,11 @@ pub const IPerceptionTimestamp2 = extern struct {
 };
 pub const IPerceptionTimestampHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -75,7 +84,7 @@ pub const IPerceptionTimestampHelperStatics = extern struct {
     pub fn FromHistoricalTargetTime(self: *@This(), targetTime: DateTime) core.HResult!*PerceptionTimestamp {
         var _r: *PerceptionTimestamp = undefined;
         const _c = self.vtable.FromHistoricalTargetTime(@ptrCast(self), targetTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.IPerceptionTimestampHelperStatics";
@@ -95,8 +104,11 @@ pub const IPerceptionTimestampHelperStatics = extern struct {
 };
 pub const IPerceptionTimestampHelperStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -104,7 +116,7 @@ pub const IPerceptionTimestampHelperStatics2 = extern struct {
     pub fn FromSystemRelativeTargetTime(self: *@This(), targetTime: TimeSpan) core.HResult!*PerceptionTimestamp {
         var _r: *PerceptionTimestamp = undefined;
         const _c = self.vtable.FromSystemRelativeTargetTime(@ptrCast(self), targetTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.IPerceptionTimestampHelperStatics2";
@@ -124,14 +136,11 @@ pub const IPerceptionTimestampHelperStatics2 = extern struct {
 };
 pub const PerceptionTimestamp = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -147,8 +156,7 @@ pub const PerceptionTimestamp = extern struct {
     pub fn getSystemRelativeTargetTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPerceptionTimestamp2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionTimestamp2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPerceptionTimestamp2.IID, @ptrCast(&this));
         return try this.?.getSystemRelativeTargetTime();
     }
     pub const NAME: []const u8 = "Windows.Perception.PerceptionTimestamp";
@@ -159,14 +167,11 @@ pub const PerceptionTimestamp = extern struct {
 };
 pub const PerceptionTimestampHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const II2cControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const II2cControllerProvider = extern struct {
     pub fn GetDeviceProvider(self: *@This(), settings: *ProviderI2cConnectionSettings) core.HResult!*II2cDeviceProvider {
         var _r: *II2cDeviceProvider = undefined;
         const _c = self.vtable.GetDeviceProvider(@ptrCast(self), settings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.Provider.II2cControllerProvider";
@@ -30,8 +33,11 @@ pub const II2cControllerProvider = extern struct {
 };
 pub const II2cDeviceProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,37 +45,37 @@ pub const II2cDeviceProvider = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Write(self: *@This(), buffer: [*]u8) core.HResult!void {
         const _c = self.vtable.Write(@ptrCast(self), buffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn WritePartial(self: *@This(), buffer: [*]u8) core.HResult!ProviderI2cTransferResult {
         var _r: ProviderI2cTransferResult = undefined;
         const _c = self.vtable.WritePartial(@ptrCast(self), buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Read(self: *@This(), buffer: [*]u8) core.HResult!void {
         const _c = self.vtable.Read(@ptrCast(self), buffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReadPartial(self: *@This(), buffer: [*]u8) core.HResult!ProviderI2cTransferResult {
         var _r: ProviderI2cTransferResult = undefined;
         const _c = self.vtable.ReadPartial(@ptrCast(self), buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn WriteRead(self: *@This(), writeBuffer: [*]u8, readBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.WriteRead(@ptrCast(self), writeBuffer, readBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn WriteReadPartial(self: *@This(), writeBuffer: [*]u8, readBuffer: [*]u8) core.HResult!ProviderI2cTransferResult {
         var _r: ProviderI2cTransferResult = undefined;
         const _c = self.vtable.WriteReadPartial(@ptrCast(self), writeBuffer, readBuffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.Provider.II2cDeviceProvider";
@@ -95,8 +101,11 @@ pub const II2cDeviceProvider = extern struct {
 };
 pub const II2cProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -104,7 +113,7 @@ pub const II2cProvider = extern struct {
     pub fn GetControllersAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(II2cControllerProvider)) {
         var _r: *IAsyncOperation(IVectorView(II2cControllerProvider)) = undefined;
         const _c = self.vtable.GetControllersAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.Provider.II2cProvider";
@@ -124,8 +133,11 @@ pub const II2cProvider = extern struct {
 };
 pub const IProviderI2cConnectionSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -133,32 +145,32 @@ pub const IProviderI2cConnectionSettings = extern struct {
     pub fn getSlaveAddress(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SlaveAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSlaveAddress(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_SlaveAddress(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBusSpeed(self: *@This()) core.HResult!ProviderI2cBusSpeed {
         var _r: ProviderI2cBusSpeed = undefined;
         const _c = self.vtable.get_BusSpeed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBusSpeed(self: *@This(), value: ProviderI2cBusSpeed) core.HResult!void {
         const _c = self.vtable.put_BusSpeed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSharingMode(self: *@This()) core.HResult!ProviderI2cSharingMode {
         var _r: ProviderI2cSharingMode = undefined;
         const _c = self.vtable.get_SharingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSharingMode(self: *@This(), value: ProviderI2cSharingMode) core.HResult!void {
         const _c = self.vtable.put_SharingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.Provider.IProviderI2cConnectionSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -186,14 +198,11 @@ pub const ProviderI2cBusSpeed = enum(i32) {
 };
 pub const ProviderI2cConnectionSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

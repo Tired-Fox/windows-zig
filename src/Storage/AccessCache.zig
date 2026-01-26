@@ -12,14 +12,11 @@ pub const AccessListEntry = extern struct {
 };
 pub const AccessListEntryView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -31,8 +28,7 @@ pub const AccessListEntryView = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(AccessListEntry) {
         var this: ?*IIterable(AccessListEntry) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(AccessListEntry).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(AccessListEntry).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.AccessListEntryView";
@@ -43,8 +39,11 @@ pub const AccessListEntryView = extern struct {
 };
 pub const IItemRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -52,7 +51,7 @@ pub const IItemRemovedEventArgs = extern struct {
     pub fn getRemovedEntry(self: *@This()) core.HResult!AccessListEntry {
         var _r: AccessListEntry = undefined;
         const _c = self.vtable.get_RemovedEntry(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.IItemRemovedEventArgs";
@@ -72,8 +71,11 @@ pub const IItemRemovedEventArgs = extern struct {
 };
 pub const IStorageApplicationPermissionsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -81,13 +83,13 @@ pub const IStorageApplicationPermissionsStatics = extern struct {
     pub fn getFutureAccessList(self: *@This()) core.HResult!*StorageItemAccessList {
         var _r: *StorageItemAccessList = undefined;
         const _c = self.vtable.get_FutureAccessList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMostRecentlyUsedList(self: *@This()) core.HResult!*StorageItemMostRecentlyUsedList {
         var _r: *StorageItemMostRecentlyUsedList = undefined;
         const _c = self.vtable.get_MostRecentlyUsedList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.IStorageApplicationPermissionsStatics";
@@ -108,8 +110,11 @@ pub const IStorageApplicationPermissionsStatics = extern struct {
 };
 pub const IStorageApplicationPermissionsStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -117,13 +122,13 @@ pub const IStorageApplicationPermissionsStatics2 = extern struct {
     pub fn GetFutureAccessListForUser(self: *@This(), user: *User) core.HResult!*StorageItemAccessList {
         var _r: *StorageItemAccessList = undefined;
         const _c = self.vtable.GetFutureAccessListForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMostRecentlyUsedListForUser(self: *@This(), user: *User) core.HResult!*StorageItemMostRecentlyUsedList {
         var _r: *StorageItemMostRecentlyUsedList = undefined;
         const _c = self.vtable.GetMostRecentlyUsedListForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.IStorageApplicationPermissionsStatics2";
@@ -144,8 +149,11 @@ pub const IStorageApplicationPermissionsStatics2 = extern struct {
 };
 pub const IStorageItemAccessList = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -153,89 +161,89 @@ pub const IStorageItemAccessList = extern struct {
     pub fn Add(self: *@This(), file: *IStorageItem) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Add(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddWithMetadata(self: *@This(), file: *IStorageItem, metadata: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.AddWithMetadata(@ptrCast(self), file, metadata, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddOrReplace(self: *@This(), token: ?HSTRING, file: *IStorageItem) core.HResult!void {
         const _c = self.vtable.AddOrReplace(@ptrCast(self), token, file);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddOrReplaceWithMetadata(self: *@This(), token: ?HSTRING, file: *IStorageItem, metadata: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddOrReplaceWithMetadata(@ptrCast(self), token, file, metadata);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetItemAsync(self: *@This(), token: ?HSTRING) core.HResult!*IAsyncOperation(IStorageItem) {
         var _r: *IAsyncOperation(IStorageItem) = undefined;
         const _c = self.vtable.GetItemAsync(@ptrCast(self), token, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFileAsync(self: *@This(), token: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.GetFileAsync(@ptrCast(self), token, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFolderAsync(self: *@This(), token: ?HSTRING) core.HResult!*IAsyncOperation(StorageFolder) {
         var _r: *IAsyncOperation(StorageFolder) = undefined;
         const _c = self.vtable.GetFolderAsync(@ptrCast(self), token, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemAsyncWithOptions(self: *@This(), token: ?HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
         var _r: *IAsyncOperation(IStorageItem) = undefined;
         const _c = self.vtable.GetItemAsyncWithOptions(@ptrCast(self), token, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFileAsyncWithOptions(self: *@This(), token: ?HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.GetFileAsyncWithOptions(@ptrCast(self), token, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFolderAsyncWithOptions(self: *@This(), token: ?HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
         var _r: *IAsyncOperation(StorageFolder) = undefined;
         const _c = self.vtable.GetFolderAsyncWithOptions(@ptrCast(self), token, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Remove(self: *@This(), token: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Remove(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ContainsItem(self: *@This(), token: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ContainsItem(@ptrCast(self), token, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const _c = self.vtable.Clear(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CheckAccess(self: *@This(), file: *IStorageItem) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CheckAccess(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEntries(self: *@This()) core.HResult!*AccessListEntryView {
         var _r: *AccessListEntryView = undefined;
         const _c = self.vtable.get_Entries(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaximumItemsAllowed(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaximumItemsAllowed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.IStorageItemAccessList";
@@ -270,8 +278,11 @@ pub const IStorageItemAccessList = extern struct {
 };
 pub const IStorageItemMostRecentlyUsedList = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -279,12 +290,12 @@ pub const IStorageItemMostRecentlyUsedList = extern struct {
     pub fn addItemRemoved(self: *@This(), handler: *TypedEventHandler(StorageItemMostRecentlyUsedList,ItemRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ItemRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeItemRemoved(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ItemRemoved(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.IStorageItemMostRecentlyUsedList";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -304,8 +315,11 @@ pub const IStorageItemMostRecentlyUsedList = extern struct {
 };
 pub const IStorageItemMostRecentlyUsedList2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -313,12 +327,12 @@ pub const IStorageItemMostRecentlyUsedList2 = extern struct {
     pub fn Add(self: *@This(), file: *IStorageItem, metadata: ?HSTRING, visibility: RecentStorageItemVisibility) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Add(@ptrCast(self), file, metadata, visibility, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddOrReplace(self: *@This(), token: ?HSTRING, file: *IStorageItem, metadata: ?HSTRING, visibility: RecentStorageItemVisibility) core.HResult!void {
         const _c = self.vtable.AddOrReplace(@ptrCast(self), token, file, metadata, visibility);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.IStorageItemMostRecentlyUsedList2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -338,14 +352,11 @@ pub const IStorageItemMostRecentlyUsedList2 = extern struct {
 };
 pub const ItemRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -366,14 +377,11 @@ pub const RecentStorageItemVisibility = enum(i32) {
 };
 pub const StorageApplicationPermissions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -401,14 +409,11 @@ pub const StorageApplicationPermissions = extern struct {
 };
 pub const StorageItemAccessList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -485,14 +490,11 @@ pub const StorageItemAccessList = extern struct {
 };
 pub const StorageItemMostRecentlyUsedList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -508,127 +510,109 @@ pub const StorageItemMostRecentlyUsedList = extern struct {
     pub fn Add(self: *@This(), file: *IStorageItem) core.HResult!?HSTRING {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.Add(file);
     }
     pub fn AddWithMetadata(self: *@This(), file: *IStorageItem, metadata: ?HSTRING) core.HResult!?HSTRING {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.AddWithMetadata(file, metadata);
     }
     pub fn AddOrReplace(self: *@This(), token: ?HSTRING, file: *IStorageItem) core.HResult!void {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.AddOrReplace(token, file);
     }
     pub fn AddOrReplaceWithMetadata(self: *@This(), token: ?HSTRING, file: *IStorageItem, metadata: ?HSTRING) core.HResult!void {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.AddOrReplaceWithMetadata(token, file, metadata);
     }
     pub fn GetItemAsync(self: *@This(), token: ?HSTRING) core.HResult!*IAsyncOperation(IStorageItem) {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.GetItemAsync(token);
     }
     pub fn GetFileAsync(self: *@This(), token: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.GetFileAsync(token);
     }
     pub fn GetFolderAsync(self: *@This(), token: ?HSTRING) core.HResult!*IAsyncOperation(StorageFolder) {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.GetFolderAsync(token);
     }
     pub fn GetItemAsyncWithOptions(self: *@This(), token: ?HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.GetItemAsyncWithOptions(token, options);
     }
     pub fn GetFileAsyncWithOptions(self: *@This(), token: ?HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.GetFileAsyncWithOptions(token, options);
     }
     pub fn GetFolderAsyncWithOptions(self: *@This(), token: ?HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.GetFolderAsyncWithOptions(token, options);
     }
     pub fn Remove(self: *@This(), token: ?HSTRING) core.HResult!void {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.Remove(token);
     }
     pub fn ContainsItem(self: *@This(), token: ?HSTRING) core.HResult!bool {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.ContainsItem(token);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.Clear();
     }
     pub fn CheckAccess(self: *@This(), file: *IStorageItem) core.HResult!bool {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.CheckAccess(file);
     }
     pub fn getEntries(self: *@This()) core.HResult!*AccessListEntryView {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.getEntries();
     }
     pub fn getMaximumItemsAllowed(self: *@This()) core.HResult!u32 {
         var this: ?*IStorageItemAccessList = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         return try this.?.getMaximumItemsAllowed();
     }
     pub fn AddWithMetadataAndVisibility(self: *@This(), file: *IStorageItem, metadata: ?HSTRING, visibility: RecentStorageItemVisibility) core.HResult!?HSTRING {
         var this: ?*IStorageItemMostRecentlyUsedList2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
         return try this.?.AddWithMetadataAndVisibility(file, metadata, visibility);
     }
     pub fn AddOrReplaceWithMetadataAndVisibility(self: *@This(), token: ?HSTRING, file: *IStorageItem, metadata: ?HSTRING, visibility: RecentStorageItemVisibility) core.HResult!void {
         var this: ?*IStorageItemMostRecentlyUsedList2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
         return try this.?.AddOrReplaceWithMetadataAndVisibility(token, file, metadata, visibility);
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.StorageItemMostRecentlyUsedList";

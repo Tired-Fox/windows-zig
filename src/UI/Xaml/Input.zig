@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AccessKeyDisplayDismissedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -26,14 +23,11 @@ pub const AccessKeyDisplayDismissedEventArgs = extern struct {
 };
 pub const AccessKeyDisplayRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -55,14 +49,11 @@ pub const AccessKeyDisplayRequestedEventArgs = extern struct {
 };
 pub const AccessKeyInvokedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -88,14 +79,11 @@ pub const AccessKeyInvokedEventArgs = extern struct {
 };
 pub const AccessKeyManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -134,14 +122,11 @@ pub const AccessKeyManager = extern struct {
 };
 pub const CanExecuteRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -166,14 +151,11 @@ pub const CanExecuteRequestedEventArgs = extern struct {
 };
 pub const CharacterReceivedRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -202,14 +184,11 @@ pub const CharacterReceivedRoutedEventArgs = extern struct {
 };
 pub const ContextRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -328,14 +307,11 @@ pub const DoubleTappedEventHandler = extern struct {
 };
 pub const DoubleTappedRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -369,14 +345,11 @@ pub const DoubleTappedRoutedEventArgs = extern struct {
 };
 pub const ExecuteRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -393,14 +366,11 @@ pub const ExecuteRequestedEventArgs = extern struct {
 };
 pub const FindNextElementOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -458,14 +428,11 @@ pub const FocusInputDeviceKind = enum(i32) {
 };
 pub const FocusManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -569,14 +536,11 @@ pub const FocusManager = extern struct {
 };
 pub const FocusManagerGotFocusEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -597,14 +561,11 @@ pub const FocusManagerGotFocusEventArgs = extern struct {
 };
 pub const FocusManagerLostFocusEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -625,14 +586,11 @@ pub const FocusManagerLostFocusEventArgs = extern struct {
 };
 pub const FocusMovementResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -658,14 +616,11 @@ pub const FocusNavigationDirection = enum(i32) {
 };
 pub const GettingFocusEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -713,22 +668,19 @@ pub const GettingFocusEventArgs = extern struct {
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var this: ?*IGettingFocusEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs2.IID, @ptrCast(&this));
         return try this.?.TryCancel();
     }
     pub fn TrySetNewFocusedElement(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var this: ?*IGettingFocusEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs2.IID, @ptrCast(&this));
         return try this.?.TrySetNewFocusedElement(element);
     }
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var this: ?*IGettingFocusEventArgs3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs3.IID, @ptrCast(&this));
         return try this.?.getCorrelationId();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.GettingFocusEventArgs";
@@ -828,14 +780,11 @@ pub const HoldingEventHandler = extern struct {
 };
 pub const HoldingRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -873,8 +822,11 @@ pub const HoldingRoutedEventArgs = extern struct {
 };
 pub const IAccessKeyDisplayDismissedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -895,8 +847,11 @@ pub const IAccessKeyDisplayDismissedEventArgs = extern struct {
 };
 pub const IAccessKeyDisplayRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -904,7 +859,7 @@ pub const IAccessKeyDisplayRequestedEventArgs = extern struct {
     pub fn getPressedKeys(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PressedKeys(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IAccessKeyDisplayRequestedEventArgs";
@@ -924,8 +879,11 @@ pub const IAccessKeyDisplayRequestedEventArgs = extern struct {
 };
 pub const IAccessKeyInvokedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -933,12 +891,12 @@ pub const IAccessKeyInvokedEventArgs = extern struct {
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IAccessKeyInvokedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -958,8 +916,11 @@ pub const IAccessKeyInvokedEventArgs = extern struct {
 };
 pub const IAccessKeyManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -980,8 +941,11 @@ pub const IAccessKeyManager = extern struct {
 };
 pub const IAccessKeyManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -989,22 +953,22 @@ pub const IAccessKeyManagerStatics = extern struct {
     pub fn getIsDisplayModeEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDisplayModeEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addIsDisplayModeEnabledChanged(self: *@This(), handler: *TypedEventHandler(IInspectable,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_IsDisplayModeEnabledChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeIsDisplayModeEnabledChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_IsDisplayModeEnabledChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ExitDisplayMode(self: *@This()) core.HResult!void {
         const _c = self.vtable.ExitDisplayMode(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IAccessKeyManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1026,8 +990,11 @@ pub const IAccessKeyManagerStatics = extern struct {
 };
 pub const IAccessKeyManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1035,12 +1002,12 @@ pub const IAccessKeyManagerStatics2 = extern struct {
     pub fn getAreKeyTipsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreKeyTipsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAreKeyTipsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AreKeyTipsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IAccessKeyManagerStatics2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1060,8 +1027,11 @@ pub const IAccessKeyManagerStatics2 = extern struct {
 };
 pub const ICanExecuteRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1069,18 +1039,18 @@ pub const ICanExecuteRequestedEventArgs = extern struct {
     pub fn getParameter(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Parameter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanExecute(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanExecute(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanExecute(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanExecute(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ICanExecuteRequestedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1101,8 +1071,11 @@ pub const ICanExecuteRequestedEventArgs = extern struct {
 };
 pub const ICharacterReceivedRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1110,24 +1083,24 @@ pub const ICharacterReceivedRoutedEventArgs = extern struct {
     pub fn getCharacter(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Character(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyStatus(self: *@This()) core.HResult!CorePhysicalKeyStatus {
         var _r: CorePhysicalKeyStatus = undefined;
         const _c = self.vtable.get_KeyStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ICharacterReceivedRoutedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1149,8 +1122,11 @@ pub const ICharacterReceivedRoutedEventArgs = extern struct {
 };
 pub const ICommand = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1158,22 +1134,22 @@ pub const ICommand = extern struct {
     pub fn addCanExecuteChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CanExecuteChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCanExecuteChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CanExecuteChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CanExecute(self: *@This(), parameter: *IInspectable) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanExecute(@ptrCast(self), parameter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Execute(self: *@This(), parameter: *IInspectable) core.HResult!void {
         const _c = self.vtable.Execute(@ptrCast(self), parameter);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ICommand";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1195,8 +1171,11 @@ pub const ICommand = extern struct {
 };
 pub const IContextRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1204,17 +1183,17 @@ pub const IContextRequestedEventArgs = extern struct {
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryGetPosition(self: *@This(), relativeTo: *UIElement, point: Point) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetPosition(@ptrCast(self), relativeTo, point, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IContextRequestedEventArgs";
@@ -1236,8 +1215,11 @@ pub const IContextRequestedEventArgs = extern struct {
 };
 pub const IDoubleTappedRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1245,23 +1227,23 @@ pub const IDoubleTappedRoutedEventArgs = extern struct {
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPosition(self: *@This(), relativeTo: *UIElement) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetPosition(@ptrCast(self), relativeTo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IDoubleTappedRoutedEventArgs";
@@ -1284,8 +1266,11 @@ pub const IDoubleTappedRoutedEventArgs = extern struct {
 };
 pub const IExecuteRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1293,7 +1278,7 @@ pub const IExecuteRequestedEventArgs = extern struct {
     pub fn getParameter(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Parameter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IExecuteRequestedEventArgs";
@@ -1313,8 +1298,11 @@ pub const IExecuteRequestedEventArgs = extern struct {
 };
 pub const IFindNextElementOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1322,42 +1310,42 @@ pub const IFindNextElementOptions = extern struct {
     pub fn getSearchRoot(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_SearchRoot(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSearchRoot(self: *@This(), value: *DependencyObject) core.HResult!void {
         const _c = self.vtable.put_SearchRoot(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getExclusionRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_ExclusionRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExclusionRect(self: *@This(), value: Rect) core.HResult!void {
         const _c = self.vtable.put_ExclusionRect(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHintRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_HintRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHintRect(self: *@This(), value: Rect) core.HResult!void {
         const _c = self.vtable.put_HintRect(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getXYFocusNavigationStrategyOverride(self: *@This()) core.HResult!XYFocusNavigationStrategyOverride {
         var _r: XYFocusNavigationStrategyOverride = undefined;
         const _c = self.vtable.get_XYFocusNavigationStrategyOverride(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putXYFocusNavigationStrategyOverride(self: *@This(), value: XYFocusNavigationStrategyOverride) core.HResult!void {
         const _c = self.vtable.put_XYFocusNavigationStrategyOverride(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFindNextElementOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1383,8 +1371,11 @@ pub const IFindNextElementOptions = extern struct {
 };
 pub const IFocusManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1405,8 +1396,11 @@ pub const IFocusManager = extern struct {
 };
 pub const IFocusManagerGotFocusEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1414,13 +1408,13 @@ pub const IFocusManagerGotFocusEventArgs = extern struct {
     pub fn getNewFocusedElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_NewFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerGotFocusEventArgs";
@@ -1441,8 +1435,11 @@ pub const IFocusManagerGotFocusEventArgs = extern struct {
 };
 pub const IFocusManagerLostFocusEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1450,13 +1447,13 @@ pub const IFocusManagerLostFocusEventArgs = extern struct {
     pub fn getOldFocusedElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_OldFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerLostFocusEventArgs";
@@ -1477,8 +1474,11 @@ pub const IFocusManagerLostFocusEventArgs = extern struct {
 };
 pub const IFocusManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1486,7 +1486,7 @@ pub const IFocusManagerStatics = extern struct {
     pub fn GetFocusedElement(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerStatics";
@@ -1506,8 +1506,11 @@ pub const IFocusManagerStatics = extern struct {
 };
 pub const IFocusManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1515,7 +1518,7 @@ pub const IFocusManagerStatics2 = extern struct {
     pub fn TryMoveFocus(self: *@This(), focusNavigationDirection: FocusNavigationDirection) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryMoveFocus(@ptrCast(self), focusNavigationDirection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerStatics2";
@@ -1535,8 +1538,11 @@ pub const IFocusManagerStatics2 = extern struct {
 };
 pub const IFocusManagerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1544,13 +1550,13 @@ pub const IFocusManagerStatics3 = extern struct {
     pub fn FindNextFocusableElement(self: *@This(), focusNavigationDirection: FocusNavigationDirection) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.FindNextFocusableElement(@ptrCast(self), focusNavigationDirection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindNextFocusableElementWithHintRect(self: *@This(), focusNavigationDirection: FocusNavigationDirection, hintRect: Rect) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.FindNextFocusableElementWithHintRect(@ptrCast(self), focusNavigationDirection, hintRect, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerStatics3";
@@ -1571,8 +1577,11 @@ pub const IFocusManagerStatics3 = extern struct {
 };
 pub const IFocusManagerStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1580,31 +1589,31 @@ pub const IFocusManagerStatics4 = extern struct {
     pub fn TryMoveFocus(self: *@This(), focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryMoveFocus(@ptrCast(self), focusNavigationDirection, focusNavigationOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindNextElement(self: *@This(), focusNavigationDirection: FocusNavigationDirection) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.FindNextElement(@ptrCast(self), focusNavigationDirection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindFirstFocusableElement(self: *@This(), searchScope: *DependencyObject) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.FindFirstFocusableElement(@ptrCast(self), searchScope, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindLastFocusableElement(self: *@This(), searchScope: *DependencyObject) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.FindLastFocusableElement(@ptrCast(self), searchScope, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindNextElementWithFocusNavigationOptions(self: *@This(), focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.FindNextElementWithFocusNavigationOptions(@ptrCast(self), focusNavigationDirection, focusNavigationOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerStatics4";
@@ -1628,8 +1637,11 @@ pub const IFocusManagerStatics4 = extern struct {
 };
 pub const IFocusManagerStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1637,19 +1649,19 @@ pub const IFocusManagerStatics5 = extern struct {
     pub fn TryFocusAsync(self: *@This(), element: *DependencyObject, value: FocusState) core.HResult!*IAsyncOperation(FocusMovementResult) {
         var _r: *IAsyncOperation(FocusMovementResult) = undefined;
         const _c = self.vtable.TryFocusAsync(@ptrCast(self), element, value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryMoveFocusAsync(self: *@This(), focusNavigationDirection: FocusNavigationDirection) core.HResult!*IAsyncOperation(FocusMovementResult) {
         var _r: *IAsyncOperation(FocusMovementResult) = undefined;
         const _c = self.vtable.TryMoveFocusAsync(@ptrCast(self), focusNavigationDirection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryMoveFocusAsyncWithFocusNavigationOptions(self: *@This(), focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*IAsyncOperation(FocusMovementResult) {
         var _r: *IAsyncOperation(FocusMovementResult) = undefined;
         const _c = self.vtable.TryMoveFocusAsyncWithFocusNavigationOptions(@ptrCast(self), focusNavigationDirection, focusNavigationOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerStatics5";
@@ -1671,8 +1683,11 @@ pub const IFocusManagerStatics5 = extern struct {
 };
 pub const IFocusManagerStatics6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1680,42 +1695,42 @@ pub const IFocusManagerStatics6 = extern struct {
     pub fn addGotFocus(self: *@This(), handler: *EventHandler(FocusManagerGotFocusEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GotFocus(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGotFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GotFocus(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLostFocus(self: *@This(), handler: *EventHandler(FocusManagerLostFocusEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LostFocus(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLostFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LostFocus(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addGettingFocus(self: *@This(), handler: *EventHandler(GettingFocusEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GettingFocus(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGettingFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GettingFocus(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLosingFocus(self: *@This(), handler: *EventHandler(LosingFocusEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LosingFocus(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLosingFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LosingFocus(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerStatics6";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1741,8 +1756,11 @@ pub const IFocusManagerStatics6 = extern struct {
 };
 pub const IFocusManagerStatics7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1750,7 +1768,7 @@ pub const IFocusManagerStatics7 = extern struct {
     pub fn GetFocusedElement(self: *@This(), xamlRoot: *XamlRoot) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetFocusedElement(@ptrCast(self), xamlRoot, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusManagerStatics7";
@@ -1770,8 +1788,11 @@ pub const IFocusManagerStatics7 = extern struct {
 };
 pub const IFocusMovementResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1779,7 +1800,7 @@ pub const IFocusMovementResult = extern struct {
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IFocusMovementResult";
@@ -1799,8 +1820,11 @@ pub const IFocusMovementResult = extern struct {
 };
 pub const IGettingFocusEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1808,56 +1832,56 @@ pub const IGettingFocusEventArgs = extern struct {
     pub fn getOldFocusedElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_OldFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNewFocusedElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_NewFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNewFocusedElement(self: *@This(), value: *DependencyObject) core.HResult!void {
         const _c = self.vtable.put_NewFocusedElement(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFocusState(self: *@This()) core.HResult!FocusState {
         var _r: FocusState = undefined;
         const _c = self.vtable.get_FocusState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDirection(self: *@This()) core.HResult!FocusNavigationDirection {
         var _r: FocusNavigationDirection = undefined;
         const _c = self.vtable.get_Direction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInputDevice(self: *@This()) core.HResult!FocusInputDeviceKind {
         var _r: FocusInputDeviceKind = undefined;
         const _c = self.vtable.get_InputDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Cancel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCancel(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Cancel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IGettingFocusEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1885,8 +1909,11 @@ pub const IGettingFocusEventArgs = extern struct {
 };
 pub const IGettingFocusEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1894,13 +1921,13 @@ pub const IGettingFocusEventArgs2 = extern struct {
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryCancel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetNewFocusedElement(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetNewFocusedElement(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IGettingFocusEventArgs2";
@@ -1921,8 +1948,11 @@ pub const IGettingFocusEventArgs2 = extern struct {
 };
 pub const IGettingFocusEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1930,7 +1960,7 @@ pub const IGettingFocusEventArgs3 = extern struct {
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IGettingFocusEventArgs3";
@@ -1950,8 +1980,11 @@ pub const IGettingFocusEventArgs3 = extern struct {
 };
 pub const IHoldingRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1959,29 +1992,29 @@ pub const IHoldingRoutedEventArgs = extern struct {
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHoldingState(self: *@This()) core.HResult!HoldingState {
         var _r: HoldingState = undefined;
         const _c = self.vtable.get_HoldingState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPosition(self: *@This(), relativeTo: *UIElement) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetPosition(@ptrCast(self), relativeTo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IHoldingRoutedEventArgs";
@@ -2005,8 +2038,11 @@ pub const IHoldingRoutedEventArgs = extern struct {
 };
 pub const IInertiaExpansionBehavior = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2014,22 +2050,22 @@ pub const IInertiaExpansionBehavior = extern struct {
     pub fn getDesiredDeceleration(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredDeceleration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredDeceleration(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DesiredDeceleration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredExpansion(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredExpansion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredExpansion(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DesiredExpansion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IInertiaExpansionBehavior";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2051,8 +2087,11 @@ pub const IInertiaExpansionBehavior = extern struct {
 };
 pub const IInertiaRotationBehavior = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2060,22 +2099,22 @@ pub const IInertiaRotationBehavior = extern struct {
     pub fn getDesiredDeceleration(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredDeceleration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredDeceleration(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DesiredDeceleration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredRotation(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredRotation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredRotation(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DesiredRotation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IInertiaRotationBehavior";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2097,8 +2136,11 @@ pub const IInertiaRotationBehavior = extern struct {
 };
 pub const IInertiaTranslationBehavior = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2106,22 +2148,22 @@ pub const IInertiaTranslationBehavior = extern struct {
     pub fn getDesiredDeceleration(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredDeceleration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredDeceleration(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DesiredDeceleration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredDisplacement(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredDisplacement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredDisplacement(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DesiredDisplacement(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IInertiaTranslationBehavior";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2143,8 +2185,11 @@ pub const IInertiaTranslationBehavior = extern struct {
 };
 pub const IInputScope = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2152,7 +2197,7 @@ pub const IInputScope = extern struct {
     pub fn getNames(self: *@This()) core.HResult!*IVector(InputScopeName) {
         var _r: *IVector(InputScopeName) = undefined;
         const _c = self.vtable.get_Names(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IInputScope";
@@ -2172,8 +2217,11 @@ pub const IInputScope = extern struct {
 };
 pub const IInputScopeName = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2181,12 +2229,12 @@ pub const IInputScopeName = extern struct {
     pub fn getNameValue(self: *@This()) core.HResult!InputScopeNameValue {
         var _r: InputScopeNameValue = undefined;
         const _c = self.vtable.get_NameValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNameValue(self: *@This(), value: InputScopeNameValue) core.HResult!void {
         const _c = self.vtable.put_NameValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IInputScopeName";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2206,8 +2254,11 @@ pub const IInputScopeName = extern struct {
 };
 pub const IInputScopeNameFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2215,7 +2266,7 @@ pub const IInputScopeNameFactory = extern struct {
     pub fn CreateInstance(self: *@This(), nameValue: InputScopeNameValue) core.HResult!*InputScopeName {
         var _r: *InputScopeName = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), nameValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IInputScopeNameFactory";
@@ -2235,8 +2286,11 @@ pub const IInputScopeNameFactory = extern struct {
 };
 pub const IKeyRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2244,24 +2298,24 @@ pub const IKeyRoutedEventArgs = extern struct {
     pub fn getKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_Key(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyStatus(self: *@This()) core.HResult!CorePhysicalKeyStatus {
         var _r: CorePhysicalKeyStatus = undefined;
         const _c = self.vtable.get_KeyStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyRoutedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2283,8 +2337,11 @@ pub const IKeyRoutedEventArgs = extern struct {
 };
 pub const IKeyRoutedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2292,7 +2349,7 @@ pub const IKeyRoutedEventArgs2 = extern struct {
     pub fn getOriginalKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_OriginalKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyRoutedEventArgs2";
@@ -2312,8 +2369,11 @@ pub const IKeyRoutedEventArgs2 = extern struct {
 };
 pub const IKeyRoutedEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2321,7 +2381,7 @@ pub const IKeyRoutedEventArgs3 = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyRoutedEventArgs3";
@@ -2341,8 +2401,11 @@ pub const IKeyRoutedEventArgs3 = extern struct {
 };
 pub const IKeyboardAccelerator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2350,52 +2413,52 @@ pub const IKeyboardAccelerator = extern struct {
     pub fn getKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_Key(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putKey(self: *@This(), value: VirtualKey) core.HResult!void {
         const _c = self.vtable.put_Key(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_Modifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putModifiers(self: *@This(), value: VirtualKeyModifiers) core.HResult!void {
         const _c = self.vtable.put_Modifiers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScopeOwner(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_ScopeOwner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScopeOwner(self: *@This(), value: *DependencyObject) core.HResult!void {
         const _c = self.vtable.put_ScopeOwner(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addInvoked(self: *@This(), handler: *TypedEventHandler(KeyboardAccelerator,KeyboardAcceleratorInvokedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Invoked(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeInvoked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Invoked(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyboardAccelerator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2423,8 +2486,11 @@ pub const IKeyboardAccelerator = extern struct {
 };
 pub const IKeyboardAcceleratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2432,7 +2498,7 @@ pub const IKeyboardAcceleratorFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*KeyboardAccelerator {
         var _r: *KeyboardAccelerator = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyboardAcceleratorFactory";
@@ -2452,8 +2518,11 @@ pub const IKeyboardAcceleratorFactory = extern struct {
 };
 pub const IKeyboardAcceleratorInvokedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2461,17 +2530,17 @@ pub const IKeyboardAcceleratorInvokedEventArgs = extern struct {
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_Element(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyboardAcceleratorInvokedEventArgs";
@@ -2493,8 +2562,11 @@ pub const IKeyboardAcceleratorInvokedEventArgs = extern struct {
 };
 pub const IKeyboardAcceleratorInvokedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2502,7 +2574,7 @@ pub const IKeyboardAcceleratorInvokedEventArgs2 = extern struct {
     pub fn getKeyboardAccelerator(self: *@This()) core.HResult!*KeyboardAccelerator {
         var _r: *KeyboardAccelerator = undefined;
         const _c = self.vtable.get_KeyboardAccelerator(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyboardAcceleratorInvokedEventArgs2";
@@ -2522,8 +2594,11 @@ pub const IKeyboardAcceleratorInvokedEventArgs2 = extern struct {
 };
 pub const IKeyboardAcceleratorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2531,25 +2606,25 @@ pub const IKeyboardAcceleratorStatics = extern struct {
     pub fn getKeyProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_KeyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModifiersProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ModifiersProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScopeOwnerProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ScopeOwnerProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IKeyboardAcceleratorStatics";
@@ -2572,8 +2647,11 @@ pub const IKeyboardAcceleratorStatics = extern struct {
 };
 pub const ILosingFocusEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2581,56 +2659,56 @@ pub const ILosingFocusEventArgs = extern struct {
     pub fn getOldFocusedElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_OldFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNewFocusedElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_NewFocusedElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNewFocusedElement(self: *@This(), value: *DependencyObject) core.HResult!void {
         const _c = self.vtable.put_NewFocusedElement(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFocusState(self: *@This()) core.HResult!FocusState {
         var _r: FocusState = undefined;
         const _c = self.vtable.get_FocusState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDirection(self: *@This()) core.HResult!FocusNavigationDirection {
         var _r: FocusNavigationDirection = undefined;
         const _c = self.vtable.get_Direction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInputDevice(self: *@This()) core.HResult!FocusInputDeviceKind {
         var _r: FocusInputDeviceKind = undefined;
         const _c = self.vtable.get_InputDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Cancel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCancel(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Cancel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ILosingFocusEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2658,8 +2736,11 @@ pub const ILosingFocusEventArgs = extern struct {
 };
 pub const ILosingFocusEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2667,13 +2748,13 @@ pub const ILosingFocusEventArgs2 = extern struct {
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryCancel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetNewFocusedElement(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetNewFocusedElement(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ILosingFocusEventArgs2";
@@ -2694,8 +2775,11 @@ pub const ILosingFocusEventArgs2 = extern struct {
 };
 pub const ILosingFocusEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2703,7 +2787,7 @@ pub const ILosingFocusEventArgs3 = extern struct {
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ILosingFocusEventArgs3";
@@ -2723,8 +2807,11 @@ pub const ILosingFocusEventArgs3 = extern struct {
 };
 pub const IManipulationCompletedRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2732,47 +2819,47 @@ pub const IManipulationCompletedRoutedEventArgs = extern struct {
     pub fn getContainer(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Container(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInertial(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInertial(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCumulative(self: *@This()) core.HResult!ManipulationDelta {
         var _r: ManipulationDelta = undefined;
         const _c = self.vtable.get_Cumulative(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVelocities(self: *@This()) core.HResult!ManipulationVelocities {
         var _r: ManipulationVelocities = undefined;
         const _c = self.vtable.get_Velocities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationCompletedRoutedEventArgs";
@@ -2799,8 +2886,11 @@ pub const IManipulationCompletedRoutedEventArgs = extern struct {
 };
 pub const IManipulationDeltaRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2808,58 +2898,58 @@ pub const IManipulationDeltaRoutedEventArgs = extern struct {
     pub fn getContainer(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Container(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInertial(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInertial(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDelta(self: *@This()) core.HResult!ManipulationDelta {
         var _r: ManipulationDelta = undefined;
         const _c = self.vtable.get_Delta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCumulative(self: *@This()) core.HResult!ManipulationDelta {
         var _r: ManipulationDelta = undefined;
         const _c = self.vtable.get_Cumulative(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVelocities(self: *@This()) core.HResult!ManipulationVelocities {
         var _r: ManipulationVelocities = undefined;
         const _c = self.vtable.get_Velocities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationDeltaRoutedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2887,8 +2977,11 @@ pub const IManipulationDeltaRoutedEventArgs = extern struct {
 };
 pub const IManipulationInertiaStartingRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2896,71 +2989,71 @@ pub const IManipulationInertiaStartingRoutedEventArgs = extern struct {
     pub fn getContainer(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Container(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpansionBehavior(self: *@This()) core.HResult!*InertiaExpansionBehavior {
         var _r: *InertiaExpansionBehavior = undefined;
         const _c = self.vtable.get_ExpansionBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExpansionBehavior(self: *@This(), value: *InertiaExpansionBehavior) core.HResult!void {
         const _c = self.vtable.put_ExpansionBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRotationBehavior(self: *@This()) core.HResult!*InertiaRotationBehavior {
         var _r: *InertiaRotationBehavior = undefined;
         const _c = self.vtable.get_RotationBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRotationBehavior(self: *@This(), value: *InertiaRotationBehavior) core.HResult!void {
         const _c = self.vtable.put_RotationBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTranslationBehavior(self: *@This()) core.HResult!*InertiaTranslationBehavior {
         var _r: *InertiaTranslationBehavior = undefined;
         const _c = self.vtable.get_TranslationBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTranslationBehavior(self: *@This(), value: *InertiaTranslationBehavior) core.HResult!void {
         const _c = self.vtable.put_TranslationBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDelta(self: *@This()) core.HResult!ManipulationDelta {
         var _r: ManipulationDelta = undefined;
         const _c = self.vtable.get_Delta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCumulative(self: *@This()) core.HResult!ManipulationDelta {
         var _r: ManipulationDelta = undefined;
         const _c = self.vtable.get_Cumulative(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVelocities(self: *@This()) core.HResult!ManipulationVelocities {
         var _r: ManipulationVelocities = undefined;
         const _c = self.vtable.get_Velocities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationInertiaStartingRoutedEventArgs";
@@ -2992,8 +3085,11 @@ pub const IManipulationInertiaStartingRoutedEventArgs = extern struct {
 };
 pub const IManipulationPivot = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3001,22 +3097,22 @@ pub const IManipulationPivot = extern struct {
     pub fn getCenter(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCenter(self: *@This(), value: Point) core.HResult!void {
         const _c = self.vtable.put_Center(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRadius(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Radius(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRadius(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Radius(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationPivot";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3038,8 +3134,11 @@ pub const IManipulationPivot = extern struct {
 };
 pub const IManipulationPivotFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3047,7 +3146,7 @@ pub const IManipulationPivotFactory = extern struct {
     pub fn CreateInstanceWithCenterAndRadius(self: *@This(), center: Point, radius: f64) core.HResult!*ManipulationPivot {
         var _r: *ManipulationPivot = undefined;
         const _c = self.vtable.CreateInstanceWithCenterAndRadius(@ptrCast(self), center, radius, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationPivotFactory";
@@ -3067,8 +3166,11 @@ pub const IManipulationPivotFactory = extern struct {
 };
 pub const IManipulationStartedRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3076,40 +3178,40 @@ pub const IManipulationStartedRoutedEventArgs = extern struct {
     pub fn getContainer(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Container(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCumulative(self: *@This()) core.HResult!ManipulationDelta {
         var _r: ManipulationDelta = undefined;
         const _c = self.vtable.get_Cumulative(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationStartedRoutedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3134,8 +3236,11 @@ pub const IManipulationStartedRoutedEventArgs = extern struct {
 };
 pub const IManipulationStartedRoutedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3143,7 +3248,7 @@ pub const IManipulationStartedRoutedEventArgsFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ManipulationStartedRoutedEventArgs {
         var _r: *ManipulationStartedRoutedEventArgs = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationStartedRoutedEventArgsFactory";
@@ -3163,8 +3268,11 @@ pub const IManipulationStartedRoutedEventArgsFactory = extern struct {
 };
 pub const IManipulationStartingRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3172,42 +3280,42 @@ pub const IManipulationStartingRoutedEventArgs = extern struct {
     pub fn getMode(self: *@This()) core.HResult!ManipulationModes {
         var _r: ManipulationModes = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMode(self: *@This(), value: ManipulationModes) core.HResult!void {
         const _c = self.vtable.put_Mode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContainer(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Container(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContainer(self: *@This(), value: *UIElement) core.HResult!void {
         const _c = self.vtable.put_Container(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPivot(self: *@This()) core.HResult!*ManipulationPivot {
         var _r: *ManipulationPivot = undefined;
         const _c = self.vtable.get_Pivot(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPivot(self: *@This(), value: *ManipulationPivot) core.HResult!void {
         const _c = self.vtable.put_Pivot(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IManipulationStartingRoutedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3233,8 +3341,11 @@ pub const IManipulationStartingRoutedEventArgs = extern struct {
 };
 pub const INoFocusCandidateFoundEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3242,23 +3353,23 @@ pub const INoFocusCandidateFoundEventArgs = extern struct {
     pub fn getDirection(self: *@This()) core.HResult!FocusNavigationDirection {
         var _r: FocusNavigationDirection = undefined;
         const _c = self.vtable.get_Direction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInputDevice(self: *@This()) core.HResult!FocusInputDeviceKind {
         var _r: FocusInputDeviceKind = undefined;
         const _c = self.vtable.get_InputDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.INoFocusCandidateFoundEventArgs";
@@ -3281,8 +3392,11 @@ pub const INoFocusCandidateFoundEventArgs = extern struct {
 };
 pub const IPointer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3290,25 +3404,25 @@ pub const IPointer = extern struct {
     pub fn getPointerId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PointerId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInContact(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInContact(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInRange(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInRange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IPointer";
@@ -3331,8 +3445,11 @@ pub const IPointer = extern struct {
 };
 pub const IPointerRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3340,35 +3457,35 @@ pub const IPointerRoutedEventArgs = extern struct {
     pub fn getPointer(self: *@This()) core.HResult!*Pointer {
         var _r: *Pointer = undefined;
         const _c = self.vtable.get_Pointer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_KeyModifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetCurrentPoint(self: *@This(), relativeTo: *UIElement) core.HResult!*PointerPoint {
         var _r: *PointerPoint = undefined;
         const _c = self.vtable.GetCurrentPoint(@ptrCast(self), relativeTo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIntermediatePoints(self: *@This(), relativeTo: *UIElement) core.HResult!*IVector(PointerPoint) {
         var _r: *IVector(PointerPoint) = undefined;
         const _c = self.vtable.GetIntermediatePoints(@ptrCast(self), relativeTo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IPointerRoutedEventArgs";
@@ -3393,8 +3510,11 @@ pub const IPointerRoutedEventArgs = extern struct {
 };
 pub const IPointerRoutedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3402,7 +3522,7 @@ pub const IPointerRoutedEventArgs2 = extern struct {
     pub fn getIsGenerated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsGenerated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IPointerRoutedEventArgs2";
@@ -3422,8 +3542,11 @@ pub const IPointerRoutedEventArgs2 = extern struct {
 };
 pub const IProcessKeyboardAcceleratorEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3431,24 +3554,24 @@ pub const IProcessKeyboardAcceleratorEventArgs = extern struct {
     pub fn getKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_Key(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModifiers(self: *@This()) core.HResult!VirtualKeyModifiers {
         var _r: VirtualKeyModifiers = undefined;
         const _c = self.vtable.get_Modifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IProcessKeyboardAcceleratorEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3470,8 +3593,11 @@ pub const IProcessKeyboardAcceleratorEventArgs = extern struct {
 };
 pub const IRightTappedRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3479,23 +3605,23 @@ pub const IRightTappedRoutedEventArgs = extern struct {
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPosition(self: *@This(), relativeTo: *UIElement) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetPosition(@ptrCast(self), relativeTo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IRightTappedRoutedEventArgs";
@@ -3518,8 +3644,11 @@ pub const IRightTappedRoutedEventArgs = extern struct {
 };
 pub const IStandardUICommand = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3527,7 +3656,7 @@ pub const IStandardUICommand = extern struct {
     pub fn getKind(self: *@This()) core.HResult!StandardUICommandKind {
         var _r: StandardUICommandKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IStandardUICommand";
@@ -3547,15 +3676,18 @@ pub const IStandardUICommand = extern struct {
 };
 pub const IStandardUICommand2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putKind(self: *@This(), value: StandardUICommandKind) core.HResult!void {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IStandardUICommand2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3574,8 +3706,11 @@ pub const IStandardUICommand2 = extern struct {
 };
 pub const IStandardUICommandFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3583,13 +3718,13 @@ pub const IStandardUICommandFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*StandardUICommand {
         var _r: *StandardUICommand = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithKind(self: *@This(), kind: StandardUICommandKind, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*StandardUICommand {
         var _r: *StandardUICommand = undefined;
         const _c = self.vtable.CreateInstanceWithKind(@ptrCast(self), kind, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IStandardUICommandFactory";
@@ -3610,8 +3745,11 @@ pub const IStandardUICommandFactory = extern struct {
 };
 pub const IStandardUICommandStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3619,7 +3757,7 @@ pub const IStandardUICommandStatics = extern struct {
     pub fn getKindProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_KindProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IStandardUICommandStatics";
@@ -3639,8 +3777,11 @@ pub const IStandardUICommandStatics = extern struct {
 };
 pub const ITappedRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3648,23 +3789,23 @@ pub const ITappedRoutedEventArgs = extern struct {
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPosition(self: *@This(), relativeTo: *UIElement) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetPosition(@ptrCast(self), relativeTo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ITappedRoutedEventArgs";
@@ -3687,8 +3828,11 @@ pub const ITappedRoutedEventArgs = extern struct {
 };
 pub const IXamlUICommand = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3696,82 +3840,82 @@ pub const IXamlUICommand = extern struct {
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIconSource(self: *@This()) core.HResult!*IconSource {
         var _r: *IconSource = undefined;
         const _c = self.vtable.get_IconSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIconSource(self: *@This(), value: *IconSource) core.HResult!void {
         const _c = self.vtable.put_IconSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getKeyboardAccelerators(self: *@This()) core.HResult!*IVector(KeyboardAccelerator) {
         var _r: *IVector(KeyboardAccelerator) = undefined;
         const _c = self.vtable.get_KeyboardAccelerators(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccessKey(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAccessKey(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AccessKey(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCommand(self: *@This()) core.HResult!*ICommand {
         var _r: *ICommand = undefined;
         const _c = self.vtable.get_Command(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCommand(self: *@This(), value: *ICommand) core.HResult!void {
         const _c = self.vtable.put_Command(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addExecuteRequested(self: *@This(), handler: *TypedEventHandler(XamlUICommand,ExecuteRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ExecuteRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeExecuteRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ExecuteRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCanExecuteRequested(self: *@This(), handler: *TypedEventHandler(XamlUICommand,CanExecuteRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CanExecuteRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCanExecuteRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CanExecuteRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn NotifyCanExecuteChanged(self: *@This()) core.HResult!void {
         const _c = self.vtable.NotifyCanExecuteChanged(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IXamlUICommand";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3805,8 +3949,11 @@ pub const IXamlUICommand = extern struct {
 };
 pub const IXamlUICommandFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3814,7 +3961,7 @@ pub const IXamlUICommandFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*XamlUICommand {
         var _r: *XamlUICommand = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IXamlUICommandFactory";
@@ -3834,8 +3981,11 @@ pub const IXamlUICommandFactory = extern struct {
 };
 pub const IXamlUICommandStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3843,37 +3993,37 @@ pub const IXamlUICommandStatics = extern struct {
     pub fn getLabelProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LabelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIconSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IconSourceProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyboardAcceleratorsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccessKeyProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AccessKeyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDescriptionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DescriptionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCommandProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CommandProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.IXamlUICommandStatics";
@@ -3898,14 +4048,11 @@ pub const IXamlUICommandStatics = extern struct {
 };
 pub const InertiaExpansionBehavior = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3934,14 +4081,11 @@ pub const InertiaExpansionBehavior = extern struct {
 };
 pub const InertiaRotationBehavior = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3970,14 +4114,11 @@ pub const InertiaRotationBehavior = extern struct {
 };
 pub const InertiaTranslationBehavior = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4006,14 +4147,11 @@ pub const InertiaTranslationBehavior = extern struct {
 };
 pub const InputScope = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4035,14 +4173,11 @@ pub const InputScope = extern struct {
 };
 pub const InputScopeName = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4208,14 +4343,11 @@ pub const KeyEventHandler = extern struct {
 };
 pub const KeyRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4239,15 +4371,13 @@ pub const KeyRoutedEventArgs = extern struct {
     pub fn getOriginalKey(self: *@This()) core.HResult!VirtualKey {
         var this: ?*IKeyRoutedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyRoutedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IKeyRoutedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getOriginalKey();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IKeyRoutedEventArgs3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyRoutedEventArgs3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IKeyRoutedEventArgs3.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.KeyRoutedEventArgs";
@@ -4267,14 +4397,11 @@ pub const KeyTipPlacementMode = enum(i32) {
 };
 pub const KeyboardAccelerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4349,14 +4476,11 @@ pub const KeyboardAccelerator = extern struct {
 };
 pub const KeyboardAcceleratorInvokedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4376,8 +4500,7 @@ pub const KeyboardAcceleratorInvokedEventArgs = extern struct {
     pub fn getKeyboardAccelerator(self: *@This()) core.HResult!*KeyboardAccelerator {
         var this: ?*IKeyboardAcceleratorInvokedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyboardAcceleratorInvokedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IKeyboardAcceleratorInvokedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getKeyboardAccelerator();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.KeyboardAcceleratorInvokedEventArgs";
@@ -4397,14 +4520,11 @@ pub const KeyboardNavigationMode = enum(i32) {
 };
 pub const LosingFocusEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4452,22 +4572,19 @@ pub const LosingFocusEventArgs = extern struct {
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var this: ?*ILosingFocusEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs2.IID, @ptrCast(&this));
         return try this.?.TryCancel();
     }
     pub fn TrySetNewFocusedElement(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var this: ?*ILosingFocusEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs2.IID, @ptrCast(&this));
         return try this.?.TrySetNewFocusedElement(element);
     }
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var this: ?*ILosingFocusEventArgs3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs3.IID, @ptrCast(&this));
         return try this.?.getCorrelationId();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.LosingFocusEventArgs";
@@ -4567,14 +4684,11 @@ pub const ManipulationCompletedEventHandler = extern struct {
 };
 pub const ManipulationCompletedRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4713,14 +4827,11 @@ pub const ManipulationDeltaEventHandler = extern struct {
 };
 pub const ManipulationDeltaRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4867,14 +4978,11 @@ pub const ManipulationInertiaStartingEventHandler = extern struct {
 };
 pub const ManipulationInertiaStartingRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4958,14 +5066,11 @@ pub const ManipulationModes = enum(i32) {
 };
 pub const ManipulationPivot = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5093,14 +5198,11 @@ pub const ManipulationStartedEventHandler = extern struct {
 };
 pub const ManipulationStartedRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5235,14 +5337,11 @@ pub const ManipulationStartingEventHandler = extern struct {
 };
 pub const ManipulationStartingRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5292,14 +5391,11 @@ pub const ManipulationStartingRoutedEventArgs = extern struct {
 };
 pub const NoFocusCandidateFoundEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5328,14 +5424,11 @@ pub const NoFocusCandidateFoundEventArgs = extern struct {
 };
 pub const Pointer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5453,14 +5546,11 @@ pub const PointerEventHandler = extern struct {
 };
 pub const PointerRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5492,8 +5582,7 @@ pub const PointerRoutedEventArgs = extern struct {
     pub fn getIsGenerated(self: *@This()) core.HResult!bool {
         var this: ?*IPointerRoutedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointerRoutedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPointerRoutedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getIsGenerated();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.PointerRoutedEventArgs";
@@ -5504,14 +5593,11 @@ pub const PointerRoutedEventArgs = extern struct {
 };
 pub const ProcessKeyboardAcceleratorEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5629,14 +5715,11 @@ pub const RightTappedEventHandler = extern struct {
 };
 pub const RightTappedRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5670,14 +5753,11 @@ pub const RightTappedRoutedEventArgs = extern struct {
 };
 pub const XamlUICommand = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5749,29 +5829,25 @@ pub const XamlUICommand = extern struct {
     pub fn addCanExecuteChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICommand = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         return try this.?.addCanExecuteChanged(handler);
     }
     pub fn removeCanExecuteChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICommand = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         return try this.?.removeCanExecuteChanged(token);
     }
     pub fn CanExecute(self: *@This(), parameter: *IInspectable) core.HResult!bool {
         var this: ?*ICommand = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         return try this.?.CanExecute(parameter);
     }
     pub fn Execute(self: *@This(), parameter: *IInspectable) core.HResult!void {
         var this: ?*ICommand = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         return try this.?.Execute(parameter);
     }
     pub fn getLabelProperty() core.HResult!*DependencyProperty {
@@ -5812,14 +5888,11 @@ pub const XamlUICommand = extern struct {
 };
 pub const StandardUICommand = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5831,8 +5904,7 @@ pub const StandardUICommand = extern struct {
     pub fn putKind(self: *@This(), value: StandardUICommandKind) core.HResult!void {
         var this: ?*IStandardUICommand2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStandardUICommand2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStandardUICommand2.IID, @ptrCast(&this));
         return try this.?.putKind(value);
     }
     pub fn getKindProperty() core.HResult!*DependencyProperty {
@@ -5965,14 +6037,11 @@ pub const TappedEventHandler = extern struct {
 };
 pub const TappedRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

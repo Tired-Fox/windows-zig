@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AppCapability = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -40,15 +37,13 @@ pub const AppCapability = extern struct {
     pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppCapability2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
         return try this.?.getDisplayMessage();
     }
     pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppCapability2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
         return try this.?.putDisplayMessage(value);
     }
     pub fn RequestAccessForCapabilitiesAsync(capabilityNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) {
@@ -76,14 +71,11 @@ pub const AppCapability = extern struct {
 };
 pub const AppCapabilityAccessChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -103,8 +95,11 @@ pub const AppCapabilityAccessStatus = enum(i32) {
 };
 pub const IAppCapability = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -112,36 +107,36 @@ pub const IAppCapability = extern struct {
     pub fn getCapabilityName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapabilityName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(AppCapabilityAccessStatus) {
         var _r: *IAsyncOperation(AppCapabilityAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckAccess(self: *@This()) core.HResult!AppCapabilityAccessStatus {
         var _r: AppCapabilityAccessStatus = undefined;
         const _c = self.vtable.CheckAccess(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAccessChanged(self: *@This(), handler: *TypedEventHandler(AppCapability,AppCapabilityAccessChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccessChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAccessChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AccessChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Authorization.AppCapabilityAccess.IAppCapability";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -165,8 +160,11 @@ pub const IAppCapability = extern struct {
 };
 pub const IAppCapability2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -174,12 +172,12 @@ pub const IAppCapability2 = extern struct {
     pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayMessage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Authorization.AppCapabilityAccess.IAppCapability2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -199,8 +197,11 @@ pub const IAppCapability2 = extern struct {
 };
 pub const IAppCapabilityAccessChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -221,8 +222,11 @@ pub const IAppCapabilityAccessChangedEventArgs = extern struct {
 };
 pub const IAppCapabilityStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -230,25 +234,25 @@ pub const IAppCapabilityStatics = extern struct {
     pub fn RequestAccessForCapabilitiesAsync(self: *@This(), capabilityNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) {
         var _r: *IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) = undefined;
         const _c = self.vtable.RequestAccessForCapabilitiesAsync(@ptrCast(self), capabilityNames, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessForCapabilitiesForUserAsync(self: *@This(), user: *User, capabilityNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) {
         var _r: *IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) = undefined;
         const _c = self.vtable.RequestAccessForCapabilitiesForUserAsync(@ptrCast(self), user, capabilityNames, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Create(self: *@This(), capabilityName: ?HSTRING) core.HResult!*AppCapability {
         var _r: *AppCapability = undefined;
         const _c = self.vtable.Create(@ptrCast(self), capabilityName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithProcessIdForUser(self: *@This(), user: *User, capabilityName: ?HSTRING, pid: u32) core.HResult!*AppCapability {
         var _r: *AppCapability = undefined;
         const _c = self.vtable.CreateWithProcessIdForUser(@ptrCast(self), user, capabilityName, pid, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authorization.AppCapabilityAccess.IAppCapabilityStatics";

@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AnimationDescription = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -106,8 +103,11 @@ pub const AnimationEffectTarget = enum(i32) {
 };
 pub const IAnimationDescription = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -115,31 +115,31 @@ pub const IAnimationDescription = extern struct {
     pub fn getAnimations(self: *@This()) core.HResult!*IVectorView(IPropertyAnimation) {
         var _r: *IVectorView(IPropertyAnimation) = undefined;
         const _c = self.vtable.get_Animations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStaggerDelay(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_StaggerDelay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStaggerDelayFactor(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_StaggerDelayFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDelayLimit(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DelayLimit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZOrder(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZOrder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.IAnimationDescription";
@@ -163,8 +163,11 @@ pub const IAnimationDescription = extern struct {
 };
 pub const IAnimationDescriptionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -172,7 +175,7 @@ pub const IAnimationDescriptionFactory = extern struct {
     pub fn CreateInstance(self: *@This(), effect: AnimationEffect, target: AnimationEffectTarget) core.HResult!*AnimationDescription {
         var _r: *AnimationDescription = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), effect, target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.IAnimationDescriptionFactory";
@@ -192,8 +195,11 @@ pub const IAnimationDescriptionFactory = extern struct {
 };
 pub const IOpacityAnimation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -201,13 +207,13 @@ pub const IOpacityAnimation = extern struct {
     pub fn getInitialOpacity(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_InitialOpacity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFinalOpacity(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_FinalOpacity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.IOpacityAnimation";
@@ -228,8 +234,11 @@ pub const IOpacityAnimation = extern struct {
 };
 pub const IPropertyAnimation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -237,31 +246,31 @@ pub const IPropertyAnimation = extern struct {
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         var _r: PropertyAnimationType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDelay(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Delay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getControl1(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Control1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getControl2(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Control2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.IPropertyAnimation";
@@ -285,8 +294,11 @@ pub const IPropertyAnimation = extern struct {
 };
 pub const IScaleAnimation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -294,31 +306,31 @@ pub const IScaleAnimation = extern struct {
     pub fn getInitialScaleX(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_InitialScaleX(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInitialScaleY(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_InitialScaleY(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFinalScaleX(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_FinalScaleX(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFinalScaleY(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_FinalScaleY(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNormalizedOrigin(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_NormalizedOrigin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.IScaleAnimation";
@@ -342,14 +354,11 @@ pub const IScaleAnimation = extern struct {
 };
 pub const OpacityAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -365,36 +374,31 @@ pub const OpacityAnimation = extern struct {
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn getDelay(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getDelay();
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getDuration();
     }
     pub fn getControl1(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getControl1();
     }
     pub fn getControl2(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getControl2();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.OpacityAnimation";
@@ -405,14 +409,11 @@ pub const OpacityAnimation = extern struct {
 };
 pub const PropertyAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -450,14 +451,11 @@ pub const PropertyAnimationType = enum(i32) {
 };
 pub const ScaleAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -485,36 +483,31 @@ pub const ScaleAnimation = extern struct {
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn getDelay(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getDelay();
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getDuration();
     }
     pub fn getControl1(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getControl1();
     }
     pub fn getControl2(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         return try this.?.getControl2();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.ScaleAnimation";
@@ -525,14 +518,11 @@ pub const ScaleAnimation = extern struct {
 };
 pub const TranslationAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

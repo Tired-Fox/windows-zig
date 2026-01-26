@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IKnownCameraIntrinsicsPropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,25 +13,25 @@ pub const IKnownCameraIntrinsicsPropertiesStatics = extern struct {
     pub fn getFocalLength(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FocalLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrincipalPoint(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrincipalPoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRadialDistortion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RadialDistortion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTangentialDistortion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TangentialDistortion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownCameraIntrinsicsPropertiesStatics";
@@ -51,8 +54,11 @@ pub const IKnownCameraIntrinsicsPropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionColorFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -60,19 +66,19 @@ pub const IKnownPerceptionColorFrameSourcePropertiesStatics = extern struct {
     pub fn getExposure(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAutoExposureEnabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AutoExposureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExposureCompensation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExposureCompensation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownPerceptionColorFrameSourcePropertiesStatics";
@@ -94,8 +100,11 @@ pub const IKnownPerceptionColorFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionDepthFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -103,13 +112,13 @@ pub const IKnownPerceptionDepthFrameSourcePropertiesStatics = extern struct {
     pub fn getMinDepth(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MinDepth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxDepth(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MaxDepth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownPerceptionDepthFrameSourcePropertiesStatics";
@@ -130,8 +139,11 @@ pub const IKnownPerceptionDepthFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -139,31 +151,31 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalDeviceIds(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameKind(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FrameKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceModelVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceModelVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnclosureLocation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnclosureLocation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownPerceptionFrameSourcePropertiesStatics";
@@ -187,8 +199,11 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionFrameSourcePropertiesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -196,7 +211,7 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics2 = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownPerceptionFrameSourcePropertiesStatics2";
@@ -216,8 +231,11 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics2 = extern struct {
 };
 pub const IKnownPerceptionInfraredFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -225,43 +243,43 @@ pub const IKnownPerceptionInfraredFrameSourcePropertiesStatics = extern struct {
     pub fn getExposure(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAutoExposureEnabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AutoExposureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExposureCompensation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExposureCompensation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActiveIlluminationEnabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActiveIlluminationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAmbientSubtractionEnabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AmbientSubtractionEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStructureLightPatternEnabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StructureLightPatternEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInterleavedIlluminationEnabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InterleavedIlluminationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownPerceptionInfraredFrameSourcePropertiesStatics";
@@ -287,8 +305,11 @@ pub const IKnownPerceptionInfraredFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionVideoFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -296,31 +317,31 @@ pub const IKnownPerceptionVideoFrameSourcePropertiesStatics = extern struct {
     pub fn getVideoProfile(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedVideoProfiles(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SupportedVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailableVideoProfiles(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AvailableVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsMirrored(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IsMirrored(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCameraIntrinsics(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CameraIntrinsics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownPerceptionVideoFrameSourcePropertiesStatics";
@@ -344,8 +365,11 @@ pub const IKnownPerceptionVideoFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionVideoProfilePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -353,31 +377,31 @@ pub const IKnownPerceptionVideoProfilePropertiesStatics = extern struct {
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBitmapAlphaMode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BitmapAlphaMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidth(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeight(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameDuration(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FrameDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IKnownPerceptionVideoProfilePropertiesStatics";
@@ -401,8 +425,11 @@ pub const IKnownPerceptionVideoProfilePropertiesStatics = extern struct {
 };
 pub const IPerceptionColorFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -410,7 +437,7 @@ pub const IPerceptionColorFrame = extern struct {
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrame";
@@ -430,8 +457,11 @@ pub const IPerceptionColorFrame = extern struct {
 };
 pub const IPerceptionColorFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -439,13 +469,13 @@ pub const IPerceptionColorFrameArrivedEventArgs = extern struct {
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryOpenFrame(self: *@This()) core.HResult!*PerceptionColorFrame {
         var _r: *PerceptionColorFrame = undefined;
         const _c = self.vtable.TryOpenFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameArrivedEventArgs";
@@ -466,8 +496,11 @@ pub const IPerceptionColorFrameArrivedEventArgs = extern struct {
 };
 pub const IPerceptionColorFrameReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -475,33 +508,33 @@ pub const IPerceptionColorFrameReader = extern struct {
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameReader,PerceptionColorFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFrameArrived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FrameArrived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSource(self: *@This()) core.HResult!*PerceptionColorFrameSource {
         var _r: *PerceptionColorFrameSource = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPaused(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaused(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsPaused(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPaused(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryReadLatestFrame(self: *@This()) core.HResult!*PerceptionColorFrame {
         var _r: *PerceptionColorFrame = undefined;
         const _c = self.vtable.TryReadLatestFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameReader";
@@ -526,8 +559,11 @@ pub const IPerceptionColorFrameReader = extern struct {
 };
 pub const IPerceptionColorFrameSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -535,165 +571,165 @@ pub const IPerceptionColorFrameSource = extern struct {
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailableChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAvailableChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AvailableChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addActiveChanged(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActiveChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActiveChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActiveChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPropertiesChanged(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSource,PerceptionFrameSourcePropertiesChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PropertiesChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePropertiesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PropertiesChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVideoProfileChanged(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VideoProfileChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVideoProfileChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VideoProfileChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCameraIntrinsicsChanged(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CameraIntrinsicsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCameraIntrinsicsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CameraIntrinsicsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Available(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Active(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsControlled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsControlled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedVideoProfiles(self: *@This()) core.HResult!*IVectorView(PerceptionVideoProfile) {
         var _r: *IVectorView(PerceptionVideoProfile) = undefined;
         const _c = self.vtable.get_SupportedVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailableVideoProfiles(self: *@This()) core.HResult!*IVectorView(PerceptionVideoProfile) {
         var _r: *IVectorView(PerceptionVideoProfile) = undefined;
         const _c = self.vtable.get_AvailableVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoProfile(self: *@This()) core.HResult!*PerceptionVideoProfile {
         var _r: *PerceptionVideoProfile = undefined;
         const _c = self.vtable.get_VideoProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCameraIntrinsics(self: *@This()) core.HResult!*CameraIntrinsics {
         var _r: *CameraIntrinsics = undefined;
         const _c = self.vtable.get_CameraIntrinsics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcquireControlSession(self: *@This()) core.HResult!*PerceptionControlSession {
         var _r: *PerceptionControlSession = undefined;
         const _c = self.vtable.AcquireControlSession(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanControlIndependentlyFrom(@ptrCast(self), targetId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCorrelatedWith(@ptrCast(self), targetId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetTransformTo(@ptrCast(self), targetId, result, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetDepthCorrelatedCameraIntrinsicsAsync(self: *@This(), correlatedDepthFrameSource: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCameraIntrinsicsAsync(@ptrCast(self), correlatedDepthFrameSource, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetSourceId: ?HSTRING, correlatedDepthFrameSource: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCoordinateMapperAsync(@ptrCast(self), targetSourceId, correlatedDepthFrameSource, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetVideoProfileAsync(self: *@This(), controlSession: *PerceptionControlSession, profile: *PerceptionVideoProfile) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
         var _r: *IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) = undefined;
         const _c = self.vtable.TrySetVideoProfileAsync(@ptrCast(self), controlSession, profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenReader(self: *@This()) core.HResult!*PerceptionColorFrameReader {
         var _r: *PerceptionColorFrameReader = undefined;
         const _c = self.vtable.OpenReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameSource";
@@ -741,8 +777,11 @@ pub const IPerceptionColorFrameSource = extern struct {
 };
 pub const IPerceptionColorFrameSource2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -750,7 +789,7 @@ pub const IPerceptionColorFrameSource2 = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameSource2";
@@ -770,8 +809,11 @@ pub const IPerceptionColorFrameSource2 = extern struct {
 };
 pub const IPerceptionColorFrameSourceAddedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -779,7 +821,7 @@ pub const IPerceptionColorFrameSourceAddedEventArgs = extern struct {
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionColorFrameSource {
         var _r: *PerceptionColorFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameSourceAddedEventArgs";
@@ -799,8 +841,11 @@ pub const IPerceptionColorFrameSourceAddedEventArgs = extern struct {
 };
 pub const IPerceptionColorFrameSourceRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -808,7 +853,7 @@ pub const IPerceptionColorFrameSourceRemovedEventArgs = extern struct {
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionColorFrameSource {
         var _r: *PerceptionColorFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameSourceRemovedEventArgs";
@@ -828,8 +873,11 @@ pub const IPerceptionColorFrameSourceRemovedEventArgs = extern struct {
 };
 pub const IPerceptionColorFrameSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -837,25 +885,25 @@ pub const IPerceptionColorFrameSourceStatics = extern struct {
     pub fn CreateWatcher(self: *@This()) core.HResult!*PerceptionColorFrameSourceWatcher {
         var _r: *PerceptionColorFrameSourceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PerceptionColorFrameSource)) {
         var _r: *IAsyncOperation(IVectorView(PerceptionColorFrameSource)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionColorFrameSource) {
         var _r: *IAsyncOperation(PerceptionColorFrameSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
         var _r: *IAsyncOperation(PerceptionFrameSourceAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameSourceStatics";
@@ -878,8 +926,11 @@ pub const IPerceptionColorFrameSourceStatics = extern struct {
 };
 pub const IPerceptionColorFrameSourceWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -887,56 +938,56 @@ pub const IPerceptionColorFrameSourceWatcher = extern struct {
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSourceWatcher,PerceptionColorFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceAdded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSourceAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SourceAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSourceRemoved(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSourceWatcher,PerceptionColorFrameSourceRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSourceRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SourceRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStopped(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSourceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Stopped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStopped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Stopped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSourceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnumerationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EnumerationCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!DeviceWatcherStatus {
         var _r: DeviceWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionColorFrameSourceWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -965,8 +1016,11 @@ pub const IPerceptionColorFrameSourceWatcher = extern struct {
 };
 pub const IPerceptionControlSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -974,17 +1028,17 @@ pub const IPerceptionControlSession = extern struct {
     pub fn addControlLost(self: *@This(), handler: *TypedEventHandler(PerceptionControlSession,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ControlLost(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeControlLost(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ControlLost(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TrySetPropertyAsync(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
         var _r: *IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) = undefined;
         const _c = self.vtable.TrySetPropertyAsync(@ptrCast(self), name, value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionControlSession";
@@ -1006,8 +1060,11 @@ pub const IPerceptionControlSession = extern struct {
 };
 pub const IPerceptionDepthCorrelatedCameraIntrinsics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1015,23 +1072,23 @@ pub const IPerceptionDepthCorrelatedCameraIntrinsics = extern struct {
     pub fn UnprojectPixelAtCorrelatedDepth(self: *@This(), pixelCoordinate: Point, depthFrame: *PerceptionDepthFrame) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.UnprojectPixelAtCorrelatedDepth(@ptrCast(self), pixelCoordinate, depthFrame, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnprojectPixelsAtCorrelatedDepth(self: *@This(), sourceCoordinates: [*]Point, depthFrame: *PerceptionDepthFrame, results: [*]Vector3) core.HResult!void {
         const _c = self.vtable.UnprojectPixelsAtCorrelatedDepth(@ptrCast(self), sourceCoordinates, depthFrame, results);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UnprojectRegionPixelsAtCorrelatedDepthAsync(self: *@This(), region: Rect, depthFrame: *PerceptionDepthFrame, results: [*]Vector3) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UnprojectRegionPixelsAtCorrelatedDepthAsync(@ptrCast(self), region, depthFrame, results, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnprojectAllPixelsAtCorrelatedDepthAsync(self: *@This(), depthFrame: *PerceptionDepthFrame, results: [*]Vector3) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UnprojectAllPixelsAtCorrelatedDepthAsync(@ptrCast(self), depthFrame, results, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthCorrelatedCameraIntrinsics";
@@ -1054,8 +1111,11 @@ pub const IPerceptionDepthCorrelatedCameraIntrinsics = extern struct {
 };
 pub const IPerceptionDepthCorrelatedCoordinateMapper = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1063,23 +1123,23 @@ pub const IPerceptionDepthCorrelatedCoordinateMapper = extern struct {
     pub fn MapPixelToTarget(self: *@This(), sourcePixelCoordinate: Point, depthFrame: *PerceptionDepthFrame) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.MapPixelToTarget(@ptrCast(self), sourcePixelCoordinate, depthFrame, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MapPixelsToTarget(self: *@This(), sourceCoordinates: [*]Point, depthFrame: *PerceptionDepthFrame, results: [*]Point) core.HResult!void {
         const _c = self.vtable.MapPixelsToTarget(@ptrCast(self), sourceCoordinates, depthFrame, results);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MapRegionOfPixelsToTargetAsync(self: *@This(), region: Rect, depthFrame: *PerceptionDepthFrame, targetCoordinates: [*]Point) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MapRegionOfPixelsToTargetAsync(@ptrCast(self), region, depthFrame, targetCoordinates, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MapAllPixelsToTargetAsync(self: *@This(), depthFrame: *PerceptionDepthFrame, targetCoordinates: [*]Point) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MapAllPixelsToTargetAsync(@ptrCast(self), depthFrame, targetCoordinates, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthCorrelatedCoordinateMapper";
@@ -1102,8 +1162,11 @@ pub const IPerceptionDepthCorrelatedCoordinateMapper = extern struct {
 };
 pub const IPerceptionDepthFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1111,7 +1174,7 @@ pub const IPerceptionDepthFrame = extern struct {
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrame";
@@ -1131,8 +1194,11 @@ pub const IPerceptionDepthFrame = extern struct {
 };
 pub const IPerceptionDepthFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1140,13 +1206,13 @@ pub const IPerceptionDepthFrameArrivedEventArgs = extern struct {
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryOpenFrame(self: *@This()) core.HResult!*PerceptionDepthFrame {
         var _r: *PerceptionDepthFrame = undefined;
         const _c = self.vtable.TryOpenFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameArrivedEventArgs";
@@ -1167,8 +1233,11 @@ pub const IPerceptionDepthFrameArrivedEventArgs = extern struct {
 };
 pub const IPerceptionDepthFrameReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1176,33 +1245,33 @@ pub const IPerceptionDepthFrameReader = extern struct {
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameReader,PerceptionDepthFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFrameArrived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FrameArrived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSource(self: *@This()) core.HResult!*PerceptionDepthFrameSource {
         var _r: *PerceptionDepthFrameSource = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPaused(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaused(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsPaused(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPaused(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryReadLatestFrame(self: *@This()) core.HResult!*PerceptionDepthFrame {
         var _r: *PerceptionDepthFrame = undefined;
         const _c = self.vtable.TryReadLatestFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameReader";
@@ -1227,8 +1296,11 @@ pub const IPerceptionDepthFrameReader = extern struct {
 };
 pub const IPerceptionDepthFrameSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1236,165 +1308,165 @@ pub const IPerceptionDepthFrameSource = extern struct {
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailableChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAvailableChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AvailableChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addActiveChanged(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActiveChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActiveChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActiveChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPropertiesChanged(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSource,PerceptionFrameSourcePropertiesChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PropertiesChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePropertiesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PropertiesChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVideoProfileChanged(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VideoProfileChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVideoProfileChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VideoProfileChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCameraIntrinsicsChanged(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CameraIntrinsicsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCameraIntrinsicsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CameraIntrinsicsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Available(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Active(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsControlled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsControlled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedVideoProfiles(self: *@This()) core.HResult!*IVectorView(PerceptionVideoProfile) {
         var _r: *IVectorView(PerceptionVideoProfile) = undefined;
         const _c = self.vtable.get_SupportedVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailableVideoProfiles(self: *@This()) core.HResult!*IVectorView(PerceptionVideoProfile) {
         var _r: *IVectorView(PerceptionVideoProfile) = undefined;
         const _c = self.vtable.get_AvailableVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoProfile(self: *@This()) core.HResult!*PerceptionVideoProfile {
         var _r: *PerceptionVideoProfile = undefined;
         const _c = self.vtable.get_VideoProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCameraIntrinsics(self: *@This()) core.HResult!*CameraIntrinsics {
         var _r: *CameraIntrinsics = undefined;
         const _c = self.vtable.get_CameraIntrinsics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcquireControlSession(self: *@This()) core.HResult!*PerceptionControlSession {
         var _r: *PerceptionControlSession = undefined;
         const _c = self.vtable.AcquireControlSession(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanControlIndependentlyFrom(@ptrCast(self), targetId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCorrelatedWith(@ptrCast(self), targetId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetTransformTo(@ptrCast(self), targetId, result, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetDepthCorrelatedCameraIntrinsicsAsync(self: *@This(), target: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCameraIntrinsicsAsync(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCoordinateMapperAsync(@ptrCast(self), targetId, depthFrameSourceToMapWith, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetVideoProfileAsync(self: *@This(), controlSession: *PerceptionControlSession, profile: *PerceptionVideoProfile) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
         var _r: *IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) = undefined;
         const _c = self.vtable.TrySetVideoProfileAsync(@ptrCast(self), controlSession, profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenReader(self: *@This()) core.HResult!*PerceptionDepthFrameReader {
         var _r: *PerceptionDepthFrameReader = undefined;
         const _c = self.vtable.OpenReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameSource";
@@ -1442,8 +1514,11 @@ pub const IPerceptionDepthFrameSource = extern struct {
 };
 pub const IPerceptionDepthFrameSource2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1451,7 +1526,7 @@ pub const IPerceptionDepthFrameSource2 = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameSource2";
@@ -1471,8 +1546,11 @@ pub const IPerceptionDepthFrameSource2 = extern struct {
 };
 pub const IPerceptionDepthFrameSourceAddedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1480,7 +1558,7 @@ pub const IPerceptionDepthFrameSourceAddedEventArgs = extern struct {
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionDepthFrameSource {
         var _r: *PerceptionDepthFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameSourceAddedEventArgs";
@@ -1500,8 +1578,11 @@ pub const IPerceptionDepthFrameSourceAddedEventArgs = extern struct {
 };
 pub const IPerceptionDepthFrameSourceRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1509,7 +1590,7 @@ pub const IPerceptionDepthFrameSourceRemovedEventArgs = extern struct {
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionDepthFrameSource {
         var _r: *PerceptionDepthFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameSourceRemovedEventArgs";
@@ -1529,8 +1610,11 @@ pub const IPerceptionDepthFrameSourceRemovedEventArgs = extern struct {
 };
 pub const IPerceptionDepthFrameSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1538,25 +1622,25 @@ pub const IPerceptionDepthFrameSourceStatics = extern struct {
     pub fn CreateWatcher(self: *@This()) core.HResult!*PerceptionDepthFrameSourceWatcher {
         var _r: *PerceptionDepthFrameSourceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PerceptionDepthFrameSource)) {
         var _r: *IAsyncOperation(IVectorView(PerceptionDepthFrameSource)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionDepthFrameSource) {
         var _r: *IAsyncOperation(PerceptionDepthFrameSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
         var _r: *IAsyncOperation(PerceptionFrameSourceAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameSourceStatics";
@@ -1579,8 +1663,11 @@ pub const IPerceptionDepthFrameSourceStatics = extern struct {
 };
 pub const IPerceptionDepthFrameSourceWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1588,56 +1675,56 @@ pub const IPerceptionDepthFrameSourceWatcher = extern struct {
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSourceWatcher,PerceptionDepthFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceAdded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSourceAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SourceAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSourceRemoved(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSourceWatcher,PerceptionDepthFrameSourceRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSourceRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SourceRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStopped(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSourceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Stopped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStopped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Stopped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSourceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnumerationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EnumerationCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!DeviceWatcherStatus {
         var _r: DeviceWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionDepthFrameSourceWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1666,8 +1753,11 @@ pub const IPerceptionDepthFrameSourceWatcher = extern struct {
 };
 pub const IPerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1675,13 +1765,13 @@ pub const IPerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
     pub fn getCollectionChange(self: *@This()) core.HResult!CollectionChange {
         var _r: CollectionChange = undefined;
         const _c = self.vtable.get_CollectionChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKey(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Key(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionFrameSourcePropertiesChangedEventArgs";
@@ -1702,8 +1792,11 @@ pub const IPerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
 };
 pub const IPerceptionFrameSourcePropertyChangeResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1711,13 +1804,13 @@ pub const IPerceptionFrameSourcePropertyChangeResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!PerceptionFrameSourcePropertyChangeStatus {
         var _r: PerceptionFrameSourcePropertyChangeStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNewValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_NewValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionFrameSourcePropertyChangeResult";
@@ -1738,8 +1831,11 @@ pub const IPerceptionFrameSourcePropertyChangeResult = extern struct {
 };
 pub const IPerceptionInfraredFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1747,7 +1843,7 @@ pub const IPerceptionInfraredFrame = extern struct {
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrame";
@@ -1767,8 +1863,11 @@ pub const IPerceptionInfraredFrame = extern struct {
 };
 pub const IPerceptionInfraredFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1776,13 +1875,13 @@ pub const IPerceptionInfraredFrameArrivedEventArgs = extern struct {
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryOpenFrame(self: *@This()) core.HResult!*PerceptionInfraredFrame {
         var _r: *PerceptionInfraredFrame = undefined;
         const _c = self.vtable.TryOpenFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameArrivedEventArgs";
@@ -1803,8 +1902,11 @@ pub const IPerceptionInfraredFrameArrivedEventArgs = extern struct {
 };
 pub const IPerceptionInfraredFrameReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1812,33 +1914,33 @@ pub const IPerceptionInfraredFrameReader = extern struct {
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameReader,PerceptionInfraredFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFrameArrived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FrameArrived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSource(self: *@This()) core.HResult!*PerceptionInfraredFrameSource {
         var _r: *PerceptionInfraredFrameSource = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPaused(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaused(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsPaused(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPaused(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryReadLatestFrame(self: *@This()) core.HResult!*PerceptionInfraredFrame {
         var _r: *PerceptionInfraredFrame = undefined;
         const _c = self.vtable.TryReadLatestFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameReader";
@@ -1863,8 +1965,11 @@ pub const IPerceptionInfraredFrameReader = extern struct {
 };
 pub const IPerceptionInfraredFrameSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1872,165 +1977,165 @@ pub const IPerceptionInfraredFrameSource = extern struct {
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailableChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAvailableChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AvailableChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addActiveChanged(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActiveChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActiveChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActiveChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPropertiesChanged(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSource,PerceptionFrameSourcePropertiesChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PropertiesChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePropertiesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PropertiesChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVideoProfileChanged(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VideoProfileChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVideoProfileChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VideoProfileChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCameraIntrinsicsChanged(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CameraIntrinsicsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCameraIntrinsicsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CameraIntrinsicsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Available(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Active(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsControlled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsControlled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedVideoProfiles(self: *@This()) core.HResult!*IVectorView(PerceptionVideoProfile) {
         var _r: *IVectorView(PerceptionVideoProfile) = undefined;
         const _c = self.vtable.get_SupportedVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailableVideoProfiles(self: *@This()) core.HResult!*IVectorView(PerceptionVideoProfile) {
         var _r: *IVectorView(PerceptionVideoProfile) = undefined;
         const _c = self.vtable.get_AvailableVideoProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoProfile(self: *@This()) core.HResult!*PerceptionVideoProfile {
         var _r: *PerceptionVideoProfile = undefined;
         const _c = self.vtable.get_VideoProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCameraIntrinsics(self: *@This()) core.HResult!*CameraIntrinsics {
         var _r: *CameraIntrinsics = undefined;
         const _c = self.vtable.get_CameraIntrinsics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcquireControlSession(self: *@This()) core.HResult!*PerceptionControlSession {
         var _r: *PerceptionControlSession = undefined;
         const _c = self.vtable.AcquireControlSession(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanControlIndependentlyFrom(@ptrCast(self), targetId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCorrelatedWith(@ptrCast(self), targetId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetTransformTo(@ptrCast(self), targetId, result, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetDepthCorrelatedCameraIntrinsicsAsync(self: *@This(), target: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCameraIntrinsicsAsync(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCoordinateMapperAsync(@ptrCast(self), targetId, depthFrameSourceToMapWith, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetVideoProfileAsync(self: *@This(), controlSession: *PerceptionControlSession, profile: *PerceptionVideoProfile) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
         var _r: *IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) = undefined;
         const _c = self.vtable.TrySetVideoProfileAsync(@ptrCast(self), controlSession, profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenReader(self: *@This()) core.HResult!*PerceptionInfraredFrameReader {
         var _r: *PerceptionInfraredFrameReader = undefined;
         const _c = self.vtable.OpenReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameSource";
@@ -2078,8 +2183,11 @@ pub const IPerceptionInfraredFrameSource = extern struct {
 };
 pub const IPerceptionInfraredFrameSource2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2087,7 +2195,7 @@ pub const IPerceptionInfraredFrameSource2 = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameSource2";
@@ -2107,8 +2215,11 @@ pub const IPerceptionInfraredFrameSource2 = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceAddedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2116,7 +2227,7 @@ pub const IPerceptionInfraredFrameSourceAddedEventArgs = extern struct {
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionInfraredFrameSource {
         var _r: *PerceptionInfraredFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameSourceAddedEventArgs";
@@ -2136,8 +2247,11 @@ pub const IPerceptionInfraredFrameSourceAddedEventArgs = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2145,7 +2259,7 @@ pub const IPerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionInfraredFrameSource {
         var _r: *PerceptionInfraredFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameSourceRemovedEventArgs";
@@ -2165,8 +2279,11 @@ pub const IPerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2174,25 +2291,25 @@ pub const IPerceptionInfraredFrameSourceStatics = extern struct {
     pub fn CreateWatcher(self: *@This()) core.HResult!*PerceptionInfraredFrameSourceWatcher {
         var _r: *PerceptionInfraredFrameSourceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PerceptionInfraredFrameSource)) {
         var _r: *IAsyncOperation(IVectorView(PerceptionInfraredFrameSource)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionInfraredFrameSource) {
         var _r: *IAsyncOperation(PerceptionInfraredFrameSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
         var _r: *IAsyncOperation(PerceptionFrameSourceAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameSourceStatics";
@@ -2215,8 +2332,11 @@ pub const IPerceptionInfraredFrameSourceStatics = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2224,56 +2344,56 @@ pub const IPerceptionInfraredFrameSourceWatcher = extern struct {
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSourceWatcher,PerceptionInfraredFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceAdded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSourceAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SourceAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSourceRemoved(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSourceWatcher,PerceptionInfraredFrameSourceRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSourceRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SourceRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStopped(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSourceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Stopped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStopped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Stopped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSourceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnumerationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EnumerationCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!DeviceWatcherStatus {
         var _r: DeviceWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionInfraredFrameSourceWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2302,8 +2422,11 @@ pub const IPerceptionInfraredFrameSourceWatcher = extern struct {
 };
 pub const IPerceptionVideoProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2311,37 +2434,37 @@ pub const IPerceptionVideoProfile = extern struct {
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBitmapAlphaMode(self: *@This()) core.HResult!BitmapAlphaMode {
         var _r: BitmapAlphaMode = undefined;
         const _c = self.vtable.get_BitmapAlphaMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidth(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeight(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_FrameDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEqual(self: *@This(), other: *PerceptionVideoProfile) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEqual(@ptrCast(self), other, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.IPerceptionVideoProfile";
@@ -2366,14 +2489,11 @@ pub const IPerceptionVideoProfile = extern struct {
 };
 pub const KnownCameraIntrinsicsProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2400,14 +2520,11 @@ pub const KnownCameraIntrinsicsProperties = extern struct {
 };
 pub const KnownPerceptionColorFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2430,14 +2547,11 @@ pub const KnownPerceptionColorFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2456,14 +2570,11 @@ pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2499,14 +2610,11 @@ pub const KnownPerceptionFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2545,14 +2653,11 @@ pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2583,14 +2688,11 @@ pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionVideoProfileProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2621,14 +2723,11 @@ pub const KnownPerceptionVideoProfileProperties = extern struct {
 };
 pub const PerceptionColorFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2640,8 +2739,7 @@ pub const PerceptionColorFrame = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionColorFrame";
@@ -2652,14 +2750,11 @@ pub const PerceptionColorFrame = extern struct {
 };
 pub const PerceptionColorFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2680,14 +2775,11 @@ pub const PerceptionColorFrameArrivedEventArgs = extern struct {
 };
 pub const PerceptionColorFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2719,8 +2811,7 @@ pub const PerceptionColorFrameReader = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionColorFrameReader";
@@ -2731,14 +2822,11 @@ pub const PerceptionColorFrameReader = extern struct {
 };
 pub const PerceptionColorFrameSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2862,8 +2950,7 @@ pub const PerceptionColorFrameSource = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPerceptionColorFrameSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionColorFrameSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPerceptionColorFrameSource2.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn CreateWatcher() core.HResult!*PerceptionColorFrameSourceWatcher {
@@ -2891,14 +2978,11 @@ pub const PerceptionColorFrameSource = extern struct {
 };
 pub const PerceptionColorFrameSourceAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2915,14 +2999,11 @@ pub const PerceptionColorFrameSourceAddedEventArgs = extern struct {
 };
 pub const PerceptionColorFrameSourceRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2939,14 +3020,11 @@ pub const PerceptionColorFrameSourceRemovedEventArgs = extern struct {
 };
 pub const PerceptionColorFrameSourceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3003,14 +3081,11 @@ pub const PerceptionColorFrameSourceWatcher = extern struct {
 };
 pub const PerceptionControlSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3030,8 +3105,7 @@ pub const PerceptionControlSession = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionControlSession";
@@ -3042,14 +3116,11 @@ pub const PerceptionControlSession = extern struct {
 };
 pub const PerceptionDepthCorrelatedCameraIntrinsics = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3078,14 +3149,11 @@ pub const PerceptionDepthCorrelatedCameraIntrinsics = extern struct {
 };
 pub const PerceptionDepthCorrelatedCoordinateMapper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3114,14 +3182,11 @@ pub const PerceptionDepthCorrelatedCoordinateMapper = extern struct {
 };
 pub const PerceptionDepthFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3133,8 +3198,7 @@ pub const PerceptionDepthFrame = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionDepthFrame";
@@ -3145,14 +3209,11 @@ pub const PerceptionDepthFrame = extern struct {
 };
 pub const PerceptionDepthFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3173,14 +3234,11 @@ pub const PerceptionDepthFrameArrivedEventArgs = extern struct {
 };
 pub const PerceptionDepthFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3212,8 +3270,7 @@ pub const PerceptionDepthFrameReader = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionDepthFrameReader";
@@ -3224,14 +3281,11 @@ pub const PerceptionDepthFrameReader = extern struct {
 };
 pub const PerceptionDepthFrameSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3355,8 +3409,7 @@ pub const PerceptionDepthFrameSource = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPerceptionDepthFrameSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionDepthFrameSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPerceptionDepthFrameSource2.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn CreateWatcher() core.HResult!*PerceptionDepthFrameSourceWatcher {
@@ -3384,14 +3437,11 @@ pub const PerceptionDepthFrameSource = extern struct {
 };
 pub const PerceptionDepthFrameSourceAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3408,14 +3458,11 @@ pub const PerceptionDepthFrameSourceAddedEventArgs = extern struct {
 };
 pub const PerceptionDepthFrameSourceRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3432,14 +3479,11 @@ pub const PerceptionDepthFrameSourceRemovedEventArgs = extern struct {
 };
 pub const PerceptionDepthFrameSourceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3502,14 +3546,11 @@ pub const PerceptionFrameSourceAccessStatus = enum(i32) {
 };
 pub const PerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3530,14 +3571,11 @@ pub const PerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
 };
 pub const PerceptionFrameSourcePropertyChangeResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3566,14 +3604,11 @@ pub const PerceptionFrameSourcePropertyChangeStatus = enum(i32) {
 };
 pub const PerceptionInfraredFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3585,8 +3620,7 @@ pub const PerceptionInfraredFrame = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionInfraredFrame";
@@ -3597,14 +3631,11 @@ pub const PerceptionInfraredFrame = extern struct {
 };
 pub const PerceptionInfraredFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3625,14 +3656,11 @@ pub const PerceptionInfraredFrameArrivedEventArgs = extern struct {
 };
 pub const PerceptionInfraredFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3664,8 +3692,7 @@ pub const PerceptionInfraredFrameReader = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionInfraredFrameReader";
@@ -3676,14 +3703,11 @@ pub const PerceptionInfraredFrameReader = extern struct {
 };
 pub const PerceptionInfraredFrameSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3807,8 +3831,7 @@ pub const PerceptionInfraredFrameSource = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPerceptionInfraredFrameSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionInfraredFrameSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPerceptionInfraredFrameSource2.IID, @ptrCast(&this));
         return try this.?.getDeviceId();
     }
     pub fn CreateWatcher() core.HResult!*PerceptionInfraredFrameSourceWatcher {
@@ -3836,14 +3859,11 @@ pub const PerceptionInfraredFrameSource = extern struct {
 };
 pub const PerceptionInfraredFrameSourceAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3860,14 +3880,11 @@ pub const PerceptionInfraredFrameSourceAddedEventArgs = extern struct {
 };
 pub const PerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3884,14 +3901,11 @@ pub const PerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
 };
 pub const PerceptionInfraredFrameSourceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3948,14 +3962,11 @@ pub const PerceptionInfraredFrameSourceWatcher = extern struct {
 };
 pub const PerceptionVideoProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

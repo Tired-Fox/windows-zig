@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ISceneBoundingBox = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,31 +13,31 @@ pub const ISceneBoundingBox = extern struct {
     pub fn getCenter(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtents(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Extents(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMax(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Max(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMin(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Min(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSize(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneBoundingBox";
@@ -58,8 +61,11 @@ pub const ISceneBoundingBox = extern struct {
 };
 pub const ISceneComponent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -67,7 +73,7 @@ pub const ISceneComponent = extern struct {
     pub fn getComponentType(self: *@This()) core.HResult!SceneComponentType {
         var _r: SceneComponentType = undefined;
         const _c = self.vtable.get_ComponentType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneComponent";
@@ -87,8 +93,11 @@ pub const ISceneComponent = extern struct {
 };
 pub const ISceneComponentCollection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -109,8 +118,11 @@ pub const ISceneComponentCollection = extern struct {
 };
 pub const ISceneComponentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -131,8 +143,11 @@ pub const ISceneComponentFactory = extern struct {
 };
 pub const ISceneMaterial = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -153,8 +168,11 @@ pub const ISceneMaterial = extern struct {
 };
 pub const ISceneMaterialFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -175,8 +193,11 @@ pub const ISceneMaterialFactory = extern struct {
 };
 pub const ISceneMaterialInput = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -197,8 +218,11 @@ pub const ISceneMaterialInput = extern struct {
 };
 pub const ISceneMaterialInputFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -219,8 +243,11 @@ pub const ISceneMaterialInputFactory = extern struct {
 };
 pub const ISceneMesh = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -228,22 +255,22 @@ pub const ISceneMesh = extern struct {
     pub fn getBounds(self: *@This()) core.HResult!*SceneBoundingBox {
         var _r: *SceneBoundingBox = undefined;
         const _c = self.vtable.get_Bounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrimitiveTopology(self: *@This()) core.HResult!DirectXPrimitiveTopology {
         var _r: DirectXPrimitiveTopology = undefined;
         const _c = self.vtable.get_PrimitiveTopology(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPrimitiveTopology(self: *@This(), value: DirectXPrimitiveTopology) core.HResult!void {
         const _c = self.vtable.put_PrimitiveTopology(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FillMeshAttribute(self: *@This(), semantic: SceneAttributeSemantic, format: DirectXPixelFormat, memory: *MemoryBuffer) core.HResult!void {
         const _c = self.vtable.FillMeshAttribute(@ptrCast(self), semantic, format, memory);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMesh";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -265,8 +292,11 @@ pub const ISceneMesh = extern struct {
 };
 pub const ISceneMeshMaterialAttributeMap = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -287,8 +317,11 @@ pub const ISceneMeshMaterialAttributeMap = extern struct {
 };
 pub const ISceneMeshRendererComponent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -296,27 +329,27 @@ pub const ISceneMeshRendererComponent = extern struct {
     pub fn getMaterial(self: *@This()) core.HResult!*SceneMaterial {
         var _r: *SceneMaterial = undefined;
         const _c = self.vtable.get_Material(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaterial(self: *@This(), value: *SceneMaterial) core.HResult!void {
         const _c = self.vtable.put_Material(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMesh(self: *@This()) core.HResult!*SceneMesh {
         var _r: *SceneMesh = undefined;
         const _c = self.vtable.get_Mesh(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMesh(self: *@This(), value: *SceneMesh) core.HResult!void {
         const _c = self.vtable.put_Mesh(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUVMappings(self: *@This()) core.HResult!*SceneMeshMaterialAttributeMap {
         var _r: *SceneMeshMaterialAttributeMap = undefined;
         const _c = self.vtable.get_UVMappings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMeshRendererComponent";
@@ -340,8 +373,11 @@ pub const ISceneMeshRendererComponent = extern struct {
 };
 pub const ISceneMeshRendererComponentStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -349,7 +385,7 @@ pub const ISceneMeshRendererComponentStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneMeshRendererComponent {
         var _r: *SceneMeshRendererComponent = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMeshRendererComponentStatics";
@@ -369,8 +405,11 @@ pub const ISceneMeshRendererComponentStatics = extern struct {
 };
 pub const ISceneMeshStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -378,7 +417,7 @@ pub const ISceneMeshStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneMesh {
         var _r: *SceneMesh = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMeshStatics";
@@ -398,8 +437,11 @@ pub const ISceneMeshStatics = extern struct {
 };
 pub const ISceneMetallicRoughnessMaterial = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -407,52 +449,52 @@ pub const ISceneMetallicRoughnessMaterial = extern struct {
     pub fn getBaseColorInput(self: *@This()) core.HResult!*SceneMaterialInput {
         var _r: *SceneMaterialInput = undefined;
         const _c = self.vtable.get_BaseColorInput(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBaseColorInput(self: *@This(), value: *SceneMaterialInput) core.HResult!void {
         const _c = self.vtable.put_BaseColorInput(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBaseColorFactor(self: *@This()) core.HResult!Vector4 {
         var _r: Vector4 = undefined;
         const _c = self.vtable.get_BaseColorFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBaseColorFactor(self: *@This(), value: Vector4) core.HResult!void {
         const _c = self.vtable.put_BaseColorFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMetallicFactor(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MetallicFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMetallicFactor(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_MetallicFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMetallicRoughnessInput(self: *@This()) core.HResult!*SceneMaterialInput {
         var _r: *SceneMaterialInput = undefined;
         const _c = self.vtable.get_MetallicRoughnessInput(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMetallicRoughnessInput(self: *@This(), value: *SceneMaterialInput) core.HResult!void {
         const _c = self.vtable.put_MetallicRoughnessInput(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoughnessFactor(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_RoughnessFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoughnessFactor(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_RoughnessFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMetallicRoughnessMaterial";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -480,8 +522,11 @@ pub const ISceneMetallicRoughnessMaterial = extern struct {
 };
 pub const ISceneMetallicRoughnessMaterialStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -489,7 +534,7 @@ pub const ISceneMetallicRoughnessMaterialStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneMetallicRoughnessMaterial {
         var _r: *SceneMetallicRoughnessMaterial = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMetallicRoughnessMaterialStatics";
@@ -509,8 +554,11 @@ pub const ISceneMetallicRoughnessMaterialStatics = extern struct {
 };
 pub const ISceneModelTransform = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -518,62 +566,62 @@ pub const ISceneModelTransform = extern struct {
     pub fn getOrientation(self: *@This()) core.HResult!Quaternion {
         var _r: Quaternion = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOrientation(self: *@This(), value: Quaternion) core.HResult!void {
         const _c = self.vtable.put_Orientation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRotationAngle(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_RotationAngle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRotationAngle(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_RotationAngle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRotationAngleInDegrees(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_RotationAngleInDegrees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRotationAngleInDegrees(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_RotationAngleInDegrees(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRotationAxis(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_RotationAxis(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRotationAxis(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_RotationAxis(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScale(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Scale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScale(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_Scale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTranslation(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Translation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTranslation(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_Translation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneModelTransform";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -603,8 +651,11 @@ pub const ISceneModelTransform = extern struct {
 };
 pub const ISceneNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -612,31 +663,31 @@ pub const ISceneNode = extern struct {
     pub fn getChildren(self: *@This()) core.HResult!*SceneNodeCollection {
         var _r: *SceneNodeCollection = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getComponents(self: *@This()) core.HResult!*SceneComponentCollection {
         var _r: *SceneComponentCollection = undefined;
         const _c = self.vtable.get_Components(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getParent(self: *@This()) core.HResult!*SceneNode {
         var _r: *SceneNode = undefined;
         const _c = self.vtable.get_Parent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransform(self: *@This()) core.HResult!*SceneModelTransform {
         var _r: *SceneModelTransform = undefined;
         const _c = self.vtable.get_Transform(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindFirstComponentOfType(self: *@This(), value: SceneComponentType) core.HResult!*SceneComponent {
         var _r: *SceneComponent = undefined;
         const _c = self.vtable.FindFirstComponentOfType(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneNode";
@@ -660,8 +711,11 @@ pub const ISceneNode = extern struct {
 };
 pub const ISceneNodeCollection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -682,8 +736,11 @@ pub const ISceneNodeCollection = extern struct {
 };
 pub const ISceneNodeStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -691,7 +748,7 @@ pub const ISceneNodeStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneNode {
         var _r: *SceneNode = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneNodeStatics";
@@ -711,8 +768,11 @@ pub const ISceneNodeStatics = extern struct {
 };
 pub const ISceneObject = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -733,8 +793,11 @@ pub const ISceneObject = extern struct {
 };
 pub const ISceneObjectFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -755,8 +818,11 @@ pub const ISceneObjectFactory = extern struct {
 };
 pub const IScenePbrMaterial = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -764,92 +830,92 @@ pub const IScenePbrMaterial = extern struct {
     pub fn getAlphaCutoff(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_AlphaCutoff(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlphaCutoff(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_AlphaCutoff(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAlphaMode(self: *@This()) core.HResult!SceneAlphaMode {
         var _r: SceneAlphaMode = undefined;
         const _c = self.vtable.get_AlphaMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlphaMode(self: *@This(), value: SceneAlphaMode) core.HResult!void {
         const _c = self.vtable.put_AlphaMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEmissiveInput(self: *@This()) core.HResult!*SceneMaterialInput {
         var _r: *SceneMaterialInput = undefined;
         const _c = self.vtable.get_EmissiveInput(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEmissiveInput(self: *@This(), value: *SceneMaterialInput) core.HResult!void {
         const _c = self.vtable.put_EmissiveInput(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEmissiveFactor(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_EmissiveFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEmissiveFactor(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_EmissiveFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDoubleSided(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDoubleSided(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDoubleSided(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDoubleSided(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNormalInput(self: *@This()) core.HResult!*SceneMaterialInput {
         var _r: *SceneMaterialInput = undefined;
         const _c = self.vtable.get_NormalInput(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNormalInput(self: *@This(), value: *SceneMaterialInput) core.HResult!void {
         const _c = self.vtable.put_NormalInput(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNormalScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_NormalScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNormalScale(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_NormalScale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOcclusionInput(self: *@This()) core.HResult!*SceneMaterialInput {
         var _r: *SceneMaterialInput = undefined;
         const _c = self.vtable.get_OcclusionInput(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOcclusionInput(self: *@This(), value: *SceneMaterialInput) core.HResult!void {
         const _c = self.vtable.put_OcclusionInput(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOcclusionStrength(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_OcclusionStrength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOcclusionStrength(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_OcclusionStrength(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.IScenePbrMaterial";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -885,8 +951,11 @@ pub const IScenePbrMaterial = extern struct {
 };
 pub const IScenePbrMaterialFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -907,8 +976,11 @@ pub const IScenePbrMaterialFactory = extern struct {
 };
 pub const ISceneRendererComponent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -929,8 +1001,11 @@ pub const ISceneRendererComponent = extern struct {
 };
 pub const ISceneRendererComponentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -951,8 +1026,11 @@ pub const ISceneRendererComponentFactory = extern struct {
 };
 pub const ISceneSurfaceMaterialInput = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -960,42 +1038,42 @@ pub const ISceneSurfaceMaterialInput = extern struct {
     pub fn getBitmapInterpolationMode(self: *@This()) core.HResult!CompositionBitmapInterpolationMode {
         var _r: CompositionBitmapInterpolationMode = undefined;
         const _c = self.vtable.get_BitmapInterpolationMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBitmapInterpolationMode(self: *@This(), value: CompositionBitmapInterpolationMode) core.HResult!void {
         const _c = self.vtable.put_BitmapInterpolationMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSurface(self: *@This()) core.HResult!*ICompositionSurface {
         var _r: *ICompositionSurface = undefined;
         const _c = self.vtable.get_Surface(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSurface(self: *@This(), value: *ICompositionSurface) core.HResult!void {
         const _c = self.vtable.put_Surface(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWrappingUMode(self: *@This()) core.HResult!SceneWrappingMode {
         var _r: SceneWrappingMode = undefined;
         const _c = self.vtable.get_WrappingUMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWrappingUMode(self: *@This(), value: SceneWrappingMode) core.HResult!void {
         const _c = self.vtable.put_WrappingUMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWrappingVMode(self: *@This()) core.HResult!SceneWrappingMode {
         var _r: SceneWrappingMode = undefined;
         const _c = self.vtable.get_WrappingVMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWrappingVMode(self: *@This(), value: SceneWrappingMode) core.HResult!void {
         const _c = self.vtable.put_WrappingVMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneSurfaceMaterialInput";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1021,8 +1099,11 @@ pub const ISceneSurfaceMaterialInput = extern struct {
 };
 pub const ISceneSurfaceMaterialInputStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1030,7 +1111,7 @@ pub const ISceneSurfaceMaterialInputStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneSurfaceMaterialInput {
         var _r: *SceneSurfaceMaterialInput = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneSurfaceMaterialInputStatics";
@@ -1050,8 +1131,11 @@ pub const ISceneSurfaceMaterialInputStatics = extern struct {
 };
 pub const ISceneVisual = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1059,12 +1143,12 @@ pub const ISceneVisual = extern struct {
     pub fn getRoot(self: *@This()) core.HResult!*SceneNode {
         var _r: *SceneNode = undefined;
         const _c = self.vtable.get_Root(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoot(self: *@This(), value: *SceneNode) core.HResult!void {
         const _c = self.vtable.put_Root(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneVisual";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1084,8 +1168,11 @@ pub const ISceneVisual = extern struct {
 };
 pub const ISceneVisualStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1093,7 +1180,7 @@ pub const ISceneVisualStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneVisual {
         var _r: *SceneVisual = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneVisualStatics";
@@ -1127,14 +1214,11 @@ pub const SceneAttributeSemantic = enum(i32) {
 };
 pub const SceneObject = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1148,14 +1232,11 @@ pub const SceneObject = extern struct {
 };
 pub const SceneBoundingBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1188,14 +1269,11 @@ pub const SceneBoundingBox = extern struct {
 };
 pub const SceneComponent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1213,14 +1291,11 @@ pub const SceneComponent = extern struct {
 };
 pub const SceneComponentCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1248,8 +1323,7 @@ pub const SceneComponentCollection = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(SceneComponent) {
         var this: ?*IIterable(SceneComponent) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(SceneComponent).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(SceneComponent).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneComponentCollection";
@@ -1263,14 +1337,11 @@ pub const SceneComponentType = enum(i32) {
 };
 pub const SceneMaterial = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1284,14 +1355,11 @@ pub const SceneMaterial = extern struct {
 };
 pub const SceneMaterialInput = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1305,14 +1373,11 @@ pub const SceneMaterialInput = extern struct {
 };
 pub const SceneMesh = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1346,14 +1411,11 @@ pub const SceneMesh = extern struct {
 };
 pub const SceneMeshMaterialAttributeMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1361,29 +1423,25 @@ pub const SceneMeshMaterialAttributeMap = extern struct {
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,SceneAttributeSemantic) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,SceneAttributeSemantic).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,SceneAttributeSemantic).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,SceneAttributeSemantic) {
         var this: ?*IMap(?HSTRING,SceneAttributeSemantic) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,SceneAttributeSemantic).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,SceneAttributeSemantic).IID, @ptrCast(&this));
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(?HSTRING,SceneAttributeSemantic) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,SceneAttributeSemantic).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,SceneAttributeSemantic).IID, @ptrCast(&this));
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,SceneAttributeSemantic)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,SceneAttributeSemantic)) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,SceneAttributeSemantic)).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,SceneAttributeSemantic)).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneMeshMaterialAttributeMap";
@@ -1394,14 +1452,11 @@ pub const SceneMeshMaterialAttributeMap = extern struct {
 };
 pub const SceneRendererComponent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1415,14 +1470,11 @@ pub const SceneRendererComponent = extern struct {
 };
 pub const SceneMeshRendererComponent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1460,14 +1512,11 @@ pub const SceneMeshRendererComponent = extern struct {
 };
 pub const ScenePbrMaterial = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1553,14 +1602,11 @@ pub const ScenePbrMaterial = extern struct {
 };
 pub const SceneMetallicRoughnessMaterial = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1618,14 +1664,11 @@ pub const SceneMetallicRoughnessMaterial = extern struct {
 };
 pub const SceneModelTransform = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1686,14 +1729,11 @@ pub const SceneModelTransform = extern struct {
 };
 pub const SceneNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1731,14 +1771,11 @@ pub const SceneNode = extern struct {
 };
 pub const SceneNodeCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1766,8 +1803,7 @@ pub const SceneNodeCollection = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(SceneNode) {
         var this: ?*IIterable(SceneNode) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(SceneNode).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(SceneNode).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneNodeCollection";
@@ -1778,14 +1814,11 @@ pub const SceneNodeCollection = extern struct {
 };
 pub const SceneSurfaceMaterialInput = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1835,14 +1868,11 @@ pub const SceneSurfaceMaterialInput = extern struct {
 };
 pub const SceneVisual = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

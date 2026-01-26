@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DetectedFace = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -25,14 +22,11 @@ pub const DetectedFace = extern struct {
 };
 pub const FaceDetector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -86,14 +80,11 @@ pub const FaceDetector = extern struct {
 };
 pub const FaceTracker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -143,8 +134,11 @@ pub const FaceTracker = extern struct {
 };
 pub const IDetectedFace = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -152,7 +146,7 @@ pub const IDetectedFace = extern struct {
     pub fn getFaceBox(self: *@This()) core.HResult!BitmapBounds {
         var _r: BitmapBounds = undefined;
         const _c = self.vtable.get_FaceBox(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.FaceAnalysis.IDetectedFace";
@@ -172,8 +166,11 @@ pub const IDetectedFace = extern struct {
 };
 pub const IFaceDetector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -181,34 +178,34 @@ pub const IFaceDetector = extern struct {
     pub fn DetectFacesAsync(self: *@This(), image: *SoftwareBitmap) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         var _r: *IAsyncOperation(IVector(DetectedFace)) = undefined;
         const _c = self.vtable.DetectFacesAsync(@ptrCast(self), image, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DetectFacesAsyncWithSearchArea(self: *@This(), image: *SoftwareBitmap, searchArea: BitmapBounds) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         var _r: *IAsyncOperation(IVector(DetectedFace)) = undefined;
         const _c = self.vtable.DetectFacesAsyncWithSearchArea(@ptrCast(self), image, searchArea, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinDetectableFaceSize(self: *@This()) core.HResult!BitmapSize {
         var _r: BitmapSize = undefined;
         const _c = self.vtable.get_MinDetectableFaceSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinDetectableFaceSize(self: *@This(), value: BitmapSize) core.HResult!void {
         const _c = self.vtable.put_MinDetectableFaceSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxDetectableFaceSize(self: *@This()) core.HResult!BitmapSize {
         var _r: BitmapSize = undefined;
         const _c = self.vtable.get_MaxDetectableFaceSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxDetectableFaceSize(self: *@This(), value: BitmapSize) core.HResult!void {
         const _c = self.vtable.put_MaxDetectableFaceSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.FaceAnalysis.IFaceDetector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -232,8 +229,11 @@ pub const IFaceDetector = extern struct {
 };
 pub const IFaceDetectorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -241,25 +241,25 @@ pub const IFaceDetectorStatics = extern struct {
     pub fn CreateAsync(self: *@This()) core.HResult!*IAsyncOperation(FaceDetector) {
         var _r: *IAsyncOperation(FaceDetector) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedBitmapPixelFormats(self: *@This()) core.HResult!*IVectorView(BitmapPixelFormat) {
         var _r: *IVectorView(BitmapPixelFormat) = undefined;
         const _c = self.vtable.GetSupportedBitmapPixelFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsBitmapPixelFormatSupported(self: *@This(), bitmapPixelFormat: BitmapPixelFormat) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsBitmapPixelFormatSupported(@ptrCast(self), bitmapPixelFormat, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.FaceAnalysis.IFaceDetectorStatics";
@@ -282,8 +282,11 @@ pub const IFaceDetectorStatics = extern struct {
 };
 pub const IFaceTracker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -291,28 +294,28 @@ pub const IFaceTracker = extern struct {
     pub fn ProcessNextFrameAsync(self: *@This(), videoFrame: *VideoFrame) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         var _r: *IAsyncOperation(IVector(DetectedFace)) = undefined;
         const _c = self.vtable.ProcessNextFrameAsync(@ptrCast(self), videoFrame, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinDetectableFaceSize(self: *@This()) core.HResult!BitmapSize {
         var _r: BitmapSize = undefined;
         const _c = self.vtable.get_MinDetectableFaceSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinDetectableFaceSize(self: *@This(), value: BitmapSize) core.HResult!void {
         const _c = self.vtable.put_MinDetectableFaceSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxDetectableFaceSize(self: *@This()) core.HResult!BitmapSize {
         var _r: BitmapSize = undefined;
         const _c = self.vtable.get_MaxDetectableFaceSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxDetectableFaceSize(self: *@This(), value: BitmapSize) core.HResult!void {
         const _c = self.vtable.put_MaxDetectableFaceSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.FaceAnalysis.IFaceTracker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -335,8 +338,11 @@ pub const IFaceTracker = extern struct {
 };
 pub const IFaceTrackerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -344,25 +350,25 @@ pub const IFaceTrackerStatics = extern struct {
     pub fn CreateAsync(self: *@This()) core.HResult!*IAsyncOperation(FaceTracker) {
         var _r: *IAsyncOperation(FaceTracker) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedBitmapPixelFormats(self: *@This()) core.HResult!*IVectorView(BitmapPixelFormat) {
         var _r: *IVectorView(BitmapPixelFormat) = undefined;
         const _c = self.vtable.GetSupportedBitmapPixelFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsBitmapPixelFormatSupported(self: *@This(), bitmapPixelFormat: BitmapPixelFormat) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsBitmapPixelFormatSupported(@ptrCast(self), bitmapPixelFormat, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.FaceAnalysis.IFaceTrackerStatics";

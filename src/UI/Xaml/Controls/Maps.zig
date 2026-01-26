@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IMapControlBusinessLandmarkClickEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const IMapControlBusinessLandmarkClickEventArgs = extern struct {
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkClickEventArgs";
@@ -30,8 +33,11 @@ pub const IMapControlBusinessLandmarkClickEventArgs = extern struct {
 };
 pub const IMapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,7 +45,7 @@ pub const IMapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkPointerEnteredEventArgs";
@@ -59,8 +65,11 @@ pub const IMapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
 };
 pub const IMapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -68,7 +77,7 @@ pub const IMapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkPointerExitedEventArgs";
@@ -88,8 +97,11 @@ pub const IMapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
 };
 pub const IMapControlBusinessLandmarkRightTappedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -97,7 +109,7 @@ pub const IMapControlBusinessLandmarkRightTappedEventArgs = extern struct {
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkRightTappedEventArgs";
@@ -117,8 +129,11 @@ pub const IMapControlBusinessLandmarkRightTappedEventArgs = extern struct {
 };
 pub const IMapControlDataHelper = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -126,42 +141,42 @@ pub const IMapControlDataHelper = extern struct {
     pub fn addBusinessLandmarkClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BusinessLandmarkClick(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBusinessLandmarkClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BusinessLandmarkClick(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTransitFeatureClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureClickEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TransitFeatureClick(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTransitFeatureClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TransitFeatureClick(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addBusinessLandmarkRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkRightTappedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BusinessLandmarkRightTapped(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBusinessLandmarkRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BusinessLandmarkRightTapped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTransitFeatureRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureRightTappedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TransitFeatureRightTapped(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTransitFeatureRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TransitFeatureRightTapped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -187,8 +202,11 @@ pub const IMapControlDataHelper = extern struct {
 };
 pub const IMapControlDataHelper2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -196,42 +214,42 @@ pub const IMapControlDataHelper2 = extern struct {
     pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BusinessLandmarkPointerEntered(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBusinessLandmarkPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BusinessLandmarkPointerEntered(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTransitFeaturePointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TransitFeaturePointerEntered(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTransitFeaturePointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TransitFeaturePointerEntered(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addBusinessLandmarkPointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BusinessLandmarkPointerExited(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBusinessLandmarkPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BusinessLandmarkPointerExited(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTransitFeaturePointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TransitFeaturePointerExited(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTransitFeaturePointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TransitFeaturePointerExited(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelper2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -257,8 +275,11 @@ pub const IMapControlDataHelper2 = extern struct {
 };
 pub const IMapControlDataHelperFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -266,7 +287,7 @@ pub const IMapControlDataHelperFactory = extern struct {
     pub fn CreateInstance(self: *@This(), map: *MapControl) core.HResult!*MapControlDataHelper {
         var _r: *MapControlDataHelper = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), map, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelperFactory";
@@ -286,8 +307,11 @@ pub const IMapControlDataHelperFactory = extern struct {
 };
 pub const IMapControlDataHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -295,7 +319,7 @@ pub const IMapControlDataHelperStatics = extern struct {
     pub fn CreateMapControl(self: *@This(), rasterRenderMode: bool) core.HResult!*MapControl {
         var _r: *MapControl = undefined;
         const _c = self.vtable.CreateMapControl(@ptrCast(self), rasterRenderMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelperStatics";
@@ -315,8 +339,11 @@ pub const IMapControlDataHelperStatics = extern struct {
 };
 pub const IMapControlTransitFeatureClickEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -324,19 +351,19 @@ pub const IMapControlTransitFeatureClickEventArgs = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeatureClickEventArgs";
@@ -358,8 +385,11 @@ pub const IMapControlTransitFeatureClickEventArgs = extern struct {
 };
 pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -367,19 +397,19 @@ pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeaturePointerEnteredEventArgs";
@@ -401,8 +431,11 @@ pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
 };
 pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -410,19 +443,19 @@ pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeaturePointerExitedEventArgs";
@@ -444,8 +477,11 @@ pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
 };
 pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -453,19 +489,19 @@ pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeatureRightTappedEventArgs";
@@ -487,14 +523,11 @@ pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -516,14 +549,11 @@ pub const MapControlBusinessLandmarkClickEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -545,14 +575,11 @@ pub const MapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -574,14 +601,11 @@ pub const MapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkRightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -603,14 +627,11 @@ pub const MapControlBusinessLandmarkRightTappedEventArgs = extern struct {
 };
 pub const MapControlDataHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -650,57 +671,49 @@ pub const MapControlDataHelper = extern struct {
     pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.addBusinessLandmarkPointerEntered(value);
     }
     pub fn removeBusinessLandmarkPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.removeBusinessLandmarkPointerEntered(token);
     }
     pub fn addTransitFeaturePointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.addTransitFeaturePointerEntered(value);
     }
     pub fn removeTransitFeaturePointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.removeTransitFeaturePointerEntered(token);
     }
     pub fn addBusinessLandmarkPointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.addBusinessLandmarkPointerExited(value);
     }
     pub fn removeBusinessLandmarkPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.removeBusinessLandmarkPointerExited(token);
     }
     pub fn addTransitFeaturePointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.addTransitFeaturePointerExited(value);
     }
     pub fn removeTransitFeaturePointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         return try this.?.removeTransitFeaturePointerExited(token);
     }
     pub fn CreateInstance(map: *MapControl) core.HResult!*MapControlDataHelper {
@@ -721,14 +734,11 @@ pub const MapControlDataHelper = extern struct {
 };
 pub const MapControlTransitFeatureClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -758,14 +768,11 @@ pub const MapControlTransitFeatureClickEventArgs = extern struct {
 };
 pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -795,14 +802,11 @@ pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
 };
 pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -832,14 +836,11 @@ pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
 };
 pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -869,14 +870,11 @@ pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
 };
 pub const MapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -894,14 +892,11 @@ pub const MapTileDataSource = extern struct {
 };
 pub const CustomMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -927,14 +922,11 @@ pub const CustomMapTileDataSource = extern struct {
 };
 pub const HttpMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -984,8 +976,11 @@ pub const HttpMapTileDataSource = extern struct {
 };
 pub const ICustomMapTileDataSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -993,12 +988,12 @@ pub const ICustomMapTileDataSource = extern struct {
     pub fn addBitmapRequested(self: *@This(), handler: *TypedEventHandler(CustomMapTileDataSource,MapTileBitmapRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BitmapRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBitmapRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BitmapRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.ICustomMapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1018,8 +1013,11 @@ pub const ICustomMapTileDataSource = extern struct {
 };
 pub const ICustomMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1027,7 +1025,7 @@ pub const ICustomMapTileDataSourceFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CustomMapTileDataSource {
         var _r: *CustomMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.ICustomMapTileDataSourceFactory";
@@ -1047,8 +1045,11 @@ pub const ICustomMapTileDataSourceFactory = extern struct {
 };
 pub const IHttpMapTileDataSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1056,38 +1057,38 @@ pub const IHttpMapTileDataSource = extern struct {
     pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UriFormatString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUriFormatString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UriFormatString(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAdditionalRequestHeaders(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_AdditionalRequestHeaders(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllowCaching(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowCaching(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowCaching(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowCaching(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUriRequested(self: *@This(), handler: *TypedEventHandler(HttpMapTileDataSource,MapTileUriRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UriRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUriRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UriRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IHttpMapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1112,8 +1113,11 @@ pub const IHttpMapTileDataSource = extern struct {
 };
 pub const IHttpMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1121,13 +1125,13 @@ pub const IHttpMapTileDataSourceFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
         var _r: *HttpMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithUriFormatString(self: *@This(), uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
         var _r: *HttpMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstanceWithUriFormatString(@ptrCast(self), uriFormatString, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IHttpMapTileDataSourceFactory";
@@ -1148,8 +1152,11 @@ pub const IHttpMapTileDataSourceFactory = extern struct {
 };
 pub const ILocalMapTileDataSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1157,22 +1164,22 @@ pub const ILocalMapTileDataSource = extern struct {
     pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UriFormatString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUriFormatString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UriFormatString(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUriRequested(self: *@This(), handler: *TypedEventHandler(LocalMapTileDataSource,MapTileUriRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UriRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUriRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UriRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.ILocalMapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1194,8 +1201,11 @@ pub const ILocalMapTileDataSource = extern struct {
 };
 pub const ILocalMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1203,13 +1213,13 @@ pub const ILocalMapTileDataSourceFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
         var _r: *LocalMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithUriFormatString(self: *@This(), uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
         var _r: *LocalMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstanceWithUriFormatString(@ptrCast(self), uriFormatString, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.ILocalMapTileDataSourceFactory";
@@ -1230,8 +1240,11 @@ pub const ILocalMapTileDataSourceFactory = extern struct {
 };
 pub const IMapActualCameraChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1239,7 +1252,7 @@ pub const IMapActualCameraChangedEventArgs = extern struct {
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapActualCameraChangedEventArgs";
@@ -1259,8 +1272,11 @@ pub const IMapActualCameraChangedEventArgs = extern struct {
 };
 pub const IMapActualCameraChangedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1268,7 +1284,7 @@ pub const IMapActualCameraChangedEventArgs2 = extern struct {
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var _r: MapCameraChangeReason = undefined;
         const _c = self.vtable.get_ChangeReason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapActualCameraChangedEventArgs2";
@@ -1288,8 +1304,11 @@ pub const IMapActualCameraChangedEventArgs2 = extern struct {
 };
 pub const IMapActualCameraChangingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1297,7 +1316,7 @@ pub const IMapActualCameraChangingEventArgs = extern struct {
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapActualCameraChangingEventArgs";
@@ -1317,8 +1336,11 @@ pub const IMapActualCameraChangingEventArgs = extern struct {
 };
 pub const IMapActualCameraChangingEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1326,7 +1348,7 @@ pub const IMapActualCameraChangingEventArgs2 = extern struct {
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var _r: MapCameraChangeReason = undefined;
         const _c = self.vtable.get_ChangeReason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapActualCameraChangingEventArgs2";
@@ -1346,8 +1368,11 @@ pub const IMapActualCameraChangingEventArgs2 = extern struct {
 };
 pub const IMapBillboard = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1355,47 +1380,47 @@ pub const IMapBillboard = extern struct {
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLocation(self: *@This(), value: *Geopoint) core.HResult!void {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNormalizedAnchorPoint(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_NormalizedAnchorPoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNormalizedAnchorPoint(self: *@This(), value: Point) core.HResult!void {
         const _c = self.vtable.put_NormalizedAnchorPoint(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getImage(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_Image(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putImage(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         const _c = self.vtable.put_Image(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCollisionBehaviorDesired(self: *@This()) core.HResult!MapElementCollisionBehavior {
         var _r: MapElementCollisionBehavior = undefined;
         const _c = self.vtable.get_CollisionBehaviorDesired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCollisionBehaviorDesired(self: *@This(), value: MapElementCollisionBehavior) core.HResult!void {
         const _c = self.vtable.put_CollisionBehaviorDesired(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReferenceCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_ReferenceCamera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapBillboard";
@@ -1423,8 +1448,11 @@ pub const IMapBillboard = extern struct {
 };
 pub const IMapBillboardFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1432,7 +1460,7 @@ pub const IMapBillboardFactory = extern struct {
     pub fn CreateInstanceFromCamera(self: *@This(), camera: *MapCamera) core.HResult!*MapBillboard {
         var _r: *MapBillboard = undefined;
         const _c = self.vtable.CreateInstanceFromCamera(@ptrCast(self), camera, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapBillboardFactory";
@@ -1452,8 +1480,11 @@ pub const IMapBillboardFactory = extern struct {
 };
 pub const IMapBillboardStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1461,19 +1492,19 @@ pub const IMapBillboardStatics = extern struct {
     pub fn getLocationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNormalizedAnchorPointProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_NormalizedAnchorPointProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCollisionBehaviorDesiredProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CollisionBehaviorDesiredProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapBillboardStatics";
@@ -1495,8 +1526,11 @@ pub const IMapBillboardStatics = extern struct {
 };
 pub const IMapCamera = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1504,52 +1538,52 @@ pub const IMapCamera = extern struct {
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLocation(self: *@This(), value: *Geopoint) core.HResult!void {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHeading(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Heading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHeading(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Heading(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPitch(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Pitch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPitch(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Pitch(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoll(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Roll(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoll(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Roll(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFieldOfView(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FieldOfView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFieldOfView(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_FieldOfView(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapCamera";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1577,8 +1611,11 @@ pub const IMapCamera = extern struct {
 };
 pub const IMapCameraFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1586,25 +1623,25 @@ pub const IMapCameraFactory = extern struct {
     pub fn CreateInstanceWithLocation(self: *@This(), location: *Geopoint) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.CreateInstanceWithLocation(@ptrCast(self), location, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithLocationAndHeading(self: *@This(), location: *Geopoint, headingInDegrees: f64) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.CreateInstanceWithLocationAndHeading(@ptrCast(self), location, headingInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithLocationHeadingAndPitch(self: *@This(), location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.CreateInstanceWithLocationHeadingAndPitch(@ptrCast(self), location, headingInDegrees, pitchInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithLocationHeadingPitchRollAndFieldOfView(self: *@This(), location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64, rollInDegrees: f64, fieldOfViewInDegrees: f64) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.CreateInstanceWithLocationHeadingPitchRollAndFieldOfView(@ptrCast(self), location, headingInDegrees, pitchInDegrees, rollInDegrees, fieldOfViewInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapCameraFactory";
@@ -1627,8 +1664,11 @@ pub const IMapCameraFactory = extern struct {
 };
 pub const IMapContextRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1636,19 +1676,19 @@ pub const IMapContextRequestedEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElements(self: *@This()) core.HResult!*IVectorView(MapElement) {
         var _r: *IVectorView(MapElement) = undefined;
         const _c = self.vtable.get_MapElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapContextRequestedEventArgs";
@@ -1670,8 +1710,11 @@ pub const IMapContextRequestedEventArgs = extern struct {
 };
 pub const IMapControl = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1679,307 +1722,307 @@ pub const IMapControl = extern struct {
     pub fn getCenter(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCenter(self: *@This(), value: *Geopoint) core.HResult!void {
         const _c = self.vtable.put_Center(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVector(DependencyObject) {
         var _r: *IVector(DependencyObject) = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getColorScheme(self: *@This()) core.HResult!MapColorScheme {
         var _r: MapColorScheme = undefined;
         const _c = self.vtable.get_ColorScheme(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putColorScheme(self: *@This(), value: MapColorScheme) core.HResult!void {
         const _c = self.vtable.put_ColorScheme(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredPitch(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredPitch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredPitch(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DesiredPitch(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHeading(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Heading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHeading(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Heading(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLandmarksVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LandmarksVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLandmarksVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_LandmarksVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLoadingStatus(self: *@This()) core.HResult!MapLoadingStatus {
         var _r: MapLoadingStatus = undefined;
         const _c = self.vtable.get_LoadingStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapServiceToken(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MapServiceToken(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapServiceToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MapServiceToken(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxZoomLevel(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxZoomLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinZoomLevel(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MinZoomLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPedestrianFeaturesVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PedestrianFeaturesVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPedestrianFeaturesVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PedestrianFeaturesVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPitch(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Pitch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStyle(self: *@This()) core.HResult!MapStyle {
         var _r: MapStyle = undefined;
         const _c = self.vtable.get_Style(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStyle(self: *@This(), value: MapStyle) core.HResult!void {
         const _c = self.vtable.put_Style(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTrafficFlowVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TrafficFlowVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTrafficFlowVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_TrafficFlowVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransformOrigin(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_TransformOrigin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransformOrigin(self: *@This(), value: Point) core.HResult!void {
         const _c = self.vtable.put_TransformOrigin(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWatermarkMode(self: *@This()) core.HResult!MapWatermarkMode {
         var _r: MapWatermarkMode = undefined;
         const _c = self.vtable.get_WatermarkMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWatermarkMode(self: *@This(), value: MapWatermarkMode) core.HResult!void {
         const _c = self.vtable.put_WatermarkMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getZoomLevel(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ZoomLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putZoomLevel(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_ZoomLevel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         var _r: *IVector(MapElement) = undefined;
         const _c = self.vtable.get_MapElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoutes(self: *@This()) core.HResult!*IVector(MapRouteView) {
         var _r: *IVector(MapRouteView) = undefined;
         const _c = self.vtable.get_Routes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTileSources(self: *@This()) core.HResult!*IVector(MapTileSource) {
         var _r: *IVector(MapTileSource) = undefined;
         const _c = self.vtable.get_TileSources(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addCenterChanged(self: *@This(), handler: *TypedEventHandler(MapControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CenterChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCenterChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CenterChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addHeadingChanged(self: *@This(), handler: *TypedEventHandler(MapControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HeadingChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHeadingChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HeadingChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLoadingStatusChanged(self: *@This(), handler: *TypedEventHandler(MapControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LoadingStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLoadingStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LoadingStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapDoubleTapped(self: *@This(), handler: *TypedEventHandler(MapControl,MapInputEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapDoubleTapped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapDoubleTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapDoubleTapped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapHolding(self: *@This(), handler: *TypedEventHandler(MapControl,MapInputEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapHolding(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapHolding(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapHolding(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapTapped(self: *@This(), handler: *TypedEventHandler(MapControl,MapInputEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapTapped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapTapped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPitchChanged(self: *@This(), handler: *TypedEventHandler(MapControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PitchChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePitchChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PitchChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTransformOriginChanged(self: *@This(), handler: *TypedEventHandler(MapControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TransformOriginChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTransformOriginChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TransformOriginChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addZoomLevelChanged(self: *@This(), handler: *TypedEventHandler(MapControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ZoomLevelChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeZoomLevelChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ZoomLevelChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FindMapElementsAtOffset(self: *@This(), offset: Point) core.HResult!*IVectorView(MapElement) {
         var _r: *IVectorView(MapElement) = undefined;
         const _c = self.vtable.FindMapElementsAtOffset(@ptrCast(self), offset, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocationFromOffset(self: *@This(), offset: Point, location: *Geopoint) core.HResult!void {
         const _c = self.vtable.GetLocationFromOffset(@ptrCast(self), offset, location);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetOffsetFromLocation(self: *@This(), location: *Geopoint, offset: Point) core.HResult!void {
         const _c = self.vtable.GetOffsetFromLocation(@ptrCast(self), location, offset);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsLocationInView(self: *@This(), location: *Geopoint, isInView: bool) core.HResult!void {
         const _c = self.vtable.IsLocationInView(@ptrCast(self), location, isInView);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TrySetViewBoundsAsync(self: *@This(), bounds: *GeoboundingBox, margin: *IReference(Thickness), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetViewBoundsAsync(@ptrCast(self), bounds, margin, animation, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetViewAsync(self: *@This(), center: *Geopoint) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetViewAsync(@ptrCast(self), center, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetViewAsyncWithZoomLevel(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetViewAsyncWithZoomLevel(@ptrCast(self), center, zoomLevel, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitch(@ptrCast(self), center, zoomLevel, heading, desiredPitch, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitchAndAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitchAndAnimation(@ptrCast(self), center, zoomLevel, heading, desiredPitch, animation, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl";
@@ -2057,8 +2100,11 @@ pub const IMapControl = extern struct {
 };
 pub const IMapControl2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2066,253 +2112,253 @@ pub const IMapControl2 = extern struct {
     pub fn getBusinessLandmarksVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BusinessLandmarksVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBusinessLandmarksVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_BusinessLandmarksVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransitFeaturesVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TransitFeaturesVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransitFeaturesVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_TransitFeaturesVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPanInteractionMode(self: *@This()) core.HResult!MapPanInteractionMode {
         var _r: MapPanInteractionMode = undefined;
         const _c = self.vtable.get_PanInteractionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPanInteractionMode(self: *@This(), value: MapPanInteractionMode) core.HResult!void {
         const _c = self.vtable.put_PanInteractionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRotateInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var _r: MapInteractionMode = undefined;
         const _c = self.vtable.get_RotateInteractionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRotateInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         const _c = self.vtable.put_RotateInteractionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTiltInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var _r: MapInteractionMode = undefined;
         const _c = self.vtable.get_TiltInteractionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTiltInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         const _c = self.vtable.put_TiltInteractionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getZoomInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var _r: MapInteractionMode = undefined;
         const _c = self.vtable.get_ZoomInteractionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putZoomInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         const _c = self.vtable.put_ZoomInteractionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIs3DSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Is3DSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStreetsideSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStreetsideSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScene(self: *@This()) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.get_Scene(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScene(self: *@This(), value: *MapScene) core.HResult!void {
         const _c = self.vtable.put_Scene(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getActualCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_ActualCamera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTargetCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_TargetCamera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustomExperience(self: *@This()) core.HResult!*MapCustomExperience {
         var _r: *MapCustomExperience = undefined;
         const _c = self.vtable.get_CustomExperience(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomExperience(self: *@This(), value: *MapCustomExperience) core.HResult!void {
         const _c = self.vtable.put_CustomExperience(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapElementClick(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementClickEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapElementClick(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapElementClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapElementClick(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapElementPointerEntered(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapElementPointerEntered(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapElementPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapElementPointerEntered(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapElementPointerExited(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapElementPointerExited(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapElementPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapElementPointerExited(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addActualCameraChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapActualCameraChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActualCameraChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActualCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActualCameraChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addActualCameraChanging(self: *@This(), handler: *TypedEventHandler(MapControl,MapActualCameraChangingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActualCameraChanging(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActualCameraChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActualCameraChanging(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTargetCameraChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapTargetCameraChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TargetCameraChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTargetCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TargetCameraChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCustomExperienceChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapCustomExperienceChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CustomExperienceChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCustomExperienceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CustomExperienceChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartContinuousRotate(self: *@This(), rateInDegreesPerSecond: f64) core.HResult!void {
         const _c = self.vtable.StartContinuousRotate(@ptrCast(self), rateInDegreesPerSecond);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopContinuousRotate(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopContinuousRotate(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartContinuousTilt(self: *@This(), rateInDegreesPerSecond: f64) core.HResult!void {
         const _c = self.vtable.StartContinuousTilt(@ptrCast(self), rateInDegreesPerSecond);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopContinuousTilt(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopContinuousTilt(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartContinuousZoom(self: *@This(), rateOfChangePerSecond: f64) core.HResult!void {
         const _c = self.vtable.StartContinuousZoom(@ptrCast(self), rateOfChangePerSecond);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopContinuousZoom(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopContinuousZoom(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryRotateAsync(self: *@This(), degrees: f64) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryRotateAsync(@ptrCast(self), degrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryRotateToAsync(self: *@This(), angleInDegrees: f64) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryRotateToAsync(@ptrCast(self), angleInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryTiltAsync(self: *@This(), degrees: f64) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryTiltAsync(@ptrCast(self), degrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryTiltToAsync(self: *@This(), angleInDegrees: f64) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryTiltToAsync(@ptrCast(self), angleInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryZoomInAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryZoomInAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryZoomOutAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryZoomOutAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryZoomToAsync(self: *@This(), zoomLevel: f64) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryZoomToAsync(@ptrCast(self), zoomLevel, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetSceneAsync(self: *@This(), scene: *MapScene) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetSceneAsync(@ptrCast(self), scene, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetSceneAsyncWithAnimationKind(self: *@This(), scene: *MapScene, animationKind: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetSceneAsyncWithAnimationKind(@ptrCast(self), scene, animationKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl2";
@@ -2380,8 +2426,11 @@ pub const IMapControl2 = extern struct {
 };
 pub const IMapControl3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2389,12 +2438,12 @@ pub const IMapControl3 = extern struct {
     pub fn addMapRightTapped(self: *@This(), handler: *TypedEventHandler(MapControl,MapRightTappedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapRightTapped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapRightTapped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2414,8 +2463,11 @@ pub const IMapControl3 = extern struct {
 };
 pub const IMapControl4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2423,27 +2475,27 @@ pub const IMapControl4 = extern struct {
     pub fn getBusinessLandmarksEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BusinessLandmarksEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBusinessLandmarksEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_BusinessLandmarksEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransitFeaturesEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TransitFeaturesEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransitFeaturesEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_TransitFeaturesEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetVisibleRegion(self: *@This(), region: MapVisibleRegionKind) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.GetVisibleRegion(@ptrCast(self), region, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl4";
@@ -2467,8 +2519,11 @@ pub const IMapControl4 = extern struct {
 };
 pub const IMapControl5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2476,71 +2531,71 @@ pub const IMapControl5 = extern struct {
     pub fn getMapProjection(self: *@This()) core.HResult!MapProjection {
         var _r: MapProjection = undefined;
         const _c = self.vtable.get_MapProjection(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapProjection(self: *@This(), value: MapProjection) core.HResult!void {
         const _c = self.vtable.put_MapProjection(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStyleSheet(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.get_StyleSheet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStyleSheet(self: *@This(), value: *MapStyleSheet) core.HResult!void {
         const _c = self.vtable.put_StyleSheet(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getViewPadding(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_ViewPadding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewPadding(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_ViewPadding(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapContextRequested(self: *@This(), handler: *TypedEventHandler(MapControl,MapContextRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapContextRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapContextRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapContextRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FindMapElementsAtOffset(self: *@This(), offset: Point, radius: f64) core.HResult!*IVectorView(MapElement) {
         var _r: *IVectorView(MapElement) = undefined;
         const _c = self.vtable.FindMapElementsAtOffset(@ptrCast(self), offset, radius, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocationFromOffset(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
         const _c = self.vtable.GetLocationFromOffset(@ptrCast(self), offset, desiredReferenceSystem, location);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartContinuousPan(self: *@This(), horizontalPixelsPerSecond: f64, verticalPixelsPerSecond: f64) core.HResult!void {
         const _c = self.vtable.StartContinuousPan(@ptrCast(self), horizontalPixelsPerSecond, verticalPixelsPerSecond);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopContinuousPan(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopContinuousPan(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryPanAsync(self: *@This(), horizontalPixels: f64, verticalPixels: f64) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryPanAsync(@ptrCast(self), horizontalPixels, verticalPixels, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryPanToAsync(self: *@This(), location: *Geopoint) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryPanToAsync(@ptrCast(self), location, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl5";
@@ -2573,8 +2628,11 @@ pub const IMapControl5 = extern struct {
 };
 pub const IMapControl6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2582,23 +2640,23 @@ pub const IMapControl6 = extern struct {
     pub fn getLayers(self: *@This()) core.HResult!*IVector(MapLayer) {
         var _r: *IVector(MapLayer) = undefined;
         const _c = self.vtable.get_Layers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLayers(self: *@This(), value: *IVector(MapLayer)) core.HResult!void {
         const _c = self.vtable.put_Layers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryGetLocationFromOffset(self: *@This(), offset: Point, location: *Geopoint) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetLocationFromOffset(@ptrCast(self), offset, location, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(@ptrCast(self), offset, desiredReferenceSystem, location, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl6";
@@ -2621,8 +2679,11 @@ pub const IMapControl6 = extern struct {
 };
 pub const IMapControl7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2630,12 +2691,12 @@ pub const IMapControl7 = extern struct {
     pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Region(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Region(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl7";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2655,8 +2716,11 @@ pub const IMapControl7 = extern struct {
 };
 pub const IMapControl8 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2664,25 +2728,25 @@ pub const IMapControl8 = extern struct {
     pub fn getCanTiltDown(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanTiltDown(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanTiltUp(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanTiltUp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanZoomIn(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanZoomIn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanZoomOut(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanZoomOut(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControl8";
@@ -2705,8 +2769,11 @@ pub const IMapControl8 = extern struct {
 };
 pub const IMapControlStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2714,142 +2781,142 @@ pub const IMapControlStatics = extern struct {
     pub fn getCenterProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CenterProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChildrenProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ChildrenProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getColorSchemeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ColorSchemeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDesiredPitchProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DesiredPitchProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeadingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HeadingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLandmarksVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LandmarksVisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLoadingStatusProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LoadingStatusProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapServiceTokenProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapServiceTokenProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPedestrianFeaturesVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PedestrianFeaturesVisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPitchProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PitchProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStyleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_StyleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrafficFlowVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TrafficFlowVisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransformOriginProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TransformOriginProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWatermarkModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_WatermarkModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZoomLevelProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ZoomLevelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElementsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapElementsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoutesProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RoutesProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTileSourcesProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TileSourcesProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocation(self: *@This(), element: *DependencyObject) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.GetLocation(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLocation(self: *@This(), element: *DependencyObject, value: *Geopoint) core.HResult!void {
         const _c = self.vtable.SetLocation(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNormalizedAnchorPointProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_NormalizedAnchorPointProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNormalizedAnchorPoint(self: *@This(), element: *DependencyObject) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetNormalizedAnchorPoint(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetNormalizedAnchorPoint(self: *@This(), element: *DependencyObject, value: Point) core.HResult!void {
         const _c = self.vtable.SetNormalizedAnchorPoint(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2891,8 +2958,11 @@ pub const IMapControlStatics = extern struct {
 };
 pub const IMapControlStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2900,55 +2970,55 @@ pub const IMapControlStatics2 = extern struct {
     pub fn getBusinessLandmarksVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_BusinessLandmarksVisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransitFeaturesVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TransitFeaturesVisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPanInteractionModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PanInteractionModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRotateInteractionModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RotateInteractionModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTiltInteractionModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TiltInteractionModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZoomInteractionModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ZoomInteractionModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIs3DSupportedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_Is3DSupportedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStreetsideSupportedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsStreetsideSupportedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSceneProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SceneProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlStatics2";
@@ -2976,8 +3046,11 @@ pub const IMapControlStatics2 = extern struct {
 };
 pub const IMapControlStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2985,13 +3058,13 @@ pub const IMapControlStatics4 = extern struct {
     pub fn getBusinessLandmarksEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_BusinessLandmarksEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransitFeaturesEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TransitFeaturesEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlStatics4";
@@ -3012,8 +3085,11 @@ pub const IMapControlStatics4 = extern struct {
 };
 pub const IMapControlStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3021,19 +3097,19 @@ pub const IMapControlStatics5 = extern struct {
     pub fn getMapProjectionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapProjectionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStyleSheetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_StyleSheetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewPaddingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ViewPaddingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlStatics5";
@@ -3055,8 +3131,11 @@ pub const IMapControlStatics5 = extern struct {
 };
 pub const IMapControlStatics6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3064,7 +3143,7 @@ pub const IMapControlStatics6 = extern struct {
     pub fn getLayersProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LayersProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlStatics6";
@@ -3084,8 +3163,11 @@ pub const IMapControlStatics6 = extern struct {
 };
 pub const IMapControlStatics7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3093,7 +3175,7 @@ pub const IMapControlStatics7 = extern struct {
     pub fn getRegionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RegionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlStatics7";
@@ -3113,8 +3195,11 @@ pub const IMapControlStatics7 = extern struct {
 };
 pub const IMapControlStatics8 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3122,25 +3207,25 @@ pub const IMapControlStatics8 = extern struct {
     pub fn getCanTiltDownProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CanTiltDownProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanTiltUpProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CanTiltUpProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanZoomInProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CanZoomInProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanZoomOutProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CanZoomOutProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlStatics8";
@@ -3163,8 +3248,11 @@ pub const IMapControlStatics8 = extern struct {
 };
 pub const IMapCustomExperience = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3185,8 +3273,11 @@ pub const IMapCustomExperience = extern struct {
 };
 pub const IMapCustomExperienceChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3207,8 +3298,11 @@ pub const IMapCustomExperienceChangedEventArgs = extern struct {
 };
 pub const IMapCustomExperienceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3216,7 +3310,7 @@ pub const IMapCustomExperienceFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapCustomExperience {
         var _r: *MapCustomExperience = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapCustomExperienceFactory";
@@ -3236,8 +3330,11 @@ pub const IMapCustomExperienceFactory = extern struct {
 };
 pub const IMapElement = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3245,22 +3342,22 @@ pub const IMapElement = extern struct {
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ZIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Visible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Visible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3282,8 +3379,11 @@ pub const IMapElement = extern struct {
 };
 pub const IMapElement2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3291,12 +3391,12 @@ pub const IMapElement2 = extern struct {
     pub fn getMapTabIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MapTabIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapTabIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MapTabIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElement2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3316,8 +3416,11 @@ pub const IMapElement2 = extern struct {
 };
 pub const IMapElement3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3325,32 +3428,32 @@ pub const IMapElement3 = extern struct {
     pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MapStyleSheetEntry(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapStyleSheetEntry(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MapStyleSheetEntry(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMapStyleSheetEntryState(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MapStyleSheetEntryState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapStyleSheetEntryState(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MapStyleSheetEntryState(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTag(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTag(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElement3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3374,8 +3477,11 @@ pub const IMapElement3 = extern struct {
 };
 pub const IMapElement3D = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3383,62 +3489,62 @@ pub const IMapElement3D = extern struct {
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLocation(self: *@This(), value: *Geopoint) core.HResult!void {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getModel(self: *@This()) core.HResult!*MapModel3D {
         var _r: *MapModel3D = undefined;
         const _c = self.vtable.get_Model(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putModel(self: *@This(), value: *MapModel3D) core.HResult!void {
         const _c = self.vtable.put_Model(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHeading(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Heading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHeading(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Heading(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPitch(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Pitch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPitch(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Pitch(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoll(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Roll(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoll(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Roll(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScale(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Scale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScale(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_Scale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElement3D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3468,8 +3574,11 @@ pub const IMapElement3D = extern struct {
 };
 pub const IMapElement3DStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3477,31 +3586,31 @@ pub const IMapElement3DStatics = extern struct {
     pub fn getLocationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeadingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HeadingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPitchProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PitchProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRollProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RollProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScaleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ScaleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElement3DStatics";
@@ -3525,8 +3634,11 @@ pub const IMapElement3DStatics = extern struct {
 };
 pub const IMapElement4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3534,12 +3646,12 @@ pub const IMapElement4 = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElement4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3559,8 +3671,11 @@ pub const IMapElement4 = extern struct {
 };
 pub const IMapElementClickEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3568,19 +3683,19 @@ pub const IMapElementClickEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         var _r: *IVector(MapElement) = undefined;
         const _c = self.vtable.get_MapElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementClickEventArgs";
@@ -3602,8 +3717,11 @@ pub const IMapElementClickEventArgs = extern struct {
 };
 pub const IMapElementFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3611,7 +3729,7 @@ pub const IMapElementFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapElement {
         var _r: *MapElement = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementFactory";
@@ -3631,8 +3749,11 @@ pub const IMapElementFactory = extern struct {
 };
 pub const IMapElementPointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3640,19 +3761,19 @@ pub const IMapElementPointerEnteredEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         var _r: *MapElement = undefined;
         const _c = self.vtable.get_MapElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementPointerEnteredEventArgs";
@@ -3674,8 +3795,11 @@ pub const IMapElementPointerEnteredEventArgs = extern struct {
 };
 pub const IMapElementPointerExitedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3683,19 +3807,19 @@ pub const IMapElementPointerExitedEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         var _r: *MapElement = undefined;
         const _c = self.vtable.get_MapElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementPointerExitedEventArgs";
@@ -3717,8 +3841,11 @@ pub const IMapElementPointerExitedEventArgs = extern struct {
 };
 pub const IMapElementStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3726,13 +3853,13 @@ pub const IMapElementStatics = extern struct {
     pub fn getZIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ZIndexProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_VisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementStatics";
@@ -3753,8 +3880,11 @@ pub const IMapElementStatics = extern struct {
 };
 pub const IMapElementStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3762,7 +3892,7 @@ pub const IMapElementStatics2 = extern struct {
     pub fn getMapTabIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapTabIndexProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementStatics2";
@@ -3782,8 +3912,11 @@ pub const IMapElementStatics2 = extern struct {
 };
 pub const IMapElementStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3791,19 +3924,19 @@ pub const IMapElementStatics3 = extern struct {
     pub fn getMapStyleSheetEntryProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapStyleSheetEntryProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapStyleSheetEntryStateProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapStyleSheetEntryStateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTagProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TagProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementStatics3";
@@ -3825,8 +3958,11 @@ pub const IMapElementStatics3 = extern struct {
 };
 pub const IMapElementStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3834,7 +3970,7 @@ pub const IMapElementStatics4 = extern struct {
     pub fn getIsEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementStatics4";
@@ -3854,8 +3990,11 @@ pub const IMapElementStatics4 = extern struct {
 };
 pub const IMapElementsLayer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3863,52 +4002,52 @@ pub const IMapElementsLayer = extern struct {
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         var _r: *IVector(MapElement) = undefined;
         const _c = self.vtable.get_MapElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapElements(self: *@This(), value: *IVector(MapElement)) core.HResult!void {
         const _c = self.vtable.put_MapElements(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapElementClick(self: *@This(), handler: *TypedEventHandler(MapElementsLayer,MapElementsLayerClickEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapElementClick(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapElementClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapElementClick(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapElementPointerEntered(self: *@This(), handler: *TypedEventHandler(MapElementsLayer,MapElementsLayerPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapElementPointerEntered(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapElementPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapElementPointerEntered(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapElementPointerExited(self: *@This(), handler: *TypedEventHandler(MapElementsLayer,MapElementsLayerPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapElementPointerExited(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapElementPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapElementPointerExited(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMapContextRequested(self: *@This(), handler: *TypedEventHandler(MapElementsLayer,MapElementsLayerContextRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapContextRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMapContextRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MapContextRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementsLayer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3936,8 +4075,11 @@ pub const IMapElementsLayer = extern struct {
 };
 pub const IMapElementsLayerClickEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3945,19 +4087,19 @@ pub const IMapElementsLayerClickEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         var _r: *IVector(MapElement) = undefined;
         const _c = self.vtable.get_MapElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementsLayerClickEventArgs";
@@ -3979,8 +4121,11 @@ pub const IMapElementsLayerClickEventArgs = extern struct {
 };
 pub const IMapElementsLayerContextRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3988,19 +4133,19 @@ pub const IMapElementsLayerContextRequestedEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElements(self: *@This()) core.HResult!*IVectorView(MapElement) {
         var _r: *IVectorView(MapElement) = undefined;
         const _c = self.vtable.get_MapElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementsLayerContextRequestedEventArgs";
@@ -4022,8 +4167,11 @@ pub const IMapElementsLayerContextRequestedEventArgs = extern struct {
 };
 pub const IMapElementsLayerPointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4031,19 +4179,19 @@ pub const IMapElementsLayerPointerEnteredEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         var _r: *MapElement = undefined;
         const _c = self.vtable.get_MapElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementsLayerPointerEnteredEventArgs";
@@ -4065,8 +4213,11 @@ pub const IMapElementsLayerPointerEnteredEventArgs = extern struct {
 };
 pub const IMapElementsLayerPointerExitedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4074,19 +4225,19 @@ pub const IMapElementsLayerPointerExitedEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         var _r: *MapElement = undefined;
         const _c = self.vtable.get_MapElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementsLayerPointerExitedEventArgs";
@@ -4108,8 +4259,11 @@ pub const IMapElementsLayerPointerExitedEventArgs = extern struct {
 };
 pub const IMapElementsLayerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4117,7 +4271,7 @@ pub const IMapElementsLayerStatics = extern struct {
     pub fn getMapElementsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapElementsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapElementsLayerStatics";
@@ -4137,8 +4291,11 @@ pub const IMapElementsLayerStatics = extern struct {
 };
 pub const IMapIcon = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4146,42 +4303,42 @@ pub const IMapIcon = extern struct {
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLocation(self: *@This(), value: *Geopoint) core.HResult!void {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNormalizedAnchorPoint(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_NormalizedAnchorPoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNormalizedAnchorPoint(self: *@This(), value: Point) core.HResult!void {
         const _c = self.vtable.put_NormalizedAnchorPoint(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getImage(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_Image(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putImage(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         const _c = self.vtable.put_Image(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4207,8 +4364,11 @@ pub const IMapIcon = extern struct {
 };
 pub const IMapIcon2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4216,12 +4376,12 @@ pub const IMapIcon2 = extern struct {
     pub fn getCollisionBehaviorDesired(self: *@This()) core.HResult!MapElementCollisionBehavior {
         var _r: MapElementCollisionBehavior = undefined;
         const _c = self.vtable.get_CollisionBehaviorDesired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCollisionBehaviorDesired(self: *@This(), value: MapElementCollisionBehavior) core.HResult!void {
         const _c = self.vtable.put_CollisionBehaviorDesired(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapIcon2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4241,8 +4401,11 @@ pub const IMapIcon2 = extern struct {
 };
 pub const IMapIconStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4250,19 +4413,19 @@ pub const IMapIconStatics = extern struct {
     pub fn getLocationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTitleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TitleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNormalizedAnchorPointProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_NormalizedAnchorPointProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapIconStatics";
@@ -4284,8 +4447,11 @@ pub const IMapIconStatics = extern struct {
 };
 pub const IMapIconStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4293,7 +4459,7 @@ pub const IMapIconStatics2 = extern struct {
     pub fn getCollisionBehaviorDesiredProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CollisionBehaviorDesiredProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapIconStatics2";
@@ -4313,8 +4479,11 @@ pub const IMapIconStatics2 = extern struct {
 };
 pub const IMapInputEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4322,13 +4491,13 @@ pub const IMapInputEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapInputEventArgs";
@@ -4349,8 +4518,11 @@ pub const IMapInputEventArgs = extern struct {
 };
 pub const IMapItemsControl = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4358,28 +4530,28 @@ pub const IMapItemsControl = extern struct {
     pub fn getItemsSource(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_ItemsSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItemsSource(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_ItemsSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItems(self: *@This()) core.HResult!*IVector(DependencyObject) {
         var _r: *IVector(DependencyObject) = undefined;
         const _c = self.vtable.get_Items(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemTemplate(self: *@This()) core.HResult!*DataTemplate {
         var _r: *DataTemplate = undefined;
         const _c = self.vtable.get_ItemTemplate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItemTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         const _c = self.vtable.put_ItemTemplate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapItemsControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4402,8 +4574,11 @@ pub const IMapItemsControl = extern struct {
 };
 pub const IMapItemsControlStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4411,19 +4586,19 @@ pub const IMapItemsControlStatics = extern struct {
     pub fn getItemsSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemsSourceProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemTemplateProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemTemplateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapItemsControlStatics";
@@ -4445,8 +4620,11 @@ pub const IMapItemsControlStatics = extern struct {
 };
 pub const IMapLayer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4454,32 +4632,32 @@ pub const IMapLayer = extern struct {
     pub fn getMapTabIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MapTabIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapTabIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MapTabIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Visible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Visible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ZIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapLayer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4503,8 +4681,11 @@ pub const IMapLayer = extern struct {
 };
 pub const IMapLayerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4512,7 +4693,7 @@ pub const IMapLayerFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapLayer {
         var _r: *MapLayer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapLayerFactory";
@@ -4532,8 +4713,11 @@ pub const IMapLayerFactory = extern struct {
 };
 pub const IMapLayerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4541,19 +4725,19 @@ pub const IMapLayerStatics = extern struct {
     pub fn getMapTabIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapTabIndexProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_VisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ZIndexProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapLayerStatics";
@@ -4575,8 +4759,11 @@ pub const IMapLayerStatics = extern struct {
 };
 pub const IMapModel3D = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4597,8 +4784,11 @@ pub const IMapModel3D = extern struct {
 };
 pub const IMapModel3DFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4606,7 +4796,7 @@ pub const IMapModel3DFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapModel3D {
         var _r: *MapModel3D = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapModel3DFactory";
@@ -4626,8 +4816,11 @@ pub const IMapModel3DFactory = extern struct {
 };
 pub const IMapModel3DStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4635,13 +4828,13 @@ pub const IMapModel3DStatics = extern struct {
     pub fn CreateFrom3MFAsync(self: *@This(), source: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(MapModel3D) {
         var _r: *IAsyncOperation(MapModel3D) = undefined;
         const _c = self.vtable.CreateFrom3MFAsync(@ptrCast(self), source, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFrom3MFAsyncWithShadingOption(self: *@This(), source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption) core.HResult!*IAsyncOperation(MapModel3D) {
         var _r: *IAsyncOperation(MapModel3D) = undefined;
         const _c = self.vtable.CreateFrom3MFAsyncWithShadingOption(@ptrCast(self), source, shadingOption, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapModel3DStatics";
@@ -4662,8 +4855,11 @@ pub const IMapModel3DStatics = extern struct {
 };
 pub const IMapPolygon = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4671,52 +4867,52 @@ pub const IMapPolygon = extern struct {
     pub fn getPath(self: *@This()) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPath(self: *@This(), value: *Geopath) core.HResult!void {
         const _c = self.vtable.put_Path(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrokeColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_StrokeColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrokeColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_StrokeColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrokeThickness(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_StrokeThickness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrokeThickness(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_StrokeThickness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrokeDashed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_StrokeDashed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrokeDashed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_StrokeDashed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFillColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_FillColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFillColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_FillColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapPolygon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4744,8 +4940,11 @@ pub const IMapPolygon = extern struct {
 };
 pub const IMapPolygon2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4753,7 +4952,7 @@ pub const IMapPolygon2 = extern struct {
     pub fn getPaths(self: *@This()) core.HResult!*IVector(Geopath) {
         var _r: *IVector(Geopath) = undefined;
         const _c = self.vtable.get_Paths(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapPolygon2";
@@ -4773,8 +4972,11 @@ pub const IMapPolygon2 = extern struct {
 };
 pub const IMapPolygonStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4782,19 +4984,19 @@ pub const IMapPolygonStatics = extern struct {
     pub fn getPathProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PathProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStrokeThicknessProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_StrokeThicknessProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStrokeDashedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_StrokeDashedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapPolygonStatics";
@@ -4816,8 +5018,11 @@ pub const IMapPolygonStatics = extern struct {
 };
 pub const IMapPolyline = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4825,42 +5030,42 @@ pub const IMapPolyline = extern struct {
     pub fn getPath(self: *@This()) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPath(self: *@This(), value: *Geopath) core.HResult!void {
         const _c = self.vtable.put_Path(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrokeColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_StrokeColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrokeColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_StrokeColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrokeThickness(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_StrokeThickness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrokeThickness(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_StrokeThickness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrokeDashed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_StrokeDashed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrokeDashed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_StrokeDashed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapPolyline";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4886,8 +5091,11 @@ pub const IMapPolyline = extern struct {
 };
 pub const IMapPolylineStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4895,13 +5103,13 @@ pub const IMapPolylineStatics = extern struct {
     pub fn getPathProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PathProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStrokeDashedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_StrokeDashedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapPolylineStatics";
@@ -4922,8 +5130,11 @@ pub const IMapPolylineStatics = extern struct {
 };
 pub const IMapRightTappedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4931,13 +5142,13 @@ pub const IMapRightTappedEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapRightTappedEventArgs";
@@ -4958,8 +5169,11 @@ pub const IMapRightTappedEventArgs = extern struct {
 };
 pub const IMapRouteView = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4967,27 +5181,27 @@ pub const IMapRouteView = extern struct {
     pub fn getRouteColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_RouteColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRouteColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_RouteColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutlineColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_OutlineColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutlineColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_OutlineColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoute(self: *@This()) core.HResult!*MapRoute {
         var _r: *MapRoute = undefined;
         const _c = self.vtable.get_Route(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapRouteView";
@@ -5011,8 +5225,11 @@ pub const IMapRouteView = extern struct {
 };
 pub const IMapRouteViewFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5020,7 +5237,7 @@ pub const IMapRouteViewFactory = extern struct {
     pub fn CreateInstanceWithMapRoute(self: *@This(), route: *MapRoute, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapRouteView {
         var _r: *MapRouteView = undefined;
         const _c = self.vtable.CreateInstanceWithMapRoute(@ptrCast(self), route, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapRouteViewFactory";
@@ -5040,8 +5257,11 @@ pub const IMapRouteViewFactory = extern struct {
 };
 pub const IMapScene = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5049,18 +5269,18 @@ pub const IMapScene = extern struct {
     pub fn getTargetCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_TargetCamera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addTargetCameraChanged(self: *@This(), handler: *TypedEventHandler(MapScene,MapTargetCameraChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TargetCameraChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTargetCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TargetCameraChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapScene";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5081,8 +5301,11 @@ pub const IMapScene = extern struct {
 };
 pub const IMapSceneStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5090,55 +5313,55 @@ pub const IMapSceneStatics = extern struct {
     pub fn CreateFromBoundingBox(self: *@This(), bounds: *GeoboundingBox) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromBoundingBox(@ptrCast(self), bounds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBoundingBoxWithHeadingInDegreesAndPitchInDegrees(self: *@This(), bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromBoundingBoxWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), bounds, headingInDegrees, pitchInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromCamera(self: *@This(), camera: *MapCamera) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromCamera(@ptrCast(self), camera, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromLocation(self: *@This(), location: *Geopoint) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromLocation(@ptrCast(self), location, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromLocationWithHeadingInDegreesAndPitchInDegrees(self: *@This(), location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromLocationWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), location, headingInDegrees, pitchInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromLocationAndRadius(self: *@This(), location: *Geopoint, radiusInMeters: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromLocationAndRadius(@ptrCast(self), location, radiusInMeters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromLocationAndRadiusWithHeadingInDegreesAndPitchInDegrees(self: *@This(), location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromLocationAndRadiusWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), location, radiusInMeters, headingInDegrees, pitchInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromLocations(self: *@This(), locations: *IIterable(Geopoint)) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromLocations(@ptrCast(self), locations, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromLocationsWithHeadingInDegreesAndPitchInDegrees(self: *@This(), locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromLocationsWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), locations, headingInDegrees, pitchInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapSceneStatics";
@@ -5166,8 +5389,11 @@ pub const IMapSceneStatics = extern struct {
 };
 pub const IMapStyleSheet = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5188,8 +5414,11 @@ pub const IMapStyleSheet = extern struct {
 };
 pub const IMapStyleSheetEntriesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5197,385 +5426,385 @@ pub const IMapStyleSheetEntriesStatics = extern struct {
     pub fn getArea(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Area(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAirport(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Airport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCemetery(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Cemetery(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContinent(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Continent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEducation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Education(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIndigenousPeoplesReserve(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IndigenousPeoplesReserve(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsland(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Island(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMedical(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Medical(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMilitary(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Military(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNautical(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Nautical(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNeighborhood(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Neighborhood(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRunway(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Runway(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSand(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sand(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShoppingCenter(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ShoppingCenter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStadium(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Stadium(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVegetation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Vegetation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getForest(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Forest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGolfCourse(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GolfCourse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPark(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Park(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlayingField(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlayingField(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReserve(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Reserve(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPoint(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Point(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNaturalPoint(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NaturalPoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPeak(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Peak(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVolcanicPeak(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VolcanicPeak(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWaterPoint(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WaterPoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointOfInterest(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PointOfInterest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBusiness(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Business(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFoodPoint(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FoodPoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPopulatedPlace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PopulatedPlace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCapital(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Capital(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdminDistrictCapital(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdminDistrictCapital(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCountryRegionCapital(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CountryRegionCapital(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoadShield(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoadShield(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoadExit(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoadExit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransit(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Transit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPolitical(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Political(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCountryRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CountryRegion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdminDistrict(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdminDistrict(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDistrict(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_District(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStructure(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Structure(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBuilding(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Building(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEducationBuilding(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EducationBuilding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMedicalBuilding(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MedicalBuilding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransitBuilding(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransitBuilding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransportation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Transportation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoad(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Road(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getControlledAccessHighway(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ControlledAccessHighway(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHighSpeedRamp(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HighSpeedRamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHighway(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Highway(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMajorRoad(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MajorRoad(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getArterialRoad(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ArterialRoad(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStreet(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Street(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRamp(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ramp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUnpavedStreet(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnpavedStreet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTollRoad(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TollRoad(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRailway(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Railway(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrail(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Trail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWaterRoute(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WaterRoute(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWater(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Water(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRiver(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_River(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRouteLine(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RouteLine(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWalkingRoute(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WalkingRoute(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDrivingRoute(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DrivingRoute(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapStyleSheetEntriesStatics";
@@ -5658,8 +5887,11 @@ pub const IMapStyleSheetEntriesStatics = extern struct {
 };
 pub const IMapStyleSheetEntryStatesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5667,19 +5899,19 @@ pub const IMapStyleSheetEntryStatesStatics = extern struct {
     pub fn getDisabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Disabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHover(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Hover(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelected(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Selected(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapStyleSheetEntryStatesStatics";
@@ -5701,8 +5933,11 @@ pub const IMapStyleSheetEntryStatesStatics = extern struct {
 };
 pub const IMapStyleSheetStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5710,55 +5945,55 @@ pub const IMapStyleSheetStatics = extern struct {
     pub fn Aerial(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.Aerial(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AerialWithOverlay(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.AerialWithOverlay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoadLight(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.RoadLight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoadDark(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.RoadDark(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoadHighContrastLight(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.RoadHighContrastLight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoadHighContrastDark(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.RoadHighContrastDark(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Combine(self: *@This(), styleSheets: *IIterable(MapStyleSheet)) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.Combine(@ptrCast(self), styleSheets, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ParseFromJson(self: *@This(), styleAsJson: ?HSTRING) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.ParseFromJson(@ptrCast(self), styleAsJson, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryParseFromJson(self: *@This(), styleAsJson: ?HSTRING, styleSheet: *MapStyleSheet) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParseFromJson(@ptrCast(self), styleAsJson, styleSheet, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapStyleSheetStatics";
@@ -5786,8 +6021,11 @@ pub const IMapStyleSheetStatics = extern struct {
 };
 pub const IMapTargetCameraChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5795,7 +6033,7 @@ pub const IMapTargetCameraChangedEventArgs = extern struct {
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTargetCameraChangedEventArgs";
@@ -5815,8 +6053,11 @@ pub const IMapTargetCameraChangedEventArgs = extern struct {
 };
 pub const IMapTargetCameraChangedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5824,7 +6065,7 @@ pub const IMapTargetCameraChangedEventArgs2 = extern struct {
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var _r: MapCameraChangeReason = undefined;
         const _c = self.vtable.get_ChangeReason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTargetCameraChangedEventArgs2";
@@ -5844,8 +6085,11 @@ pub const IMapTargetCameraChangedEventArgs2 = extern struct {
 };
 pub const IMapTileBitmapRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5853,17 +6097,17 @@ pub const IMapTileBitmapRequest = extern struct {
     pub fn getPixelData(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_PixelData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPixelData(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         const _c = self.vtable.put_PixelData(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*MapTileBitmapRequestDeferral {
         var _r: *MapTileBitmapRequestDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileBitmapRequest";
@@ -5885,15 +6129,18 @@ pub const IMapTileBitmapRequest = extern struct {
 };
 pub const IMapTileBitmapRequestDeferral = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileBitmapRequestDeferral";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5912,8 +6159,11 @@ pub const IMapTileBitmapRequestDeferral = extern struct {
 };
 pub const IMapTileBitmapRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5921,25 +6171,25 @@ pub const IMapTileBitmapRequestedEventArgs = extern struct {
     pub fn getX(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_X(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getY(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Y(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZoomLevel(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZoomLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequest(self: *@This()) core.HResult!*MapTileBitmapRequest {
         var _r: *MapTileBitmapRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileBitmapRequestedEventArgs";
@@ -5962,8 +6212,11 @@ pub const IMapTileBitmapRequestedEventArgs = extern struct {
 };
 pub const IMapTileBitmapRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5971,7 +6224,7 @@ pub const IMapTileBitmapRequestedEventArgs2 = extern struct {
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FrameIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileBitmapRequestedEventArgs2";
@@ -5991,8 +6244,11 @@ pub const IMapTileBitmapRequestedEventArgs2 = extern struct {
 };
 pub const IMapTileDataSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6013,8 +6269,11 @@ pub const IMapTileDataSource = extern struct {
 };
 pub const IMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6022,7 +6281,7 @@ pub const IMapTileDataSourceFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileDataSource {
         var _r: *MapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileDataSourceFactory";
@@ -6042,8 +6301,11 @@ pub const IMapTileDataSourceFactory = extern struct {
 };
 pub const IMapTileSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6051,112 +6313,112 @@ pub const IMapTileSource = extern struct {
     pub fn getDataSource(self: *@This()) core.HResult!*MapTileDataSource {
         var _r: *MapTileDataSource = undefined;
         const _c = self.vtable.get_DataSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDataSource(self: *@This(), value: *MapTileDataSource) core.HResult!void {
         const _c = self.vtable.put_DataSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLayer(self: *@This()) core.HResult!MapTileLayer {
         var _r: MapTileLayer = undefined;
         const _c = self.vtable.get_Layer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLayer(self: *@This(), value: MapTileLayer) core.HResult!void {
         const _c = self.vtable.put_Layer(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getZoomLevelRange(self: *@This()) core.HResult!MapZoomLevelRange {
         var _r: MapZoomLevelRange = undefined;
         const _c = self.vtable.get_ZoomLevelRange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putZoomLevelRange(self: *@This(), value: MapZoomLevelRange) core.HResult!void {
         const _c = self.vtable.put_ZoomLevelRange(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBounds(self: *@This()) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.get_Bounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBounds(self: *@This(), value: *GeoboundingBox) core.HResult!void {
         const _c = self.vtable.put_Bounds(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowOverstretch(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowOverstretch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowOverstretch(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowOverstretch(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsFadingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFadingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsFadingEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsFadingEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsTransparencyEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTransparencyEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsTransparencyEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsTransparencyEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsRetryEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRetryEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsRetryEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsRetryEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ZIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTilePixelSize(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_TilePixelSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTilePixelSize(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_TilePixelSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Visible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Visible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6196,8 +6458,11 @@ pub const IMapTileSource = extern struct {
 };
 pub const IMapTileSource2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6205,50 +6470,50 @@ pub const IMapTileSource2 = extern struct {
     pub fn getAnimationState(self: *@This()) core.HResult!MapTileAnimationState {
         var _r: MapTileAnimationState = undefined;
         const _c = self.vtable.get_AnimationState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAutoPlay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutoPlay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutoPlay(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AutoPlay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFrameCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FrameCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFrameCount(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_FrameCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFrameDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_FrameDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFrameDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_FrameDuration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Pause(self: *@This()) core.HResult!void {
         const _c = self.vtable.Pause(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Play(self: *@This()) core.HResult!void {
         const _c = self.vtable.Play(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileSource2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6276,8 +6541,11 @@ pub const IMapTileSource2 = extern struct {
 };
 pub const IMapTileSourceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6285,31 +6553,31 @@ pub const IMapTileSourceFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
         var _r: *MapTileSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithDataSource(self: *@This(), dataSource: *MapTileDataSource, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
         var _r: *MapTileSource = undefined;
         const _c = self.vtable.CreateInstanceWithDataSource(@ptrCast(self), dataSource, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithDataSourceAndZoomRange(self: *@This(), dataSource: *MapTileDataSource, zoomLevelRange: MapZoomLevelRange, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
         var _r: *MapTileSource = undefined;
         const _c = self.vtable.CreateInstanceWithDataSourceAndZoomRange(@ptrCast(self), dataSource, zoomLevelRange, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithDataSourceZoomRangeAndBounds(self: *@This(), dataSource: *MapTileDataSource, zoomLevelRange: MapZoomLevelRange, bounds: *GeoboundingBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
         var _r: *MapTileSource = undefined;
         const _c = self.vtable.CreateInstanceWithDataSourceZoomRangeAndBounds(@ptrCast(self), dataSource, zoomLevelRange, bounds, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithDataSourceZoomRangeBoundsAndTileSize(self: *@This(), dataSource: *MapTileDataSource, zoomLevelRange: MapZoomLevelRange, bounds: *GeoboundingBox, tileSizeInPixels: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
         var _r: *MapTileSource = undefined;
         const _c = self.vtable.CreateInstanceWithDataSourceZoomRangeBoundsAndTileSize(@ptrCast(self), dataSource, zoomLevelRange, bounds, tileSizeInPixels, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileSourceFactory";
@@ -6333,8 +6601,11 @@ pub const IMapTileSourceFactory = extern struct {
 };
 pub const IMapTileSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6342,67 +6613,67 @@ pub const IMapTileSourceStatics = extern struct {
     pub fn getDataSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DataSourceProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLayerProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LayerProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZoomLevelRangeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ZoomLevelRangeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBoundsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_BoundsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllowOverstretchProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AllowOverstretchProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsFadingEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsFadingEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsTransparencyEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsTransparencyEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsRetryEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsRetryEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ZIndexProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTilePixelSizeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TilePixelSizeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_VisibleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileSourceStatics";
@@ -6432,8 +6703,11 @@ pub const IMapTileSourceStatics = extern struct {
 };
 pub const IMapTileSourceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6441,25 +6715,25 @@ pub const IMapTileSourceStatics2 = extern struct {
     pub fn getAnimationStateProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AnimationStateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAutoPlayProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AutoPlayProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameCountProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FrameCountProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameDurationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FrameDurationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileSourceStatics2";
@@ -6482,8 +6756,11 @@ pub const IMapTileSourceStatics2 = extern struct {
 };
 pub const IMapTileUriRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6491,17 +6768,17 @@ pub const IMapTileUriRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*MapTileUriRequestDeferral {
         var _r: *MapTileUriRequestDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileUriRequest";
@@ -6523,15 +6800,18 @@ pub const IMapTileUriRequest = extern struct {
 };
 pub const IMapTileUriRequestDeferral = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileUriRequestDeferral";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6550,8 +6830,11 @@ pub const IMapTileUriRequestDeferral = extern struct {
 };
 pub const IMapTileUriRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6559,25 +6842,25 @@ pub const IMapTileUriRequestedEventArgs = extern struct {
     pub fn getX(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_X(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getY(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Y(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZoomLevel(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZoomLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequest(self: *@This()) core.HResult!*MapTileUriRequest {
         var _r: *MapTileUriRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileUriRequestedEventArgs";
@@ -6600,8 +6883,11 @@ pub const IMapTileUriRequestedEventArgs = extern struct {
 };
 pub const IMapTileUriRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6609,7 +6895,7 @@ pub const IMapTileUriRequestedEventArgs2 = extern struct {
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FrameIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileUriRequestedEventArgs2";
@@ -6629,8 +6915,11 @@ pub const IMapTileUriRequestedEventArgs2 = extern struct {
 };
 pub const IStreetsideExperience = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6638,62 +6927,62 @@ pub const IStreetsideExperience = extern struct {
     pub fn getAddressTextVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AddressTextVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAddressTextVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AddressTextVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCursorVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CursorVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCursorVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CursorVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOverviewMapVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_OverviewMapVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOverviewMapVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_OverviewMapVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStreetLabelsVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_StreetLabelsVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStreetLabelsVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_StreetLabelsVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getExitButtonVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ExitButtonVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExitButtonVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ExitButtonVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getZoomButtonsVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ZoomButtonsVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putZoomButtonsVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ZoomButtonsVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IStreetsideExperience";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6723,8 +7012,11 @@ pub const IStreetsideExperience = extern struct {
 };
 pub const IStreetsideExperienceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6732,13 +7024,13 @@ pub const IStreetsideExperienceFactory = extern struct {
     pub fn CreateInstanceWithPanorama(self: *@This(), panorama: *StreetsidePanorama) core.HResult!*StreetsideExperience {
         var _r: *StreetsideExperience = undefined;
         const _c = self.vtable.CreateInstanceWithPanorama(@ptrCast(self), panorama, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceWithPanoramaHeadingPitchAndFieldOfView(self: *@This(), panorama: *StreetsidePanorama, headingInDegrees: f64, pitchInDegrees: f64, fieldOfViewInDegrees: f64) core.HResult!*StreetsideExperience {
         var _r: *StreetsideExperience = undefined;
         const _c = self.vtable.CreateInstanceWithPanoramaHeadingPitchAndFieldOfView(@ptrCast(self), panorama, headingInDegrees, pitchInDegrees, fieldOfViewInDegrees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IStreetsideExperienceFactory";
@@ -6759,8 +7051,11 @@ pub const IStreetsideExperienceFactory = extern struct {
 };
 pub const IStreetsidePanorama = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6768,7 +7063,7 @@ pub const IStreetsidePanorama = extern struct {
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IStreetsidePanorama";
@@ -6788,8 +7083,11 @@ pub const IStreetsidePanorama = extern struct {
 };
 pub const IStreetsidePanoramaStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6797,13 +7095,13 @@ pub const IStreetsidePanoramaStatics = extern struct {
     pub fn FindNearbyAsync(self: *@This(), location: *Geopoint) core.HResult!*IAsyncOperation(StreetsidePanorama) {
         var _r: *IAsyncOperation(StreetsidePanorama) = undefined;
         const _c = self.vtable.FindNearbyAsync(@ptrCast(self), location, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindNearbyAsyncWithRadiusInMeters(self: *@This(), location: *Geopoint, radiusInMeters: f64) core.HResult!*IAsyncOperation(StreetsidePanorama) {
         var _r: *IAsyncOperation(StreetsidePanorama) = undefined;
         const _c = self.vtable.FindNearbyAsyncWithRadiusInMeters(@ptrCast(self), location, radiusInMeters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IStreetsidePanoramaStatics";
@@ -6824,14 +7122,11 @@ pub const IStreetsidePanoramaStatics = extern struct {
 };
 pub const LocalMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6869,14 +7164,11 @@ pub const LocalMapTileDataSource = extern struct {
 };
 pub const MapActualCameraChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6888,8 +7180,7 @@ pub const MapActualCameraChangedEventArgs = extern struct {
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var this: ?*IMapActualCameraChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getChangeReason();
     }
     pub fn init() core.HResult!*@This() {
@@ -6905,14 +7196,11 @@ pub const MapActualCameraChangedEventArgs = extern struct {
 };
 pub const MapActualCameraChangingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6924,8 +7212,7 @@ pub const MapActualCameraChangingEventArgs = extern struct {
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var this: ?*IMapActualCameraChangingEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangingEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangingEventArgs2.IID, @ptrCast(&this));
         return try this.?.getChangeReason();
     }
     pub fn init() core.HResult!*@This() {
@@ -6947,14 +7234,11 @@ pub const MapAnimationKind = enum(i32) {
 };
 pub const MapElement = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6978,71 +7262,61 @@ pub const MapElement = extern struct {
     pub fn getMapTabIndex(self: *@This()) core.HResult!i32 {
         var this: ?*IMapElement2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement2.IID, @ptrCast(&this));
         return try this.?.getMapTabIndex();
     }
     pub fn putMapTabIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IMapElement2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement2.IID, @ptrCast(&this));
         return try this.?.putMapTabIndex(value);
     }
     pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapElement3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         return try this.?.getMapStyleSheetEntry();
     }
     pub fn putMapStyleSheetEntry(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         return try this.?.putMapStyleSheetEntry(value);
     }
     pub fn getMapStyleSheetEntryState(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapElement3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         return try this.?.getMapStyleSheetEntryState();
     }
     pub fn putMapStyleSheetEntryState(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         return try this.?.putMapStyleSheetEntryState(value);
     }
     pub fn getTag(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IMapElement3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         return try this.?.putTag(value);
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMapElement4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement4.IID, @ptrCast(&this));
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapElement4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapElement4.IID, @ptrCast(&this));
         return try this.?.putIsEnabled(value);
     }
     pub fn getMapStyleSheetEntryProperty() core.HResult!*DependencyProperty {
@@ -7090,14 +7364,11 @@ pub const MapElement = extern struct {
 };
 pub const MapBillboard = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7164,14 +7435,11 @@ pub const MapBillboard = extern struct {
 };
 pub const MapCamera = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7250,14 +7518,11 @@ pub const MapColorScheme = enum(i32) {
 };
 pub const MapContextRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7287,14 +7552,11 @@ pub const MapContextRequestedEventArgs = extern struct {
 };
 pub const MapControl = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7538,561 +7800,481 @@ pub const MapControl = extern struct {
     pub fn getBusinessLandmarksVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getBusinessLandmarksVisible();
     }
     pub fn putBusinessLandmarksVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putBusinessLandmarksVisible(value);
     }
     pub fn getTransitFeaturesVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getTransitFeaturesVisible();
     }
     pub fn putTransitFeaturesVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putTransitFeaturesVisible(value);
     }
     pub fn getPanInteractionMode(self: *@This()) core.HResult!MapPanInteractionMode {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getPanInteractionMode();
     }
     pub fn putPanInteractionMode(self: *@This(), value: MapPanInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putPanInteractionMode(value);
     }
     pub fn getRotateInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getRotateInteractionMode();
     }
     pub fn putRotateInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putRotateInteractionMode(value);
     }
     pub fn getTiltInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getTiltInteractionMode();
     }
     pub fn putTiltInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putTiltInteractionMode(value);
     }
     pub fn getZoomInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getZoomInteractionMode();
     }
     pub fn putZoomInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putZoomInteractionMode(value);
     }
     pub fn getIs3DSupported(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getIs3DSupported();
     }
     pub fn getIsStreetsideSupported(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getIsStreetsideSupported();
     }
     pub fn getScene(self: *@This()) core.HResult!*MapScene {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getScene();
     }
     pub fn putScene(self: *@This(), value: *MapScene) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putScene(value);
     }
     pub fn getActualCamera(self: *@This()) core.HResult!*MapCamera {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getActualCamera();
     }
     pub fn getTargetCamera(self: *@This()) core.HResult!*MapCamera {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getTargetCamera();
     }
     pub fn getCustomExperience(self: *@This()) core.HResult!*MapCustomExperience {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.getCustomExperience();
     }
     pub fn putCustomExperience(self: *@This(), value: *MapCustomExperience) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.putCustomExperience(value);
     }
     pub fn addMapElementClick(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementClickEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.addMapElementClick(handler);
     }
     pub fn removeMapElementClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.removeMapElementClick(token);
     }
     pub fn addMapElementPointerEntered(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.addMapElementPointerEntered(handler);
     }
     pub fn removeMapElementPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.removeMapElementPointerEntered(token);
     }
     pub fn addMapElementPointerExited(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.addMapElementPointerExited(handler);
     }
     pub fn removeMapElementPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.removeMapElementPointerExited(token);
     }
     pub fn addActualCameraChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapActualCameraChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.addActualCameraChanged(handler);
     }
     pub fn removeActualCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.removeActualCameraChanged(token);
     }
     pub fn addActualCameraChanging(self: *@This(), handler: *TypedEventHandler(MapControl,MapActualCameraChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.addActualCameraChanging(handler);
     }
     pub fn removeActualCameraChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.removeActualCameraChanging(token);
     }
     pub fn addTargetCameraChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapTargetCameraChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.addTargetCameraChanged(handler);
     }
     pub fn removeTargetCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.removeTargetCameraChanged(token);
     }
     pub fn addCustomExperienceChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapCustomExperienceChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.addCustomExperienceChanged(handler);
     }
     pub fn removeCustomExperienceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.removeCustomExperienceChanged(token);
     }
     pub fn StartContinuousRotate(self: *@This(), rateInDegreesPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.StartContinuousRotate(rateInDegreesPerSecond);
     }
     pub fn StopContinuousRotate(self: *@This()) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.StopContinuousRotate();
     }
     pub fn StartContinuousTilt(self: *@This(), rateInDegreesPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.StartContinuousTilt(rateInDegreesPerSecond);
     }
     pub fn StopContinuousTilt(self: *@This()) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.StopContinuousTilt();
     }
     pub fn StartContinuousZoom(self: *@This(), rateOfChangePerSecond: f64) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.StartContinuousZoom(rateOfChangePerSecond);
     }
     pub fn StopContinuousZoom(self: *@This()) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.StopContinuousZoom();
     }
     pub fn TryRotateAsync(self: *@This(), degrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TryRotateAsync(degrees);
     }
     pub fn TryRotateToAsync(self: *@This(), angleInDegrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TryRotateToAsync(angleInDegrees);
     }
     pub fn TryTiltAsync(self: *@This(), degrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TryTiltAsync(degrees);
     }
     pub fn TryTiltToAsync(self: *@This(), angleInDegrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TryTiltToAsync(angleInDegrees);
     }
     pub fn TryZoomInAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TryZoomInAsync();
     }
     pub fn TryZoomOutAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TryZoomOutAsync();
     }
     pub fn TryZoomToAsync(self: *@This(), zoomLevel: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TryZoomToAsync(zoomLevel);
     }
     pub fn TrySetSceneAsync(self: *@This(), scene: *MapScene) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TrySetSceneAsync(scene);
     }
     pub fn TrySetSceneAsyncWithAnimationKind(self: *@This(), scene: *MapScene, animationKind: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         return try this.?.TrySetSceneAsyncWithAnimationKind(scene, animationKind);
     }
     pub fn addMapRightTapped(self: *@This(), handler: *TypedEventHandler(MapControl,MapRightTappedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl3.IID, @ptrCast(&this));
         return try this.?.addMapRightTapped(handler);
     }
     pub fn removeMapRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl3.IID, @ptrCast(&this));
         return try this.?.removeMapRightTapped(token);
     }
     pub fn getBusinessLandmarksEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         return try this.?.getBusinessLandmarksEnabled();
     }
     pub fn putBusinessLandmarksEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         return try this.?.putBusinessLandmarksEnabled(value);
     }
     pub fn getTransitFeaturesEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         return try this.?.getTransitFeaturesEnabled();
     }
     pub fn putTransitFeaturesEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         return try this.?.putTransitFeaturesEnabled(value);
     }
     pub fn GetVisibleRegion(self: *@This(), region: MapVisibleRegionKind) core.HResult!*Geopath {
         var this: ?*IMapControl4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         return try this.?.GetVisibleRegion(region);
     }
     pub fn getMapProjection(self: *@This()) core.HResult!MapProjection {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.getMapProjection();
     }
     pub fn putMapProjection(self: *@This(), value: MapProjection) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.putMapProjection(value);
     }
     pub fn getStyleSheet(self: *@This()) core.HResult!*MapStyleSheet {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.getStyleSheet();
     }
     pub fn putStyleSheet(self: *@This(), value: *MapStyleSheet) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.putStyleSheet(value);
     }
     pub fn getViewPadding(self: *@This()) core.HResult!Thickness {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.getViewPadding();
     }
     pub fn putViewPadding(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.putViewPadding(value);
     }
     pub fn addMapContextRequested(self: *@This(), handler: *TypedEventHandler(MapControl,MapContextRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.addMapContextRequested(handler);
     }
     pub fn removeMapContextRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.removeMapContextRequested(token);
     }
     pub fn FindMapElementsAtOffsetWithRadius(self: *@This(), offset: Point, radius: f64) core.HResult!*IVectorView(MapElement) {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.FindMapElementsAtOffsetWithRadius(offset, radius);
     }
     pub fn GetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.GetLocationFromOffsetWithDesiredReferenceSystemAndLocation(offset, desiredReferenceSystem, location);
     }
     pub fn StartContinuousPan(self: *@This(), horizontalPixelsPerSecond: f64, verticalPixelsPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.StartContinuousPan(horizontalPixelsPerSecond, verticalPixelsPerSecond);
     }
     pub fn StopContinuousPan(self: *@This()) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.StopContinuousPan();
     }
     pub fn TryPanAsync(self: *@This(), horizontalPixels: f64, verticalPixels: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.TryPanAsync(horizontalPixels, verticalPixels);
     }
     pub fn TryPanToAsync(self: *@This(), location: *Geopoint) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         return try this.?.TryPanToAsync(location);
     }
     pub fn getLayers(self: *@This()) core.HResult!*IVector(MapLayer) {
         var this: ?*IMapControl6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         return try this.?.getLayers();
     }
     pub fn putLayers(self: *@This(), value: *IVector(MapLayer)) core.HResult!void {
         var this: ?*IMapControl6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         return try this.?.putLayers(value);
     }
     pub fn TryGetLocationFromOffset(self: *@This(), offset: Point, location: *Geopoint) core.HResult!bool {
         var this: ?*IMapControl6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         return try this.?.TryGetLocationFromOffset(offset, location);
     }
     pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var this: ?*IMapControl6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         return try this.?.TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(offset, desiredReferenceSystem, location);
     }
     pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapControl7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
         return try this.?.getRegion();
     }
     pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapControl7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
         return try this.?.putRegion(value);
     }
     pub fn getCanTiltDown(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         return try this.?.getCanTiltDown();
     }
     pub fn getCanTiltUp(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         return try this.?.getCanTiltUp();
     }
     pub fn getCanZoomIn(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         return try this.?.getCanZoomIn();
     }
     pub fn getCanZoomOut(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         return try this.?.getCanZoomOut();
     }
     pub fn init() core.HResult!*@This() {
@@ -8291,14 +8473,11 @@ pub const MapControl = extern struct {
 };
 pub const MapCustomExperience = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8316,14 +8495,11 @@ pub const MapCustomExperience = extern struct {
 };
 pub const MapCustomExperienceChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8341,14 +8517,11 @@ pub const MapCustomExperienceChangedEventArgs = extern struct {
 };
 pub const MapElement3D = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8435,14 +8608,11 @@ pub const MapElement3D = extern struct {
 };
 pub const MapElementClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8476,14 +8646,11 @@ pub const MapElementCollisionBehavior = enum(i32) {
 };
 pub const MapElementPointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8513,14 +8680,11 @@ pub const MapElementPointerEnteredEventArgs = extern struct {
 };
 pub const MapElementPointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8550,14 +8714,11 @@ pub const MapElementPointerExitedEventArgs = extern struct {
 };
 pub const MapLayer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8612,14 +8773,11 @@ pub const MapLayer = extern struct {
 };
 pub const MapElementsLayer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8682,14 +8840,11 @@ pub const MapElementsLayer = extern struct {
 };
 pub const MapElementsLayerClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8719,14 +8874,11 @@ pub const MapElementsLayerClickEventArgs = extern struct {
 };
 pub const MapElementsLayerContextRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8756,14 +8908,11 @@ pub const MapElementsLayerContextRequestedEventArgs = extern struct {
 };
 pub const MapElementsLayerPointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8793,14 +8942,11 @@ pub const MapElementsLayerPointerEnteredEventArgs = extern struct {
 };
 pub const MapElementsLayerPointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8830,14 +8976,11 @@ pub const MapElementsLayerPointerExitedEventArgs = extern struct {
 };
 pub const MapIcon = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8877,15 +9020,13 @@ pub const MapIcon = extern struct {
     pub fn getCollisionBehaviorDesired(self: *@This()) core.HResult!MapElementCollisionBehavior {
         var this: ?*IMapIcon2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapIcon2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapIcon2.IID, @ptrCast(&this));
         return try this.?.getCollisionBehaviorDesired();
     }
     pub fn putCollisionBehaviorDesired(self: *@This(), value: MapElementCollisionBehavior) core.HResult!void {
         var this: ?*IMapIcon2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapIcon2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapIcon2.IID, @ptrCast(&this));
         return try this.?.putCollisionBehaviorDesired(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -8919,14 +9060,11 @@ pub const MapIcon = extern struct {
 };
 pub const MapInputEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8962,14 +9100,11 @@ pub const MapInteractionMode = enum(i32) {
 };
 pub const MapItemsControl = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9026,14 +9161,11 @@ pub const MapLoadingStatus = enum(i32) {
 };
 pub const MapModel3D = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9069,14 +9201,11 @@ pub const MapPanInteractionMode = enum(i32) {
 };
 pub const MapPolygon = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9124,8 +9253,7 @@ pub const MapPolygon = extern struct {
     pub fn getPaths(self: *@This()) core.HResult!*IVector(Geopath) {
         var this: ?*IMapPolygon2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapPolygon2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapPolygon2.IID, @ptrCast(&this));
         return try this.?.getPaths();
     }
     pub fn init() core.HResult!*@This() {
@@ -9154,14 +9282,11 @@ pub const MapPolygon = extern struct {
 };
 pub const MapPolyline = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9224,14 +9349,11 @@ pub const MapProjection = enum(i32) {
 };
 pub const MapRightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9257,14 +9379,11 @@ pub const MapRightTappedEventArgs = extern struct {
 };
 pub const MapRouteView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9302,14 +9421,11 @@ pub const MapRouteView = extern struct {
 };
 pub const MapScene = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9381,14 +9497,11 @@ pub const MapStyle = enum(i32) {
 };
 pub const MapStyleSheet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9438,14 +9551,11 @@ pub const MapStyleSheet = extern struct {
 };
 pub const MapStyleSheetEntries = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9712,14 +9822,11 @@ pub const MapStyleSheetEntries = extern struct {
 };
 pub const MapStyleSheetEntryStates = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9742,14 +9849,11 @@ pub const MapStyleSheetEntryStates = extern struct {
 };
 pub const MapTargetCameraChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9761,8 +9865,7 @@ pub const MapTargetCameraChangedEventArgs = extern struct {
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var this: ?*IMapTargetCameraChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTargetCameraChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTargetCameraChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getChangeReason();
     }
     pub fn init() core.HResult!*@This() {
@@ -9783,14 +9886,11 @@ pub const MapTileAnimationState = enum(i32) {
 };
 pub const MapTileBitmapRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9820,14 +9920,11 @@ pub const MapTileBitmapRequest = extern struct {
 };
 pub const MapTileBitmapRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9849,14 +9946,11 @@ pub const MapTileBitmapRequestDeferral = extern struct {
 };
 pub const MapTileBitmapRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9880,8 +9974,7 @@ pub const MapTileBitmapRequestedEventArgs = extern struct {
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var this: ?*IMapTileBitmapRequestedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileBitmapRequestedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileBitmapRequestedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getFrameIndex();
     }
     pub fn init() core.HResult!*@This() {
@@ -9904,14 +9997,11 @@ pub const MapTileLayer = enum(i32) {
 };
 pub const MapTileSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10007,71 +10097,61 @@ pub const MapTileSource = extern struct {
     pub fn getAnimationState(self: *@This()) core.HResult!MapTileAnimationState {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.getAnimationState();
     }
     pub fn getAutoPlay(self: *@This()) core.HResult!bool {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.getAutoPlay();
     }
     pub fn putAutoPlay(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.putAutoPlay(value);
     }
     pub fn getFrameCount(self: *@This()) core.HResult!i32 {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.getFrameCount();
     }
     pub fn putFrameCount(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.putFrameCount(value);
     }
     pub fn getFrameDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.getFrameDuration();
     }
     pub fn putFrameDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.putFrameDuration(value);
     }
     pub fn Pause(self: *@This()) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.Pause();
     }
     pub fn Play(self: *@This()) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.Play();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn getAnimationStateProperty() core.HResult!*DependencyProperty {
@@ -10165,14 +10245,11 @@ pub const MapTileSource = extern struct {
 };
 pub const MapTileUriRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10202,14 +10279,11 @@ pub const MapTileUriRequest = extern struct {
 };
 pub const MapTileUriRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10231,14 +10305,11 @@ pub const MapTileUriRequestDeferral = extern struct {
 };
 pub const MapTileUriRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10262,8 +10333,7 @@ pub const MapTileUriRequestedEventArgs = extern struct {
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var this: ?*IMapTileUriRequestedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileUriRequestedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapTileUriRequestedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getFrameIndex();
     }
     pub fn init() core.HResult!*@This() {
@@ -10291,14 +10361,11 @@ pub const MapZoomLevelRange = extern struct {
 };
 pub const StreetsideExperience = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10368,14 +10435,11 @@ pub const StreetsideExperience = extern struct {
 };
 pub const StreetsidePanorama = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

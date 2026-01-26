@@ -32,14 +32,11 @@ pub const GameControllerFirmwareCorruptReason = enum(i32) {
 };
 pub const GameControllerProviderInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -79,8 +76,11 @@ pub const HeadsetOperation = enum(i32) {
 };
 pub const IGameControllerProviderInfoStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -88,13 +88,13 @@ pub const IGameControllerProviderInfoStatics = extern struct {
     pub fn GetParentProviderId(self: *@This(), provider: *IGameControllerProvider) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetParentProviderId(@ptrCast(self), provider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetProviderId(self: *@This(), provider: *IGameControllerProvider) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetProviderId(@ptrCast(self), provider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Preview.IGameControllerProviderInfoStatics";
@@ -115,8 +115,11 @@ pub const IGameControllerProviderInfoStatics = extern struct {
 };
 pub const ILegacyGipGameControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -124,89 +127,89 @@ pub const ILegacyGipGameControllerProvider = extern struct {
     pub fn getBatteryChargingState(self: *@This()) core.HResult!GameControllerBatteryChargingState {
         var _r: GameControllerBatteryChargingState = undefined;
         const _c = self.vtable.get_BatteryChargingState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBatteryKind(self: *@This()) core.HResult!GameControllerBatteryKind {
         var _r: GameControllerBatteryKind = undefined;
         const _c = self.vtable.get_BatteryKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBatteryLevel(self: *@This()) core.HResult!GameControllerBatteryLevel {
         var _r: GameControllerBatteryLevel = undefined;
         const _c = self.vtable.get_BatteryLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceFirmwareCorruptionState(self: *@This()) core.HResult!GameControllerFirmwareCorruptReason {
         var _r: GameControllerFirmwareCorruptReason = undefined;
         const _c = self.vtable.GetDeviceFirmwareCorruptionState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsFirmwareCorrupted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFirmwareCorrupted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsInterfaceSupported(self: *@This(), interfaceId: *Guid) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsInterfaceSupported(@ptrCast(self), interfaceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSyntheticDevice(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSyntheticDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPreferredTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_PreferredTypes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ExecuteCommand(self: *@This(), command: DeviceCommand) core.HResult!void {
         const _c = self.vtable.ExecuteCommand(@ptrCast(self), command);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetHomeLedIntensity(self: *@This(), intensity: u8) core.HResult!void {
         const _c = self.vtable.SetHomeLedIntensity(@ptrCast(self), intensity);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetExtendedDeviceInfo(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetExtendedDeviceInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetHeadsetOperation(self: *@This(), operation: HeadsetOperation, buffer: [*]u8) core.HResult!void {
         const _c = self.vtable.SetHeadsetOperation(@ptrCast(self), operation, buffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetHeadsetOperation(self: *@This(), operation: HeadsetOperation) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetHeadsetOperation(@ptrCast(self), operation, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppCompatVersion(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AppCompatVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetStandardControllerButtonRemapping(self: *@This(), user: *User, previous: bool, remapping: *IMapView(RemappingButtonCategory,IInspectable)) core.HResult!void {
         const _c = self.vtable.SetStandardControllerButtonRemapping(@ptrCast(self), user, previous, remapping);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetStandardControllerButtonRemapping(self: *@This(), user: *User, previous: bool) core.HResult!*IMapView(RemappingButtonCategory,IInspectable) {
         var _r: *IMapView(RemappingButtonCategory,IInspectable) = undefined;
         const _c = self.vtable.GetStandardControllerButtonRemapping(@ptrCast(self), user, previous, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Preview.ILegacyGipGameControllerProvider";
@@ -241,8 +244,11 @@ pub const ILegacyGipGameControllerProvider = extern struct {
 };
 pub const ILegacyGipGameControllerProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -250,33 +256,33 @@ pub const ILegacyGipGameControllerProviderStatics = extern struct {
     pub fn FromGameController(self: *@This(), controller: *IGameController) core.HResult!*LegacyGipGameControllerProvider {
         var _r: *LegacyGipGameControllerProvider = undefined;
         const _c = self.vtable.FromGameController(@ptrCast(self), controller, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromGameControllerProvider(self: *@This(), provider: *IGameControllerProvider) core.HResult!*LegacyGipGameControllerProvider {
         var _r: *LegacyGipGameControllerProvider = undefined;
         const _c = self.vtable.FromGameControllerProvider(@ptrCast(self), provider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PairPilotToCopilot(self: *@This(), user: *User, pilotControllerProviderId: ?HSTRING, copilotControllerProviderId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.PairPilotToCopilot(@ptrCast(self), user, pilotControllerProviderId, copilotControllerProviderId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearPairing(self: *@This(), user: *User, controllerProviderId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ClearPairing(@ptrCast(self), user, controllerProviderId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsPilot(self: *@This(), user: *User, controllerProviderId: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.IsPilot(@ptrCast(self), user, controllerProviderId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsCopilot(self: *@This(), user: *User, controllerProviderId: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.IsCopilot(@ptrCast(self), user, controllerProviderId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Preview.ILegacyGipGameControllerProviderStatics";
@@ -301,14 +307,11 @@ pub const ILegacyGipGameControllerProviderStatics = extern struct {
 };
 pub const LegacyGipGameControllerProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

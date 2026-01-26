@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const BluetoothAdapter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -48,43 +45,37 @@ pub const BluetoothAdapter = extern struct {
     pub fn getAreClassicSecureConnectionsSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter2.IID, @ptrCast(&this));
         return try this.?.getAreClassicSecureConnectionsSupported();
     }
     pub fn getAreLowEnergySecureConnectionsSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter2.IID, @ptrCast(&this));
         return try this.?.getAreLowEnergySecureConnectionsSupported();
     }
     pub fn getIsExtendedAdvertisingSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter3.IID, @ptrCast(&this));
         return try this.?.getIsExtendedAdvertisingSupported();
     }
     pub fn getMaxAdvertisementDataLength(self: *@This()) core.HResult!u32 {
         var this: ?*IBluetoothAdapter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter3.IID, @ptrCast(&this));
         return try this.?.getMaxAdvertisementDataLength();
     }
     pub fn getIsLowEnergyUncoded2MPhySupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter4.IID, @ptrCast(&this));
         return try this.?.getIsLowEnergyUncoded2MPhySupported();
     }
     pub fn getIsLowEnergyCodedPhySupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter4.IID, @ptrCast(&this));
         return try this.?.getIsLowEnergyCodedPhySupported();
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
@@ -117,14 +108,11 @@ pub const BluetoothCacheMode = enum(i32) {
 };
 pub const BluetoothClassOfDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -166,14 +154,11 @@ pub const BluetoothConnectionStatus = enum(i32) {
 };
 pub const BluetoothDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -237,71 +222,61 @@ pub const BluetoothDevice = extern struct {
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var this: ?*IBluetoothDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice2.IID, @ptrCast(&this));
         return try this.?.getDeviceInformation();
     }
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var this: ?*IBluetoothDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         return try this.?.getDeviceAccessInformation();
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var this: ?*IBluetoothDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         return try this.?.RequestAccessAsync();
     }
     pub fn GetRfcommServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         return try this.?.GetRfcommServicesAsync();
     }
     pub fn GetRfcommServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         return try this.?.GetRfcommServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetRfcommServicesForIdAsync(self: *@This(), serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         return try this.?.GetRfcommServicesForIdAsync(serviceId);
     }
     pub fn GetRfcommServicesForIdAsyncWithCacheMode(self: *@This(), serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         return try this.?.GetRfcommServicesForIdAsyncWithCacheMode(serviceId, cacheMode);
     }
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var this: ?*IBluetoothDevice4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice4.IID, @ptrCast(&this));
         return try this.?.getBluetoothDeviceId();
     }
     pub fn getWasSecureConnectionUsedForPairing(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothDevice5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice5.IID, @ptrCast(&this));
         return try this.?.getWasSecureConnectionUsedForPairing();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothDevice) {
@@ -350,14 +325,11 @@ pub const BluetoothDevice = extern struct {
 };
 pub const BluetoothDeviceId = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -399,14 +371,11 @@ pub const BluetoothError = enum(i32) {
 };
 pub const BluetoothLEAppearance = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -440,14 +409,11 @@ pub const BluetoothLEAppearance = extern struct {
 };
 pub const BluetoothLEAppearanceCategories = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -546,14 +512,11 @@ pub const BluetoothLEAppearanceCategories = extern struct {
 };
 pub const BluetoothLEAppearanceSubcategories = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -676,14 +639,11 @@ pub const BluetoothLEAppearanceSubcategories = extern struct {
 };
 pub const BluetoothLEConnectionParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -708,14 +668,11 @@ pub const BluetoothLEConnectionParameters = extern struct {
 };
 pub const BluetoothLEConnectionPhy = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -736,14 +693,11 @@ pub const BluetoothLEConnectionPhy = extern struct {
 };
 pub const BluetoothLEConnectionPhyInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -768,14 +722,11 @@ pub const BluetoothLEConnectionPhyInfo = extern struct {
 };
 pub const BluetoothLEDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -831,134 +782,115 @@ pub const BluetoothLEDevice = extern struct {
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var this: ?*IBluetoothLEDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
         return try this.?.getDeviceInformation();
     }
     pub fn getAppearance(self: *@This()) core.HResult!*BluetoothLEAppearance {
         var this: ?*IBluetoothLEDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
         return try this.?.getAppearance();
     }
     pub fn getBluetoothAddressType(self: *@This()) core.HResult!BluetoothAddressType {
         var this: ?*IBluetoothLEDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
         return try this.?.getBluetoothAddressType();
     }
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var this: ?*IBluetoothLEDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         return try this.?.getDeviceAccessInformation();
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var this: ?*IBluetoothLEDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         return try this.?.RequestAccessAsync();
     }
     pub fn GetGattServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         return try this.?.GetGattServicesAsync();
     }
     pub fn GetGattServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         return try this.?.GetGattServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetGattServicesForUuidAsync(self: *@This(), serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         return try this.?.GetGattServicesForUuidAsync(serviceUuid);
     }
     pub fn GetGattServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         return try this.?.GetGattServicesForUuidAsyncWithCacheMode(serviceUuid, cacheMode);
     }
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var this: ?*IBluetoothLEDevice4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice4.IID, @ptrCast(&this));
         return try this.?.getBluetoothDeviceId();
     }
     pub fn getWasSecureConnectionUsedForPairing(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEDevice5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice5.IID, @ptrCast(&this));
         return try this.?.getWasSecureConnectionUsedForPairing();
     }
     pub fn GetConnectionParameters(self: *@This()) core.HResult!*BluetoothLEConnectionParameters {
         var this: ?*IBluetoothLEDevice6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         return try this.?.GetConnectionParameters();
     }
     pub fn GetConnectionPhy(self: *@This()) core.HResult!*BluetoothLEConnectionPhy {
         var this: ?*IBluetoothLEDevice6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         return try this.?.GetConnectionPhy();
     }
     pub fn RequestPreferredConnectionParameters(self: *@This(), preferredConnectionParameters: *BluetoothLEPreferredConnectionParameters) core.HResult!*BluetoothLEPreferredConnectionParametersRequest {
         var this: ?*IBluetoothLEDevice6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         return try this.?.RequestPreferredConnectionParameters(preferredConnectionParameters);
     }
     pub fn addConnectionParametersChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IBluetoothLEDevice6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         return try this.?.addConnectionParametersChanged(handler);
     }
     pub fn removeConnectionParametersChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IBluetoothLEDevice6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         return try this.?.removeConnectionParametersChanged(token);
     }
     pub fn addConnectionPhyChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IBluetoothLEDevice6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         return try this.?.addConnectionPhyChanged(handler);
     }
     pub fn removeConnectionPhyChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IBluetoothLEDevice6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         return try this.?.removeConnectionPhyChanged(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetDeviceSelectorFromPairingState(pairingState: bool) core.HResult!?HSTRING {
@@ -1011,14 +943,11 @@ pub const BluetoothLEDevice = extern struct {
 };
 pub const BluetoothLEPreferredConnectionParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1060,14 +989,11 @@ pub const BluetoothLEPreferredConnectionParameters = extern struct {
 };
 pub const BluetoothLEPreferredConnectionParametersRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1079,8 +1005,7 @@ pub const BluetoothLEPreferredConnectionParametersRequest = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothLEPreferredConnectionParametersRequest";
@@ -1194,14 +1119,11 @@ pub const BluetoothServiceCapabilities = enum(i32) {
 };
 pub const BluetoothSignalStrengthFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1251,14 +1173,11 @@ pub const BluetoothSignalStrengthFilter = extern struct {
 };
 pub const BluetoothUuidHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1277,8 +1196,11 @@ pub const BluetoothUuidHelper = extern struct {
 };
 pub const IBluetoothAdapter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1286,49 +1208,49 @@ pub const IBluetoothAdapter = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBluetoothAddress(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BluetoothAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsClassicSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsClassicSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsLowEnergySupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLowEnergySupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPeripheralRoleSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPeripheralRoleSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCentralRoleSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCentralRoleSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsAdvertisementOffloadSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAdvertisementOffloadSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRadioAsync(self: *@This()) core.HResult!*IAsyncOperation(Radio) {
         var _r: *IAsyncOperation(Radio) = undefined;
         const _c = self.vtable.GetRadioAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothAdapter";
@@ -1355,8 +1277,11 @@ pub const IBluetoothAdapter = extern struct {
 };
 pub const IBluetoothAdapter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1364,13 +1289,13 @@ pub const IBluetoothAdapter2 = extern struct {
     pub fn getAreClassicSecureConnectionsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreClassicSecureConnectionsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAreLowEnergySecureConnectionsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreLowEnergySecureConnectionsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothAdapter2";
@@ -1391,8 +1316,11 @@ pub const IBluetoothAdapter2 = extern struct {
 };
 pub const IBluetoothAdapter3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1400,13 +1328,13 @@ pub const IBluetoothAdapter3 = extern struct {
     pub fn getIsExtendedAdvertisingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsExtendedAdvertisingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxAdvertisementDataLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxAdvertisementDataLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothAdapter3";
@@ -1427,8 +1355,11 @@ pub const IBluetoothAdapter3 = extern struct {
 };
 pub const IBluetoothAdapter4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1436,13 +1367,13 @@ pub const IBluetoothAdapter4 = extern struct {
     pub fn getIsLowEnergyUncoded2MPhySupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLowEnergyUncoded2MPhySupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsLowEnergyCodedPhySupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLowEnergyCodedPhySupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothAdapter4";
@@ -1463,8 +1394,11 @@ pub const IBluetoothAdapter4 = extern struct {
 };
 pub const IBluetoothAdapterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1472,19 +1406,19 @@ pub const IBluetoothAdapterStatics = extern struct {
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothAdapter) {
         var _r: *IAsyncOperation(BluetoothAdapter) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(BluetoothAdapter) {
         var _r: *IAsyncOperation(BluetoothAdapter) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothAdapterStatics";
@@ -1506,8 +1440,11 @@ pub const IBluetoothAdapterStatics = extern struct {
 };
 pub const IBluetoothClassOfDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1515,25 +1452,25 @@ pub const IBluetoothClassOfDevice = extern struct {
     pub fn getRawValue(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_RawValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMajorClass(self: *@This()) core.HResult!BluetoothMajorClass {
         var _r: BluetoothMajorClass = undefined;
         const _c = self.vtable.get_MajorClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinorClass(self: *@This()) core.HResult!BluetoothMinorClass {
         var _r: BluetoothMinorClass = undefined;
         const _c = self.vtable.get_MinorClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceCapabilities(self: *@This()) core.HResult!BluetoothServiceCapabilities {
         var _r: BluetoothServiceCapabilities = undefined;
         const _c = self.vtable.get_ServiceCapabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothClassOfDevice";
@@ -1556,8 +1493,11 @@ pub const IBluetoothClassOfDevice = extern struct {
 };
 pub const IBluetoothClassOfDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1565,13 +1505,13 @@ pub const IBluetoothClassOfDeviceStatics = extern struct {
     pub fn FromRawValue(self: *@This(), rawValue: u32) core.HResult!*BluetoothClassOfDevice {
         var _r: *BluetoothClassOfDevice = undefined;
         const _c = self.vtable.FromRawValue(@ptrCast(self), rawValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromParts(self: *@This(), majorClass: BluetoothMajorClass, minorClass: BluetoothMinorClass, serviceCapabilities: BluetoothServiceCapabilities) core.HResult!*BluetoothClassOfDevice {
         var _r: *BluetoothClassOfDevice = undefined;
         const _c = self.vtable.FromParts(@ptrCast(self), majorClass, minorClass, serviceCapabilities, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothClassOfDeviceStatics";
@@ -1592,8 +1532,11 @@ pub const IBluetoothClassOfDeviceStatics = extern struct {
 };
 pub const IBluetoothDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1601,80 +1544,80 @@ pub const IBluetoothDevice = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHostName(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_HostName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClassOfDevice(self: *@This()) core.HResult!*BluetoothClassOfDevice {
         var _r: *BluetoothClassOfDevice = undefined;
         const _c = self.vtable.get_ClassOfDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSdpRecords(self: *@This()) core.HResult!*IVectorView(IBuffer) {
         var _r: *IVectorView(IBuffer) = undefined;
         const _c = self.vtable.get_SdpRecords(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRfcommServices(self: *@This()) core.HResult!*IVectorView(RfcommDeviceService) {
         var _r: *IVectorView(RfcommDeviceService) = undefined;
         const _c = self.vtable.get_RfcommServices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!BluetoothConnectionStatus {
         var _r: BluetoothConnectionStatus = undefined;
         const _c = self.vtable.get_ConnectionStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBluetoothAddress(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BluetoothAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addNameChanged(self: *@This(), handler: *TypedEventHandler(BluetoothDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_NameChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeNameChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_NameChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSdpRecordsChanged(self: *@This(), handler: *TypedEventHandler(BluetoothDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SdpRecordsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSdpRecordsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SdpRecordsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addConnectionStatusChanged(self: *@This(), handler: *TypedEventHandler(BluetoothDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ConnectionStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeConnectionStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ConnectionStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1706,8 +1649,11 @@ pub const IBluetoothDevice = extern struct {
 };
 pub const IBluetoothDevice2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1715,7 +1661,7 @@ pub const IBluetoothDevice2 = extern struct {
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_DeviceInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDevice2";
@@ -1735,8 +1681,11 @@ pub const IBluetoothDevice2 = extern struct {
 };
 pub const IBluetoothDevice3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1744,37 +1693,37 @@ pub const IBluetoothDevice3 = extern struct {
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.get_DeviceAccessInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var _r: *IAsyncOperation(DeviceAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRfcommServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var _r: *IAsyncOperation(RfcommDeviceServicesResult) = undefined;
         const _c = self.vtable.GetRfcommServicesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRfcommServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var _r: *IAsyncOperation(RfcommDeviceServicesResult) = undefined;
         const _c = self.vtable.GetRfcommServicesAsyncWithCacheMode(@ptrCast(self), cacheMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRfcommServicesForIdAsync(self: *@This(), serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var _r: *IAsyncOperation(RfcommDeviceServicesResult) = undefined;
         const _c = self.vtable.GetRfcommServicesForIdAsync(@ptrCast(self), serviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRfcommServicesForIdAsyncWithCacheMode(self: *@This(), serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var _r: *IAsyncOperation(RfcommDeviceServicesResult) = undefined;
         const _c = self.vtable.GetRfcommServicesForIdAsyncWithCacheMode(@ptrCast(self), serviceId, cacheMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDevice3";
@@ -1799,8 +1748,11 @@ pub const IBluetoothDevice3 = extern struct {
 };
 pub const IBluetoothDevice4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1808,7 +1760,7 @@ pub const IBluetoothDevice4 = extern struct {
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var _r: *BluetoothDeviceId = undefined;
         const _c = self.vtable.get_BluetoothDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDevice4";
@@ -1828,8 +1780,11 @@ pub const IBluetoothDevice4 = extern struct {
 };
 pub const IBluetoothDevice5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1837,7 +1792,7 @@ pub const IBluetoothDevice5 = extern struct {
     pub fn getWasSecureConnectionUsedForPairing(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_WasSecureConnectionUsedForPairing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDevice5";
@@ -1857,8 +1812,11 @@ pub const IBluetoothDevice5 = extern struct {
 };
 pub const IBluetoothDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1866,19 +1824,19 @@ pub const IBluetoothDeviceId = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsClassicDevice(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsClassicDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsLowEnergyDevice(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLowEnergyDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDeviceId";
@@ -1900,8 +1858,11 @@ pub const IBluetoothDeviceId = extern struct {
 };
 pub const IBluetoothDeviceIdStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1909,7 +1870,7 @@ pub const IBluetoothDeviceIdStatics = extern struct {
     pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*BluetoothDeviceId {
         var _r: *BluetoothDeviceId = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDeviceIdStatics";
@@ -1929,8 +1890,11 @@ pub const IBluetoothDeviceIdStatics = extern struct {
 };
 pub const IBluetoothDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1938,25 +1902,25 @@ pub const IBluetoothDeviceStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothDevice) {
         var _r: *IAsyncOperation(BluetoothDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromHostNameAsync(self: *@This(), hostName: *HostName) core.HResult!*IAsyncOperation(BluetoothDevice) {
         var _r: *IAsyncOperation(BluetoothDevice) = undefined;
         const _c = self.vtable.FromHostNameAsync(@ptrCast(self), hostName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromBluetoothAddressAsync(self: *@This(), address: u64) core.HResult!*IAsyncOperation(BluetoothDevice) {
         var _r: *IAsyncOperation(BluetoothDevice) = undefined;
         const _c = self.vtable.FromBluetoothAddressAsync(@ptrCast(self), address, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDeviceStatics";
@@ -1979,8 +1943,11 @@ pub const IBluetoothDeviceStatics = extern struct {
 };
 pub const IBluetoothDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1988,31 +1955,31 @@ pub const IBluetoothDeviceStatics2 = extern struct {
     pub fn GetDeviceSelectorFromPairingState(self: *@This(), pairingState: bool) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromPairingState(@ptrCast(self), pairingState, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromConnectionStatus(self: *@This(), connectionStatus: BluetoothConnectionStatus) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromConnectionStatus(@ptrCast(self), connectionStatus, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromDeviceName(self: *@This(), deviceName: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromDeviceName(@ptrCast(self), deviceName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromBluetoothAddress(self: *@This(), bluetoothAddress: u64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromBluetoothAddress(@ptrCast(self), bluetoothAddress, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromClassOfDevice(self: *@This(), classOfDevice: *BluetoothClassOfDevice) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromClassOfDevice(@ptrCast(self), classOfDevice, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothDeviceStatics2";
@@ -2036,8 +2003,11 @@ pub const IBluetoothDeviceStatics2 = extern struct {
 };
 pub const IBluetoothLEAppearance = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2045,19 +2015,19 @@ pub const IBluetoothLEAppearance = extern struct {
     pub fn getRawValue(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_RawValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCategory(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Category(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSubCategory(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_SubCategory(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEAppearance";
@@ -2079,8 +2049,11 @@ pub const IBluetoothLEAppearance = extern struct {
 };
 pub const IBluetoothLEAppearanceCategoriesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2088,133 +2061,133 @@ pub const IBluetoothLEAppearanceCategoriesStatics = extern struct {
     pub fn getUncategorized(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Uncategorized(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhone(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Phone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getComputer(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Computer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWatch(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Watch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClock(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Clock(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplay(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Display(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemoteControl(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_RemoteControl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEyeGlasses(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_EyeGlasses(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTag(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyring(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Keyring(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMediaPlayer(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_MediaPlayer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBarcodeScanner(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_BarcodeScanner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getThermometer(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Thermometer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeartRate(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HeartRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBloodPressure(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_BloodPressure(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHumanInterfaceDevice(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HumanInterfaceDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGlucoseMeter(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_GlucoseMeter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRunningWalking(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_RunningWalking(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCycling(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Cycling(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPulseOximeter(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_PulseOximeter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeightScale(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_WeightScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOutdoorSportActivity(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_OutdoorSportActivity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEAppearanceCategoriesStatics";
@@ -2255,8 +2228,11 @@ pub const IBluetoothLEAppearanceCategoriesStatics = extern struct {
 };
 pub const IBluetoothLEAppearanceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2264,13 +2240,13 @@ pub const IBluetoothLEAppearanceStatics = extern struct {
     pub fn FromRawValue(self: *@This(), rawValue: u16) core.HResult!*BluetoothLEAppearance {
         var _r: *BluetoothLEAppearance = undefined;
         const _c = self.vtable.FromRawValue(@ptrCast(self), rawValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromParts(self: *@This(), appearanceCategory: u16, appearanceSubCategory: u16) core.HResult!*BluetoothLEAppearance {
         var _r: *BluetoothLEAppearance = undefined;
         const _c = self.vtable.FromParts(@ptrCast(self), appearanceCategory, appearanceSubCategory, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEAppearanceStatics";
@@ -2291,8 +2267,11 @@ pub const IBluetoothLEAppearanceStatics = extern struct {
 };
 pub const IBluetoothLEAppearanceSubcategoriesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2300,169 +2279,169 @@ pub const IBluetoothLEAppearanceSubcategoriesStatics = extern struct {
     pub fn getGeneric(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Generic(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSportsWatch(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_SportsWatch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getThermometerEar(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_ThermometerEar(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeartRateBelt(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HeartRateBelt(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBloodPressureArm(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_BloodPressureArm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBloodPressureWrist(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_BloodPressureWrist(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyboard(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Keyboard(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMouse(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Mouse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getJoystick(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Joystick(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGamepad(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Gamepad(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDigitizerTablet(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_DigitizerTablet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCardReader(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_CardReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDigitalPen(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_DigitalPen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBarcodeScanner(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_BarcodeScanner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRunningWalkingInShoe(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_RunningWalkingInShoe(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRunningWalkingOnShoe(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_RunningWalkingOnShoe(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRunningWalkingOnHip(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_RunningWalkingOnHip(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCyclingComputer(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_CyclingComputer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCyclingSpeedSensor(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_CyclingSpeedSensor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCyclingCadenceSensor(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_CyclingCadenceSensor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCyclingPowerSensor(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_CyclingPowerSensor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCyclingSpeedCadenceSensor(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_CyclingSpeedCadenceSensor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOximeterFingertip(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_OximeterFingertip(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOximeterWristWorn(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_OximeterWristWorn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationDisplay(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_LocationDisplay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationNavigationDisplay(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_LocationNavigationDisplay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationPod(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_LocationPod(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationNavigationPod(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_LocationNavigationPod(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEAppearanceSubcategoriesStatics";
@@ -2509,8 +2488,11 @@ pub const IBluetoothLEAppearanceSubcategoriesStatics = extern struct {
 };
 pub const IBluetoothLEConnectionParameters = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2518,19 +2500,19 @@ pub const IBluetoothLEConnectionParameters = extern struct {
     pub fn getLinkTimeout(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_LinkTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionLatency(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_ConnectionLatency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionInterval(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_ConnectionInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEConnectionParameters";
@@ -2552,8 +2534,11 @@ pub const IBluetoothLEConnectionParameters = extern struct {
 };
 pub const IBluetoothLEConnectionPhy = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2561,13 +2546,13 @@ pub const IBluetoothLEConnectionPhy = extern struct {
     pub fn getTransmitInfo(self: *@This()) core.HResult!*BluetoothLEConnectionPhyInfo {
         var _r: *BluetoothLEConnectionPhyInfo = undefined;
         const _c = self.vtable.get_TransmitInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceiveInfo(self: *@This()) core.HResult!*BluetoothLEConnectionPhyInfo {
         var _r: *BluetoothLEConnectionPhyInfo = undefined;
         const _c = self.vtable.get_ReceiveInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEConnectionPhy";
@@ -2588,8 +2573,11 @@ pub const IBluetoothLEConnectionPhy = extern struct {
 };
 pub const IBluetoothLEConnectionPhyInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2597,19 +2585,19 @@ pub const IBluetoothLEConnectionPhyInfo = extern struct {
     pub fn getIsUncoded1MPhy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUncoded1MPhy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsUncoded2MPhy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUncoded2MPhy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCodedPhy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCodedPhy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEConnectionPhyInfo";
@@ -2631,8 +2619,11 @@ pub const IBluetoothLEConnectionPhyInfo = extern struct {
 };
 pub const IBluetoothLEDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2640,68 +2631,68 @@ pub const IBluetoothLEDevice = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGattServices(self: *@This()) core.HResult!*IVectorView(GattDeviceService) {
         var _r: *IVectorView(GattDeviceService) = undefined;
         const _c = self.vtable.get_GattServices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!BluetoothConnectionStatus {
         var _r: BluetoothConnectionStatus = undefined;
         const _c = self.vtable.get_ConnectionStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBluetoothAddress(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BluetoothAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGattService(self: *@This(), serviceUuid: *Guid) core.HResult!*GattDeviceService {
         var _r: *GattDeviceService = undefined;
         const _c = self.vtable.GetGattService(@ptrCast(self), serviceUuid, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addNameChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_NameChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeNameChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_NameChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addGattServicesChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GattServicesChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGattServicesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GattServicesChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addConnectionStatusChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ConnectionStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeConnectionStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ConnectionStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2731,8 +2722,11 @@ pub const IBluetoothLEDevice = extern struct {
 };
 pub const IBluetoothLEDevice2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2740,19 +2734,19 @@ pub const IBluetoothLEDevice2 = extern struct {
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_DeviceInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppearance(self: *@This()) core.HResult!*BluetoothLEAppearance {
         var _r: *BluetoothLEAppearance = undefined;
         const _c = self.vtable.get_Appearance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBluetoothAddressType(self: *@This()) core.HResult!BluetoothAddressType {
         var _r: BluetoothAddressType = undefined;
         const _c = self.vtable.get_BluetoothAddressType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDevice2";
@@ -2774,8 +2768,11 @@ pub const IBluetoothLEDevice2 = extern struct {
 };
 pub const IBluetoothLEDevice3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2783,37 +2780,37 @@ pub const IBluetoothLEDevice3 = extern struct {
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.get_DeviceAccessInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var _r: *IAsyncOperation(DeviceAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGattServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var _r: *IAsyncOperation(GattDeviceServicesResult) = undefined;
         const _c = self.vtable.GetGattServicesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGattServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var _r: *IAsyncOperation(GattDeviceServicesResult) = undefined;
         const _c = self.vtable.GetGattServicesAsyncWithCacheMode(@ptrCast(self), cacheMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGattServicesForUuidAsync(self: *@This(), serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var _r: *IAsyncOperation(GattDeviceServicesResult) = undefined;
         const _c = self.vtable.GetGattServicesForUuidAsync(@ptrCast(self), serviceUuid, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGattServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var _r: *IAsyncOperation(GattDeviceServicesResult) = undefined;
         const _c = self.vtable.GetGattServicesForUuidAsyncWithCacheMode(@ptrCast(self), serviceUuid, cacheMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDevice3";
@@ -2838,8 +2835,11 @@ pub const IBluetoothLEDevice3 = extern struct {
 };
 pub const IBluetoothLEDevice4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2847,7 +2847,7 @@ pub const IBluetoothLEDevice4 = extern struct {
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var _r: *BluetoothDeviceId = undefined;
         const _c = self.vtable.get_BluetoothDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDevice4";
@@ -2867,8 +2867,11 @@ pub const IBluetoothLEDevice4 = extern struct {
 };
 pub const IBluetoothLEDevice5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2876,7 +2879,7 @@ pub const IBluetoothLEDevice5 = extern struct {
     pub fn getWasSecureConnectionUsedForPairing(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_WasSecureConnectionUsedForPairing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDevice5";
@@ -2896,8 +2899,11 @@ pub const IBluetoothLEDevice5 = extern struct {
 };
 pub const IBluetoothLEDevice6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2905,40 +2911,40 @@ pub const IBluetoothLEDevice6 = extern struct {
     pub fn GetConnectionParameters(self: *@This()) core.HResult!*BluetoothLEConnectionParameters {
         var _r: *BluetoothLEConnectionParameters = undefined;
         const _c = self.vtable.GetConnectionParameters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConnectionPhy(self: *@This()) core.HResult!*BluetoothLEConnectionPhy {
         var _r: *BluetoothLEConnectionPhy = undefined;
         const _c = self.vtable.GetConnectionPhy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestPreferredConnectionParameters(self: *@This(), preferredConnectionParameters: *BluetoothLEPreferredConnectionParameters) core.HResult!*BluetoothLEPreferredConnectionParametersRequest {
         var _r: *BluetoothLEPreferredConnectionParametersRequest = undefined;
         const _c = self.vtable.RequestPreferredConnectionParameters(@ptrCast(self), preferredConnectionParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addConnectionParametersChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ConnectionParametersChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeConnectionParametersChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ConnectionParametersChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addConnectionPhyChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ConnectionPhyChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeConnectionPhyChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ConnectionPhyChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDevice6";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2963,8 +2969,11 @@ pub const IBluetoothLEDevice6 = extern struct {
 };
 pub const IBluetoothLEDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2972,19 +2981,19 @@ pub const IBluetoothLEDeviceStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
         var _r: *IAsyncOperation(BluetoothLEDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromBluetoothAddressAsync(self: *@This(), bluetoothAddress: u64) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
         var _r: *IAsyncOperation(BluetoothLEDevice) = undefined;
         const _c = self.vtable.FromBluetoothAddressAsync(@ptrCast(self), bluetoothAddress, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDeviceStatics";
@@ -3006,8 +3015,11 @@ pub const IBluetoothLEDeviceStatics = extern struct {
 };
 pub const IBluetoothLEDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3015,43 +3027,43 @@ pub const IBluetoothLEDeviceStatics2 = extern struct {
     pub fn GetDeviceSelectorFromPairingState(self: *@This(), pairingState: bool) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromPairingState(@ptrCast(self), pairingState, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromConnectionStatus(self: *@This(), connectionStatus: BluetoothConnectionStatus) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromConnectionStatus(@ptrCast(self), connectionStatus, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromDeviceName(self: *@This(), deviceName: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromDeviceName(@ptrCast(self), deviceName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromBluetoothAddress(self: *@This(), bluetoothAddress: u64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromBluetoothAddress(@ptrCast(self), bluetoothAddress, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(self: *@This(), bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(@ptrCast(self), bluetoothAddress, bluetoothAddressType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorFromAppearance(self: *@This(), appearance: *BluetoothLEAppearance) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromAppearance(@ptrCast(self), appearance, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromBluetoothAddressAsync(self: *@This(), bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
         var _r: *IAsyncOperation(BluetoothLEDevice) = undefined;
         const _c = self.vtable.FromBluetoothAddressAsync(@ptrCast(self), bluetoothAddress, bluetoothAddressType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEDeviceStatics2";
@@ -3077,8 +3089,11 @@ pub const IBluetoothLEDeviceStatics2 = extern struct {
 };
 pub const IBluetoothLEPreferredConnectionParameters = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3086,25 +3101,25 @@ pub const IBluetoothLEPreferredConnectionParameters = extern struct {
     pub fn getLinkTimeout(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_LinkTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionLatency(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_ConnectionLatency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinConnectionInterval(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_MinConnectionInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxConnectionInterval(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_MaxConnectionInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEPreferredConnectionParameters";
@@ -3127,8 +3142,11 @@ pub const IBluetoothLEPreferredConnectionParameters = extern struct {
 };
 pub const IBluetoothLEPreferredConnectionParametersRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3136,7 +3154,7 @@ pub const IBluetoothLEPreferredConnectionParametersRequest = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!BluetoothLEPreferredConnectionParametersRequestStatus {
         var _r: BluetoothLEPreferredConnectionParametersRequestStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEPreferredConnectionParametersRequest";
@@ -3156,8 +3174,11 @@ pub const IBluetoothLEPreferredConnectionParametersRequest = extern struct {
 };
 pub const IBluetoothLEPreferredConnectionParametersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3165,19 +3186,19 @@ pub const IBluetoothLEPreferredConnectionParametersStatics = extern struct {
     pub fn getBalanced(self: *@This()) core.HResult!*BluetoothLEPreferredConnectionParameters {
         var _r: *BluetoothLEPreferredConnectionParameters = undefined;
         const _c = self.vtable.get_Balanced(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getThroughputOptimized(self: *@This()) core.HResult!*BluetoothLEPreferredConnectionParameters {
         var _r: *BluetoothLEPreferredConnectionParameters = undefined;
         const _c = self.vtable.get_ThroughputOptimized(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPowerOptimized(self: *@This()) core.HResult!*BluetoothLEPreferredConnectionParameters {
         var _r: *BluetoothLEPreferredConnectionParameters = undefined;
         const _c = self.vtable.get_PowerOptimized(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothLEPreferredConnectionParametersStatics";
@@ -3199,8 +3220,11 @@ pub const IBluetoothLEPreferredConnectionParametersStatics = extern struct {
 };
 pub const IBluetoothSignalStrengthFilter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3208,42 +3232,42 @@ pub const IBluetoothSignalStrengthFilter = extern struct {
     pub fn getInRangeThresholdInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var _r: *IReference(i16) = undefined;
         const _c = self.vtable.get_InRangeThresholdInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInRangeThresholdInDBm(self: *@This(), value: *IReference(i16)) core.HResult!void {
         const _c = self.vtable.put_InRangeThresholdInDBm(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutOfRangeThresholdInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var _r: *IReference(i16) = undefined;
         const _c = self.vtable.get_OutOfRangeThresholdInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutOfRangeThresholdInDBm(self: *@This(), value: *IReference(i16)) core.HResult!void {
         const _c = self.vtable.put_OutOfRangeThresholdInDBm(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutOfRangeTimeout(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_OutOfRangeTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutOfRangeTimeout(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_OutOfRangeTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSamplingInterval(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_SamplingInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSamplingInterval(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_SamplingInterval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothSignalStrengthFilter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3269,8 +3293,11 @@ pub const IBluetoothSignalStrengthFilter = extern struct {
 };
 pub const IBluetoothUuidHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3278,13 +3305,13 @@ pub const IBluetoothUuidHelperStatics = extern struct {
     pub fn FromShortId(self: *@This(), shortId: u32) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.FromShortId(@ptrCast(self), shortId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetShortId(self: *@This(), uuid: *Guid) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.TryGetShortId(@ptrCast(self), uuid, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.IBluetoothUuidHelperStatics";

@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const Geofence = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -66,14 +63,11 @@ pub const Geofence = extern struct {
 };
 pub const GeofenceMonitor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -141,14 +135,11 @@ pub const GeofenceState = enum(i32) {
 };
 pub const GeofenceStateChangeReport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -177,8 +168,11 @@ pub const GeofenceStateChangeReport = extern struct {
 };
 pub const IGeofence = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -186,43 +180,43 @@ pub const IGeofence = extern struct {
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDwellTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DwellTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMonitoredStates(self: *@This()) core.HResult!MonitoredGeofenceStates {
         var _r: MonitoredGeofenceStates = undefined;
         const _c = self.vtable.get_MonitoredStates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGeoshape(self: *@This()) core.HResult!*IGeoshape {
         var _r: *IGeoshape = undefined;
         const _c = self.vtable.get_Geoshape(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSingleUse(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SingleUse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.IGeofence";
@@ -248,8 +242,11 @@ pub const IGeofence = extern struct {
 };
 pub const IGeofenceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -257,25 +254,25 @@ pub const IGeofenceFactory = extern struct {
     pub fn Create(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, geoshape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithMonitorStates(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.CreateWithMonitorStates(@ptrCast(self), id, geoshape, monitoredStates, singleUse, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithMonitorStatesAndDwellTime(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.CreateWithMonitorStatesAndDwellTime(@ptrCast(self), id, geoshape, monitoredStates, singleUse, dwellTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithMonitorStatesDwellTimeStartTimeAndDuration(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.CreateWithMonitorStatesDwellTimeStartTimeAndDuration(@ptrCast(self), id, geoshape, monitoredStates, singleUse, dwellTime, startTime, duration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.IGeofenceFactory";
@@ -298,8 +295,11 @@ pub const IGeofenceFactory = extern struct {
 };
 pub const IGeofenceMonitor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -307,46 +307,46 @@ pub const IGeofenceMonitor = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!GeofenceMonitorStatus {
         var _r: GeofenceMonitorStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGeofences(self: *@This()) core.HResult!*IVector(Geofence) {
         var _r: *IVector(Geofence) = undefined;
         const _c = self.vtable.get_Geofences(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastKnownGeoposition(self: *@This()) core.HResult!*Geoposition {
         var _r: *Geoposition = undefined;
         const _c = self.vtable.get_LastKnownGeoposition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addGeofenceStateChanged(self: *@This(), eventHandler: *TypedEventHandler(GeofenceMonitor,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GeofenceStateChanged(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGeofenceStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GeofenceStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReadReports(self: *@This()) core.HResult!*IVectorView(GeofenceStateChangeReport) {
         var _r: *IVectorView(GeofenceStateChangeReport) = undefined;
         const _c = self.vtable.ReadReports(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusChanged(self: *@This(), eventHandler: *TypedEventHandler(GeofenceMonitor,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusChanged(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.IGeofenceMonitor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -372,8 +372,11 @@ pub const IGeofenceMonitor = extern struct {
 };
 pub const IGeofenceMonitorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -381,7 +384,7 @@ pub const IGeofenceMonitorStatics = extern struct {
     pub fn getCurrent(self: *@This()) core.HResult!*GeofenceMonitor {
         var _r: *GeofenceMonitor = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.IGeofenceMonitorStatics";
@@ -401,8 +404,11 @@ pub const IGeofenceMonitorStatics = extern struct {
 };
 pub const IGeofenceStateChangeReport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -410,25 +416,25 @@ pub const IGeofenceStateChangeReport = extern struct {
     pub fn getNewState(self: *@This()) core.HResult!GeofenceState {
         var _r: GeofenceState = undefined;
         const _c = self.vtable.get_NewState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGeofence(self: *@This()) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.get_Geofence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGeoposition(self: *@This()) core.HResult!*Geoposition {
         var _r: *Geoposition = undefined;
         const _c = self.vtable.get_Geoposition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemovalReason(self: *@This()) core.HResult!GeofenceRemovalReason {
         var _r: GeofenceRemovalReason = undefined;
         const _c = self.vtable.get_RemovalReason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.IGeofenceStateChangeReport";

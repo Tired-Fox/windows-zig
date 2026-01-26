@@ -5,14 +5,11 @@ pub const CaretType = enum(i32) {
 };
 pub const ContentLinkInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -95,14 +92,11 @@ pub const FontWeight = extern struct {
 };
 pub const FontWeights = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -171,8 +165,11 @@ pub const HorizontalCharacterAlignment = enum(i32) {
 };
 pub const IContentLinkInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -180,52 +177,52 @@ pub const IContentLinkInfo = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putId(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSecondaryText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecondaryText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSecondaryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SecondaryText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLinkContentKind(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LinkContentKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLinkContentKind(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LinkContentKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.IContentLinkInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -253,8 +250,11 @@ pub const IContentLinkInfo = extern struct {
 };
 pub const IFontWeights = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -275,8 +275,11 @@ pub const IFontWeights = extern struct {
 };
 pub const IFontWeightsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -284,67 +287,67 @@ pub const IFontWeightsStatics = extern struct {
     pub fn getBlack(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_Black(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBold(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_Bold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtraBlack(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_ExtraBlack(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtraBold(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_ExtraBold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtraLight(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_ExtraLight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLight(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_Light(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMedium(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_Medium(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNormal(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_Normal(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSemiBold(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_SemiBold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSemiLight(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_SemiLight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getThin(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_Thin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Text.IFontWeightsStatics";
@@ -374,8 +377,11 @@ pub const IFontWeightsStatics = extern struct {
 };
 pub const IRichEditTextRange = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -383,12 +389,12 @@ pub const IRichEditTextRange = extern struct {
     pub fn getContentLinkInfo(self: *@This()) core.HResult!*ContentLinkInfo {
         var _r: *ContentLinkInfo = undefined;
         const _c = self.vtable.get_ContentLinkInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContentLinkInfo(self: *@This(), value: *ContentLinkInfo) core.HResult!void {
         const _c = self.vtable.put_ContentLinkInfo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.IRichEditTextRange";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -408,8 +414,11 @@ pub const IRichEditTextRange = extern struct {
 };
 pub const ITextCharacterFormat = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -417,253 +426,253 @@ pub const ITextCharacterFormat = extern struct {
     pub fn getAllCaps(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_AllCaps(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllCaps(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_AllCaps(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBackgroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_BackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_BackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBold(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_Bold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBold(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_Bold(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFontStretch(self: *@This()) core.HResult!FontStretch {
         var _r: FontStretch = undefined;
         const _c = self.vtable.get_FontStretch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFontStretch(self: *@This(), value: FontStretch) core.HResult!void {
         const _c = self.vtable.put_FontStretch(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFontStyle(self: *@This()) core.HResult!FontStyle {
         var _r: FontStyle = undefined;
         const _c = self.vtable.get_FontStyle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFontStyle(self: *@This(), value: FontStyle) core.HResult!void {
         const _c = self.vtable.put_FontStyle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getForegroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_ForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putForegroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_ForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHidden(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_Hidden(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHidden(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_Hidden(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItalic(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_Italic(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItalic(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_Italic(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getKerning(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Kerning(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putKerning(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_Kerning(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLanguageTag(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LanguageTag(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLanguageTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LanguageTag(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLinkType(self: *@This()) core.HResult!LinkType {
         var _r: LinkType = undefined;
         const _c = self.vtable.get_LinkType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutline(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_Outline(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutline(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_Outline(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPosition(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPosition(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_Position(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProtectedText(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_ProtectedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProtectedText(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_ProtectedText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSize(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSize(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_Size(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSmallCaps(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_SmallCaps(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSmallCaps(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_SmallCaps(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSpacing(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Spacing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSpacing(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_Spacing(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrikethrough(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_Strikethrough(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrikethrough(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_Strikethrough(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSubscript(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_Subscript(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSubscript(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_Subscript(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuperscript(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_Superscript(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuperscript(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_Superscript(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTextScript(self: *@This()) core.HResult!TextScript {
         var _r: TextScript = undefined;
         const _c = self.vtable.get_TextScript(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTextScript(self: *@This(), value: TextScript) core.HResult!void {
         const _c = self.vtable.put_TextScript(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUnderline(self: *@This()) core.HResult!UnderlineType {
         var _r: UnderlineType = undefined;
         const _c = self.vtable.get_Underline(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUnderline(self: *@This(), value: UnderlineType) core.HResult!void {
         const _c = self.vtable.put_Underline(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWeight(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Weight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWeight(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Weight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetClone(self: *@This(), value: *ITextCharacterFormat) core.HResult!void {
         const _c = self.vtable.SetClone(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetClone(self: *@This()) core.HResult!*ITextCharacterFormat {
         var _r: *ITextCharacterFormat = undefined;
         const _c = self.vtable.GetClone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEqual(self: *@This(), format: *ITextCharacterFormat) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEqual(@ptrCast(self), format, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextCharacterFormat";
@@ -732,8 +741,11 @@ pub const ITextCharacterFormat = extern struct {
 };
 pub const ITextConstantsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -741,49 +753,49 @@ pub const ITextConstantsStatics = extern struct {
     pub fn getAutoColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_AutoColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinUnitCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MinUnitCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxUnitCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxUnitCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUndefinedColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_UndefinedColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUndefinedFloatValue(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_UndefinedFloatValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUndefinedInt32Value(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_UndefinedInt32Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUndefinedFontStretch(self: *@This()) core.HResult!FontStretch {
         var _r: FontStretch = undefined;
         const _c = self.vtable.get_UndefinedFontStretch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUndefinedFontStyle(self: *@This()) core.HResult!FontStyle {
         var _r: FontStyle = undefined;
         const _c = self.vtable.get_UndefinedFontStyle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextConstantsStatics";
@@ -810,8 +822,11 @@ pub const ITextConstantsStatics = extern struct {
 };
 pub const ITextDocument = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -819,138 +834,138 @@ pub const ITextDocument = extern struct {
     pub fn getCaretType(self: *@This()) core.HResult!CaretType {
         var _r: CaretType = undefined;
         const _c = self.vtable.get_CaretType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCaretType(self: *@This(), value: CaretType) core.HResult!void {
         const _c = self.vtable.put_CaretType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDefaultTabStop(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_DefaultTabStop(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDefaultTabStop(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_DefaultTabStop(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelection(self: *@This()) core.HResult!*ITextSelection {
         var _r: *ITextSelection = undefined;
         const _c = self.vtable.get_Selection(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUndoLimit(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UndoLimit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUndoLimit(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_UndoLimit(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CanCopy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanCopy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CanPaste(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanPaste(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CanRedo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanRedo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CanUndo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanUndo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplyDisplayUpdates(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.ApplyDisplayUpdates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn BatchDisplayUpdates(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.BatchDisplayUpdates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn BeginUndoGroup(self: *@This()) core.HResult!void {
         const _c = self.vtable.BeginUndoGroup(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EndUndoGroup(self: *@This()) core.HResult!void {
         const _c = self.vtable.EndUndoGroup(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDefaultCharacterFormat(self: *@This()) core.HResult!*ITextCharacterFormat {
         var _r: *ITextCharacterFormat = undefined;
         const _c = self.vtable.GetDefaultCharacterFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDefaultParagraphFormat(self: *@This()) core.HResult!*ITextParagraphFormat {
         var _r: *ITextParagraphFormat = undefined;
         const _c = self.vtable.GetDefaultParagraphFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRange(self: *@This(), startPosition: i32, endPosition: i32) core.HResult!*ITextRange {
         var _r: *ITextRange = undefined;
         const _c = self.vtable.GetRange(@ptrCast(self), startPosition, endPosition, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRangeFromPoint(self: *@This(), point: Point, options: PointOptions) core.HResult!*ITextRange {
         var _r: *ITextRange = undefined;
         const _c = self.vtable.GetRangeFromPoint(@ptrCast(self), point, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetText(self: *@This(), options: TextGetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetText(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LoadFromStream(self: *@This(), options: TextSetOptions, value: *IRandomAccessStream) core.HResult!void {
         const _c = self.vtable.LoadFromStream(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Redo(self: *@This()) core.HResult!void {
         const _c = self.vtable.Redo(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SaveToStream(self: *@This(), options: TextGetOptions, value: *IRandomAccessStream) core.HResult!void {
         const _c = self.vtable.SaveToStream(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDefaultCharacterFormat(self: *@This(), value: *ITextCharacterFormat) core.HResult!void {
         const _c = self.vtable.SetDefaultCharacterFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDefaultParagraphFormat(self: *@This(), value: *ITextParagraphFormat) core.HResult!void {
         const _c = self.vtable.SetDefaultParagraphFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetText(self: *@This(), options: TextSetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Undo(self: *@This()) core.HResult!void {
         const _c = self.vtable.Undo(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextDocument";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -995,8 +1010,11 @@ pub const ITextDocument = extern struct {
 };
 pub const ITextDocument2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1004,22 +1022,22 @@ pub const ITextDocument2 = extern struct {
     pub fn getAlignmentIncludesTrailingWhitespace(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AlignmentIncludesTrailingWhitespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlignmentIncludesTrailingWhitespace(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AlignmentIncludesTrailingWhitespace(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIgnoreTrailingCharacterSpacing(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IgnoreTrailingCharacterSpacing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIgnoreTrailingCharacterSpacing(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IgnoreTrailingCharacterSpacing(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextDocument2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1041,15 +1059,18 @@ pub const ITextDocument2 = extern struct {
 };
 pub const ITextDocument3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ClearUndoRedoHistory(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearUndoRedoHistory(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextDocument3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1068,23 +1089,26 @@ pub const ITextDocument3 = extern struct {
 };
 pub const ITextDocument4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetMath(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetMath(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetMathMode(self: *@This(), mode: RichEditMathMode) core.HResult!void {
         const _c = self.vtable.SetMathMode(@ptrCast(self), mode);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextDocument4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1105,8 +1129,11 @@ pub const ITextDocument4 = extern struct {
 };
 pub const ITextParagraphFormat = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1114,242 +1141,242 @@ pub const ITextParagraphFormat = extern struct {
     pub fn getAlignment(self: *@This()) core.HResult!ParagraphAlignment {
         var _r: ParagraphAlignment = undefined;
         const _c = self.vtable.get_Alignment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlignment(self: *@This(), value: ParagraphAlignment) core.HResult!void {
         const _c = self.vtable.put_Alignment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFirstLineIndent(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_FirstLineIndent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeepTogether(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_KeepTogether(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putKeepTogether(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_KeepTogether(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getKeepWithNext(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_KeepWithNext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putKeepWithNext(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_KeepWithNext(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLeftIndent(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_LeftIndent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_LineSpacing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLineSpacingRule(self: *@This()) core.HResult!LineSpacingRule {
         var _r: LineSpacingRule = undefined;
         const _c = self.vtable.get_LineSpacingRule(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getListAlignment(self: *@This()) core.HResult!MarkerAlignment {
         var _r: MarkerAlignment = undefined;
         const _c = self.vtable.get_ListAlignment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListAlignment(self: *@This(), value: MarkerAlignment) core.HResult!void {
         const _c = self.vtable.put_ListAlignment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListLevelIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ListLevelIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListLevelIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ListLevelIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListStart(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ListStart(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListStart(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ListStart(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListStyle(self: *@This()) core.HResult!MarkerStyle {
         var _r: MarkerStyle = undefined;
         const _c = self.vtable.get_ListStyle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListStyle(self: *@This(), value: MarkerStyle) core.HResult!void {
         const _c = self.vtable.put_ListStyle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListTab(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_ListTab(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListTab(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_ListTab(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListType(self: *@This()) core.HResult!MarkerType {
         var _r: MarkerType = undefined;
         const _c = self.vtable.get_ListType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListType(self: *@This(), value: MarkerType) core.HResult!void {
         const _c = self.vtable.put_ListType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNoLineNumber(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_NoLineNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNoLineNumber(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_NoLineNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPageBreakBefore(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_PageBreakBefore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPageBreakBefore(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_PageBreakBefore(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRightIndent(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_RightIndent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRightIndent(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_RightIndent(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRightToLeft(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_RightToLeft(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRightToLeft(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_RightToLeft(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStyle(self: *@This()) core.HResult!ParagraphStyle {
         var _r: ParagraphStyle = undefined;
         const _c = self.vtable.get_Style(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStyle(self: *@This(), value: ParagraphStyle) core.HResult!void {
         const _c = self.vtable.put_Style(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSpaceAfter(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_SpaceAfter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSpaceAfter(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_SpaceAfter(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSpaceBefore(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_SpaceBefore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSpaceBefore(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_SpaceBefore(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWidowControl(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_WidowControl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWidowControl(self: *@This(), value: FormatEffect) core.HResult!void {
         const _c = self.vtable.put_WidowControl(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTabCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_TabCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddTab(self: *@This(), position: f32, alignment: TabAlignment, leader: TabLeader) core.HResult!void {
         const _c = self.vtable.AddTab(@ptrCast(self), position, alignment, leader);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearAllTabs(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearAllTabs(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DeleteTab(self: *@This(), position: f32) core.HResult!void {
         const _c = self.vtable.DeleteTab(@ptrCast(self), position);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetClone(self: *@This()) core.HResult!*ITextParagraphFormat {
         var _r: *ITextParagraphFormat = undefined;
         const _c = self.vtable.GetClone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTab(self: *@This(), index: i32, position: f32, alignment: TabAlignment, leader: TabLeader) core.HResult!void {
         const _c = self.vtable.GetTab(@ptrCast(self), index, position, alignment, leader);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsEqual(self: *@This(), format: *ITextParagraphFormat) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEqual(@ptrCast(self), format, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetClone(self: *@This(), format: *ITextParagraphFormat) core.HResult!void {
         const _c = self.vtable.SetClone(@ptrCast(self), format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetIndents(self: *@This(), start: f32, left: f32, right: f32) core.HResult!void {
         const _c = self.vtable.SetIndents(@ptrCast(self), start, left, right);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetLineSpacing(self: *@This(), rule: LineSpacingRule, spacing: f32) core.HResult!void {
         const _c = self.vtable.SetLineSpacing(@ptrCast(self), rule, spacing);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextParagraphFormat";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1415,8 +1442,11 @@ pub const ITextParagraphFormat = extern struct {
 };
 pub const ITextRange = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1424,259 +1454,259 @@ pub const ITextRange = extern struct {
     pub fn getCharacter(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Character(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCharacter(self: *@This(), value: u16) core.HResult!void {
         const _c = self.vtable.put_Character(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCharacterFormat(self: *@This()) core.HResult!*ITextCharacterFormat {
         var _r: *ITextCharacterFormat = undefined;
         const _c = self.vtable.get_CharacterFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCharacterFormat(self: *@This(), value: *ITextCharacterFormat) core.HResult!void {
         const _c = self.vtable.put_CharacterFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFormattedText(self: *@This()) core.HResult!*ITextRange {
         var _r: *ITextRange = undefined;
         const _c = self.vtable.get_FormattedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFormattedText(self: *@This(), value: *ITextRange) core.HResult!void {
         const _c = self.vtable.put_FormattedText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEndPosition(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_EndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEndPosition(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_EndPosition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGravity(self: *@This()) core.HResult!RangeGravity {
         var _r: RangeGravity = undefined;
         const _c = self.vtable.get_Gravity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGravity(self: *@This(), value: RangeGravity) core.HResult!void {
         const _c = self.vtable.put_Gravity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLength(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLink(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Link(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLink(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Link(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getParagraphFormat(self: *@This()) core.HResult!*ITextParagraphFormat {
         var _r: *ITextParagraphFormat = undefined;
         const _c = self.vtable.get_ParagraphFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putParagraphFormat(self: *@This(), value: *ITextParagraphFormat) core.HResult!void {
         const _c = self.vtable.put_ParagraphFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStartPosition(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_StartPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStartPosition(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_StartPosition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStoryLength(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_StoryLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CanPaste(self: *@This(), format: i32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanPaste(@ptrCast(self), format, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ChangeCase(self: *@This(), value: LetterCase) core.HResult!void {
         const _c = self.vtable.ChangeCase(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Collapse(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.Collapse(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Copy(self: *@This()) core.HResult!void {
         const _c = self.vtable.Copy(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Cut(self: *@This()) core.HResult!void {
         const _c = self.vtable.Cut(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Delete(self: *@This(), unit: TextRangeUnit, count: i32) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.Delete(@ptrCast(self), unit, count, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EndOf(self: *@This(), unit: TextRangeUnit, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.EndOf(@ptrCast(self), unit, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Expand(self: *@This(), unit: TextRangeUnit) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.Expand(@ptrCast(self), unit, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindText(self: *@This(), value: ?HSTRING, scanLength: i32, options: FindOptions) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.FindText(@ptrCast(self), value, scanLength, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCharacterUtf32(self: *@This(), value: u32, offset: i32) core.HResult!void {
         const _c = self.vtable.GetCharacterUtf32(@ptrCast(self), value, offset);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetClone(self: *@This()) core.HResult!*ITextRange {
         var _r: *ITextRange = undefined;
         const _c = self.vtable.GetClone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIndex(self: *@This(), unit: TextRangeUnit) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetIndex(@ptrCast(self), unit, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPoint(self: *@This(), horizontalAlign: HorizontalCharacterAlignment, verticalAlign: VerticalCharacterAlignment, options: PointOptions, point: Point) core.HResult!void {
         const _c = self.vtable.GetPoint(@ptrCast(self), horizontalAlign, verticalAlign, options, point);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetRect(self: *@This(), options: PointOptions, rect: Rect, hit: i32) core.HResult!void {
         const _c = self.vtable.GetRect(@ptrCast(self), options, rect, hit);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetText(self: *@This(), options: TextGetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetText(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetTextViaStream(self: *@This(), options: TextGetOptions, value: *IRandomAccessStream) core.HResult!void {
         const _c = self.vtable.GetTextViaStream(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InRange(self: *@This(), range: *ITextRange) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.InRange(@ptrCast(self), range, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn InsertImage(self: *@This(), width: i32, height: i32, ascent: i32, verticalAlign: VerticalCharacterAlignment, alternateText: ?HSTRING, value: *IRandomAccessStream) core.HResult!void {
         const _c = self.vtable.InsertImage(@ptrCast(self), width, height, ascent, verticalAlign, alternateText, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InStory(self: *@This(), range: *ITextRange) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.InStory(@ptrCast(self), range, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEqual(self: *@This(), range: *ITextRange) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEqual(@ptrCast(self), range, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Move(self: *@This(), unit: TextRangeUnit, count: i32) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.Move(@ptrCast(self), unit, count, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveEnd(self: *@This(), unit: TextRangeUnit, count: i32) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.MoveEnd(@ptrCast(self), unit, count, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveStart(self: *@This(), unit: TextRangeUnit, count: i32) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.MoveStart(@ptrCast(self), unit, count, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Paste(self: *@This(), format: i32) core.HResult!void {
         const _c = self.vtable.Paste(@ptrCast(self), format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ScrollIntoView(self: *@This(), value: PointOptions) core.HResult!void {
         const _c = self.vtable.ScrollIntoView(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MatchSelection(self: *@This()) core.HResult!void {
         const _c = self.vtable.MatchSelection(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetIndex(self: *@This(), unit: TextRangeUnit, index: i32, extend: bool) core.HResult!void {
         const _c = self.vtable.SetIndex(@ptrCast(self), unit, index, extend);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPoint(self: *@This(), point: Point, options: PointOptions, extend: bool) core.HResult!void {
         const _c = self.vtable.SetPoint(@ptrCast(self), point, options, extend);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetRange(self: *@This(), startPosition: i32, endPosition: i32) core.HResult!void {
         const _c = self.vtable.SetRange(@ptrCast(self), startPosition, endPosition);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetText(self: *@This(), options: TextSetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetTextViaStream(self: *@This(), options: TextSetOptions, value: *IRandomAccessStream) core.HResult!void {
         const _c = self.vtable.SetTextViaStream(@ptrCast(self), options, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartOf(self: *@This(), unit: TextRangeUnit, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.StartOf(@ptrCast(self), unit, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextRange";
@@ -1747,8 +1777,11 @@ pub const ITextRange = extern struct {
 };
 pub const ITextSelection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1756,58 +1789,58 @@ pub const ITextSelection = extern struct {
     pub fn getOptions(self: *@This()) core.HResult!SelectionOptions {
         var _r: SelectionOptions = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOptions(self: *@This(), value: SelectionOptions) core.HResult!void {
         const _c = self.vtable.put_Options(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getType(self: *@This()) core.HResult!SelectionType {
         var _r: SelectionType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EndKey(self: *@This(), unit: TextRangeUnit, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.EndKey(@ptrCast(self), unit, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn HomeKey(self: *@This(), unit: TextRangeUnit, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.HomeKey(@ptrCast(self), unit, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveDown(self: *@This(), unit: TextRangeUnit, count: i32, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.MoveDown(@ptrCast(self), unit, count, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveLeft(self: *@This(), unit: TextRangeUnit, count: i32, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.MoveLeft(@ptrCast(self), unit, count, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveRight(self: *@This(), unit: TextRangeUnit, count: i32, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.MoveRight(@ptrCast(self), unit, count, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveUp(self: *@This(), unit: TextRangeUnit, count: i32, extend: bool) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.MoveUp(@ptrCast(self), unit, count, extend, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TypeText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.TypeText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Text.ITextSelection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1944,14 +1977,11 @@ pub const RichEditMathMode = enum(i32) {
 };
 pub const RichEditTextDocument = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1959,57 +1989,49 @@ pub const RichEditTextDocument = extern struct {
     pub fn getAlignmentIncludesTrailingWhitespace(self: *@This()) core.HResult!bool {
         var this: ?*ITextDocument2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         return try this.?.getAlignmentIncludesTrailingWhitespace();
     }
     pub fn putAlignmentIncludesTrailingWhitespace(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextDocument2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         return try this.?.putAlignmentIncludesTrailingWhitespace(value);
     }
     pub fn getIgnoreTrailingCharacterSpacing(self: *@This()) core.HResult!bool {
         var this: ?*ITextDocument2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         return try this.?.getIgnoreTrailingCharacterSpacing();
     }
     pub fn putIgnoreTrailingCharacterSpacing(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextDocument2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         return try this.?.putIgnoreTrailingCharacterSpacing(value);
     }
     pub fn ClearUndoRedoHistory(self: *@This()) core.HResult!void {
         var this: ?*ITextDocument3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument3.IID, @ptrCast(&this));
         return try this.?.ClearUndoRedoHistory();
     }
     pub fn SetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         return try this.?.SetMath(value);
     }
     pub fn GetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         return try this.?.GetMath(value);
     }
     pub fn SetMathMode(self: *@This(), mode: RichEditMathMode) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         return try this.?.SetMathMode(mode);
     }
     pub fn getCaretType(self: *@This()) core.HResult!CaretType {
@@ -2128,14 +2150,11 @@ pub const RichEditTextDocument = extern struct {
 };
 pub const RichEditTextRange = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2143,15 +2162,13 @@ pub const RichEditTextRange = extern struct {
     pub fn getContentLinkInfo(self: *@This()) core.HResult!*ContentLinkInfo {
         var this: ?*IRichEditTextRange = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditTextRange.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRichEditTextRange.IID, @ptrCast(&this));
         return try this.?.getContentLinkInfo();
     }
     pub fn putContentLinkInfo(self: *@This(), value: *ContentLinkInfo) core.HResult!void {
         var this: ?*IRichEditTextRange = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditTextRange.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRichEditTextRange.IID, @ptrCast(&this));
         return try this.?.putContentLinkInfo(value);
     }
     pub fn getCharacter(self: *@This()) core.HResult!u16 {
@@ -2399,14 +2416,11 @@ pub const TabLeader = enum(i32) {
 };
 pub const TextConstants = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

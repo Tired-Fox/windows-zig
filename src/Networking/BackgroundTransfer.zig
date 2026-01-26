@@ -8,14 +8,11 @@ pub const BackgroundDownloadProgress = extern struct {
 };
 pub const BackgroundDownloader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -35,155 +32,133 @@ pub const BackgroundDownloader = extern struct {
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getServerCredential();
     }
     pub fn putServerCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putServerCredential(credential);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getProxyCredential();
     }
     pub fn putProxyCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putProxyCredential(credential);
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getMethod();
     }
     pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putMethod(value);
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getGroup();
     }
     pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putGroup(value);
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putCostPolicy(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.getTransferGroup();
     }
     pub fn putTransferGroup(self: *@This(), value: *BackgroundTransferGroup) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.putTransferGroup(value);
     }
     pub fn getSuccessToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.getSuccessToastNotification();
     }
     pub fn putSuccessToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.putSuccessToastNotification(value);
     }
     pub fn getFailureToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.getFailureToastNotification();
     }
     pub fn putFailureToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.putFailureToastNotification(value);
     }
     pub fn getSuccessTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.getSuccessTileNotification();
     }
     pub fn putSuccessTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.putSuccessTileNotification(value);
     }
     pub fn getFailureTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.getFailureTileNotification();
     }
     pub fn putFailureTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         return try this.?.putFailureTileNotification(value);
     }
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var this: ?*IBackgroundDownloader3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader3.IID, @ptrCast(&this));
         return try this.?.getCompletionGroup();
     }
     pub fn init() core.HResult!*@This() {
@@ -227,14 +202,11 @@ pub const BackgroundTransferBehavior = enum(i32) {
 };
 pub const BackgroundTransferCompletionGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -264,14 +236,11 @@ pub const BackgroundTransferCompletionGroup = extern struct {
 };
 pub const BackgroundTransferCompletionGroupTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -292,14 +261,11 @@ pub const BackgroundTransferCompletionGroupTriggerDetails = extern struct {
 };
 pub const BackgroundTransferContentPart = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -343,14 +309,11 @@ pub const BackgroundTransferCostPolicy = enum(i32) {
 };
 pub const BackgroundTransferError = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -369,14 +332,11 @@ pub const BackgroundTransferFileRange = extern struct {
 };
 pub const BackgroundTransferGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -411,14 +371,11 @@ pub const BackgroundTransferPriority = enum(i32) {
 };
 pub const BackgroundTransferRangesDownloadedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -464,14 +421,11 @@ pub const BackgroundUploadProgress = extern struct {
 };
 pub const BackgroundUploader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -499,155 +453,133 @@ pub const BackgroundUploader = extern struct {
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getServerCredential();
     }
     pub fn putServerCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putServerCredential(credential);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getProxyCredential();
     }
     pub fn putProxyCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putProxyCredential(credential);
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getMethod();
     }
     pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putMethod(value);
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getGroup();
     }
     pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putGroup(value);
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         return try this.?.putCostPolicy(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.getTransferGroup();
     }
     pub fn putTransferGroup(self: *@This(), value: *BackgroundTransferGroup) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.putTransferGroup(value);
     }
     pub fn getSuccessToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.getSuccessToastNotification();
     }
     pub fn putSuccessToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.putSuccessToastNotification(value);
     }
     pub fn getFailureToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.getFailureToastNotification();
     }
     pub fn putFailureToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.putFailureToastNotification(value);
     }
     pub fn getSuccessTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.getSuccessTileNotification();
     }
     pub fn putSuccessTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.putSuccessTileNotification(value);
     }
     pub fn getFailureTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.getFailureTileNotification();
     }
     pub fn putFailureTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         return try this.?.putFailureTileNotification(value);
     }
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var this: ?*IBackgroundUploader3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader3.IID, @ptrCast(&this));
         return try this.?.getCompletionGroup();
     }
     pub fn init() core.HResult!*@This() {
@@ -687,14 +619,11 @@ pub const BackgroundUploader = extern struct {
 };
 pub const ContentPrefetcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -722,14 +651,11 @@ pub const ContentPrefetcher = extern struct {
 };
 pub const DownloadOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -761,162 +687,139 @@ pub const DownloadOperation = extern struct {
     pub fn getGuid(self: *@This()) core.HResult!*Guid {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getGuid();
     }
     pub fn getRequestedUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getRequestedUri();
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getMethod();
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getGroup();
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.putCostPolicy(value);
     }
     pub fn GetResultStreamAt(self: *@This(), position: u64) core.HResult!*IInputStream {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.GetResultStreamAt(position);
     }
     pub fn GetResponseInformation(self: *@This()) core.HResult!*ResponseInformation {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.GetResponseInformation();
     }
     pub fn getPriority(self: *@This()) core.HResult!BackgroundTransferPriority {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         return try this.?.getPriority();
     }
     pub fn putPriority(self: *@This(), value: BackgroundTransferPriority) core.HResult!void {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         return try this.?.putPriority(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IDownloadOperation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation2.IID, @ptrCast(&this));
         return try this.?.getTransferGroup();
     }
     pub fn getIsRandomAccessRequired(self: *@This()) core.HResult!bool {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.getIsRandomAccessRequired();
     }
     pub fn putIsRandomAccessRequired(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.putIsRandomAccessRequired(value);
     }
     pub fn GetResultRandomAccessStreamReference(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.GetResultRandomAccessStreamReference();
     }
     pub fn GetDownloadedRanges(self: *@This()) core.HResult!*IVector(BackgroundTransferFileRange) {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.GetDownloadedRanges();
     }
     pub fn addRangesDownloaded(self: *@This(), eventHandler: *TypedEventHandler(DownloadOperation,BackgroundTransferRangesDownloadedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.addRangesDownloaded(eventHandler);
     }
     pub fn removeRangesDownloaded(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.removeRangesDownloaded(eventCookie);
     }
     pub fn putRequestedUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.putRequestedUri(value);
     }
     pub fn getRecoverableWebErrorStatuses(self: *@This()) core.HResult!*IVector(WebErrorStatus) {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.getRecoverableWebErrorStatuses();
     }
     pub fn getCurrentWebErrorStatus(self: *@This()) core.HResult!*IReference(WebErrorStatus) {
         var this: ?*IDownloadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         return try this.?.getCurrentWebErrorStatus();
     }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         var this: ?*IDownloadOperation4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation4.IID, @ptrCast(&this));
         return try this.?.MakeCurrentInTransferGroup();
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IDownloadOperation5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         var this: ?*IDownloadOperation5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
         return try this.?.RemoveRequestHeader(headerName);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.DownloadOperation";
@@ -927,8 +830,11 @@ pub const DownloadOperation = extern struct {
 };
 pub const IBackgroundDownloader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -936,19 +842,19 @@ pub const IBackgroundDownloader = extern struct {
     pub fn CreateDownload(self: *@This(), uri: *Uri, resultFile: *IStorageFile) core.HResult!*DownloadOperation {
         var _r: *DownloadOperation = undefined;
         const _c = self.vtable.CreateDownload(@ptrCast(self), uri, resultFile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDownloadWithRequestBodyFile(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
         var _r: *DownloadOperation = undefined;
         const _c = self.vtable.CreateDownloadWithRequestBodyFile(@ptrCast(self), uri, resultFile, requestBodyFile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDownloadAsync(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyStream: *IInputStream) core.HResult!*IAsyncOperation(DownloadOperation) {
         var _r: *IAsyncOperation(DownloadOperation) = undefined;
         const _c = self.vtable.CreateDownloadAsync(@ptrCast(self), uri, resultFile, requestBodyStream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundDownloader";
@@ -970,8 +876,11 @@ pub const IBackgroundDownloader = extern struct {
 };
 pub const IBackgroundDownloader2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -979,52 +888,52 @@ pub const IBackgroundDownloader2 = extern struct {
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransferGroup(self: *@This(), value: *BackgroundTransferGroup) core.HResult!void {
         const _c = self.vtable.put_TransferGroup(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuccessToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var _r: *ToastNotification = undefined;
         const _c = self.vtable.get_SuccessToastNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuccessToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         const _c = self.vtable.put_SuccessToastNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFailureToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var _r: *ToastNotification = undefined;
         const _c = self.vtable.get_FailureToastNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFailureToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         const _c = self.vtable.put_FailureToastNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuccessTileNotification(self: *@This()) core.HResult!*TileNotification {
         var _r: *TileNotification = undefined;
         const _c = self.vtable.get_SuccessTileNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuccessTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         const _c = self.vtable.put_SuccessTileNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFailureTileNotification(self: *@This()) core.HResult!*TileNotification {
         var _r: *TileNotification = undefined;
         const _c = self.vtable.get_FailureTileNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFailureTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         const _c = self.vtable.put_FailureTileNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundDownloader2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1052,8 +961,11 @@ pub const IBackgroundDownloader2 = extern struct {
 };
 pub const IBackgroundDownloader3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1061,7 +973,7 @@ pub const IBackgroundDownloader3 = extern struct {
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var _r: *BackgroundTransferCompletionGroup = undefined;
         const _c = self.vtable.get_CompletionGroup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundDownloader3";
@@ -1081,8 +993,11 @@ pub const IBackgroundDownloader3 = extern struct {
 };
 pub const IBackgroundDownloaderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1090,7 +1005,7 @@ pub const IBackgroundDownloaderFactory = extern struct {
     pub fn CreateWithCompletionGroup(self: *@This(), completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundDownloader {
         var _r: *BackgroundDownloader = undefined;
         const _c = self.vtable.CreateWithCompletionGroup(@ptrCast(self), completionGroup, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundDownloaderFactory";
@@ -1110,8 +1025,11 @@ pub const IBackgroundDownloaderFactory = extern struct {
 };
 pub const IBackgroundDownloaderStaticMethods = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1119,13 +1037,13 @@ pub const IBackgroundDownloaderStaticMethods = extern struct {
     pub fn GetCurrentDownloadsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         var _r: *IAsyncOperation(IVectorView(DownloadOperation)) = undefined;
         const _c = self.vtable.GetCurrentDownloadsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentDownloadsAsyncWithGroup(self: *@This(), group: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         var _r: *IAsyncOperation(IVectorView(DownloadOperation)) = undefined;
         const _c = self.vtable.GetCurrentDownloadsAsyncWithGroup(@ptrCast(self), group, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundDownloaderStaticMethods";
@@ -1146,8 +1064,11 @@ pub const IBackgroundDownloaderStaticMethods = extern struct {
 };
 pub const IBackgroundDownloaderStaticMethods2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1155,7 +1076,7 @@ pub const IBackgroundDownloaderStaticMethods2 = extern struct {
     pub fn GetCurrentDownloadsForTransferGroupAsync(self: *@This(), group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         var _r: *IAsyncOperation(IVectorView(DownloadOperation)) = undefined;
         const _c = self.vtable.GetCurrentDownloadsForTransferGroupAsync(@ptrCast(self), group, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundDownloaderStaticMethods2";
@@ -1175,8 +1096,11 @@ pub const IBackgroundDownloaderStaticMethods2 = extern struct {
 };
 pub const IBackgroundDownloaderUserConsent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1184,7 +1108,7 @@ pub const IBackgroundDownloaderUserConsent = extern struct {
     pub fn RequestUnconstrainedDownloadsAsync(self: *@This(), operations: *IIterable(DownloadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
         var _r: *IAsyncOperation(UnconstrainedTransferRequestResult) = undefined;
         const _c = self.vtable.RequestUnconstrainedDownloadsAsync(@ptrCast(self), operations, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundDownloaderUserConsent";
@@ -1204,65 +1128,68 @@ pub const IBackgroundDownloaderUserConsent = extern struct {
 };
 pub const IBackgroundTransferBase = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_ServerCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServerCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_ServerCredential(@ptrCast(self), credential);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_ProxyCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProxyCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_ProxyCredential(@ptrCast(self), credential);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Method(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Group(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var _r: BackgroundTransferCostPolicy = undefined;
         const _c = self.vtable.get_CostPolicy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         const _c = self.vtable.put_CostPolicy(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1291,8 +1218,11 @@ pub const IBackgroundTransferBase = extern struct {
 };
 pub const IBackgroundTransferCompletionGroup = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1300,18 +1230,18 @@ pub const IBackgroundTransferCompletionGroup = extern struct {
     pub fn getTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
         var _r: *IBackgroundTrigger = undefined;
         const _c = self.vtable.get_Trigger(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Enable(self: *@This()) core.HResult!void {
         const _c = self.vtable.Enable(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferCompletionGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1332,8 +1262,11 @@ pub const IBackgroundTransferCompletionGroup = extern struct {
 };
 pub const IBackgroundTransferCompletionGroupTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1341,13 +1274,13 @@ pub const IBackgroundTransferCompletionGroupTriggerDetails = extern struct {
     pub fn getDownloads(self: *@This()) core.HResult!*IVectorView(DownloadOperation) {
         var _r: *IVectorView(DownloadOperation) = undefined;
         const _c = self.vtable.get_Downloads(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUploads(self: *@This()) core.HResult!*IVectorView(UploadOperation) {
         var _r: *IVectorView(UploadOperation) = undefined;
         const _c = self.vtable.get_Uploads(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferCompletionGroupTriggerDetails";
@@ -1368,23 +1301,26 @@ pub const IBackgroundTransferCompletionGroupTriggerDetails = extern struct {
 };
 pub const IBackgroundTransferContentPart = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetHeader(@ptrCast(self), headerName, headerValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetFile(self: *@This(), value: *IStorageFile) core.HResult!void {
         const _c = self.vtable.SetFile(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferContentPart";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1405,8 +1341,11 @@ pub const IBackgroundTransferContentPart = extern struct {
 };
 pub const IBackgroundTransferContentPartFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1414,13 +1353,13 @@ pub const IBackgroundTransferContentPartFactory = extern struct {
     pub fn CreateWithName(self: *@This(), name: ?HSTRING) core.HResult!*BackgroundTransferContentPart {
         var _r: *BackgroundTransferContentPart = undefined;
         const _c = self.vtable.CreateWithName(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithNameAndFileName(self: *@This(), name: ?HSTRING, fileName: ?HSTRING) core.HResult!*BackgroundTransferContentPart {
         var _r: *BackgroundTransferContentPart = undefined;
         const _c = self.vtable.CreateWithNameAndFileName(@ptrCast(self), name, fileName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferContentPartFactory";
@@ -1441,8 +1380,11 @@ pub const IBackgroundTransferContentPartFactory = extern struct {
 };
 pub const IBackgroundTransferErrorStaticMethods = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1450,7 +1392,7 @@ pub const IBackgroundTransferErrorStaticMethods = extern struct {
     pub fn GetStatus(self: *@This(), hresult: i32) core.HResult!WebErrorStatus {
         var _r: WebErrorStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), hresult, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferErrorStaticMethods";
@@ -1470,8 +1412,11 @@ pub const IBackgroundTransferErrorStaticMethods = extern struct {
 };
 pub const IBackgroundTransferGroup = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1479,18 +1424,18 @@ pub const IBackgroundTransferGroup = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransferBehavior(self: *@This()) core.HResult!BackgroundTransferBehavior {
         var _r: BackgroundTransferBehavior = undefined;
         const _c = self.vtable.get_TransferBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransferBehavior(self: *@This(), value: BackgroundTransferBehavior) core.HResult!void {
         const _c = self.vtable.put_TransferBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1511,8 +1456,11 @@ pub const IBackgroundTransferGroup = extern struct {
 };
 pub const IBackgroundTransferGroupStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1520,7 +1468,7 @@ pub const IBackgroundTransferGroupStatics = extern struct {
     pub fn CreateGroup(self: *@This(), name: ?HSTRING) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.CreateGroup(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferGroupStatics";
@@ -1540,8 +1488,11 @@ pub const IBackgroundTransferGroupStatics = extern struct {
 };
 pub const IBackgroundTransferOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1549,47 +1500,47 @@ pub const IBackgroundTransferOperation = extern struct {
     pub fn getGuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Guid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestedUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_RequestedUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var _r: BackgroundTransferCostPolicy = undefined;
         const _c = self.vtable.get_CostPolicy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         const _c = self.vtable.put_CostPolicy(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetResultStreamAt(self: *@This(), position: u64) core.HResult!*IInputStream {
         var _r: *IInputStream = undefined;
         const _c = self.vtable.GetResultStreamAt(@ptrCast(self), position, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetResponseInformation(self: *@This()) core.HResult!*ResponseInformation {
         var _r: *ResponseInformation = undefined;
         const _c = self.vtable.GetResponseInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferOperation";
@@ -1616,8 +1567,11 @@ pub const IBackgroundTransferOperation = extern struct {
 };
 pub const IBackgroundTransferOperationPriority = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1625,12 +1579,12 @@ pub const IBackgroundTransferOperationPriority = extern struct {
     pub fn getPriority(self: *@This()) core.HResult!BackgroundTransferPriority {
         var _r: BackgroundTransferPriority = undefined;
         const _c = self.vtable.get_Priority(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPriority(self: *@This(), value: BackgroundTransferPriority) core.HResult!void {
         const _c = self.vtable.put_Priority(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferOperationPriority";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1650,8 +1604,11 @@ pub const IBackgroundTransferOperationPriority = extern struct {
 };
 pub const IBackgroundTransferRangesDownloadedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1659,19 +1616,19 @@ pub const IBackgroundTransferRangesDownloadedEventArgs = extern struct {
     pub fn getWasDownloadRestarted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_WasDownloadRestarted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAddedRanges(self: *@This()) core.HResult!*IVector(BackgroundTransferFileRange) {
         var _r: *IVector(BackgroundTransferFileRange) = undefined;
         const _c = self.vtable.get_AddedRanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundTransferRangesDownloadedEventArgs";
@@ -1693,8 +1650,11 @@ pub const IBackgroundTransferRangesDownloadedEventArgs = extern struct {
 };
 pub const IBackgroundUploader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1702,31 +1662,31 @@ pub const IBackgroundUploader = extern struct {
     pub fn CreateUpload(self: *@This(), uri: *Uri, sourceFile: *IStorageFile) core.HResult!*UploadOperation {
         var _r: *UploadOperation = undefined;
         const _c = self.vtable.CreateUpload(@ptrCast(self), uri, sourceFile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUploadFromStreamAsync(self: *@This(), uri: *Uri, sourceStream: *IInputStream) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
         const _c = self.vtable.CreateUploadFromStreamAsync(@ptrCast(self), uri, sourceStream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUploadAsync(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart)) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
         const _c = self.vtable.CreateUploadAsync(@ptrCast(self), uri, parts, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUploadAsyncWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
         const _c = self.vtable.CreateUploadAsyncWithSubType(@ptrCast(self), uri, parts, subType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUploadAsyncWithSubTypeAndBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING, boundary: ?HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
         const _c = self.vtable.CreateUploadAsyncWithSubTypeAndBoundary(@ptrCast(self), uri, parts, subType, boundary, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundUploader";
@@ -1750,8 +1710,11 @@ pub const IBackgroundUploader = extern struct {
 };
 pub const IBackgroundUploader2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1759,52 +1722,52 @@ pub const IBackgroundUploader2 = extern struct {
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransferGroup(self: *@This(), value: *BackgroundTransferGroup) core.HResult!void {
         const _c = self.vtable.put_TransferGroup(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuccessToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var _r: *ToastNotification = undefined;
         const _c = self.vtable.get_SuccessToastNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuccessToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         const _c = self.vtable.put_SuccessToastNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFailureToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var _r: *ToastNotification = undefined;
         const _c = self.vtable.get_FailureToastNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFailureToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         const _c = self.vtable.put_FailureToastNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuccessTileNotification(self: *@This()) core.HResult!*TileNotification {
         var _r: *TileNotification = undefined;
         const _c = self.vtable.get_SuccessTileNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuccessTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         const _c = self.vtable.put_SuccessTileNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFailureTileNotification(self: *@This()) core.HResult!*TileNotification {
         var _r: *TileNotification = undefined;
         const _c = self.vtable.get_FailureTileNotification(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFailureTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         const _c = self.vtable.put_FailureTileNotification(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundUploader2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1832,8 +1795,11 @@ pub const IBackgroundUploader2 = extern struct {
 };
 pub const IBackgroundUploader3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1841,7 +1807,7 @@ pub const IBackgroundUploader3 = extern struct {
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var _r: *BackgroundTransferCompletionGroup = undefined;
         const _c = self.vtable.get_CompletionGroup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundUploader3";
@@ -1861,8 +1827,11 @@ pub const IBackgroundUploader3 = extern struct {
 };
 pub const IBackgroundUploaderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1870,7 +1839,7 @@ pub const IBackgroundUploaderFactory = extern struct {
     pub fn CreateWithCompletionGroup(self: *@This(), completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundUploader {
         var _r: *BackgroundUploader = undefined;
         const _c = self.vtable.CreateWithCompletionGroup(@ptrCast(self), completionGroup, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundUploaderFactory";
@@ -1890,8 +1859,11 @@ pub const IBackgroundUploaderFactory = extern struct {
 };
 pub const IBackgroundUploaderStaticMethods = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1899,13 +1871,13 @@ pub const IBackgroundUploaderStaticMethods = extern struct {
     pub fn GetCurrentUploadsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         var _r: *IAsyncOperation(IVectorView(UploadOperation)) = undefined;
         const _c = self.vtable.GetCurrentUploadsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentUploadsAsyncWithGroup(self: *@This(), group: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         var _r: *IAsyncOperation(IVectorView(UploadOperation)) = undefined;
         const _c = self.vtable.GetCurrentUploadsAsyncWithGroup(@ptrCast(self), group, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundUploaderStaticMethods";
@@ -1926,8 +1898,11 @@ pub const IBackgroundUploaderStaticMethods = extern struct {
 };
 pub const IBackgroundUploaderStaticMethods2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1935,7 +1910,7 @@ pub const IBackgroundUploaderStaticMethods2 = extern struct {
     pub fn GetCurrentUploadsForTransferGroupAsync(self: *@This(), group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         var _r: *IAsyncOperation(IVectorView(UploadOperation)) = undefined;
         const _c = self.vtable.GetCurrentUploadsForTransferGroupAsync(@ptrCast(self), group, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundUploaderStaticMethods2";
@@ -1955,8 +1930,11 @@ pub const IBackgroundUploaderStaticMethods2 = extern struct {
 };
 pub const IBackgroundUploaderUserConsent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1964,7 +1942,7 @@ pub const IBackgroundUploaderUserConsent = extern struct {
     pub fn RequestUnconstrainedUploadsAsync(self: *@This(), operations: *IIterable(UploadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
         var _r: *IAsyncOperation(UnconstrainedTransferRequestResult) = undefined;
         const _c = self.vtable.RequestUnconstrainedUploadsAsync(@ptrCast(self), operations, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IBackgroundUploaderUserConsent";
@@ -1984,8 +1962,11 @@ pub const IBackgroundUploaderUserConsent = extern struct {
 };
 pub const IContentPrefetcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1993,17 +1974,17 @@ pub const IContentPrefetcher = extern struct {
     pub fn getContentUris(self: *@This()) core.HResult!*IVector(Uri) {
         var _r: *IVector(Uri) = undefined;
         const _c = self.vtable.get_ContentUris(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIndirectContentUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_IndirectContentUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIndirectContentUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_IndirectContentUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IContentPrefetcher";
@@ -2025,8 +2006,11 @@ pub const IContentPrefetcher = extern struct {
 };
 pub const IContentPrefetcherTime = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2034,7 +2018,7 @@ pub const IContentPrefetcherTime = extern struct {
     pub fn getLastSuccessfulPrefetchTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_LastSuccessfulPrefetchTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IContentPrefetcherTime";
@@ -2054,8 +2038,11 @@ pub const IContentPrefetcherTime = extern struct {
 };
 pub const IDownloadOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2063,34 +2050,34 @@ pub const IDownloadOperation = extern struct {
     pub fn getResultFile(self: *@This()) core.HResult!*IStorageFile {
         var _r: *IStorageFile = undefined;
         const _c = self.vtable.get_ResultFile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProgress(self: *@This()) core.HResult!BackgroundDownloadProgress {
         var _r: BackgroundDownloadProgress = undefined;
         const _c = self.vtable.get_Progress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(DownloadOperation,DownloadOperation) {
         var _r: *IAsyncOperationWithProgress(DownloadOperation,DownloadOperation) = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AttachAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(DownloadOperation,DownloadOperation) {
         var _r: *IAsyncOperationWithProgress(DownloadOperation,DownloadOperation) = undefined;
         const _c = self.vtable.AttachAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Pause(self: *@This()) core.HResult!void {
         const _c = self.vtable.Pause(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Resume(self: *@This()) core.HResult!void {
         const _c = self.vtable.Resume(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IDownloadOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2114,8 +2101,11 @@ pub const IDownloadOperation = extern struct {
 };
 pub const IDownloadOperation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2123,7 +2113,7 @@ pub const IDownloadOperation2 = extern struct {
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IDownloadOperation2";
@@ -2143,8 +2133,11 @@ pub const IDownloadOperation2 = extern struct {
 };
 pub const IDownloadOperation3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2152,49 +2145,49 @@ pub const IDownloadOperation3 = extern struct {
     pub fn getIsRandomAccessRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRandomAccessRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsRandomAccessRequired(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsRandomAccessRequired(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetResultRandomAccessStreamReference(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.GetResultRandomAccessStreamReference(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDownloadedRanges(self: *@This()) core.HResult!*IVector(BackgroundTransferFileRange) {
         var _r: *IVector(BackgroundTransferFileRange) = undefined;
         const _c = self.vtable.GetDownloadedRanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addRangesDownloaded(self: *@This(), eventHandler: *TypedEventHandler(DownloadOperation,BackgroundTransferRangesDownloadedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RangesDownloaded(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRangesDownloaded(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RangesDownloaded(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putRequestedUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_RequestedUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRecoverableWebErrorStatuses(self: *@This()) core.HResult!*IVector(WebErrorStatus) {
         var _r: *IVector(WebErrorStatus) = undefined;
         const _c = self.vtable.get_RecoverableWebErrorStatuses(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentWebErrorStatus(self: *@This()) core.HResult!*IReference(WebErrorStatus) {
         var _r: *IReference(WebErrorStatus) = undefined;
         const _c = self.vtable.get_CurrentWebErrorStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IDownloadOperation3";
@@ -2222,15 +2215,18 @@ pub const IDownloadOperation3 = extern struct {
 };
 pub const IDownloadOperation4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         const _c = self.vtable.MakeCurrentInTransferGroup(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IDownloadOperation4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2249,19 +2245,22 @@ pub const IDownloadOperation4 = extern struct {
 };
 pub const IDownloadOperation5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveRequestHeader(@ptrCast(self), headerName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IDownloadOperation5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2281,8 +2280,11 @@ pub const IDownloadOperation5 = extern struct {
 };
 pub const IResponseInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2290,25 +2292,25 @@ pub const IResponseInformation = extern struct {
     pub fn getIsResumable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsResumable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActualUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ActualUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatusCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_StatusCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeaders(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IResponseInformation";
@@ -2331,8 +2333,11 @@ pub const IResponseInformation = extern struct {
 };
 pub const IUnconstrainedTransferRequestResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2340,7 +2345,7 @@ pub const IUnconstrainedTransferRequestResult = extern struct {
     pub fn getIsUnconstrained(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUnconstrained(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IUnconstrainedTransferRequestResult";
@@ -2360,8 +2365,11 @@ pub const IUnconstrainedTransferRequestResult = extern struct {
 };
 pub const IUploadOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2369,25 +2377,25 @@ pub const IUploadOperation = extern struct {
     pub fn getSourceFile(self: *@This()) core.HResult!*IStorageFile {
         var _r: *IStorageFile = undefined;
         const _c = self.vtable.get_SourceFile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProgress(self: *@This()) core.HResult!BackgroundUploadProgress {
         var _r: BackgroundUploadProgress = undefined;
         const _c = self.vtable.get_Progress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(UploadOperation,UploadOperation) {
         var _r: *IAsyncOperationWithProgress(UploadOperation,UploadOperation) = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AttachAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(UploadOperation,UploadOperation) {
         var _r: *IAsyncOperationWithProgress(UploadOperation,UploadOperation) = undefined;
         const _c = self.vtable.AttachAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IUploadOperation";
@@ -2410,8 +2418,11 @@ pub const IUploadOperation = extern struct {
 };
 pub const IUploadOperation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2419,7 +2430,7 @@ pub const IUploadOperation2 = extern struct {
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IUploadOperation2";
@@ -2439,15 +2450,18 @@ pub const IUploadOperation2 = extern struct {
 };
 pub const IUploadOperation3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         const _c = self.vtable.MakeCurrentInTransferGroup(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IUploadOperation3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2466,19 +2480,22 @@ pub const IUploadOperation3 = extern struct {
 };
 pub const IUploadOperation4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveRequestHeader(@ptrCast(self), headerName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.IUploadOperation4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2498,14 +2515,11 @@ pub const IUploadOperation4 = extern struct {
 };
 pub const ResponseInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2534,14 +2548,11 @@ pub const ResponseInformation = extern struct {
 };
 pub const UnconstrainedTransferRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2558,14 +2569,11 @@ pub const UnconstrainedTransferRequestResult = extern struct {
 };
 pub const UploadOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2589,99 +2597,85 @@ pub const UploadOperation = extern struct {
     pub fn getGuid(self: *@This()) core.HResult!*Guid {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getGuid();
     }
     pub fn getRequestedUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getRequestedUri();
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getMethod();
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getGroup();
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.putCostPolicy(value);
     }
     pub fn GetResultStreamAt(self: *@This(), position: u64) core.HResult!*IInputStream {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.GetResultStreamAt(position);
     }
     pub fn GetResponseInformation(self: *@This()) core.HResult!*ResponseInformation {
         var this: ?*IBackgroundTransferOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         return try this.?.GetResponseInformation();
     }
     pub fn getPriority(self: *@This()) core.HResult!BackgroundTransferPriority {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         return try this.?.getPriority();
     }
     pub fn putPriority(self: *@This(), value: BackgroundTransferPriority) core.HResult!void {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         return try this.?.putPriority(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IUploadOperation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation2.IID, @ptrCast(&this));
         return try this.?.getTransferGroup();
     }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         var this: ?*IUploadOperation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation3.IID, @ptrCast(&this));
         return try this.?.MakeCurrentInTransferGroup();
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IUploadOperation4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         var this: ?*IUploadOperation4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
         return try this.?.RemoveRequestHeader(headerName);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.UploadOperation";

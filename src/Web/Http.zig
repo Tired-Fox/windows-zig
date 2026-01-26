@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const HttpBufferContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -44,15 +41,13 @@ pub const HttpBufferContent = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn CreateFromBuffer(content: *IBuffer) core.HResult!*HttpBufferContent {
@@ -72,14 +67,11 @@ pub const HttpBufferContent = extern struct {
 };
 pub const HttpClient = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -131,99 +123,85 @@ pub const HttpClient = extern struct {
     pub fn TryDeleteAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryDeleteAsync(uri);
     }
     pub fn TryGetAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryGetAsync(uri);
     }
     pub fn TryGetAsyncWithCompletionOption(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryGetAsyncWithCompletionOption(uri, completionOption);
     }
     pub fn TryGetBufferAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpGetBufferResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryGetBufferAsync(uri);
     }
     pub fn TryGetInputStreamAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpGetInputStreamResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryGetInputStreamAsync(uri);
     }
     pub fn TryGetStringAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpGetStringResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryGetStringAsync(uri);
     }
     pub fn TryPostAsync(self: *@This(), uri: *Uri, content: *IHttpContent) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryPostAsync(uri, content);
     }
     pub fn TryPutAsync(self: *@This(), uri: *Uri, content: *IHttpContent) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TryPutAsync(uri, content);
     }
     pub fn TrySendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TrySendRequestAsync(request);
     }
     pub fn TrySendRequestAsyncWithCompletionOption(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         return try this.?.TrySendRequestAsyncWithCompletionOption(request, completionOption);
     }
     pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IHttpClient3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient3.IID, @ptrCast(&this));
         return try this.?.getDefaultPrivacyAnnotation();
     }
     pub fn putDefaultPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IHttpClient3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpClient3.IID, @ptrCast(&this));
         return try this.?.putDefaultPrivacyAnnotation(value);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn init() core.HResult!*@This() {
@@ -248,14 +226,11 @@ pub const HttpCompletionOption = enum(i32) {
 };
 pub const HttpCookie = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -307,8 +282,7 @@ pub const HttpCookie = extern struct {
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn Create(name: ?HSTRING, domain: ?HSTRING, path: ?HSTRING) core.HResult!*HttpCookie {
@@ -324,14 +298,11 @@ pub const HttpCookie = extern struct {
 };
 pub const HttpCookieCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -343,8 +314,7 @@ pub const HttpCookieCollection = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(HttpCookie) {
         var this: ?*IIterable(HttpCookie) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(HttpCookie).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(HttpCookie).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpCookieCollection";
@@ -355,14 +325,11 @@ pub const HttpCookieCollection = extern struct {
 };
 pub const HttpCookieManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -391,14 +358,11 @@ pub const HttpCookieManager = extern struct {
 };
 pub const HttpFormUrlEncodedContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -434,15 +398,13 @@ pub const HttpFormUrlEncodedContent = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn Create(content: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
@@ -458,14 +420,11 @@ pub const HttpFormUrlEncodedContent = extern struct {
 };
 pub const HttpGetBufferResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -493,15 +452,13 @@ pub const HttpGetBufferResult = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpGetBufferResult";
@@ -512,14 +469,11 @@ pub const HttpGetBufferResult = extern struct {
 };
 pub const HttpGetInputStreamResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -547,15 +501,13 @@ pub const HttpGetInputStreamResult = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpGetInputStreamResult";
@@ -566,14 +518,11 @@ pub const HttpGetInputStreamResult = extern struct {
 };
 pub const HttpGetStringResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -601,15 +550,13 @@ pub const HttpGetStringResult = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpGetStringResult";
@@ -620,14 +567,11 @@ pub const HttpGetStringResult = extern struct {
 };
 pub const HttpMethod = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -639,8 +583,7 @@ pub const HttpMethod = extern struct {
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn Create(method: ?HSTRING) core.HResult!*HttpMethod {
@@ -685,14 +628,11 @@ pub const HttpMethod = extern struct {
 };
 pub const HttpMultipartContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -700,8 +640,7 @@ pub const HttpMultipartContent = extern struct {
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         var this: ?*IHttpMultipartContent = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartContent.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartContent.IID, @ptrCast(&this));
         return try this.?.Add(content);
     }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
@@ -735,22 +674,19 @@ pub const HttpMultipartContent = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IHttpContent) {
         var this: ?*IIterable(IHttpContent) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IHttpContent).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IHttpContent).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn init() core.HResult!*@This() {
@@ -775,14 +711,11 @@ pub const HttpMultipartContent = extern struct {
 };
 pub const HttpMultipartFormDataContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -790,22 +723,19 @@ pub const HttpMultipartFormDataContent = extern struct {
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         return try this.?.Add(content);
     }
     pub fn AddWithName(self: *@This(), content: *IHttpContent, name: ?HSTRING) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         return try this.?.AddWithName(content, name);
     }
     pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: ?HSTRING, fileName: ?HSTRING) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         return try this.?.AddWithNameAndFileName(content, name, fileName);
     }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
@@ -839,22 +769,19 @@ pub const HttpMultipartFormDataContent = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IHttpContent) {
         var this: ?*IIterable(IHttpContent) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IHttpContent).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IHttpContent).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn init() core.HResult!*@This() {
@@ -895,14 +822,11 @@ pub const HttpProgressStage = enum(i32) {
 };
 pub const HttpRequestMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -946,29 +870,25 @@ pub const HttpRequestMessage = extern struct {
     pub fn getPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IHttpRequestMessage2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpRequestMessage2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpRequestMessage2.IID, @ptrCast(&this));
         return try this.?.getPrivacyAnnotation();
     }
     pub fn putPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IHttpRequestMessage2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpRequestMessage2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpRequestMessage2.IID, @ptrCast(&this));
         return try this.?.putPrivacyAnnotation(value);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn init() core.HResult!*@This() {
@@ -989,14 +909,11 @@ pub const HttpRequestMessage = extern struct {
 };
 pub const HttpRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1020,15 +937,13 @@ pub const HttpRequestResult = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpRequestResult";
@@ -1039,14 +954,11 @@ pub const HttpRequestResult = extern struct {
 };
 pub const HttpResponseMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1114,15 +1026,13 @@ pub const HttpResponseMessage = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn init() core.HResult!*@This() {
@@ -1208,14 +1118,11 @@ pub const HttpStatusCode = enum(i32) {
 };
 pub const HttpStreamContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1251,15 +1158,13 @@ pub const HttpStreamContent = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn CreateFromInputStream(content: *IInputStream) core.HResult!*HttpStreamContent {
@@ -1275,14 +1180,11 @@ pub const HttpStreamContent = extern struct {
 };
 pub const HttpStringContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1318,15 +1220,13 @@ pub const HttpStringContent = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn CreateFromString(content: ?HSTRING) core.HResult!*HttpStringContent {
@@ -1350,14 +1250,11 @@ pub const HttpStringContent = extern struct {
 };
 pub const HttpTransportInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1381,8 +1278,7 @@ pub const HttpTransportInformation = extern struct {
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpTransportInformation";
@@ -1399,8 +1295,11 @@ pub const HttpVersion = enum(i32) {
 };
 pub const IHttpBufferContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1408,13 +1307,13 @@ pub const IHttpBufferContentFactory = extern struct {
     pub fn CreateFromBuffer(self: *@This(), content: *IBuffer) core.HResult!*HttpBufferContent {
         var _r: *HttpBufferContent = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBufferWithOffset(self: *@This(), content: *IBuffer, offset: u32, count: u32) core.HResult!*HttpBufferContent {
         var _r: *HttpBufferContent = undefined;
         const _c = self.vtable.CreateFromBufferWithOffset(@ptrCast(self), content, offset, count, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpBufferContentFactory";
@@ -1435,8 +1334,11 @@ pub const IHttpBufferContentFactory = extern struct {
 };
 pub const IHttpClient = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1444,67 +1346,67 @@ pub const IHttpClient = extern struct {
     pub fn DeleteAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.DeleteAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAsyncWithCompletionOption(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.GetAsyncWithCompletionOption(@ptrCast(self), uri, completionOption, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBufferAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(IBuffer,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(IBuffer,HttpProgress) = undefined;
         const _c = self.vtable.GetBufferAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetInputStreamAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(IInputStream,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(IInputStream,HttpProgress) = undefined;
         const _c = self.vtable.GetInputStreamAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetStringAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(?HSTRING,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(?HSTRING,HttpProgress) = undefined;
         const _c = self.vtable.GetStringAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PostAsync(self: *@This(), uri: *Uri, content: *IHttpContent) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.PostAsync(@ptrCast(self), uri, content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PutAsync(self: *@This(), uri: *Uri, content: *IHttpContent) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.PutAsync(@ptrCast(self), uri, content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.SendRequestAsync(@ptrCast(self), request, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendRequestAsyncWithCompletionOption(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.SendRequestAsyncWithCompletionOption(@ptrCast(self), request, completionOption, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultRequestHeaders(self: *@This()) core.HResult!*HttpRequestHeaderCollection {
         var _r: *HttpRequestHeaderCollection = undefined;
         const _c = self.vtable.get_DefaultRequestHeaders(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpClient";
@@ -1534,8 +1436,11 @@ pub const IHttpClient = extern struct {
 };
 pub const IHttpClient2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1543,61 +1448,61 @@ pub const IHttpClient2 = extern struct {
     pub fn TryDeleteAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TryDeleteAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TryGetAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetAsyncWithCompletionOption(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TryGetAsyncWithCompletionOption(@ptrCast(self), uri, completionOption, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetBufferAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpGetBufferResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpGetBufferResult,HttpProgress) = undefined;
         const _c = self.vtable.TryGetBufferAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetInputStreamAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpGetInputStreamResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpGetInputStreamResult,HttpProgress) = undefined;
         const _c = self.vtable.TryGetInputStreamAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetStringAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpGetStringResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpGetStringResult,HttpProgress) = undefined;
         const _c = self.vtable.TryGetStringAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryPostAsync(self: *@This(), uri: *Uri, content: *IHttpContent) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TryPostAsync(@ptrCast(self), uri, content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryPutAsync(self: *@This(), uri: *Uri, content: *IHttpContent) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TryPutAsync(@ptrCast(self), uri, content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TrySendRequestAsync(@ptrCast(self), request, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySendRequestAsyncWithCompletionOption(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TrySendRequestAsyncWithCompletionOption(@ptrCast(self), request, completionOption, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpClient2";
@@ -1626,8 +1531,11 @@ pub const IHttpClient2 = extern struct {
 };
 pub const IHttpClient3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1635,12 +1543,12 @@ pub const IHttpClient3 = extern struct {
     pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultPrivacyAnnotation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDefaultPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultPrivacyAnnotation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpClient3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1660,8 +1568,11 @@ pub const IHttpClient3 = extern struct {
 };
 pub const IHttpClientFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1669,7 +1580,7 @@ pub const IHttpClientFactory = extern struct {
     pub fn Create(self: *@This(), filter: *IHttpFilter) core.HResult!*HttpClient {
         var _r: *HttpClient = undefined;
         const _c = self.vtable.Create(@ptrCast(self), filter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpClientFactory";
@@ -1689,8 +1600,11 @@ pub const IHttpClientFactory = extern struct {
 };
 pub const IHttpContent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1698,43 +1612,43 @@ pub const IHttpContent = extern struct {
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         var _r: *HttpContentHeaderCollection = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn BufferAllAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         var _r: *IAsyncOperationWithProgress(u64,u64) = undefined;
         const _c = self.vtable.BufferAllAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReadAsBufferAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(IBuffer,u64) {
         var _r: *IAsyncOperationWithProgress(IBuffer,u64) = undefined;
         const _c = self.vtable.ReadAsBufferAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReadAsInputStreamAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(IInputStream,u64) {
         var _r: *IAsyncOperationWithProgress(IInputStream,u64) = undefined;
         const _c = self.vtable.ReadAsInputStreamAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
         var _r: *IAsyncOperationWithProgress(?HSTRING,u64) = undefined;
         const _c = self.vtable.ReadAsStringAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryComputeLength(self: *@This(), length: u64) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryComputeLength(@ptrCast(self), length, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn WriteToStreamAsync(self: *@This(), outputStream: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         var _r: *IAsyncOperationWithProgress(u64,u64) = undefined;
         const _c = self.vtable.WriteToStreamAsync(@ptrCast(self), outputStream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpContent";
@@ -1760,8 +1674,11 @@ pub const IHttpContent = extern struct {
 };
 pub const IHttpCookie = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1769,60 +1686,60 @@ pub const IHttpCookie = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpires(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_Expires(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExpires(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         const _c = self.vtable.put_Expires(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHttpOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HttpOnly(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHttpOnly(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_HttpOnly(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSecure(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Secure(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSecure(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Secure(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpCookie";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1851,8 +1768,11 @@ pub const IHttpCookie = extern struct {
 };
 pub const IHttpCookieFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1860,7 +1780,7 @@ pub const IHttpCookieFactory = extern struct {
     pub fn Create(self: *@This(), name: ?HSTRING, domain: ?HSTRING, path: ?HSTRING) core.HResult!*HttpCookie {
         var _r: *HttpCookie = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, domain, path, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpCookieFactory";
@@ -1880,8 +1800,11 @@ pub const IHttpCookieFactory = extern struct {
 };
 pub const IHttpCookieManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1889,23 +1812,23 @@ pub const IHttpCookieManager = extern struct {
     pub fn SetCookie(self: *@This(), cookie: *HttpCookie) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.SetCookie(@ptrCast(self), cookie, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetCookieWithThirdParty(self: *@This(), cookie: *HttpCookie, thirdParty: bool) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.SetCookieWithThirdParty(@ptrCast(self), cookie, thirdParty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteCookie(self: *@This(), cookie: *HttpCookie) core.HResult!void {
         const _c = self.vtable.DeleteCookie(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetCookies(self: *@This(), uri: *Uri) core.HResult!*HttpCookieCollection {
         var _r: *HttpCookieCollection = undefined;
         const _c = self.vtable.GetCookies(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpCookieManager";
@@ -1928,8 +1851,11 @@ pub const IHttpCookieManager = extern struct {
 };
 pub const IHttpFormUrlEncodedContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1937,7 +1863,7 @@ pub const IHttpFormUrlEncodedContentFactory = extern struct {
     pub fn Create(self: *@This(), content: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
         var _r: *HttpFormUrlEncodedContent = undefined;
         const _c = self.vtable.Create(@ptrCast(self), content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpFormUrlEncodedContentFactory";
@@ -1957,8 +1883,11 @@ pub const IHttpFormUrlEncodedContentFactory = extern struct {
 };
 pub const IHttpGetBufferResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1966,31 +1895,31 @@ pub const IHttpGetBufferResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseMessage(self: *@This()) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.get_ResponseMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpGetBufferResult";
@@ -2014,8 +1943,11 @@ pub const IHttpGetBufferResult = extern struct {
 };
 pub const IHttpGetInputStreamResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2023,31 +1955,31 @@ pub const IHttpGetInputStreamResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseMessage(self: *@This()) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.get_ResponseMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!*IInputStream {
         var _r: *IInputStream = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpGetInputStreamResult";
@@ -2071,8 +2003,11 @@ pub const IHttpGetInputStreamResult = extern struct {
 };
 pub const IHttpGetStringResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2080,31 +2015,31 @@ pub const IHttpGetStringResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseMessage(self: *@This()) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.get_ResponseMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpGetStringResult";
@@ -2128,8 +2063,11 @@ pub const IHttpGetStringResult = extern struct {
 };
 pub const IHttpMethod = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2137,7 +2075,7 @@ pub const IHttpMethod = extern struct {
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMethod";
@@ -2157,8 +2095,11 @@ pub const IHttpMethod = extern struct {
 };
 pub const IHttpMethodFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2166,7 +2107,7 @@ pub const IHttpMethodFactory = extern struct {
     pub fn Create(self: *@This(), method: ?HSTRING) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.Create(@ptrCast(self), method, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMethodFactory";
@@ -2186,8 +2127,11 @@ pub const IHttpMethodFactory = extern struct {
 };
 pub const IHttpMethodStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2195,43 +2139,43 @@ pub const IHttpMethodStatics = extern struct {
     pub fn getDelete(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Delete(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGet(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Get(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHead(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Head(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOptions(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPatch(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Patch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPost(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Post(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPut(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Put(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMethodStatics";
@@ -2257,15 +2201,18 @@ pub const IHttpMethodStatics = extern struct {
 };
 pub const IHttpMultipartContent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), content);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMultipartContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2284,8 +2231,11 @@ pub const IHttpMultipartContent = extern struct {
 };
 pub const IHttpMultipartContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2293,13 +2243,13 @@ pub const IHttpMultipartContentFactory = extern struct {
     pub fn CreateWithSubtype(self: *@This(), subtype: ?HSTRING) core.HResult!*HttpMultipartContent {
         var _r: *HttpMultipartContent = undefined;
         const _c = self.vtable.CreateWithSubtype(@ptrCast(self), subtype, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithSubtypeAndBoundary(self: *@This(), subtype: ?HSTRING, boundary: ?HSTRING) core.HResult!*HttpMultipartContent {
         var _r: *HttpMultipartContent = undefined;
         const _c = self.vtable.CreateWithSubtypeAndBoundary(@ptrCast(self), subtype, boundary, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMultipartContentFactory";
@@ -2320,23 +2270,26 @@ pub const IHttpMultipartContentFactory = extern struct {
 };
 pub const IHttpMultipartFormDataContent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), content);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddWithName(self: *@This(), content: *IHttpContent, name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddWithName(@ptrCast(self), content, name);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: ?HSTRING, fileName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddWithNameAndFileName(@ptrCast(self), content, name, fileName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMultipartFormDataContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2357,8 +2310,11 @@ pub const IHttpMultipartFormDataContent = extern struct {
 };
 pub const IHttpMultipartFormDataContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2366,7 +2322,7 @@ pub const IHttpMultipartFormDataContentFactory = extern struct {
     pub fn CreateWithBoundary(self: *@This(), boundary: ?HSTRING) core.HResult!*HttpMultipartFormDataContent {
         var _r: *HttpMultipartFormDataContent = undefined;
         const _c = self.vtable.CreateWithBoundary(@ptrCast(self), boundary, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMultipartFormDataContentFactory";
@@ -2386,8 +2342,11 @@ pub const IHttpMultipartFormDataContentFactory = extern struct {
 };
 pub const IHttpRequestMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2395,49 +2354,49 @@ pub const IHttpRequestMessage = extern struct {
     pub fn getContent(self: *@This()) core.HResult!*IHttpContent {
         var _r: *IHttpContent = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContent(self: *@This(), value: *IHttpContent) core.HResult!void {
         const _c = self.vtable.put_Content(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpRequestHeaderCollection {
         var _r: *HttpRequestHeaderCollection = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMethod(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMethod(self: *@This(), value: *HttpMethod) core.HResult!void {
         const _c = self.vtable.put_Method(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,IInspectable) {
         var _r: *IMap(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_RequestUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRequestUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_RequestUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransportInformation(self: *@This()) core.HResult!*HttpTransportInformation {
         var _r: *HttpTransportInformation = undefined;
         const _c = self.vtable.get_TransportInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpRequestMessage";
@@ -2465,8 +2424,11 @@ pub const IHttpRequestMessage = extern struct {
 };
 pub const IHttpRequestMessage2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2474,12 +2436,12 @@ pub const IHttpRequestMessage2 = extern struct {
     pub fn getPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrivacyAnnotation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrivacyAnnotation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpRequestMessage2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2499,8 +2461,11 @@ pub const IHttpRequestMessage2 = extern struct {
 };
 pub const IHttpRequestMessageFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2508,7 +2473,7 @@ pub const IHttpRequestMessageFactory = extern struct {
     pub fn Create(self: *@This(), method: *HttpMethod, uri: *Uri) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.Create(@ptrCast(self), method, uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpRequestMessageFactory";
@@ -2528,8 +2493,11 @@ pub const IHttpRequestMessageFactory = extern struct {
 };
 pub const IHttpRequestResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2537,25 +2505,25 @@ pub const IHttpRequestResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseMessage(self: *@This()) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.get_ResponseMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpRequestResult";
@@ -2578,8 +2546,11 @@ pub const IHttpRequestResult = extern struct {
 };
 pub const IHttpResponseMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2587,79 +2558,79 @@ pub const IHttpResponseMessage = extern struct {
     pub fn getContent(self: *@This()) core.HResult!*IHttpContent {
         var _r: *IHttpContent = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContent(self: *@This(), value: *IHttpContent) core.HResult!void {
         const _c = self.vtable.put_Content(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpResponseHeaderCollection {
         var _r: *HttpResponseHeaderCollection = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSuccessStatusCode(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuccessStatusCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReasonPhrase(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ReasonPhrase(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReasonPhrase(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ReasonPhrase(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRequestMessage(self: *@This(), value: *HttpRequestMessage) core.HResult!void {
         const _c = self.vtable.put_RequestMessage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSource(self: *@This()) core.HResult!HttpResponseMessageSource {
         var _r: HttpResponseMessageSource = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSource(self: *@This(), value: HttpResponseMessageSource) core.HResult!void {
         const _c = self.vtable.put_Source(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatusCode(self: *@This()) core.HResult!HttpStatusCode {
         var _r: HttpStatusCode = undefined;
         const _c = self.vtable.get_StatusCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStatusCode(self: *@This(), value: HttpStatusCode) core.HResult!void {
         const _c = self.vtable.put_StatusCode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVersion(self: *@This()) core.HResult!HttpVersion {
         var _r: HttpVersion = undefined;
         const _c = self.vtable.get_Version(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVersion(self: *@This(), value: HttpVersion) core.HResult!void {
         const _c = self.vtable.put_Version(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EnsureSuccessStatusCode(self: *@This()) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.EnsureSuccessStatusCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpResponseMessage";
@@ -2693,8 +2664,11 @@ pub const IHttpResponseMessage = extern struct {
 };
 pub const IHttpResponseMessageFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2702,7 +2676,7 @@ pub const IHttpResponseMessageFactory = extern struct {
     pub fn Create(self: *@This(), statusCode: HttpStatusCode) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.Create(@ptrCast(self), statusCode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpResponseMessageFactory";
@@ -2722,8 +2696,11 @@ pub const IHttpResponseMessageFactory = extern struct {
 };
 pub const IHttpStreamContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2731,7 +2708,7 @@ pub const IHttpStreamContentFactory = extern struct {
     pub fn CreateFromInputStream(self: *@This(), content: *IInputStream) core.HResult!*HttpStreamContent {
         var _r: *HttpStreamContent = undefined;
         const _c = self.vtable.CreateFromInputStream(@ptrCast(self), content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpStreamContentFactory";
@@ -2751,8 +2728,11 @@ pub const IHttpStreamContentFactory = extern struct {
 };
 pub const IHttpStringContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2760,19 +2740,19 @@ pub const IHttpStringContentFactory = extern struct {
     pub fn CreateFromString(self: *@This(), content: ?HSTRING) core.HResult!*HttpStringContent {
         var _r: *HttpStringContent = undefined;
         const _c = self.vtable.CreateFromString(@ptrCast(self), content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromStringWithEncoding(self: *@This(), content: ?HSTRING, encoding: UnicodeEncoding) core.HResult!*HttpStringContent {
         var _r: *HttpStringContent = undefined;
         const _c = self.vtable.CreateFromStringWithEncoding(@ptrCast(self), content, encoding, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromStringWithEncodingAndMediaType(self: *@This(), content: ?HSTRING, encoding: UnicodeEncoding, mediaType: ?HSTRING) core.HResult!*HttpStringContent {
         var _r: *HttpStringContent = undefined;
         const _c = self.vtable.CreateFromStringWithEncodingAndMediaType(@ptrCast(self), content, encoding, mediaType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpStringContentFactory";
@@ -2794,8 +2774,11 @@ pub const IHttpStringContentFactory = extern struct {
 };
 pub const IHttpTransportInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2803,25 +2786,25 @@ pub const IHttpTransportInformation = extern struct {
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_ServerCertificate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerCertificateErrorSeverity(self: *@This()) core.HResult!SocketSslErrorSeverity {
         var _r: SocketSslErrorSeverity = undefined;
         const _c = self.vtable.get_ServerCertificateErrorSeverity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerCertificateErrors(self: *@This()) core.HResult!*IVectorView(ChainValidationResult) {
         var _r: *IVectorView(ChainValidationResult) = undefined;
         const _c = self.vtable.get_ServerCertificateErrors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerIntermediateCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         var _r: *IVectorView(Certificate) = undefined;
         const _c = self.vtable.get_ServerIntermediateCertificates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpTransportInformation";

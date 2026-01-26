@@ -90,8 +90,11 @@ pub const HostMessageReceivedCallback = extern struct {
 };
 pub const IIsolatedWindowsEnvironment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -99,64 +102,64 @@ pub const IIsolatedWindowsEnvironment = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartProcessSilentlyAsync(self: *@This(), hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) = undefined;
         const _c = self.vtable.StartProcessSilentlyAsync(@ptrCast(self), hostExePath, arguments, activator, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartProcessSilentlyAsyncWithTelemetryParameters(self: *@This(), hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) = undefined;
         const _c = self.vtable.StartProcessSilentlyAsyncWithTelemetryParameters(@ptrCast(self), hostExePath, arguments, activator, telemetryParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShareFolderAsync(self: *@This(), hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) = undefined;
         const _c = self.vtable.ShareFolderAsync(@ptrCast(self), hostFolder, requestOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShareFolderAsyncWithTelemetryParameters(self: *@This(), hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) = undefined;
         const _c = self.vtable.ShareFolderAsyncWithTelemetryParameters(@ptrCast(self), hostFolder, requestOptions, telemetryParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LaunchFileWithUIAsync(self: *@This(), appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) = undefined;
         const _c = self.vtable.LaunchFileWithUIAsync(@ptrCast(self), appExePath, argumentsTemplate, filePath, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LaunchFileWithUIAsyncWithTelemetryParameters(self: *@This(), appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) = undefined;
         const _c = self.vtable.LaunchFileWithUIAsyncWithTelemetryParameters(@ptrCast(self), appExePath, argumentsTemplate, filePath, telemetryParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TerminateAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.TerminateAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TerminateAsyncWithTelemetryParameters(self: *@This(), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.TerminateAsyncWithTelemetryParameters(@ptrCast(self), telemetryParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RegisterMessageReceiver(self: *@This(), receiverId: *Guid, messageReceivedCallback: *MessageReceivedCallback) core.HResult!void {
         const _c = self.vtable.RegisterMessageReceiver(@ptrCast(self), receiverId, messageReceivedCallback);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UnregisterMessageReceiver(self: *@This(), receiverId: *Guid) core.HResult!void {
         const _c = self.vtable.UnregisterMessageReceiver(@ptrCast(self), receiverId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -185,8 +188,11 @@ pub const IIsolatedWindowsEnvironment = extern struct {
 };
 pub const IIsolatedWindowsEnvironment2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -194,13 +200,13 @@ pub const IIsolatedWindowsEnvironment2 = extern struct {
     pub fn PostMessageToReceiverAsync(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable)) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) = undefined;
         const _c = self.vtable.PostMessageToReceiverAsync(@ptrCast(self), receiverId, message, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PostMessageToReceiverAsyncWithTelemetryParameters(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) = undefined;
         const _c = self.vtable.PostMessageToReceiverAsyncWithTelemetryParameters(@ptrCast(self), receiverId, message, telemetryParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironment2";
@@ -221,8 +227,11 @@ pub const IIsolatedWindowsEnvironment2 = extern struct {
 };
 pub const IIsolatedWindowsEnvironment3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -230,19 +239,19 @@ pub const IIsolatedWindowsEnvironment3 = extern struct {
     pub fn GetUserInfo(self: *@This()) core.HResult!*IsolatedWindowsEnvironmentUserInfo {
         var _r: *IsolatedWindowsEnvironmentUserInfo = undefined;
         const _c = self.vtable.GetUserInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShareFileAsync(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) = undefined;
         const _c = self.vtable.ShareFileAsync(@ptrCast(self), filePath, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) = undefined;
         const _c = self.vtable.ShareFileAsyncWithTelemetryParameters(@ptrCast(self), filePath, options, telemetryParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironment3";
@@ -264,15 +273,18 @@ pub const IIsolatedWindowsEnvironment3 = extern struct {
 };
 pub const IIsolatedWindowsEnvironment4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ChangePriority(self: *@This(), Priority: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         const _c = self.vtable.ChangePriority(@ptrCast(self), Priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironment4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -291,8 +303,11 @@ pub const IIsolatedWindowsEnvironment4 = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentCreateResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -300,19 +315,19 @@ pub const IIsolatedWindowsEnvironmentCreateResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!IsolatedWindowsEnvironmentCreateStatus {
         var _r: IsolatedWindowsEnvironmentCreateStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnvironment(self: *@This()) core.HResult!*IsolatedWindowsEnvironment {
         var _r: *IsolatedWindowsEnvironment = undefined;
         const _c = self.vtable.get_Environment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentCreateResult";
@@ -334,15 +349,18 @@ pub const IIsolatedWindowsEnvironmentCreateResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentCreateResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ChangeCreationPriority(self: *@This(), priority: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         const _c = self.vtable.ChangeCreationPriority(@ptrCast(self), priority);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentCreateResult2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -361,8 +379,11 @@ pub const IIsolatedWindowsEnvironmentCreateResult2 = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -370,25 +391,25 @@ pub const IIsolatedWindowsEnvironmentFactory = extern struct {
     pub fn CreateAsync(self: *@This(), options: *IsolatedWindowsEnvironmentOptions) core.HResult!*IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress) {
         var _r: *IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateAsyncWithTelemetryParameters(self: *@This(), options: *IsolatedWindowsEnvironmentOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress) {
         var _r: *IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress) = undefined;
         const _c = self.vtable.CreateAsyncWithTelemetryParameters(@ptrCast(self), options, telemetryParameters, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetById(self: *@This(), environmentId: ?HSTRING) core.HResult!*IsolatedWindowsEnvironment {
         var _r: *IsolatedWindowsEnvironment = undefined;
         const _c = self.vtable.GetById(@ptrCast(self), environmentId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindByOwnerId(self: *@This(), environmentOwnerId: ?HSTRING) core.HResult!*IVectorView(IsolatedWindowsEnvironment) {
         var _r: *IVectorView(IsolatedWindowsEnvironment) = undefined;
         const _c = self.vtable.FindByOwnerId(@ptrCast(self), environmentOwnerId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentFactory";
@@ -411,8 +432,11 @@ pub const IIsolatedWindowsEnvironmentFactory = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentFile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -420,18 +444,18 @@ pub const IIsolatedWindowsEnvironmentFile = extern struct {
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHostPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HostPath(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentFile";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -452,8 +476,11 @@ pub const IIsolatedWindowsEnvironmentFile = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentFile2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -461,13 +488,13 @@ pub const IIsolatedWindowsEnvironmentFile2 = extern struct {
     pub fn getGuestPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GuestPath(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadOnly(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentFile2";
@@ -488,8 +515,11 @@ pub const IIsolatedWindowsEnvironmentFile2 = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentHostStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -497,13 +527,13 @@ pub const IIsolatedWindowsEnvironmentHostStatics = extern struct {
     pub fn getIsReady(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReady(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHostErrors(self: *@This()) core.HResult!*IVectorView(IsolatedWindowsEnvironmentHostError) {
         var _r: *IVectorView(IsolatedWindowsEnvironmentHostError) = undefined;
         const _c = self.vtable.get_HostErrors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentHostStatics";
@@ -524,8 +554,11 @@ pub const IIsolatedWindowsEnvironmentHostStatics = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentLaunchFileResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -533,19 +566,19 @@ pub const IIsolatedWindowsEnvironmentLaunchFileResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!IsolatedWindowsEnvironmentLaunchFileStatus {
         var _r: IsolatedWindowsEnvironmentLaunchFileStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFile(self: *@This()) core.HResult!*IsolatedWindowsEnvironmentFile {
         var _r: *IsolatedWindowsEnvironmentFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentLaunchFileResult";
@@ -567,8 +600,11 @@ pub const IIsolatedWindowsEnvironmentLaunchFileResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -576,88 +612,88 @@ pub const IIsolatedWindowsEnvironmentOptions = extern struct {
     pub fn getEnvironmentOwnerId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnvironmentOwnerId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEnvironmentOwnerId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EnvironmentOwnerId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowedClipboardFormats(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAllowedClipboardFormats {
         var _r: IsolatedWindowsEnvironmentAllowedClipboardFormats = undefined;
         const _c = self.vtable.get_AllowedClipboardFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowedClipboardFormats(self: *@This(), value: IsolatedWindowsEnvironmentAllowedClipboardFormats) core.HResult!void {
         const _c = self.vtable.put_AllowedClipboardFormats(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getClipboardCopyPasteDirections(self: *@This()) core.HResult!IsolatedWindowsEnvironmentClipboardCopyPasteDirections {
         var _r: IsolatedWindowsEnvironmentClipboardCopyPasteDirections = undefined;
         const _c = self.vtable.get_ClipboardCopyPasteDirections(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putClipboardCopyPasteDirections(self: *@This(), value: IsolatedWindowsEnvironmentClipboardCopyPasteDirections) core.HResult!void {
         const _c = self.vtable.put_ClipboardCopyPasteDirections(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAvailablePrinters(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAvailablePrinters {
         var _r: IsolatedWindowsEnvironmentAvailablePrinters = undefined;
         const _c = self.vtable.get_AvailablePrinters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAvailablePrinters(self: *@This(), value: IsolatedWindowsEnvironmentAvailablePrinters) core.HResult!void {
         const _c = self.vtable.put_AvailablePrinters(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSharedHostFolderPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SharedHostFolderPath(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSharedFolderNameInEnvironment(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SharedFolderNameInEnvironment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShareHostFolderForUntrustedItems(self: *@This(), SharedHostFolderPath: ?HSTRING, ShareFolderNameInEnvironment: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ShareHostFolderForUntrustedItems(@ptrCast(self), SharedHostFolderPath, ShareFolderNameInEnvironment);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPersistUserProfile(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PersistUserProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPersistUserProfile(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PersistUserProfile(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowGraphicsHardwareAcceleration(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowGraphicsHardwareAcceleration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowGraphicsHardwareAcceleration(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowGraphicsHardwareAcceleration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowCameraAndMicrophoneAccess(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowCameraAndMicrophoneAccess(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowCameraAndMicrophoneAccess(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowCameraAndMicrophoneAccess(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -692,8 +728,11 @@ pub const IIsolatedWindowsEnvironmentOptions = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOptions2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -701,12 +740,12 @@ pub const IIsolatedWindowsEnvironmentOptions2 = extern struct {
     pub fn getWindowAnnotationOverride(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WindowAnnotationOverride(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWindowAnnotationOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WindowAnnotationOverride(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentOptions2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -726,8 +765,11 @@ pub const IIsolatedWindowsEnvironmentOptions2 = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOptions3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -735,32 +777,32 @@ pub const IIsolatedWindowsEnvironmentOptions3 = extern struct {
     pub fn getAllowedClipboardFormatsToEnvironment(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAllowedClipboardFormats {
         var _r: IsolatedWindowsEnvironmentAllowedClipboardFormats = undefined;
         const _c = self.vtable.get_AllowedClipboardFormatsToEnvironment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowedClipboardFormatsToEnvironment(self: *@This(), value: IsolatedWindowsEnvironmentAllowedClipboardFormats) core.HResult!void {
         const _c = self.vtable.put_AllowedClipboardFormatsToEnvironment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowedClipboardFormatsToHost(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAllowedClipboardFormats {
         var _r: IsolatedWindowsEnvironmentAllowedClipboardFormats = undefined;
         const _c = self.vtable.get_AllowedClipboardFormatsToHost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowedClipboardFormatsToHost(self: *@This(), value: IsolatedWindowsEnvironmentAllowedClipboardFormats) core.HResult!void {
         const _c = self.vtable.put_AllowedClipboardFormatsToHost(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCreationPriority(self: *@This()) core.HResult!IsolatedWindowsEnvironmentCreationPriority {
         var _r: IsolatedWindowsEnvironmentCreationPriority = undefined;
         const _c = self.vtable.get_CreationPriority(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCreationPriority(self: *@This(), value: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         const _c = self.vtable.put_CreationPriority(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentOptions3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -784,8 +826,11 @@ pub const IIsolatedWindowsEnvironmentOptions3 = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -793,25 +838,25 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
     pub fn getShareableFolders(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ShareableFolders(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProcessesRunnableAsSystem(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ProcessesRunnableAsSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProcessesRunnableAsUser(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ProcessesRunnableAsUser(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActivationFileExtensions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ActivationFileExtensions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentOwnerRegistrationData";
@@ -834,8 +879,11 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOwnerRegistrationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -843,13 +891,13 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!IsolatedWindowsEnvironmentOwnerRegistrationStatus {
         var _r: IsolatedWindowsEnvironmentOwnerRegistrationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentOwnerRegistrationResult";
@@ -870,8 +918,11 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOwnerRegistrationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -879,12 +930,12 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationStatics = extern struct {
     pub fn Register(self: *@This(), ownerName: ?HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData) core.HResult!*IsolatedWindowsEnvironmentOwnerRegistrationResult {
         var _r: *IsolatedWindowsEnvironmentOwnerRegistrationResult = undefined;
         const _c = self.vtable.Register(@ptrCast(self), ownerName, ownerRegistrationData, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Unregister(self: *@This(), ownerName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Unregister(@ptrCast(self), ownerName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentOwnerRegistrationStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -904,8 +955,11 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationStatics = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentPostMessageResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -913,13 +967,13 @@ pub const IIsolatedWindowsEnvironmentPostMessageResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!IsolatedWindowsEnvironmentPostMessageStatus {
         var _r: IsolatedWindowsEnvironmentPostMessageStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentPostMessageResult";
@@ -940,8 +994,11 @@ pub const IIsolatedWindowsEnvironmentPostMessageResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentProcess = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -949,27 +1006,27 @@ pub const IIsolatedWindowsEnvironmentProcess = extern struct {
     pub fn getState(self: *@This()) core.HResult!IsolatedWindowsEnvironmentProcessState {
         var _r: IsolatedWindowsEnvironmentProcessState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExitCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExitCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn WaitForExit(self: *@This()) core.HResult!void {
         const _c = self.vtable.WaitForExit(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn WaitForExitWithTimeout(self: *@This(), timeoutMilliseconds: u32) core.HResult!void {
         const _c = self.vtable.WaitForExitWithTimeout(@ptrCast(self), timeoutMilliseconds);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn WaitForExitAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.WaitForExitAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentProcess";
@@ -993,8 +1050,11 @@ pub const IIsolatedWindowsEnvironmentProcess = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentShareFileRequestOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1002,12 +1062,12 @@ pub const IIsolatedWindowsEnvironmentShareFileRequestOptions = extern struct {
     pub fn getAllowWrite(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowWrite(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowWrite(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowWrite(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentShareFileRequestOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1027,8 +1087,11 @@ pub const IIsolatedWindowsEnvironmentShareFileRequestOptions = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentShareFileResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1036,19 +1099,19 @@ pub const IIsolatedWindowsEnvironmentShareFileResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!IsolatedWindowsEnvironmentShareFileStatus {
         var _r: IsolatedWindowsEnvironmentShareFileStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFile(self: *@This()) core.HResult!*IsolatedWindowsEnvironmentFile {
         var _r: *IsolatedWindowsEnvironmentFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentShareFileResult";
@@ -1070,8 +1133,11 @@ pub const IIsolatedWindowsEnvironmentShareFileResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentShareFolderRequestOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1079,12 +1145,12 @@ pub const IIsolatedWindowsEnvironmentShareFolderRequestOptions = extern struct {
     pub fn getAllowWrite(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowWrite(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowWrite(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowWrite(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentShareFolderRequestOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1104,8 +1170,11 @@ pub const IIsolatedWindowsEnvironmentShareFolderRequestOptions = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentShareFolderResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1113,13 +1182,13 @@ pub const IIsolatedWindowsEnvironmentShareFolderResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!IsolatedWindowsEnvironmentShareFolderStatus {
         var _r: IsolatedWindowsEnvironmentShareFolderStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentShareFolderResult";
@@ -1140,8 +1209,11 @@ pub const IIsolatedWindowsEnvironmentShareFolderResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentStartProcessResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1149,19 +1221,19 @@ pub const IIsolatedWindowsEnvironmentStartProcessResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!IsolatedWindowsEnvironmentStartProcessStatus {
         var _r: IsolatedWindowsEnvironmentStartProcessStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProcess(self: *@This()) core.HResult!*IsolatedWindowsEnvironmentProcess {
         var _r: *IsolatedWindowsEnvironmentProcess = undefined;
         const _c = self.vtable.get_Process(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentStartProcessResult";
@@ -1183,8 +1255,11 @@ pub const IIsolatedWindowsEnvironmentStartProcessResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentTelemetryParameters = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1192,12 +1267,12 @@ pub const IIsolatedWindowsEnvironmentTelemetryParameters = extern struct {
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCorrelationId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_CorrelationId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentTelemetryParameters";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1217,8 +1292,11 @@ pub const IIsolatedWindowsEnvironmentTelemetryParameters = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentUserInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1226,19 +1304,19 @@ pub const IIsolatedWindowsEnvironmentUserInfo = extern struct {
     pub fn getEnvironmentUserSid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnvironmentUserSid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnvironmentUserName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnvironmentUserName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryWaitForSignInAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryWaitForSignInAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentUserInfo";
@@ -1260,8 +1338,11 @@ pub const IIsolatedWindowsEnvironmentUserInfo = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentUserInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1269,7 +1350,7 @@ pub const IIsolatedWindowsEnvironmentUserInfo2 = extern struct {
     pub fn TryWaitForSignInWithProgressAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,IsolatedWindowsEnvironmentSignInProgress) {
         var _r: *IAsyncOperationWithProgress(bool,IsolatedWindowsEnvironmentSignInProgress) = undefined;
         const _c = self.vtable.TryWaitForSignInWithProgressAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsEnvironmentUserInfo2";
@@ -1289,20 +1370,23 @@ pub const IIsolatedWindowsEnvironmentUserInfo2 = extern struct {
 };
 pub const IIsolatedWindowsHostMessengerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn PostMessageToReceiver(self: *@This(), receiverId: *Guid, message: *IVectorView(IInspectable)) core.HResult!void {
         const _c = self.vtable.PostMessageToReceiver(@ptrCast(self), receiverId, message);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetFileId(self: *@This(), filePath: ?HSTRING) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.GetFileId(@ptrCast(self), filePath, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsHostMessengerStatics";
@@ -1323,19 +1407,22 @@ pub const IIsolatedWindowsHostMessengerStatics = extern struct {
 };
 pub const IIsolatedWindowsHostMessengerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterHostMessageReceiver(self: *@This(), receiverId: *Guid, hostMessageReceivedCallback: *HostMessageReceivedCallback) core.HResult!void {
         const _c = self.vtable.RegisterHostMessageReceiver(@ptrCast(self), receiverId, hostMessageReceivedCallback);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UnregisterHostMessageReceiver(self: *@This(), receiverId: *Guid) core.HResult!void {
         const _c = self.vtable.UnregisterHostMessageReceiver(@ptrCast(self), receiverId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IIsolatedWindowsHostMessengerStatics2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1355,14 +1442,11 @@ pub const IIsolatedWindowsHostMessengerStatics2 = extern struct {
 };
 pub const IsolatedWindowsEnvironment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1414,43 +1498,37 @@ pub const IsolatedWindowsEnvironment = extern struct {
     pub fn PostMessageToReceiverAsync(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable)) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
         var this: ?*IIsolatedWindowsEnvironment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment2.IID, @ptrCast(&this));
         return try this.?.PostMessageToReceiverAsync(receiverId, message);
     }
     pub fn PostMessageToReceiverAsyncWithTelemetryParameters(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
         var this: ?*IIsolatedWindowsEnvironment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment2.IID, @ptrCast(&this));
         return try this.?.PostMessageToReceiverAsyncWithTelemetryParameters(receiverId, message, telemetryParameters);
     }
     pub fn GetUserInfo(self: *@This()) core.HResult!*IsolatedWindowsEnvironmentUserInfo {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         return try this.?.GetUserInfo();
     }
     pub fn ShareFileAsync(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         return try this.?.ShareFileAsync(filePath, options);
     }
     pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         return try this.?.ShareFileAsyncWithTelemetryParameters(filePath, options, telemetryParameters);
     }
     pub fn ChangePriority(self: *@This(), Priority: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironment4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment4.IID, @ptrCast(&this));
         return try this.?.ChangePriority(Priority);
     }
     pub fn CreateAsync(options: *IsolatedWindowsEnvironmentOptions) core.HResult!*IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress) {
@@ -1504,14 +1582,11 @@ pub const IsolatedWindowsEnvironmentCreateProgress = extern struct {
 };
 pub const IsolatedWindowsEnvironmentCreateResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1531,8 +1606,7 @@ pub const IsolatedWindowsEnvironmentCreateResult = extern struct {
     pub fn ChangeCreationPriority(self: *@This(), priority: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentCreateResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentCreateResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentCreateResult2.IID, @ptrCast(&this));
         return try this.?.ChangeCreationPriority(priority);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IsolatedWindowsEnvironmentCreateResult";
@@ -1552,14 +1626,11 @@ pub const IsolatedWindowsEnvironmentCreationPriority = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentFile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1579,15 +1650,13 @@ pub const IsolatedWindowsEnvironmentFile = extern struct {
     pub fn getGuestPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIsolatedWindowsEnvironmentFile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentFile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentFile2.IID, @ptrCast(&this));
         return try this.?.getGuestPath();
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IIsolatedWindowsEnvironmentFile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentFile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentFile2.IID, @ptrCast(&this));
         return try this.?.getIsReadOnly();
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IsolatedWindowsEnvironmentFile";
@@ -1598,14 +1667,11 @@ pub const IsolatedWindowsEnvironmentFile = extern struct {
 };
 pub const IsolatedWindowsEnvironmentHost = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1631,14 +1697,11 @@ pub const IsolatedWindowsEnvironmentHostError = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentLaunchFileResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1671,14 +1734,11 @@ pub const IsolatedWindowsEnvironmentLaunchFileStatus = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1754,57 +1814,49 @@ pub const IsolatedWindowsEnvironmentOptions = extern struct {
     pub fn getWindowAnnotationOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIsolatedWindowsEnvironmentOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
         return try this.?.getWindowAnnotationOverride();
     }
     pub fn putWindowAnnotationOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
         return try this.?.putWindowAnnotationOverride(value);
     }
     pub fn getAllowedClipboardFormatsToEnvironment(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAllowedClipboardFormats {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         return try this.?.getAllowedClipboardFormatsToEnvironment();
     }
     pub fn putAllowedClipboardFormatsToEnvironment(self: *@This(), value: IsolatedWindowsEnvironmentAllowedClipboardFormats) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         return try this.?.putAllowedClipboardFormatsToEnvironment(value);
     }
     pub fn getAllowedClipboardFormatsToHost(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAllowedClipboardFormats {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         return try this.?.getAllowedClipboardFormatsToHost();
     }
     pub fn putAllowedClipboardFormatsToHost(self: *@This(), value: IsolatedWindowsEnvironmentAllowedClipboardFormats) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         return try this.?.putAllowedClipboardFormatsToHost(value);
     }
     pub fn getCreationPriority(self: *@This()) core.HResult!IsolatedWindowsEnvironmentCreationPriority {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         return try this.?.getCreationPriority();
     }
     pub fn putCreationPriority(self: *@This(), value: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         return try this.?.putCreationPriority(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -1820,14 +1872,11 @@ pub const IsolatedWindowsEnvironmentOptions = extern struct {
 };
 pub const IsolatedWindowsEnvironmentOwnerRegistration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1846,14 +1895,11 @@ pub const IsolatedWindowsEnvironmentOwnerRegistration = extern struct {
 };
 pub const IsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1887,14 +1933,11 @@ pub const IsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
 };
 pub const IsolatedWindowsEnvironmentOwnerRegistrationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1922,14 +1965,11 @@ pub const IsolatedWindowsEnvironmentOwnerRegistrationStatus = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentPostMessageResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1955,14 +1995,11 @@ pub const IsolatedWindowsEnvironmentPostMessageStatus = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentProcess = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2009,14 +2046,11 @@ pub const IsolatedWindowsEnvironmentProgressState = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentShareFileRequestOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2042,14 +2076,11 @@ pub const IsolatedWindowsEnvironmentShareFileRequestOptions = extern struct {
 };
 pub const IsolatedWindowsEnvironmentShareFileResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2082,14 +2113,11 @@ pub const IsolatedWindowsEnvironmentShareFileStatus = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentShareFolderRequestOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2115,14 +2143,11 @@ pub const IsolatedWindowsEnvironmentShareFolderRequestOptions = extern struct {
 };
 pub const IsolatedWindowsEnvironmentShareFolderResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2158,14 +2183,11 @@ pub const IsolatedWindowsEnvironmentSignInProgress = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentStartProcessResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2197,14 +2219,11 @@ pub const IsolatedWindowsEnvironmentStartProcessStatus = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentTelemetryParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2230,14 +2249,11 @@ pub const IsolatedWindowsEnvironmentTelemetryParameters = extern struct {
 };
 pub const IsolatedWindowsEnvironmentUserInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2257,8 +2273,7 @@ pub const IsolatedWindowsEnvironmentUserInfo = extern struct {
     pub fn TryWaitForSignInWithProgressAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,IsolatedWindowsEnvironmentSignInProgress) {
         var this: ?*IIsolatedWindowsEnvironmentUserInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentUserInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentUserInfo2.IID, @ptrCast(&this));
         return try this.?.TryWaitForSignInWithProgressAsync();
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IsolatedWindowsEnvironmentUserInfo";
@@ -2269,14 +2284,11 @@ pub const IsolatedWindowsEnvironmentUserInfo = extern struct {
 };
 pub const IsolatedWindowsHostMessenger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

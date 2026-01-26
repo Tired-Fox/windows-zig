@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IInkAnalysisInkBullet = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const IInkAnalysisInkBullet = extern struct {
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisInkBullet";
@@ -30,8 +33,11 @@ pub const IInkAnalysisInkBullet = extern struct {
 };
 pub const IInkAnalysisInkDrawing = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,19 +45,19 @@ pub const IInkAnalysisInkDrawing = extern struct {
     pub fn getDrawingKind(self: *@This()) core.HResult!InkAnalysisDrawingKind {
         var _r: InkAnalysisDrawingKind = undefined;
         const _c = self.vtable.get_DrawingKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCenter(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPoints(self: *@This()) core.HResult!*IVectorView(Point) {
         var _r: *IVectorView(Point) = undefined;
         const _c = self.vtable.get_Points(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisInkDrawing";
@@ -73,8 +79,11 @@ pub const IInkAnalysisInkDrawing = extern struct {
 };
 pub const IInkAnalysisInkWord = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -82,13 +91,13 @@ pub const IInkAnalysisInkWord = extern struct {
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTextAlternates(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_TextAlternates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisInkWord";
@@ -109,8 +118,11 @@ pub const IInkAnalysisInkWord = extern struct {
 };
 pub const IInkAnalysisLine = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -118,13 +130,13 @@ pub const IInkAnalysisLine = extern struct {
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIndentLevel(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_IndentLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisLine";
@@ -145,8 +157,11 @@ pub const IInkAnalysisLine = extern struct {
 };
 pub const IInkAnalysisListItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -154,7 +169,7 @@ pub const IInkAnalysisListItem = extern struct {
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisListItem";
@@ -174,8 +189,11 @@ pub const IInkAnalysisListItem = extern struct {
 };
 pub const IInkAnalysisNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -183,43 +201,43 @@ pub const IInkAnalysisNode = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var _r: InkAnalysisNodeKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_BoundingRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var _r: *IVectorView(Point) = undefined;
         const _c = self.vtable.get_RotatedBoundingRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var _r: *IVectorView(IInkAnalysisNode) = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var _r: *IInkAnalysisNode = undefined;
         const _c = self.vtable.get_Parent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.GetStrokeIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisNode";
@@ -245,8 +263,11 @@ pub const IInkAnalysisNode = extern struct {
 };
 pub const IInkAnalysisParagraph = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -254,7 +275,7 @@ pub const IInkAnalysisParagraph = extern struct {
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisParagraph";
@@ -274,8 +295,11 @@ pub const IInkAnalysisParagraph = extern struct {
 };
 pub const IInkAnalysisResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -283,7 +307,7 @@ pub const IInkAnalysisResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!InkAnalysisStatus {
         var _r: InkAnalysisStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisResult";
@@ -303,8 +327,11 @@ pub const IInkAnalysisResult = extern struct {
 };
 pub const IInkAnalysisRoot = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -312,13 +339,13 @@ pub const IInkAnalysisRoot = extern struct {
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindNodes(self: *@This(), nodeKind: InkAnalysisNodeKind) core.HResult!*IVectorView(IInkAnalysisNode) {
         var _r: *IVectorView(IInkAnalysisNode) = undefined;
         const _c = self.vtable.FindNodes(@ptrCast(self), nodeKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisRoot";
@@ -339,8 +366,11 @@ pub const IInkAnalysisRoot = extern struct {
 };
 pub const IInkAnalysisWritingRegion = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -348,7 +378,7 @@ pub const IInkAnalysisWritingRegion = extern struct {
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalysisWritingRegion";
@@ -368,8 +398,11 @@ pub const IInkAnalysisWritingRegion = extern struct {
 };
 pub const IInkAnalyzer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -377,47 +410,47 @@ pub const IInkAnalyzer = extern struct {
     pub fn getAnalysisRoot(self: *@This()) core.HResult!*InkAnalysisRoot {
         var _r: *InkAnalysisRoot = undefined;
         const _c = self.vtable.get_AnalysisRoot(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsAnalyzing(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAnalyzing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddDataForStroke(self: *@This(), stroke: *InkStroke) core.HResult!void {
         const _c = self.vtable.AddDataForStroke(@ptrCast(self), stroke);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDataForStrokes(self: *@This(), strokes: *IIterable(InkStroke)) core.HResult!void {
         const _c = self.vtable.AddDataForStrokes(@ptrCast(self), strokes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearDataForAllStrokes(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearDataForAllStrokes(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveDataForStroke(self: *@This(), strokeId: u32) core.HResult!void {
         const _c = self.vtable.RemoveDataForStroke(@ptrCast(self), strokeId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveDataForStrokes(self: *@This(), strokeIds: *IIterable(u32)) core.HResult!void {
         const _c = self.vtable.RemoveDataForStrokes(@ptrCast(self), strokeIds);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReplaceDataForStroke(self: *@This(), stroke: *InkStroke) core.HResult!void {
         const _c = self.vtable.ReplaceDataForStroke(@ptrCast(self), stroke);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetStrokeDataKind(self: *@This(), strokeId: u32, strokeKind: InkAnalysisStrokeKind) core.HResult!void {
         const _c = self.vtable.SetStrokeDataKind(@ptrCast(self), strokeId, strokeKind);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AnalyzeAsync(self: *@This()) core.HResult!*IAsyncOperation(InkAnalysisResult) {
         var _r: *IAsyncOperation(InkAnalysisResult) = undefined;
         const _c = self.vtable.AnalyzeAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalyzer";
@@ -446,8 +479,11 @@ pub const IInkAnalyzer = extern struct {
 };
 pub const IInkAnalyzerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -455,7 +491,7 @@ pub const IInkAnalyzerFactory = extern struct {
     pub fn CreateAnalyzer(self: *@This()) core.HResult!*InkAnalyzer {
         var _r: *InkAnalyzer = undefined;
         const _c = self.vtable.CreateAnalyzer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.IInkAnalyzerFactory";
@@ -492,14 +528,11 @@ pub const InkAnalysisDrawingKind = enum(i32) {
 };
 pub const InkAnalysisInkBullet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -511,50 +544,43 @@ pub const InkAnalysisInkBullet = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisInkBullet";
@@ -565,14 +591,11 @@ pub const InkAnalysisInkBullet = extern struct {
 };
 pub const InkAnalysisInkDrawing = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -592,50 +615,43 @@ pub const InkAnalysisInkDrawing = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisInkDrawing";
@@ -646,14 +662,11 @@ pub const InkAnalysisInkDrawing = extern struct {
 };
 pub const InkAnalysisInkWord = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -669,50 +682,43 @@ pub const InkAnalysisInkWord = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisInkWord";
@@ -723,14 +729,11 @@ pub const InkAnalysisInkWord = extern struct {
 };
 pub const InkAnalysisLine = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -746,50 +749,43 @@ pub const InkAnalysisLine = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisLine";
@@ -800,14 +796,11 @@ pub const InkAnalysisLine = extern struct {
 };
 pub const InkAnalysisListItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -819,50 +812,43 @@ pub const InkAnalysisListItem = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisListItem";
@@ -873,14 +859,11 @@ pub const InkAnalysisListItem = extern struct {
 };
 pub const InkAnalysisNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -932,14 +915,11 @@ pub const InkAnalysisNodeKind = enum(i32) {
 };
 pub const InkAnalysisParagraph = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -951,50 +931,43 @@ pub const InkAnalysisParagraph = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisParagraph";
@@ -1005,14 +978,11 @@ pub const InkAnalysisParagraph = extern struct {
 };
 pub const InkAnalysisResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1029,14 +999,11 @@ pub const InkAnalysisResult = extern struct {
 };
 pub const InkAnalysisRoot = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1052,50 +1019,43 @@ pub const InkAnalysisRoot = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisRoot";
@@ -1115,14 +1075,11 @@ pub const InkAnalysisStrokeKind = enum(i32) {
 };
 pub const InkAnalysisWritingRegion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1134,50 +1091,43 @@ pub const InkAnalysisWritingRegion = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         return try this.?.GetStrokeIds();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Analysis.InkAnalysisWritingRegion";
@@ -1188,14 +1138,11 @@ pub const InkAnalysisWritingRegion = extern struct {
 };
 pub const InkAnalyzer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

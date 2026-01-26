@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AudioDeviceInputNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -20,120 +17,103 @@ pub const AudioDeviceInputNode = extern struct {
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         return try this.?.getEmitter();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioDeviceInputNode";
@@ -151,14 +131,11 @@ pub const AudioDeviceNodeCreationStatus = enum(i32) {
 };
 pub const AudioDeviceOutputNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -170,99 +147,85 @@ pub const AudioDeviceOutputNode = extern struct {
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn putListener(self: *@This(), value: *AudioNodeListener) core.HResult!void {
         var this: ?*IAudioNodeWithListener = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeWithListener.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeWithListener.IID, @ptrCast(&this));
         return try this.?.putListener(value);
     }
     pub fn getListener(self: *@This()) core.HResult!*AudioNodeListener {
         var this: ?*IAudioNodeWithListener = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeWithListener.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeWithListener.IID, @ptrCast(&this));
         return try this.?.getListener();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioDeviceOutputNode";
@@ -273,14 +236,11 @@ pub const AudioDeviceOutputNode = extern struct {
 };
 pub const AudioEffectsPackConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -327,14 +287,11 @@ pub const AudioEffectsPackStatus = enum(i32) {
 };
 pub const AudioFileInputNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -398,120 +355,103 @@ pub const AudioFileInputNode = extern struct {
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         return try this.?.getEmitter();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioFileInputNode";
@@ -529,14 +469,11 @@ pub const AudioFileNodeCreationStatus = enum(i32) {
 };
 pub const AudioFileOutputNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -556,85 +493,73 @@ pub const AudioFileOutputNode = extern struct {
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioFileOutputNode";
@@ -645,14 +570,11 @@ pub const AudioFileOutputNode = extern struct {
 };
 pub const AudioFrameCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -669,14 +591,11 @@ pub const AudioFrameCompletedEventArgs = extern struct {
 };
 pub const AudioFrameInputNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -720,120 +639,103 @@ pub const AudioFrameInputNode = extern struct {
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         return try this.?.getEmitter();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioFrameInputNode";
@@ -844,14 +746,11 @@ pub const AudioFrameInputNode = extern struct {
 };
 pub const AudioFrameOutputNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -863,85 +762,73 @@ pub const AudioFrameOutputNode = extern struct {
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioFrameOutputNode";
@@ -952,14 +839,11 @@ pub const AudioFrameOutputNode = extern struct {
 };
 pub const AudioGraph = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1079,57 +963,49 @@ pub const AudioGraph = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateFrameInputNodeWithEncodingPropertiesAndEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioFrameInputNode {
         var this: ?*IAudioGraph2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         return try this.?.CreateFrameInputNodeWithEncodingPropertiesAndEmitter(encodingProperties, emitter);
     }
     pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDeviceAndEmitter(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         return try this.?.CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDeviceAndEmitter(category, encodingProperties, device, emitter);
     }
     pub fn CreateFileInputNodeAsyncWithEmitter(self: *@This(), file: *IStorageFile, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioFileInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         return try this.?.CreateFileInputNodeAsyncWithEmitter(file, emitter);
     }
     pub fn CreateSubmixNodeWithEncodingPropertiesAndEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioSubmixNode {
         var this: ?*IAudioGraph2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         return try this.?.CreateSubmixNodeWithEncodingPropertiesAndEmitter(encodingProperties, emitter);
     }
     pub fn CreateBatchUpdater(self: *@This()) core.HResult!*AudioGraphBatchUpdater {
         var this: ?*IAudioGraph2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         return try this.?.CreateBatchUpdater();
     }
     pub fn CreateMediaSourceAudioInputNodeAsync(self: *@This(), mediaSource: *MediaSource) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var this: ?*IAudioGraph3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph3.IID, @ptrCast(&this));
         return try this.?.CreateMediaSourceAudioInputNodeAsync(mediaSource);
     }
     pub fn CreateMediaSourceAudioInputNodeAsyncWithEmitter(self: *@This(), mediaSource: *MediaSource, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var this: ?*IAudioGraph3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph3.IID, @ptrCast(&this));
         return try this.?.CreateMediaSourceAudioInputNodeAsyncWithEmitter(mediaSource, emitter);
     }
     pub fn CreateAsync(settings: *AudioGraphSettings) core.HResult!*IAsyncOperation(CreateAudioGraphResult) {
@@ -1145,14 +1021,11 @@ pub const AudioGraph = extern struct {
 };
 pub const AudioGraphBatchUpdater = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1169,14 +1042,11 @@ pub const AudioGraphBatchUpdater = extern struct {
 };
 pub const AudioGraphConnection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1207,14 +1077,11 @@ pub const AudioGraphCreationStatus = enum(i32) {
 };
 pub const AudioGraphSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1270,15 +1137,13 @@ pub const AudioGraphSettings = extern struct {
     pub fn putMaxPlaybackSpeedFactor(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioGraphSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraphSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraphSettings2.IID, @ptrCast(&this));
         return try this.?.putMaxPlaybackSpeedFactor(value);
     }
     pub fn getMaxPlaybackSpeedFactor(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioGraphSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraphSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioGraphSettings2.IID, @ptrCast(&this));
         return try this.?.getMaxPlaybackSpeedFactor();
     }
     pub fn Create(audioRenderCategory: AudioRenderCategory) core.HResult!*AudioGraphSettings {
@@ -1300,14 +1165,11 @@ pub const AudioGraphUnrecoverableError = enum(i32) {
 };
 pub const AudioGraphUnrecoverableErrorOccurredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1324,14 +1186,11 @@ pub const AudioGraphUnrecoverableErrorOccurredEventArgs = extern struct {
 };
 pub const AudioNodeEmitter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1399,15 +1258,13 @@ pub const AudioNodeEmitter = extern struct {
     pub fn getSpatialAudioModel(self: *@This()) core.HResult!SpatialAudioModel {
         var this: ?*IAudioNodeEmitter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeEmitter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeEmitter2.IID, @ptrCast(&this));
         return try this.?.getSpatialAudioModel();
     }
     pub fn putSpatialAudioModel(self: *@This(), value: SpatialAudioModel) core.HResult!void {
         var this: ?*IAudioNodeEmitter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeEmitter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeEmitter2.IID, @ptrCast(&this));
         return try this.?.putSpatialAudioModel(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -1428,14 +1285,11 @@ pub const AudioNodeEmitter = extern struct {
 };
 pub const AudioNodeEmitterConeProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1464,14 +1318,11 @@ pub const AudioNodeEmitterDecayKind = enum(i32) {
 };
 pub const AudioNodeEmitterDecayModel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1509,14 +1360,11 @@ pub const AudioNodeEmitterDecayModel = extern struct {
 };
 pub const AudioNodeEmitterNaturalDecayModelProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1541,14 +1389,11 @@ pub const AudioNodeEmitterSettings = enum(i32) {
 };
 pub const AudioNodeEmitterShape = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1582,14 +1427,11 @@ pub const AudioNodeEmitterShapeKind = enum(i32) {
 };
 pub const AudioNodeListener = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1639,14 +1481,11 @@ pub const AudioNodeListener = extern struct {
 };
 pub const AudioPlaybackConnection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1686,8 +1525,7 @@ pub const AudioPlaybackConnection = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
@@ -1707,14 +1545,11 @@ pub const AudioPlaybackConnection = extern struct {
 };
 pub const AudioPlaybackConnectionOpenResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1745,14 +1580,11 @@ pub const AudioPlaybackConnectionState = enum(i32) {
 };
 pub const AudioStateMonitor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1810,14 +1642,11 @@ pub const AudioStateMonitor = extern struct {
 };
 pub const AudioSubmixNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1841,92 +1670,79 @@ pub const AudioSubmixNode = extern struct {
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         return try this.?.getEmitter();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioSubmixNode";
@@ -1937,14 +1753,11 @@ pub const AudioSubmixNode = extern struct {
 };
 pub const CreateAudioDeviceInputNodeResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1960,8 +1773,7 @@ pub const CreateAudioDeviceInputNodeResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioDeviceInputNodeResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioDeviceInputNodeResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioDeviceInputNodeResult2.IID, @ptrCast(&this));
         return try this.?.getExtendedError();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.CreateAudioDeviceInputNodeResult";
@@ -1972,14 +1784,11 @@ pub const CreateAudioDeviceInputNodeResult = extern struct {
 };
 pub const CreateAudioDeviceOutputNodeResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1995,8 +1804,7 @@ pub const CreateAudioDeviceOutputNodeResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioDeviceOutputNodeResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioDeviceOutputNodeResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioDeviceOutputNodeResult2.IID, @ptrCast(&this));
         return try this.?.getExtendedError();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.CreateAudioDeviceOutputNodeResult";
@@ -2007,14 +1815,11 @@ pub const CreateAudioDeviceOutputNodeResult = extern struct {
 };
 pub const CreateAudioFileInputNodeResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2030,8 +1835,7 @@ pub const CreateAudioFileInputNodeResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioFileInputNodeResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioFileInputNodeResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioFileInputNodeResult2.IID, @ptrCast(&this));
         return try this.?.getExtendedError();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.CreateAudioFileInputNodeResult";
@@ -2042,14 +1846,11 @@ pub const CreateAudioFileInputNodeResult = extern struct {
 };
 pub const CreateAudioFileOutputNodeResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2065,8 +1866,7 @@ pub const CreateAudioFileOutputNodeResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioFileOutputNodeResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioFileOutputNodeResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioFileOutputNodeResult2.IID, @ptrCast(&this));
         return try this.?.getExtendedError();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.CreateAudioFileOutputNodeResult";
@@ -2077,14 +1877,11 @@ pub const CreateAudioFileOutputNodeResult = extern struct {
 };
 pub const CreateAudioGraphResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2100,8 +1897,7 @@ pub const CreateAudioGraphResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioGraphResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioGraphResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioGraphResult2.IID, @ptrCast(&this));
         return try this.?.getExtendedError();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.CreateAudioGraphResult";
@@ -2112,14 +1908,11 @@ pub const CreateAudioGraphResult = extern struct {
 };
 pub const CreateMediaSourceAudioInputNodeResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2135,8 +1928,7 @@ pub const CreateMediaSourceAudioInputNodeResult = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateMediaSourceAudioInputNodeResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateMediaSourceAudioInputNodeResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICreateMediaSourceAudioInputNodeResult2.IID, @ptrCast(&this));
         return try this.?.getExtendedError();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.CreateMediaSourceAudioInputNodeResult";
@@ -2147,14 +1939,11 @@ pub const CreateMediaSourceAudioInputNodeResult = extern struct {
 };
 pub const EchoEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2186,15 +1975,13 @@ pub const EchoEffectDefinition = extern struct {
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getProperties();
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*EchoEffectDefinition {
@@ -2210,14 +1997,11 @@ pub const EchoEffectDefinition = extern struct {
 };
 pub const EqualizerBand = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2254,14 +2038,11 @@ pub const EqualizerBand = extern struct {
 };
 pub const EqualizerEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2273,15 +2054,13 @@ pub const EqualizerEffectDefinition = extern struct {
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getProperties();
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*EqualizerEffectDefinition {
@@ -2297,14 +2076,11 @@ pub const EqualizerEffectDefinition = extern struct {
 };
 pub const FrameInputNodeQuantumStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2321,8 +2097,11 @@ pub const FrameInputNodeQuantumStartedEventArgs = extern struct {
 };
 pub const IAudioDeviceInputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2330,7 +2109,7 @@ pub const IAudioDeviceInputNode = extern struct {
     pub fn getDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioDeviceInputNode";
@@ -2350,8 +2129,11 @@ pub const IAudioDeviceInputNode = extern struct {
 };
 pub const IAudioDeviceOutputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2359,7 +2141,7 @@ pub const IAudioDeviceOutputNode = extern struct {
     pub fn getDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioDeviceOutputNode";
@@ -2379,8 +2161,11 @@ pub const IAudioDeviceOutputNode = extern struct {
 };
 pub const IAudioEffectsPackConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2388,30 +2173,30 @@ pub const IAudioEffectsPackConfiguration = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEffectsPackId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EffectsPackId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!AudioEffectsPackStatus {
         var _r: AudioEffectsPackStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusChanged(self: *@This(), handler: *TypedEventHandler(AudioEffectsPackConfiguration,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioEffectsPackConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2434,8 +2219,11 @@ pub const IAudioEffectsPackConfiguration = extern struct {
 };
 pub const IAudioEffectsPackConfigurationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2443,13 +2231,13 @@ pub const IAudioEffectsPackConfigurationStatics = extern struct {
     pub fn GetForDeviceId(self: *@This(), effectsPackId: ?HSTRING, deviceId: ?HSTRING) core.HResult!*AudioEffectsPackConfiguration {
         var _r: *AudioEffectsPackConfiguration = undefined;
         const _c = self.vtable.GetForDeviceId(@ptrCast(self), effectsPackId, deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsDeviceIdSupported(self: *@This(), effectsPackId: ?HSTRING, deviceId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDeviceIdSupported(@ptrCast(self), effectsPackId, deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioEffectsPackConfigurationStatics";
@@ -2470,83 +2258,86 @@ pub const IAudioEffectsPackConfigurationStatics = extern struct {
 };
 pub const IAudioFileInputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putPlaybackSpeedFactor(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_PlaybackSpeedFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlaybackSpeedFactor(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_PlaybackSpeedFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Seek(self: *@This(), position: TimeSpan) core.HResult!void {
         const _c = self.vtable.Seek(@ptrCast(self), position);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStartTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStartTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_StartTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEndTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_EndTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEndTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_EndTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLoopCount(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_LoopCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLoopCount(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_LoopCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_SourceFile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addFileCompleted(self: *@This(), handler: *TypedEventHandler(AudioFileInputNode,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FileCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFileCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FileCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioFileInputNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2578,8 +2369,11 @@ pub const IAudioFileInputNode = extern struct {
 };
 pub const IAudioFileOutputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2587,19 +2381,19 @@ pub const IAudioFileOutputNode = extern struct {
     pub fn getFile(self: *@This()) core.HResult!*IStorageFile {
         var _r: *IStorageFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFileEncodingProfile(self: *@This()) core.HResult!*MediaEncodingProfile {
         var _r: *MediaEncodingProfile = undefined;
         const _c = self.vtable.get_FileEncodingProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FinalizeAsync(self: *@This()) core.HResult!*IAsyncOperation(TranscodeFailureReason) {
         var _r: *IAsyncOperation(TranscodeFailureReason) = undefined;
         const _c = self.vtable.FinalizeAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioFileOutputNode";
@@ -2621,8 +2415,11 @@ pub const IAudioFileOutputNode = extern struct {
 };
 pub const IAudioFrameCompletedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2630,7 +2427,7 @@ pub const IAudioFrameCompletedEventArgs = extern struct {
     pub fn getFrame(self: *@This()) core.HResult!*AudioFrame {
         var _r: *AudioFrame = undefined;
         const _c = self.vtable.get_Frame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioFrameCompletedEventArgs";
@@ -2650,55 +2447,58 @@ pub const IAudioFrameCompletedEventArgs = extern struct {
 };
 pub const IAudioFrameInputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putPlaybackSpeedFactor(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_PlaybackSpeedFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlaybackSpeedFactor(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_PlaybackSpeedFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddFrame(self: *@This(), frame: *AudioFrame) core.HResult!void {
         const _c = self.vtable.AddFrame(@ptrCast(self), frame);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DiscardQueuedFrames(self: *@This()) core.HResult!void {
         const _c = self.vtable.DiscardQueuedFrames(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getQueuedSampleCount(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_QueuedSampleCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAudioFrameCompleted(self: *@This(), handler: *TypedEventHandler(AudioFrameInputNode,AudioFrameCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AudioFrameCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAudioFrameCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AudioFrameCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addQuantumStarted(self: *@This(), handler: *TypedEventHandler(AudioFrameInputNode,FrameInputNodeQuantumStartedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_QuantumStarted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeQuantumStarted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_QuantumStarted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioFrameInputNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2725,8 +2525,11 @@ pub const IAudioFrameInputNode = extern struct {
 };
 pub const IAudioFrameOutputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2734,7 +2537,7 @@ pub const IAudioFrameOutputNode = extern struct {
     pub fn GetFrame(self: *@This()) core.HResult!*AudioFrame {
         var _r: *AudioFrame = undefined;
         const _c = self.vtable.GetFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioFrameOutputNode";
@@ -2754,8 +2557,11 @@ pub const IAudioFrameOutputNode = extern struct {
 };
 pub const IAudioGraph = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2763,157 +2569,157 @@ pub const IAudioGraph = extern struct {
     pub fn CreateFrameInputNode(self: *@This()) core.HResult!*AudioFrameInputNode {
         var _r: *AudioFrameInputNode = undefined;
         const _c = self.vtable.CreateFrameInputNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFrameInputNodeWithEncodingProperties(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioFrameInputNode {
         var _r: *AudioFrameInputNode = undefined;
         const _c = self.vtable.CreateFrameInputNodeWithEncodingProperties(@ptrCast(self), encodingProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDeviceInputNodeAsync(self: *@This(), category: MediaCategory) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceInputNodeResult) = undefined;
         const _c = self.vtable.CreateDeviceInputNodeAsync(@ptrCast(self), category, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDeviceInputNodeAsyncWithEncodingProperties(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceInputNodeResult) = undefined;
         const _c = self.vtable.CreateDeviceInputNodeAsyncWithEncodingProperties(@ptrCast(self), category, encodingProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDevice(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceInputNodeResult) = undefined;
         const _c = self.vtable.CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDevice(@ptrCast(self), category, encodingProperties, device, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFrameOutputNode(self: *@This()) core.HResult!*AudioFrameOutputNode {
         var _r: *AudioFrameOutputNode = undefined;
         const _c = self.vtable.CreateFrameOutputNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFrameOutputNodeWithEncodingProperties(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioFrameOutputNode {
         var _r: *AudioFrameOutputNode = undefined;
         const _c = self.vtable.CreateFrameOutputNodeWithEncodingProperties(@ptrCast(self), encodingProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDeviceOutputNodeAsync(self: *@This()) core.HResult!*IAsyncOperation(CreateAudioDeviceOutputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceOutputNodeResult) = undefined;
         const _c = self.vtable.CreateDeviceOutputNodeAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFileInputNodeAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncOperation(CreateAudioFileInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioFileInputNodeResult) = undefined;
         const _c = self.vtable.CreateFileInputNodeAsync(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFileOutputNodeAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncOperation(CreateAudioFileOutputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioFileOutputNodeResult) = undefined;
         const _c = self.vtable.CreateFileOutputNodeAsync(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFileOutputNodeAsyncWithFileEncodingProfile(self: *@This(), file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperation(CreateAudioFileOutputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioFileOutputNodeResult) = undefined;
         const _c = self.vtable.CreateFileOutputNodeAsyncWithFileEncodingProfile(@ptrCast(self), file, fileEncodingProfile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSubmixNode(self: *@This()) core.HResult!*AudioSubmixNode {
         var _r: *AudioSubmixNode = undefined;
         const _c = self.vtable.CreateSubmixNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSubmixNodeWithEncodingProperties(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioSubmixNode {
         var _r: *AudioSubmixNode = undefined;
         const _c = self.vtable.CreateSubmixNodeWithEncodingProperties(@ptrCast(self), encodingProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ResetAllNodes(self: *@This()) core.HResult!void {
         const _c = self.vtable.ResetAllNodes(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addQuantumStarted(self: *@This(), handler: *TypedEventHandler(AudioGraph,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_QuantumStarted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeQuantumStarted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_QuantumStarted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addQuantumProcessed(self: *@This(), handler: *TypedEventHandler(AudioGraph,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_QuantumProcessed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeQuantumProcessed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_QuantumProcessed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUnrecoverableErrorOccurred(self: *@This(), handler: *TypedEventHandler(AudioGraph,AudioGraphUnrecoverableErrorOccurredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UnrecoverableErrorOccurred(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUnrecoverableErrorOccurred(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UnrecoverableErrorOccurred(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCompletedQuantumCount(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_CompletedQuantumCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.get_EncodingProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLatencyInSamples(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_LatencyInSamples(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrimaryRenderDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_PrimaryRenderDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRenderDeviceAudioProcessing(self: *@This()) core.HResult!AudioProcessing {
         var _r: AudioProcessing = undefined;
         const _c = self.vtable.get_RenderDeviceAudioProcessing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSamplesPerQuantum(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SamplesPerQuantum(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraph";
@@ -2960,8 +2766,11 @@ pub const IAudioGraph = extern struct {
 };
 pub const IAudioGraph2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2969,31 +2778,31 @@ pub const IAudioGraph2 = extern struct {
     pub fn CreateFrameInputNode(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioFrameInputNode {
         var _r: *AudioFrameInputNode = undefined;
         const _c = self.vtable.CreateFrameInputNode(@ptrCast(self), encodingProperties, emitter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDeviceInputNodeAsync(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceInputNodeResult) = undefined;
         const _c = self.vtable.CreateDeviceInputNodeAsync(@ptrCast(self), category, encodingProperties, device, emitter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFileInputNodeAsync(self: *@This(), file: *IStorageFile, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioFileInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioFileInputNodeResult) = undefined;
         const _c = self.vtable.CreateFileInputNodeAsync(@ptrCast(self), file, emitter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSubmixNode(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioSubmixNode {
         var _r: *AudioSubmixNode = undefined;
         const _c = self.vtable.CreateSubmixNode(@ptrCast(self), encodingProperties, emitter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateBatchUpdater(self: *@This()) core.HResult!*AudioGraphBatchUpdater {
         var _r: *AudioGraphBatchUpdater = undefined;
         const _c = self.vtable.CreateBatchUpdater(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraph2";
@@ -3017,8 +2826,11 @@ pub const IAudioGraph2 = extern struct {
 };
 pub const IAudioGraph3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3026,13 +2838,13 @@ pub const IAudioGraph3 = extern struct {
     pub fn CreateMediaSourceAudioInputNodeAsync(self: *@This(), mediaSource: *MediaSource) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var _r: *IAsyncOperation(CreateMediaSourceAudioInputNodeResult) = undefined;
         const _c = self.vtable.CreateMediaSourceAudioInputNodeAsync(@ptrCast(self), mediaSource, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateMediaSourceAudioInputNodeAsyncWithEmitter(self: *@This(), mediaSource: *MediaSource, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var _r: *IAsyncOperation(CreateMediaSourceAudioInputNodeResult) = undefined;
         const _c = self.vtable.CreateMediaSourceAudioInputNodeAsyncWithEmitter(@ptrCast(self), mediaSource, emitter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraph3";
@@ -3053,8 +2865,11 @@ pub const IAudioGraph3 = extern struct {
 };
 pub const IAudioGraphConnection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3062,17 +2877,17 @@ pub const IAudioGraphConnection = extern struct {
     pub fn getDestination(self: *@This()) core.HResult!*IAudioNode {
         var _r: *IAudioNode = undefined;
         const _c = self.vtable.get_Destination(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Gain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Gain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraphConnection";
@@ -3094,8 +2909,11 @@ pub const IAudioGraphConnection = extern struct {
 };
 pub const IAudioGraphSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3103,62 +2921,62 @@ pub const IAudioGraphSettings = extern struct {
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.get_EncodingProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEncodingProperties(self: *@This(), value: *AudioEncodingProperties) core.HResult!void {
         const _c = self.vtable.put_EncodingProperties(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPrimaryRenderDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_PrimaryRenderDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPrimaryRenderDevice(self: *@This(), value: *DeviceInformation) core.HResult!void {
         const _c = self.vtable.put_PrimaryRenderDevice(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getQuantumSizeSelectionMode(self: *@This()) core.HResult!QuantumSizeSelectionMode {
         var _r: QuantumSizeSelectionMode = undefined;
         const _c = self.vtable.get_QuantumSizeSelectionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putQuantumSizeSelectionMode(self: *@This(), value: QuantumSizeSelectionMode) core.HResult!void {
         const _c = self.vtable.put_QuantumSizeSelectionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredSamplesPerQuantum(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DesiredSamplesPerQuantum(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredSamplesPerQuantum(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_DesiredSamplesPerQuantum(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioRenderCategory(self: *@This()) core.HResult!AudioRenderCategory {
         var _r: AudioRenderCategory = undefined;
         const _c = self.vtable.get_AudioRenderCategory(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAudioRenderCategory(self: *@This(), value: AudioRenderCategory) core.HResult!void {
         const _c = self.vtable.put_AudioRenderCategory(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredRenderDeviceAudioProcessing(self: *@This()) core.HResult!AudioProcessing {
         var _r: AudioProcessing = undefined;
         const _c = self.vtable.get_DesiredRenderDeviceAudioProcessing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredRenderDeviceAudioProcessing(self: *@This(), value: AudioProcessing) core.HResult!void {
         const _c = self.vtable.put_DesiredRenderDeviceAudioProcessing(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraphSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3188,20 +3006,23 @@ pub const IAudioGraphSettings = extern struct {
 };
 pub const IAudioGraphSettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putMaxPlaybackSpeedFactor(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_MaxPlaybackSpeedFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxPlaybackSpeedFactor(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxPlaybackSpeedFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraphSettings2";
@@ -3222,8 +3043,11 @@ pub const IAudioGraphSettings2 = extern struct {
 };
 pub const IAudioGraphSettingsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3231,7 +3055,7 @@ pub const IAudioGraphSettingsFactory = extern struct {
     pub fn Create(self: *@This(), audioRenderCategory: AudioRenderCategory) core.HResult!*AudioGraphSettings {
         var _r: *AudioGraphSettings = undefined;
         const _c = self.vtable.Create(@ptrCast(self), audioRenderCategory, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraphSettingsFactory";
@@ -3251,8 +3075,11 @@ pub const IAudioGraphSettingsFactory = extern struct {
 };
 pub const IAudioGraphStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3260,7 +3087,7 @@ pub const IAudioGraphStatics = extern struct {
     pub fn CreateAsync(self: *@This(), settings: *AudioGraphSettings) core.HResult!*IAsyncOperation(CreateAudioGraphResult) {
         var _r: *IAsyncOperation(CreateAudioGraphResult) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), settings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraphStatics";
@@ -3280,8 +3107,11 @@ pub const IAudioGraphStatics = extern struct {
 };
 pub const IAudioGraphUnrecoverableErrorOccurredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3289,7 +3119,7 @@ pub const IAudioGraphUnrecoverableErrorOccurredEventArgs = extern struct {
     pub fn getError(self: *@This()) core.HResult!AudioGraphUnrecoverableError {
         var _r: AudioGraphUnrecoverableError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioGraphUnrecoverableErrorOccurredEventArgs";
@@ -3309,8 +3139,11 @@ pub const IAudioGraphUnrecoverableErrorOccurredEventArgs = extern struct {
 };
 pub const IAudioInputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3318,20 +3151,20 @@ pub const IAudioInputNode = extern struct {
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var _r: *IVectorView(AudioGraphConnection) = undefined;
         const _c = self.vtable.get_OutgoingConnections(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         const _c = self.vtable.AddOutgoingConnection(@ptrCast(self), destination);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         const _c = self.vtable.AddOutgoingConnectionWithGain(@ptrCast(self), destination, gain);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         const _c = self.vtable.RemoveOutgoingConnection(@ptrCast(self), destination);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioInputNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3353,8 +3186,11 @@ pub const IAudioInputNode = extern struct {
 };
 pub const IAudioInputNode2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3362,7 +3198,7 @@ pub const IAudioInputNode2 = extern struct {
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var _r: *AudioNodeEmitter = undefined;
         const _c = self.vtable.get_Emitter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioInputNode2";
@@ -3382,8 +3218,11 @@ pub const IAudioInputNode2 = extern struct {
 };
 pub const IAudioNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3391,54 +3230,54 @@ pub const IAudioNode = extern struct {
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var _r: *IVector(IAudioEffectDefinition) = undefined;
         const _c = self.vtable.get_EffectDefinitions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_OutgoingGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OutgoingGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.get_EncodingProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ConsumeInput(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ConsumeInput(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         const _c = self.vtable.Reset(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         const _c = self.vtable.DisableEffectsByDefinition(@ptrCast(self), definition);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         const _c = self.vtable.EnableEffectsByDefinition(@ptrCast(self), definition);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3467,8 +3306,11 @@ pub const IAudioNode = extern struct {
 };
 pub const IAudioNodeEmitter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3476,79 +3318,79 @@ pub const IAudioNodeEmitter = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPosition(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_Position(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDirection(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Direction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDirection(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_Direction(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShape(self: *@This()) core.HResult!*AudioNodeEmitterShape {
         var _r: *AudioNodeEmitterShape = undefined;
         const _c = self.vtable.get_Shape(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDecayModel(self: *@This()) core.HResult!*AudioNodeEmitterDecayModel {
         var _r: *AudioNodeEmitterDecayModel = undefined;
         const _c = self.vtable.get_DecayModel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Gain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Gain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDistanceScale(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DistanceScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDistanceScale(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DistanceScale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDopplerScale(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DopplerScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDopplerScale(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DopplerScale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDopplerVelocity(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_DopplerVelocity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDopplerVelocity(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_DopplerVelocity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDopplerDisabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDopplerDisabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitter";
@@ -3582,8 +3424,11 @@ pub const IAudioNodeEmitter = extern struct {
 };
 pub const IAudioNodeEmitter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3591,12 +3436,12 @@ pub const IAudioNodeEmitter2 = extern struct {
     pub fn getSpatialAudioModel(self: *@This()) core.HResult!SpatialAudioModel {
         var _r: SpatialAudioModel = undefined;
         const _c = self.vtable.get_SpatialAudioModel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSpatialAudioModel(self: *@This(), value: SpatialAudioModel) core.HResult!void {
         const _c = self.vtable.put_SpatialAudioModel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitter2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3616,8 +3461,11 @@ pub const IAudioNodeEmitter2 = extern struct {
 };
 pub const IAudioNodeEmitterConeProperties = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3625,19 +3473,19 @@ pub const IAudioNodeEmitterConeProperties = extern struct {
     pub fn getInnerAngle(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_InnerAngle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOuterAngle(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OuterAngle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOuterAngleGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OuterAngleGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitterConeProperties";
@@ -3659,8 +3507,11 @@ pub const IAudioNodeEmitterConeProperties = extern struct {
 };
 pub const IAudioNodeEmitterDecayModel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3668,25 +3519,25 @@ pub const IAudioNodeEmitterDecayModel = extern struct {
     pub fn getKind(self: *@This()) core.HResult!AudioNodeEmitterDecayKind {
         var _r: AudioNodeEmitterDecayKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MinGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNaturalProperties(self: *@This()) core.HResult!*AudioNodeEmitterNaturalDecayModelProperties {
         var _r: *AudioNodeEmitterNaturalDecayModelProperties = undefined;
         const _c = self.vtable.get_NaturalProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitterDecayModel";
@@ -3709,8 +3560,11 @@ pub const IAudioNodeEmitterDecayModel = extern struct {
 };
 pub const IAudioNodeEmitterDecayModelStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3718,13 +3572,13 @@ pub const IAudioNodeEmitterDecayModelStatics = extern struct {
     pub fn CreateNatural(self: *@This(), minGain: f64, maxGain: f64, unityGainDistance: f64, cutoffDistance: f64) core.HResult!*AudioNodeEmitterDecayModel {
         var _r: *AudioNodeEmitterDecayModel = undefined;
         const _c = self.vtable.CreateNatural(@ptrCast(self), minGain, maxGain, unityGainDistance, cutoffDistance, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateCustom(self: *@This(), minGain: f64, maxGain: f64) core.HResult!*AudioNodeEmitterDecayModel {
         var _r: *AudioNodeEmitterDecayModel = undefined;
         const _c = self.vtable.CreateCustom(@ptrCast(self), minGain, maxGain, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitterDecayModelStatics";
@@ -3745,8 +3599,11 @@ pub const IAudioNodeEmitterDecayModelStatics = extern struct {
 };
 pub const IAudioNodeEmitterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3754,7 +3611,7 @@ pub const IAudioNodeEmitterFactory = extern struct {
     pub fn CreateAudioNodeEmitter(self: *@This(), shape: *AudioNodeEmitterShape, decayModel: *AudioNodeEmitterDecayModel, settings: AudioNodeEmitterSettings) core.HResult!*AudioNodeEmitter {
         var _r: *AudioNodeEmitter = undefined;
         const _c = self.vtable.CreateAudioNodeEmitter(@ptrCast(self), shape, decayModel, settings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitterFactory";
@@ -3774,8 +3631,11 @@ pub const IAudioNodeEmitterFactory = extern struct {
 };
 pub const IAudioNodeEmitterNaturalDecayModelProperties = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3783,13 +3643,13 @@ pub const IAudioNodeEmitterNaturalDecayModelProperties = extern struct {
     pub fn getUnityGainDistance(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_UnityGainDistance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCutoffDistance(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CutoffDistance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitterNaturalDecayModelProperties";
@@ -3810,8 +3670,11 @@ pub const IAudioNodeEmitterNaturalDecayModelProperties = extern struct {
 };
 pub const IAudioNodeEmitterShape = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3819,13 +3682,13 @@ pub const IAudioNodeEmitterShape = extern struct {
     pub fn getKind(self: *@This()) core.HResult!AudioNodeEmitterShapeKind {
         var _r: AudioNodeEmitterShapeKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConeProperties(self: *@This()) core.HResult!*AudioNodeEmitterConeProperties {
         var _r: *AudioNodeEmitterConeProperties = undefined;
         const _c = self.vtable.get_ConeProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitterShape";
@@ -3846,8 +3709,11 @@ pub const IAudioNodeEmitterShape = extern struct {
 };
 pub const IAudioNodeEmitterShapeStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3855,13 +3721,13 @@ pub const IAudioNodeEmitterShapeStatics = extern struct {
     pub fn CreateCone(self: *@This(), innerAngle: f64, outerAngle: f64, outerAngleGain: f64) core.HResult!*AudioNodeEmitterShape {
         var _r: *AudioNodeEmitterShape = undefined;
         const _c = self.vtable.CreateCone(@ptrCast(self), innerAngle, outerAngle, outerAngleGain, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateOmnidirectional(self: *@This()) core.HResult!*AudioNodeEmitterShape {
         var _r: *AudioNodeEmitterShape = undefined;
         const _c = self.vtable.CreateOmnidirectional(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeEmitterShapeStatics";
@@ -3882,8 +3748,11 @@ pub const IAudioNodeEmitterShapeStatics = extern struct {
 };
 pub const IAudioNodeListener = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3891,42 +3760,42 @@ pub const IAudioNodeListener = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPosition(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_Position(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOrientation(self: *@This()) core.HResult!Quaternion {
         var _r: Quaternion = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOrientation(self: *@This(), value: Quaternion) core.HResult!void {
         const _c = self.vtable.put_Orientation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSpeedOfSound(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_SpeedOfSound(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSpeedOfSound(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_SpeedOfSound(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDopplerVelocity(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_DopplerVelocity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDopplerVelocity(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_DopplerVelocity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeListener";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3952,20 +3821,23 @@ pub const IAudioNodeListener = extern struct {
 };
 pub const IAudioNodeWithListener = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putListener(self: *@This(), value: *AudioNodeListener) core.HResult!void {
         const _c = self.vtable.put_Listener(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListener(self: *@This()) core.HResult!*AudioNodeListener {
         var _r: *AudioNodeListener = undefined;
         const _c = self.vtable.get_Listener(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioNodeWithListener";
@@ -3986,55 +3858,58 @@ pub const IAudioNodeWithListener = extern struct {
 };
 pub const IAudioPlaybackConnection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!AudioPlaybackConnectionState {
         var _r: AudioPlaybackConnectionState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Open(self: *@This()) core.HResult!*AudioPlaybackConnectionOpenResult {
         var _r: *AudioPlaybackConnectionOpenResult = undefined;
         const _c = self.vtable.Open(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenAsync(self: *@This()) core.HResult!*IAsyncOperation(AudioPlaybackConnectionOpenResult) {
         var _r: *IAsyncOperation(AudioPlaybackConnectionOpenResult) = undefined;
         const _c = self.vtable.OpenAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStateChanged(self: *@This(), handler: *TypedEventHandler(AudioPlaybackConnection,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioPlaybackConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4060,8 +3935,11 @@ pub const IAudioPlaybackConnection = extern struct {
 };
 pub const IAudioPlaybackConnectionOpenResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4069,13 +3947,13 @@ pub const IAudioPlaybackConnectionOpenResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!AudioPlaybackConnectionOpenResultStatus {
         var _r: AudioPlaybackConnectionOpenResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioPlaybackConnectionOpenResult";
@@ -4096,8 +3974,11 @@ pub const IAudioPlaybackConnectionOpenResult = extern struct {
 };
 pub const IAudioPlaybackConnectionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4105,13 +3986,13 @@ pub const IAudioPlaybackConnectionStatics = extern struct {
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryCreateFromId(self: *@This(), id: ?HSTRING) core.HResult!*AudioPlaybackConnection {
         var _r: *AudioPlaybackConnection = undefined;
         const _c = self.vtable.TryCreateFromId(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioPlaybackConnectionStatics";
@@ -4132,8 +4013,11 @@ pub const IAudioPlaybackConnectionStatics = extern struct {
 };
 pub const IAudioStateMonitor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4141,17 +4025,17 @@ pub const IAudioStateMonitor = extern struct {
     pub fn addSoundLevelChanged(self: *@This(), handler: *TypedEventHandler(AudioStateMonitor,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SoundLevelChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSoundLevelChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SoundLevelChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSoundLevel(self: *@This()) core.HResult!SoundLevel {
         var _r: SoundLevel = undefined;
         const _c = self.vtable.get_SoundLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioStateMonitor";
@@ -4173,8 +4057,11 @@ pub const IAudioStateMonitor = extern struct {
 };
 pub const IAudioStateMonitorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4182,49 +4069,49 @@ pub const IAudioStateMonitorStatics = extern struct {
     pub fn CreateForRenderMonitoring(self: *@This()) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForRenderMonitoring(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForRenderMonitoringWithCategory(self: *@This(), category: AudioRenderCategory) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForRenderMonitoringWithCategory(@ptrCast(self), category, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForRenderMonitoringWithCategoryAndRole(self: *@This(), category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForRenderMonitoringWithCategoryAndRole(@ptrCast(self), category, role, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(self: *@This(), category: AudioRenderCategory, deviceId: ?HSTRING) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForRenderMonitoringWithCategoryAndDeviceId(@ptrCast(self), category, deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForCaptureMonitoring(self: *@This()) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForCaptureMonitoring(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForCaptureMonitoringWithCategory(self: *@This(), category: MediaCategory) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForCaptureMonitoringWithCategory(@ptrCast(self), category, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForCaptureMonitoringWithCategoryAndRole(self: *@This(), category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForCaptureMonitoringWithCategoryAndRole(@ptrCast(self), category, role, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(self: *@This(), category: MediaCategory, deviceId: ?HSTRING) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForCaptureMonitoringWithCategoryAndDeviceId(@ptrCast(self), category, deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IAudioStateMonitorStatics";
@@ -4251,8 +4138,11 @@ pub const IAudioStateMonitorStatics = extern struct {
 };
 pub const ICreateAudioDeviceInputNodeResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4260,13 +4150,13 @@ pub const ICreateAudioDeviceInputNodeResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!AudioDeviceNodeCreationStatus {
         var _r: AudioDeviceNodeCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceInputNode(self: *@This()) core.HResult!*AudioDeviceInputNode {
         var _r: *AudioDeviceInputNode = undefined;
         const _c = self.vtable.get_DeviceInputNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioDeviceInputNodeResult";
@@ -4287,8 +4177,11 @@ pub const ICreateAudioDeviceInputNodeResult = extern struct {
 };
 pub const ICreateAudioDeviceInputNodeResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4296,7 +4189,7 @@ pub const ICreateAudioDeviceInputNodeResult2 = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioDeviceInputNodeResult2";
@@ -4316,8 +4209,11 @@ pub const ICreateAudioDeviceInputNodeResult2 = extern struct {
 };
 pub const ICreateAudioDeviceOutputNodeResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4325,13 +4221,13 @@ pub const ICreateAudioDeviceOutputNodeResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!AudioDeviceNodeCreationStatus {
         var _r: AudioDeviceNodeCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceOutputNode(self: *@This()) core.HResult!*AudioDeviceOutputNode {
         var _r: *AudioDeviceOutputNode = undefined;
         const _c = self.vtable.get_DeviceOutputNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioDeviceOutputNodeResult";
@@ -4352,8 +4248,11 @@ pub const ICreateAudioDeviceOutputNodeResult = extern struct {
 };
 pub const ICreateAudioDeviceOutputNodeResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4361,7 +4260,7 @@ pub const ICreateAudioDeviceOutputNodeResult2 = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioDeviceOutputNodeResult2";
@@ -4381,8 +4280,11 @@ pub const ICreateAudioDeviceOutputNodeResult2 = extern struct {
 };
 pub const ICreateAudioFileInputNodeResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4390,13 +4292,13 @@ pub const ICreateAudioFileInputNodeResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!AudioFileNodeCreationStatus {
         var _r: AudioFileNodeCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFileInputNode(self: *@This()) core.HResult!*AudioFileInputNode {
         var _r: *AudioFileInputNode = undefined;
         const _c = self.vtable.get_FileInputNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioFileInputNodeResult";
@@ -4417,8 +4319,11 @@ pub const ICreateAudioFileInputNodeResult = extern struct {
 };
 pub const ICreateAudioFileInputNodeResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4426,7 +4331,7 @@ pub const ICreateAudioFileInputNodeResult2 = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioFileInputNodeResult2";
@@ -4446,8 +4351,11 @@ pub const ICreateAudioFileInputNodeResult2 = extern struct {
 };
 pub const ICreateAudioFileOutputNodeResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4455,13 +4363,13 @@ pub const ICreateAudioFileOutputNodeResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!AudioFileNodeCreationStatus {
         var _r: AudioFileNodeCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFileOutputNode(self: *@This()) core.HResult!*AudioFileOutputNode {
         var _r: *AudioFileOutputNode = undefined;
         const _c = self.vtable.get_FileOutputNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioFileOutputNodeResult";
@@ -4482,8 +4390,11 @@ pub const ICreateAudioFileOutputNodeResult = extern struct {
 };
 pub const ICreateAudioFileOutputNodeResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4491,7 +4402,7 @@ pub const ICreateAudioFileOutputNodeResult2 = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioFileOutputNodeResult2";
@@ -4511,8 +4422,11 @@ pub const ICreateAudioFileOutputNodeResult2 = extern struct {
 };
 pub const ICreateAudioGraphResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4520,13 +4434,13 @@ pub const ICreateAudioGraphResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!AudioGraphCreationStatus {
         var _r: AudioGraphCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGraph(self: *@This()) core.HResult!*AudioGraph {
         var _r: *AudioGraph = undefined;
         const _c = self.vtable.get_Graph(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioGraphResult";
@@ -4547,8 +4461,11 @@ pub const ICreateAudioGraphResult = extern struct {
 };
 pub const ICreateAudioGraphResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4556,7 +4473,7 @@ pub const ICreateAudioGraphResult2 = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateAudioGraphResult2";
@@ -4576,8 +4493,11 @@ pub const ICreateAudioGraphResult2 = extern struct {
 };
 pub const ICreateMediaSourceAudioInputNodeResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4585,13 +4505,13 @@ pub const ICreateMediaSourceAudioInputNodeResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!MediaSourceAudioInputNodeCreationStatus {
         var _r: MediaSourceAudioInputNodeCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNode(self: *@This()) core.HResult!*MediaSourceAudioInputNode {
         var _r: *MediaSourceAudioInputNode = undefined;
         const _c = self.vtable.get_Node(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateMediaSourceAudioInputNodeResult";
@@ -4612,8 +4532,11 @@ pub const ICreateMediaSourceAudioInputNodeResult = extern struct {
 };
 pub const ICreateMediaSourceAudioInputNodeResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4621,7 +4544,7 @@ pub const ICreateMediaSourceAudioInputNodeResult2 = extern struct {
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ICreateMediaSourceAudioInputNodeResult2";
@@ -4641,40 +4564,43 @@ pub const ICreateMediaSourceAudioInputNodeResult2 = extern struct {
 };
 pub const IEchoEffectDefinition = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putWetDryMix(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_WetDryMix(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWetDryMix(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_WetDryMix(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFeedback(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Feedback(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFeedback(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Feedback(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDelay(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Delay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDelay(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Delay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IEchoEffectDefinition";
@@ -4699,8 +4625,11 @@ pub const IEchoEffectDefinition = extern struct {
 };
 pub const IEchoEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4708,7 +4637,7 @@ pub const IEchoEffectDefinitionFactory = extern struct {
     pub fn Create(self: *@This(), audioGraph: *AudioGraph) core.HResult!*EchoEffectDefinition {
         var _r: *EchoEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), audioGraph, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IEchoEffectDefinitionFactory";
@@ -4728,8 +4657,11 @@ pub const IEchoEffectDefinitionFactory = extern struct {
 };
 pub const IEqualizerBand = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4737,32 +4669,32 @@ pub const IEqualizerBand = extern struct {
     pub fn getBandwidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Bandwidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBandwidth(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Bandwidth(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFrequencyCenter(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FrequencyCenter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFrequencyCenter(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_FrequencyCenter(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Gain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Gain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IEqualizerBand";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4786,8 +4718,11 @@ pub const IEqualizerBand = extern struct {
 };
 pub const IEqualizerEffectDefinition = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4795,7 +4730,7 @@ pub const IEqualizerEffectDefinition = extern struct {
     pub fn getBands(self: *@This()) core.HResult!*IVectorView(EqualizerBand) {
         var _r: *IVectorView(EqualizerBand) = undefined;
         const _c = self.vtable.get_Bands(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IEqualizerEffectDefinition";
@@ -4815,8 +4750,11 @@ pub const IEqualizerEffectDefinition = extern struct {
 };
 pub const IEqualizerEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4824,7 +4762,7 @@ pub const IEqualizerEffectDefinitionFactory = extern struct {
     pub fn Create(self: *@This(), audioGraph: *AudioGraph) core.HResult!*EqualizerEffectDefinition {
         var _r: *EqualizerEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), audioGraph, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IEqualizerEffectDefinitionFactory";
@@ -4844,8 +4782,11 @@ pub const IEqualizerEffectDefinitionFactory = extern struct {
 };
 pub const IFrameInputNodeQuantumStartedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4853,7 +4794,7 @@ pub const IFrameInputNodeQuantumStartedEventArgs = extern struct {
     pub fn getRequiredSamples(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequiredSamples(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IFrameInputNodeQuantumStartedEventArgs";
@@ -4873,30 +4814,33 @@ pub const IFrameInputNodeQuantumStartedEventArgs = extern struct {
 };
 pub const ILimiterEffectDefinition = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putRelease(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Release(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRelease(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Release(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLoudness(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Loudness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLoudness(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Loudness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ILimiterEffectDefinition";
@@ -4919,8 +4863,11 @@ pub const ILimiterEffectDefinition = extern struct {
 };
 pub const ILimiterEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4928,7 +4875,7 @@ pub const ILimiterEffectDefinitionFactory = extern struct {
     pub fn Create(self: *@This(), audioGraph: *AudioGraph) core.HResult!*LimiterEffectDefinition {
         var _r: *LimiterEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), audioGraph, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ILimiterEffectDefinitionFactory";
@@ -4948,83 +4895,86 @@ pub const ILimiterEffectDefinitionFactory = extern struct {
 };
 pub const IMediaSourceAudioInputNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putPlaybackSpeedFactor(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_PlaybackSpeedFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlaybackSpeedFactor(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_PlaybackSpeedFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Seek(self: *@This(), position: TimeSpan) core.HResult!void {
         const _c = self.vtable.Seek(@ptrCast(self), position);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStartTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStartTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_StartTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEndTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_EndTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEndTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_EndTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLoopCount(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_LoopCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLoopCount(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_LoopCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMediaSource(self: *@This()) core.HResult!*MediaSource {
         var _r: *MediaSource = undefined;
         const _c = self.vtable.get_MediaSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addMediaSourceCompleted(self: *@This(), handler: *TypedEventHandler(MediaSourceAudioInputNode,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MediaSourceCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMediaSourceCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MediaSourceCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IMediaSourceAudioInputNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5056,240 +5006,243 @@ pub const IMediaSourceAudioInputNode = extern struct {
 };
 pub const IReverbEffectDefinition = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putWetDryMix(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_WetDryMix(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWetDryMix(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_WetDryMix(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReflectionsDelay(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReflectionsDelay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReflectionsDelay(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ReflectionsDelay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReverbDelay(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_ReverbDelay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReverbDelay(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_ReverbDelay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRearDelay(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_RearDelay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRearDelay(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_RearDelay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionLeft(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_PositionLeft(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionLeft(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_PositionLeft(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionRight(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_PositionRight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionRight(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_PositionRight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionMatrixLeft(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_PositionMatrixLeft(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionMatrixLeft(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_PositionMatrixLeft(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionMatrixRight(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_PositionMatrixRight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionMatrixRight(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_PositionMatrixRight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEarlyDiffusion(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_EarlyDiffusion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEarlyDiffusion(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_EarlyDiffusion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLateDiffusion(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_LateDiffusion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLateDiffusion(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_LateDiffusion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLowEQGain(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_LowEQGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLowEQGain(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_LowEQGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLowEQCutoff(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_LowEQCutoff(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLowEQCutoff(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_LowEQCutoff(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHighEQGain(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_HighEQGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHighEQGain(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_HighEQGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHighEQCutoff(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_HighEQCutoff(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHighEQCutoff(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_HighEQCutoff(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoomFilterFreq(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_RoomFilterFreq(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoomFilterFreq(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RoomFilterFreq(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoomFilterMain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_RoomFilterMain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoomFilterMain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RoomFilterMain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoomFilterHF(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_RoomFilterHF(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoomFilterHF(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RoomFilterHF(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReflectionsGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_ReflectionsGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReflectionsGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ReflectionsGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReverbGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_ReverbGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReverbGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ReverbGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDecayTime(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DecayTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDecayTime(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DecayTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDensity(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Density(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDensity(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Density(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoomSize(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_RoomSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoomSize(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RoomSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisableLateField(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_DisableLateField(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisableLateField(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DisableLateField(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IReverbEffectDefinition";
@@ -5354,8 +5307,11 @@ pub const IReverbEffectDefinition = extern struct {
 };
 pub const IReverbEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5363,7 +5319,7 @@ pub const IReverbEffectDefinitionFactory = extern struct {
     pub fn Create(self: *@This(), audioGraph: *AudioGraph) core.HResult!*ReverbEffectDefinition {
         var _r: *ReverbEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), audioGraph, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.IReverbEffectDefinitionFactory";
@@ -5383,8 +5339,11 @@ pub const IReverbEffectDefinitionFactory = extern struct {
 };
 pub const ISetDefaultSpatialAudioFormatResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5392,7 +5351,7 @@ pub const ISetDefaultSpatialAudioFormatResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!SetDefaultSpatialAudioFormatStatus {
         var _r: SetDefaultSpatialAudioFormatStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ISetDefaultSpatialAudioFormatResult";
@@ -5412,8 +5371,11 @@ pub const ISetDefaultSpatialAudioFormatResult = extern struct {
 };
 pub const ISpatialAudioDeviceConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5421,48 +5383,48 @@ pub const ISpatialAudioDeviceConfiguration = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSpatialAudioSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSpatialAudioSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsSpatialAudioFormatSupported(self: *@This(), subtype: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSpatialAudioFormatSupported(@ptrCast(self), subtype, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActiveSpatialAudioFormat(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActiveSpatialAudioFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultSpatialAudioFormat(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultSpatialAudioFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetDefaultSpatialAudioFormatAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncOperation(SetDefaultSpatialAudioFormatResult) {
         var _r: *IAsyncOperation(SetDefaultSpatialAudioFormatResult) = undefined;
         const _c = self.vtable.SetDefaultSpatialAudioFormatAsync(@ptrCast(self), subtype, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addConfigurationChanged(self: *@This(), handler: *TypedEventHandler(SpatialAudioDeviceConfiguration,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ConfigurationChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeConfigurationChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ConfigurationChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ISpatialAudioDeviceConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5488,8 +5450,11 @@ pub const ISpatialAudioDeviceConfiguration = extern struct {
 };
 pub const ISpatialAudioDeviceConfigurationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5497,7 +5462,7 @@ pub const ISpatialAudioDeviceConfigurationStatics = extern struct {
     pub fn GetForDeviceId(self: *@This(), deviceId: ?HSTRING) core.HResult!*SpatialAudioDeviceConfiguration {
         var _r: *SpatialAudioDeviceConfiguration = undefined;
         const _c = self.vtable.GetForDeviceId(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ISpatialAudioDeviceConfigurationStatics";
@@ -5517,8 +5482,11 @@ pub const ISpatialAudioDeviceConfigurationStatics = extern struct {
 };
 pub const ISpatialAudioFormatConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5526,24 +5494,24 @@ pub const ISpatialAudioFormatConfiguration = extern struct {
     pub fn ReportLicenseChangedAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportLicenseChangedAsync(@ptrCast(self), subtype, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReportConfigurationChangedAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportConfigurationChangedAsync(@ptrCast(self), subtype, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMixedRealityExclusiveModePolicy(self: *@This()) core.HResult!MixedRealitySpatialAudioFormatPolicy {
         var _r: MixedRealitySpatialAudioFormatPolicy = undefined;
         const _c = self.vtable.get_MixedRealityExclusiveModePolicy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMixedRealityExclusiveModePolicy(self: *@This(), value: MixedRealitySpatialAudioFormatPolicy) core.HResult!void {
         const _c = self.vtable.put_MixedRealityExclusiveModePolicy(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ISpatialAudioFormatConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5565,8 +5533,11 @@ pub const ISpatialAudioFormatConfiguration = extern struct {
 };
 pub const ISpatialAudioFormatConfigurationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5574,7 +5545,7 @@ pub const ISpatialAudioFormatConfigurationStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*SpatialAudioFormatConfiguration {
         var _r: *SpatialAudioFormatConfiguration = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ISpatialAudioFormatConfigurationStatics";
@@ -5594,8 +5565,11 @@ pub const ISpatialAudioFormatConfigurationStatics = extern struct {
 };
 pub const ISpatialAudioFormatSubtypeStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5603,37 +5577,37 @@ pub const ISpatialAudioFormatSubtypeStatics = extern struct {
     pub fn getWindowsSonic(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WindowsSonic(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDolbyAtmosForHeadphones(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DolbyAtmosForHeadphones(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDolbyAtmosForHomeTheater(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DolbyAtmosForHomeTheater(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDolbyAtmosForSpeakers(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DolbyAtmosForSpeakers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDTSHeadphoneX(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DTSHeadphoneX(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDTSXUltra(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DTSXUltra(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ISpatialAudioFormatSubtypeStatics";
@@ -5658,8 +5632,11 @@ pub const ISpatialAudioFormatSubtypeStatics = extern struct {
 };
 pub const ISpatialAudioFormatSubtypeStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5667,7 +5644,7 @@ pub const ISpatialAudioFormatSubtypeStatics2 = extern struct {
     pub fn getDTSXForHomeTheater(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DTSXForHomeTheater(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ISpatialAudioFormatSubtypeStatics2";
@@ -5687,14 +5664,11 @@ pub const ISpatialAudioFormatSubtypeStatics2 = extern struct {
 };
 pub const LimiterEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5718,15 +5692,13 @@ pub const LimiterEffectDefinition = extern struct {
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getProperties();
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*LimiterEffectDefinition {
@@ -5742,14 +5714,11 @@ pub const LimiterEffectDefinition = extern struct {
 };
 pub const MediaSourceAudioInputNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5813,120 +5782,103 @@ pub const MediaSourceAudioInputNode = extern struct {
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         return try this.?.getEmitter();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.MediaSourceAudioInputNode";
@@ -5952,14 +5904,11 @@ pub const QuantumSizeSelectionMode = enum(i32) {
 };
 pub const ReverbEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6151,15 +6100,13 @@ pub const ReverbEffectDefinition = extern struct {
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         return try this.?.getProperties();
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*ReverbEffectDefinition {
@@ -6175,14 +6122,11 @@ pub const ReverbEffectDefinition = extern struct {
 };
 pub const SetDefaultSpatialAudioFormatResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6207,14 +6151,11 @@ pub const SetDefaultSpatialAudioFormatStatus = enum(i32) {
 };
 pub const SpatialAudioDeviceConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6264,14 +6205,11 @@ pub const SpatialAudioDeviceConfiguration = extern struct {
 };
 pub const SpatialAudioFormatConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6305,14 +6243,11 @@ pub const SpatialAudioFormatConfiguration = extern struct {
 };
 pub const SpatialAudioFormatSubtype = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

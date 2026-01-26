@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IVpnAppId = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,22 +13,22 @@ pub const IVpnAppId = extern struct {
     pub fn getType(self: *@This()) core.HResult!VpnAppIdType {
         var _r: VpnAppIdType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putType(self: *@This(), value: VpnAppIdType) core.HResult!void {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnAppId";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -47,8 +50,11 @@ pub const IVpnAppId = extern struct {
 };
 pub const IVpnAppIdFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -56,7 +62,7 @@ pub const IVpnAppIdFactory = extern struct {
     pub fn Create(self: *@This(), ty: VpnAppIdType, value: ?HSTRING) core.HResult!*VpnAppId {
         var _r: *VpnAppId = undefined;
         const _c = self.vtable.Create(@ptrCast(self), ty, value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnAppIdFactory";
@@ -76,87 +82,90 @@ pub const IVpnAppIdFactory = extern struct {
 };
 pub const IVpnChannel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AssociateTransport(self: *@This(), mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable) core.HResult!void {
         const _c = self.vtable.AssociateTransport(@ptrCast(self), mainOuterTunnelTransport, optionalOuterTunnelTransport);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Start(self: *@This(), assignedClientIPv4list: *IVectorView(HostName), assignedClientIPv6list: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, routeScope: *VpnRouteAssignment, namespaceScope: *VpnNamespaceAssignment, mtuSize: u32, maxFrameSize: u32, optimizeForLowCostNetwork: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self), assignedClientIPv4list, assignedClientIPv6list, vpnInterfaceId, routeScope, namespaceScope, mtuSize, maxFrameSize, optimizeForLowCostNetwork, mainOuterTunnelTransport, optionalOuterTunnelTransport);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RequestCredentials(self: *@This(), credType: VpnCredentialType, isRetry: bool, isSingleSignOnCredential: bool, certificate: *Certificate) core.HResult!*VpnPickedCredential {
         var _r: *VpnPickedCredential = undefined;
         const _c = self.vtable.RequestCredentials(@ptrCast(self), credType, isRetry, isSingleSignOnCredential, certificate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestVpnPacketBuffer(self: *@This(), ty: VpnDataPathType, vpnPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.RequestVpnPacketBuffer(@ptrCast(self), ty, vpnPacketBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LogDiagnosticMessage(self: *@This(), message: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LogDiagnosticMessage(@ptrCast(self), message);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConfiguration(self: *@This()) core.HResult!*VpnChannelConfiguration {
         var _r: *VpnChannelConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addActivityChange(self: *@This(), handler: *TypedEventHandler(VpnChannel,VpnChannelActivityEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActivityChange(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActivityChange(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActivityChange(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putPlugInContext(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_PlugInContext(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlugInContext(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_PlugInContext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemHealth(self: *@This()) core.HResult!*VpnSystemHealth {
         var _r: *VpnSystemHealth = undefined;
         const _c = self.vtable.get_SystemHealth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCustomPrompt(self: *@This(), customPrompt: *IVectorView(IVpnCustomPrompt)) core.HResult!void {
         const _c = self.vtable.RequestCustomPrompt(@ptrCast(self), customPrompt);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetErrorMessage(self: *@This(), message: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetErrorMessage(@ptrCast(self), message);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetAllowedSslTlsVersions(self: *@This(), tunnelTransport: *IInspectable, useTls12: bool) core.HResult!void {
         const _c = self.vtable.SetAllowedSslTlsVersions(@ptrCast(self), tunnelTransport, useTls12);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -190,73 +199,76 @@ pub const IVpnChannel = extern struct {
 };
 pub const IVpnChannel2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StartWithMainTransport(self: *@This(), assignedClientIPv4list: *IVectorView(HostName), assignedClientIPv6list: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedDomainName: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, Reserved: bool, mainOuterTunnelTransport: *IInspectable) core.HResult!void {
         const _c = self.vtable.StartWithMainTransport(@ptrCast(self), assignedClientIPv4list, assignedClientIPv6list, vpnInterfaceId, assignedRoutes, assignedDomainName, mtuSize, maxFrameSize, Reserved, mainOuterTunnelTransport);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartExistingTransports(self: *@This(), assignedClientIPv4list: *IVectorView(HostName), assignedClientIPv6list: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedDomainName: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, Reserved: bool) core.HResult!void {
         const _c = self.vtable.StartExistingTransports(@ptrCast(self), assignedClientIPv4list, assignedClientIPv6list, vpnInterfaceId, assignedRoutes, assignedDomainName, mtuSize, maxFrameSize, Reserved);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addActivityStateChange(self: *@This(), handler: *TypedEventHandler(VpnChannel,VpnChannelActivityStateChangedArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActivityStateChange(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActivityStateChange(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActivityStateChange(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetVpnSendPacketBuffer(self: *@This()) core.HResult!*VpnPacketBuffer {
         var _r: *VpnPacketBuffer = undefined;
         const _c = self.vtable.GetVpnSendPacketBuffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetVpnReceivePacketBuffer(self: *@This()) core.HResult!*VpnPacketBuffer {
         var _r: *VpnPacketBuffer = undefined;
         const _c = self.vtable.GetVpnReceivePacketBuffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCustomPromptAsync(self: *@This(), customPromptElement: *IVectorView(IVpnCustomPromptElement)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RequestCustomPromptAsync(@ptrCast(self), customPromptElement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCredentialsAsyncWithCredOptionsAndCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
         var _r: *IAsyncOperation(VpnCredential) = undefined;
         const _c = self.vtable.RequestCredentialsAsyncWithCredOptionsAndCertificate(@ptrCast(self), credType, credOptions, certificate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCredentialsAsyncWithCredOptions(self: *@This(), credType: VpnCredentialType, credOptions: u32) core.HResult!*IAsyncOperation(VpnCredential) {
         var _r: *IAsyncOperation(VpnCredential) = undefined;
         const _c = self.vtable.RequestCredentialsAsyncWithCredOptions(@ptrCast(self), credType, credOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCredentialsAsync(self: *@This(), credType: VpnCredentialType) core.HResult!*IAsyncOperation(VpnCredential) {
         var _r: *IAsyncOperation(VpnCredential) = undefined;
         const _c = self.vtable.RequestCredentialsAsync(@ptrCast(self), credType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TerminateConnection(self: *@This(), message: ?HSTRING) core.HResult!void {
         const _c = self.vtable.TerminateConnection(@ptrCast(self), message);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartWithTrafficFilter(self: *@This(), assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
         const _c = self.vtable.StartWithTrafficFilter(@ptrCast(self), assignedClientIpv4List, assignedClientIpv6List, vpnInterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, mainOuterTunnelTransport, optionalOuterTunnelTransport, assignedTrafficFilters);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannel2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -286,38 +298,41 @@ pub const IVpnChannel2 = extern struct {
 };
 pub const IVpnChannel4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         const _c = self.vtable.AddAndAssociateTransport(@ptrCast(self), transport, context);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartWithTrafficFilter(self: *@This(), assignedClientIpv4Addresses: *IIterable(HostName), assignedClientIpv6Addresses: *IIterable(HostName), vpninterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, transports: *IIterable(IInspectable), assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
         const _c = self.vtable.StartWithTrafficFilter(@ptrCast(self), assignedClientIpv4Addresses, assignedClientIpv6Addresses, vpninterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, transports, assignedTrafficFilters);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReplaceAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         const _c = self.vtable.ReplaceAndAssociateTransport(@ptrCast(self), transport, context);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartReconnectingTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         const _c = self.vtable.StartReconnectingTransport(@ptrCast(self), transport, context);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetSlotTypeForTransportContext(self: *@This(), context: *IInspectable) core.HResult!ControlChannelTriggerStatus {
         var _r: ControlChannelTriggerStatus = undefined;
         const _c = self.vtable.GetSlotTypeForTransportContext(@ptrCast(self), context, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentRequestTransportContext(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_CurrentRequestTransportContext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannel4";
@@ -342,27 +357,30 @@ pub const IVpnChannel4 = extern struct {
 };
 pub const IVpnChannel5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AppendVpnReceivePacketBuffer(self: *@This(), decapsulatedPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.AppendVpnReceivePacketBuffer(@ptrCast(self), decapsulatedPacketBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AppendVpnSendPacketBuffer(self: *@This(), encapsulatedPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.AppendVpnSendPacketBuffer(@ptrCast(self), encapsulatedPacketBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FlushVpnReceivePacketBuffers(self: *@This()) core.HResult!void {
         const _c = self.vtable.FlushVpnReceivePacketBuffers(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FlushVpnSendPacketBuffers(self: *@This()) core.HResult!void {
         const _c = self.vtable.FlushVpnSendPacketBuffers(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannel5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -384,8 +402,11 @@ pub const IVpnChannel5 = extern struct {
 };
 pub const IVpnChannel6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -393,7 +414,7 @@ pub const IVpnChannel6 = extern struct {
     pub fn ActivateForeground(self: *@This(), packageRelativeAppId: ?HSTRING, sharedContext: *ValueSet) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.ActivateForeground(@ptrCast(self), packageRelativeAppId, sharedContext, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannel6";
@@ -413,8 +434,11 @@ pub const IVpnChannel6 = extern struct {
 };
 pub const IVpnChannelActivityEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -422,7 +446,7 @@ pub const IVpnChannelActivityEventArgs = extern struct {
     pub fn getType(self: *@This()) core.HResult!VpnChannelActivityEventType {
         var _r: VpnChannelActivityEventType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannelActivityEventArgs";
@@ -442,8 +466,11 @@ pub const IVpnChannelActivityEventArgs = extern struct {
 };
 pub const IVpnChannelActivityStateChangedArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -451,7 +478,7 @@ pub const IVpnChannelActivityStateChangedArgs = extern struct {
     pub fn getActivityState(self: *@This()) core.HResult!VpnChannelActivityEventType {
         var _r: VpnChannelActivityEventType = undefined;
         const _c = self.vtable.get_ActivityState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannelActivityStateChangedArgs";
@@ -471,8 +498,11 @@ pub const IVpnChannelActivityStateChangedArgs = extern struct {
 };
 pub const IVpnChannelConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -480,19 +510,19 @@ pub const IVpnChannelConfiguration = extern struct {
     pub fn getServerServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServerServiceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerHostNameList(self: *@This()) core.HResult!*IVectorView(HostName) {
         var _r: *IVectorView(HostName) = undefined;
         const _c = self.vtable.get_ServerHostNameList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustomField(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomField(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannelConfiguration";
@@ -514,8 +544,11 @@ pub const IVpnChannelConfiguration = extern struct {
 };
 pub const IVpnChannelConfiguration2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -523,7 +556,7 @@ pub const IVpnChannelConfiguration2 = extern struct {
     pub fn getServerUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var _r: *IVectorView(Uri) = undefined;
         const _c = self.vtable.get_ServerUris(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannelConfiguration2";
@@ -543,15 +576,18 @@ pub const IVpnChannelConfiguration2 = extern struct {
 };
 pub const IVpnChannelStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ProcessEventAsync(self: *@This(), thirdPartyPlugIn: *IInspectable, event: *IInspectable) core.HResult!void {
         const _c = self.vtable.ProcessEventAsync(@ptrCast(self), thirdPartyPlugIn, event);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnChannelStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -570,8 +606,11 @@ pub const IVpnChannelStatics = extern struct {
 };
 pub const IVpnCredential = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -579,25 +618,25 @@ pub const IVpnCredential = extern struct {
     pub fn getPasskeyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_PasskeyCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCertificateCredential(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_CertificateCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdditionalPin(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdditionalPin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOldPasswordCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_OldPasswordCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCredential";
@@ -620,26 +659,29 @@ pub const IVpnCredential = extern struct {
 };
 pub const IVpnCustomCheckBox = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putInitialCheckState(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_InitialCheckState(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInitialCheckState(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InitialCheckState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChecked(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Checked(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomCheckBox";
@@ -661,26 +703,29 @@ pub const IVpnCustomCheckBox = extern struct {
 };
 pub const IVpnCustomComboBox = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putOptionsText(self: *@This(), value: *IVectorView(?HSTRING)) core.HResult!void {
         const _c = self.vtable.put_OptionsText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOptionsText(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_OptionsText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelected(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Selected(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomComboBox";
@@ -702,36 +747,39 @@ pub const IVpnCustomComboBox = extern struct {
 };
 pub const IVpnCustomEditBox = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putDefaultText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDefaultText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNoEcho(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_NoEcho(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNoEcho(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_NoEcho(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomEditBox";
@@ -755,8 +803,11 @@ pub const IVpnCustomEditBox = extern struct {
 };
 pub const IVpnCustomErrorBox = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -777,40 +828,43 @@ pub const IVpnCustomErrorBox = extern struct {
 };
 pub const IVpnCustomPrompt = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Compulsory(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Compulsory(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Bordered(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Bordered(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomPrompt";
@@ -835,26 +889,29 @@ pub const IVpnCustomPrompt = extern struct {
 };
 pub const IVpnCustomPromptBooleanInput = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putInitialValue(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_InitialValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInitialValue(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InitialValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomPromptBooleanInput";
@@ -876,40 +933,43 @@ pub const IVpnCustomPromptBooleanInput = extern struct {
 };
 pub const IVpnCustomPromptElement = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Compulsory(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Compulsory(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Emphasized(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Emphasized(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomPromptElement";
@@ -934,8 +994,11 @@ pub const IVpnCustomPromptElement = extern struct {
 };
 pub const IVpnCustomPromptOptionSelector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -943,13 +1006,13 @@ pub const IVpnCustomPromptOptionSelector = extern struct {
     pub fn getOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedIndex(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SelectedIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomPromptOptionSelector";
@@ -970,20 +1033,23 @@ pub const IVpnCustomPromptOptionSelector = extern struct {
 };
 pub const IVpnCustomPromptText = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomPromptText";
@@ -1004,36 +1070,39 @@ pub const IVpnCustomPromptText = extern struct {
 };
 pub const IVpnCustomPromptTextInput = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsTextHidden(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsTextHidden(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsTextHidden(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTextHidden(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomPromptTextInput";
@@ -1057,20 +1126,23 @@ pub const IVpnCustomPromptTextInput = extern struct {
 };
 pub const IVpnCustomTextBox = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnCustomTextBox";
@@ -1091,8 +1163,11 @@ pub const IVpnCustomTextBox = extern struct {
 };
 pub const IVpnDomainNameAssignment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1100,17 +1175,17 @@ pub const IVpnDomainNameAssignment = extern struct {
     pub fn getDomainNameList(self: *@This()) core.HResult!*IVector(VpnDomainNameInfo) {
         var _r: *IVector(VpnDomainNameInfo) = undefined;
         const _c = self.vtable.get_DomainNameList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProxyAutoConfigurationUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_ProxyAutoConfigurationUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProxyAutoConfigurationUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ProxyAutoConfigurationUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnDomainNameAssignment";
@@ -1132,42 +1207,45 @@ pub const IVpnDomainNameAssignment = extern struct {
 };
 pub const IVpnDomainNameInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putDomainName(self: *@This(), value: *HostName) core.HResult!void {
         const _c = self.vtable.put_DomainName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDomainName(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_DomainName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomainNameType(self: *@This(), value: VpnDomainNameType) core.HResult!void {
         const _c = self.vtable.put_DomainNameType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDomainNameType(self: *@This()) core.HResult!VpnDomainNameType {
         var _r: VpnDomainNameType = undefined;
         const _c = self.vtable.get_DomainNameType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDnsServers(self: *@This()) core.HResult!*IVector(HostName) {
         var _r: *IVector(HostName) = undefined;
         const _c = self.vtable.get_DnsServers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWebProxyServers(self: *@This()) core.HResult!*IVector(HostName) {
         var _r: *IVector(HostName) = undefined;
         const _c = self.vtable.get_WebProxyServers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnDomainNameInfo";
@@ -1192,8 +1270,11 @@ pub const IVpnDomainNameInfo = extern struct {
 };
 pub const IVpnDomainNameInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1201,7 +1282,7 @@ pub const IVpnDomainNameInfo2 = extern struct {
     pub fn getWebProxyUris(self: *@This()) core.HResult!*IVector(Uri) {
         var _r: *IVector(Uri) = undefined;
         const _c = self.vtable.get_WebProxyUris(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnDomainNameInfo2";
@@ -1221,8 +1302,11 @@ pub const IVpnDomainNameInfo2 = extern struct {
 };
 pub const IVpnDomainNameInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1230,7 +1314,7 @@ pub const IVpnDomainNameInfoFactory = extern struct {
     pub fn CreateVpnDomainNameInfo(self: *@This(), name: ?HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
         var _r: *VpnDomainNameInfo = undefined;
         const _c = self.vtable.CreateVpnDomainNameInfo(@ptrCast(self), name, nameType, dnsServerList, proxyServerList, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnDomainNameInfoFactory";
@@ -1250,8 +1334,11 @@ pub const IVpnDomainNameInfoFactory = extern struct {
 };
 pub const IVpnForegroundActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1259,19 +1346,19 @@ pub const IVpnForegroundActivatedEventArgs = extern struct {
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSharedContext(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_SharedContext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActivationOperation(self: *@This()) core.HResult!*VpnForegroundActivationOperation {
         var _r: *VpnForegroundActivationOperation = undefined;
         const _c = self.vtable.get_ActivationOperation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnForegroundActivatedEventArgs";
@@ -1293,15 +1380,18 @@ pub const IVpnForegroundActivatedEventArgs = extern struct {
 };
 pub const IVpnForegroundActivationOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Complete(self: *@This(), result: *ValueSet) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self), result);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnForegroundActivationOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1320,15 +1410,18 @@ pub const IVpnForegroundActivationOperation = extern struct {
 };
 pub const IVpnInterfaceId = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetAddressInfo(self: *@This(), id: u8) core.HResult!void {
         const _c = self.vtable.GetAddressInfo(@ptrCast(self), id);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnInterfaceId";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1347,8 +1440,11 @@ pub const IVpnInterfaceId = extern struct {
 };
 pub const IVpnInterfaceIdFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1356,7 +1452,7 @@ pub const IVpnInterfaceIdFactory = extern struct {
     pub fn CreateVpnInterfaceId(self: *@This(), address: [*]u8) core.HResult!*VpnInterfaceId {
         var _r: *VpnInterfaceId = undefined;
         const _c = self.vtable.CreateVpnInterfaceId(@ptrCast(self), address, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnInterfaceIdFactory";
@@ -1376,8 +1472,11 @@ pub const IVpnInterfaceIdFactory = extern struct {
 };
 pub const IVpnManagementAgent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1385,55 +1484,55 @@ pub const IVpnManagementAgent = extern struct {
     pub fn AddProfileFromXmlAsync(self: *@This(), xml: ?HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.AddProfileFromXmlAsync(@ptrCast(self), xml, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddProfileFromObjectAsync(self: *@This(), profile: *IVpnProfile) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.AddProfileFromObjectAsync(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateProfileFromXmlAsync(self: *@This(), xml: ?HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.UpdateProfileFromXmlAsync(@ptrCast(self), xml, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateProfileFromObjectAsync(self: *@This(), profile: *IVpnProfile) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.UpdateProfileFromObjectAsync(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetProfilesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IVpnProfile)) {
         var _r: *IAsyncOperation(IVectorView(IVpnProfile)) = undefined;
         const _c = self.vtable.GetProfilesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteProfileAsync(self: *@This(), profile: *IVpnProfile) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.DeleteProfileAsync(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectProfileAsync(self: *@This(), profile: *IVpnProfile) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.ConnectProfileAsync(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectProfileWithPasswordCredentialAsync(self: *@This(), profile: *IVpnProfile, passwordCredential: *PasswordCredential) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.ConnectProfileWithPasswordCredentialAsync(@ptrCast(self), profile, passwordCredential, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisconnectProfileAsync(self: *@This(), profile: *IVpnProfile) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.DisconnectProfileAsync(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnManagementAgent";
@@ -1461,30 +1560,33 @@ pub const IVpnManagementAgent = extern struct {
 };
 pub const IVpnNamespaceAssignment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putNamespaceList(self: *@This(), value: *IVector(VpnNamespaceInfo)) core.HResult!void {
         const _c = self.vtable.put_NamespaceList(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNamespaceList(self: *@This()) core.HResult!*IVector(VpnNamespaceInfo) {
         var _r: *IVector(VpnNamespaceInfo) = undefined;
         const _c = self.vtable.get_NamespaceList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProxyAutoConfigUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_ProxyAutoConfigUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProxyAutoConfigUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ProxyAutoConfigUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnNamespaceAssignment";
@@ -1507,40 +1609,43 @@ pub const IVpnNamespaceAssignment = extern struct {
 };
 pub const IVpnNamespaceInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Namespace(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Namespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDnsServers(self: *@This(), value: *IVector(HostName)) core.HResult!void {
         const _c = self.vtable.put_DnsServers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDnsServers(self: *@This()) core.HResult!*IVector(HostName) {
         var _r: *IVector(HostName) = undefined;
         const _c = self.vtable.get_DnsServers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWebProxyServers(self: *@This(), value: *IVector(HostName)) core.HResult!void {
         const _c = self.vtable.put_WebProxyServers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWebProxyServers(self: *@This()) core.HResult!*IVector(HostName) {
         var _r: *IVector(HostName) = undefined;
         const _c = self.vtable.get_WebProxyServers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnNamespaceInfo";
@@ -1565,8 +1670,11 @@ pub const IVpnNamespaceInfo = extern struct {
 };
 pub const IVpnNamespaceInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1574,7 +1682,7 @@ pub const IVpnNamespaceInfoFactory = extern struct {
     pub fn CreateVpnNamespaceInfo(self: *@This(), name: ?HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName)) core.HResult!*VpnNamespaceInfo {
         var _r: *VpnNamespaceInfo = undefined;
         const _c = self.vtable.CreateVpnNamespaceInfo(@ptrCast(self), name, dnsServerList, proxyServerList, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnNamespaceInfoFactory";
@@ -1594,8 +1702,11 @@ pub const IVpnNamespaceInfoFactory = extern struct {
 };
 pub const IVpnNativeProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1603,58 +1714,58 @@ pub const IVpnNativeProfile = extern struct {
     pub fn getServers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Servers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoutingPolicyType(self: *@This()) core.HResult!VpnRoutingPolicyType {
         var _r: VpnRoutingPolicyType = undefined;
         const _c = self.vtable.get_RoutingPolicyType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoutingPolicyType(self: *@This(), value: VpnRoutingPolicyType) core.HResult!void {
         const _c = self.vtable.put_RoutingPolicyType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNativeProtocolType(self: *@This()) core.HResult!VpnNativeProtocolType {
         var _r: VpnNativeProtocolType = undefined;
         const _c = self.vtable.get_NativeProtocolType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNativeProtocolType(self: *@This(), value: VpnNativeProtocolType) core.HResult!void {
         const _c = self.vtable.put_NativeProtocolType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUserAuthenticationMethod(self: *@This()) core.HResult!VpnAuthenticationMethod {
         var _r: VpnAuthenticationMethod = undefined;
         const _c = self.vtable.get_UserAuthenticationMethod(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUserAuthenticationMethod(self: *@This(), value: VpnAuthenticationMethod) core.HResult!void {
         const _c = self.vtable.put_UserAuthenticationMethod(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTunnelAuthenticationMethod(self: *@This()) core.HResult!VpnAuthenticationMethod {
         var _r: VpnAuthenticationMethod = undefined;
         const _c = self.vtable.get_TunnelAuthenticationMethod(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTunnelAuthenticationMethod(self: *@This(), value: VpnAuthenticationMethod) core.HResult!void {
         const _c = self.vtable.put_TunnelAuthenticationMethod(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEapConfiguration(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EapConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEapConfiguration(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EapConfiguration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnNativeProfile";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1683,8 +1794,11 @@ pub const IVpnNativeProfile = extern struct {
 };
 pub const IVpnNativeProfile2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1692,17 +1806,17 @@ pub const IVpnNativeProfile2 = extern struct {
     pub fn getRequireVpnClientAppUI(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RequireVpnClientAppUI(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRequireVpnClientAppUI(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_RequireVpnClientAppUI(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!VpnManagementConnectionStatus {
         var _r: VpnManagementConnectionStatus = undefined;
         const _c = self.vtable.get_ConnectionStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnNativeProfile2";
@@ -1724,8 +1838,11 @@ pub const IVpnNativeProfile2 = extern struct {
 };
 pub const IVpnPacketBuffer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1733,27 +1850,27 @@ pub const IVpnPacketBuffer = extern struct {
     pub fn getBuffer(self: *@This()) core.HResult!*Buffer {
         var _r: *Buffer = undefined;
         const _c = self.vtable.get_Buffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStatus(self: *@This(), value: VpnPacketBufferStatus) core.HResult!void {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!VpnPacketBufferStatus {
         var _r: VpnPacketBufferStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransportAffinity(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_TransportAffinity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransportAffinity(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TransportAffinity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPacketBuffer";
@@ -1777,8 +1894,11 @@ pub const IVpnPacketBuffer = extern struct {
 };
 pub const IVpnPacketBuffer2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1786,7 +1906,7 @@ pub const IVpnPacketBuffer2 = extern struct {
     pub fn getAppId(self: *@This()) core.HResult!*VpnAppId {
         var _r: *VpnAppId = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPacketBuffer2";
@@ -1806,20 +1926,23 @@ pub const IVpnPacketBuffer2 = extern struct {
 };
 pub const IVpnPacketBuffer3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putTransportContext(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_TransportContext(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransportContext(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_TransportContext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPacketBuffer3";
@@ -1840,8 +1963,11 @@ pub const IVpnPacketBuffer3 = extern struct {
 };
 pub const IVpnPacketBufferFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1849,7 +1975,7 @@ pub const IVpnPacketBufferFactory = extern struct {
     pub fn CreateVpnPacketBuffer(self: *@This(), parentBuffer: *VpnPacketBuffer, offset: u32, length: u32) core.HResult!*VpnPacketBuffer {
         var _r: *VpnPacketBuffer = undefined;
         const _c = self.vtable.CreateVpnPacketBuffer(@ptrCast(self), parentBuffer, offset, length, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPacketBufferFactory";
@@ -1869,50 +1995,53 @@ pub const IVpnPacketBufferFactory = extern struct {
 };
 pub const IVpnPacketBufferList = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Append(self: *@This(), nextVpnPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.Append(@ptrCast(self), nextVpnPacketBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddAtBegin(self: *@This(), nextVpnPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.AddAtBegin(@ptrCast(self), nextVpnPacketBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!*VpnPacketBuffer {
         var _r: *VpnPacketBuffer = undefined;
         const _c = self.vtable.RemoveAtEnd(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveAtBegin(self: *@This()) core.HResult!*VpnPacketBuffer {
         var _r: *VpnPacketBuffer = undefined;
         const _c = self.vtable.RemoveAtBegin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const _c = self.vtable.Clear(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putStatus(self: *@This(), value: VpnPacketBufferStatus) core.HResult!void {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!VpnPacketBufferStatus {
         var _r: VpnPacketBufferStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPacketBufferList";
@@ -1939,30 +2068,33 @@ pub const IVpnPacketBufferList = extern struct {
 };
 pub const IVpnPacketBufferList2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddLeadingPacket(self: *@This(), nextVpnPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.AddLeadingPacket(@ptrCast(self), nextVpnPacketBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveLeadingPacket(self: *@This()) core.HResult!*VpnPacketBuffer {
         var _r: *VpnPacketBuffer = undefined;
         const _c = self.vtable.RemoveLeadingPacket(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddTrailingPacket(self: *@This(), nextVpnPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.AddTrailingPacket(@ptrCast(self), nextVpnPacketBuffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveTrailingPacket(self: *@This()) core.HResult!*VpnPacketBuffer {
         var _r: *VpnPacketBuffer = undefined;
         const _c = self.vtable.RemoveTrailingPacket(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPacketBufferList2";
@@ -1985,8 +2117,11 @@ pub const IVpnPacketBufferList2 = extern struct {
 };
 pub const IVpnPickedCredential = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1994,19 +2129,19 @@ pub const IVpnPickedCredential = extern struct {
     pub fn getPasskeyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_PasskeyCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdditionalPin(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdditionalPin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOldPasswordCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_OldPasswordCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPickedCredential";
@@ -2028,31 +2163,34 @@ pub const IVpnPickedCredential = extern struct {
 };
 pub const IVpnPlugIn = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Connect(self: *@This(), channel: *VpnChannel) core.HResult!void {
         const _c = self.vtable.Connect(@ptrCast(self), channel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Disconnect(self: *@This(), channel: *VpnChannel) core.HResult!void {
         const _c = self.vtable.Disconnect(@ptrCast(self), channel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetKeepAlivePayload(self: *@This(), channel: *VpnChannel, keepAlivePacket: *VpnPacketBuffer) core.HResult!void {
         const _c = self.vtable.GetKeepAlivePayload(@ptrCast(self), channel, keepAlivePacket);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Encapsulate(self: *@This(), channel: *VpnChannel, packets: *VpnPacketBufferList, encapulatedPackets: *VpnPacketBufferList) core.HResult!void {
         const _c = self.vtable.Encapsulate(@ptrCast(self), channel, packets, encapulatedPackets);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Decapsulate(self: *@This(), channel: *VpnChannel, encapBuffer: *VpnPacketBuffer, decapsulatedPackets: *VpnPacketBufferList, controlPacketsToSend: *VpnPacketBufferList) core.HResult!void {
         const _c = self.vtable.Decapsulate(@ptrCast(self), channel, encapBuffer, decapsulatedPackets, controlPacketsToSend);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPlugIn";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2075,8 +2213,11 @@ pub const IVpnPlugIn = extern struct {
 };
 pub const IVpnPlugInProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2084,28 +2225,28 @@ pub const IVpnPlugInProfile = extern struct {
     pub fn getServerUris(self: *@This()) core.HResult!*IVector(Uri) {
         var _r: *IVector(Uri) = undefined;
         const _c = self.vtable.get_ServerUris(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustomConfiguration(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomConfiguration(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CustomConfiguration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVpnPluginPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VpnPluginPackageFamilyName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVpnPluginPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_VpnPluginPackageFamilyName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPlugInProfile";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2128,8 +2269,11 @@ pub const IVpnPlugInProfile = extern struct {
 };
 pub const IVpnPlugInProfile2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2137,17 +2281,17 @@ pub const IVpnPlugInProfile2 = extern struct {
     pub fn getRequireVpnClientAppUI(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RequireVpnClientAppUI(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRequireVpnClientAppUI(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_RequireVpnClientAppUI(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!VpnManagementConnectionStatus {
         var _r: VpnManagementConnectionStatus = undefined;
         const _c = self.vtable.get_ConnectionStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPlugInProfile2";
@@ -2169,15 +2313,18 @@ pub const IVpnPlugInProfile2 = extern struct {
 };
 pub const IVpnPlugInReconnectTransport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReconnectTransport(self: *@This(), channel: *VpnChannel, context: *IInspectable) core.HResult!void {
         const _c = self.vtable.ReconnectTransport(@ptrCast(self), channel, context);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnPlugInReconnectTransport";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2196,8 +2343,11 @@ pub const IVpnPlugInReconnectTransport = extern struct {
 };
 pub const IVpnProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2205,56 +2355,56 @@ pub const IVpnProfile = extern struct {
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProfileName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAppTriggers(self: *@This()) core.HResult!*IVector(VpnAppId) {
         var _r: *IVector(VpnAppId) = undefined;
         const _c = self.vtable.get_AppTriggers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var _r: *IVector(VpnRoute) = undefined;
         const _c = self.vtable.get_Routes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomainNameInfoList(self: *@This()) core.HResult!*IVector(VpnDomainNameInfo) {
         var _r: *IVector(VpnDomainNameInfo) = undefined;
         const _c = self.vtable.get_DomainNameInfoList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrafficFilters(self: *@This()) core.HResult!*IVector(VpnTrafficFilter) {
         var _r: *IVector(VpnTrafficFilter) = undefined;
         const _c = self.vtable.get_TrafficFilters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRememberCredentials(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RememberCredentials(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRememberCredentials(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_RememberCredentials(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAlwaysOn(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AlwaysOn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlwaysOn(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AlwaysOn(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnProfile";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2282,30 +2432,33 @@ pub const IVpnProfile = extern struct {
 };
 pub const IVpnRoute = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putAddress(self: *@This(), value: *HostName) core.HResult!void {
         const _c = self.vtable.put_Address(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAddress(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPrefixSize(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_PrefixSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPrefixSize(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_PrefixSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnRoute";
@@ -2328,60 +2481,63 @@ pub const IVpnRoute = extern struct {
 };
 pub const IVpnRouteAssignment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putIpv4InclusionRoutes(self: *@This(), value: *IVector(VpnRoute)) core.HResult!void {
         const _c = self.vtable.put_Ipv4InclusionRoutes(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putIpv6InclusionRoutes(self: *@This(), value: *IVector(VpnRoute)) core.HResult!void {
         const _c = self.vtable.put_Ipv6InclusionRoutes(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIpv4InclusionRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var _r: *IVector(VpnRoute) = undefined;
         const _c = self.vtable.get_Ipv4InclusionRoutes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIpv6InclusionRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var _r: *IVector(VpnRoute) = undefined;
         const _c = self.vtable.get_Ipv6InclusionRoutes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIpv4ExclusionRoutes(self: *@This(), value: *IVector(VpnRoute)) core.HResult!void {
         const _c = self.vtable.put_Ipv4ExclusionRoutes(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putIpv6ExclusionRoutes(self: *@This(), value: *IVector(VpnRoute)) core.HResult!void {
         const _c = self.vtable.put_Ipv6ExclusionRoutes(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIpv4ExclusionRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var _r: *IVector(VpnRoute) = undefined;
         const _c = self.vtable.get_Ipv4ExclusionRoutes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIpv6ExclusionRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var _r: *IVector(VpnRoute) = undefined;
         const _c = self.vtable.get_Ipv6ExclusionRoutes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExcludeLocalSubnets(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ExcludeLocalSubnets(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getExcludeLocalSubnets(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ExcludeLocalSubnets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnRouteAssignment";
@@ -2410,8 +2566,11 @@ pub const IVpnRouteAssignment = extern struct {
 };
 pub const IVpnRouteFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2419,7 +2578,7 @@ pub const IVpnRouteFactory = extern struct {
     pub fn CreateVpnRoute(self: *@This(), address: *HostName, prefixSize: u8) core.HResult!*VpnRoute {
         var _r: *VpnRoute = undefined;
         const _c = self.vtable.CreateVpnRoute(@ptrCast(self), address, prefixSize, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnRouteFactory";
@@ -2439,8 +2598,11 @@ pub const IVpnRouteFactory = extern struct {
 };
 pub const IVpnSystemHealth = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2448,7 +2610,7 @@ pub const IVpnSystemHealth = extern struct {
     pub fn getStatementOfHealth(self: *@This()) core.HResult!*Buffer {
         var _r: *Buffer = undefined;
         const _c = self.vtable.get_StatementOfHealth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnSystemHealth";
@@ -2468,8 +2630,11 @@ pub const IVpnSystemHealth = extern struct {
 };
 pub const IVpnTrafficFilter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2477,62 +2642,62 @@ pub const IVpnTrafficFilter = extern struct {
     pub fn getAppId(self: *@This()) core.HResult!*VpnAppId {
         var _r: *VpnAppId = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAppId(self: *@This(), value: *VpnAppId) core.HResult!void {
         const _c = self.vtable.put_AppId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAppClaims(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AppClaims(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProtocol(self: *@This()) core.HResult!VpnIPProtocol {
         var _r: VpnIPProtocol = undefined;
         const _c = self.vtable.get_Protocol(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProtocol(self: *@This(), value: VpnIPProtocol) core.HResult!void {
         const _c = self.vtable.put_Protocol(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLocalPortRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_LocalPortRanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemotePortRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RemotePortRanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocalAddressRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_LocalAddressRanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemoteAddressRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RemoteAddressRanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoutingPolicyType(self: *@This()) core.HResult!VpnRoutingPolicyType {
         var _r: VpnRoutingPolicyType = undefined;
         const _c = self.vtable.get_RoutingPolicyType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoutingPolicyType(self: *@This(), value: VpnRoutingPolicyType) core.HResult!void {
         const _c = self.vtable.put_RoutingPolicyType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnTrafficFilter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2561,8 +2726,11 @@ pub const IVpnTrafficFilter = extern struct {
 };
 pub const IVpnTrafficFilterAssignment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2570,28 +2738,28 @@ pub const IVpnTrafficFilterAssignment = extern struct {
     pub fn getTrafficFilterList(self: *@This()) core.HResult!*IVector(VpnTrafficFilter) {
         var _r: *IVector(VpnTrafficFilter) = undefined;
         const _c = self.vtable.get_TrafficFilterList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllowOutbound(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowOutbound(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowOutbound(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowOutbound(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowInbound(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowInbound(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowInbound(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowInbound(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnTrafficFilterAssignment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2614,8 +2782,11 @@ pub const IVpnTrafficFilterAssignment = extern struct {
 };
 pub const IVpnTrafficFilterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2623,7 +2794,7 @@ pub const IVpnTrafficFilterFactory = extern struct {
     pub fn Create(self: *@This(), appId: *VpnAppId) core.HResult!*VpnTrafficFilter {
         var _r: *VpnTrafficFilter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), appId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.IVpnTrafficFilterFactory";
@@ -2643,14 +2814,11 @@ pub const IVpnTrafficFilterFactory = extern struct {
 };
 pub const VpnAppId = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2695,14 +2863,11 @@ pub const VpnAuthenticationMethod = enum(i32) {
 };
 pub const VpnChannel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2774,162 +2939,139 @@ pub const VpnChannel = extern struct {
     pub fn StartWithMainTransport(self: *@This(), assignedClientIPv4list: *IVectorView(HostName), assignedClientIPv6list: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedDomainName: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, Reserved: bool, mainOuterTunnelTransport: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.StartWithMainTransport(assignedClientIPv4list, assignedClientIPv6list, vpnInterfaceId, assignedRoutes, assignedDomainName, mtuSize, maxFrameSize, Reserved, mainOuterTunnelTransport);
     }
     pub fn StartExistingTransports(self: *@This(), assignedClientIPv4list: *IVectorView(HostName), assignedClientIPv6list: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedDomainName: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, Reserved: bool) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.StartExistingTransports(assignedClientIPv4list, assignedClientIPv6list, vpnInterfaceId, assignedRoutes, assignedDomainName, mtuSize, maxFrameSize, Reserved);
     }
     pub fn addActivityStateChange(self: *@This(), handler: *TypedEventHandler(VpnChannel,VpnChannelActivityStateChangedArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.addActivityStateChange(handler);
     }
     pub fn removeActivityStateChange(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.removeActivityStateChange(token);
     }
     pub fn GetVpnSendPacketBuffer(self: *@This()) core.HResult!*VpnPacketBuffer {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.GetVpnSendPacketBuffer();
     }
     pub fn GetVpnReceivePacketBuffer(self: *@This()) core.HResult!*VpnPacketBuffer {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.GetVpnReceivePacketBuffer();
     }
     pub fn RequestCustomPromptAsync(self: *@This(), customPromptElement: *IVectorView(IVpnCustomPromptElement)) core.HResult!*IAsyncAction {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.RequestCustomPromptAsync(customPromptElement);
     }
     pub fn RequestCredentialsAsyncWithCredOptionsAndCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.RequestCredentialsAsyncWithCredOptionsAndCertificate(credType, credOptions, certificate);
     }
     pub fn RequestCredentialsAsyncWithCredOptions(self: *@This(), credType: VpnCredentialType, credOptions: u32) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.RequestCredentialsAsyncWithCredOptions(credType, credOptions);
     }
     pub fn RequestCredentialsAsync(self: *@This(), credType: VpnCredentialType) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.RequestCredentialsAsync(credType);
     }
     pub fn TerminateConnection(self: *@This(), message: ?HSTRING) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.TerminateConnection(message);
     }
     pub fn StartWithTrafficFilterWithAssignedClientIpv4ListAndAssignedClientIpv6ListAndMainOuterTunnelTransportAndOptionalOuterTunnelTransportAndAssignedTrafficFilters(self: *@This(), assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         return try this.?.StartWithTrafficFilterWithAssignedClientIpv4ListAndAssignedClientIpv6ListAndMainOuterTunnelTransportAndOptionalOuterTunnelTransportAndAssignedTrafficFilters(assignedClientIpv4List, assignedClientIpv6List, vpnInterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, mainOuterTunnelTransport, optionalOuterTunnelTransport, assignedTrafficFilters);
     }
     pub fn AddAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         return try this.?.AddAndAssociateTransport(transport, context);
     }
     pub fn StartWithTrafficFilter(self: *@This(), assignedClientIpv4Addresses: *IIterable(HostName), assignedClientIpv6Addresses: *IIterable(HostName), vpninterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, transports: *IIterable(IInspectable), assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         return try this.?.StartWithTrafficFilter(assignedClientIpv4Addresses, assignedClientIpv6Addresses, vpninterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, transports, assignedTrafficFilters);
     }
     pub fn ReplaceAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         return try this.?.ReplaceAndAssociateTransport(transport, context);
     }
     pub fn StartReconnectingTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         return try this.?.StartReconnectingTransport(transport, context);
     }
     pub fn GetSlotTypeForTransportContext(self: *@This(), context: *IInspectable) core.HResult!ControlChannelTriggerStatus {
         var this: ?*IVpnChannel4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         return try this.?.GetSlotTypeForTransportContext(context);
     }
     pub fn getCurrentRequestTransportContext(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IVpnChannel4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         return try this.?.getCurrentRequestTransportContext();
     }
     pub fn AppendVpnReceivePacketBuffer(self: *@This(), decapsulatedPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         return try this.?.AppendVpnReceivePacketBuffer(decapsulatedPacketBuffer);
     }
     pub fn AppendVpnSendPacketBuffer(self: *@This(), encapsulatedPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         return try this.?.AppendVpnSendPacketBuffer(encapsulatedPacketBuffer);
     }
     pub fn FlushVpnReceivePacketBuffers(self: *@This()) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         return try this.?.FlushVpnReceivePacketBuffers();
     }
     pub fn FlushVpnSendPacketBuffers(self: *@This()) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         return try this.?.FlushVpnSendPacketBuffers();
     }
     pub fn ActivateForeground(self: *@This(), packageRelativeAppId: ?HSTRING, sharedContext: *ValueSet) core.HResult!*ValueSet {
         var this: ?*IVpnChannel6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel6.IID, @ptrCast(&this));
         return try this.?.ActivateForeground(packageRelativeAppId, sharedContext);
     }
     pub fn ProcessEventAsync(thirdPartyPlugIn: *IInspectable, event: *IInspectable) core.HResult!void {
@@ -2945,14 +3087,11 @@ pub const VpnChannel = extern struct {
 };
 pub const VpnChannelActivityEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2973,14 +3112,11 @@ pub const VpnChannelActivityEventType = enum(i32) {
 };
 pub const VpnChannelActivityStateChangedArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2997,14 +3133,11 @@ pub const VpnChannelActivityStateChangedArgs = extern struct {
 };
 pub const VpnChannelConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3024,8 +3157,7 @@ pub const VpnChannelConfiguration = extern struct {
     pub fn getServerUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var this: ?*IVpnChannelConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannelConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnChannelConfiguration2.IID, @ptrCast(&this));
         return try this.?.getServerUris();
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnChannelConfiguration";
@@ -3041,14 +3173,11 @@ pub const VpnChannelRequestCredentialsOptions = enum(i32) {
 };
 pub const VpnCredential = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3086,14 +3215,11 @@ pub const VpnCredentialType = enum(i32) {
 };
 pub const VpnCustomCheckBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3113,43 +3239,37 @@ pub const VpnCustomCheckBox = extern struct {
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getBordered();
     }
     pub fn init() core.HResult!*@This() {
@@ -3165,14 +3285,11 @@ pub const VpnCustomCheckBox = extern struct {
 };
 pub const VpnCustomComboBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3192,43 +3309,37 @@ pub const VpnCustomComboBox = extern struct {
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getBordered();
     }
     pub fn init() core.HResult!*@This() {
@@ -3244,14 +3355,11 @@ pub const VpnCustomComboBox = extern struct {
 };
 pub const VpnCustomEditBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3279,43 +3387,37 @@ pub const VpnCustomEditBox = extern struct {
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getBordered();
     }
     pub fn init() core.HResult!*@This() {
@@ -3331,14 +3433,11 @@ pub const VpnCustomEditBox = extern struct {
 };
 pub const VpnCustomErrorBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3346,43 +3445,37 @@ pub const VpnCustomErrorBox = extern struct {
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getBordered();
     }
     pub fn init() core.HResult!*@This() {
@@ -3398,14 +3491,11 @@ pub const VpnCustomErrorBox = extern struct {
 };
 pub const VpnCustomPromptBooleanInput = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3425,43 +3515,37 @@ pub const VpnCustomPromptBooleanInput = extern struct {
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getEmphasized();
     }
     pub fn init() core.HResult!*@This() {
@@ -3477,14 +3561,11 @@ pub const VpnCustomPromptBooleanInput = extern struct {
 };
 pub const VpnCustomPromptOptionSelector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3500,43 +3581,37 @@ pub const VpnCustomPromptOptionSelector = extern struct {
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getEmphasized();
     }
     pub fn init() core.HResult!*@This() {
@@ -3552,14 +3627,11 @@ pub const VpnCustomPromptOptionSelector = extern struct {
 };
 pub const VpnCustomPromptText = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3575,43 +3647,37 @@ pub const VpnCustomPromptText = extern struct {
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getEmphasized();
     }
     pub fn init() core.HResult!*@This() {
@@ -3627,14 +3693,11 @@ pub const VpnCustomPromptText = extern struct {
 };
 pub const VpnCustomPromptTextInput = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3662,43 +3725,37 @@ pub const VpnCustomPromptTextInput = extern struct {
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         return try this.?.getEmphasized();
     }
     pub fn init() core.HResult!*@This() {
@@ -3714,14 +3771,11 @@ pub const VpnCustomPromptTextInput = extern struct {
 };
 pub const VpnCustomTextBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3737,43 +3791,37 @@ pub const VpnCustomTextBox = extern struct {
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         return try this.?.getBordered();
     }
     pub fn init() core.HResult!*@This() {
@@ -3793,14 +3841,11 @@ pub const VpnDataPathType = enum(i32) {
 };
 pub const VpnDomainNameAssignment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3830,14 +3875,11 @@ pub const VpnDomainNameAssignment = extern struct {
 };
 pub const VpnDomainNameInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3869,8 +3911,7 @@ pub const VpnDomainNameInfo = extern struct {
     pub fn getWebProxyUris(self: *@This()) core.HResult!*IVector(Uri) {
         var this: ?*IVpnDomainNameInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnDomainNameInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnDomainNameInfo2.IID, @ptrCast(&this));
         return try this.?.getWebProxyUris();
     }
     pub fn CreateVpnDomainNameInfo(name: ?HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
@@ -3891,14 +3932,11 @@ pub const VpnDomainNameType = enum(i32) {
 };
 pub const VpnForegroundActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3918,29 +3956,25 @@ pub const VpnForegroundActivatedEventArgs = extern struct {
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         var this: ?*IActivatedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
         var this: ?*IActivatedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         return try this.?.getPreviousExecutionState();
     }
     pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
         var this: ?*IActivatedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         return try this.?.getSplashScreen();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IActivatedEventArgsWithUser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnForegroundActivatedEventArgs";
@@ -3951,14 +3985,11 @@ pub const VpnForegroundActivatedEventArgs = extern struct {
 };
 pub const VpnForegroundActivationOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3984,14 +4015,11 @@ pub const VpnIPProtocol = enum(i32) {
 };
 pub const VpnInterfaceId = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4013,14 +4041,11 @@ pub const VpnInterfaceId = extern struct {
 };
 pub const VpnManagementAgent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4101,14 +4126,11 @@ pub const VpnManagementErrorStatus = enum(i32) {
 };
 pub const VpnNamespaceAssignment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4142,14 +4164,11 @@ pub const VpnNamespaceAssignment = extern struct {
 };
 pub const VpnNamespaceInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4191,14 +4210,11 @@ pub const VpnNamespaceInfo = extern struct {
 };
 pub const VpnNativeProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4250,92 +4266,79 @@ pub const VpnNativeProfile = extern struct {
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getProfileName();
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.putProfileName(value);
     }
     pub fn getAppTriggers(self: *@This()) core.HResult!*IVector(VpnAppId) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getAppTriggers();
     }
     pub fn getRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getRoutes();
     }
     pub fn getDomainNameInfoList(self: *@This()) core.HResult!*IVector(VpnDomainNameInfo) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getDomainNameInfoList();
     }
     pub fn getTrafficFilters(self: *@This()) core.HResult!*IVector(VpnTrafficFilter) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getTrafficFilters();
     }
     pub fn getRememberCredentials(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getRememberCredentials();
     }
     pub fn putRememberCredentials(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.putRememberCredentials(value);
     }
     pub fn getAlwaysOn(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getAlwaysOn();
     }
     pub fn putAlwaysOn(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.putAlwaysOn(value);
     }
     pub fn getRequireVpnClientAppUI(self: *@This()) core.HResult!bool {
         var this: ?*IVpnNativeProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
         return try this.?.getRequireVpnClientAppUI();
     }
     pub fn putRequireVpnClientAppUI(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnNativeProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
         return try this.?.putRequireVpnClientAppUI(value);
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!VpnManagementConnectionStatus {
         var this: ?*IVpnNativeProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
         return try this.?.getConnectionStatus();
     }
     pub fn init() core.HResult!*@This() {
@@ -4356,14 +4359,11 @@ pub const VpnNativeProtocolType = enum(i32) {
 };
 pub const VpnPacketBuffer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4391,22 +4391,19 @@ pub const VpnPacketBuffer = extern struct {
     pub fn getAppId(self: *@This()) core.HResult!*VpnAppId {
         var this: ?*IVpnPacketBuffer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer2.IID, @ptrCast(&this));
         return try this.?.getAppId();
     }
     pub fn putTransportContext(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IVpnPacketBuffer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer3.IID, @ptrCast(&this));
         return try this.?.putTransportContext(value);
     }
     pub fn getTransportContext(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IVpnPacketBuffer3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer3.IID, @ptrCast(&this));
         return try this.?.getTransportContext();
     }
     pub fn CreateVpnPacketBuffer(parentBuffer: *VpnPacketBuffer, offset: u32, length: u32) core.HResult!*VpnPacketBuffer {
@@ -4422,14 +4419,11 @@ pub const VpnPacketBuffer = extern struct {
 };
 pub const VpnPacketBufferList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4469,8 +4463,7 @@ pub const VpnPacketBufferList = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(VpnPacketBuffer) {
         var this: ?*IIterable(VpnPacketBuffer) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(VpnPacketBuffer).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(VpnPacketBuffer).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnPacketBufferList";
@@ -4485,14 +4478,11 @@ pub const VpnPacketBufferStatus = enum(i32) {
 };
 pub const VpnPickedCredential = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4517,14 +4507,11 @@ pub const VpnPickedCredential = extern struct {
 };
 pub const VpnPlugInProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4552,92 +4539,79 @@ pub const VpnPlugInProfile = extern struct {
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getProfileName();
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.putProfileName(value);
     }
     pub fn getAppTriggers(self: *@This()) core.HResult!*IVector(VpnAppId) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getAppTriggers();
     }
     pub fn getRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getRoutes();
     }
     pub fn getDomainNameInfoList(self: *@This()) core.HResult!*IVector(VpnDomainNameInfo) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getDomainNameInfoList();
     }
     pub fn getTrafficFilters(self: *@This()) core.HResult!*IVector(VpnTrafficFilter) {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getTrafficFilters();
     }
     pub fn getRememberCredentials(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getRememberCredentials();
     }
     pub fn putRememberCredentials(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.putRememberCredentials(value);
     }
     pub fn getAlwaysOn(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.getAlwaysOn();
     }
     pub fn putAlwaysOn(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         return try this.?.putAlwaysOn(value);
     }
     pub fn getRequireVpnClientAppUI(self: *@This()) core.HResult!bool {
         var this: ?*IVpnPlugInProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
         return try this.?.getRequireVpnClientAppUI();
     }
     pub fn putRequireVpnClientAppUI(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnPlugInProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
         return try this.?.putRequireVpnClientAppUI(value);
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!VpnManagementConnectionStatus {
         var this: ?*IVpnPlugInProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
         return try this.?.getConnectionStatus();
     }
     pub fn init() core.HResult!*@This() {
@@ -4653,14 +4627,11 @@ pub const VpnPlugInProfile = extern struct {
 };
 pub const VpnRoute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4694,14 +4665,11 @@ pub const VpnRoute = extern struct {
 };
 pub const VpnRouteAssignment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4763,14 +4731,11 @@ pub const VpnRoutingPolicyType = enum(i32) {
 };
 pub const VpnSystemHealth = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4787,14 +4752,11 @@ pub const VpnSystemHealth = extern struct {
 };
 pub const VpnTrafficFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4856,14 +4818,11 @@ pub const VpnTrafficFilter = extern struct {
 };
 pub const VpnTrafficFilterAssignment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

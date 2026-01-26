@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPreallocatedWorkItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const IPreallocatedWorkItem = extern struct {
     pub fn RunAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RunAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.IPreallocatedWorkItem";
@@ -30,8 +33,11 @@ pub const IPreallocatedWorkItem = extern struct {
 };
 pub const IPreallocatedWorkItemFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,19 +45,19 @@ pub const IPreallocatedWorkItemFactory = extern struct {
     pub fn CreateWorkItem(self: *@This(), handler: *WorkItemHandler) core.HResult!*PreallocatedWorkItem {
         var _r: *PreallocatedWorkItem = undefined;
         const _c = self.vtable.CreateWorkItem(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWorkItemWithPriority(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*PreallocatedWorkItem {
         var _r: *PreallocatedWorkItem = undefined;
         const _c = self.vtable.CreateWorkItemWithPriority(@ptrCast(self), handler, priority, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWorkItemWithPriorityAndOptions(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*PreallocatedWorkItem {
         var _r: *PreallocatedWorkItem = undefined;
         const _c = self.vtable.CreateWorkItemWithPriorityAndOptions(@ptrCast(self), handler, priority, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.IPreallocatedWorkItemFactory";
@@ -73,19 +79,22 @@ pub const IPreallocatedWorkItemFactory = extern struct {
 };
 pub const ISignalNotifier = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Enable(self: *@This()) core.HResult!void {
         const _c = self.vtable.Enable(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Terminate(self: *@This()) core.HResult!void {
         const _c = self.vtable.Terminate(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.ISignalNotifier";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -105,8 +114,11 @@ pub const ISignalNotifier = extern struct {
 };
 pub const ISignalNotifierStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -114,25 +126,25 @@ pub const ISignalNotifierStatics = extern struct {
     pub fn AttachToEvent(self: *@This(), name: ?HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
         var _r: *SignalNotifier = undefined;
         const _c = self.vtable.AttachToEvent(@ptrCast(self), name, handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AttachToEventWithTimeout(self: *@This(), name: ?HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         var _r: *SignalNotifier = undefined;
         const _c = self.vtable.AttachToEventWithTimeout(@ptrCast(self), name, handler, timeout, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AttachToSemaphore(self: *@This(), name: ?HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
         var _r: *SignalNotifier = undefined;
         const _c = self.vtable.AttachToSemaphore(@ptrCast(self), name, handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AttachToSemaphoreWithTimeout(self: *@This(), name: ?HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         var _r: *SignalNotifier = undefined;
         const _c = self.vtable.AttachToSemaphoreWithTimeout(@ptrCast(self), name, handler, timeout, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.ISignalNotifierStatics";
@@ -155,14 +167,11 @@ pub const ISignalNotifierStatics = extern struct {
 };
 pub const PreallocatedWorkItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -281,14 +290,11 @@ pub const SignalHandler = extern struct {
 };
 pub const SignalNotifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DtdEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -28,211 +25,181 @@ pub const DtdEntity = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.DtdEntity";
@@ -243,14 +210,11 @@ pub const DtdEntity = extern struct {
 };
 pub const DtdNotation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -266,211 +230,181 @@ pub const DtdNotation = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.DtdNotation";
@@ -481,8 +415,11 @@ pub const DtdNotation = extern struct {
 };
 pub const IDtdEntity = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -490,19 +427,19 @@ pub const IDtdEntity = extern struct {
     pub fn getPublicId(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_PublicId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemId(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_SystemId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNotationName(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_NotationName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IDtdEntity";
@@ -524,8 +461,11 @@ pub const IDtdEntity = extern struct {
 };
 pub const IDtdNotation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -533,13 +473,13 @@ pub const IDtdNotation = extern struct {
     pub fn getPublicId(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_PublicId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemId(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_SystemId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IDtdNotation";
@@ -560,8 +500,11 @@ pub const IDtdNotation = extern struct {
 };
 pub const IXmlAttribute = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -569,24 +512,24 @@ pub const IXmlAttribute = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSpecified(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Specified(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -608,8 +551,11 @@ pub const IXmlAttribute = extern struct {
 };
 pub const IXmlCDataSection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -630,8 +576,11 @@ pub const IXmlCDataSection = extern struct {
 };
 pub const IXmlCharacterData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -639,40 +588,40 @@ pub const IXmlCharacterData = extern struct {
     pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Data(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.SubstringData(@ptrCast(self), offset, count, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AppendData(@ptrCast(self), data);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.InsertData(@ptrCast(self), offset, data);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DeleteData(self: *@This(), offset: u32, count: u32) core.HResult!void {
         const _c = self.vtable.DeleteData(@ptrCast(self), offset, count);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ReplaceData(@ptrCast(self), offset, count, data);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlCharacterData";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -698,8 +647,11 @@ pub const IXmlCharacterData = extern struct {
 };
 pub const IXmlComment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -720,8 +672,11 @@ pub const IXmlComment = extern struct {
 };
 pub const IXmlDocument = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -729,103 +684,103 @@ pub const IXmlDocument = extern struct {
     pub fn getDoctype(self: *@This()) core.HResult!*XmlDocumentType {
         var _r: *XmlDocumentType = undefined;
         const _c = self.vtable.get_Doctype(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getImplementation(self: *@This()) core.HResult!*XmlDomImplementation {
         var _r: *XmlDomImplementation = undefined;
         const _c = self.vtable.get_Implementation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentElement(self: *@This()) core.HResult!*XmlElement {
         var _r: *XmlElement = undefined;
         const _c = self.vtable.get_DocumentElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateElement(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlElement {
         var _r: *XmlElement = undefined;
         const _c = self.vtable.CreateElement(@ptrCast(self), tagName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDocumentFragment(self: *@This()) core.HResult!*XmlDocumentFragment {
         var _r: *XmlDocumentFragment = undefined;
         const _c = self.vtable.CreateDocumentFragment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateTextNode(self: *@This(), data: ?HSTRING) core.HResult!*XmlText {
         var _r: *XmlText = undefined;
         const _c = self.vtable.CreateTextNode(@ptrCast(self), data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateComment(self: *@This(), data: ?HSTRING) core.HResult!*XmlComment {
         var _r: *XmlComment = undefined;
         const _c = self.vtable.CreateComment(@ptrCast(self), data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateProcessingInstruction(self: *@This(), target: ?HSTRING, data: ?HSTRING) core.HResult!*XmlProcessingInstruction {
         var _r: *XmlProcessingInstruction = undefined;
         const _c = self.vtable.CreateProcessingInstruction(@ptrCast(self), target, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateAttribute(self: *@This(), name: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.CreateAttribute(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateEntityReference(self: *@This(), name: ?HSTRING) core.HResult!*XmlEntityReference {
         var _r: *XmlEntityReference = undefined;
         const _c = self.vtable.CreateEntityReference(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetElementsByTagName(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.GetElementsByTagName(@ptrCast(self), tagName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateCDataSection(self: *@This(), data: ?HSTRING) core.HResult!*XmlCDataSection {
         var _r: *XmlCDataSection = undefined;
         const _c = self.vtable.CreateCDataSection(@ptrCast(self), data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DocumentUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.CreateAttributeNS(@ptrCast(self), namespaceUri, qualifiedName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateElementNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING) core.HResult!*XmlElement {
         var _r: *XmlElement = undefined;
         const _c = self.vtable.CreateElementNS(@ptrCast(self), namespaceUri, qualifiedName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetElementById(self: *@This(), elementId: ?HSTRING) core.HResult!*XmlElement {
         var _r: *XmlElement = undefined;
         const _c = self.vtable.GetElementById(@ptrCast(self), elementId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ImportNode(self: *@This(), node: *IXmlNode, deep: bool) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.ImportNode(@ptrCast(self), node, deep, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDocument";
@@ -861,8 +816,11 @@ pub const IXmlDocument = extern struct {
 };
 pub const IXmlDocumentFragment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -883,24 +841,27 @@ pub const IXmlDocumentFragment = extern struct {
 };
 pub const IXmlDocumentIO = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadXml(self: *@This(), xml: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LoadXml(@ptrCast(self), xml);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LoadXmlWithLoadSettings(self: *@This(), xml: ?HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
         const _c = self.vtable.LoadXmlWithLoadSettings(@ptrCast(self), xml, loadSettings);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SaveToFileAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveToFileAsync(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDocumentIO";
@@ -922,19 +883,22 @@ pub const IXmlDocumentIO = extern struct {
 };
 pub const IXmlDocumentIO2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadXmlFromBuffer(self: *@This(), buffer: *IBuffer) core.HResult!void {
         const _c = self.vtable.LoadXmlFromBuffer(@ptrCast(self), buffer);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LoadXmlFromBufferWithLoadSettings(self: *@This(), buffer: *IBuffer, loadSettings: *XmlLoadSettings) core.HResult!void {
         const _c = self.vtable.LoadXmlFromBufferWithLoadSettings(@ptrCast(self), buffer, loadSettings);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDocumentIO2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -954,8 +918,11 @@ pub const IXmlDocumentIO2 = extern struct {
 };
 pub const IXmlDocumentStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -963,25 +930,25 @@ pub const IXmlDocumentStatics = extern struct {
     pub fn LoadFromUriAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperation(XmlDocument) {
         var _r: *IAsyncOperation(XmlDocument) = undefined;
         const _c = self.vtable.LoadFromUriAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromUriAsyncWithLoadSettings(self: *@This(), uri: *Uri, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
         var _r: *IAsyncOperation(XmlDocument) = undefined;
         const _c = self.vtable.LoadFromUriAsyncWithLoadSettings(@ptrCast(self), uri, loadSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromFileAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncOperation(XmlDocument) {
         var _r: *IAsyncOperation(XmlDocument) = undefined;
         const _c = self.vtable.LoadFromFileAsync(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromFileAsyncWithLoadSettings(self: *@This(), file: *IStorageFile, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
         var _r: *IAsyncOperation(XmlDocument) = undefined;
         const _c = self.vtable.LoadFromFileAsyncWithLoadSettings(@ptrCast(self), file, loadSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDocumentStatics";
@@ -1004,8 +971,11 @@ pub const IXmlDocumentStatics = extern struct {
 };
 pub const IXmlDocumentType = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1013,19 +983,19 @@ pub const IXmlDocumentType = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEntities(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var _r: *XmlNamedNodeMap = undefined;
         const _c = self.vtable.get_Entities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNotations(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var _r: *XmlNamedNodeMap = undefined;
         const _c = self.vtable.get_Notations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDocumentType";
@@ -1047,8 +1017,11 @@ pub const IXmlDocumentType = extern struct {
 };
 pub const IXmlDomImplementation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1056,7 +1029,7 @@ pub const IXmlDomImplementation = extern struct {
     pub fn HasFeature(self: *@This(), feature: ?HSTRING, version: *IInspectable) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasFeature(@ptrCast(self), feature, version, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDomImplementation";
@@ -1076,8 +1049,11 @@ pub const IXmlDomImplementation = extern struct {
 };
 pub const IXmlElement = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1085,71 +1061,71 @@ pub const IXmlElement = extern struct {
     pub fn getTagName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TagName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAttribute(self: *@This(), attributeName: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAttribute(@ptrCast(self), attributeName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAttribute(self: *@This(), attributeName: ?HSTRING, attributeValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAttribute(@ptrCast(self), attributeName, attributeValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveAttribute(self: *@This(), attributeName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveAttribute(@ptrCast(self), attributeName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetAttributeNode(self: *@This(), attributeName: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.GetAttributeNode(@ptrCast(self), attributeName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAttributeNode(self: *@This(), newAttribute: *XmlAttribute) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.SetAttributeNode(@ptrCast(self), newAttribute, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveAttributeNode(self: *@This(), attributeNode: *XmlAttribute) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.RemoveAttributeNode(@ptrCast(self), attributeNode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetElementsByTagName(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.GetElementsByTagName(@ptrCast(self), tagName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAttributeNS(@ptrCast(self), namespaceUri, qualifiedName, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAttributeNS(@ptrCast(self), namespaceUri, localName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveAttributeNS(@ptrCast(self), namespaceUri, localName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetAttributeNodeNS(self: *@This(), newAttribute: *XmlAttribute) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.SetAttributeNodeNS(@ptrCast(self), newAttribute, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAttributeNodeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.GetAttributeNodeNS(@ptrCast(self), namespaceUri, localName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlElement";
@@ -1181,8 +1157,11 @@ pub const IXmlElement = extern struct {
 };
 pub const IXmlEntityReference = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1203,8 +1182,11 @@ pub const IXmlEntityReference = extern struct {
 };
 pub const IXmlLoadSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1212,52 +1194,52 @@ pub const IXmlLoadSettings = extern struct {
     pub fn getMaxElementDepth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxElementDepth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxElementDepth(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_MaxElementDepth(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProhibitDtd(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ProhibitDtd(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProhibitDtd(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ProhibitDtd(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getResolveExternals(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ResolveExternals(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putResolveExternals(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ResolveExternals(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getValidateOnParse(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ValidateOnParse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValidateOnParse(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ValidateOnParse(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getElementContentWhiteSpace(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ElementContentWhiteSpace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putElementContentWhiteSpace(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ElementContentWhiteSpace(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlLoadSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1285,8 +1267,11 @@ pub const IXmlLoadSettings = extern struct {
 };
 pub const IXmlNamedNodeMap = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1294,49 +1279,49 @@ pub const IXmlNamedNodeMap = extern struct {
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Item(self: *@This(), index: u32) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.Item(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedItem(self: *@This(), name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetNamedItem(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetNamedItem(self: *@This(), node: *IXmlNode) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.SetNamedItem(@ptrCast(self), node, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveNamedItem(self: *@This(), name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.RemoveNamedItem(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetNamedItemNS(@ptrCast(self), namespaceUri, name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.RemoveNamedItemNS(@ptrCast(self), namespaceUri, name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetNamedItemNS(self: *@This(), node: *IXmlNode) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.SetNamedItemNS(@ptrCast(self), node, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlNamedNodeMap";
@@ -1363,8 +1348,11 @@ pub const IXmlNamedNodeMap = extern struct {
 };
 pub const IXmlNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1372,134 +1360,134 @@ pub const IXmlNode = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_NodeValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_NodeValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var _r: NodeType = undefined;
         const _c = self.vtable.get_NodeType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_ParentNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.get_ChildNodes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_FirstChild(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_LastChild(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_PreviousSibling(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_NextSibling(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var _r: *XmlNamedNodeMap = undefined;
         const _c = self.vtable.get_Attributes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasChildNodes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.get_OwnerDocument(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.InsertBefore(@ptrCast(self), newChild, referenceChild, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.ReplaceChild(@ptrCast(self), newChild, referenceChild, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.RemoveChild(@ptrCast(self), childNode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.AppendChild(@ptrCast(self), newChild, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.CloneNode(@ptrCast(self), deep, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_NamespaceUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_LocalName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Prefix(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         const _c = self.vtable.Normalize(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_Prefix(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1540,8 +1528,11 @@ pub const IXmlNode = extern struct {
 };
 pub const IXmlNodeList = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1549,13 +1540,13 @@ pub const IXmlNodeList = extern struct {
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Item(self: *@This(), index: u32) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.Item(@ptrCast(self), index, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlNodeList";
@@ -1576,8 +1567,11 @@ pub const IXmlNodeList = extern struct {
 };
 pub const IXmlNodeSelector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1585,25 +1579,25 @@ pub const IXmlNodeSelector = extern struct {
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.SelectSingleNode(@ptrCast(self), xpath, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.SelectNodes(@ptrCast(self), xpath, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.SelectSingleNodeNS(@ptrCast(self), xpath, namespaces, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.SelectNodesNS(@ptrCast(self), xpath, namespaces, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlNodeSelector";
@@ -1626,8 +1620,11 @@ pub const IXmlNodeSelector = extern struct {
 };
 pub const IXmlNodeSerializer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1635,18 +1632,18 @@ pub const IXmlNodeSerializer = extern struct {
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetXml(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InnerText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_InnerText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlNodeSerializer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1667,8 +1664,11 @@ pub const IXmlNodeSerializer = extern struct {
 };
 pub const IXmlProcessingInstruction = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1676,18 +1676,18 @@ pub const IXmlProcessingInstruction = extern struct {
     pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Data(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlProcessingInstruction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1708,8 +1708,11 @@ pub const IXmlProcessingInstruction = extern struct {
 };
 pub const IXmlText = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1717,7 +1720,7 @@ pub const IXmlText = extern struct {
     pub fn SplitText(self: *@This(), offset: u32) core.HResult!*IXmlText {
         var _r: *IXmlText = undefined;
         const _c = self.vtable.SplitText(@ptrCast(self), offset, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlText";
@@ -1752,14 +1755,11 @@ pub const NodeType = enum(i32) {
 };
 pub const XmlAttribute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1783,211 +1783,181 @@ pub const XmlAttribute = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlAttribute";
@@ -1998,14 +1968,11 @@ pub const XmlAttribute = extern struct {
 };
 pub const XmlCDataSection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2013,274 +1980,235 @@ pub const XmlCDataSection = extern struct {
     pub fn SplitText(self: *@This(), offset: u32) core.HResult!*IXmlText {
         var this: ?*IXmlText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlText.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlText.IID, @ptrCast(&this));
         return try this.?.SplitText(offset);
     }
     pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.getData();
     }
     pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.putData(value);
     }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.getLength();
     }
     pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.SubstringData(offset, count);
     }
     pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.AppendData(data);
     }
     pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.InsertData(offset, data);
     }
     pub fn DeleteData(self: *@This(), offset: u32, count: u32) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.DeleteData(offset, count);
     }
     pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.ReplaceData(offset, count, data);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlCDataSection";
@@ -2291,14 +2219,11 @@ pub const XmlCDataSection = extern struct {
 };
 pub const XmlComment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2306,267 +2231,229 @@ pub const XmlComment = extern struct {
     pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.getData();
     }
     pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.putData(value);
     }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.getLength();
     }
     pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.SubstringData(offset, count);
     }
     pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.AppendData(data);
     }
     pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.InsertData(offset, data);
     }
     pub fn DeleteData(self: *@This(), offset: u32, count: u32) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.DeleteData(offset, count);
     }
     pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.ReplaceData(offset, count, data);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlComment";
@@ -2577,14 +2464,11 @@ pub const XmlComment = extern struct {
 };
 pub const XmlDocument = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2660,246 +2544,211 @@ pub const XmlDocument = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub fn LoadXml(self: *@This(), xml: ?HSTRING) core.HResult!void {
         var this: ?*IXmlDocumentIO = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
         return try this.?.LoadXml(xml);
     }
     pub fn LoadXmlWithLoadSettings(self: *@This(), xml: ?HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
         var this: ?*IXmlDocumentIO = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
         return try this.?.LoadXmlWithLoadSettings(xml, loadSettings);
     }
     pub fn SaveToFileAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IXmlDocumentIO = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
         return try this.?.SaveToFileAsync(file);
     }
     pub fn LoadXmlFromBuffer(self: *@This(), buffer: *IBuffer) core.HResult!void {
         var this: ?*IXmlDocumentIO2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO2.IID, @ptrCast(&this));
         return try this.?.LoadXmlFromBuffer(buffer);
     }
     pub fn LoadXmlFromBufferWithLoadSettings(self: *@This(), buffer: *IBuffer, loadSettings: *XmlLoadSettings) core.HResult!void {
         var this: ?*IXmlDocumentIO2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO2.IID, @ptrCast(&this));
         return try this.?.LoadXmlFromBufferWithLoadSettings(buffer, loadSettings);
     }
     pub fn init() core.HResult!*@This() {
@@ -2932,14 +2781,11 @@ pub const XmlDocument = extern struct {
 };
 pub const XmlDocumentFragment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2947,211 +2793,181 @@ pub const XmlDocumentFragment = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlDocumentFragment";
@@ -3162,14 +2978,11 @@ pub const XmlDocumentFragment = extern struct {
 };
 pub const XmlDocumentType = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3189,211 +3002,181 @@ pub const XmlDocumentType = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlDocumentType";
@@ -3404,14 +3187,11 @@ pub const XmlDocumentType = extern struct {
 };
 pub const XmlDomImplementation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3428,14 +3208,11 @@ pub const XmlDomImplementation = extern struct {
 };
 pub const XmlElement = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3495,211 +3272,181 @@ pub const XmlElement = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlElement";
@@ -3710,14 +3457,11 @@ pub const XmlElement = extern struct {
 };
 pub const XmlEntityReference = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3725,211 +3469,181 @@ pub const XmlEntityReference = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlEntityReference";
@@ -3940,14 +3654,11 @@ pub const XmlEntityReference = extern struct {
 };
 pub const XmlLoadSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4005,14 +3716,11 @@ pub const XmlLoadSettings = extern struct {
 };
 pub const XmlNamedNodeMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4052,15 +3760,13 @@ pub const XmlNamedNodeMap = extern struct {
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(IXmlNode) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IXmlNode).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IXmlNode).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IXmlNode) {
         var this: ?*IIterable(IXmlNode) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IXmlNode).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IXmlNode).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlNamedNodeMap";
@@ -4071,14 +3777,11 @@ pub const XmlNamedNodeMap = extern struct {
 };
 pub const XmlNodeList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4094,15 +3797,13 @@ pub const XmlNodeList = extern struct {
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(IXmlNode) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IXmlNode).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IXmlNode).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IXmlNode) {
         var this: ?*IIterable(IXmlNode) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IXmlNode).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IXmlNode).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlNodeList";
@@ -4113,14 +3814,11 @@ pub const XmlNodeList = extern struct {
 };
 pub const XmlProcessingInstruction = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4140,211 +3838,181 @@ pub const XmlProcessingInstruction = extern struct {
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlProcessingInstruction";
@@ -4355,14 +4023,11 @@ pub const XmlProcessingInstruction = extern struct {
 };
 pub const XmlText = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4374,267 +4039,229 @@ pub const XmlText = extern struct {
     pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.getData();
     }
     pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.putData(value);
     }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.getLength();
     }
     pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.SubstringData(offset, count);
     }
     pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.AppendData(data);
     }
     pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.InsertData(offset, data);
     }
     pub fn DeleteData(self: *@This(), offset: u32, count: u32) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.DeleteData(offset, count);
     }
     pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         return try this.?.ReplaceData(offset, count, data);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getNodeType(self: *@This()) core.HResult!NodeType {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeType();
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn getParentNode(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getParentNode();
     }
     pub fn getChildNodes(self: *@This()) core.HResult!*XmlNodeList {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getChildNodes();
     }
     pub fn getFirstChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getFirstChild();
     }
     pub fn getLastChild(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLastChild();
     }
     pub fn getPreviousSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPreviousSibling();
     }
     pub fn getNextSibling(self: *@This()) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNextSibling();
     }
     pub fn getAttributes(self: *@This()) core.HResult!*XmlNamedNodeMap {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getAttributes();
     }
     pub fn HasChildNodes(self: *@This()) core.HResult!bool {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.HasChildNodes();
     }
     pub fn getOwnerDocument(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getOwnerDocument();
     }
     pub fn InsertBefore(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.InsertBefore(newChild, referenceChild);
     }
     pub fn ReplaceChild(self: *@This(), newChild: *IXmlNode, referenceChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.ReplaceChild(newChild, referenceChild);
     }
     pub fn RemoveChild(self: *@This(), childNode: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.RemoveChild(childNode);
     }
     pub fn AppendChild(self: *@This(), newChild: *IXmlNode) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.AppendChild(newChild);
     }
     pub fn CloneNode(self: *@This(), deep: bool) core.HResult!*IXmlNode {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.CloneNode(deep);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getNamespaceUri();
     }
     pub fn getLocalName(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getLocalName();
     }
     pub fn getPrefix(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.getPrefix();
     }
     pub fn Normalize(self: *@This()) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.Normalize();
     }
     pub fn putPrefix(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         return try this.?.putPrefix(value);
     }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNode(xpath);
     }
     pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodes(xpath);
     }
     pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
     pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.GetXml();
     }
     pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.getInnerText();
     }
     pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlText";

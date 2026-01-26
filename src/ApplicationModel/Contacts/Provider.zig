@@ -6,14 +6,11 @@ pub const AddContactResult = enum(i32) {
 };
 pub const ContactPickerUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -49,15 +46,13 @@ pub const ContactPickerUI = extern struct {
     pub fn AddContact(self: *@This(), contact: *Contact) core.HResult!AddContactResult {
         var this: ?*IContactPickerUI2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPickerUI2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IContactPickerUI2.IID, @ptrCast(&this));
         return try this.?.AddContact(contact);
     }
     pub fn getDesiredFieldsWithContactFieldType(self: *@This()) core.HResult!*IVector(ContactFieldType) {
         var this: ?*IContactPickerUI2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPickerUI2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IContactPickerUI2.IID, @ptrCast(&this));
         return try this.?.getDesiredFieldsWithContactFieldType();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.Provider.ContactPickerUI";
@@ -68,14 +63,11 @@ pub const ContactPickerUI = extern struct {
 };
 pub const ContactRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -92,8 +84,11 @@ pub const ContactRemovedEventArgs = extern struct {
 };
 pub const IContactPickerUI = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -101,40 +96,40 @@ pub const IContactPickerUI = extern struct {
     pub fn AddContact(self: *@This(), id: ?HSTRING, contact: *Contact) core.HResult!AddContactResult {
         var _r: AddContactResult = undefined;
         const _c = self.vtable.AddContact(@ptrCast(self), id, contact, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveContact(self: *@This(), id: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveContact(@ptrCast(self), id);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ContainsContact(self: *@This(), id: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ContainsContact(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDesiredFields(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_DesiredFields(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionMode(self: *@This()) core.HResult!ContactSelectionMode {
         var _r: ContactSelectionMode = undefined;
         const _c = self.vtable.get_SelectionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addContactRemoved(self: *@This(), handler: *TypedEventHandler(ContactPickerUI,ContactRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ContactRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeContactRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ContactRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.Provider.IContactPickerUI";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -159,8 +154,11 @@ pub const IContactPickerUI = extern struct {
 };
 pub const IContactPickerUI2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -168,13 +166,13 @@ pub const IContactPickerUI2 = extern struct {
     pub fn AddContact(self: *@This(), contact: *Contact) core.HResult!AddContactResult {
         var _r: AddContactResult = undefined;
         const _c = self.vtable.AddContact(@ptrCast(self), contact, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDesiredFieldsWithContactFieldType(self: *@This()) core.HResult!*IVector(ContactFieldType) {
         var _r: *IVector(ContactFieldType) = undefined;
         const _c = self.vtable.get_DesiredFieldsWithContactFieldType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.Provider.IContactPickerUI2";
@@ -195,8 +193,11 @@ pub const IContactPickerUI2 = extern struct {
 };
 pub const IContactRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -204,7 +205,7 @@ pub const IContactRemovedEventArgs = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.Provider.IContactRemovedEventArgs";

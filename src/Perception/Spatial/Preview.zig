@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ISpatialGraphInteropFrameOfReferencePreview = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,19 +13,19 @@ pub const ISpatialGraphInteropFrameOfReferencePreview = extern struct {
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.get_CoordinateSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNodeId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_NodeId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCoordinateSystemToNodeTransform(self: *@This()) core.HResult!Matrix4x4 {
         var _r: Matrix4x4 = undefined;
         const _c = self.vtable.get_CoordinateSystemToNodeTransform(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Preview.ISpatialGraphInteropFrameOfReferencePreview";
@@ -44,8 +47,11 @@ pub const ISpatialGraphInteropFrameOfReferencePreview = extern struct {
 };
 pub const ISpatialGraphInteropPreviewStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -53,25 +59,25 @@ pub const ISpatialGraphInteropPreviewStatics = extern struct {
     pub fn CreateCoordinateSystemForNode(self: *@This(), nodeId: *Guid) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.CreateCoordinateSystemForNode(@ptrCast(self), nodeId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateCoordinateSystemForNodeWithRelativePosition(self: *@This(), nodeId: *Guid, relativePosition: Vector3) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.CreateCoordinateSystemForNodeWithRelativePosition(@ptrCast(self), nodeId, relativePosition, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateCoordinateSystemForNodeWithRelativePositionAndRelativeOrientation(self: *@This(), nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.CreateCoordinateSystemForNodeWithRelativePositionAndRelativeOrientation(@ptrCast(self), nodeId, relativePosition, relativeOrientation, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateLocatorForNode(self: *@This(), nodeId: *Guid) core.HResult!*SpatialLocator {
         var _r: *SpatialLocator = undefined;
         const _c = self.vtable.CreateLocatorForNode(@ptrCast(self), nodeId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Preview.ISpatialGraphInteropPreviewStatics";
@@ -94,8 +100,11 @@ pub const ISpatialGraphInteropPreviewStatics = extern struct {
 };
 pub const ISpatialGraphInteropPreviewStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -103,19 +112,19 @@ pub const ISpatialGraphInteropPreviewStatics2 = extern struct {
     pub fn TryCreateFrameOfReference(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
         var _r: *SpatialGraphInteropFrameOfReferencePreview = undefined;
         const _c = self.vtable.TryCreateFrameOfReference(@ptrCast(self), coordinateSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryCreateFrameOfReferenceWithRelativePosition(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
         var _r: *SpatialGraphInteropFrameOfReferencePreview = undefined;
         const _c = self.vtable.TryCreateFrameOfReferenceWithRelativePosition(@ptrCast(self), coordinateSystem, relativePosition, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryCreateFrameOfReferenceWithRelativePositionAndRelativeOrientation(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
         var _r: *SpatialGraphInteropFrameOfReferencePreview = undefined;
         const _c = self.vtable.TryCreateFrameOfReferenceWithRelativePositionAndRelativeOrientation(@ptrCast(self), coordinateSystem, relativePosition, relativeOrientation, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Preview.ISpatialGraphInteropPreviewStatics2";
@@ -137,14 +146,11 @@ pub const ISpatialGraphInteropPreviewStatics2 = extern struct {
 };
 pub const SpatialGraphInteropFrameOfReferencePreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -169,14 +175,11 @@ pub const SpatialGraphInteropFrameOfReferencePreview = extern struct {
 };
 pub const SpatialGraphInteropPreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

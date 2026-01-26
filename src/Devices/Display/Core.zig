@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DisplayAdapter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -48,15 +45,13 @@ pub const DisplayAdapter = extern struct {
     pub fn getIsIndirectDisplayDevice(self: *@This()) core.HResult!bool {
         var this: ?*IDisplayAdapter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayAdapter2.IID, @ptrCast(&this));
         return try this.?.getIsIndirectDisplayDevice();
     }
     pub fn getPreferredRenderAdapter(self: *@This()) core.HResult!*DisplayAdapter {
         var this: ?*IDisplayAdapter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayAdapter2.IID, @ptrCast(&this));
         return try this.?.getPreferredRenderAdapter();
     }
     pub fn FromId(id: DisplayAdapterId) core.HResult!*DisplayAdapter {
@@ -81,14 +76,11 @@ pub const DisplayBitsPerChannel = enum(i32) {
 };
 pub const DisplayDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -124,15 +116,13 @@ pub const DisplayDevice = extern struct {
     pub fn CreateSimpleScanoutWithDirtyRectsAndOptions(self: *@This(), source: *DisplaySource, surface: *DisplaySurface, subresourceIndex: u32, syncInterval: u32, dirtyRects: *IIterable(RectInt32), options: DisplayScanoutOptions) core.HResult!*DisplayScanout {
         var this: ?*IDisplayDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayDevice2.IID, @ptrCast(&this));
         return try this.?.CreateSimpleScanoutWithDirtyRectsAndOptions(source, surface, subresourceIndex, syncInterval, dirtyRects, options);
     }
     pub fn getRenderAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         var this: ?*IDisplayDeviceRenderAdapter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayDeviceRenderAdapter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayDeviceRenderAdapter.IID, @ptrCast(&this));
         return try this.?.getRenderAdapterId();
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayDevice";
@@ -146,14 +136,11 @@ pub const DisplayDeviceCapability = enum(i32) {
 };
 pub const DisplayFence = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -166,14 +153,11 @@ pub const DisplayFence = extern struct {
 };
 pub const DisplayManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -257,22 +241,19 @@ pub const DisplayManager = extern struct {
     pub fn TryReadCurrentStateForModeQuery(self: *@This()) core.HResult!*DisplayManagerResultWithState {
         var this: ?*IDisplayManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayManager2.IID, @ptrCast(&this));
         return try this.?.TryReadCurrentStateForModeQuery();
     }
     pub fn CreateDisplayDeviceForIndirectAdapter(self: *@This(), indirectAdapter: *DisplayAdapter, renderAdapter: *DisplayAdapter) core.HResult!*DisplayDevice {
         var this: ?*IDisplayManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayManager3.IID, @ptrCast(&this));
         return try this.?.CreateDisplayDeviceForIndirectAdapter(indirectAdapter, renderAdapter);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create(options: DisplayManagerOptions) core.HResult!*DisplayManager {
@@ -288,14 +269,11 @@ pub const DisplayManager = extern struct {
 };
 pub const DisplayManagerChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -320,14 +298,11 @@ pub const DisplayManagerChangedEventArgs = extern struct {
 };
 pub const DisplayManagerDisabledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -352,14 +327,11 @@ pub const DisplayManagerDisabledEventArgs = extern struct {
 };
 pub const DisplayManagerEnabledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -389,14 +361,11 @@ pub const DisplayManagerOptions = enum(i32) {
 };
 pub const DisplayManagerPathsFailedOrInvalidatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -428,14 +397,11 @@ pub const DisplayManagerResult = enum(i32) {
 };
 pub const DisplayManagerResultWithState = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -460,14 +426,11 @@ pub const DisplayManagerResultWithState = extern struct {
 };
 pub const DisplayModeInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -511,8 +474,7 @@ pub const DisplayModeInfo = extern struct {
     pub fn getPhysicalPresentationRate(self: *@This()) core.HResult!DisplayPresentationRate {
         var this: ?*IDisplayModeInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayModeInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayModeInfo2.IID, @ptrCast(&this));
         return try this.?.getPhysicalPresentationRate();
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayModeInfo";
@@ -527,14 +489,11 @@ pub const DisplayModeQueryOptions = enum(i32) {
 };
 pub const DisplayMuxDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -582,8 +541,7 @@ pub const DisplayMuxDevice = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
@@ -603,14 +561,11 @@ pub const DisplayMuxDevice = extern struct {
 };
 pub const DisplayPath = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -714,15 +669,13 @@ pub const DisplayPath = extern struct {
     pub fn getPhysicalPresentationRate(self: *@This()) core.HResult!*IReference(DisplayPresentationRate) {
         var this: ?*IDisplayPath2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayPath2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayPath2.IID, @ptrCast(&this));
         return try this.?.getPhysicalPresentationRate();
     }
     pub fn putPhysicalPresentationRate(self: *@This(), value: *IReference(DisplayPresentationRate)) core.HResult!void {
         var this: ?*IDisplayPath2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayPath2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayPath2.IID, @ptrCast(&this));
         return try this.?.putPhysicalPresentationRate(value);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayPath";
@@ -761,14 +714,11 @@ pub const DisplayPresentationRate = extern struct {
 };
 pub const DisplayPrimaryDescription = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -825,14 +775,11 @@ pub const DisplayRotation = enum(i32) {
 };
 pub const DisplayScanout = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -849,14 +796,11 @@ pub const DisplayScanoutOptions = enum(i32) {
 };
 pub const DisplaySource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -876,22 +820,19 @@ pub const DisplaySource = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!DisplaySourceStatus {
         var this: ?*IDisplaySource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
         return try this.?.getStatus();
     }
     pub fn addStatusChanged(self: *@This(), handler: *TypedEventHandler(DisplaySource,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IDisplaySource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
         return try this.?.addStatusChanged(handler);
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDisplaySource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
         return try this.?.removeStatusChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplaySource";
@@ -909,14 +850,11 @@ pub const DisplaySourceStatus = enum(i32) {
 };
 pub const DisplayState = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -996,14 +934,11 @@ pub const DisplayStateFunctionalizeOptions = enum(i32) {
 };
 pub const DisplayStateOperationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1034,14 +969,11 @@ pub const DisplayStateOperationStatus = enum(i32) {
 };
 pub const DisplaySurface = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1054,14 +986,11 @@ pub const DisplaySurface = extern struct {
 };
 pub const DisplayTarget = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1136,14 +1065,11 @@ pub const DisplayTargetPersistence = enum(i32) {
 };
 pub const DisplayTask = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1159,8 +1085,7 @@ pub const DisplayTask = extern struct {
     pub fn SetSignal(self: *@This(), signalKind: DisplayTaskSignalKind, fence: *DisplayFence) core.HResult!void {
         var this: ?*IDisplayTask2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayTask2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayTask2.IID, @ptrCast(&this));
         return try this.?.SetSignal(signalKind, fence);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayTask";
@@ -1171,14 +1096,11 @@ pub const DisplayTask = extern struct {
 };
 pub const DisplayTaskPool = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1194,8 +1116,7 @@ pub const DisplayTaskPool = extern struct {
     pub fn TryExecuteTask(self: *@This(), task: *DisplayTask) core.HResult!*DisplayTaskResult {
         var this: ?*IDisplayTaskPool2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayTaskPool2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayTaskPool2.IID, @ptrCast(&this));
         return try this.?.TryExecuteTask(task);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayTaskPool";
@@ -1206,14 +1127,11 @@ pub const DisplayTaskPool = extern struct {
 };
 pub const DisplayTaskResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1242,14 +1160,11 @@ pub const DisplayTaskSignalKind = enum(i32) {
 };
 pub const DisplayView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1282,14 +1197,11 @@ pub const DisplayView = extern struct {
 };
 pub const DisplayWireFormat = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1358,8 +1270,11 @@ pub const DisplayWireFormatPixelEncoding = enum(i32) {
 };
 pub const IDisplayAdapter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1367,49 +1282,49 @@ pub const IDisplayAdapter = extern struct {
     pub fn getId(self: *@This()) core.HResult!DisplayAdapterId {
         var _r: DisplayAdapterId = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceInterfacePath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceInterfacePath(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SourceCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPciVendorId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PciVendorId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPciDeviceId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PciDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPciSubSystemId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PciSubSystemId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPciRevision(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PciRevision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var _r: *IMapView(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayAdapter";
@@ -1436,8 +1351,11 @@ pub const IDisplayAdapter = extern struct {
 };
 pub const IDisplayAdapter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1445,13 +1363,13 @@ pub const IDisplayAdapter2 = extern struct {
     pub fn getIsIndirectDisplayDevice(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsIndirectDisplayDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPreferredRenderAdapter(self: *@This()) core.HResult!*DisplayAdapter {
         var _r: *DisplayAdapter = undefined;
         const _c = self.vtable.get_PreferredRenderAdapter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayAdapter2";
@@ -1472,8 +1390,11 @@ pub const IDisplayAdapter2 = extern struct {
 };
 pub const IDisplayAdapterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1481,7 +1402,7 @@ pub const IDisplayAdapterStatics = extern struct {
     pub fn FromId(self: *@This(), id: DisplayAdapterId) core.HResult!*DisplayAdapter {
         var _r: *DisplayAdapter = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayAdapterStatics";
@@ -1501,8 +1422,11 @@ pub const IDisplayAdapterStatics = extern struct {
 };
 pub const IDisplayDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1510,41 +1434,41 @@ pub const IDisplayDevice = extern struct {
     pub fn CreateScanoutSource(self: *@This(), target: *DisplayTarget) core.HResult!*DisplaySource {
         var _r: *DisplaySource = undefined;
         const _c = self.vtable.CreateScanoutSource(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreatePrimary(self: *@This(), target: *DisplayTarget, desc: *DisplayPrimaryDescription) core.HResult!*DisplaySurface {
         var _r: *DisplaySurface = undefined;
         const _c = self.vtable.CreatePrimary(@ptrCast(self), target, desc, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateTaskPool(self: *@This()) core.HResult!*DisplayTaskPool {
         var _r: *DisplayTaskPool = undefined;
         const _c = self.vtable.CreateTaskPool(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreatePeriodicFence(self: *@This(), target: *DisplayTarget, offsetFromVBlank: TimeSpan) core.HResult!*DisplayFence {
         var _r: *DisplayFence = undefined;
         const _c = self.vtable.CreatePeriodicFence(@ptrCast(self), target, offsetFromVBlank, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn WaitForVBlank(self: *@This(), source: *DisplaySource) core.HResult!void {
         const _c = self.vtable.WaitForVBlank(@ptrCast(self), source);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateSimpleScanout(self: *@This(), pSource: *DisplaySource, pSurface: *DisplaySurface, SubResourceIndex: u32, SyncInterval: u32) core.HResult!*DisplayScanout {
         var _r: *DisplayScanout = undefined;
         const _c = self.vtable.CreateSimpleScanout(@ptrCast(self), pSource, pSurface, SubResourceIndex, SyncInterval, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsCapabilitySupported(self: *@This(), capability: DisplayDeviceCapability) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCapabilitySupported(@ptrCast(self), capability, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayDevice";
@@ -1570,8 +1494,11 @@ pub const IDisplayDevice = extern struct {
 };
 pub const IDisplayDevice2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1579,7 +1506,7 @@ pub const IDisplayDevice2 = extern struct {
     pub fn CreateSimpleScanoutWithDirtyRectsAndOptions(self: *@This(), source: *DisplaySource, surface: *DisplaySurface, subresourceIndex: u32, syncInterval: u32, dirtyRects: *IIterable(RectInt32), options: DisplayScanoutOptions) core.HResult!*DisplayScanout {
         var _r: *DisplayScanout = undefined;
         const _c = self.vtable.CreateSimpleScanoutWithDirtyRectsAndOptions(@ptrCast(self), source, surface, subresourceIndex, syncInterval, dirtyRects, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayDevice2";
@@ -1599,8 +1526,11 @@ pub const IDisplayDevice2 = extern struct {
 };
 pub const IDisplayDeviceRenderAdapter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1608,7 +1538,7 @@ pub const IDisplayDeviceRenderAdapter = extern struct {
     pub fn getRenderAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         var _r: DisplayAdapterId = undefined;
         const _c = self.vtable.get_RenderAdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayDeviceRenderAdapter";
@@ -1628,8 +1558,11 @@ pub const IDisplayDeviceRenderAdapter = extern struct {
 };
 pub const IDisplayFence = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1650,8 +1583,11 @@ pub const IDisplayFence = extern struct {
 };
 pub const IDisplayManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1659,102 +1595,102 @@ pub const IDisplayManager = extern struct {
     pub fn GetCurrentTargets(self: *@This()) core.HResult!*IVectorView(DisplayTarget) {
         var _r: *IVectorView(DisplayTarget) = undefined;
         const _c = self.vtable.GetCurrentTargets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentAdapters(self: *@This()) core.HResult!*IVectorView(DisplayAdapter) {
         var _r: *IVectorView(DisplayAdapter) = undefined;
         const _c = self.vtable.GetCurrentAdapters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryAcquireTarget(self: *@This(), target: *DisplayTarget) core.HResult!DisplayManagerResult {
         var _r: DisplayManagerResult = undefined;
         const _c = self.vtable.TryAcquireTarget(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReleaseTarget(self: *@This(), target: *DisplayTarget) core.HResult!void {
         const _c = self.vtable.ReleaseTarget(@ptrCast(self), target);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryReadCurrentStateForAllTargets(self: *@This()) core.HResult!*DisplayManagerResultWithState {
         var _r: *DisplayManagerResultWithState = undefined;
         const _c = self.vtable.TryReadCurrentStateForAllTargets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryAcquireTargetsAndReadCurrentState(self: *@This(), targets: *IIterable(DisplayTarget)) core.HResult!*DisplayManagerResultWithState {
         var _r: *DisplayManagerResultWithState = undefined;
         const _c = self.vtable.TryAcquireTargetsAndReadCurrentState(@ptrCast(self), targets, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryAcquireTargetsAndCreateEmptyState(self: *@This(), targets: *IIterable(DisplayTarget)) core.HResult!*DisplayManagerResultWithState {
         var _r: *DisplayManagerResultWithState = undefined;
         const _c = self.vtable.TryAcquireTargetsAndCreateEmptyState(@ptrCast(self), targets, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryAcquireTargetsAndCreateSubstate(self: *@This(), existingState: *DisplayState, targets: *IIterable(DisplayTarget)) core.HResult!*DisplayManagerResultWithState {
         var _r: *DisplayManagerResultWithState = undefined;
         const _c = self.vtable.TryAcquireTargetsAndCreateSubstate(@ptrCast(self), existingState, targets, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDisplayDevice(self: *@This(), adapter: *DisplayAdapter) core.HResult!*DisplayDevice {
         var _r: *DisplayDevice = undefined;
         const _c = self.vtable.CreateDisplayDevice(@ptrCast(self), adapter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addEnabled(self: *@This(), handler: *TypedEventHandler(DisplayManager,DisplayManagerEnabledEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Enabled(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnabled(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Enabled(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDisabled(self: *@This(), handler: *TypedEventHandler(DisplayManager,DisplayManagerDisabledEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Disabled(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDisabled(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Disabled(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addChanged(self: *@This(), handler: *TypedEventHandler(DisplayManager,DisplayManagerChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Changed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Changed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPathsFailedOrInvalidated(self: *@This(), handler: *TypedEventHandler(DisplayManager,DisplayManagerPathsFailedOrInvalidatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PathsFailedOrInvalidated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePathsFailedOrInvalidated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PathsFailedOrInvalidated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1791,8 +1727,11 @@ pub const IDisplayManager = extern struct {
 };
 pub const IDisplayManager2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1800,7 +1739,7 @@ pub const IDisplayManager2 = extern struct {
     pub fn TryReadCurrentStateForModeQuery(self: *@This()) core.HResult!*DisplayManagerResultWithState {
         var _r: *DisplayManagerResultWithState = undefined;
         const _c = self.vtable.TryReadCurrentStateForModeQuery(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManager2";
@@ -1820,8 +1759,11 @@ pub const IDisplayManager2 = extern struct {
 };
 pub const IDisplayManager3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1829,7 +1771,7 @@ pub const IDisplayManager3 = extern struct {
     pub fn CreateDisplayDeviceForIndirectAdapter(self: *@This(), indirectAdapter: *DisplayAdapter, renderAdapter: *DisplayAdapter) core.HResult!*DisplayDevice {
         var _r: *DisplayDevice = undefined;
         const _c = self.vtable.CreateDisplayDeviceForIndirectAdapter(@ptrCast(self), indirectAdapter, renderAdapter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManager3";
@@ -1849,8 +1791,11 @@ pub const IDisplayManager3 = extern struct {
 };
 pub const IDisplayManagerChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1858,17 +1803,17 @@ pub const IDisplayManagerChangedEventArgs = extern struct {
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManagerChangedEventArgs";
@@ -1890,8 +1835,11 @@ pub const IDisplayManagerChangedEventArgs = extern struct {
 };
 pub const IDisplayManagerDisabledEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1899,17 +1847,17 @@ pub const IDisplayManagerDisabledEventArgs = extern struct {
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManagerDisabledEventArgs";
@@ -1931,8 +1879,11 @@ pub const IDisplayManagerDisabledEventArgs = extern struct {
 };
 pub const IDisplayManagerEnabledEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1940,17 +1891,17 @@ pub const IDisplayManagerEnabledEventArgs = extern struct {
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManagerEnabledEventArgs";
@@ -1972,8 +1923,11 @@ pub const IDisplayManagerEnabledEventArgs = extern struct {
 };
 pub const IDisplayManagerPathsFailedOrInvalidatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1981,17 +1935,17 @@ pub const IDisplayManagerPathsFailedOrInvalidatedEventArgs = extern struct {
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManagerPathsFailedOrInvalidatedEventArgs";
@@ -2013,8 +1967,11 @@ pub const IDisplayManagerPathsFailedOrInvalidatedEventArgs = extern struct {
 };
 pub const IDisplayManagerResultWithState = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2022,19 +1979,19 @@ pub const IDisplayManagerResultWithState = extern struct {
     pub fn getErrorCode(self: *@This()) core.HResult!DisplayManagerResult {
         var _r: DisplayManagerResult = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedErrorCode(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!*DisplayState {
         var _r: *DisplayState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManagerResultWithState";
@@ -2056,8 +2013,11 @@ pub const IDisplayManagerResultWithState = extern struct {
 };
 pub const IDisplayManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2065,7 +2025,7 @@ pub const IDisplayManagerStatics = extern struct {
     pub fn Create(self: *@This(), options: DisplayManagerOptions) core.HResult!*DisplayManager {
         var _r: *DisplayManager = undefined;
         const _c = self.vtable.Create(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayManagerStatics";
@@ -2085,8 +2045,11 @@ pub const IDisplayManagerStatics = extern struct {
 };
 pub const IDisplayModeInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2094,55 +2057,55 @@ pub const IDisplayModeInfo = extern struct {
     pub fn getSourceResolution(self: *@This()) core.HResult!SizeInt32 {
         var _r: SizeInt32 = undefined;
         const _c = self.vtable.get_SourceResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStereo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStereo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourcePixelFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_SourcePixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTargetResolution(self: *@This()) core.HResult!SizeInt32 {
         var _r: SizeInt32 = undefined;
         const _c = self.vtable.get_TargetResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPresentationRate(self: *@This()) core.HResult!DisplayPresentationRate {
         var _r: DisplayPresentationRate = undefined;
         const _c = self.vtable.get_PresentationRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInterlaced(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInterlaced(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetWireFormatSupportedBitsPerChannel(self: *@This(), encoding: DisplayWireFormatPixelEncoding) core.HResult!DisplayBitsPerChannel {
         var _r: DisplayBitsPerChannel = undefined;
         const _c = self.vtable.GetWireFormatSupportedBitsPerChannel(@ptrCast(self), encoding, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsWireFormatSupported(self: *@This(), wireFormat: *DisplayWireFormat) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsWireFormatSupported(@ptrCast(self), wireFormat, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var _r: *IMapView(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayModeInfo";
@@ -2170,8 +2133,11 @@ pub const IDisplayModeInfo = extern struct {
 };
 pub const IDisplayModeInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2179,7 +2145,7 @@ pub const IDisplayModeInfo2 = extern struct {
     pub fn getPhysicalPresentationRate(self: *@This()) core.HResult!DisplayPresentationRate {
         var _r: DisplayPresentationRate = undefined;
         const _c = self.vtable.get_PhysicalPresentationRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayModeInfo2";
@@ -2199,8 +2165,11 @@ pub const IDisplayModeInfo2 = extern struct {
 };
 pub const IDisplayMuxDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2208,60 +2177,60 @@ pub const IDisplayMuxDevice = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsActive(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAvailableMuxTargets(self: *@This()) core.HResult!*IVectorView(DisplayTarget) {
         var _r: *IVectorView(DisplayTarget) = undefined;
         const _c = self.vtable.GetAvailableMuxTargets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentTarget(self: *@This()) core.HResult!*DisplayTarget {
         var _r: *DisplayTarget = undefined;
         const _c = self.vtable.get_CurrentTarget(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPreferredTarget(self: *@This()) core.HResult!*DisplayTarget {
         var _r: *DisplayTarget = undefined;
         const _c = self.vtable.get_PreferredTarget(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsAutomaticTargetSwitchingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAutomaticTargetSwitchingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPreferredTarget(self: *@This(), target: *DisplayTarget) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetPreferredTarget(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAutomaticTargetSwitching(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetAutomaticTargetSwitching(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addChanged(self: *@This(), handler: *TypedEventHandler(DisplayMuxDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Changed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Changed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayMuxDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2289,8 +2258,11 @@ pub const IDisplayMuxDevice = extern struct {
 };
 pub const IDisplayMuxDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2298,13 +2270,13 @@ pub const IDisplayMuxDeviceStatics = extern struct {
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceInterfaceId: ?HSTRING) core.HResult!*IAsyncOperation(DisplayMuxDevice) {
         var _r: *IAsyncOperation(DisplayMuxDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceInterfaceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayMuxDeviceStatics";
@@ -2325,8 +2297,11 @@ pub const IDisplayMuxDeviceStatics = extern struct {
 };
 pub const IDisplayPath = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2334,125 +2309,125 @@ pub const IDisplayPath = extern struct {
     pub fn getView(self: *@This()) core.HResult!*DisplayView {
         var _r: *DisplayView = undefined;
         const _c = self.vtable.get_View(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTarget(self: *@This()) core.HResult!*DisplayTarget {
         var _r: *DisplayTarget = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!DisplayPathStatus {
         var _r: DisplayPathStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceResolution(self: *@This()) core.HResult!*IReference(SizeInt32) {
         var _r: *IReference(SizeInt32) = undefined;
         const _c = self.vtable.get_SourceResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSourceResolution(self: *@This(), value: *IReference(SizeInt32)) core.HResult!void {
         const _c = self.vtable.put_SourceResolution(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSourcePixelFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_SourcePixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSourcePixelFormat(self: *@This(), value: DirectXPixelFormat) core.HResult!void {
         const _c = self.vtable.put_SourcePixelFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsStereo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStereo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsStereo(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsStereo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTargetResolution(self: *@This()) core.HResult!*IReference(SizeInt32) {
         var _r: *IReference(SizeInt32) = undefined;
         const _c = self.vtable.get_TargetResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTargetResolution(self: *@This(), value: *IReference(SizeInt32)) core.HResult!void {
         const _c = self.vtable.put_TargetResolution(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPresentationRate(self: *@This()) core.HResult!*IReference(DisplayPresentationRate) {
         var _r: *IReference(DisplayPresentationRate) = undefined;
         const _c = self.vtable.get_PresentationRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPresentationRate(self: *@This(), value: *IReference(DisplayPresentationRate)) core.HResult!void {
         const _c = self.vtable.put_PresentationRate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsInterlaced(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsInterlaced(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsInterlaced(self: *@This(), value: *IReference(bool)) core.HResult!void {
         const _c = self.vtable.put_IsInterlaced(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWireFormat(self: *@This()) core.HResult!*DisplayWireFormat {
         var _r: *DisplayWireFormat = undefined;
         const _c = self.vtable.get_WireFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWireFormat(self: *@This(), value: *DisplayWireFormat) core.HResult!void {
         const _c = self.vtable.put_WireFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRotation(self: *@This()) core.HResult!DisplayRotation {
         var _r: DisplayRotation = undefined;
         const _c = self.vtable.get_Rotation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRotation(self: *@This(), value: DisplayRotation) core.HResult!void {
         const _c = self.vtable.put_Rotation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScaling(self: *@This()) core.HResult!DisplayPathScaling {
         var _r: DisplayPathScaling = undefined;
         const _c = self.vtable.get_Scaling(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScaling(self: *@This(), value: DisplayPathScaling) core.HResult!void {
         const _c = self.vtable.put_Scaling(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FindModes(self: *@This(), flags: DisplayModeQueryOptions) core.HResult!*IVectorView(DisplayModeInfo) {
         var _r: *IVectorView(DisplayModeInfo) = undefined;
         const _c = self.vtable.FindModes(@ptrCast(self), flags, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplyPropertiesFromMode(self: *@This(), modeResult: *DisplayModeInfo) core.HResult!void {
         const _c = self.vtable.ApplyPropertiesFromMode(@ptrCast(self), modeResult);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMap(Guid,IInspectable) {
         var _r: *IMap(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayPath";
@@ -2495,8 +2470,11 @@ pub const IDisplayPath = extern struct {
 };
 pub const IDisplayPath2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2504,12 +2482,12 @@ pub const IDisplayPath2 = extern struct {
     pub fn getPhysicalPresentationRate(self: *@This()) core.HResult!*IReference(DisplayPresentationRate) {
         var _r: *IReference(DisplayPresentationRate) = undefined;
         const _c = self.vtable.get_PhysicalPresentationRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPhysicalPresentationRate(self: *@This(), value: *IReference(DisplayPresentationRate)) core.HResult!void {
         const _c = self.vtable.put_PhysicalPresentationRate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayPath2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2529,8 +2507,11 @@ pub const IDisplayPath2 = extern struct {
 };
 pub const IDisplayPrimaryDescription = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2538,43 +2519,43 @@ pub const IDisplayPrimaryDescription = extern struct {
     pub fn getWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getColorSpace(self: *@This()) core.HResult!DirectXColorSpace {
         var _r: DirectXColorSpace = undefined;
         const _c = self.vtable.get_ColorSpace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStereo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStereo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMultisampleDescription(self: *@This()) core.HResult!Direct3DMultisampleDescription {
         var _r: Direct3DMultisampleDescription = undefined;
         const _c = self.vtable.get_MultisampleDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var _r: *IMapView(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayPrimaryDescription";
@@ -2600,8 +2581,11 @@ pub const IDisplayPrimaryDescription = extern struct {
 };
 pub const IDisplayPrimaryDescriptionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2609,7 +2593,7 @@ pub const IDisplayPrimaryDescriptionFactory = extern struct {
     pub fn CreateInstance(self: *@This(), width: u32, height: u32, pixelFormat: DirectXPixelFormat, colorSpace: DirectXColorSpace, isStereo: bool, multisampleDescription: Direct3DMultisampleDescription) core.HResult!*DisplayPrimaryDescription {
         var _r: *DisplayPrimaryDescription = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), width, height, pixelFormat, colorSpace, isStereo, multisampleDescription, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayPrimaryDescriptionFactory";
@@ -2629,8 +2613,11 @@ pub const IDisplayPrimaryDescriptionFactory = extern struct {
 };
 pub const IDisplayPrimaryDescriptionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2638,7 +2625,7 @@ pub const IDisplayPrimaryDescriptionStatics = extern struct {
     pub fn CreateWithProperties(self: *@This(), extraProperties: *IIterable(IKeyValuePair(Guid,IInspectable)), width: u32, height: u32, pixelFormat: DirectXPixelFormat, colorSpace: DirectXColorSpace, isStereo: bool, multisampleDescription: Direct3DMultisampleDescription) core.HResult!*DisplayPrimaryDescription {
         var _r: *DisplayPrimaryDescription = undefined;
         const _c = self.vtable.CreateWithProperties(@ptrCast(self), extraProperties, width, height, pixelFormat, colorSpace, isStereo, multisampleDescription, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayPrimaryDescriptionStatics";
@@ -2658,8 +2645,11 @@ pub const IDisplayPrimaryDescriptionStatics = extern struct {
 };
 pub const IDisplayScanout = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2680,8 +2670,11 @@ pub const IDisplayScanout = extern struct {
 };
 pub const IDisplaySource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2689,19 +2682,19 @@ pub const IDisplaySource = extern struct {
     pub fn getAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         var _r: DisplayAdapterId = undefined;
         const _c = self.vtable.get_AdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SourceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMetadata(self: *@This(), Key: *Guid) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.GetMetadata(@ptrCast(self), Key, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplaySource";
@@ -2723,8 +2716,11 @@ pub const IDisplaySource = extern struct {
 };
 pub const IDisplaySource2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2732,18 +2728,18 @@ pub const IDisplaySource2 = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!DisplaySourceStatus {
         var _r: DisplaySourceStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusChanged(self: *@This(), handler: *TypedEventHandler(DisplaySource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplaySource2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2764,8 +2760,11 @@ pub const IDisplaySource2 = extern struct {
 };
 pub const IDisplayState = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2773,83 +2772,83 @@ pub const IDisplayState = extern struct {
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadOnly(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStale(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTargets(self: *@This()) core.HResult!*IVectorView(DisplayTarget) {
         var _r: *IVectorView(DisplayTarget) = undefined;
         const _c = self.vtable.get_Targets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViews(self: *@This()) core.HResult!*IVectorView(DisplayView) {
         var _r: *IVectorView(DisplayView) = undefined;
         const _c = self.vtable.get_Views(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMap(Guid,IInspectable) {
         var _r: *IMap(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectTarget(self: *@This(), target: *DisplayTarget) core.HResult!*DisplayPath {
         var _r: *DisplayPath = undefined;
         const _c = self.vtable.ConnectTarget(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectTargetWithView(self: *@This(), target: *DisplayTarget, view: *DisplayView) core.HResult!*DisplayPath {
         var _r: *DisplayPath = undefined;
         const _c = self.vtable.ConnectTargetWithView(@ptrCast(self), target, view, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CanConnectTargetToView(self: *@This(), target: *DisplayTarget, view: *DisplayView) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanConnectTargetToView(@ptrCast(self), target, view, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetViewForTarget(self: *@This(), target: *DisplayTarget) core.HResult!*DisplayView {
         var _r: *DisplayView = undefined;
         const _c = self.vtable.GetViewForTarget(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPathForTarget(self: *@This(), target: *DisplayTarget) core.HResult!*DisplayPath {
         var _r: *DisplayPath = undefined;
         const _c = self.vtable.GetPathForTarget(@ptrCast(self), target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisconnectTarget(self: *@This(), target: *DisplayTarget) core.HResult!void {
         const _c = self.vtable.DisconnectTarget(@ptrCast(self), target);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryFunctionalize(self: *@This(), options: DisplayStateFunctionalizeOptions) core.HResult!*DisplayStateOperationResult {
         var _r: *DisplayStateOperationResult = undefined;
         const _c = self.vtable.TryFunctionalize(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryApply(self: *@This(), options: DisplayStateApplyOptions) core.HResult!*DisplayStateOperationResult {
         var _r: *DisplayStateOperationResult = undefined;
         const _c = self.vtable.TryApply(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Clone(self: *@This()) core.HResult!*DisplayState {
         var _r: *DisplayState = undefined;
         const _c = self.vtable.Clone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayState";
@@ -2882,8 +2881,11 @@ pub const IDisplayState = extern struct {
 };
 pub const IDisplayStateOperationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2891,13 +2893,13 @@ pub const IDisplayStateOperationResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!DisplayStateOperationStatus {
         var _r: DisplayStateOperationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedErrorCode(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayStateOperationResult";
@@ -2918,8 +2920,11 @@ pub const IDisplayStateOperationResult = extern struct {
 };
 pub const IDisplaySurface = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2940,8 +2945,11 @@ pub const IDisplaySurface = extern struct {
 };
 pub const IDisplayTarget = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2949,85 +2957,85 @@ pub const IDisplayTarget = extern struct {
     pub fn getAdapter(self: *@This()) core.HResult!*DisplayAdapter {
         var _r: *DisplayAdapter = undefined;
         const _c = self.vtable.get_Adapter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceInterfacePath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceInterfacePath(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdapterRelativeId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AdapterRelativeId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConnected(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsVirtualModeEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVirtualModeEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsVirtualTopologyEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVirtualTopologyEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsageKind(self: *@This()) core.HResult!DisplayMonitorUsageKind {
         var _r: DisplayMonitorUsageKind = undefined;
         const _c = self.vtable.get_UsageKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMonitorPersistence(self: *@This()) core.HResult!DisplayTargetPersistence {
         var _r: DisplayTargetPersistence = undefined;
         const _c = self.vtable.get_MonitorPersistence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStableMonitorId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StableMonitorId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetMonitor(self: *@This()) core.HResult!*DisplayMonitor {
         var _r: *DisplayMonitor = undefined;
         const _c = self.vtable.TryGetMonitor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var _r: *IMapView(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStale(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsSame(self: *@This(), otherTarget: *DisplayTarget) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSame(@ptrCast(self), otherTarget, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEqual(self: *@This(), otherTarget: *DisplayTarget) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEqual(@ptrCast(self), otherTarget, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayTarget";
@@ -3060,19 +3068,22 @@ pub const IDisplayTarget = extern struct {
 };
 pub const IDisplayTask = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetScanout(self: *@This(), scanout: *DisplayScanout) core.HResult!void {
         const _c = self.vtable.SetScanout(@ptrCast(self), scanout);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetWait(self: *@This(), readyFence: *DisplayFence, readyFenceValue: u64) core.HResult!void {
         const _c = self.vtable.SetWait(@ptrCast(self), readyFence, readyFenceValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayTask";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3092,15 +3103,18 @@ pub const IDisplayTask = extern struct {
 };
 pub const IDisplayTask2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetSignal(self: *@This(), signalKind: DisplayTaskSignalKind, fence: *DisplayFence) core.HResult!void {
         const _c = self.vtable.SetSignal(@ptrCast(self), signalKind, fence);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayTask2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3119,8 +3133,11 @@ pub const IDisplayTask2 = extern struct {
 };
 pub const IDisplayTaskPool = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3128,12 +3145,12 @@ pub const IDisplayTaskPool = extern struct {
     pub fn CreateTask(self: *@This()) core.HResult!*DisplayTask {
         var _r: *DisplayTask = undefined;
         const _c = self.vtable.CreateTask(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ExecuteTask(self: *@This(), task: *DisplayTask) core.HResult!void {
         const _c = self.vtable.ExecuteTask(@ptrCast(self), task);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayTaskPool";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3153,8 +3170,11 @@ pub const IDisplayTaskPool = extern struct {
 };
 pub const IDisplayTaskPool2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3162,7 +3182,7 @@ pub const IDisplayTaskPool2 = extern struct {
     pub fn TryExecuteTask(self: *@This(), task: *DisplayTask) core.HResult!*DisplayTaskResult {
         var _r: *DisplayTaskResult = undefined;
         const _c = self.vtable.TryExecuteTask(@ptrCast(self), task, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayTaskPool2";
@@ -3182,8 +3202,11 @@ pub const IDisplayTaskPool2 = extern struct {
 };
 pub const IDisplayTaskResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3191,19 +3214,19 @@ pub const IDisplayTaskResult = extern struct {
     pub fn getPresentStatus(self: *@This()) core.HResult!DisplayPresentStatus {
         var _r: DisplayPresentStatus = undefined;
         const _c = self.vtable.get_PresentStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPresentId(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_PresentId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceStatus(self: *@This()) core.HResult!DisplaySourceStatus {
         var _r: DisplaySourceStatus = undefined;
         const _c = self.vtable.get_SourceStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayTaskResult";
@@ -3225,8 +3248,11 @@ pub const IDisplayTaskResult = extern struct {
 };
 pub const IDisplayView = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3234,27 +3260,27 @@ pub const IDisplayView = extern struct {
     pub fn getPaths(self: *@This()) core.HResult!*IVectorView(DisplayPath) {
         var _r: *IVectorView(DisplayPath) = undefined;
         const _c = self.vtable.get_Paths(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentResolution(self: *@This()) core.HResult!*IReference(SizeInt32) {
         var _r: *IReference(SizeInt32) = undefined;
         const _c = self.vtable.get_ContentResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContentResolution(self: *@This(), value: *IReference(SizeInt32)) core.HResult!void {
         const _c = self.vtable.put_ContentResolution(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPrimaryPath(self: *@This(), path: *DisplayPath) core.HResult!void {
         const _c = self.vtable.SetPrimaryPath(@ptrCast(self), path);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMap(Guid,IInspectable) {
         var _r: *IMap(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayView";
@@ -3278,8 +3304,11 @@ pub const IDisplayView = extern struct {
 };
 pub const IDisplayWireFormat = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3287,37 +3316,37 @@ pub const IDisplayWireFormat = extern struct {
     pub fn getPixelEncoding(self: *@This()) core.HResult!DisplayWireFormatPixelEncoding {
         var _r: DisplayWireFormatPixelEncoding = undefined;
         const _c = self.vtable.get_PixelEncoding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBitsPerChannel(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_BitsPerChannel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getColorSpace(self: *@This()) core.HResult!DisplayWireFormatColorSpace {
         var _r: DisplayWireFormatColorSpace = undefined;
         const _c = self.vtable.get_ColorSpace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEotf(self: *@This()) core.HResult!DisplayWireFormatEotf {
         var _r: DisplayWireFormatEotf = undefined;
         const _c = self.vtable.get_Eotf(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHdrMetadata(self: *@This()) core.HResult!DisplayWireFormatHdrMetadata {
         var _r: DisplayWireFormatHdrMetadata = undefined;
         const _c = self.vtable.get_HdrMetadata(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
         var _r: *IMapView(Guid,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayWireFormat";
@@ -3342,8 +3371,11 @@ pub const IDisplayWireFormat = extern struct {
 };
 pub const IDisplayWireFormatFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3351,7 +3383,7 @@ pub const IDisplayWireFormatFactory = extern struct {
     pub fn CreateInstance(self: *@This(), pixelEncoding: DisplayWireFormatPixelEncoding, bitsPerChannel: i32, colorSpace: DisplayWireFormatColorSpace, eotf: DisplayWireFormatEotf, hdrMetadata: DisplayWireFormatHdrMetadata) core.HResult!*DisplayWireFormat {
         var _r: *DisplayWireFormat = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayWireFormatFactory";
@@ -3371,8 +3403,11 @@ pub const IDisplayWireFormatFactory = extern struct {
 };
 pub const IDisplayWireFormatStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3380,7 +3415,7 @@ pub const IDisplayWireFormatStatics = extern struct {
     pub fn CreateWithProperties(self: *@This(), extraProperties: *IIterable(IKeyValuePair(Guid,IInspectable)), pixelEncoding: DisplayWireFormatPixelEncoding, bitsPerChannel: i32, colorSpace: DisplayWireFormatColorSpace, eotf: DisplayWireFormatEotf, hdrMetadata: DisplayWireFormatHdrMetadata) core.HResult!*DisplayWireFormat {
         var _r: *DisplayWireFormat = undefined;
         const _c = self.vtable.CreateWithProperties(@ptrCast(self), extraProperties, pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.IDisplayWireFormatStatics";

@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ISpeechContinuousRecognitionCompletedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const ISpeechContinuousRecognitionCompletedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!SpeechRecognitionResultStatus {
         var _r: SpeechRecognitionResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechContinuousRecognitionCompletedEventArgs";
@@ -30,8 +33,11 @@ pub const ISpeechContinuousRecognitionCompletedEventArgs = extern struct {
 };
 pub const ISpeechContinuousRecognitionResultGeneratedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,7 +45,7 @@ pub const ISpeechContinuousRecognitionResultGeneratedEventArgs = extern struct {
     pub fn getResult(self: *@This()) core.HResult!*SpeechRecognitionResult {
         var _r: *SpeechRecognitionResult = undefined;
         const _c = self.vtable.get_Result(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechContinuousRecognitionResultGeneratedEventArgs";
@@ -59,8 +65,11 @@ pub const ISpeechContinuousRecognitionResultGeneratedEventArgs = extern struct {
 };
 pub const ISpeechContinuousRecognitionSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -68,66 +77,66 @@ pub const ISpeechContinuousRecognitionSession = extern struct {
     pub fn getAutoStopSilenceTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_AutoStopSilenceTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutoStopSilenceTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_AutoStopSilenceTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartAsyncWithMode(self: *@This(), mode: SpeechContinuousRecognitionMode) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartAsyncWithMode(@ptrCast(self), mode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CancelAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CancelAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PauseAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.PauseAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Resume(self: *@This()) core.HResult!void {
         const _c = self.vtable.Resume(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCompleted(self: *@This(), value: *TypedEventHandler(SpeechContinuousRecognitionSession,SpeechContinuousRecognitionCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Completed(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCompleted(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Completed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addResultGenerated(self: *@This(), value: *TypedEventHandler(SpeechContinuousRecognitionSession,SpeechContinuousRecognitionResultGeneratedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ResultGenerated(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeResultGenerated(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ResultGenerated(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechContinuousRecognitionSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -157,8 +166,11 @@ pub const ISpeechContinuousRecognitionSession = extern struct {
 };
 pub const ISpeechRecognitionCompilationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -166,7 +178,7 @@ pub const ISpeechRecognitionCompilationResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!SpeechRecognitionResultStatus {
         var _r: SpeechRecognitionResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionCompilationResult";
@@ -186,8 +198,11 @@ pub const ISpeechRecognitionCompilationResult = extern struct {
 };
 pub const ISpeechRecognitionConstraint = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -195,38 +210,38 @@ pub const ISpeechRecognitionConstraint = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var _r: SpeechRecognitionConstraintType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var _r: SpeechRecognitionConstraintProbability = undefined;
         const _c = self.vtable.get_Probability(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         const _c = self.vtable.put_Probability(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionConstraint";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -251,8 +266,11 @@ pub const ISpeechRecognitionConstraint = extern struct {
 };
 pub const ISpeechRecognitionGrammarFileConstraint = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -260,7 +278,7 @@ pub const ISpeechRecognitionGrammarFileConstraint = extern struct {
     pub fn getGrammarFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_GrammarFile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionGrammarFileConstraint";
@@ -280,8 +298,11 @@ pub const ISpeechRecognitionGrammarFileConstraint = extern struct {
 };
 pub const ISpeechRecognitionGrammarFileConstraintFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -289,13 +310,13 @@ pub const ISpeechRecognitionGrammarFileConstraintFactory = extern struct {
     pub fn Create(self: *@This(), file: *StorageFile) core.HResult!*SpeechRecognitionGrammarFileConstraint {
         var _r: *SpeechRecognitionGrammarFileConstraint = undefined;
         const _c = self.vtable.Create(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithTag(self: *@This(), file: *StorageFile, tag: ?HSTRING) core.HResult!*SpeechRecognitionGrammarFileConstraint {
         var _r: *SpeechRecognitionGrammarFileConstraint = undefined;
         const _c = self.vtable.CreateWithTag(@ptrCast(self), file, tag, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionGrammarFileConstraintFactory";
@@ -316,8 +337,11 @@ pub const ISpeechRecognitionGrammarFileConstraintFactory = extern struct {
 };
 pub const ISpeechRecognitionHypothesis = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -325,7 +349,7 @@ pub const ISpeechRecognitionHypothesis = extern struct {
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionHypothesis";
@@ -345,8 +369,11 @@ pub const ISpeechRecognitionHypothesis = extern struct {
 };
 pub const ISpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -354,7 +381,7 @@ pub const ISpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
     pub fn getHypothesis(self: *@This()) core.HResult!*SpeechRecognitionHypothesis {
         var _r: *SpeechRecognitionHypothesis = undefined;
         const _c = self.vtable.get_Hypothesis(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionHypothesisGeneratedEventArgs";
@@ -374,8 +401,11 @@ pub const ISpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
 };
 pub const ISpeechRecognitionListConstraint = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -383,7 +413,7 @@ pub const ISpeechRecognitionListConstraint = extern struct {
     pub fn getCommands(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Commands(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionListConstraint";
@@ -403,8 +433,11 @@ pub const ISpeechRecognitionListConstraint = extern struct {
 };
 pub const ISpeechRecognitionListConstraintFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -412,13 +445,13 @@ pub const ISpeechRecognitionListConstraintFactory = extern struct {
     pub fn Create(self: *@This(), commands: *IIterable(?HSTRING)) core.HResult!*SpeechRecognitionListConstraint {
         var _r: *SpeechRecognitionListConstraint = undefined;
         const _c = self.vtable.Create(@ptrCast(self), commands, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithTag(self: *@This(), commands: *IIterable(?HSTRING), tag: ?HSTRING) core.HResult!*SpeechRecognitionListConstraint {
         var _r: *SpeechRecognitionListConstraint = undefined;
         const _c = self.vtable.CreateWithTag(@ptrCast(self), commands, tag, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionListConstraintFactory";
@@ -439,8 +472,11 @@ pub const ISpeechRecognitionListConstraintFactory = extern struct {
 };
 pub const ISpeechRecognitionQualityDegradingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -448,7 +484,7 @@ pub const ISpeechRecognitionQualityDegradingEventArgs = extern struct {
     pub fn getProblem(self: *@This()) core.HResult!SpeechRecognitionAudioProblem {
         var _r: SpeechRecognitionAudioProblem = undefined;
         const _c = self.vtable.get_Problem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionQualityDegradingEventArgs";
@@ -468,8 +504,11 @@ pub const ISpeechRecognitionQualityDegradingEventArgs = extern struct {
 };
 pub const ISpeechRecognitionResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -477,49 +516,49 @@ pub const ISpeechRecognitionResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!SpeechRecognitionResultStatus {
         var _r: SpeechRecognitionResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConfidence(self: *@This()) core.HResult!SpeechRecognitionConfidence {
         var _r: SpeechRecognitionConfidence = undefined;
         const _c = self.vtable.get_Confidence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSemanticInterpretation(self: *@This()) core.HResult!*SpeechRecognitionSemanticInterpretation {
         var _r: *SpeechRecognitionSemanticInterpretation = undefined;
         const _c = self.vtable.get_SemanticInterpretation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAlternates(self: *@This(), maxAlternates: u32) core.HResult!*IVectorView(SpeechRecognitionResult) {
         var _r: *IVectorView(SpeechRecognitionResult) = undefined;
         const _c = self.vtable.GetAlternates(@ptrCast(self), maxAlternates, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConstraint(self: *@This()) core.HResult!*ISpeechRecognitionConstraint {
         var _r: *ISpeechRecognitionConstraint = undefined;
         const _c = self.vtable.get_Constraint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRulePath(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_RulePath(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRawConfidence(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RawConfidence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionResult";
@@ -546,8 +585,11 @@ pub const ISpeechRecognitionResult = extern struct {
 };
 pub const ISpeechRecognitionResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -555,13 +597,13 @@ pub const ISpeechRecognitionResult2 = extern struct {
     pub fn getPhraseStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_PhraseStartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhraseDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_PhraseDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionResult2";
@@ -582,8 +624,11 @@ pub const ISpeechRecognitionResult2 = extern struct {
 };
 pub const ISpeechRecognitionSemanticInterpretation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -591,7 +636,7 @@ pub const ISpeechRecognitionSemanticInterpretation = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IVectorView(?HSTRING)) {
         var _r: *IMapView(?HSTRING,IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionSemanticInterpretation";
@@ -611,8 +656,11 @@ pub const ISpeechRecognitionSemanticInterpretation = extern struct {
 };
 pub const ISpeechRecognitionTopicConstraint = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -620,13 +668,13 @@ pub const ISpeechRecognitionTopicConstraint = extern struct {
     pub fn getScenario(self: *@This()) core.HResult!SpeechRecognitionScenario {
         var _r: SpeechRecognitionScenario = undefined;
         const _c = self.vtable.get_Scenario(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTopicHint(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TopicHint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionTopicConstraint";
@@ -647,8 +695,11 @@ pub const ISpeechRecognitionTopicConstraint = extern struct {
 };
 pub const ISpeechRecognitionTopicConstraintFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -656,13 +707,13 @@ pub const ISpeechRecognitionTopicConstraintFactory = extern struct {
     pub fn Create(self: *@This(), scenario: SpeechRecognitionScenario, topicHint: ?HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
         var _r: *SpeechRecognitionTopicConstraint = undefined;
         const _c = self.vtable.Create(@ptrCast(self), scenario, topicHint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithTag(self: *@This(), scenario: SpeechRecognitionScenario, topicHint: ?HSTRING, tag: ?HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
         var _r: *SpeechRecognitionTopicConstraint = undefined;
         const _c = self.vtable.CreateWithTag(@ptrCast(self), scenario, topicHint, tag, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognitionTopicConstraintFactory";
@@ -683,8 +734,11 @@ pub const ISpeechRecognitionTopicConstraintFactory = extern struct {
 };
 pub const ISpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -705,8 +759,11 @@ pub const ISpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
 };
 pub const ISpeechRecognizer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -714,64 +771,64 @@ pub const ISpeechRecognizer = extern struct {
     pub fn getCurrentLanguage(self: *@This()) core.HResult!*Language {
         var _r: *Language = undefined;
         const _c = self.vtable.get_CurrentLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConstraints(self: *@This()) core.HResult!*IVector(ISpeechRecognitionConstraint) {
         var _r: *IVector(ISpeechRecognitionConstraint) = undefined;
         const _c = self.vtable.get_Constraints(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimeouts(self: *@This()) core.HResult!*SpeechRecognizerTimeouts {
         var _r: *SpeechRecognizerTimeouts = undefined;
         const _c = self.vtable.get_Timeouts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUIOptions(self: *@This()) core.HResult!*SpeechRecognizerUIOptions {
         var _r: *SpeechRecognizerUIOptions = undefined;
         const _c = self.vtable.get_UIOptions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CompileConstraintsAsync(self: *@This()) core.HResult!*IAsyncOperation(SpeechRecognitionCompilationResult) {
         var _r: *IAsyncOperation(SpeechRecognitionCompilationResult) = undefined;
         const _c = self.vtable.CompileConstraintsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RecognizeAsync(self: *@This()) core.HResult!*IAsyncOperation(SpeechRecognitionResult) {
         var _r: *IAsyncOperation(SpeechRecognitionResult) = undefined;
         const _c = self.vtable.RecognizeAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RecognizeWithUIAsync(self: *@This()) core.HResult!*IAsyncOperation(SpeechRecognitionResult) {
         var _r: *IAsyncOperation(SpeechRecognitionResult) = undefined;
         const _c = self.vtable.RecognizeWithUIAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addRecognitionQualityDegrading(self: *@This(), speechRecognitionQualityDegradingHandler: *TypedEventHandler(SpeechRecognizer,SpeechRecognitionQualityDegradingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RecognitionQualityDegrading(@ptrCast(self), speechRecognitionQualityDegradingHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRecognitionQualityDegrading(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RecognitionQualityDegrading(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStateChanged(self: *@This(), stateChangedHandler: *TypedEventHandler(SpeechRecognizer,SpeechRecognizerStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StateChanged(@ptrCast(self), stateChangedHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStateChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StateChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -800,8 +857,11 @@ pub const ISpeechRecognizer = extern struct {
 };
 pub const ISpeechRecognizer2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -809,30 +869,30 @@ pub const ISpeechRecognizer2 = extern struct {
     pub fn getContinuousRecognitionSession(self: *@This()) core.HResult!*SpeechContinuousRecognitionSession {
         var _r: *SpeechContinuousRecognitionSession = undefined;
         const _c = self.vtable.get_ContinuousRecognitionSession(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!SpeechRecognizerState {
         var _r: SpeechRecognizerState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopRecognitionAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopRecognitionAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addHypothesisGenerated(self: *@This(), value: *TypedEventHandler(SpeechRecognizer,SpeechRecognitionHypothesisGeneratedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HypothesisGenerated(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHypothesisGenerated(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HypothesisGenerated(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizer2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -855,8 +915,11 @@ pub const ISpeechRecognizer2 = extern struct {
 };
 pub const ISpeechRecognizerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -864,7 +927,7 @@ pub const ISpeechRecognizerFactory = extern struct {
     pub fn Create(self: *@This(), language: *Language) core.HResult!*SpeechRecognizer {
         var _r: *SpeechRecognizer = undefined;
         const _c = self.vtable.Create(@ptrCast(self), language, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizerFactory";
@@ -884,8 +947,11 @@ pub const ISpeechRecognizerFactory = extern struct {
 };
 pub const ISpeechRecognizerStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -893,7 +959,7 @@ pub const ISpeechRecognizerStateChangedEventArgs = extern struct {
     pub fn getState(self: *@This()) core.HResult!SpeechRecognizerState {
         var _r: SpeechRecognizerState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizerStateChangedEventArgs";
@@ -913,8 +979,11 @@ pub const ISpeechRecognizerStateChangedEventArgs = extern struct {
 };
 pub const ISpeechRecognizerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -922,19 +991,19 @@ pub const ISpeechRecognizerStatics = extern struct {
     pub fn getSystemSpeechLanguage(self: *@This()) core.HResult!*Language {
         var _r: *Language = undefined;
         const _c = self.vtable.get_SystemSpeechLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedTopicLanguages(self: *@This()) core.HResult!*IVectorView(Language) {
         var _r: *IVectorView(Language) = undefined;
         const _c = self.vtable.get_SupportedTopicLanguages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedGrammarLanguages(self: *@This()) core.HResult!*IVectorView(Language) {
         var _r: *IVectorView(Language) = undefined;
         const _c = self.vtable.get_SupportedGrammarLanguages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizerStatics";
@@ -956,8 +1025,11 @@ pub const ISpeechRecognizerStatics = extern struct {
 };
 pub const ISpeechRecognizerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -965,7 +1037,7 @@ pub const ISpeechRecognizerStatics2 = extern struct {
     pub fn TrySetSystemSpeechLanguageAsync(self: *@This(), speechLanguage: *Language) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetSystemSpeechLanguageAsync(@ptrCast(self), speechLanguage, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizerStatics2";
@@ -985,8 +1057,11 @@ pub const ISpeechRecognizerStatics2 = extern struct {
 };
 pub const ISpeechRecognizerTimeouts = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -994,32 +1069,32 @@ pub const ISpeechRecognizerTimeouts = extern struct {
     pub fn getInitialSilenceTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_InitialSilenceTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInitialSilenceTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_InitialSilenceTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEndSilenceTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_EndSilenceTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEndSilenceTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_EndSilenceTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBabbleTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_BabbleTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBabbleTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_BabbleTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizerTimeouts";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1043,8 +1118,11 @@ pub const ISpeechRecognizerTimeouts = extern struct {
 };
 pub const ISpeechRecognizerUIOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1052,42 +1130,42 @@ pub const ISpeechRecognizerUIOptions = extern struct {
     pub fn getExampleText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExampleText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExampleText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ExampleText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudiblePrompt(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudiblePrompt(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAudiblePrompt(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AudiblePrompt(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsReadBackEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadBackEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsReadBackEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsReadBackEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShowConfirmation(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShowConfirmation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShowConfirmation(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShowConfirmation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.ISpeechRecognizerUIOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1113,14 +1191,11 @@ pub const ISpeechRecognizerUIOptions = extern struct {
 };
 pub const SpeechContinuousRecognitionCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1141,14 +1216,11 @@ pub const SpeechContinuousRecognitionMode = enum(i32) {
 };
 pub const SpeechContinuousRecognitionResultGeneratedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1165,14 +1237,11 @@ pub const SpeechContinuousRecognitionResultGeneratedEventArgs = extern struct {
 };
 pub const SpeechContinuousRecognitionSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1242,14 +1311,11 @@ pub const SpeechRecognitionAudioProblem = enum(i32) {
 };
 pub const SpeechRecognitionCompilationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1283,14 +1349,11 @@ pub const SpeechRecognitionConstraintType = enum(i32) {
 };
 pub const SpeechRecognitionGrammarFileConstraint = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1302,50 +1365,43 @@ pub const SpeechRecognitionGrammarFileConstraint = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putProbability(value);
     }
     pub fn Create(file: *StorageFile) core.HResult!*SpeechRecognitionGrammarFileConstraint {
@@ -1365,14 +1421,11 @@ pub const SpeechRecognitionGrammarFileConstraint = extern struct {
 };
 pub const SpeechRecognitionHypothesis = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1389,14 +1442,11 @@ pub const SpeechRecognitionHypothesis = extern struct {
 };
 pub const SpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1413,14 +1463,11 @@ pub const SpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
 };
 pub const SpeechRecognitionListConstraint = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1432,50 +1479,43 @@ pub const SpeechRecognitionListConstraint = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putProbability(value);
     }
     pub fn Create(commands: *IIterable(?HSTRING)) core.HResult!*SpeechRecognitionListConstraint {
@@ -1495,14 +1535,11 @@ pub const SpeechRecognitionListConstraint = extern struct {
 };
 pub const SpeechRecognitionQualityDegradingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1519,14 +1556,11 @@ pub const SpeechRecognitionQualityDegradingEventArgs = extern struct {
 };
 pub const SpeechRecognitionResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1566,15 +1600,13 @@ pub const SpeechRecognitionResult = extern struct {
     pub fn getPhraseStartTime(self: *@This()) core.HResult!DateTime {
         var this: ?*ISpeechRecognitionResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionResult2.IID, @ptrCast(&this));
         return try this.?.getPhraseStartTime();
     }
     pub fn getPhraseDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*ISpeechRecognitionResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionResult2.IID, @ptrCast(&this));
         return try this.?.getPhraseDuration();
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.SpeechRecognitionResult";
@@ -1603,14 +1635,11 @@ pub const SpeechRecognitionScenario = enum(i32) {
 };
 pub const SpeechRecognitionSemanticInterpretation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1627,14 +1656,11 @@ pub const SpeechRecognitionSemanticInterpretation = extern struct {
 };
 pub const SpeechRecognitionTopicConstraint = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1650,50 +1676,43 @@ pub const SpeechRecognitionTopicConstraint = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putProbability(value);
     }
     pub fn Create(scenario: SpeechRecognitionScenario, topicHint: ?HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
@@ -1713,14 +1732,11 @@ pub const SpeechRecognitionTopicConstraint = extern struct {
 };
 pub const SpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1728,50 +1744,43 @@ pub const SpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         return try this.?.putProbability(value);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.SpeechRecognitionVoiceCommandDefinitionConstraint";
@@ -1782,14 +1791,11 @@ pub const SpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
 };
 pub const SpeechRecognizer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1841,43 +1847,37 @@ pub const SpeechRecognizer = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getContinuousRecognitionSession(self: *@This()) core.HResult!*SpeechContinuousRecognitionSession {
         var this: ?*ISpeechRecognizer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         return try this.?.getContinuousRecognitionSession();
     }
     pub fn getState(self: *@This()) core.HResult!SpeechRecognizerState {
         var this: ?*ISpeechRecognizer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         return try this.?.getState();
     }
     pub fn StopRecognitionAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*ISpeechRecognizer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         return try this.?.StopRecognitionAsync();
     }
     pub fn addHypothesisGenerated(self: *@This(), value: *TypedEventHandler(SpeechRecognizer,SpeechRecognitionHypothesisGeneratedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ISpeechRecognizer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         return try this.?.addHypothesisGenerated(value);
     }
     pub fn removeHypothesisGenerated(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         var this: ?*ISpeechRecognizer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         return try this.?.removeHypothesisGenerated(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -1925,14 +1925,11 @@ pub const SpeechRecognizerState = enum(i32) {
 };
 pub const SpeechRecognizerStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1949,14 +1946,11 @@ pub const SpeechRecognizerStateChangedEventArgs = extern struct {
 };
 pub const SpeechRecognizerTimeouts = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1993,14 +1987,11 @@ pub const SpeechRecognizerTimeouts = extern struct {
 };
 pub const SpeechRecognizerUIOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

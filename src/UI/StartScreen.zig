@@ -5,8 +5,11 @@ pub const ForegroundText = enum(i32) {
 };
 pub const IJumpList = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -14,23 +17,23 @@ pub const IJumpList = extern struct {
     pub fn getItems(self: *@This()) core.HResult!*IVector(JumpListItem) {
         var _r: *IVector(JumpListItem) = undefined;
         const _c = self.vtable.get_Items(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemGroupKind(self: *@This()) core.HResult!JumpListSystemGroupKind {
         var _r: JumpListSystemGroupKind = undefined;
         const _c = self.vtable.get_SystemGroupKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSystemGroupKind(self: *@This(), value: JumpListSystemGroupKind) core.HResult!void {
         const _c = self.vtable.put_SystemGroupKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IJumpList";
@@ -53,8 +56,11 @@ pub const IJumpList = extern struct {
 };
 pub const IJumpListItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -62,60 +68,60 @@ pub const IJumpListItem = extern struct {
     pub fn getKind(self: *@This()) core.HResult!JumpListItemKind {
         var _r: JumpListItemKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemovedByUser(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RemovedByUser(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGroupName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GroupName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGroupName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_GroupName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLogo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLogo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IJumpListItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -144,8 +150,11 @@ pub const IJumpListItem = extern struct {
 };
 pub const IJumpListItemStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -153,13 +162,13 @@ pub const IJumpListItemStatics = extern struct {
     pub fn CreateWithArguments(self: *@This(), arguments: ?HSTRING, displayName: ?HSTRING) core.HResult!*JumpListItem {
         var _r: *JumpListItem = undefined;
         const _c = self.vtable.CreateWithArguments(@ptrCast(self), arguments, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSeparator(self: *@This()) core.HResult!*JumpListItem {
         var _r: *JumpListItem = undefined;
         const _c = self.vtable.CreateSeparator(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IJumpListItemStatics";
@@ -180,8 +189,11 @@ pub const IJumpListItemStatics = extern struct {
 };
 pub const IJumpListStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -189,13 +201,13 @@ pub const IJumpListStatics = extern struct {
     pub fn LoadCurrentAsync(self: *@This()) core.HResult!*IAsyncOperation(JumpList) {
         var _r: *IAsyncOperation(JumpList) = undefined;
         const _c = self.vtable.LoadCurrentAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IJumpListStatics";
@@ -216,184 +228,187 @@ pub const IJumpListStatics = extern struct {
 };
 pub const ISecondaryTile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putTileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TileId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TileId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putArguments(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Arguments(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShortName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ShortName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShortName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ShortName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLogo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLogo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSmallLogo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_SmallLogo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSmallLogo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_SmallLogo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWideLogo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_WideLogo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWideLogo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_WideLogo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLockScreenBadgeLogo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_LockScreenBadgeLogo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLockScreenBadgeLogo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_LockScreenBadgeLogo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLockScreenDisplayBadgeAndTileText(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_LockScreenDisplayBadgeAndTileText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLockScreenDisplayBadgeAndTileText(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LockScreenDisplayBadgeAndTileText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTileOptions(self: *@This(), value: TileOptions) core.HResult!void {
         const _c = self.vtable.put_TileOptions(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTileOptions(self: *@This()) core.HResult!TileOptions {
         var _r: TileOptions = undefined;
         const _c = self.vtable.get_TileOptions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putForegroundText(self: *@This(), value: ForegroundText) core.HResult!void {
         const _c = self.vtable.put_ForegroundText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getForegroundText(self: *@This()) core.HResult!ForegroundText {
         var _r: ForegroundText = undefined;
         const _c = self.vtable.get_ForegroundText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_BackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBackgroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_BackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCreateAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestCreateAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCreateAsyncWithInvocationPoint(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestCreateAsyncWithInvocationPoint(@ptrCast(self), invocationPoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCreateForSelectionAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestCreateForSelectionAsync(@ptrCast(self), selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestCreateForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestCreateForSelectionAsyncWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestDeleteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestDeleteAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestDeleteAsyncWithInvocationPoint(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestDeleteAsyncWithInvocationPoint(@ptrCast(self), invocationPoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestDeleteForSelectionAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestDeleteForSelectionAsync(@ptrCast(self), selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestDeleteForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestDeleteForSelectionAsyncWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.UpdateAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTile";
@@ -445,47 +460,50 @@ pub const ISecondaryTile = extern struct {
 };
 pub const ISecondaryTile2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putPhoneticName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PhoneticName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPhoneticName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneticName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVisualElements(self: *@This()) core.HResult!*SecondaryTileVisualElements {
         var _r: *SecondaryTileVisualElements = undefined;
         const _c = self.vtable.get_VisualElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoamingEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_RoamingEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRoamingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RoamingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addVisualElementsRequested(self: *@This(), handler: *TypedEventHandler(SecondaryTile,VisualElementsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VisualElementsRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVisualElementsRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VisualElementsRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTile2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -510,8 +528,11 @@ pub const ISecondaryTile2 = extern struct {
 };
 pub const ISecondaryTileFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -519,19 +540,19 @@ pub const ISecondaryTileFactory = extern struct {
     pub fn CreateTile(self: *@This(), tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateTile(@ptrCast(self), tileId, shortName, displayName, arguments, tileOptions, logoReference, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWideTile(self: *@This(), tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateWideTile(@ptrCast(self), tileId, shortName, displayName, arguments, tileOptions, logoReference, wideLogoReference, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithId(self: *@This(), tileId: ?HSTRING) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateWithId(@ptrCast(self), tileId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTileFactory";
@@ -553,8 +574,11 @@ pub const ISecondaryTileFactory = extern struct {
 };
 pub const ISecondaryTileFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -562,7 +586,7 @@ pub const ISecondaryTileFactory2 = extern struct {
     pub fn CreateMinimalTile(self: *@This(), tileId: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, square150x150Logo: *Uri, desiredSize: TileSize) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateMinimalTile(@ptrCast(self), tileId, displayName, arguments, square150x150Logo, desiredSize, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTileFactory2";
@@ -582,8 +606,11 @@ pub const ISecondaryTileFactory2 = extern struct {
 };
 pub const ISecondaryTileStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -591,25 +618,25 @@ pub const ISecondaryTileStatics = extern struct {
     pub fn Exists(self: *@This(), tileId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Exists(@ptrCast(self), tileId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         var _r: *IAsyncOperation(IVectorView(SecondaryTile)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsyncWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         var _r: *IAsyncOperation(IVectorView(SecondaryTile)) = undefined;
         const _c = self.vtable.FindAllAsyncWithApplicationId(@ptrCast(self), applicationId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllForPackageAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         var _r: *IAsyncOperation(IVectorView(SecondaryTile)) = undefined;
         const _c = self.vtable.FindAllForPackageAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTileStatics";
@@ -632,110 +659,113 @@ pub const ISecondaryTileStatics = extern struct {
 };
 pub const ISecondaryTileVisualElements = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putSquare30x30Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square30x30Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSquare30x30Logo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Square30x30Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSquare70x70Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square70x70Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSquare70x70Logo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Square70x70Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSquare150x150Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square150x150Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSquare150x150Logo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Square150x150Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWide310x150Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Wide310x150Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWide310x150Logo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Wide310x150Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSquare310x310Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square310x310Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSquare310x310Logo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Square310x310Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putForegroundText(self: *@This(), value: ForegroundText) core.HResult!void {
         const _c = self.vtable.put_ForegroundText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getForegroundText(self: *@This()) core.HResult!ForegroundText {
         var _r: ForegroundText = undefined;
         const _c = self.vtable.get_ForegroundText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_BackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBackgroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_BackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShowNameOnSquare150x150Logo(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShowNameOnSquare150x150Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShowNameOnSquare150x150Logo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShowNameOnSquare150x150Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShowNameOnWide310x150Logo(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShowNameOnWide310x150Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShowNameOnWide310x150Logo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShowNameOnWide310x150Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShowNameOnSquare310x310Logo(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShowNameOnSquare310x310Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShowNameOnSquare310x310Logo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShowNameOnSquare310x310Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTileVisualElements";
@@ -774,20 +804,23 @@ pub const ISecondaryTileVisualElements = extern struct {
 };
 pub const ISecondaryTileVisualElements2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putSquare71x71Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square71x71Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSquare71x71Logo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Square71x71Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTileVisualElements2";
@@ -808,20 +841,23 @@ pub const ISecondaryTileVisualElements2 = extern struct {
 };
 pub const ISecondaryTileVisualElements3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putSquare44x44Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square44x44Logo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSquare44x44Logo(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Square44x44Logo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTileVisualElements3";
@@ -842,8 +878,11 @@ pub const ISecondaryTileVisualElements3 = extern struct {
 };
 pub const ISecondaryTileVisualElements4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -851,7 +890,7 @@ pub const ISecondaryTileVisualElements4 = extern struct {
     pub fn getMixedRealityModel(self: *@This()) core.HResult!*TileMixedRealityModel {
         var _r: *TileMixedRealityModel = undefined;
         const _c = self.vtable.get_MixedRealityModel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ISecondaryTileVisualElements4";
@@ -871,8 +910,11 @@ pub const ISecondaryTileVisualElements4 = extern struct {
 };
 pub const IStartScreenManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -880,25 +922,25 @@ pub const IStartScreenManager = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SupportsAppListEntry(self: *@This(), appListEntry: *AppListEntry) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.SupportsAppListEntry(@ptrCast(self), appListEntry, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ContainsAppListEntryAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ContainsAppListEntryAsync(@ptrCast(self), appListEntry, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAddAppListEntryAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestAddAppListEntryAsync(@ptrCast(self), appListEntry, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IStartScreenManager";
@@ -921,8 +963,11 @@ pub const IStartScreenManager = extern struct {
 };
 pub const IStartScreenManager2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -930,13 +975,13 @@ pub const IStartScreenManager2 = extern struct {
     pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ContainsSecondaryTileAsync(@ptrCast(self), tileId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryRemoveSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryRemoveSecondaryTileAsync(@ptrCast(self), tileId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IStartScreenManager2";
@@ -957,8 +1002,11 @@ pub const IStartScreenManager2 = extern struct {
 };
 pub const IStartScreenManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -966,13 +1014,13 @@ pub const IStartScreenManagerStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*StartScreenManager {
         var _r: *StartScreenManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*StartScreenManager {
         var _r: *StartScreenManager = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IStartScreenManagerStatics";
@@ -993,30 +1041,33 @@ pub const IStartScreenManagerStatics = extern struct {
 };
 pub const ITileMixedRealityModel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBoundingBox(self: *@This(), value: *IReference(SpatialBoundingBox)) core.HResult!void {
         const _c = self.vtable.put_BoundingBox(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBoundingBox(self: *@This()) core.HResult!*IReference(SpatialBoundingBox) {
         var _r: *IReference(SpatialBoundingBox) = undefined;
         const _c = self.vtable.get_BoundingBox(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ITileMixedRealityModel";
@@ -1039,20 +1090,23 @@ pub const ITileMixedRealityModel = extern struct {
 };
 pub const ITileMixedRealityModel2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putActivationBehavior(self: *@This(), value: TileMixedRealityModelActivationBehavior) core.HResult!void {
         const _c = self.vtable.put_ActivationBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getActivationBehavior(self: *@This()) core.HResult!TileMixedRealityModelActivationBehavior {
         var _r: TileMixedRealityModelActivationBehavior = undefined;
         const _c = self.vtable.get_ActivationBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.ITileMixedRealityModel2";
@@ -1073,8 +1127,11 @@ pub const ITileMixedRealityModel2 = extern struct {
 };
 pub const IVisualElementsRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1082,25 +1139,25 @@ pub const IVisualElementsRequest = extern struct {
     pub fn getVisualElements(self: *@This()) core.HResult!*SecondaryTileVisualElements {
         var _r: *SecondaryTileVisualElements = undefined;
         const _c = self.vtable.get_VisualElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAlternateVisualElements(self: *@This()) core.HResult!*IVectorView(SecondaryTileVisualElements) {
         var _r: *IVectorView(SecondaryTileVisualElements) = undefined;
         const _c = self.vtable.get_AlternateVisualElements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*VisualElementsRequestDeferral {
         var _r: *VisualElementsRequestDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IVisualElementsRequest";
@@ -1123,15 +1180,18 @@ pub const IVisualElementsRequest = extern struct {
 };
 pub const IVisualElementsRequestDeferral = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IVisualElementsRequestDeferral";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1150,8 +1210,11 @@ pub const IVisualElementsRequestDeferral = extern struct {
 };
 pub const IVisualElementsRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1159,7 +1222,7 @@ pub const IVisualElementsRequestedEventArgs = extern struct {
     pub fn getRequest(self: *@This()) core.HResult!*VisualElementsRequest {
         var _r: *VisualElementsRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.IVisualElementsRequestedEventArgs";
@@ -1179,14 +1242,11 @@ pub const IVisualElementsRequestedEventArgs = extern struct {
 };
 pub const JumpList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1224,14 +1284,11 @@ pub const JumpList = extern struct {
 };
 pub const JumpListItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1306,14 +1363,11 @@ pub const JumpListSystemGroupKind = enum(i32) {
 };
 pub const SecondaryTile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1453,50 +1507,43 @@ pub const SecondaryTile = extern struct {
     pub fn putPhoneticName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISecondaryTile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         return try this.?.putPhoneticName(value);
     }
     pub fn getPhoneticName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISecondaryTile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         return try this.?.getPhoneticName();
     }
     pub fn getVisualElements(self: *@This()) core.HResult!*SecondaryTileVisualElements {
         var this: ?*ISecondaryTile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         return try this.?.getVisualElements();
     }
     pub fn putRoamingEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISecondaryTile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         return try this.?.putRoamingEnabled(value);
     }
     pub fn getRoamingEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISecondaryTile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         return try this.?.getRoamingEnabled();
     }
     pub fn addVisualElementsRequested(self: *@This(), handler: *TypedEventHandler(SecondaryTile,VisualElementsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ISecondaryTile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         return try this.?.addVisualElementsRequested(handler);
     }
     pub fn removeVisualElementsRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ISecondaryTile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         return try this.?.removeVisualElementsRequested(token);
     }
     pub fn init() core.HResult!*@This() {
@@ -1547,14 +1594,11 @@ pub const SecondaryTile = extern struct {
 };
 pub const SecondaryTileVisualElements = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1642,36 +1686,31 @@ pub const SecondaryTileVisualElements = extern struct {
     pub fn putSquare71x71Logo(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISecondaryTileVisualElements2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements2.IID, @ptrCast(&this));
         return try this.?.putSquare71x71Logo(value);
     }
     pub fn getSquare71x71Logo(self: *@This()) core.HResult!*Uri {
         var this: ?*ISecondaryTileVisualElements2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements2.IID, @ptrCast(&this));
         return try this.?.getSquare71x71Logo();
     }
     pub fn putSquare44x44Logo(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISecondaryTileVisualElements3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements3.IID, @ptrCast(&this));
         return try this.?.putSquare44x44Logo(value);
     }
     pub fn getSquare44x44Logo(self: *@This()) core.HResult!*Uri {
         var this: ?*ISecondaryTileVisualElements3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements3.IID, @ptrCast(&this));
         return try this.?.getSquare44x44Logo();
     }
     pub fn getMixedRealityModel(self: *@This()) core.HResult!*TileMixedRealityModel {
         var this: ?*ISecondaryTileVisualElements4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements4.IID, @ptrCast(&this));
         return try this.?.getMixedRealityModel();
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.SecondaryTileVisualElements";
@@ -1682,14 +1721,11 @@ pub const SecondaryTileVisualElements = extern struct {
 };
 pub const StartScreenManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1713,15 +1749,13 @@ pub const StartScreenManager = extern struct {
     pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IStartScreenManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
         return try this.?.ContainsSecondaryTileAsync(tileId);
     }
     pub fn TryRemoveSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IStartScreenManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
         return try this.?.TryRemoveSecondaryTileAsync(tileId);
     }
     pub fn GetDefault() core.HResult!*StartScreenManager {
@@ -1741,14 +1775,11 @@ pub const StartScreenManager = extern struct {
 };
 pub const TileMixedRealityModel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1772,15 +1803,13 @@ pub const TileMixedRealityModel = extern struct {
     pub fn putActivationBehavior(self: *@This(), value: TileMixedRealityModelActivationBehavior) core.HResult!void {
         var this: ?*ITileMixedRealityModel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITileMixedRealityModel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITileMixedRealityModel2.IID, @ptrCast(&this));
         return try this.?.putActivationBehavior(value);
     }
     pub fn getActivationBehavior(self: *@This()) core.HResult!TileMixedRealityModelActivationBehavior {
         var this: ?*ITileMixedRealityModel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITileMixedRealityModel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITileMixedRealityModel2.IID, @ptrCast(&this));
         return try this.?.getActivationBehavior();
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.TileMixedRealityModel";
@@ -1811,14 +1840,11 @@ pub const TileSize = enum(i32) {
 };
 pub const VisualElementsRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1847,14 +1873,11 @@ pub const VisualElementsRequest = extern struct {
 };
 pub const VisualElementsRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1871,14 +1894,11 @@ pub const VisualElementsRequestDeferral = extern struct {
 };
 pub const VisualElementsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

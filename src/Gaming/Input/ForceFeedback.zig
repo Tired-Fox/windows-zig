@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ConditionForceEffect = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -36,15 +33,13 @@ pub const ConditionForceEffect = extern struct {
     pub fn getKind(self: *@This()) core.HResult!ConditionForceEffectKind {
         var this: ?*IConditionForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConditionForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConditionForceEffect.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn SetParameters(self: *@This(), direction: Vector3, positiveCoefficient: f32, negativeCoefficient: f32, maxPositiveMagnitude: f32, maxNegativeMagnitude: f32, deadZone: f32, bias: f32) core.HResult!void {
         var this: ?*IConditionForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConditionForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConditionForceEffect.IID, @ptrCast(&this));
         return try this.?.SetParameters(direction, positiveCoefficient, negativeCoefficient, maxPositiveMagnitude, maxNegativeMagnitude, deadZone, bias);
     }
     pub fn CreateInstance(effectKind: ConditionForceEffectKind) core.HResult!*ConditionForceEffect {
@@ -66,14 +61,11 @@ pub const ConditionForceEffectKind = enum(i32) {
 };
 pub const ConstantForceEffect = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -101,15 +93,13 @@ pub const ConstantForceEffect = extern struct {
     pub fn SetParameters(self: *@This(), vector: Vector3, duration: TimeSpan) core.HResult!void {
         var this: ?*IConstantForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConstantForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConstantForceEffect.IID, @ptrCast(&this));
         return try this.?.SetParameters(vector, duration);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), vector: Vector3, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         var this: ?*IConstantForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConstantForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConstantForceEffect.IID, @ptrCast(&this));
         return try this.?.SetParametersWithEnvelope(vector, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
     }
     pub fn init() core.HResult!*@This() {
@@ -142,14 +132,11 @@ pub const ForceFeedbackLoadEffectResult = enum(i32) {
 };
 pub const ForceFeedbackMotor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -214,8 +201,11 @@ pub const ForceFeedbackMotor = extern struct {
 };
 pub const IConditionForceEffect = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -223,12 +213,12 @@ pub const IConditionForceEffect = extern struct {
     pub fn getKind(self: *@This()) core.HResult!ConditionForceEffectKind {
         var _r: ConditionForceEffectKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetParameters(self: *@This(), direction: Vector3, positiveCoefficient: f32, negativeCoefficient: f32, maxPositiveMagnitude: f32, maxNegativeMagnitude: f32, deadZone: f32, bias: f32) core.HResult!void {
         const _c = self.vtable.SetParameters(@ptrCast(self), direction, positiveCoefficient, negativeCoefficient, maxPositiveMagnitude, maxNegativeMagnitude, deadZone, bias);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IConditionForceEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -248,8 +238,11 @@ pub const IConditionForceEffect = extern struct {
 };
 pub const IConditionForceEffectFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -257,7 +250,7 @@ pub const IConditionForceEffectFactory = extern struct {
     pub fn CreateInstance(self: *@This(), effectKind: ConditionForceEffectKind) core.HResult!*ConditionForceEffect {
         var _r: *ConditionForceEffect = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), effectKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IConditionForceEffectFactory";
@@ -277,19 +270,22 @@ pub const IConditionForceEffectFactory = extern struct {
 };
 pub const IConstantForceEffect = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetParameters(self: *@This(), vector: Vector3, duration: TimeSpan) core.HResult!void {
         const _c = self.vtable.SetParameters(@ptrCast(self), vector, duration);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), vector: Vector3, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         const _c = self.vtable.SetParametersWithEnvelope(@ptrCast(self), vector, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IConstantForceEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -309,8 +305,11 @@ pub const IConstantForceEffect = extern struct {
 };
 pub const IForceFeedbackEffect = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -318,26 +317,26 @@ pub const IForceFeedbackEffect = extern struct {
     pub fn getGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Gain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Gain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getState(self: *@This()) core.HResult!ForceFeedbackEffectState {
         var _r: ForceFeedbackEffectState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IForceFeedbackEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -360,8 +359,11 @@ pub const IForceFeedbackEffect = extern struct {
 };
 pub const IForceFeedbackMotor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -369,71 +371,71 @@ pub const IForceFeedbackMotor = extern struct {
     pub fn getAreEffectsPaused(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreEffectsPaused(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMasterGain(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MasterGain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMasterGain(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_MasterGain(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedAxes(self: *@This()) core.HResult!ForceFeedbackEffectAxes {
         var _r: ForceFeedbackEffectAxes = undefined;
         const _c = self.vtable.get_SupportedAxes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadEffectAsync(self: *@This(), effect: *IForceFeedbackEffect) core.HResult!*IAsyncOperation(ForceFeedbackLoadEffectResult) {
         var _r: *IAsyncOperation(ForceFeedbackLoadEffectResult) = undefined;
         const _c = self.vtable.LoadEffectAsync(@ptrCast(self), effect, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PauseAllEffects(self: *@This()) core.HResult!void {
         const _c = self.vtable.PauseAllEffects(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ResumeAllEffects(self: *@This()) core.HResult!void {
         const _c = self.vtable.ResumeAllEffects(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopAllEffects(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopAllEffects(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryDisableAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryEnableAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryEnableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryResetAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryResetAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUnloadEffectAsync(self: *@This(), effect: *IForceFeedbackEffect) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryUnloadEffectAsync(@ptrCast(self), effect, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IForceFeedbackMotor";
@@ -465,8 +467,11 @@ pub const IForceFeedbackMotor = extern struct {
 };
 pub const IPeriodicForceEffect = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -474,16 +479,16 @@ pub const IPeriodicForceEffect = extern struct {
     pub fn getKind(self: *@This()) core.HResult!PeriodicForceEffectKind {
         var _r: PeriodicForceEffectKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetParameters(self: *@This(), vector: Vector3, frequency: f32, phase: f32, bias: f32, duration: TimeSpan) core.HResult!void {
         const _c = self.vtable.SetParameters(@ptrCast(self), vector, frequency, phase, bias, duration);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), vector: Vector3, frequency: f32, phase: f32, bias: f32, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         const _c = self.vtable.SetParametersWithEnvelope(@ptrCast(self), vector, frequency, phase, bias, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IPeriodicForceEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -504,8 +509,11 @@ pub const IPeriodicForceEffect = extern struct {
 };
 pub const IPeriodicForceEffectFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -513,7 +521,7 @@ pub const IPeriodicForceEffectFactory = extern struct {
     pub fn CreateInstance(self: *@This(), effectKind: PeriodicForceEffectKind) core.HResult!*PeriodicForceEffect {
         var _r: *PeriodicForceEffect = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), effectKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IPeriodicForceEffectFactory";
@@ -533,19 +541,22 @@ pub const IPeriodicForceEffectFactory = extern struct {
 };
 pub const IRampForceEffect = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetParameters(self: *@This(), startVector: Vector3, endVector: Vector3, duration: TimeSpan) core.HResult!void {
         const _c = self.vtable.SetParameters(@ptrCast(self), startVector, endVector, duration);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), startVector: Vector3, endVector: Vector3, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         const _c = self.vtable.SetParametersWithEnvelope(@ptrCast(self), startVector, endVector, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.IRampForceEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -565,14 +576,11 @@ pub const IRampForceEffect = extern struct {
 };
 pub const PeriodicForceEffect = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -600,22 +608,19 @@ pub const PeriodicForceEffect = extern struct {
     pub fn getKind(self: *@This()) core.HResult!PeriodicForceEffectKind {
         var this: ?*IPeriodicForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn SetParameters(self: *@This(), vector: Vector3, frequency: f32, phase: f32, bias: f32, duration: TimeSpan) core.HResult!void {
         var this: ?*IPeriodicForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
         return try this.?.SetParameters(vector, frequency, phase, bias, duration);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), vector: Vector3, frequency: f32, phase: f32, bias: f32, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         var this: ?*IPeriodicForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
         return try this.?.SetParametersWithEnvelope(vector, frequency, phase, bias, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
     }
     pub fn CreateInstance(effectKind: PeriodicForceEffectKind) core.HResult!*PeriodicForceEffect {
@@ -638,14 +643,11 @@ pub const PeriodicForceEffectKind = enum(i32) {
 };
 pub const RampForceEffect = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -673,15 +675,13 @@ pub const RampForceEffect = extern struct {
     pub fn SetParameters(self: *@This(), startVector: Vector3, endVector: Vector3, duration: TimeSpan) core.HResult!void {
         var this: ?*IRampForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRampForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRampForceEffect.IID, @ptrCast(&this));
         return try this.?.SetParameters(startVector, endVector, duration);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), startVector: Vector3, endVector: Vector3, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         var this: ?*IRampForceEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRampForceEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRampForceEffect.IID, @ptrCast(&this));
         return try this.?.SetParametersWithEnvelope(startVector, endVector, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
     }
     pub fn init() core.HResult!*@This() {

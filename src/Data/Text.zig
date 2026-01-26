@@ -8,14 +8,11 @@ pub const AlternateNormalizationFormat = enum(i32) {
 };
 pub const AlternateWordForm = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -40,8 +37,11 @@ pub const AlternateWordForm = extern struct {
 };
 pub const IAlternateWordForm = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -49,19 +49,19 @@ pub const IAlternateWordForm = extern struct {
     pub fn getSourceTextSegment(self: *@This()) core.HResult!TextSegment {
         var _r: TextSegment = undefined;
         const _c = self.vtable.get_SourceTextSegment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAlternateText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlternateText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNormalizationFormat(self: *@This()) core.HResult!AlternateNormalizationFormat {
         var _r: AlternateNormalizationFormat = undefined;
         const _c = self.vtable.get_NormalizationFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.IAlternateWordForm";
@@ -83,8 +83,11 @@ pub const IAlternateWordForm = extern struct {
 };
 pub const ISelectableWordSegment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -92,13 +95,13 @@ pub const ISelectableWordSegment = extern struct {
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceTextSegment(self: *@This()) core.HResult!TextSegment {
         var _r: TextSegment = undefined;
         const _c = self.vtable.get_SourceTextSegment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ISelectableWordSegment";
@@ -119,8 +122,11 @@ pub const ISelectableWordSegment = extern struct {
 };
 pub const ISelectableWordsSegmenter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -128,24 +134,24 @@ pub const ISelectableWordsSegmenter = extern struct {
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTokenAt(self: *@This(), text: ?HSTRING, startIndex: u32) core.HResult!*SelectableWordSegment {
         var _r: *SelectableWordSegment = undefined;
         const _c = self.vtable.GetTokenAt(@ptrCast(self), text, startIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTokens(self: *@This(), text: ?HSTRING) core.HResult!*IVectorView(SelectableWordSegment) {
         var _r: *IVectorView(SelectableWordSegment) = undefined;
         const _c = self.vtable.GetTokens(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Tokenize(self: *@This(), text: ?HSTRING, startIndex: u32, handler: *SelectableWordSegmentsTokenizingHandler) core.HResult!void {
         const _c = self.vtable.Tokenize(@ptrCast(self), text, startIndex, handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ISelectableWordsSegmenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -167,8 +173,11 @@ pub const ISelectableWordsSegmenter = extern struct {
 };
 pub const ISelectableWordsSegmenterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -176,7 +185,7 @@ pub const ISelectableWordsSegmenterFactory = extern struct {
     pub fn CreateWithLanguage(self: *@This(), language: ?HSTRING) core.HResult!*SelectableWordsSegmenter {
         var _r: *SelectableWordsSegmenter = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), language, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ISelectableWordsSegmenterFactory";
@@ -196,8 +205,11 @@ pub const ISelectableWordsSegmenterFactory = extern struct {
 };
 pub const ISemanticTextQuery = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -205,13 +217,13 @@ pub const ISemanticTextQuery = extern struct {
     pub fn Find(self: *@This(), content: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         var _r: *IVectorView(TextSegment) = undefined;
         const _c = self.vtable.Find(@ptrCast(self), content, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindInProperty(self: *@This(), propertyContent: ?HSTRING, propertyName: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         var _r: *IVectorView(TextSegment) = undefined;
         const _c = self.vtable.FindInProperty(@ptrCast(self), propertyContent, propertyName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ISemanticTextQuery";
@@ -232,8 +244,11 @@ pub const ISemanticTextQuery = extern struct {
 };
 pub const ISemanticTextQueryFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -241,13 +256,13 @@ pub const ISemanticTextQueryFactory = extern struct {
     pub fn Create(self: *@This(), aqsFilter: ?HSTRING) core.HResult!*SemanticTextQuery {
         var _r: *SemanticTextQuery = undefined;
         const _c = self.vtable.Create(@ptrCast(self), aqsFilter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithLanguage(self: *@This(), aqsFilter: ?HSTRING, filterLanguage: ?HSTRING) core.HResult!*SemanticTextQuery {
         var _r: *SemanticTextQuery = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), aqsFilter, filterLanguage, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ISemanticTextQueryFactory";
@@ -268,8 +283,11 @@ pub const ISemanticTextQueryFactory = extern struct {
 };
 pub const ITextConversionGenerator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -277,25 +295,25 @@ pub const ITextConversionGenerator = extern struct {
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLanguageAvailableButNotInstalled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LanguageAvailableButNotInstalled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: ?HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsyncWithMaxCandidates(@ptrCast(self), input, maxCandidates, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextConversionGenerator";
@@ -318,8 +336,11 @@ pub const ITextConversionGenerator = extern struct {
 };
 pub const ITextConversionGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -327,7 +348,7 @@ pub const ITextConversionGeneratorFactory = extern struct {
     pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextConversionGenerator {
         var _r: *TextConversionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextConversionGeneratorFactory";
@@ -347,8 +368,11 @@ pub const ITextConversionGeneratorFactory = extern struct {
 };
 pub const ITextPhoneme = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -356,13 +380,13 @@ pub const ITextPhoneme = extern struct {
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReadingText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ReadingText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextPhoneme";
@@ -383,8 +407,11 @@ pub const ITextPhoneme = extern struct {
 };
 pub const ITextPredictionGenerator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -392,25 +419,25 @@ pub const ITextPredictionGenerator = extern struct {
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLanguageAvailableButNotInstalled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LanguageAvailableButNotInstalled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: ?HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsyncWithMaxCandidates(@ptrCast(self), input, maxCandidates, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextPredictionGenerator";
@@ -433,8 +460,11 @@ pub const ITextPredictionGenerator = extern struct {
 };
 pub const ITextPredictionGenerator2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -442,24 +472,24 @@ pub const ITextPredictionGenerator2 = extern struct {
     pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, maxCandidates, predictionOptions, previousStrings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetNextWordCandidatesAsync(@ptrCast(self), maxCandidates, previousStrings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInputScope(self: *@This()) core.HResult!CoreTextInputScope {
         var _r: CoreTextInputScope = undefined;
         const _c = self.vtable.get_InputScope(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInputScope(self: *@This(), value: CoreTextInputScope) core.HResult!void {
         const _c = self.vtable.put_InputScope(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextPredictionGenerator2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -481,8 +511,11 @@ pub const ITextPredictionGenerator2 = extern struct {
 };
 pub const ITextPredictionGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -490,7 +523,7 @@ pub const ITextPredictionGeneratorFactory = extern struct {
     pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextPredictionGenerator {
         var _r: *TextPredictionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextPredictionGeneratorFactory";
@@ -510,8 +543,11 @@ pub const ITextPredictionGeneratorFactory = extern struct {
 };
 pub const ITextReverseConversionGenerator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -519,19 +555,19 @@ pub const ITextReverseConversionGenerator = extern struct {
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLanguageAvailableButNotInstalled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LanguageAvailableButNotInstalled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConvertBackAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ConvertBackAsync(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextReverseConversionGenerator";
@@ -553,8 +589,11 @@ pub const ITextReverseConversionGenerator = extern struct {
 };
 pub const ITextReverseConversionGenerator2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -562,7 +601,7 @@ pub const ITextReverseConversionGenerator2 = extern struct {
     pub fn GetPhonemesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
         var _r: *IAsyncOperation(IVectorView(TextPhoneme)) = undefined;
         const _c = self.vtable.GetPhonemesAsync(@ptrCast(self), input, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextReverseConversionGenerator2";
@@ -582,8 +621,11 @@ pub const ITextReverseConversionGenerator2 = extern struct {
 };
 pub const ITextReverseConversionGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -591,7 +633,7 @@ pub const ITextReverseConversionGeneratorFactory = extern struct {
     pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextReverseConversionGenerator {
         var _r: *TextReverseConversionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.ITextReverseConversionGeneratorFactory";
@@ -611,8 +653,11 @@ pub const ITextReverseConversionGeneratorFactory = extern struct {
 };
 pub const IUnicodeCharactersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -620,101 +665,101 @@ pub const IUnicodeCharactersStatics = extern struct {
     pub fn GetCodepointFromSurrogatePair(self: *@This(), highSurrogate: u32, lowSurrogate: u32) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetCodepointFromSurrogatePair(@ptrCast(self), highSurrogate, lowSurrogate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSurrogatePairFromCodepoint(self: *@This(), codepoint: u32, highSurrogate: u16, lowSurrogate: u16) core.HResult!void {
         const _c = self.vtable.GetSurrogatePairFromCodepoint(@ptrCast(self), codepoint, highSurrogate, lowSurrogate);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsHighSurrogate(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsHighSurrogate(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsLowSurrogate(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsLowSurrogate(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsSupplementary(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupplementary(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsNoncharacter(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsNoncharacter(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsWhitespace(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsWhitespace(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsAlphabetic(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsAlphabetic(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsCased(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCased(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsUppercase(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsUppercase(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsLowercase(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsLowercase(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsIdStart(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsIdStart(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsIdContinue(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsIdContinue(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsGraphemeBase(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsGraphemeBase(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsGraphemeExtend(self: *@This(), codepoint: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsGraphemeExtend(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNumericType(self: *@This(), codepoint: u32) core.HResult!UnicodeNumericType {
         var _r: UnicodeNumericType = undefined;
         const _c = self.vtable.GetNumericType(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGeneralCategory(self: *@This(), codepoint: u32) core.HResult!UnicodeGeneralCategory {
         var _r: UnicodeGeneralCategory = undefined;
         const _c = self.vtable.GetGeneralCategory(@ptrCast(self), codepoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.IUnicodeCharactersStatics";
@@ -750,8 +795,11 @@ pub const IUnicodeCharactersStatics = extern struct {
 };
 pub const IWordSegment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -759,19 +807,19 @@ pub const IWordSegment = extern struct {
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceTextSegment(self: *@This()) core.HResult!TextSegment {
         var _r: TextSegment = undefined;
         const _c = self.vtable.get_SourceTextSegment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAlternateForms(self: *@This()) core.HResult!*IVectorView(AlternateWordForm) {
         var _r: *IVectorView(AlternateWordForm) = undefined;
         const _c = self.vtable.get_AlternateForms(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.IWordSegment";
@@ -793,8 +841,11 @@ pub const IWordSegment = extern struct {
 };
 pub const IWordsSegmenter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -802,24 +853,24 @@ pub const IWordsSegmenter = extern struct {
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTokenAt(self: *@This(), text: ?HSTRING, startIndex: u32) core.HResult!*WordSegment {
         var _r: *WordSegment = undefined;
         const _c = self.vtable.GetTokenAt(@ptrCast(self), text, startIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTokens(self: *@This(), text: ?HSTRING) core.HResult!*IVectorView(WordSegment) {
         var _r: *IVectorView(WordSegment) = undefined;
         const _c = self.vtable.GetTokens(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Tokenize(self: *@This(), text: ?HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) core.HResult!void {
         const _c = self.vtable.Tokenize(@ptrCast(self), text, startIndex, handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.IWordsSegmenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -841,8 +892,11 @@ pub const IWordsSegmenter = extern struct {
 };
 pub const IWordsSegmenterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -850,7 +904,7 @@ pub const IWordsSegmenterFactory = extern struct {
     pub fn CreateWithLanguage(self: *@This(), language: ?HSTRING) core.HResult!*WordsSegmenter {
         var _r: *WordsSegmenter = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), language, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.IWordsSegmenterFactory";
@@ -870,14 +924,11 @@ pub const IWordsSegmenterFactory = extern struct {
 };
 pub const SelectableWordSegment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -987,14 +1038,11 @@ pub const SelectableWordSegmentsTokenizingHandler = extern struct {
 };
 pub const SelectableWordsSegmenter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1028,14 +1076,11 @@ pub const SelectableWordsSegmenter = extern struct {
 };
 pub const SemanticTextQuery = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1065,14 +1110,11 @@ pub const SemanticTextQuery = extern struct {
 };
 pub const TextConversionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1106,14 +1148,11 @@ pub const TextConversionGenerator = extern struct {
 };
 pub const TextPhoneme = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1134,14 +1173,11 @@ pub const TextPhoneme = extern struct {
 };
 pub const TextPredictionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1165,29 +1201,25 @@ pub const TextPredictionGenerator = extern struct {
     pub fn GetCandidatesAsyncWithMaxCandidatesAndPredictionOptionsAndPreviousStrings(self: *@This(), input: ?HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         return try this.?.GetCandidatesAsyncWithMaxCandidatesAndPredictionOptionsAndPreviousStrings(input, maxCandidates, predictionOptions, previousStrings);
     }
     pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         return try this.?.GetNextWordCandidatesAsync(maxCandidates, previousStrings);
     }
     pub fn getInputScope(self: *@This()) core.HResult!CoreTextInputScope {
         var this: ?*ITextPredictionGenerator2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         return try this.?.getInputScope();
     }
     pub fn putInputScope(self: *@This(), value: CoreTextInputScope) core.HResult!void {
         var this: ?*ITextPredictionGenerator2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         return try this.?.putInputScope(value);
     }
     pub fn Create(languageTag: ?HSTRING) core.HResult!*TextPredictionGenerator {
@@ -1208,14 +1240,11 @@ pub const TextPredictionOptions = enum(i32) {
 };
 pub const TextReverseConversionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1235,8 +1264,7 @@ pub const TextReverseConversionGenerator = extern struct {
     pub fn GetPhonemesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
         var this: ?*ITextReverseConversionGenerator2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextReverseConversionGenerator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITextReverseConversionGenerator2.IID, @ptrCast(&this));
         return try this.?.GetPhonemesAsync(input);
     }
     pub fn Create(languageTag: ?HSTRING) core.HResult!*TextReverseConversionGenerator {
@@ -1256,14 +1284,11 @@ pub const TextSegment = extern struct {
 };
 pub const UnicodeCharacters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1380,14 +1405,11 @@ pub const UnicodeNumericType = enum(i32) {
 };
 pub const WordSegment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1501,14 +1523,11 @@ pub const WordSegmentsTokenizingHandler = extern struct {
 };
 pub const WordsSegmenter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

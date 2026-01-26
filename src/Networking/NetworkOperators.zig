@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const INetworkOperatorNotificationEventDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,37 +13,37 @@ pub const INetworkOperatorNotificationEventDetails = extern struct {
     pub fn getNotificationType(self: *@This()) core.HResult!NetworkOperatorEventMessageType {
         var _r: NetworkOperatorEventMessageType = undefined;
         const _c = self.vtable.get_NotificationType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEncodingType(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_EncodingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRuleId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RuleId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSmsMessage(self: *@This()) core.HResult!*ISmsMessage {
         var _r: *ISmsMessage = undefined;
         const _c = self.vtable.get_SmsMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorNotificationEventDetails";
@@ -65,15 +68,18 @@ pub const INetworkOperatorNotificationEventDetails = extern struct {
 };
 pub const INetworkOperatorTetheringEntitlementCheck = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AuthorizeTethering(self: *@This(), allow: bool, entitlementFailureReason: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AuthorizeTethering(@ptrCast(self), allow, entitlementFailureReason);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringEntitlementCheck";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -92,14 +98,11 @@ pub const INetworkOperatorTetheringEntitlementCheck = extern struct {
 };
 pub const NetworkOperatorNotificationEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -131,8 +134,7 @@ pub const NetworkOperatorNotificationEventDetails = extern struct {
     pub fn AuthorizeTethering(self: *@This(), allow: bool, entitlementFailureReason: ?HSTRING) core.HResult!void {
         var this: ?*INetworkOperatorTetheringEntitlementCheck = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringEntitlementCheck.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringEntitlementCheck.IID, @ptrCast(&this));
         return try this.?.AuthorizeTethering(allow, entitlementFailureReason);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.NetworkOperatorNotificationEventDetails";
@@ -162,14 +164,11 @@ pub const DataClasses = enum(i32) {
 };
 pub const ESim = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -225,36 +224,31 @@ pub const ESim = extern struct {
     pub fn Discover(self: *@This()) core.HResult!*ESimDiscoverResult {
         var this: ?*IESim2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         return try this.?.Discover();
     }
     pub fn DiscoverWithServerAddressAndMatchingId(self: *@This(), serverAddress: ?HSTRING, matchingId: ?HSTRING) core.HResult!*ESimDiscoverResult {
         var this: ?*IESim2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         return try this.?.DiscoverWithServerAddressAndMatchingId(serverAddress, matchingId);
     }
     pub fn DiscoverAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         return try this.?.DiscoverAsync();
     }
     pub fn DiscoverAsyncWithServerAddressAndMatchingId(self: *@This(), serverAddress: ?HSTRING, matchingId: ?HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         return try this.?.DiscoverAsyncWithServerAddressAndMatchingId(serverAddress, matchingId);
     }
     pub fn getSlotIndex(self: *@This()) core.HResult!*IReference(i32) {
         var this: ?*IESim3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IESim3.IID, @ptrCast(&this));
         return try this.?.getSlotIndex();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.ESim";
@@ -265,14 +259,11 @@ pub const ESim = extern struct {
 };
 pub const ESimAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -294,14 +285,11 @@ pub const ESimAuthenticationPreference = enum(i32) {
 };
 pub const ESimDiscoverEvent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -322,14 +310,11 @@ pub const ESimDiscoverEvent = extern struct {
 };
 pub const ESimDiscoverResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -363,14 +348,11 @@ pub const ESimDiscoverResultKind = enum(i32) {
 };
 pub const ESimDownloadProfileMetadataResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -391,14 +373,11 @@ pub const ESimDownloadProfileMetadataResult = extern struct {
 };
 pub const ESimManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -425,14 +404,11 @@ pub const ESimManager = extern struct {
 };
 pub const ESimOperationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -480,14 +456,11 @@ pub const ESimOperationStatus = enum(i32) {
 };
 pub const ESimPolicy = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -504,14 +477,11 @@ pub const ESimPolicy = extern struct {
 };
 pub const ESimProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -577,14 +547,11 @@ pub const ESimProfileInstallProgress = extern struct {
 };
 pub const ESimProfileMetadata = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -659,14 +626,11 @@ pub const ESimProfileMetadataState = enum(i32) {
 };
 pub const ESimProfilePolicy = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -697,14 +661,11 @@ pub const ESimProfileState = enum(i32) {
 };
 pub const ESimRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -721,14 +682,11 @@ pub const ESimRemovedEventArgs = extern struct {
 };
 pub const ESimServiceInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -755,14 +713,11 @@ pub const ESimState = enum(i32) {
 };
 pub const ESimUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -779,14 +734,11 @@ pub const ESimUpdatedEventArgs = extern struct {
 };
 pub const ESimWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -858,14 +810,11 @@ pub const ESimWatcherStatus = enum(i32) {
 };
 pub const HotspotAuthenticationContext = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -909,8 +858,7 @@ pub const HotspotAuthenticationContext = extern struct {
     pub fn IssueCredentialsAsync(self: *@This(), userName: ?HSTRING, password: ?HSTRING, extraParameters: ?HSTRING, markAsManualConnectOnFailure: bool) core.HResult!*IAsyncOperation(HotspotCredentialsAuthenticationResult) {
         var this: ?*IHotspotAuthenticationContext2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHotspotAuthenticationContext2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHotspotAuthenticationContext2.IID, @ptrCast(&this));
         return try this.?.IssueCredentialsAsync(userName, password, extraParameters, markAsManualConnectOnFailure);
     }
     pub fn TryGetAuthenticationContext(evenToken: ?HSTRING, context: *HotspotAuthenticationContext) core.HResult!bool {
@@ -926,14 +874,11 @@ pub const HotspotAuthenticationContext = extern struct {
 };
 pub const HotspotAuthenticationEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -959,14 +904,11 @@ pub const HotspotAuthenticationResponseCode = enum(i32) {
 };
 pub const HotspotCredentialsAuthenticationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -995,8 +937,11 @@ pub const HotspotCredentialsAuthenticationResult = extern struct {
 };
 pub const IESim = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1004,72 +949,72 @@ pub const IESim = extern struct {
     pub fn getAvailableMemoryInBytes(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_AvailableMemoryInBytes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Eid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirmwareVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMobileBroadbandModemDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MobileBroadbandModemDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPolicy(self: *@This()) core.HResult!*ESimPolicy {
         var _r: *ESimPolicy = undefined;
         const _c = self.vtable.get_Policy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!ESimState {
         var _r: ESimState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetProfiles(self: *@This()) core.HResult!*IVectorView(ESimProfile) {
         var _r: *IVectorView(ESimProfile) = undefined;
         const _c = self.vtable.GetProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteProfileAsync(self: *@This(), profileId: ?HSTRING) core.HResult!*IAsyncOperation(ESimOperationResult) {
         var _r: *IAsyncOperation(ESimOperationResult) = undefined;
         const _c = self.vtable.DeleteProfileAsync(@ptrCast(self), profileId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DownloadProfileMetadataAsync(self: *@This(), activationCode: ?HSTRING) core.HResult!*IAsyncOperation(ESimDownloadProfileMetadataResult) {
         var _r: *IAsyncOperation(ESimDownloadProfileMetadataResult) = undefined;
         const _c = self.vtable.DownloadProfileMetadataAsync(@ptrCast(self), activationCode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResetAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimOperationResult) {
         var _r: *IAsyncOperation(ESimOperationResult) = undefined;
         const _c = self.vtable.ResetAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addProfileChanged(self: *@This(), handler: *TypedEventHandler(ESim,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ProfileChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeProfileChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ProfileChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESim";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1099,8 +1044,11 @@ pub const IESim = extern struct {
 };
 pub const IESim2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1108,25 +1056,25 @@ pub const IESim2 = extern struct {
     pub fn Discover(self: *@This()) core.HResult!*ESimDiscoverResult {
         var _r: *ESimDiscoverResult = undefined;
         const _c = self.vtable.Discover(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DiscoverWithServerAddressAndMatchingId(self: *@This(), serverAddress: ?HSTRING, matchingId: ?HSTRING) core.HResult!*ESimDiscoverResult {
         var _r: *ESimDiscoverResult = undefined;
         const _c = self.vtable.DiscoverWithServerAddressAndMatchingId(@ptrCast(self), serverAddress, matchingId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DiscoverAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var _r: *IAsyncOperation(ESimDiscoverResult) = undefined;
         const _c = self.vtable.DiscoverAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DiscoverAsyncWithServerAddressAndMatchingId(self: *@This(), serverAddress: ?HSTRING, matchingId: ?HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var _r: *IAsyncOperation(ESimDiscoverResult) = undefined;
         const _c = self.vtable.DiscoverAsyncWithServerAddressAndMatchingId(@ptrCast(self), serverAddress, matchingId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESim2";
@@ -1149,8 +1097,11 @@ pub const IESim2 = extern struct {
 };
 pub const IESim3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1158,7 +1109,7 @@ pub const IESim3 = extern struct {
     pub fn getSlotIndex(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_SlotIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESim3";
@@ -1178,8 +1129,11 @@ pub const IESim3 = extern struct {
 };
 pub const IESimAddedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1187,7 +1141,7 @@ pub const IESimAddedEventArgs = extern struct {
     pub fn getESim(self: *@This()) core.HResult!*ESim {
         var _r: *ESim = undefined;
         const _c = self.vtable.get_ESim(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimAddedEventArgs";
@@ -1207,8 +1161,11 @@ pub const IESimAddedEventArgs = extern struct {
 };
 pub const IESimDiscoverEvent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1216,13 +1173,13 @@ pub const IESimDiscoverEvent = extern struct {
     pub fn getMatchingId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MatchingId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRspServerAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RspServerAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimDiscoverEvent";
@@ -1243,8 +1200,11 @@ pub const IESimDiscoverEvent = extern struct {
 };
 pub const IESimDiscoverResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1252,25 +1212,25 @@ pub const IESimDiscoverResult = extern struct {
     pub fn getEvents(self: *@This()) core.HResult!*IVectorView(ESimDiscoverEvent) {
         var _r: *IVectorView(ESimDiscoverEvent) = undefined;
         const _c = self.vtable.get_Events(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKind(self: *@This()) core.HResult!ESimDiscoverResultKind {
         var _r: ESimDiscoverResultKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProfileMetadata(self: *@This()) core.HResult!*ESimProfileMetadata {
         var _r: *ESimProfileMetadata = undefined;
         const _c = self.vtable.get_ProfileMetadata(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResult(self: *@This()) core.HResult!*ESimOperationResult {
         var _r: *ESimOperationResult = undefined;
         const _c = self.vtable.get_Result(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimDiscoverResult";
@@ -1293,8 +1253,11 @@ pub const IESimDiscoverResult = extern struct {
 };
 pub const IESimDownloadProfileMetadataResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1302,13 +1265,13 @@ pub const IESimDownloadProfileMetadataResult = extern struct {
     pub fn getResult(self: *@This()) core.HResult!*ESimOperationResult {
         var _r: *ESimOperationResult = undefined;
         const _c = self.vtable.get_Result(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProfileMetadata(self: *@This()) core.HResult!*ESimProfileMetadata {
         var _r: *ESimProfileMetadata = undefined;
         const _c = self.vtable.get_ProfileMetadata(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimDownloadProfileMetadataResult";
@@ -1329,8 +1292,11 @@ pub const IESimDownloadProfileMetadataResult = extern struct {
 };
 pub const IESimManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1338,24 +1304,24 @@ pub const IESimManagerStatics = extern struct {
     pub fn getServiceInfo(self: *@This()) core.HResult!*ESimServiceInfo {
         var _r: *ESimServiceInfo = undefined;
         const _c = self.vtable.get_ServiceInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryCreateESimWatcher(self: *@This()) core.HResult!*ESimWatcher {
         var _r: *ESimWatcher = undefined;
         const _c = self.vtable.TryCreateESimWatcher(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addServiceInfoChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ServiceInfoChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeServiceInfoChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ServiceInfoChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1377,8 +1343,11 @@ pub const IESimManagerStatics = extern struct {
 };
 pub const IESimOperationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1386,7 +1355,7 @@ pub const IESimOperationResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!ESimOperationStatus {
         var _r: ESimOperationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimOperationResult";
@@ -1406,8 +1375,11 @@ pub const IESimOperationResult = extern struct {
 };
 pub const IESimPolicy = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1415,7 +1387,7 @@ pub const IESimPolicy = extern struct {
     pub fn getShouldEnableManagingUi(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldEnableManagingUi(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimPolicy";
@@ -1435,8 +1407,11 @@ pub const IESimPolicy = extern struct {
 };
 pub const IESimProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1444,67 +1419,67 @@ pub const IESimProfile = extern struct {
     pub fn getClass(self: *@This()) core.HResult!ESimProfileClass {
         var _r: ESimProfileClass = undefined;
         const _c = self.vtable.get_Class(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNickname(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Nickname(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPolicy(self: *@This()) core.HResult!*ESimProfilePolicy {
         var _r: *ESimProfilePolicy = undefined;
         const _c = self.vtable.get_Policy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderIcon(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_ProviderIcon(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!ESimProfileState {
         var _r: ESimProfileState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimOperationResult) {
         var _r: *IAsyncOperation(ESimOperationResult) = undefined;
         const _c = self.vtable.DisableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimOperationResult) {
         var _r: *IAsyncOperation(ESimOperationResult) = undefined;
         const _c = self.vtable.EnableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetNicknameAsync(self: *@This(), newNickname: ?HSTRING) core.HResult!*IAsyncOperation(ESimOperationResult) {
         var _r: *IAsyncOperation(ESimOperationResult) = undefined;
         const _c = self.vtable.SetNicknameAsync(@ptrCast(self), newNickname, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimProfile";
@@ -1534,8 +1509,11 @@ pub const IESimProfile = extern struct {
 };
 pub const IESimProfileMetadata = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1543,78 +1521,78 @@ pub const IESimProfileMetadata = extern struct {
     pub fn getIsConfirmationCodeRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConfirmationCodeRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPolicy(self: *@This()) core.HResult!*ESimProfilePolicy {
         var _r: *ESimProfilePolicy = undefined;
         const _c = self.vtable.get_Policy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderIcon(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_ProviderIcon(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!ESimProfileMetadataState {
         var _r: ESimProfileMetadataState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DenyInstallAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimOperationResult) {
         var _r: *IAsyncOperation(ESimOperationResult) = undefined;
         const _c = self.vtable.DenyInstallAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConfirmInstallAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) {
         var _r: *IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) = undefined;
         const _c = self.vtable.ConfirmInstallAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConfirmInstallAsyncWithConfirmationCode(self: *@This(), confirmationCode: ?HSTRING) core.HResult!*IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) {
         var _r: *IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) = undefined;
         const _c = self.vtable.ConfirmInstallAsyncWithConfirmationCode(@ptrCast(self), confirmationCode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PostponeInstallAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimOperationResult) {
         var _r: *IAsyncOperation(ESimOperationResult) = undefined;
         const _c = self.vtable.PostponeInstallAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStateChanged(self: *@This(), handler: *TypedEventHandler(ESimProfileMetadata,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimProfileMetadata";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1645,8 +1623,11 @@ pub const IESimProfileMetadata = extern struct {
 };
 pub const IESimProfilePolicy = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1654,19 +1635,19 @@ pub const IESimProfilePolicy = extern struct {
     pub fn getCanDelete(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanDelete(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanDisable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanDisable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsManagedByEnterprise(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsManagedByEnterprise(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimProfilePolicy";
@@ -1688,8 +1669,11 @@ pub const IESimProfilePolicy = extern struct {
 };
 pub const IESimRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1697,7 +1681,7 @@ pub const IESimRemovedEventArgs = extern struct {
     pub fn getESim(self: *@This()) core.HResult!*ESim {
         var _r: *ESim = undefined;
         const _c = self.vtable.get_ESim(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimRemovedEventArgs";
@@ -1717,8 +1701,11 @@ pub const IESimRemovedEventArgs = extern struct {
 };
 pub const IESimServiceInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1726,13 +1713,13 @@ pub const IESimServiceInfo = extern struct {
     pub fn getAuthenticationPreference(self: *@This()) core.HResult!ESimAuthenticationPreference {
         var _r: ESimAuthenticationPreference = undefined;
         const _c = self.vtable.get_AuthenticationPreference(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsESimUiEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsESimUiEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimServiceInfo";
@@ -1753,8 +1740,11 @@ pub const IESimServiceInfo = extern struct {
 };
 pub const IESimUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1762,7 +1752,7 @@ pub const IESimUpdatedEventArgs = extern struct {
     pub fn getESim(self: *@This()) core.HResult!*ESim {
         var _r: *ESim = undefined;
         const _c = self.vtable.get_ESim(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimUpdatedEventArgs";
@@ -1782,8 +1772,11 @@ pub const IESimUpdatedEventArgs = extern struct {
 };
 pub const IESimWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1791,66 +1784,66 @@ pub const IESimWatcher = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!ESimWatcherStatus {
         var _r: ESimWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(ESimWatcher,ESimAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Added(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Added(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(ESimWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnumerationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EnumerationCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addRemoved(self: *@This(), handler: *TypedEventHandler(ESimWatcher,ESimRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Removed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Removed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStopped(self: *@This(), handler: *TypedEventHandler(ESimWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Stopped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStopped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Stopped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUpdated(self: *@This(), handler: *TypedEventHandler(ESimWatcher,ESimUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Updated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Updated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IESimWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1881,8 +1874,11 @@ pub const IESimWatcher = extern struct {
 };
 pub const IHotspotAuthenticationContext = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1890,48 +1886,48 @@ pub const IHotspotAuthenticationContext = extern struct {
     pub fn getWirelessNetworkId(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_WirelessNetworkId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkAdapter(self: *@This()) core.HResult!*NetworkAdapter {
         var _r: *NetworkAdapter = undefined;
         const _c = self.vtable.get_NetworkAdapter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRedirectMessageUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_RedirectMessageUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRedirectMessageXml(self: *@This()) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.get_RedirectMessageXml(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_AuthenticationUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IssueCredentials(self: *@This(), userName: ?HSTRING, password: ?HSTRING, extraParameters: ?HSTRING, markAsManualConnectOnFailure: bool) core.HResult!void {
         const _c = self.vtable.IssueCredentials(@ptrCast(self), userName, password, extraParameters, markAsManualConnectOnFailure);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AbortAuthentication(self: *@This(), markAsManual: bool) core.HResult!void {
         const _c = self.vtable.AbortAuthentication(@ptrCast(self), markAsManual);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SkipAuthentication(self: *@This()) core.HResult!void {
         const _c = self.vtable.SkipAuthentication(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TriggerAttentionRequired(self: *@This(), packageRelativeApplicationId: ?HSTRING, applicationParameters: ?HSTRING) core.HResult!void {
         const _c = self.vtable.TriggerAttentionRequired(@ptrCast(self), packageRelativeApplicationId, applicationParameters);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IHotspotAuthenticationContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1958,8 +1954,11 @@ pub const IHotspotAuthenticationContext = extern struct {
 };
 pub const IHotspotAuthenticationContext2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1967,7 +1966,7 @@ pub const IHotspotAuthenticationContext2 = extern struct {
     pub fn IssueCredentialsAsync(self: *@This(), userName: ?HSTRING, password: ?HSTRING, extraParameters: ?HSTRING, markAsManualConnectOnFailure: bool) core.HResult!*IAsyncOperation(HotspotCredentialsAuthenticationResult) {
         var _r: *IAsyncOperation(HotspotCredentialsAuthenticationResult) = undefined;
         const _c = self.vtable.IssueCredentialsAsync(@ptrCast(self), userName, password, extraParameters, markAsManualConnectOnFailure, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IHotspotAuthenticationContext2";
@@ -1987,8 +1986,11 @@ pub const IHotspotAuthenticationContext2 = extern struct {
 };
 pub const IHotspotAuthenticationContextStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1996,7 +1998,7 @@ pub const IHotspotAuthenticationContextStatics = extern struct {
     pub fn TryGetAuthenticationContext(self: *@This(), evenToken: ?HSTRING, context: *HotspotAuthenticationContext) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetAuthenticationContext(@ptrCast(self), evenToken, context, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IHotspotAuthenticationContextStatics";
@@ -2016,8 +2018,11 @@ pub const IHotspotAuthenticationContextStatics = extern struct {
 };
 pub const IHotspotAuthenticationEventDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2025,7 +2030,7 @@ pub const IHotspotAuthenticationEventDetails = extern struct {
     pub fn getEventToken(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EventToken(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IHotspotAuthenticationEventDetails";
@@ -2045,8 +2050,11 @@ pub const IHotspotAuthenticationEventDetails = extern struct {
 };
 pub const IHotspotCredentialsAuthenticationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2054,25 +2062,25 @@ pub const IHotspotCredentialsAuthenticationResult = extern struct {
     pub fn getHasNetworkErrorOccurred(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNetworkErrorOccurred(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseCode(self: *@This()) core.HResult!HotspotAuthenticationResponseCode {
         var _r: HotspotAuthenticationResponseCode = undefined;
         const _c = self.vtable.get_ResponseCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLogoffUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_LogoffUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationReplyXml(self: *@This()) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.get_AuthenticationReplyXml(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IHotspotCredentialsAuthenticationResult";
@@ -2095,8 +2103,11 @@ pub const IHotspotCredentialsAuthenticationResult = extern struct {
 };
 pub const IKnownCSimFilePathsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2104,19 +2115,19 @@ pub const IKnownCSimFilePathsStatics = extern struct {
     pub fn getEFSpn(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_EFSpn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid1(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid2(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IKnownCSimFilePathsStatics";
@@ -2138,8 +2149,11 @@ pub const IKnownCSimFilePathsStatics = extern struct {
 };
 pub const IKnownRuimFilePathsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2147,19 +2161,19 @@ pub const IKnownRuimFilePathsStatics = extern struct {
     pub fn getEFSpn(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_EFSpn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid1(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid2(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IKnownRuimFilePathsStatics";
@@ -2181,8 +2195,11 @@ pub const IKnownRuimFilePathsStatics = extern struct {
 };
 pub const IKnownSimFilePathsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2190,25 +2207,25 @@ pub const IKnownSimFilePathsStatics = extern struct {
     pub fn getEFOns(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_EFOns(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEFSpn(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_EFSpn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid1(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid2(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IKnownSimFilePathsStatics";
@@ -2231,8 +2248,11 @@ pub const IKnownSimFilePathsStatics = extern struct {
 };
 pub const IKnownUSimFilePathsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2240,31 +2260,31 @@ pub const IKnownUSimFilePathsStatics = extern struct {
     pub fn getEFSpn(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_EFSpn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEFOpl(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_EFOpl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEFPnn(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_EFPnn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid1(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGid2(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Gid2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IKnownUSimFilePathsStatics";
@@ -2288,8 +2308,11 @@ pub const IKnownUSimFilePathsStatics = extern struct {
 };
 pub const IMobileBroadbandAccount = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2297,31 +2320,31 @@ pub const IMobileBroadbandAccount = extern struct {
     pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceProviderGuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ServiceProviderGuid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceProviderName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceProviderName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentNetwork(self: *@This()) core.HResult!*MobileBroadbandNetwork {
         var _r: *MobileBroadbandNetwork = undefined;
         const _c = self.vtable.get_CurrentNetwork(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentDeviceInformation(self: *@This()) core.HResult!*MobileBroadbandDeviceInformation {
         var _r: *MobileBroadbandDeviceInformation = undefined;
         const _c = self.vtable.get_CurrentDeviceInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAccount";
@@ -2345,8 +2368,11 @@ pub const IMobileBroadbandAccount = extern struct {
 };
 pub const IMobileBroadbandAccount2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2354,7 +2380,7 @@ pub const IMobileBroadbandAccount2 = extern struct {
     pub fn GetConnectionProfiles(self: *@This()) core.HResult!*IVectorView(ConnectionProfile) {
         var _r: *IVectorView(ConnectionProfile) = undefined;
         const _c = self.vtable.GetConnectionProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAccount2";
@@ -2374,8 +2400,11 @@ pub const IMobileBroadbandAccount2 = extern struct {
 };
 pub const IMobileBroadbandAccount3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2383,7 +2412,7 @@ pub const IMobileBroadbandAccount3 = extern struct {
     pub fn getAccountExperienceUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_AccountExperienceUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAccount3";
@@ -2403,8 +2432,11 @@ pub const IMobileBroadbandAccount3 = extern struct {
 };
 pub const IMobileBroadbandAccountEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2412,7 +2444,7 @@ pub const IMobileBroadbandAccountEventArgs = extern struct {
     pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAccountEventArgs";
@@ -2432,8 +2464,11 @@ pub const IMobileBroadbandAccountEventArgs = extern struct {
 };
 pub const IMobileBroadbandAccountStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2441,13 +2476,13 @@ pub const IMobileBroadbandAccountStatics = extern struct {
     pub fn getAvailableNetworkAccountIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_AvailableNetworkAccountIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromNetworkAccountId(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*MobileBroadbandAccount {
         var _r: *MobileBroadbandAccount = undefined;
         const _c = self.vtable.CreateFromNetworkAccountId(@ptrCast(self), networkAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAccountStatics";
@@ -2468,8 +2503,11 @@ pub const IMobileBroadbandAccountStatics = extern struct {
 };
 pub const IMobileBroadbandAccountUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2477,19 +2515,19 @@ pub const IMobileBroadbandAccountUpdatedEventArgs = extern struct {
     pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasDeviceInformationChanged(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasDeviceInformationChanged(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasNetworkChanged(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNetworkChanged(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAccountUpdatedEventArgs";
@@ -2511,8 +2549,11 @@ pub const IMobileBroadbandAccountUpdatedEventArgs = extern struct {
 };
 pub const IMobileBroadbandAccountWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2520,66 +2561,66 @@ pub const IMobileBroadbandAccountWatcher = extern struct {
     pub fn addAccountAdded(self: *@This(), handler: *TypedEventHandler(MobileBroadbandAccountWatcher,MobileBroadbandAccountEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccountAdded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAccountAdded(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AccountAdded(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAccountUpdated(self: *@This(), handler: *TypedEventHandler(MobileBroadbandAccountWatcher,MobileBroadbandAccountUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccountUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAccountUpdated(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AccountUpdated(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAccountRemoved(self: *@This(), handler: *TypedEventHandler(MobileBroadbandAccountWatcher,MobileBroadbandAccountEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccountRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAccountRemoved(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AccountRemoved(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(MobileBroadbandAccountWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnumerationCompleted(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EnumerationCompleted(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStopped(self: *@This(), handler: *TypedEventHandler(MobileBroadbandAccountWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Stopped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStopped(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Stopped(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!MobileBroadbandAccountWatcherStatus {
         var _r: MobileBroadbandAccountWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAccountWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2610,8 +2651,11 @@ pub const IMobileBroadbandAccountWatcher = extern struct {
 };
 pub const IMobileBroadbandAntennaSar = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2619,13 +2663,13 @@ pub const IMobileBroadbandAntennaSar = extern struct {
     pub fn getAntennaIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_AntennaIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSarBackoffIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SarBackoffIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAntennaSar";
@@ -2646,8 +2690,11 @@ pub const IMobileBroadbandAntennaSar = extern struct {
 };
 pub const IMobileBroadbandAntennaSarFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2655,7 +2702,7 @@ pub const IMobileBroadbandAntennaSarFactory = extern struct {
     pub fn CreateWithIndex(self: *@This(), antennaIndex: i32, sarBackoffIndex: i32) core.HResult!*MobileBroadbandAntennaSar {
         var _r: *MobileBroadbandAntennaSar = undefined;
         const _c = self.vtable.CreateWithIndex(@ptrCast(self), antennaIndex, sarBackoffIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandAntennaSarFactory";
@@ -2675,8 +2722,11 @@ pub const IMobileBroadbandAntennaSarFactory = extern struct {
 };
 pub const IMobileBroadbandCellCdma = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2684,49 +2734,49 @@ pub const IMobileBroadbandCellCdma = extern struct {
     pub fn getBaseStationId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_BaseStationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBaseStationPNCode(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_BaseStationPNCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBaseStationLatitude(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_BaseStationLatitude(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBaseStationLongitude(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_BaseStationLongitude(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBaseStationLastBroadcastGpsTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_BaseStationLastBroadcastGpsTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_NetworkId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPilotSignalStrengthInDB(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_PilotSignalStrengthInDB(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_SystemId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellCdma";
@@ -2753,8 +2803,11 @@ pub const IMobileBroadbandCellCdma = extern struct {
 };
 pub const IMobileBroadbandCellGsm = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2762,43 +2815,43 @@ pub const IMobileBroadbandCellGsm = extern struct {
     pub fn getBaseStationId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_BaseStationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_CellId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannelNumber(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_ChannelNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationAreaCode(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_LocationAreaCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceivedSignalStrengthInDBm(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_ReceivedSignalStrengthInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimingAdvanceInBitPeriods(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_TimingAdvanceInBitPeriods(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellGsm";
@@ -2824,8 +2877,11 @@ pub const IMobileBroadbandCellGsm = extern struct {
 };
 pub const IMobileBroadbandCellLte = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2833,49 +2889,49 @@ pub const IMobileBroadbandCellLte = extern struct {
     pub fn getCellId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_CellId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannelNumber(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_ChannelNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalCellId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_PhysicalCellId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReferenceSignalReceivedPowerInDBm(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_ReferenceSignalReceivedPowerInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReferenceSignalReceivedQualityInDBm(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_ReferenceSignalReceivedQualityInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimingAdvanceInBitPeriods(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_TimingAdvanceInBitPeriods(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrackingAreaCode(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_TrackingAreaCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellLte";
@@ -2902,8 +2958,11 @@ pub const IMobileBroadbandCellLte = extern struct {
 };
 pub const IMobileBroadbandCellNR = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2911,55 +2970,55 @@ pub const IMobileBroadbandCellNR = extern struct {
     pub fn getCellId(self: *@This()) core.HResult!*IReference(i64) {
         var _r: *IReference(i64) = undefined;
         const _c = self.vtable.get_CellId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannelNumber(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_ChannelNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalCellId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_PhysicalCellId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReferenceSignalReceivedPowerInDBm(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_ReferenceSignalReceivedPowerInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReferenceSignalReceivedQualityInDBm(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_ReferenceSignalReceivedQualityInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimingAdvanceInNanoseconds(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_TimingAdvanceInNanoseconds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrackingAreaCode(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_TrackingAreaCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSignalToNoiseRatioInDB(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_SignalToNoiseRatioInDB(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellNR";
@@ -2987,8 +3046,11 @@ pub const IMobileBroadbandCellNR = extern struct {
 };
 pub const IMobileBroadbandCellTdscdma = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2996,49 +3058,49 @@ pub const IMobileBroadbandCellTdscdma = extern struct {
     pub fn getCellId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_CellId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellParameterId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_CellParameterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannelNumber(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_ChannelNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationAreaCode(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_LocationAreaCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPathLossInDB(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_PathLossInDB(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceivedSignalCodePowerInDBm(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_ReceivedSignalCodePowerInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimingAdvanceInBitPeriods(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_TimingAdvanceInBitPeriods(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellTdscdma";
@@ -3065,8 +3127,11 @@ pub const IMobileBroadbandCellTdscdma = extern struct {
 };
 pub const IMobileBroadbandCellUmts = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3074,49 +3139,49 @@ pub const IMobileBroadbandCellUmts = extern struct {
     pub fn getCellId(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_CellId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannelNumber(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_ChannelNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocationAreaCode(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_LocationAreaCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPathLossInDB(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_PathLossInDB(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrimaryScramblingCode(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_PrimaryScramblingCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceivedSignalCodePowerInDBm(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_ReceivedSignalCodePowerInDBm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSignalToNoiseRatioInDB(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_SignalToNoiseRatioInDB(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellUmts";
@@ -3143,8 +3208,11 @@ pub const IMobileBroadbandCellUmts = extern struct {
 };
 pub const IMobileBroadbandCellsInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3152,61 +3220,61 @@ pub const IMobileBroadbandCellsInfo = extern struct {
     pub fn getNeighboringCellsCdma(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellCdma) {
         var _r: *IVectorView(MobileBroadbandCellCdma) = undefined;
         const _c = self.vtable.get_NeighboringCellsCdma(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNeighboringCellsGsm(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellGsm) {
         var _r: *IVectorView(MobileBroadbandCellGsm) = undefined;
         const _c = self.vtable.get_NeighboringCellsGsm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNeighboringCellsLte(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellLte) {
         var _r: *IVectorView(MobileBroadbandCellLte) = undefined;
         const _c = self.vtable.get_NeighboringCellsLte(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNeighboringCellsTdscdma(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellTdscdma) {
         var _r: *IVectorView(MobileBroadbandCellTdscdma) = undefined;
         const _c = self.vtable.get_NeighboringCellsTdscdma(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNeighboringCellsUmts(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellUmts) {
         var _r: *IVectorView(MobileBroadbandCellUmts) = undefined;
         const _c = self.vtable.get_NeighboringCellsUmts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServingCellsCdma(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellCdma) {
         var _r: *IVectorView(MobileBroadbandCellCdma) = undefined;
         const _c = self.vtable.get_ServingCellsCdma(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServingCellsGsm(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellGsm) {
         var _r: *IVectorView(MobileBroadbandCellGsm) = undefined;
         const _c = self.vtable.get_ServingCellsGsm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServingCellsLte(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellLte) {
         var _r: *IVectorView(MobileBroadbandCellLte) = undefined;
         const _c = self.vtable.get_ServingCellsLte(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServingCellsTdscdma(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellTdscdma) {
         var _r: *IVectorView(MobileBroadbandCellTdscdma) = undefined;
         const _c = self.vtable.get_ServingCellsTdscdma(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServingCellsUmts(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellUmts) {
         var _r: *IVectorView(MobileBroadbandCellUmts) = undefined;
         const _c = self.vtable.get_ServingCellsUmts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellsInfo";
@@ -3235,8 +3303,11 @@ pub const IMobileBroadbandCellsInfo = extern struct {
 };
 pub const IMobileBroadbandCellsInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3244,13 +3315,13 @@ pub const IMobileBroadbandCellsInfo2 = extern struct {
     pub fn getNeighboringCellsNR(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellNR) {
         var _r: *IVectorView(MobileBroadbandCellNR) = undefined;
         const _c = self.vtable.get_NeighboringCellsNR(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServingCellsNR(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellNR) {
         var _r: *IVectorView(MobileBroadbandCellNR) = undefined;
         const _c = self.vtable.get_ServingCellsNR(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCellsInfo2";
@@ -3271,8 +3342,11 @@ pub const IMobileBroadbandCellsInfo2 = extern struct {
 };
 pub const IMobileBroadbandCurrentSlotIndexChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3280,7 +3354,7 @@ pub const IMobileBroadbandCurrentSlotIndexChangedEventArgs = extern struct {
     pub fn getCurrentSlotIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_CurrentSlotIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandCurrentSlotIndexChangedEventArgs";
@@ -3300,8 +3374,11 @@ pub const IMobileBroadbandCurrentSlotIndexChangedEventArgs = extern struct {
 };
 pub const IMobileBroadbandDeviceInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3309,85 +3386,85 @@ pub const IMobileBroadbandDeviceInformation = extern struct {
     pub fn getNetworkDeviceStatus(self: *@This()) core.HResult!NetworkDeviceStatus {
         var _r: NetworkDeviceStatus = undefined;
         const _c = self.vtable.get_NetworkDeviceStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getManufacturer(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Manufacturer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Model(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFirmwareInformation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirmwareInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
         var _r: CellularClass = undefined;
         const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDataClasses(self: *@This()) core.HResult!DataClasses {
         var _r: DataClasses = undefined;
         const _c = self.vtable.get_DataClasses(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustomDataClass(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomDataClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMobileEquipmentId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MobileEquipmentId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTelephoneNumbers(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_TelephoneNumbers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSubscriberId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SubscriberId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SimIccId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceType(self: *@This()) core.HResult!MobileBroadbandDeviceType {
         var _r: MobileBroadbandDeviceType = undefined;
         const _c = self.vtable.get_DeviceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentRadioState(self: *@This()) core.HResult!MobileBroadbandRadioState {
         var _r: MobileBroadbandRadioState = undefined;
         const _c = self.vtable.get_CurrentRadioState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceInformation";
@@ -3420,8 +3497,11 @@ pub const IMobileBroadbandDeviceInformation = extern struct {
 };
 pub const IMobileBroadbandDeviceInformation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3429,19 +3509,19 @@ pub const IMobileBroadbandDeviceInformation2 = extern struct {
     pub fn getPinManager(self: *@This()) core.HResult!*MobileBroadbandPinManager {
         var _r: *MobileBroadbandPinManager = undefined;
         const _c = self.vtable.get_PinManager(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRevision(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Revision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SerialNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceInformation2";
@@ -3463,8 +3543,11 @@ pub const IMobileBroadbandDeviceInformation2 = extern struct {
 };
 pub const IMobileBroadbandDeviceInformation3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3472,19 +3555,19 @@ pub const IMobileBroadbandDeviceInformation3 = extern struct {
     pub fn getSimSpn(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SimSpn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSimPnn(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SimPnn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSimGid1(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SimGid1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceInformation3";
@@ -3506,8 +3589,11 @@ pub const IMobileBroadbandDeviceInformation3 = extern struct {
 };
 pub const IMobileBroadbandDeviceInformation4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3515,7 +3601,7 @@ pub const IMobileBroadbandDeviceInformation4 = extern struct {
     pub fn getSlotManager(self: *@This()) core.HResult!*MobileBroadbandSlotManager {
         var _r: *MobileBroadbandSlotManager = undefined;
         const _c = self.vtable.get_SlotManager(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceInformation4";
@@ -3535,8 +3621,11 @@ pub const IMobileBroadbandDeviceInformation4 = extern struct {
 };
 pub const IMobileBroadbandDeviceService = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3544,25 +3633,25 @@ pub const IMobileBroadbandDeviceService = extern struct {
     pub fn getDeviceServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DeviceServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedCommands(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_SupportedCommands(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenDataSession(self: *@This()) core.HResult!*MobileBroadbandDeviceServiceDataSession {
         var _r: *MobileBroadbandDeviceServiceDataSession = undefined;
         const _c = self.vtable.OpenDataSession(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenCommandSession(self: *@This()) core.HResult!*MobileBroadbandDeviceServiceCommandSession {
         var _r: *MobileBroadbandDeviceServiceCommandSession = undefined;
         const _c = self.vtable.OpenCommandSession(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceService";
@@ -3585,8 +3674,11 @@ pub const IMobileBroadbandDeviceService = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceCommandEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3594,25 +3686,25 @@ pub const IMobileBroadbandDeviceServiceCommandEventArgs = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DeviceServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEventId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_EventId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceivedData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ReceivedData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceCommandEventArgs";
@@ -3635,8 +3727,11 @@ pub const IMobileBroadbandDeviceServiceCommandEventArgs = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceCommandResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3644,13 +3739,13 @@ pub const IMobileBroadbandDeviceServiceCommandResult = extern struct {
     pub fn getStatusCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_StatusCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ResponseData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceCommandResult";
@@ -3671,8 +3766,11 @@ pub const IMobileBroadbandDeviceServiceCommandResult = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceCommandSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3680,18 +3778,18 @@ pub const IMobileBroadbandDeviceServiceCommandSession = extern struct {
     pub fn SendQueryCommandAsync(self: *@This(), commandId: u32, data: *IBuffer) core.HResult!*IAsyncOperation(MobileBroadbandDeviceServiceCommandResult) {
         var _r: *IAsyncOperation(MobileBroadbandDeviceServiceCommandResult) = undefined;
         const _c = self.vtable.SendQueryCommandAsync(@ptrCast(self), commandId, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendSetCommandAsync(self: *@This(), commandId: u32, data: *IBuffer) core.HResult!*IAsyncOperation(MobileBroadbandDeviceServiceCommandResult) {
         var _r: *IAsyncOperation(MobileBroadbandDeviceServiceCommandResult) = undefined;
         const _c = self.vtable.SendSetCommandAsync(@ptrCast(self), commandId, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CloseSession(self: *@This()) core.HResult!void {
         const _c = self.vtable.CloseSession(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceCommandSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3712,8 +3810,11 @@ pub const IMobileBroadbandDeviceServiceCommandSession = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceCommandSession2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3721,12 +3822,12 @@ pub const IMobileBroadbandDeviceServiceCommandSession2 = extern struct {
     pub fn addCommandReceived(self: *@This(), handler: *TypedEventHandler(MobileBroadbandDeviceServiceCommandSession,MobileBroadbandDeviceServiceCommandEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CommandReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCommandReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CommandReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceCommandSession2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3746,8 +3847,11 @@ pub const IMobileBroadbandDeviceServiceCommandSession2 = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3755,7 +3859,7 @@ pub const IMobileBroadbandDeviceServiceDataReceivedEventArgs = extern struct {
     pub fn getReceivedData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ReceivedData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceDataReceivedEventArgs";
@@ -3775,8 +3879,11 @@ pub const IMobileBroadbandDeviceServiceDataReceivedEventArgs = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceDataSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3784,22 +3891,22 @@ pub const IMobileBroadbandDeviceServiceDataSession = extern struct {
     pub fn WriteDataAsync(self: *@This(), value: *IBuffer) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.WriteDataAsync(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CloseSession(self: *@This()) core.HResult!void {
         const _c = self.vtable.CloseSession(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDataReceived(self: *@This(), eventHandler: *TypedEventHandler(MobileBroadbandDeviceServiceDataSession,MobileBroadbandDeviceServiceDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DataReceived(@ptrCast(self), eventHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDataReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DataReceived(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceDataSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3821,8 +3928,11 @@ pub const IMobileBroadbandDeviceServiceDataSession = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3830,19 +3940,19 @@ pub const IMobileBroadbandDeviceServiceInformation = extern struct {
     pub fn getDeviceServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DeviceServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDataReadSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDataReadSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDataWriteSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDataWriteSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceInformation";
@@ -3864,8 +3974,11 @@ pub const IMobileBroadbandDeviceServiceInformation = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3873,19 +3986,19 @@ pub const IMobileBroadbandDeviceServiceTriggerDetails = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DeviceServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceivedData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ReceivedData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceTriggerDetails";
@@ -3907,8 +4020,11 @@ pub const IMobileBroadbandDeviceServiceTriggerDetails = extern struct {
 };
 pub const IMobileBroadbandDeviceServiceTriggerDetails2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3916,7 +4032,7 @@ pub const IMobileBroadbandDeviceServiceTriggerDetails2 = extern struct {
     pub fn getEventId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_EventId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandDeviceServiceTriggerDetails2";
@@ -3936,8 +4052,11 @@ pub const IMobileBroadbandDeviceServiceTriggerDetails2 = extern struct {
 };
 pub const IMobileBroadbandModem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3945,61 +4064,61 @@ pub const IMobileBroadbandModem = extern struct {
     pub fn getCurrentAccount(self: *@This()) core.HResult!*MobileBroadbandAccount {
         var _r: *MobileBroadbandAccount = undefined;
         const _c = self.vtable.get_CurrentAccount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*MobileBroadbandDeviceInformation {
         var _r: *MobileBroadbandDeviceInformation = undefined;
         const _c = self.vtable.get_DeviceInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxDeviceServiceCommandSizeInBytes(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxDeviceServiceCommandSizeInBytes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxDeviceServiceDataSizeInBytes(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxDeviceServiceDataSizeInBytes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceServices(self: *@This()) core.HResult!*IVectorView(MobileBroadbandDeviceServiceInformation) {
         var _r: *IVectorView(MobileBroadbandDeviceServiceInformation) = undefined;
         const _c = self.vtable.get_DeviceServices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceService(self: *@This(), deviceServiceId: *Guid) core.HResult!*MobileBroadbandDeviceService {
         var _r: *MobileBroadbandDeviceService = undefined;
         const _c = self.vtable.GetDeviceService(@ptrCast(self), deviceServiceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsResetSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsResetSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResetAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ResetAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentConfigurationAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandModemConfiguration) {
         var _r: *IAsyncOperation(MobileBroadbandModemConfiguration) = undefined;
         const _c = self.vtable.GetCurrentConfigurationAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentNetwork(self: *@This()) core.HResult!*MobileBroadbandNetwork {
         var _r: *MobileBroadbandNetwork = undefined;
         const _c = self.vtable.get_CurrentNetwork(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModem";
@@ -4028,8 +4147,11 @@ pub const IMobileBroadbandModem = extern struct {
 };
 pub const IMobileBroadbandModem2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4037,13 +4159,13 @@ pub const IMobileBroadbandModem2 = extern struct {
     pub fn GetIsPassthroughEnabledAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsPassthroughEnabledAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetIsPassthroughEnabledAsync(self: *@This(), value: bool) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var _r: *IAsyncOperation(MobileBroadbandModemStatus) = undefined;
         const _c = self.vtable.SetIsPassthroughEnabledAsync(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModem2";
@@ -4064,8 +4186,11 @@ pub const IMobileBroadbandModem2 = extern struct {
 };
 pub const IMobileBroadbandModem3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4073,24 +4198,24 @@ pub const IMobileBroadbandModem3 = extern struct {
     pub fn TryGetPcoAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandPco) {
         var _r: *IAsyncOperation(MobileBroadbandPco) = undefined;
         const _c = self.vtable.TryGetPcoAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInEmergencyCallMode(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInEmergencyCallMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addIsInEmergencyCallModeChanged(self: *@This(), handler: *TypedEventHandler(MobileBroadbandModem,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_IsInEmergencyCallModeChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeIsInEmergencyCallModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_IsInEmergencyCallModeChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModem3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4112,8 +4237,11 @@ pub const IMobileBroadbandModem3 = extern struct {
 };
 pub const IMobileBroadbandModem4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4121,25 +4249,25 @@ pub const IMobileBroadbandModem4 = extern struct {
     pub fn SetIsPassthroughEnabledAsync(self: *@This(), value: bool, slotindex: i32) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var _r: *IAsyncOperation(MobileBroadbandModemStatus) = undefined;
         const _c = self.vtable.SetIsPassthroughEnabledAsync(@ptrCast(self), value, slotindex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsPassthroughEnabledAsync(self: *@This(), slotindex: i32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsPassthroughEnabledAsync(@ptrCast(self), slotindex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetIsPassthroughEnabled(self: *@This(), value: bool, slotindex: i32) core.HResult!MobileBroadbandModemStatus {
         var _r: MobileBroadbandModemStatus = undefined;
         const _c = self.vtable.SetIsPassthroughEnabled(@ptrCast(self), value, slotindex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsPassthroughEnabled(self: *@This(), slotindex: i32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetIsPassthroughEnabled(@ptrCast(self), slotindex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModem4";
@@ -4162,8 +4290,11 @@ pub const IMobileBroadbandModem4 = extern struct {
 };
 pub const IMobileBroadbandModemConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4171,19 +4302,19 @@ pub const IMobileBroadbandModemConfiguration = extern struct {
     pub fn getUicc(self: *@This()) core.HResult!*MobileBroadbandUicc {
         var _r: *MobileBroadbandUicc = undefined;
         const _c = self.vtable.get_Uicc(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HomeProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHomeProviderName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HomeProviderName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModemConfiguration";
@@ -4205,8 +4336,11 @@ pub const IMobileBroadbandModemConfiguration = extern struct {
 };
 pub const IMobileBroadbandModemConfiguration2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4214,7 +4348,7 @@ pub const IMobileBroadbandModemConfiguration2 = extern struct {
     pub fn getSarManager(self: *@This()) core.HResult!*MobileBroadbandSarManager {
         var _r: *MobileBroadbandSarManager = undefined;
         const _c = self.vtable.get_SarManager(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModemConfiguration2";
@@ -4234,30 +4368,33 @@ pub const IMobileBroadbandModemConfiguration2 = extern struct {
 };
 pub const IMobileBroadbandModemIsolation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddAllowedHost(self: *@This(), host: *HostName) core.HResult!void {
         const _c = self.vtable.AddAllowedHost(@ptrCast(self), host);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddAllowedHostRange(self: *@This(), first: *HostName, last: *HostName) core.HResult!void {
         const _c = self.vtable.AddAllowedHostRange(@ptrCast(self), first, last);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ApplyConfigurationAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ApplyConfigurationAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearConfigurationAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ClearConfigurationAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModemIsolation";
@@ -4280,8 +4417,11 @@ pub const IMobileBroadbandModemIsolation = extern struct {
 };
 pub const IMobileBroadbandModemIsolationFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4289,7 +4429,7 @@ pub const IMobileBroadbandModemIsolationFactory = extern struct {
     pub fn Create(self: *@This(), modemDeviceId: ?HSTRING, ruleGroupId: ?HSTRING) core.HResult!*MobileBroadbandModemIsolation {
         var _r: *MobileBroadbandModemIsolation = undefined;
         const _c = self.vtable.Create(@ptrCast(self), modemDeviceId, ruleGroupId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModemIsolationFactory";
@@ -4309,8 +4449,11 @@ pub const IMobileBroadbandModemIsolationFactory = extern struct {
 };
 pub const IMobileBroadbandModemStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4318,19 +4461,19 @@ pub const IMobileBroadbandModemStatics = extern struct {
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*MobileBroadbandModem {
         var _r: *MobileBroadbandModem = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDefault(self: *@This()) core.HResult!*MobileBroadbandModem {
         var _r: *MobileBroadbandModem = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandModemStatics";
@@ -4352,8 +4495,11 @@ pub const IMobileBroadbandModemStatics = extern struct {
 };
 pub const IMobileBroadbandNetwork = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4361,60 +4507,60 @@ pub const IMobileBroadbandNetwork = extern struct {
     pub fn getNetworkAdapter(self: *@This()) core.HResult!*NetworkAdapter {
         var _r: *NetworkAdapter = undefined;
         const _c = self.vtable.get_NetworkAdapter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkRegistrationState(self: *@This()) core.HResult!NetworkRegistrationState {
         var _r: NetworkRegistrationState = undefined;
         const _c = self.vtable.get_NetworkRegistrationState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRegistrationNetworkError(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_RegistrationNetworkError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPacketAttachNetworkError(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PacketAttachNetworkError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActivationNetworkError(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ActivationNetworkError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessPointName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRegisteredDataClass(self: *@This()) core.HResult!DataClasses {
         var _r: DataClasses = undefined;
         const _c = self.vtable.get_RegisteredDataClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRegisteredProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RegisteredProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRegisteredProviderName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RegisteredProviderName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowConnectionUI(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowConnectionUI(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandNetwork";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4442,8 +4588,11 @@ pub const IMobileBroadbandNetwork = extern struct {
 };
 pub const IMobileBroadbandNetwork2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4451,13 +4600,13 @@ pub const IMobileBroadbandNetwork2 = extern struct {
     pub fn GetVoiceCallSupportAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetVoiceCallSupportAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRegistrationUiccApps(self: *@This()) core.HResult!*IVectorView(MobileBroadbandUiccApp) {
         var _r: *IVectorView(MobileBroadbandUiccApp) = undefined;
         const _c = self.vtable.get_RegistrationUiccApps(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandNetwork2";
@@ -4478,8 +4627,11 @@ pub const IMobileBroadbandNetwork2 = extern struct {
 };
 pub const IMobileBroadbandNetwork3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4487,7 +4639,7 @@ pub const IMobileBroadbandNetwork3 = extern struct {
     pub fn GetCellsInfoAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandCellsInfo) {
         var _r: *IAsyncOperation(MobileBroadbandCellsInfo) = undefined;
         const _c = self.vtable.GetCellsInfoAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandNetwork3";
@@ -4507,8 +4659,11 @@ pub const IMobileBroadbandNetwork3 = extern struct {
 };
 pub const IMobileBroadbandNetworkRegistrationStateChange = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4516,13 +4671,13 @@ pub const IMobileBroadbandNetworkRegistrationStateChange = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetwork(self: *@This()) core.HResult!*MobileBroadbandNetwork {
         var _r: *MobileBroadbandNetwork = undefined;
         const _c = self.vtable.get_Network(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandNetworkRegistrationStateChange";
@@ -4543,8 +4698,11 @@ pub const IMobileBroadbandNetworkRegistrationStateChange = extern struct {
 };
 pub const IMobileBroadbandNetworkRegistrationStateChangeTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4552,7 +4710,7 @@ pub const IMobileBroadbandNetworkRegistrationStateChangeTriggerDetails = extern 
     pub fn getNetworkRegistrationStateChanges(self: *@This()) core.HResult!*IVectorView(MobileBroadbandNetworkRegistrationStateChange) {
         var _r: *IVectorView(MobileBroadbandNetworkRegistrationStateChange) = undefined;
         const _c = self.vtable.get_NetworkRegistrationStateChanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandNetworkRegistrationStateChangeTriggerDetails";
@@ -4572,8 +4730,11 @@ pub const IMobileBroadbandNetworkRegistrationStateChangeTriggerDetails = extern 
 };
 pub const IMobileBroadbandPco = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4581,19 +4742,19 @@ pub const IMobileBroadbandPco = extern struct {
     pub fn getData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsComplete(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsComplete(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandPco";
@@ -4615,8 +4776,11 @@ pub const IMobileBroadbandPco = extern struct {
 };
 pub const IMobileBroadbandPcoDataChangeTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4624,7 +4788,7 @@ pub const IMobileBroadbandPcoDataChangeTriggerDetails = extern struct {
     pub fn getUpdatedData(self: *@This()) core.HResult!*MobileBroadbandPco {
         var _r: *MobileBroadbandPco = undefined;
         const _c = self.vtable.get_UpdatedData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandPcoDataChangeTriggerDetails";
@@ -4644,8 +4808,11 @@ pub const IMobileBroadbandPcoDataChangeTriggerDetails = extern struct {
 };
 pub const IMobileBroadbandPin = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4653,73 +4820,73 @@ pub const IMobileBroadbandPin = extern struct {
     pub fn getType(self: *@This()) core.HResult!MobileBroadbandPinType {
         var _r: MobileBroadbandPinType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLockState(self: *@This()) core.HResult!MobileBroadbandPinLockState {
         var _r: MobileBroadbandPinLockState = undefined;
         const _c = self.vtable.get_LockState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFormat(self: *@This()) core.HResult!MobileBroadbandPinFormat {
         var _r: MobileBroadbandPinFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MinLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAttemptsRemaining(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AttemptsRemaining(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableAsync(self: *@This(), currentPin: ?HSTRING) core.HResult!*IAsyncOperation(MobileBroadbandPinOperationResult) {
         var _r: *IAsyncOperation(MobileBroadbandPinOperationResult) = undefined;
         const _c = self.vtable.EnableAsync(@ptrCast(self), currentPin, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableAsync(self: *@This(), currentPin: ?HSTRING) core.HResult!*IAsyncOperation(MobileBroadbandPinOperationResult) {
         var _r: *IAsyncOperation(MobileBroadbandPinOperationResult) = undefined;
         const _c = self.vtable.DisableAsync(@ptrCast(self), currentPin, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnterAsync(self: *@This(), currentPin: ?HSTRING) core.HResult!*IAsyncOperation(MobileBroadbandPinOperationResult) {
         var _r: *IAsyncOperation(MobileBroadbandPinOperationResult) = undefined;
         const _c = self.vtable.EnterAsync(@ptrCast(self), currentPin, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ChangeAsync(self: *@This(), currentPin: ?HSTRING, newPin: ?HSTRING) core.HResult!*IAsyncOperation(MobileBroadbandPinOperationResult) {
         var _r: *IAsyncOperation(MobileBroadbandPinOperationResult) = undefined;
         const _c = self.vtable.ChangeAsync(@ptrCast(self), currentPin, newPin, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnblockAsync(self: *@This(), pinUnblockKey: ?HSTRING, newPin: ?HSTRING) core.HResult!*IAsyncOperation(MobileBroadbandPinOperationResult) {
         var _r: *IAsyncOperation(MobileBroadbandPinOperationResult) = undefined;
         const _c = self.vtable.UnblockAsync(@ptrCast(self), pinUnblockKey, newPin, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandPin";
@@ -4750,8 +4917,11 @@ pub const IMobileBroadbandPin = extern struct {
 };
 pub const IMobileBroadbandPinLockStateChange = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4759,19 +4929,19 @@ pub const IMobileBroadbandPinLockStateChange = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPinType(self: *@This()) core.HResult!MobileBroadbandPinType {
         var _r: MobileBroadbandPinType = undefined;
         const _c = self.vtable.get_PinType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPinLockState(self: *@This()) core.HResult!MobileBroadbandPinLockState {
         var _r: MobileBroadbandPinLockState = undefined;
         const _c = self.vtable.get_PinLockState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandPinLockStateChange";
@@ -4793,8 +4963,11 @@ pub const IMobileBroadbandPinLockStateChange = extern struct {
 };
 pub const IMobileBroadbandPinLockStateChangeTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4802,7 +4975,7 @@ pub const IMobileBroadbandPinLockStateChangeTriggerDetails = extern struct {
     pub fn getPinLockStateChanges(self: *@This()) core.HResult!*IVectorView(MobileBroadbandPinLockStateChange) {
         var _r: *IVectorView(MobileBroadbandPinLockStateChange) = undefined;
         const _c = self.vtable.get_PinLockStateChanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandPinLockStateChangeTriggerDetails";
@@ -4822,8 +4995,11 @@ pub const IMobileBroadbandPinLockStateChangeTriggerDetails = extern struct {
 };
 pub const IMobileBroadbandPinManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4831,13 +5007,13 @@ pub const IMobileBroadbandPinManager = extern struct {
     pub fn getSupportedPins(self: *@This()) core.HResult!*IVectorView(MobileBroadbandPinType) {
         var _r: *IVectorView(MobileBroadbandPinType) = undefined;
         const _c = self.vtable.get_SupportedPins(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPin(self: *@This(), pinType: MobileBroadbandPinType) core.HResult!*MobileBroadbandPin {
         var _r: *MobileBroadbandPin = undefined;
         const _c = self.vtable.GetPin(@ptrCast(self), pinType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandPinManager";
@@ -4858,8 +5034,11 @@ pub const IMobileBroadbandPinManager = extern struct {
 };
 pub const IMobileBroadbandPinOperationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4867,13 +5046,13 @@ pub const IMobileBroadbandPinOperationResult = extern struct {
     pub fn getIsSuccessful(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuccessful(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAttemptsRemaining(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AttemptsRemaining(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandPinOperationResult";
@@ -4894,8 +5073,11 @@ pub const IMobileBroadbandPinOperationResult = extern struct {
 };
 pub const IMobileBroadbandRadioStateChange = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4903,13 +5085,13 @@ pub const IMobileBroadbandRadioStateChange = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRadioState(self: *@This()) core.HResult!MobileBroadbandRadioState {
         var _r: MobileBroadbandRadioState = undefined;
         const _c = self.vtable.get_RadioState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandRadioStateChange";
@@ -4930,8 +5112,11 @@ pub const IMobileBroadbandRadioStateChange = extern struct {
 };
 pub const IMobileBroadbandRadioStateChangeTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4939,7 +5124,7 @@ pub const IMobileBroadbandRadioStateChangeTriggerDetails = extern struct {
     pub fn getRadioStateChanges(self: *@This()) core.HResult!*IVectorView(MobileBroadbandRadioStateChange) {
         var _r: *IVectorView(MobileBroadbandRadioStateChange) = undefined;
         const _c = self.vtable.get_RadioStateChanges(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandRadioStateChangeTriggerDetails";
@@ -4959,8 +5144,11 @@ pub const IMobileBroadbandRadioStateChangeTriggerDetails = extern struct {
 };
 pub const IMobileBroadbandSarManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4968,86 +5156,86 @@ pub const IMobileBroadbandSarManager = extern struct {
     pub fn getIsBackoffEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBackoffEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsWiFiHardwareIntegrated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWiFiHardwareIntegrated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSarControlledByHardware(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSarControlledByHardware(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAntennas(self: *@This()) core.HResult!*IVectorView(MobileBroadbandAntennaSar) {
         var _r: *IVectorView(MobileBroadbandAntennaSar) = undefined;
         const _c = self.vtable.get_Antennas(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHysteresisTimerPeriod(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_HysteresisTimerPeriod(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addTransmissionStateChanged(self: *@This(), handler: *TypedEventHandler(MobileBroadbandSarManager,MobileBroadbandTransmissionStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TransmissionStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTransmissionStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TransmissionStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EnableBackoffAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.EnableBackoffAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableBackoffAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DisableBackoffAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetConfigurationAsync(self: *@This(), antennas: *IIterable(MobileBroadbandAntennaSar)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetConfigurationAsync(@ptrCast(self), antennas, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RevertSarToHardwareControlAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RevertSarToHardwareControlAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetTransmissionStateChangedHysteresisAsync(self: *@This(), timerPeriod: TimeSpan) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetTransmissionStateChangedHysteresisAsync(@ptrCast(self), timerPeriod, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsTransmittingAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsTransmittingAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartTransmissionStateMonitoring(self: *@This()) core.HResult!void {
         const _c = self.vtable.StartTransmissionStateMonitoring(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopTransmissionStateMonitoring(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopTransmissionStateMonitoring(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandSarManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5080,8 +5268,11 @@ pub const IMobileBroadbandSarManager = extern struct {
 };
 pub const IMobileBroadbandSlotInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5089,13 +5280,13 @@ pub const IMobileBroadbandSlotInfo = extern struct {
     pub fn getIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Index(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!MobileBroadbandSlotState {
         var _r: MobileBroadbandSlotState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandSlotInfo";
@@ -5116,8 +5307,11 @@ pub const IMobileBroadbandSlotInfo = extern struct {
 };
 pub const IMobileBroadbandSlotInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5125,7 +5319,7 @@ pub const IMobileBroadbandSlotInfo2 = extern struct {
     pub fn getIccId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IccId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandSlotInfo2";
@@ -5145,8 +5339,11 @@ pub const IMobileBroadbandSlotInfo2 = extern struct {
 };
 pub const IMobileBroadbandSlotInfoChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5154,7 +5351,7 @@ pub const IMobileBroadbandSlotInfoChangedEventArgs = extern struct {
     pub fn getSlotInfo(self: *@This()) core.HResult!*MobileBroadbandSlotInfo {
         var _r: *MobileBroadbandSlotInfo = undefined;
         const _c = self.vtable.get_SlotInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandSlotInfoChangedEventArgs";
@@ -5174,8 +5371,11 @@ pub const IMobileBroadbandSlotInfoChangedEventArgs = extern struct {
 };
 pub const IMobileBroadbandSlotManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5183,46 +5383,46 @@ pub const IMobileBroadbandSlotManager = extern struct {
     pub fn getSlotInfos(self: *@This()) core.HResult!*IVectorView(MobileBroadbandSlotInfo) {
         var _r: *IVectorView(MobileBroadbandSlotInfo) = undefined;
         const _c = self.vtable.get_SlotInfos(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentSlotIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_CurrentSlotIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetCurrentSlot(self: *@This(), slotIndex: i32) core.HResult!MobileBroadbandModemStatus {
         var _r: MobileBroadbandModemStatus = undefined;
         const _c = self.vtable.SetCurrentSlot(@ptrCast(self), slotIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetCurrentSlotAsync(self: *@This(), slotIndex: i32) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var _r: *IAsyncOperation(MobileBroadbandModemStatus) = undefined;
         const _c = self.vtable.SetCurrentSlotAsync(@ptrCast(self), slotIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addSlotInfoChanged(self: *@This(), handler: *TypedEventHandler(MobileBroadbandSlotManager,MobileBroadbandSlotInfoChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SlotInfoChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSlotInfoChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SlotInfoChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCurrentSlotIndexChanged(self: *@This(), handler: *TypedEventHandler(MobileBroadbandSlotManager,MobileBroadbandCurrentSlotIndexChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CurrentSlotIndexChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCurrentSlotIndexChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CurrentSlotIndexChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandSlotManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5248,8 +5448,11 @@ pub const IMobileBroadbandSlotManager = extern struct {
 };
 pub const IMobileBroadbandTransmissionStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5257,7 +5460,7 @@ pub const IMobileBroadbandTransmissionStateChangedEventArgs = extern struct {
     pub fn getIsTransmitting(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTransmitting(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandTransmissionStateChangedEventArgs";
@@ -5277,8 +5480,11 @@ pub const IMobileBroadbandTransmissionStateChangedEventArgs = extern struct {
 };
 pub const IMobileBroadbandUicc = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5286,13 +5492,13 @@ pub const IMobileBroadbandUicc = extern struct {
     pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SimIccId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetUiccAppsAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandUiccAppsResult) {
         var _r: *IAsyncOperation(MobileBroadbandUiccAppsResult) = undefined;
         const _c = self.vtable.GetUiccAppsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandUicc";
@@ -5313,8 +5519,11 @@ pub const IMobileBroadbandUicc = extern struct {
 };
 pub const IMobileBroadbandUiccApp = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5322,25 +5531,25 @@ pub const IMobileBroadbandUiccApp = extern struct {
     pub fn getId(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKind(self: *@This()) core.HResult!UiccAppKind {
         var _r: UiccAppKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRecordDetailsAsync(self: *@This(), uiccFilePath: *IIterable(u32)) core.HResult!*IAsyncOperation(MobileBroadbandUiccAppRecordDetailsResult) {
         var _r: *IAsyncOperation(MobileBroadbandUiccAppRecordDetailsResult) = undefined;
         const _c = self.vtable.GetRecordDetailsAsync(@ptrCast(self), uiccFilePath, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReadRecordAsync(self: *@This(), uiccFilePath: *IIterable(u32), recordIndex: i32) core.HResult!*IAsyncOperation(MobileBroadbandUiccAppReadRecordResult) {
         var _r: *IAsyncOperation(MobileBroadbandUiccAppReadRecordResult) = undefined;
         const _c = self.vtable.ReadRecordAsync(@ptrCast(self), uiccFilePath, recordIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandUiccApp";
@@ -5363,8 +5572,11 @@ pub const IMobileBroadbandUiccApp = extern struct {
 };
 pub const IMobileBroadbandUiccAppReadRecordResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5372,13 +5584,13 @@ pub const IMobileBroadbandUiccAppReadRecordResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!MobileBroadbandUiccAppOperationStatus {
         var _r: MobileBroadbandUiccAppOperationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandUiccAppReadRecordResult";
@@ -5399,8 +5611,11 @@ pub const IMobileBroadbandUiccAppReadRecordResult = extern struct {
 };
 pub const IMobileBroadbandUiccAppRecordDetailsResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5408,37 +5623,37 @@ pub const IMobileBroadbandUiccAppRecordDetailsResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!MobileBroadbandUiccAppOperationStatus {
         var _r: MobileBroadbandUiccAppOperationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKind(self: *@This()) core.HResult!UiccAppRecordKind {
         var _r: UiccAppRecordKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRecordCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RecordCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRecordSize(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RecordSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReadAccessCondition(self: *@This()) core.HResult!UiccAccessCondition {
         var _r: UiccAccessCondition = undefined;
         const _c = self.vtable.get_ReadAccessCondition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWriteAccessCondition(self: *@This()) core.HResult!UiccAccessCondition {
         var _r: UiccAccessCondition = undefined;
         const _c = self.vtable.get_WriteAccessCondition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandUiccAppRecordDetailsResult";
@@ -5463,8 +5678,11 @@ pub const IMobileBroadbandUiccAppRecordDetailsResult = extern struct {
 };
 pub const IMobileBroadbandUiccAppsResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5472,13 +5690,13 @@ pub const IMobileBroadbandUiccAppsResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!MobileBroadbandUiccAppOperationStatus {
         var _r: MobileBroadbandUiccAppOperationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUiccApps(self: *@This()) core.HResult!*IVectorView(MobileBroadbandUiccApp) {
         var _r: *IVectorView(MobileBroadbandUiccApp) = undefined;
         const _c = self.vtable.get_UiccApps(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IMobileBroadbandUiccAppsResult";
@@ -5499,8 +5717,11 @@ pub const IMobileBroadbandUiccAppsResult = extern struct {
 };
 pub const INetworkOperatorDataUsageTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5508,7 +5729,7 @@ pub const INetworkOperatorDataUsageTriggerDetails = extern struct {
     pub fn getNotificationKind(self: *@This()) core.HResult!NetworkOperatorDataUsageNotificationKind {
         var _r: NetworkOperatorDataUsageNotificationKind = undefined;
         const _c = self.vtable.get_NotificationKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorDataUsageTriggerDetails";
@@ -5528,8 +5749,11 @@ pub const INetworkOperatorDataUsageTriggerDetails = extern struct {
 };
 pub const INetworkOperatorTetheringAccessPointConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5537,22 +5761,22 @@ pub const INetworkOperatorTetheringAccessPointConfiguration = extern struct {
     pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSsid(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Ssid(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPassphrase(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Passphrase(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPassphrase(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Passphrase(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringAccessPointConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5574,8 +5798,11 @@ pub const INetworkOperatorTetheringAccessPointConfiguration = extern struct {
 };
 pub const INetworkOperatorTetheringAccessPointConfiguration2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5583,24 +5810,24 @@ pub const INetworkOperatorTetheringAccessPointConfiguration2 = extern struct {
     pub fn IsBandSupported(self: *@This(), band: TetheringWiFiBand) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsBandSupported(@ptrCast(self), band, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsBandSupportedAsync(self: *@This(), band: TetheringWiFiBand) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsBandSupportedAsync(@ptrCast(self), band, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBand(self: *@This()) core.HResult!TetheringWiFiBand {
         var _r: TetheringWiFiBand = undefined;
         const _c = self.vtable.get_Band(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBand(self: *@This(), value: TetheringWiFiBand) core.HResult!void {
         const _c = self.vtable.put_Band(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringAccessPointConfiguration2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5622,8 +5849,11 @@ pub const INetworkOperatorTetheringAccessPointConfiguration2 = extern struct {
 };
 pub const INetworkOperatorTetheringAccessPointConfiguration3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5631,24 +5861,24 @@ pub const INetworkOperatorTetheringAccessPointConfiguration3 = extern struct {
     pub fn IsAuthenticationKindSupported(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsAuthenticationKindSupported(@ptrCast(self), authenticationKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsAuthenticationKindSupportedAsync(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsAuthenticationKindSupportedAsync(@ptrCast(self), authenticationKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationKind(self: *@This()) core.HResult!TetheringWiFiAuthenticationKind {
         var _r: TetheringWiFiAuthenticationKind = undefined;
         const _c = self.vtable.get_AuthenticationKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAuthenticationKind(self: *@This(), value: TetheringWiFiAuthenticationKind) core.HResult!void {
         const _c = self.vtable.put_AuthenticationKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringAccessPointConfiguration3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5670,8 +5900,11 @@ pub const INetworkOperatorTetheringAccessPointConfiguration3 = extern struct {
 };
 pub const INetworkOperatorTetheringClient = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5679,13 +5912,13 @@ pub const INetworkOperatorTetheringClient = extern struct {
     pub fn getMacAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MacAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHostNames(self: *@This()) core.HResult!*IVectorView(HostName) {
         var _r: *IVectorView(HostName) = undefined;
         const _c = self.vtable.get_HostNames(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringClient";
@@ -5706,8 +5939,11 @@ pub const INetworkOperatorTetheringClient = extern struct {
 };
 pub const INetworkOperatorTetheringClientManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5715,7 +5951,7 @@ pub const INetworkOperatorTetheringClientManager = extern struct {
     pub fn GetTetheringClients(self: *@This()) core.HResult!*IVectorView(NetworkOperatorTetheringClient) {
         var _r: *IVectorView(NetworkOperatorTetheringClient) = undefined;
         const _c = self.vtable.GetTetheringClients(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringClientManager";
@@ -5735,8 +5971,11 @@ pub const INetworkOperatorTetheringClientManager = extern struct {
 };
 pub const INetworkOperatorTetheringManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5744,43 +5983,43 @@ pub const INetworkOperatorTetheringManager = extern struct {
     pub fn getMaxClientCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxClientCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClientCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ClientCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTetheringOperationalState(self: *@This()) core.HResult!TetheringOperationalState {
         var _r: TetheringOperationalState = undefined;
         const _c = self.vtable.get_TetheringOperationalState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentAccessPointConfiguration(self: *@This()) core.HResult!*NetworkOperatorTetheringAccessPointConfiguration {
         var _r: *NetworkOperatorTetheringAccessPointConfiguration = undefined;
         const _c = self.vtable.GetCurrentAccessPointConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConfigureAccessPointAsync(self: *@This(), configuration: *NetworkOperatorTetheringAccessPointConfiguration) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ConfigureAccessPointAsync(@ptrCast(self), configuration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartTetheringAsync(self: *@This()) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
         var _r: *IAsyncOperation(NetworkOperatorTetheringOperationResult) = undefined;
         const _c = self.vtable.StartTetheringAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopTetheringAsync(self: *@This()) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
         var _r: *IAsyncOperation(NetworkOperatorTetheringOperationResult) = undefined;
         const _c = self.vtable.StopTetheringAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringManager";
@@ -5806,8 +6045,11 @@ pub const INetworkOperatorTetheringManager = extern struct {
 };
 pub const INetworkOperatorTetheringManager2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5815,7 +6057,7 @@ pub const INetworkOperatorTetheringManager2 = extern struct {
     pub fn StartTetheringAsync(self: *@This(), configuration: *NetworkOperatorTetheringSessionAccessPointConfiguration) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
         var _r: *IAsyncOperation(NetworkOperatorTetheringOperationResult) = undefined;
         const _c = self.vtable.StartTetheringAsync(@ptrCast(self), configuration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringManager2";
@@ -5835,8 +6077,11 @@ pub const INetworkOperatorTetheringManager2 = extern struct {
 };
 pub const INetworkOperatorTetheringManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5844,13 +6089,13 @@ pub const INetworkOperatorTetheringManagerStatics = extern struct {
     pub fn GetTetheringCapability(self: *@This(), networkAccountId: ?HSTRING) core.HResult!TetheringCapability {
         var _r: TetheringCapability = undefined;
         const _c = self.vtable.GetTetheringCapability(@ptrCast(self), networkAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromNetworkAccountId(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*NetworkOperatorTetheringManager {
         var _r: *NetworkOperatorTetheringManager = undefined;
         const _c = self.vtable.CreateFromNetworkAccountId(@ptrCast(self), networkAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringManagerStatics";
@@ -5871,8 +6116,11 @@ pub const INetworkOperatorTetheringManagerStatics = extern struct {
 };
 pub const INetworkOperatorTetheringManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5880,13 +6128,13 @@ pub const INetworkOperatorTetheringManagerStatics2 = extern struct {
     pub fn GetTetheringCapabilityFromConnectionProfile(self: *@This(), profile: *ConnectionProfile) core.HResult!TetheringCapability {
         var _r: TetheringCapability = undefined;
         const _c = self.vtable.GetTetheringCapabilityFromConnectionProfile(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromConnectionProfile(self: *@This(), profile: *ConnectionProfile) core.HResult!*NetworkOperatorTetheringManager {
         var _r: *NetworkOperatorTetheringManager = undefined;
         const _c = self.vtable.CreateFromConnectionProfile(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringManagerStatics2";
@@ -5907,8 +6155,11 @@ pub const INetworkOperatorTetheringManagerStatics2 = extern struct {
 };
 pub const INetworkOperatorTetheringManagerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5916,7 +6167,7 @@ pub const INetworkOperatorTetheringManagerStatics3 = extern struct {
     pub fn CreateFromConnectionProfile(self: *@This(), profile: *ConnectionProfile, adapter: *NetworkAdapter) core.HResult!*NetworkOperatorTetheringManager {
         var _r: *NetworkOperatorTetheringManager = undefined;
         const _c = self.vtable.CreateFromConnectionProfile(@ptrCast(self), profile, adapter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringManagerStatics3";
@@ -5936,8 +6187,11 @@ pub const INetworkOperatorTetheringManagerStatics3 = extern struct {
 };
 pub const INetworkOperatorTetheringManagerStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5945,27 +6199,27 @@ pub const INetworkOperatorTetheringManagerStatics4 = extern struct {
     pub fn IsNoConnectionsTimeoutEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsNoConnectionsTimeoutEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableNoConnectionsTimeout(self: *@This()) core.HResult!void {
         const _c = self.vtable.EnableNoConnectionsTimeout(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EnableNoConnectionsTimeoutAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.EnableNoConnectionsTimeoutAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableNoConnectionsTimeout(self: *@This()) core.HResult!void {
         const _c = self.vtable.DisableNoConnectionsTimeout(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DisableNoConnectionsTimeoutAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DisableNoConnectionsTimeoutAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringManagerStatics4";
@@ -5989,8 +6243,11 @@ pub const INetworkOperatorTetheringManagerStatics4 = extern struct {
 };
 pub const INetworkOperatorTetheringOperationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5998,13 +6255,13 @@ pub const INetworkOperatorTetheringOperationResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!TetheringOperationStatus {
         var _r: TetheringOperationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdditionalErrorMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdditionalErrorMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringOperationResult";
@@ -6025,8 +6282,11 @@ pub const INetworkOperatorTetheringOperationResult = extern struct {
 };
 pub const INetworkOperatorTetheringSessionAccessPointConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6034,76 +6294,76 @@ pub const INetworkOperatorTetheringSessionAccessPointConfiguration = extern stru
     pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSsid(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Ssid(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPassphrase(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Passphrase(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPassphrase(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Passphrase(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsBandSupported(self: *@This(), band: TetheringWiFiBand) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsBandSupported(@ptrCast(self), band, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsBandSupportedAsync(self: *@This(), band: TetheringWiFiBand) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsBandSupportedAsync(@ptrCast(self), band, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBand(self: *@This()) core.HResult!TetheringWiFiBand {
         var _r: TetheringWiFiBand = undefined;
         const _c = self.vtable.get_Band(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBand(self: *@This(), value: TetheringWiFiBand) core.HResult!void {
         const _c = self.vtable.put_Band(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsAuthenticationKindSupported(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsAuthenticationKindSupported(@ptrCast(self), authenticationKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsAuthenticationKindSupportedAsync(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsAuthenticationKindSupportedAsync(@ptrCast(self), authenticationKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationKind(self: *@This()) core.HResult!TetheringWiFiAuthenticationKind {
         var _r: TetheringWiFiAuthenticationKind = undefined;
         const _c = self.vtable.get_AuthenticationKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAuthenticationKind(self: *@This(), value: TetheringWiFiAuthenticationKind) core.HResult!void {
         const _c = self.vtable.put_AuthenticationKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPerformancePriority(self: *@This()) core.HResult!TetheringWiFiPerformancePriority {
         var _r: TetheringWiFiPerformancePriority = undefined;
         const _c = self.vtable.get_PerformancePriority(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPerformancePriority(self: *@This(), value: TetheringWiFiPerformancePriority) core.HResult!void {
         const _c = self.vtable.put_PerformancePriority(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringSessionAccessPointConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6135,8 +6395,11 @@ pub const INetworkOperatorTetheringSessionAccessPointConfiguration = extern stru
 };
 pub const IProvisionFromXmlDocumentResults = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6144,13 +6407,13 @@ pub const IProvisionFromXmlDocumentResults = extern struct {
     pub fn getAllElementsProvisioned(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllElementsProvisioned(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProvisionResultsXml(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProvisionResultsXml(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IProvisionFromXmlDocumentResults";
@@ -6171,19 +6434,22 @@ pub const IProvisionFromXmlDocumentResults = extern struct {
 };
 pub const IProvisionedProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn UpdateCost(self: *@This(), value: NetworkCostType) core.HResult!void {
         const _c = self.vtable.UpdateCost(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UpdateUsage(self: *@This(), value: ProfileUsage) core.HResult!void {
         const _c = self.vtable.UpdateUsage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IProvisionedProfile";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6203,8 +6469,11 @@ pub const IProvisionedProfile = extern struct {
 };
 pub const IProvisioningAgent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6212,13 +6481,13 @@ pub const IProvisioningAgent = extern struct {
     pub fn ProvisionFromXmlDocumentAsync(self: *@This(), provisioningXmlDocument: ?HSTRING) core.HResult!*IAsyncOperation(ProvisionFromXmlDocumentResults) {
         var _r: *IAsyncOperation(ProvisionFromXmlDocumentResults) = undefined;
         const _c = self.vtable.ProvisionFromXmlDocumentAsync(@ptrCast(self), provisioningXmlDocument, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetProvisionedProfile(self: *@This(), mediaType: ProfileMediaType, profileName: ?HSTRING) core.HResult!*ProvisionedProfile {
         var _r: *ProvisionedProfile = undefined;
         const _c = self.vtable.GetProvisionedProfile(@ptrCast(self), mediaType, profileName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IProvisioningAgent";
@@ -6239,8 +6508,11 @@ pub const IProvisioningAgent = extern struct {
 };
 pub const IProvisioningAgentStaticMethods = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6248,7 +6520,7 @@ pub const IProvisioningAgentStaticMethods = extern struct {
     pub fn CreateFromNetworkAccountId(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*ProvisioningAgent {
         var _r: *ProvisioningAgent = undefined;
         const _c = self.vtable.CreateFromNetworkAccountId(@ptrCast(self), networkAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IProvisioningAgentStaticMethods";
@@ -6268,8 +6540,11 @@ pub const IProvisioningAgentStaticMethods = extern struct {
 };
 pub const ITetheringEntitlementCheckTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6277,16 +6552,16 @@ pub const ITetheringEntitlementCheckTriggerDetails = extern struct {
     pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AllowTethering(self: *@This()) core.HResult!void {
         const _c = self.vtable.AllowTethering(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DenyTethering(self: *@This(), entitlementFailureReason: ?HSTRING) core.HResult!void {
         const _c = self.vtable.DenyTethering(@ptrCast(self), entitlementFailureReason);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.ITetheringEntitlementCheckTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6307,8 +6582,11 @@ pub const ITetheringEntitlementCheckTriggerDetails = extern struct {
 };
 pub const IUssdMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6316,32 +6594,32 @@ pub const IUssdMessage = extern struct {
     pub fn getDataCodingScheme(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_DataCodingScheme(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDataCodingScheme(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_DataCodingScheme(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPayload(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetPayload(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPayload(self: *@This(), value: [*]u8) core.HResult!void {
         const _c = self.vtable.SetPayload(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPayloadAsText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayloadAsText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPayloadAsText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PayloadAsText(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IUssdMessage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6365,8 +6643,11 @@ pub const IUssdMessage = extern struct {
 };
 pub const IUssdMessageFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6374,7 +6655,7 @@ pub const IUssdMessageFactory = extern struct {
     pub fn CreateMessage(self: *@This(), messageText: ?HSTRING) core.HResult!*UssdMessage {
         var _r: *UssdMessage = undefined;
         const _c = self.vtable.CreateMessage(@ptrCast(self), messageText, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IUssdMessageFactory";
@@ -6394,8 +6675,11 @@ pub const IUssdMessageFactory = extern struct {
 };
 pub const IUssdReply = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6403,13 +6687,13 @@ pub const IUssdReply = extern struct {
     pub fn getResultCode(self: *@This()) core.HResult!UssdResultCode {
         var _r: UssdResultCode = undefined;
         const _c = self.vtable.get_ResultCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessage(self: *@This()) core.HResult!*UssdMessage {
         var _r: *UssdMessage = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IUssdReply";
@@ -6430,8 +6714,11 @@ pub const IUssdReply = extern struct {
 };
 pub const IUssdSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6439,12 +6726,12 @@ pub const IUssdSession = extern struct {
     pub fn SendMessageAndGetReplyAsync(self: *@This(), message: *UssdMessage) core.HResult!*IAsyncOperation(UssdReply) {
         var _r: *IAsyncOperation(UssdReply) = undefined;
         const _c = self.vtable.SendMessageAndGetReplyAsync(@ptrCast(self), message, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IUssdSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6464,8 +6751,11 @@ pub const IUssdSession = extern struct {
 };
 pub const IUssdSessionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6473,13 +6763,13 @@ pub const IUssdSessionStatics = extern struct {
     pub fn CreateFromNetworkAccountId(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*UssdSession {
         var _r: *UssdSession = undefined;
         const _c = self.vtable.CreateFromNetworkAccountId(@ptrCast(self), networkAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromNetworkInterfaceId(self: *@This(), networkInterfaceId: ?HSTRING) core.HResult!*UssdSession {
         var _r: *UssdSession = undefined;
         const _c = self.vtable.CreateFromNetworkInterfaceId(@ptrCast(self), networkInterfaceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.IUssdSessionStatics";
@@ -6500,14 +6790,11 @@ pub const IUssdSessionStatics = extern struct {
 };
 pub const KnownCSimFilePaths = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6530,14 +6817,11 @@ pub const KnownCSimFilePaths = extern struct {
 };
 pub const KnownRuimFilePaths = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6560,14 +6844,11 @@ pub const KnownRuimFilePaths = extern struct {
 };
 pub const KnownSimFilePaths = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6594,14 +6875,11 @@ pub const KnownSimFilePaths = extern struct {
 };
 pub const KnownUSimFilePaths = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6632,14 +6910,11 @@ pub const KnownUSimFilePaths = extern struct {
 };
 pub const MobileBroadbandAccount = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6667,15 +6942,13 @@ pub const MobileBroadbandAccount = extern struct {
     pub fn GetConnectionProfiles(self: *@This()) core.HResult!*IVectorView(ConnectionProfile) {
         var this: ?*IMobileBroadbandAccount2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandAccount2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandAccount2.IID, @ptrCast(&this));
         return try this.?.GetConnectionProfiles();
     }
     pub fn getAccountExperienceUrl(self: *@This()) core.HResult!*Uri {
         var this: ?*IMobileBroadbandAccount3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandAccount3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandAccount3.IID, @ptrCast(&this));
         return try this.?.getAccountExperienceUrl();
     }
     pub fn getAvailableNetworkAccountIds() core.HResult!*IVectorView(?HSTRING) {
@@ -6695,14 +6968,11 @@ pub const MobileBroadbandAccount = extern struct {
 };
 pub const MobileBroadbandAccountEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6719,14 +6989,11 @@ pub const MobileBroadbandAccountEventArgs = extern struct {
 };
 pub const MobileBroadbandAccountUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6751,14 +7018,11 @@ pub const MobileBroadbandAccountUpdatedEventArgs = extern struct {
 };
 pub const MobileBroadbandAccountWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6835,14 +7099,11 @@ pub const MobileBroadbandAccountWatcherStatus = enum(i32) {
 };
 pub const MobileBroadbandAntennaSar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6868,14 +7129,11 @@ pub const MobileBroadbandAntennaSar = extern struct {
 };
 pub const MobileBroadbandCellCdma = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6920,14 +7178,11 @@ pub const MobileBroadbandCellCdma = extern struct {
 };
 pub const MobileBroadbandCellGsm = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6968,14 +7223,11 @@ pub const MobileBroadbandCellGsm = extern struct {
 };
 pub const MobileBroadbandCellLte = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7020,14 +7272,11 @@ pub const MobileBroadbandCellLte = extern struct {
 };
 pub const MobileBroadbandCellNR = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7076,14 +7325,11 @@ pub const MobileBroadbandCellNR = extern struct {
 };
 pub const MobileBroadbandCellTdscdma = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7128,14 +7374,11 @@ pub const MobileBroadbandCellTdscdma = extern struct {
 };
 pub const MobileBroadbandCellUmts = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7180,14 +7423,11 @@ pub const MobileBroadbandCellUmts = extern struct {
 };
 pub const MobileBroadbandCellsInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7235,15 +7475,13 @@ pub const MobileBroadbandCellsInfo = extern struct {
     pub fn getNeighboringCellsNR(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellNR) {
         var this: ?*IMobileBroadbandCellsInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandCellsInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandCellsInfo2.IID, @ptrCast(&this));
         return try this.?.getNeighboringCellsNR();
     }
     pub fn getServingCellsNR(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellNR) {
         var this: ?*IMobileBroadbandCellsInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandCellsInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandCellsInfo2.IID, @ptrCast(&this));
         return try this.?.getServingCellsNR();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandCellsInfo";
@@ -7254,14 +7492,11 @@ pub const MobileBroadbandCellsInfo = extern struct {
 };
 pub const MobileBroadbandCurrentSlotIndexChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7278,14 +7513,11 @@ pub const MobileBroadbandCurrentSlotIndexChangedEventArgs = extern struct {
 };
 pub const MobileBroadbandDeviceInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7349,50 +7581,43 @@ pub const MobileBroadbandDeviceInformation = extern struct {
     pub fn getPinManager(self: *@This()) core.HResult!*MobileBroadbandPinManager {
         var this: ?*IMobileBroadbandDeviceInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
         return try this.?.getPinManager();
     }
     pub fn getRevision(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
         return try this.?.getRevision();
     }
     pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
         return try this.?.getSerialNumber();
     }
     pub fn getSimSpn(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
         return try this.?.getSimSpn();
     }
     pub fn getSimPnn(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
         return try this.?.getSimPnn();
     }
     pub fn getSimGid1(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
         return try this.?.getSimGid1();
     }
     pub fn getSlotManager(self: *@This()) core.HResult!*MobileBroadbandSlotManager {
         var this: ?*IMobileBroadbandDeviceInformation4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation4.IID, @ptrCast(&this));
         return try this.?.getSlotManager();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandDeviceInformation";
@@ -7403,14 +7628,11 @@ pub const MobileBroadbandDeviceInformation = extern struct {
 };
 pub const MobileBroadbandDeviceService = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7439,14 +7661,11 @@ pub const MobileBroadbandDeviceService = extern struct {
 };
 pub const MobileBroadbandDeviceServiceCommandEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7475,14 +7694,11 @@ pub const MobileBroadbandDeviceServiceCommandEventArgs = extern struct {
 };
 pub const MobileBroadbandDeviceServiceCommandResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7503,14 +7719,11 @@ pub const MobileBroadbandDeviceServiceCommandResult = extern struct {
 };
 pub const MobileBroadbandDeviceServiceCommandSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7530,15 +7743,13 @@ pub const MobileBroadbandDeviceServiceCommandSession = extern struct {
     pub fn addCommandReceived(self: *@This(), handler: *TypedEventHandler(MobileBroadbandDeviceServiceCommandSession,MobileBroadbandDeviceServiceCommandEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMobileBroadbandDeviceServiceCommandSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceCommandSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceCommandSession2.IID, @ptrCast(&this));
         return try this.?.addCommandReceived(handler);
     }
     pub fn removeCommandReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMobileBroadbandDeviceServiceCommandSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceCommandSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceCommandSession2.IID, @ptrCast(&this));
         return try this.?.removeCommandReceived(token);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandDeviceServiceCommandSession";
@@ -7549,14 +7760,11 @@ pub const MobileBroadbandDeviceServiceCommandSession = extern struct {
 };
 pub const MobileBroadbandDeviceServiceDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7573,14 +7781,11 @@ pub const MobileBroadbandDeviceServiceDataReceivedEventArgs = extern struct {
 };
 pub const MobileBroadbandDeviceServiceDataSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7609,14 +7814,11 @@ pub const MobileBroadbandDeviceServiceDataSession = extern struct {
 };
 pub const MobileBroadbandDeviceServiceInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7641,14 +7843,11 @@ pub const MobileBroadbandDeviceServiceInformation = extern struct {
 };
 pub const MobileBroadbandDeviceServiceTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7668,8 +7867,7 @@ pub const MobileBroadbandDeviceServiceTriggerDetails = extern struct {
     pub fn getEventId(self: *@This()) core.HResult!u32 {
         var this: ?*IMobileBroadbandDeviceServiceTriggerDetails2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceTriggerDetails2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceTriggerDetails2.IID, @ptrCast(&this));
         return try this.?.getEventId();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandDeviceServiceTriggerDetails";
@@ -7686,14 +7884,11 @@ pub const MobileBroadbandDeviceType = enum(i32) {
 };
 pub const MobileBroadbandModem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7741,71 +7936,61 @@ pub const MobileBroadbandModem = extern struct {
     pub fn GetIsPassthroughEnabledAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandModem2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
         return try this.?.GetIsPassthroughEnabledAsync();
     }
     pub fn SetIsPassthroughEnabledAsync(self: *@This(), value: bool) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var this: ?*IMobileBroadbandModem2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
         return try this.?.SetIsPassthroughEnabledAsync(value);
     }
     pub fn TryGetPcoAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandPco) {
         var this: ?*IMobileBroadbandModem3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         return try this.?.TryGetPcoAsync();
     }
     pub fn getIsInEmergencyCallMode(self: *@This()) core.HResult!bool {
         var this: ?*IMobileBroadbandModem3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         return try this.?.getIsInEmergencyCallMode();
     }
     pub fn addIsInEmergencyCallModeChanged(self: *@This(), handler: *TypedEventHandler(MobileBroadbandModem,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMobileBroadbandModem3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         return try this.?.addIsInEmergencyCallModeChanged(handler);
     }
     pub fn removeIsInEmergencyCallModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMobileBroadbandModem3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         return try this.?.removeIsInEmergencyCallModeChanged(token);
     }
     pub fn SetIsPassthroughEnabledAsyncWithSlotindex(self: *@This(), value: bool, slotindex: i32) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var this: ?*IMobileBroadbandModem4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         return try this.?.SetIsPassthroughEnabledAsyncWithSlotindex(value, slotindex);
     }
     pub fn GetIsPassthroughEnabledAsyncWithSlotindex(self: *@This(), slotindex: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandModem4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         return try this.?.GetIsPassthroughEnabledAsyncWithSlotindex(slotindex);
     }
     pub fn SetIsPassthroughEnabled(self: *@This(), value: bool, slotindex: i32) core.HResult!MobileBroadbandModemStatus {
         var this: ?*IMobileBroadbandModem4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         return try this.?.SetIsPassthroughEnabled(value, slotindex);
     }
     pub fn GetIsPassthroughEnabled(self: *@This(), slotindex: i32) core.HResult!bool {
         var this: ?*IMobileBroadbandModem4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         return try this.?.GetIsPassthroughEnabled(slotindex);
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
@@ -7829,14 +8014,11 @@ pub const MobileBroadbandModem = extern struct {
 };
 pub const MobileBroadbandModemConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7856,8 +8038,7 @@ pub const MobileBroadbandModemConfiguration = extern struct {
     pub fn getSarManager(self: *@This()) core.HResult!*MobileBroadbandSarManager {
         var this: ?*IMobileBroadbandModemConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModemConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModemConfiguration2.IID, @ptrCast(&this));
         return try this.?.getSarManager();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandModemConfiguration";
@@ -7868,14 +8049,11 @@ pub const MobileBroadbandModemConfiguration = extern struct {
 };
 pub const MobileBroadbandModemIsolation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7915,14 +8093,11 @@ pub const MobileBroadbandModemStatus = enum(i32) {
 };
 pub const MobileBroadbandNetwork = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7970,22 +8145,19 @@ pub const MobileBroadbandNetwork = extern struct {
     pub fn GetVoiceCallSupportAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandNetwork2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork2.IID, @ptrCast(&this));
         return try this.?.GetVoiceCallSupportAsync();
     }
     pub fn getRegistrationUiccApps(self: *@This()) core.HResult!*IVectorView(MobileBroadbandUiccApp) {
         var this: ?*IMobileBroadbandNetwork2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork2.IID, @ptrCast(&this));
         return try this.?.getRegistrationUiccApps();
     }
     pub fn GetCellsInfoAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandCellsInfo) {
         var this: ?*IMobileBroadbandNetwork3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork3.IID, @ptrCast(&this));
         return try this.?.GetCellsInfoAsync();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandNetwork";
@@ -7996,14 +8168,11 @@ pub const MobileBroadbandNetwork = extern struct {
 };
 pub const MobileBroadbandNetworkRegistrationStateChange = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8024,14 +8193,11 @@ pub const MobileBroadbandNetworkRegistrationStateChange = extern struct {
 };
 pub const MobileBroadbandNetworkRegistrationStateChangeTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8048,14 +8214,11 @@ pub const MobileBroadbandNetworkRegistrationStateChangeTriggerDetails = extern s
 };
 pub const MobileBroadbandPco = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8080,14 +8243,11 @@ pub const MobileBroadbandPco = extern struct {
 };
 pub const MobileBroadbandPcoDataChangeTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8104,14 +8264,11 @@ pub const MobileBroadbandPcoDataChangeTriggerDetails = extern struct {
 };
 pub const MobileBroadbandPin = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8183,14 +8340,11 @@ pub const MobileBroadbandPinLockState = enum(i32) {
 };
 pub const MobileBroadbandPinLockStateChange = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8215,14 +8369,11 @@ pub const MobileBroadbandPinLockStateChange = extern struct {
 };
 pub const MobileBroadbandPinLockStateChangeTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8239,14 +8390,11 @@ pub const MobileBroadbandPinLockStateChangeTriggerDetails = extern struct {
 };
 pub const MobileBroadbandPinManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8267,14 +8415,11 @@ pub const MobileBroadbandPinManager = extern struct {
 };
 pub const MobileBroadbandPinOperationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8312,14 +8457,11 @@ pub const MobileBroadbandRadioState = enum(i32) {
 };
 pub const MobileBroadbandRadioStateChange = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8340,14 +8482,11 @@ pub const MobileBroadbandRadioStateChange = extern struct {
 };
 pub const MobileBroadbandRadioStateChangeTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8364,14 +8503,11 @@ pub const MobileBroadbandRadioStateChangeTriggerDetails = extern struct {
 };
 pub const MobileBroadbandSarManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8444,14 +8580,11 @@ pub const MobileBroadbandSarManager = extern struct {
 };
 pub const MobileBroadbandSlotInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8467,8 +8600,7 @@ pub const MobileBroadbandSlotInfo = extern struct {
     pub fn getIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandSlotInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandSlotInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandSlotInfo2.IID, @ptrCast(&this));
         return try this.?.getIccId();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandSlotInfo";
@@ -8479,14 +8611,11 @@ pub const MobileBroadbandSlotInfo = extern struct {
 };
 pub const MobileBroadbandSlotInfoChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8503,14 +8632,11 @@ pub const MobileBroadbandSlotInfoChangedEventArgs = extern struct {
 };
 pub const MobileBroadbandSlotManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8567,14 +8693,11 @@ pub const MobileBroadbandSlotState = enum(i32) {
 };
 pub const MobileBroadbandTransmissionStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8591,14 +8714,11 @@ pub const MobileBroadbandTransmissionStateChangedEventArgs = extern struct {
 };
 pub const MobileBroadbandUicc = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8619,14 +8739,11 @@ pub const MobileBroadbandUicc = extern struct {
 };
 pub const MobileBroadbandUiccApp = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8661,14 +8778,11 @@ pub const MobileBroadbandUiccAppOperationStatus = enum(i32) {
 };
 pub const MobileBroadbandUiccAppReadRecordResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8689,14 +8803,11 @@ pub const MobileBroadbandUiccAppReadRecordResult = extern struct {
 };
 pub const MobileBroadbandUiccAppRecordDetailsResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8733,14 +8844,11 @@ pub const MobileBroadbandUiccAppRecordDetailsResult = extern struct {
 };
 pub const MobileBroadbandUiccAppsResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8774,14 +8882,11 @@ pub const NetworkOperatorDataUsageNotificationKind = enum(i32) {
 };
 pub const NetworkOperatorDataUsageTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8813,14 +8918,11 @@ pub const NetworkOperatorEventMessageType = enum(i32) {
 };
 pub const NetworkOperatorTetheringAccessPointConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8844,57 +8946,49 @@ pub const NetworkOperatorTetheringAccessPointConfiguration = extern struct {
     pub fn IsBandSupported(self: *@This(), band: TetheringWiFiBand) core.HResult!bool {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         return try this.?.IsBandSupported(band);
     }
     pub fn IsBandSupportedAsync(self: *@This(), band: TetheringWiFiBand) core.HResult!*IAsyncOperation(bool) {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         return try this.?.IsBandSupportedAsync(band);
     }
     pub fn getBand(self: *@This()) core.HResult!TetheringWiFiBand {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         return try this.?.getBand();
     }
     pub fn putBand(self: *@This(), value: TetheringWiFiBand) core.HResult!void {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         return try this.?.putBand(value);
     }
     pub fn IsAuthenticationKindSupported(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!bool {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         return try this.?.IsAuthenticationKindSupported(authenticationKind);
     }
     pub fn IsAuthenticationKindSupportedAsync(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!*IAsyncOperation(bool) {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         return try this.?.IsAuthenticationKindSupportedAsync(authenticationKind);
     }
     pub fn getAuthenticationKind(self: *@This()) core.HResult!TetheringWiFiAuthenticationKind {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         return try this.?.getAuthenticationKind();
     }
     pub fn putAuthenticationKind(self: *@This(), value: TetheringWiFiAuthenticationKind) core.HResult!void {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         return try this.?.putAuthenticationKind(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -8910,14 +9004,11 @@ pub const NetworkOperatorTetheringAccessPointConfiguration = extern struct {
 };
 pub const NetworkOperatorTetheringClient = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8938,14 +9029,11 @@ pub const NetworkOperatorTetheringClient = extern struct {
 };
 pub const NetworkOperatorTetheringManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8981,15 +9069,13 @@ pub const NetworkOperatorTetheringManager = extern struct {
     pub fn GetTetheringClients(self: *@This()) core.HResult!*IVectorView(NetworkOperatorTetheringClient) {
         var this: ?*INetworkOperatorTetheringClientManager = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringClientManager.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringClientManager.IID, @ptrCast(&this));
         return try this.?.GetTetheringClients();
     }
     pub fn StartTetheringAsyncWithConfiguration(self: *@This(), configuration: *NetworkOperatorTetheringSessionAccessPointConfiguration) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
         var this: ?*INetworkOperatorTetheringManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringManager2.IID, @ptrCast(&this));
         return try this.?.StartTetheringAsyncWithConfiguration(configuration);
     }
     pub fn GetTetheringCapabilityFromConnectionProfile(profile: *ConnectionProfile) core.HResult!TetheringCapability {
@@ -9044,14 +9130,11 @@ pub const NetworkOperatorTetheringManager = extern struct {
 };
 pub const NetworkOperatorTetheringOperationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9072,14 +9155,11 @@ pub const NetworkOperatorTetheringOperationResult = extern struct {
 };
 pub const NetworkOperatorTetheringSessionAccessPointConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9170,14 +9250,11 @@ pub const ProfileUsage = extern struct {
 };
 pub const ProvisionFromXmlDocumentResults = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9198,14 +9275,11 @@ pub const ProvisionFromXmlDocumentResults = extern struct {
 };
 pub const ProvisionedProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9226,14 +9300,11 @@ pub const ProvisionedProfile = extern struct {
 };
 pub const ProvisioningAgent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9274,14 +9345,11 @@ pub const TetheringCapability = enum(i32) {
 };
 pub const TetheringEntitlementCheckTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9365,14 +9433,11 @@ pub const UiccAppRecordKind = enum(i32) {
 };
 pub const UssdMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9414,14 +9479,11 @@ pub const UssdMessage = extern struct {
 };
 pub const UssdReply = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9450,14 +9512,11 @@ pub const UssdResultCode = enum(i32) {
 };
 pub const UssdSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

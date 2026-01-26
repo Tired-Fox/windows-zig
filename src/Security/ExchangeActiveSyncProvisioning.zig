@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const EasClientSecurityPolicy = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -98,14 +95,11 @@ pub const EasClientSecurityPolicy = extern struct {
 };
 pub const EasComplianceResults = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -149,8 +143,7 @@ pub const EasComplianceResults = extern struct {
     pub fn getEncryptionProviderType(self: *@This()) core.HResult!EasEncryptionProviderType {
         var this: ?*IEasComplianceResults2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IEasComplianceResults2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IEasComplianceResults2.IID, @ptrCast(&this));
         return try this.?.getEncryptionProviderType();
     }
     pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.EasComplianceResults";
@@ -259,8 +252,11 @@ pub const EasRequireEncryptionResult = enum(i32) {
 };
 pub const IEasClientSecurityPolicy = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -268,93 +264,93 @@ pub const IEasClientSecurityPolicy = extern struct {
     pub fn getRequireEncryption(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RequireEncryption(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRequireEncryption(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_RequireEncryption(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinPasswordLength(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_MinPasswordLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinPasswordLength(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_MinPasswordLength(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisallowConvenienceLogon(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DisallowConvenienceLogon(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisallowConvenienceLogon(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_DisallowConvenienceLogon(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinPasswordComplexCharacters(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_MinPasswordComplexCharacters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinPasswordComplexCharacters(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_MinPasswordComplexCharacters(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPasswordExpiration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_PasswordExpiration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPasswordExpiration(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_PasswordExpiration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPasswordHistory(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PasswordHistory(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPasswordHistory(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_PasswordHistory(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxPasswordFailedAttempts(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_MaxPasswordFailedAttempts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxPasswordFailedAttempts(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.put_MaxPasswordFailedAttempts(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxInactivityTimeLock(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_MaxInactivityTimeLock(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxInactivityTimeLock(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_MaxInactivityTimeLock(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CheckCompliance(self: *@This()) core.HResult!*EasComplianceResults {
         var _r: *EasComplianceResults = undefined;
         const _c = self.vtable.CheckCompliance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplyAsync(self: *@This()) core.HResult!*IAsyncOperation(EasComplianceResults) {
         var _r: *IAsyncOperation(EasComplianceResults) = undefined;
         const _c = self.vtable.ApplyAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasClientSecurityPolicy";
@@ -391,8 +387,11 @@ pub const IEasClientSecurityPolicy = extern struct {
 };
 pub const IEasComplianceResults = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -400,55 +399,55 @@ pub const IEasComplianceResults = extern struct {
     pub fn getCompliant(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Compliant(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequireEncryptionResult(self: *@This()) core.HResult!EasRequireEncryptionResult {
         var _r: EasRequireEncryptionResult = undefined;
         const _c = self.vtable.get_RequireEncryptionResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinPasswordLengthResult(self: *@This()) core.HResult!EasMinPasswordLengthResult {
         var _r: EasMinPasswordLengthResult = undefined;
         const _c = self.vtable.get_MinPasswordLengthResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisallowConvenienceLogonResult(self: *@This()) core.HResult!EasDisallowConvenienceLogonResult {
         var _r: EasDisallowConvenienceLogonResult = undefined;
         const _c = self.vtable.get_DisallowConvenienceLogonResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinPasswordComplexCharactersResult(self: *@This()) core.HResult!EasMinPasswordComplexCharactersResult {
         var _r: EasMinPasswordComplexCharactersResult = undefined;
         const _c = self.vtable.get_MinPasswordComplexCharactersResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPasswordExpirationResult(self: *@This()) core.HResult!EasPasswordExpirationResult {
         var _r: EasPasswordExpirationResult = undefined;
         const _c = self.vtable.get_PasswordExpirationResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPasswordHistoryResult(self: *@This()) core.HResult!EasPasswordHistoryResult {
         var _r: EasPasswordHistoryResult = undefined;
         const _c = self.vtable.get_PasswordHistoryResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxPasswordFailedAttemptsResult(self: *@This()) core.HResult!EasMaxPasswordFailedAttemptsResult {
         var _r: EasMaxPasswordFailedAttemptsResult = undefined;
         const _c = self.vtable.get_MaxPasswordFailedAttemptsResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxInactivityTimeLockResult(self: *@This()) core.HResult!EasMaxInactivityTimeLockResult {
         var _r: EasMaxInactivityTimeLockResult = undefined;
         const _c = self.vtable.get_MaxInactivityTimeLockResult(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasComplianceResults";
@@ -476,8 +475,11 @@ pub const IEasComplianceResults = extern struct {
 };
 pub const IEasComplianceResults2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -485,7 +487,7 @@ pub const IEasComplianceResults2 = extern struct {
     pub fn getEncryptionProviderType(self: *@This()) core.HResult!EasEncryptionProviderType {
         var _r: EasEncryptionProviderType = undefined;
         const _c = self.vtable.get_EncryptionProviderType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasComplianceResults2";
@@ -505,14 +507,11 @@ pub const IEasComplianceResults2 = extern struct {
 };
 pub const EasClientDeviceInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -544,15 +543,13 @@ pub const EasClientDeviceInformation = extern struct {
     pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEasClientDeviceInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
         return try this.?.getSystemHardwareVersion();
     }
     pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEasClientDeviceInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
         return try this.?.getSystemFirmwareVersion();
     }
     pub fn init() core.HResult!*@This() {
@@ -568,8 +565,11 @@ pub const EasClientDeviceInformation = extern struct {
 };
 pub const IEasClientDeviceInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -577,37 +577,37 @@ pub const IEasClientDeviceInformation = extern struct {
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOperatingSystem(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OperatingSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemManufacturer(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemManufacturer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemProductName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemProductName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemSku(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemSku(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasClientDeviceInformation";
@@ -632,8 +632,11 @@ pub const IEasClientDeviceInformation = extern struct {
 };
 pub const IEasClientDeviceInformation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -641,13 +644,13 @@ pub const IEasClientDeviceInformation2 = extern struct {
     pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemHardwareVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemFirmwareVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasClientDeviceInformation2";

@@ -18,28 +18,11 @@ const ToastDismissedEventArgs = windows.UI.Notifications.ToastDismissedEventArgs
 const ToastActivatedEventArgs = windows.UI.Notifications.ToastActivatedEventArgs;
 const ToastFailedEventArgs = windows.UI.Notifications.ToastFailedEventArgs;
 
+const WindowsCreateString = windows.core.WindowsCreateString;
+const WindowsDeleteString = windows.core.WindowsDeleteString;
+const WindowsGetString = windows.core.WindowsGetString;
+
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
-
-pub fn WindowsCreateString(string: [:0]const u16) !?HSTRING {
-    var result: ?HSTRING = undefined;
-    if (win32.system.win_rt.WindowsCreateString(string.ptr, @intCast(string.len), &result) != 0) {
-        return error.E_OUTOFMEMORY;
-    }
-    return result;
-}
-
-pub fn WindowsDeleteString(string: ?HSTRING) void {
-    _ = win32.system.win_rt.WindowsDeleteString(string);
-}
-
-pub fn WindowsGetString(string: ?HSTRING) ?[]const u16 {
-    var len: u32 = 0;
-    const buffer = win32.system.win_rt.WindowsGetStringRawBuffer(string, &len);
-    if (buffer) |buf| {
-        return buf[0..@as(usize, @intCast(len))];
-    }
-    return null;
-}
 
 fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) void {
     _ = sender;

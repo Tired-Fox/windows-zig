@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IUserNotificationListener = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,44 +13,44 @@ pub const IUserNotificationListener = extern struct {
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(UserNotificationListenerAccessStatus) {
         var _r: *IAsyncOperation(UserNotificationListenerAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAccessStatus(self: *@This()) core.HResult!UserNotificationListenerAccessStatus {
         var _r: UserNotificationListenerAccessStatus = undefined;
         const _c = self.vtable.GetAccessStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addNotificationChanged(self: *@This(), handler: *TypedEventHandler(UserNotificationListener,UserNotificationChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_NotificationChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeNotificationChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_NotificationChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetNotificationsAsync(self: *@This(), kinds: NotificationKinds) core.HResult!*IAsyncOperation(IVectorView(UserNotification)) {
         var _r: *IAsyncOperation(IVectorView(UserNotification)) = undefined;
         const _c = self.vtable.GetNotificationsAsync(@ptrCast(self), kinds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNotification(self: *@This(), notificationId: u32) core.HResult!*UserNotification {
         var _r: *UserNotification = undefined;
         const _c = self.vtable.GetNotification(@ptrCast(self), notificationId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearNotifications(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearNotifications(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveNotification(self: *@This(), notificationId: u32) core.HResult!void {
         const _c = self.vtable.RemoveNotification(@ptrCast(self), notificationId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.Management.IUserNotificationListener";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -73,8 +76,11 @@ pub const IUserNotificationListener = extern struct {
 };
 pub const IUserNotificationListenerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -82,7 +88,7 @@ pub const IUserNotificationListenerStatics = extern struct {
     pub fn getCurrent(self: *@This()) core.HResult!*UserNotificationListener {
         var _r: *UserNotificationListener = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.Management.IUserNotificationListenerStatics";
@@ -102,14 +108,11 @@ pub const IUserNotificationListenerStatics = extern struct {
 };
 pub const UserNotificationListener = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

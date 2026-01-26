@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPwmControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,52 +13,52 @@ pub const IPwmControllerProvider = extern struct {
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PinCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getActualFrequency(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ActualFrequency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetDesiredFrequency(self: *@This(), frequency: f64) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.SetDesiredFrequency(@ptrCast(self), frequency, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxFrequency(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxFrequency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinFrequency(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MinFrequency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcquirePin(self: *@This(), pin: i32) core.HResult!void {
         const _c = self.vtable.AcquirePin(@ptrCast(self), pin);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReleasePin(self: *@This(), pin: i32) core.HResult!void {
         const _c = self.vtable.ReleasePin(@ptrCast(self), pin);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EnablePin(self: *@This(), pin: i32) core.HResult!void {
         const _c = self.vtable.EnablePin(@ptrCast(self), pin);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DisablePin(self: *@This(), pin: i32) core.HResult!void {
         const _c = self.vtable.DisablePin(@ptrCast(self), pin);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPulseParameters(self: *@This(), pin: i32, dutyCycle: f64, invertPolarity: bool) core.HResult!void {
         const _c = self.vtable.SetPulseParameters(@ptrCast(self), pin, dutyCycle, invertPolarity);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Pwm.Provider.IPwmControllerProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -83,8 +86,11 @@ pub const IPwmControllerProvider = extern struct {
 };
 pub const IPwmProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -92,7 +98,7 @@ pub const IPwmProvider = extern struct {
     pub fn GetControllers(self: *@This()) core.HResult!*IVectorView(IPwmControllerProvider) {
         var _r: *IVectorView(IPwmControllerProvider) = undefined;
         const _c = self.vtable.GetControllers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Pwm.Provider.IPwmProvider";

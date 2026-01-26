@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IWiFiAdapter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,52 +13,52 @@ pub const IWiFiAdapter = extern struct {
     pub fn getNetworkAdapter(self: *@This()) core.HResult!*NetworkAdapter {
         var _r: *NetworkAdapter = undefined;
         const _c = self.vtable.get_NetworkAdapter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ScanAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ScanAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkReport(self: *@This()) core.HResult!*WiFiNetworkReport {
         var _r: *WiFiNetworkReport = undefined;
         const _c = self.vtable.get_NetworkReport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAvailableNetworksChanged(self: *@This(), args: *TypedEventHandler(WiFiAdapter,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailableNetworksChanged(@ptrCast(self), args, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAvailableNetworksChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AvailableNetworksChanged(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConnectAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var _r: *IAsyncOperation(WiFiConnectionResult) = undefined;
         const _c = self.vtable.ConnectAsync(@ptrCast(self), availableNetwork, reconnectionKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectAsyncWithPasswordCredential(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var _r: *IAsyncOperation(WiFiConnectionResult) = undefined;
         const _c = self.vtable.ConnectAsyncWithPasswordCredential(@ptrCast(self), availableNetwork, reconnectionKind, passwordCredential, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectAsyncWithPasswordCredentialAndSsid(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var _r: *IAsyncOperation(WiFiConnectionResult) = undefined;
         const _c = self.vtable.ConnectAsyncWithPasswordCredentialAndSsid(@ptrCast(self), availableNetwork, reconnectionKind, passwordCredential, ssid, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Disconnect(self: *@This()) core.HResult!void {
         const _c = self.vtable.Disconnect(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiAdapter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -82,8 +85,11 @@ pub const IWiFiAdapter = extern struct {
 };
 pub const IWiFiAdapter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -91,13 +97,13 @@ pub const IWiFiAdapter2 = extern struct {
     pub fn GetWpsConfigurationAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork) core.HResult!*IAsyncOperation(WiFiWpsConfigurationResult) {
         var _r: *IAsyncOperation(WiFiWpsConfigurationResult) = undefined;
         const _c = self.vtable.GetWpsConfigurationAsync(@ptrCast(self), availableNetwork, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var _r: *IAsyncOperation(WiFiConnectionResult) = undefined;
         const _c = self.vtable.ConnectAsync(@ptrCast(self), availableNetwork, reconnectionKind, passwordCredential, ssid, connectionMethod, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiAdapter2";
@@ -118,8 +124,11 @@ pub const IWiFiAdapter2 = extern struct {
 };
 pub const IWiFiAdapterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -127,25 +136,25 @@ pub const IWiFiAdapterStatics = extern struct {
     pub fn FindAllAdaptersAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(WiFiAdapter)) {
         var _r: *IAsyncOperation(IVectorView(WiFiAdapter)) = undefined;
         const _c = self.vtable.FindAllAdaptersAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(WiFiAdapter) {
         var _r: *IAsyncOperation(WiFiAdapter) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(WiFiAccessStatus) {
         var _r: *IAsyncOperation(WiFiAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiAdapterStatics";
@@ -168,8 +177,11 @@ pub const IWiFiAdapterStatics = extern struct {
 };
 pub const IWiFiAvailableNetwork = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -177,67 +189,67 @@ pub const IWiFiAvailableNetwork = extern struct {
     pub fn getUptime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Uptime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBssid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bssid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannelCenterFrequencyInKilohertz(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ChannelCenterFrequencyInKilohertz(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkRssiInDecibelMilliwatts(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NetworkRssiInDecibelMilliwatts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSignalBars(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_SignalBars(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkKind(self: *@This()) core.HResult!WiFiNetworkKind {
         var _r: WiFiNetworkKind = undefined;
         const _c = self.vtable.get_NetworkKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhyKind(self: *@This()) core.HResult!WiFiPhyKind {
         var _r: WiFiPhyKind = undefined;
         const _c = self.vtable.get_PhyKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSecuritySettings(self: *@This()) core.HResult!*NetworkSecuritySettings {
         var _r: *NetworkSecuritySettings = undefined;
         const _c = self.vtable.get_SecuritySettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBeaconInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_BeaconInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsWiFiDirect(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWiFiDirect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiAvailableNetwork";
@@ -267,8 +279,11 @@ pub const IWiFiAvailableNetwork = extern struct {
 };
 pub const IWiFiConnectionResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -276,7 +291,7 @@ pub const IWiFiConnectionResult = extern struct {
     pub fn getConnectionStatus(self: *@This()) core.HResult!WiFiConnectionStatus {
         var _r: WiFiConnectionStatus = undefined;
         const _c = self.vtable.get_ConnectionStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiConnectionResult";
@@ -296,8 +311,11 @@ pub const IWiFiConnectionResult = extern struct {
 };
 pub const IWiFiNetworkReport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -305,13 +323,13 @@ pub const IWiFiNetworkReport = extern struct {
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailableNetworks(self: *@This()) core.HResult!*IVectorView(WiFiAvailableNetwork) {
         var _r: *IVectorView(WiFiAvailableNetwork) = undefined;
         const _c = self.vtable.get_AvailableNetworks(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiNetworkReport";
@@ -332,8 +350,11 @@ pub const IWiFiNetworkReport = extern struct {
 };
 pub const IWiFiOnDemandHotspotConnectTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -341,23 +362,23 @@ pub const IWiFiOnDemandHotspotConnectTriggerDetails = extern struct {
     pub fn getRequestedNetwork(self: *@This()) core.HResult!*WiFiOnDemandHotspotNetwork {
         var _r: *WiFiOnDemandHotspotNetwork = undefined;
         const _c = self.vtable.get_RequestedNetwork(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReportError(self: *@This(), status: WiFiOnDemandHotspotConnectStatus) core.HResult!void {
         const _c = self.vtable.ReportError(@ptrCast(self), status);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(WiFiOnDemandHotspotConnectionResult) {
         var _r: *IAsyncOperation(WiFiOnDemandHotspotConnectionResult) = undefined;
         const _c = self.vtable.ConnectAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Connect(self: *@This()) core.HResult!*WiFiOnDemandHotspotConnectionResult {
         var _r: *WiFiOnDemandHotspotConnectionResult = undefined;
         const _c = self.vtable.Connect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiOnDemandHotspotConnectTriggerDetails";
@@ -380,8 +401,11 @@ pub const IWiFiOnDemandHotspotConnectTriggerDetails = extern struct {
 };
 pub const IWiFiOnDemandHotspotConnectionResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -389,7 +413,7 @@ pub const IWiFiOnDemandHotspotConnectionResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!WiFiOnDemandHotspotConnectStatus {
         var _r: WiFiOnDemandHotspotConnectStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiOnDemandHotspotConnectionResult";
@@ -409,8 +433,11 @@ pub const IWiFiOnDemandHotspotConnectionResult = extern struct {
 };
 pub const IWiFiOnDemandHotspotNetwork = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -418,17 +445,17 @@ pub const IWiFiOnDemandHotspotNetwork = extern struct {
     pub fn GetProperties(self: *@This()) core.HResult!*WiFiOnDemandHotspotNetworkProperties {
         var _r: *WiFiOnDemandHotspotNetworkProperties = undefined;
         const _c = self.vtable.GetProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateProperties(self: *@This(), newProperties: *WiFiOnDemandHotspotNetworkProperties) core.HResult!void {
         const _c = self.vtable.UpdateProperties(@ptrCast(self), newProperties);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiOnDemandHotspotNetwork";
@@ -450,8 +477,11 @@ pub const IWiFiOnDemandHotspotNetwork = extern struct {
 };
 pub const IWiFiOnDemandHotspotNetworkProperties = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -459,72 +489,72 @@ pub const IWiFiOnDemandHotspotNetworkProperties = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAvailability(self: *@This()) core.HResult!WiFiOnDemandHotspotAvailability {
         var _r: WiFiOnDemandHotspotAvailability = undefined;
         const _c = self.vtable.get_Availability(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAvailability(self: *@This(), value: WiFiOnDemandHotspotAvailability) core.HResult!void {
         const _c = self.vtable.put_Availability(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRemainingBatteryPercent(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_RemainingBatteryPercent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRemainingBatteryPercent(self: *@This(), value: *IReference(u32)) core.HResult!void {
         const _c = self.vtable.put_RemainingBatteryPercent(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCellularBars(self: *@This()) core.HResult!*IReference(WiFiOnDemandHotspotCellularBars) {
         var _r: *IReference(WiFiOnDemandHotspotCellularBars) = undefined;
         const _c = self.vtable.get_CellularBars(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCellularBars(self: *@This(), value: *IReference(WiFiOnDemandHotspotCellularBars)) core.HResult!void {
         const _c = self.vtable.put_CellularBars(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsMetered(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMetered(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsMetered(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsMetered(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSsid(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Ssid(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPassword(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_Password(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPassword(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_Password(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiOnDemandHotspotNetworkProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -556,8 +586,11 @@ pub const IWiFiOnDemandHotspotNetworkProperties = extern struct {
 };
 pub const IWiFiOnDemandHotspotNetworkStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -565,7 +598,7 @@ pub const IWiFiOnDemandHotspotNetworkStatics = extern struct {
     pub fn GetOrCreateById(self: *@This(), networkId: *Guid) core.HResult!*WiFiOnDemandHotspotNetwork {
         var _r: *WiFiOnDemandHotspotNetwork = undefined;
         const _c = self.vtable.GetOrCreateById(@ptrCast(self), networkId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiOnDemandHotspotNetworkStatics";
@@ -585,8 +618,11 @@ pub const IWiFiOnDemandHotspotNetworkStatics = extern struct {
 };
 pub const IWiFiWpsConfigurationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -594,13 +630,13 @@ pub const IWiFiWpsConfigurationResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!WiFiWpsConfigurationStatus {
         var _r: WiFiWpsConfigurationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedWpsKinds(self: *@This()) core.HResult!*IVectorView(WiFiWpsKind) {
         var _r: *IVectorView(WiFiWpsKind) = undefined;
         const _c = self.vtable.get_SupportedWpsKinds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.IWiFiWpsConfigurationResult";
@@ -627,14 +663,11 @@ pub const WiFiAccessStatus = enum(i32) {
 };
 pub const WiFiAdapter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -678,15 +711,13 @@ pub const WiFiAdapter = extern struct {
     pub fn GetWpsConfigurationAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork) core.HResult!*IAsyncOperation(WiFiWpsConfigurationResult) {
         var this: ?*IWiFiAdapter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
         return try this.?.GetWpsConfigurationAsync(availableNetwork);
     }
     pub fn ConnectAsyncWithPasswordCredentialAndSsidAndConnectionMethod(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var this: ?*IWiFiAdapter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
         return try this.?.ConnectAsyncWithPasswordCredentialAndSsidAndConnectionMethod(availableNetwork, reconnectionKind, passwordCredential, ssid, connectionMethod);
     }
     pub fn FindAllAdaptersAsync() core.HResult!*IAsyncOperation(IVectorView(WiFiAdapter)) {
@@ -714,14 +745,11 @@ pub const WiFiAdapter = extern struct {
 };
 pub const WiFiAvailableNetwork = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -783,14 +811,11 @@ pub const WiFiConnectionMethod = enum(i32) {
 };
 pub const WiFiConnectionResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -821,14 +846,11 @@ pub const WiFiNetworkKind = enum(i32) {
 };
 pub const WiFiNetworkReport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -882,14 +904,11 @@ pub const WiFiOnDemandHotspotConnectStatus = enum(i32) {
 };
 pub const WiFiOnDemandHotspotConnectTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -918,14 +937,11 @@ pub const WiFiOnDemandHotspotConnectTriggerDetails = extern struct {
 };
 pub const WiFiOnDemandHotspotConnectionResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -942,14 +958,11 @@ pub const WiFiOnDemandHotspotConnectionResult = extern struct {
 };
 pub const WiFiOnDemandHotspotNetwork = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -979,14 +992,11 @@ pub const WiFiOnDemandHotspotNetwork = extern struct {
 };
 pub const WiFiOnDemandHotspotNetworkProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1073,14 +1083,11 @@ pub const WiFiReconnectionKind = enum(i32) {
 };
 pub const WiFiWpsConfigurationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

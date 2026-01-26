@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IWwanConnectionProfileDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,25 +13,25 @@ pub const IWwanConnectionProfileDetails = extern struct {
     pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HomeProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessPointName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNetworkRegistrationState(self: *@This()) core.HResult!WwanNetworkRegistrationState {
         var _r: WwanNetworkRegistrationState = undefined;
         const _c = self.vtable.GetNetworkRegistrationState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentDataClass(self: *@This()) core.HResult!WwanDataClass {
         var _r: WwanDataClass = undefined;
         const _c = self.vtable.GetCurrentDataClass(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IWwanConnectionProfileDetails";
@@ -51,8 +54,11 @@ pub const IWwanConnectionProfileDetails = extern struct {
 };
 pub const IWwanConnectionProfileDetails2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -60,13 +66,13 @@ pub const IWwanConnectionProfileDetails2 = extern struct {
     pub fn getIPKind(self: *@This()) core.HResult!WwanNetworkIPKind {
         var _r: WwanNetworkIPKind = undefined;
         const _c = self.vtable.get_IPKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPurposeGuids(self: *@This()) core.HResult!*IVectorView(Guid) {
         var _r: *IVectorView(Guid) = undefined;
         const _c = self.vtable.get_PurposeGuids(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IWwanConnectionProfileDetails2";
@@ -87,14 +93,11 @@ pub const IWwanConnectionProfileDetails2 = extern struct {
 };
 pub const WwanConnectionProfileDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -118,15 +121,13 @@ pub const WwanConnectionProfileDetails = extern struct {
     pub fn getIPKind(self: *@This()) core.HResult!WwanNetworkIPKind {
         var this: ?*IWwanConnectionProfileDetails2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
         return try this.?.getIPKind();
     }
     pub fn getPurposeGuids(self: *@This()) core.HResult!*IVectorView(Guid) {
         var this: ?*IWwanConnectionProfileDetails2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
         return try this.?.getPurposeGuids();
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.WwanConnectionProfileDetails";
@@ -172,14 +173,11 @@ pub const WwanNetworkRegistrationState = enum(i32) {
 };
 pub const AttributedNetworkUsage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -218,14 +216,11 @@ pub const CellularApnAuthenticationType = enum(i32) {
 };
 pub const CellularApnContext = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -281,15 +276,13 @@ pub const CellularApnContext = extern struct {
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICellularApnContext2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
         return try this.?.getProfileName();
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICellularApnContext2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
         return try this.?.putProfileName(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -305,14 +298,11 @@ pub const CellularApnContext = extern struct {
 };
 pub const ConnectionCost = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -336,8 +326,7 @@ pub const ConnectionCost = extern struct {
     pub fn getBackgroundDataUsageRestricted(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionCost2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionCost2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionCost2.IID, @ptrCast(&this));
         return try this.?.getBackgroundDataUsageRestricted();
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ConnectionCost";
@@ -348,14 +337,11 @@ pub const ConnectionCost = extern struct {
 };
 pub const ConnectionProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -399,99 +385,85 @@ pub const ConnectionProfile = extern struct {
     pub fn getIsWwanConnectionProfile(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.getIsWwanConnectionProfile();
     }
     pub fn getIsWlanConnectionProfile(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.getIsWlanConnectionProfile();
     }
     pub fn getWwanConnectionProfileDetails(self: *@This()) core.HResult!*WwanConnectionProfileDetails {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.getWwanConnectionProfileDetails();
     }
     pub fn getWlanConnectionProfileDetails(self: *@This()) core.HResult!*WlanConnectionProfileDetails {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.getWlanConnectionProfileDetails();
     }
     pub fn getServiceProviderGuid(self: *@This()) core.HResult!*IReference(Guid) {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.getServiceProviderGuid();
     }
     pub fn GetSignalBars(self: *@This()) core.HResult!*IReference(u8) {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.GetSignalBars();
     }
     pub fn GetDomainConnectivityLevel(self: *@This()) core.HResult!DomainConnectivityLevel {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.GetDomainConnectivityLevel();
     }
     pub fn GetNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, granularity: DataUsageGranularity, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(NetworkUsage)) {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.GetNetworkUsageAsync(startTime, endTime, granularity, states);
     }
     pub fn GetConnectivityIntervalsAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(ConnectivityInterval)) {
         var this: ?*IConnectionProfile2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         return try this.?.GetConnectivityIntervalsAsync(startTime, endTime, states);
     }
     pub fn GetAttributedNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(AttributedNetworkUsage)) {
         var this: ?*IConnectionProfile3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile3.IID, @ptrCast(&this));
         return try this.?.GetAttributedNetworkUsageAsync(startTime, endTime, states);
     }
     pub fn GetProviderNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(ProviderNetworkUsage)) {
         var this: ?*IConnectionProfile4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile4.IID, @ptrCast(&this));
         return try this.?.GetProviderNetworkUsageAsync(startTime, endTime, states);
     }
     pub fn getCanDelete(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionProfile5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile5.IID, @ptrCast(&this));
         return try this.?.getCanDelete();
     }
     pub fn TryDeleteAsync(self: *@This()) core.HResult!*IAsyncOperation(ConnectionProfileDeleteStatus) {
         var this: ?*IConnectionProfile5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile5.IID, @ptrCast(&this));
         return try this.?.TryDeleteAsync();
     }
     pub fn IsDomainAuthenticatedBy(self: *@This(), kind: DomainAuthenticationKind) core.HResult!bool {
         var this: ?*IConnectionProfile6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile6.IID, @ptrCast(&this));
         return try this.?.IsDomainAuthenticatedBy(kind);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ConnectionProfile";
@@ -508,14 +480,11 @@ pub const ConnectionProfileDeleteStatus = enum(i32) {
 };
 pub const ConnectionProfileFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -563,64 +532,55 @@ pub const ConnectionProfileFilter = extern struct {
     pub fn putIsRoaming(self: *@This(), value: *IReference(bool)) core.HResult!void {
         var this: ?*IConnectionProfileFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         return try this.?.putIsRoaming(value);
     }
     pub fn getIsRoaming(self: *@This()) core.HResult!*IReference(bool) {
         var this: ?*IConnectionProfileFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         return try this.?.getIsRoaming();
     }
     pub fn putIsOverDataLimit(self: *@This(), value: *IReference(bool)) core.HResult!void {
         var this: ?*IConnectionProfileFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         return try this.?.putIsOverDataLimit(value);
     }
     pub fn getIsOverDataLimit(self: *@This()) core.HResult!*IReference(bool) {
         var this: ?*IConnectionProfileFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         return try this.?.getIsOverDataLimit();
     }
     pub fn putIsBackgroundDataUsageRestricted(self: *@This(), value: *IReference(bool)) core.HResult!void {
         var this: ?*IConnectionProfileFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         return try this.?.putIsBackgroundDataUsageRestricted(value);
     }
     pub fn getIsBackgroundDataUsageRestricted(self: *@This()) core.HResult!*IReference(bool) {
         var this: ?*IConnectionProfileFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         return try this.?.getIsBackgroundDataUsageRestricted();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IConnectionProfileFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         return try this.?.getRawData();
     }
     pub fn putPurposeGuid(self: *@This(), value: *IReference(Guid)) core.HResult!void {
         var this: ?*IConnectionProfileFilter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter3.IID, @ptrCast(&this));
         return try this.?.putPurposeGuid(value);
     }
     pub fn getPurposeGuid(self: *@This()) core.HResult!*IReference(Guid) {
         var this: ?*IConnectionProfileFilter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter3.IID, @ptrCast(&this));
         return try this.?.getPurposeGuid();
     }
     pub fn init() core.HResult!*@This() {
@@ -636,14 +596,11 @@ pub const ConnectionProfileFilter = extern struct {
 };
 pub const ConnectionSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -655,8 +612,7 @@ pub const ConnectionSession = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ConnectionSession";
@@ -667,14 +623,11 @@ pub const ConnectionSession = extern struct {
 };
 pub const ConnectivityInterval = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -695,14 +648,11 @@ pub const ConnectivityInterval = extern struct {
 };
 pub const ConnectivityManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -725,14 +675,11 @@ pub const ConnectivityManager = extern struct {
 };
 pub const DataPlanStatus = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -769,14 +716,11 @@ pub const DataPlanStatus = extern struct {
 };
 pub const DataPlanUsage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -797,14 +741,11 @@ pub const DataPlanUsage = extern struct {
 };
 pub const DataUsage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -841,8 +782,11 @@ pub const DomainConnectivityLevel = enum(i32) {
 };
 pub const IAttributedNetworkUsage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -850,31 +794,31 @@ pub const IAttributedNetworkUsage = extern struct {
     pub fn getBytesSent(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesSent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBytesReceived(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesReceived(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAttributionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AttributionId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAttributionName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AttributionName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAttributionThumbnail(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_AttributionThumbnail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IAttributedNetworkUsage";
@@ -898,8 +842,11 @@ pub const IAttributedNetworkUsage = extern struct {
 };
 pub const ICellularApnContext = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -907,62 +854,62 @@ pub const ICellularApnContext = extern struct {
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProviderId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProviderId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessPointName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAccessPointName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AccessPointName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Password(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPassword(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Password(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCompressionEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCompressionEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCompressionEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCompressionEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAuthenticationType(self: *@This()) core.HResult!CellularApnAuthenticationType {
         var _r: CellularApnAuthenticationType = undefined;
         const _c = self.vtable.get_AuthenticationType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAuthenticationType(self: *@This(), value: CellularApnAuthenticationType) core.HResult!void {
         const _c = self.vtable.put_AuthenticationType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ICellularApnContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -992,8 +939,11 @@ pub const ICellularApnContext = extern struct {
 };
 pub const ICellularApnContext2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1001,12 +951,12 @@ pub const ICellularApnContext2 = extern struct {
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProfileName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ICellularApnContext2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1026,8 +976,11 @@ pub const ICellularApnContext2 = extern struct {
 };
 pub const IConnectionCost = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1035,25 +988,25 @@ pub const IConnectionCost = extern struct {
     pub fn getNetworkCostType(self: *@This()) core.HResult!NetworkCostType {
         var _r: NetworkCostType = undefined;
         const _c = self.vtable.get_NetworkCostType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoaming(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Roaming(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverDataLimit(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_OverDataLimit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getApproachingDataLimit(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ApproachingDataLimit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionCost";
@@ -1076,8 +1029,11 @@ pub const IConnectionCost = extern struct {
 };
 pub const IConnectionCost2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1085,7 +1041,7 @@ pub const IConnectionCost2 = extern struct {
     pub fn getBackgroundDataUsageRestricted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BackgroundDataUsageRestricted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionCost2";
@@ -1105,8 +1061,11 @@ pub const IConnectionCost2 = extern struct {
 };
 pub const IConnectionProfile = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1114,55 +1073,55 @@ pub const IConnectionProfile = extern struct {
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNetworkConnectivityLevel(self: *@This()) core.HResult!NetworkConnectivityLevel {
         var _r: NetworkConnectivityLevel = undefined;
         const _c = self.vtable.GetNetworkConnectivityLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNetworkNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetNetworkNames(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConnectionCost(self: *@This()) core.HResult!*ConnectionCost {
         var _r: *ConnectionCost = undefined;
         const _c = self.vtable.GetConnectionCost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDataPlanStatus(self: *@This()) core.HResult!*DataPlanStatus {
         var _r: *DataPlanStatus = undefined;
         const _c = self.vtable.GetDataPlanStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkAdapter(self: *@This()) core.HResult!*NetworkAdapter {
         var _r: *NetworkAdapter = undefined;
         const _c = self.vtable.get_NetworkAdapter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalUsage(self: *@This(), StartTime: DateTime, EndTime: DateTime) core.HResult!*DataUsage {
         var _r: *DataUsage = undefined;
         const _c = self.vtable.GetLocalUsage(@ptrCast(self), StartTime, EndTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalUsageWithStates(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
         var _r: *DataUsage = undefined;
         const _c = self.vtable.GetLocalUsageWithStates(@ptrCast(self), StartTime, EndTime, States, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkSecuritySettings(self: *@This()) core.HResult!*NetworkSecuritySettings {
         var _r: *NetworkSecuritySettings = undefined;
         const _c = self.vtable.get_NetworkSecuritySettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfile";
@@ -1190,8 +1149,11 @@ pub const IConnectionProfile = extern struct {
 };
 pub const IConnectionProfile2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1199,55 +1161,55 @@ pub const IConnectionProfile2 = extern struct {
     pub fn getIsWwanConnectionProfile(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWwanConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsWlanConnectionProfile(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWlanConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWwanConnectionProfileDetails(self: *@This()) core.HResult!*WwanConnectionProfileDetails {
         var _r: *WwanConnectionProfileDetails = undefined;
         const _c = self.vtable.get_WwanConnectionProfileDetails(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWlanConnectionProfileDetails(self: *@This()) core.HResult!*WlanConnectionProfileDetails {
         var _r: *WlanConnectionProfileDetails = undefined;
         const _c = self.vtable.get_WlanConnectionProfileDetails(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceProviderGuid(self: *@This()) core.HResult!*IReference(Guid) {
         var _r: *IReference(Guid) = undefined;
         const _c = self.vtable.get_ServiceProviderGuid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSignalBars(self: *@This()) core.HResult!*IReference(u8) {
         var _r: *IReference(u8) = undefined;
         const _c = self.vtable.GetSignalBars(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDomainConnectivityLevel(self: *@This()) core.HResult!DomainConnectivityLevel {
         var _r: DomainConnectivityLevel = undefined;
         const _c = self.vtable.GetDomainConnectivityLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, granularity: DataUsageGranularity, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(NetworkUsage)) {
         var _r: *IAsyncOperation(IVectorView(NetworkUsage)) = undefined;
         const _c = self.vtable.GetNetworkUsageAsync(@ptrCast(self), startTime, endTime, granularity, states, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConnectivityIntervalsAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(ConnectivityInterval)) {
         var _r: *IAsyncOperation(IVectorView(ConnectivityInterval)) = undefined;
         const _c = self.vtable.GetConnectivityIntervalsAsync(@ptrCast(self), startTime, endTime, states, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfile2";
@@ -1275,8 +1237,11 @@ pub const IConnectionProfile2 = extern struct {
 };
 pub const IConnectionProfile3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1284,7 +1249,7 @@ pub const IConnectionProfile3 = extern struct {
     pub fn GetAttributedNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(AttributedNetworkUsage)) {
         var _r: *IAsyncOperation(IVectorView(AttributedNetworkUsage)) = undefined;
         const _c = self.vtable.GetAttributedNetworkUsageAsync(@ptrCast(self), startTime, endTime, states, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfile3";
@@ -1304,8 +1269,11 @@ pub const IConnectionProfile3 = extern struct {
 };
 pub const IConnectionProfile4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1313,7 +1281,7 @@ pub const IConnectionProfile4 = extern struct {
     pub fn GetProviderNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(ProviderNetworkUsage)) {
         var _r: *IAsyncOperation(IVectorView(ProviderNetworkUsage)) = undefined;
         const _c = self.vtable.GetProviderNetworkUsageAsync(@ptrCast(self), startTime, endTime, states, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfile4";
@@ -1333,8 +1301,11 @@ pub const IConnectionProfile4 = extern struct {
 };
 pub const IConnectionProfile5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1342,13 +1313,13 @@ pub const IConnectionProfile5 = extern struct {
     pub fn getCanDelete(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanDelete(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDeleteAsync(self: *@This()) core.HResult!*IAsyncOperation(ConnectionProfileDeleteStatus) {
         var _r: *IAsyncOperation(ConnectionProfileDeleteStatus) = undefined;
         const _c = self.vtable.TryDeleteAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfile5";
@@ -1369,8 +1340,11 @@ pub const IConnectionProfile5 = extern struct {
 };
 pub const IConnectionProfile6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1378,7 +1352,7 @@ pub const IConnectionProfile6 = extern struct {
     pub fn IsDomainAuthenticatedBy(self: *@This(), kind: DomainAuthenticationKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDomainAuthenticatedBy(@ptrCast(self), kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfile6";
@@ -1398,60 +1372,63 @@ pub const IConnectionProfile6 = extern struct {
 };
 pub const IConnectionProfileFilter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putIsConnected(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsConnected(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConnected(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsWwanConnectionProfile(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsWwanConnectionProfile(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsWwanConnectionProfile(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWwanConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsWlanConnectionProfile(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsWlanConnectionProfile(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsWlanConnectionProfile(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWlanConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNetworkCostType(self: *@This(), value: NetworkCostType) core.HResult!void {
         const _c = self.vtable.put_NetworkCostType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNetworkCostType(self: *@This()) core.HResult!NetworkCostType {
         var _r: NetworkCostType = undefined;
         const _c = self.vtable.get_NetworkCostType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServiceProviderGuid(self: *@This(), value: *IReference(Guid)) core.HResult!void {
         const _c = self.vtable.put_ServiceProviderGuid(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServiceProviderGuid(self: *@This()) core.HResult!*IReference(Guid) {
         var _r: *IReference(Guid) = undefined;
         const _c = self.vtable.get_ServiceProviderGuid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfileFilter";
@@ -1480,46 +1457,49 @@ pub const IConnectionProfileFilter = extern struct {
 };
 pub const IConnectionProfileFilter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putIsRoaming(self: *@This(), value: *IReference(bool)) core.HResult!void {
         const _c = self.vtable.put_IsRoaming(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsRoaming(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsRoaming(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsOverDataLimit(self: *@This(), value: *IReference(bool)) core.HResult!void {
         const _c = self.vtable.put_IsOverDataLimit(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsOverDataLimit(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsOverDataLimit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsBackgroundDataUsageRestricted(self: *@This(), value: *IReference(bool)) core.HResult!void {
         const _c = self.vtable.put_IsBackgroundDataUsageRestricted(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsBackgroundDataUsageRestricted(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsBackgroundDataUsageRestricted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_RawData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfileFilter2";
@@ -1545,20 +1525,23 @@ pub const IConnectionProfileFilter2 = extern struct {
 };
 pub const IConnectionProfileFilter3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putPurposeGuid(self: *@This(), value: *IReference(Guid)) core.HResult!void {
         const _c = self.vtable.put_PurposeGuid(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPurposeGuid(self: *@This()) core.HResult!*IReference(Guid) {
         var _r: *IReference(Guid) = undefined;
         const _c = self.vtable.get_PurposeGuid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionProfileFilter3";
@@ -1579,8 +1562,11 @@ pub const IConnectionProfileFilter3 = extern struct {
 };
 pub const IConnectionSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1588,7 +1574,7 @@ pub const IConnectionSession = extern struct {
     pub fn getConnectionProfile(self: *@This()) core.HResult!*ConnectionProfile {
         var _r: *ConnectionProfile = undefined;
         const _c = self.vtable.get_ConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectionSession";
@@ -1608,8 +1594,11 @@ pub const IConnectionSession = extern struct {
 };
 pub const IConnectivityInterval = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1617,13 +1606,13 @@ pub const IConnectivityInterval = extern struct {
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_ConnectionDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectivityInterval";
@@ -1644,8 +1633,11 @@ pub const IConnectivityInterval = extern struct {
 };
 pub const IConnectivityManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1653,16 +1645,16 @@ pub const IConnectivityManagerStatics = extern struct {
     pub fn AcquireConnectionAsync(self: *@This(), cellularApnContext: *CellularApnContext) core.HResult!*IAsyncOperation(ConnectionSession) {
         var _r: *IAsyncOperation(ConnectionSession) = undefined;
         const _c = self.vtable.AcquireConnectionAsync(@ptrCast(self), cellularApnContext, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddHttpRoutePolicy(self: *@This(), routePolicy: *RoutePolicy) core.HResult!void {
         const _c = self.vtable.AddHttpRoutePolicy(@ptrCast(self), routePolicy);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveHttpRoutePolicy(self: *@This(), routePolicy: *RoutePolicy) core.HResult!void {
         const _c = self.vtable.RemoveHttpRoutePolicy(@ptrCast(self), routePolicy);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IConnectivityManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1683,8 +1675,11 @@ pub const IConnectivityManagerStatics = extern struct {
 };
 pub const IDataPlanStatus = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1692,37 +1687,37 @@ pub const IDataPlanStatus = extern struct {
     pub fn getDataPlanUsage(self: *@This()) core.HResult!*DataPlanUsage {
         var _r: *DataPlanUsage = undefined;
         const _c = self.vtable.get_DataPlanUsage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDataLimitInMegabytes(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_DataLimitInMegabytes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInboundBitsPerSecond(self: *@This()) core.HResult!*IReference(u64) {
         var _r: *IReference(u64) = undefined;
         const _c = self.vtable.get_InboundBitsPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOutboundBitsPerSecond(self: *@This()) core.HResult!*IReference(u64) {
         var _r: *IReference(u64) = undefined;
         const _c = self.vtable.get_OutboundBitsPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNextBillingCycle(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_NextBillingCycle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxTransferSizeInMegabytes(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_MaxTransferSizeInMegabytes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IDataPlanStatus";
@@ -1747,8 +1742,11 @@ pub const IDataPlanStatus = extern struct {
 };
 pub const IDataPlanUsage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1756,13 +1754,13 @@ pub const IDataPlanUsage = extern struct {
     pub fn getMegabytesUsed(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MegabytesUsed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastSyncTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_LastSyncTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IDataPlanUsage";
@@ -1783,8 +1781,11 @@ pub const IDataPlanUsage = extern struct {
 };
 pub const IDataUsage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1792,13 +1793,13 @@ pub const IDataUsage = extern struct {
     pub fn getBytesSent(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesSent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBytesReceived(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesReceived(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IDataUsage";
@@ -1819,8 +1820,11 @@ pub const IDataUsage = extern struct {
 };
 pub const IIPInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1828,13 +1832,13 @@ pub const IIPInformation = extern struct {
     pub fn getNetworkAdapter(self: *@This()) core.HResult!*NetworkAdapter {
         var _r: *NetworkAdapter = undefined;
         const _c = self.vtable.get_NetworkAdapter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrefixLength(self: *@This()) core.HResult!*IReference(u8) {
         var _r: *IReference(u8) = undefined;
         const _c = self.vtable.get_PrefixLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IIPInformation";
@@ -1855,8 +1859,11 @@ pub const IIPInformation = extern struct {
 };
 pub const ILanIdentifier = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1864,19 +1871,19 @@ pub const ILanIdentifier = extern struct {
     pub fn getInfrastructureId(self: *@This()) core.HResult!*LanIdentifierData {
         var _r: *LanIdentifierData = undefined;
         const _c = self.vtable.get_InfrastructureId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPortId(self: *@This()) core.HResult!*LanIdentifierData {
         var _r: *LanIdentifierData = undefined;
         const _c = self.vtable.get_PortId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkAdapterId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_NetworkAdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ILanIdentifier";
@@ -1898,8 +1905,11 @@ pub const ILanIdentifier = extern struct {
 };
 pub const ILanIdentifierData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1907,13 +1917,13 @@ pub const ILanIdentifierData = extern struct {
     pub fn getType(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!*IVectorView(u8) {
         var _r: *IVectorView(u8) = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ILanIdentifierData";
@@ -1934,8 +1944,11 @@ pub const ILanIdentifierData = extern struct {
 };
 pub const INetworkAdapter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1943,37 +1956,37 @@ pub const INetworkAdapter = extern struct {
     pub fn getOutboundMaxBitsPerSecond(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_OutboundMaxBitsPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInboundMaxBitsPerSecond(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_InboundMaxBitsPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIanaInterfaceType(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_IanaInterfaceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkItem(self: *@This()) core.HResult!*NetworkItem {
         var _r: *NetworkItem = undefined;
         const _c = self.vtable.get_NetworkItem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkAdapterId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_NetworkAdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConnectedProfileAsync(self: *@This()) core.HResult!*IAsyncOperation(ConnectionProfile) {
         var _r: *IAsyncOperation(ConnectionProfile) = undefined;
         const _c = self.vtable.GetConnectedProfileAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkAdapter";
@@ -1998,8 +2011,11 @@ pub const INetworkAdapter = extern struct {
 };
 pub const INetworkInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2007,48 +2023,48 @@ pub const INetworkInformationStatics = extern struct {
     pub fn GetConnectionProfiles(self: *@This()) core.HResult!*IVectorView(ConnectionProfile) {
         var _r: *IVectorView(ConnectionProfile) = undefined;
         const _c = self.vtable.GetConnectionProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetInternetConnectionProfile(self: *@This()) core.HResult!*ConnectionProfile {
         var _r: *ConnectionProfile = undefined;
         const _c = self.vtable.GetInternetConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLanIdentifiers(self: *@This()) core.HResult!*IVectorView(LanIdentifier) {
         var _r: *IVectorView(LanIdentifier) = undefined;
         const _c = self.vtable.GetLanIdentifiers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetHostNames(self: *@This()) core.HResult!*IVectorView(HostName) {
         var _r: *IVectorView(HostName) = undefined;
         const _c = self.vtable.GetHostNames(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetProxyConfigurationAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperation(ProxyConfiguration) {
         var _r: *IAsyncOperation(ProxyConfiguration) = undefined;
         const _c = self.vtable.GetProxyConfigurationAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSortedEndpointPairs(self: *@This(), destinationList: *IIterable(EndpointPair), sortOptions: HostNameSortOptions) core.HResult!*IVectorView(EndpointPair) {
         var _r: *IVectorView(EndpointPair) = undefined;
         const _c = self.vtable.GetSortedEndpointPairs(@ptrCast(self), destinationList, sortOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addNetworkStatusChanged(self: *@This(), networkStatusHandler: *NetworkStatusChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_NetworkStatusChanged(@ptrCast(self), networkStatusHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeNetworkStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_NetworkStatusChanged(@ptrCast(self), eventCookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkInformationStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2074,8 +2090,11 @@ pub const INetworkInformationStatics = extern struct {
 };
 pub const INetworkInformationStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2083,7 +2102,7 @@ pub const INetworkInformationStatics2 = extern struct {
     pub fn FindConnectionProfilesAsync(self: *@This(), pProfileFilter: *ConnectionProfileFilter) core.HResult!*IAsyncOperation(IVectorView(ConnectionProfile)) {
         var _r: *IAsyncOperation(IVectorView(ConnectionProfile)) = undefined;
         const _c = self.vtable.FindConnectionProfilesAsync(@ptrCast(self), pProfileFilter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkInformationStatics2";
@@ -2103,8 +2122,11 @@ pub const INetworkInformationStatics2 = extern struct {
 };
 pub const INetworkItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2112,13 +2134,13 @@ pub const INetworkItem = extern struct {
     pub fn getNetworkId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_NetworkId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNetworkTypes(self: *@This()) core.HResult!NetworkTypes {
         var _r: NetworkTypes = undefined;
         const _c = self.vtable.GetNetworkTypes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkItem";
@@ -2139,8 +2161,11 @@ pub const INetworkItem = extern struct {
 };
 pub const INetworkSecuritySettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2148,13 +2173,13 @@ pub const INetworkSecuritySettings = extern struct {
     pub fn getNetworkAuthenticationType(self: *@This()) core.HResult!NetworkAuthenticationType {
         var _r: NetworkAuthenticationType = undefined;
         const _c = self.vtable.get_NetworkAuthenticationType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkEncryptionType(self: *@This()) core.HResult!NetworkEncryptionType {
         var _r: NetworkEncryptionType = undefined;
         const _c = self.vtable.get_NetworkEncryptionType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkSecuritySettings";
@@ -2175,8 +2200,11 @@ pub const INetworkSecuritySettings = extern struct {
 };
 pub const INetworkStateChangeEventDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2184,37 +2212,37 @@ pub const INetworkStateChangeEventDetails = extern struct {
     pub fn getHasNewInternetConnectionProfile(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewInternetConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasNewConnectionCost(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewConnectionCost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasNewNetworkConnectivityLevel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewNetworkConnectivityLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasNewDomainConnectivityLevel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewDomainConnectivityLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasNewHostNameList(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewHostNameList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasNewWwanRegistrationState(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewWwanRegistrationState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkStateChangeEventDetails";
@@ -2239,8 +2267,11 @@ pub const INetworkStateChangeEventDetails = extern struct {
 };
 pub const INetworkStateChangeEventDetails2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2248,13 +2279,13 @@ pub const INetworkStateChangeEventDetails2 = extern struct {
     pub fn getHasNewTetheringOperationalState(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewTetheringOperationalState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasNewTetheringClientCount(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasNewTetheringClientCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkStateChangeEventDetails2";
@@ -2275,8 +2306,11 @@ pub const INetworkStateChangeEventDetails2 = extern struct {
 };
 pub const INetworkUsage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2284,19 +2318,19 @@ pub const INetworkUsage = extern struct {
     pub fn getBytesSent(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesSent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBytesReceived(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesReceived(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_ConnectionDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.INetworkUsage";
@@ -2318,14 +2352,11 @@ pub const INetworkUsage = extern struct {
 };
 pub const IPInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2346,8 +2377,11 @@ pub const IPInformation = extern struct {
 };
 pub const IProviderNetworkUsage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2355,19 +2389,19 @@ pub const IProviderNetworkUsage = extern struct {
     pub fn getBytesSent(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesSent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBytesReceived(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesReceived(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IProviderNetworkUsage";
@@ -2389,8 +2423,11 @@ pub const IProviderNetworkUsage = extern struct {
 };
 pub const IProxyConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2398,13 +2435,13 @@ pub const IProxyConfiguration = extern struct {
     pub fn getProxyUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var _r: *IVectorView(Uri) = undefined;
         const _c = self.vtable.get_ProxyUris(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanConnectDirectly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanConnectDirectly(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IProxyConfiguration";
@@ -2425,8 +2462,11 @@ pub const IProxyConfiguration = extern struct {
 };
 pub const IRoutePolicy = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2434,19 +2474,19 @@ pub const IRoutePolicy = extern struct {
     pub fn getConnectionProfile(self: *@This()) core.HResult!*ConnectionProfile {
         var _r: *ConnectionProfile = undefined;
         const _c = self.vtable.get_ConnectionProfile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHostName(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_HostName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHostNameType(self: *@This()) core.HResult!DomainNameType {
         var _r: DomainNameType = undefined;
         const _c = self.vtable.get_HostNameType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IRoutePolicy";
@@ -2468,8 +2508,11 @@ pub const IRoutePolicy = extern struct {
 };
 pub const IRoutePolicyFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2477,7 +2520,7 @@ pub const IRoutePolicyFactory = extern struct {
     pub fn CreateRoutePolicy(self: *@This(), connectionProfile: *ConnectionProfile, hostName: *HostName, ty: DomainNameType) core.HResult!*RoutePolicy {
         var _r: *RoutePolicy = undefined;
         const _c = self.vtable.CreateRoutePolicy(@ptrCast(self), connectionProfile, hostName, ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IRoutePolicyFactory";
@@ -2497,8 +2540,11 @@ pub const IRoutePolicyFactory = extern struct {
 };
 pub const IWlanConnectionProfileDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2506,7 +2552,7 @@ pub const IWlanConnectionProfileDetails = extern struct {
     pub fn GetConnectedSsid(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetConnectedSsid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.IWlanConnectionProfileDetails";
@@ -2526,14 +2572,11 @@ pub const IWlanConnectionProfileDetails = extern struct {
 };
 pub const LanIdentifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2558,14 +2601,11 @@ pub const LanIdentifier = extern struct {
 };
 pub const LanIdentifierData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2586,14 +2626,11 @@ pub const LanIdentifierData = extern struct {
 };
 pub const NetworkAdapter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2673,14 +2710,11 @@ pub const NetworkEncryptionType = enum(i32) {
 };
 pub const NetworkInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2728,14 +2762,11 @@ pub const NetworkInformation = extern struct {
 };
 pub const NetworkItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2756,14 +2787,11 @@ pub const NetworkItem = extern struct {
 };
 pub const NetworkSecuritySettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2784,14 +2812,11 @@ pub const NetworkSecuritySettings = extern struct {
 };
 pub const NetworkStateChangeEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2823,15 +2848,13 @@ pub const NetworkStateChangeEventDetails = extern struct {
     pub fn getHasNewTetheringOperationalState(self: *@This()) core.HResult!bool {
         var this: ?*INetworkStateChangeEventDetails2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkStateChangeEventDetails2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkStateChangeEventDetails2.IID, @ptrCast(&this));
         return try this.?.getHasNewTetheringOperationalState();
     }
     pub fn getHasNewTetheringClientCount(self: *@This()) core.HResult!bool {
         var this: ?*INetworkStateChangeEventDetails2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkStateChangeEventDetails2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkStateChangeEventDetails2.IID, @ptrCast(&this));
         return try this.?.getHasNewTetheringClientCount();
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.NetworkStateChangeEventDetails";
@@ -2936,14 +2959,11 @@ pub const NetworkTypes = enum(i32) {
 };
 pub const NetworkUsage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2972,14 +2992,11 @@ pub const NetworkUsageStates = extern struct {
 };
 pub const ProviderNetworkUsage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3004,14 +3021,11 @@ pub const ProviderNetworkUsage = extern struct {
 };
 pub const ProxyConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3037,14 +3051,11 @@ pub const RoamingStates = enum(i32) {
 };
 pub const RoutePolicy = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3079,14 +3090,11 @@ pub const TriStates = enum(i32) {
 };
 pub const WlanConnectionProfileDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

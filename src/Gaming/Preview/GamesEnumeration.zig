@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const GameList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -154,14 +151,11 @@ pub const GameListChangedEventHandler = extern struct {
 };
 pub const GameListEntry = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -189,57 +183,49 @@ pub const GameListEntry = extern struct {
     pub fn getLaunchableState(self: *@This()) core.HResult!GameListEntryLaunchableState {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.getLaunchableState();
     }
     pub fn getLauncherExecutable(self: *@This()) core.HResult!*IStorageFile {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.getLauncherExecutable();
     }
     pub fn getLaunchParameters(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.getLaunchParameters();
     }
     pub fn SetLauncherExecutableFileAsync(self: *@This(), executableFile: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.SetLauncherExecutableFileAsync(executableFile);
     }
     pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.SetLauncherExecutableFileAsyncWithLaunchParams(executableFile, launchParams);
     }
     pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.getTitleId();
     }
     pub fn SetTitleIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.SetTitleIdAsync(id);
     }
     pub fn getGameModeConfiguration(self: *@This()) core.HResult!*GameModeConfiguration {
         var this: ?*IGameListEntry2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         return try this.?.getGameModeConfiguration();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.GameListEntry";
@@ -345,14 +331,11 @@ pub const GameListRemovedEventHandler = extern struct {
 };
 pub const GameModeConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -437,14 +420,11 @@ pub const GameModeConfiguration = extern struct {
 };
 pub const GameModeUserConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -470,8 +450,11 @@ pub const GameModeUserConfiguration = extern struct {
 };
 pub const IGameListEntry = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -479,31 +462,31 @@ pub const IGameListEntry = extern struct {
     pub fn getDisplayInfo(self: *@This()) core.HResult!*AppDisplayInfo {
         var _r: *AppDisplayInfo = undefined;
         const _c = self.vtable.get_DisplayInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LaunchAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.LaunchAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCategory(self: *@This()) core.HResult!GameListCategory {
         var _r: GameListCategory = undefined;
         const _c = self.vtable.get_Category(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetCategoryAsync(self: *@This(), value: GameListCategory) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetCategoryAsync(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.IGameListEntry";
@@ -527,8 +510,11 @@ pub const IGameListEntry = extern struct {
 };
 pub const IGameListEntry2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -536,49 +522,49 @@ pub const IGameListEntry2 = extern struct {
     pub fn getLaunchableState(self: *@This()) core.HResult!GameListEntryLaunchableState {
         var _r: GameListEntryLaunchableState = undefined;
         const _c = self.vtable.get_LaunchableState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLauncherExecutable(self: *@This()) core.HResult!*IStorageFile {
         var _r: *IStorageFile = undefined;
         const _c = self.vtable.get_LauncherExecutable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLaunchParameters(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LaunchParameters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLauncherExecutableFileAsync(self: *@This(), executableFile: *IStorageFile) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetLauncherExecutableFileAsync(@ptrCast(self), executableFile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetLauncherExecutableFileAsyncWithLaunchParams(@ptrCast(self), executableFile, launchParams, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetTitleIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetTitleIdAsync(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGameModeConfiguration(self: *@This()) core.HResult!*GameModeConfiguration {
         var _r: *GameModeConfiguration = undefined;
         const _c = self.vtable.get_GameModeConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.IGameListEntry2";
@@ -605,8 +591,11 @@ pub const IGameListEntry2 = extern struct {
 };
 pub const IGameListStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -614,44 +603,44 @@ pub const IGameListStatics = extern struct {
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         var _r: *IAsyncOperation(IVectorView(GameListEntry)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsyncWithPackageFamilyName(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         var _r: *IAsyncOperation(IVectorView(GameListEntry)) = undefined;
         const _c = self.vtable.FindAllAsyncWithPackageFamilyName(@ptrCast(self), packageFamilyName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addGameAdded(self: *@This(), handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GameAdded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGameAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GameAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addGameRemoved(self: *@This(), handler: *GameListRemovedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GameRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGameRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GameRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addGameUpdated(self: *@This(), handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GameUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGameUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GameUpdated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.IGameListStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -677,8 +666,11 @@ pub const IGameListStatics = extern struct {
 };
 pub const IGameListStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -686,13 +678,13 @@ pub const IGameListStatics2 = extern struct {
     pub fn MergeEntriesAsync(self: *@This(), left: *GameListEntry, right: *GameListEntry) core.HResult!*IAsyncOperation(GameListEntry) {
         var _r: *IAsyncOperation(GameListEntry) = undefined;
         const _c = self.vtable.MergeEntriesAsync(@ptrCast(self), left, right, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnmergeEntryAsync(self: *@This(), mergedEntry: *GameListEntry) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         var _r: *IAsyncOperation(IVectorView(GameListEntry)) = undefined;
         const _c = self.vtable.UnmergeEntryAsync(@ptrCast(self), mergedEntry, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.IGameListStatics2";
@@ -713,8 +705,11 @@ pub const IGameListStatics2 = extern struct {
 };
 pub const IGameModeConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -722,93 +717,93 @@ pub const IGameModeConfiguration = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RelatedProcessNames(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPercentGpuTimeAllocatedToGame(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_PercentGpuTimeAllocatedToGame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPercentGpuTimeAllocatedToGame(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_PercentGpuTimeAllocatedToGame(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPercentGpuMemoryAllocatedToGame(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_PercentGpuMemoryAllocatedToGame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPercentGpuMemoryAllocatedToGame(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_PercentGpuMemoryAllocatedToGame(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPercentGpuMemoryAllocatedToSystemCompositor(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_PercentGpuMemoryAllocatedToSystemCompositor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPercentGpuMemoryAllocatedToSystemCompositor(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_PercentGpuMemoryAllocatedToSystemCompositor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxCpuCount(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_MaxCpuCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxCpuCount(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_MaxCpuCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCpuExclusivityMaskLow(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_CpuExclusivityMaskLow(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCpuExclusivityMaskLow(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_CpuExclusivityMaskLow(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCpuExclusivityMaskHigh(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_CpuExclusivityMaskHigh(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCpuExclusivityMaskHigh(self: *@This(), value: *IReference(i32)) core.HResult!void {
         const _c = self.vtable.put_CpuExclusivityMaskHigh(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAffinitizeToExclusiveCpus(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AffinitizeToExclusiveCpus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAffinitizeToExclusiveCpus(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AffinitizeToExclusiveCpus(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.IGameModeConfiguration";
@@ -845,8 +840,11 @@ pub const IGameModeConfiguration = extern struct {
 };
 pub const IGameModeUserConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -854,13 +852,13 @@ pub const IGameModeUserConfiguration = extern struct {
     pub fn getGamingRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_GamingRelatedProcessNames(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.IGameModeUserConfiguration";
@@ -881,8 +879,11 @@ pub const IGameModeUserConfiguration = extern struct {
 };
 pub const IGameModeUserConfigurationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -890,7 +891,7 @@ pub const IGameModeUserConfigurationStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*GameModeUserConfiguration {
         var _r: *GameModeUserConfiguration = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.IGameModeUserConfigurationStatics";

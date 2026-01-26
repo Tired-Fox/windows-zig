@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IAdcControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,55 +13,55 @@ pub const IAdcControllerProvider = extern struct {
     pub fn getChannelCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ChannelCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResolutionInBits(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ResolutionInBits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinValue(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MinValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxValue(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChannelMode(self: *@This()) core.HResult!ProviderAdcChannelMode {
         var _r: ProviderAdcChannelMode = undefined;
         const _c = self.vtable.get_ChannelMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putChannelMode(self: *@This(), value: ProviderAdcChannelMode) core.HResult!void {
         const _c = self.vtable.put_ChannelMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsChannelModeSupported(self: *@This(), channelMode: ProviderAdcChannelMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsChannelModeSupported(@ptrCast(self), channelMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcquireChannel(self: *@This(), channel: i32) core.HResult!void {
         const _c = self.vtable.AcquireChannel(@ptrCast(self), channel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReleaseChannel(self: *@This(), channel: i32) core.HResult!void {
         const _c = self.vtable.ReleaseChannel(@ptrCast(self), channel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReadValue(self: *@This(), channelNumber: i32) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.ReadValue(@ptrCast(self), channelNumber, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Adc.Provider.IAdcControllerProvider";
@@ -87,8 +90,11 @@ pub const IAdcControllerProvider = extern struct {
 };
 pub const IAdcProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -96,7 +102,7 @@ pub const IAdcProvider = extern struct {
     pub fn GetControllers(self: *@This()) core.HResult!*IVectorView(IAdcControllerProvider) {
         var _r: *IVectorView(IAdcControllerProvider) = undefined;
         const _c = self.vtable.GetControllers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Adc.Provider.IAdcProvider";

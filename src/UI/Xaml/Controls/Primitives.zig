@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ButtonBase = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -87,14 +84,11 @@ pub const ButtonBase = extern struct {
 };
 pub const ToggleButton = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -142,8 +136,7 @@ pub const ToggleButton = extern struct {
     pub fn OnToggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleButtonOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleButtonOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IToggleButtonOverrides.IID, @ptrCast(&this));
         return try this.?.OnToggle();
     }
     pub fn getIsCheckedProperty() core.HResult!*DependencyProperty {
@@ -168,14 +161,11 @@ pub const ToggleButton = extern struct {
 };
 pub const Selector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -262,14 +252,11 @@ pub const Selector = extern struct {
 };
 pub const SelectorItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -300,14 +287,11 @@ pub const SelectorItem = extern struct {
 };
 pub const FlyoutBase = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -355,197 +339,169 @@ pub const FlyoutBase = extern struct {
     pub fn getTarget(self: *@This()) core.HResult!*FrameworkElement {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.getTarget();
     }
     pub fn getAllowFocusOnInteraction(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.getAllowFocusOnInteraction();
     }
     pub fn putAllowFocusOnInteraction(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.putAllowFocusOnInteraction(value);
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getAllowFocusWhenDisabled(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.getAllowFocusWhenDisabled();
     }
     pub fn putAllowFocusWhenDisabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.putAllowFocusWhenDisabled(value);
     }
     pub fn getElementSoundMode(self: *@This()) core.HResult!ElementSoundMode {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.getElementSoundMode();
     }
     pub fn putElementSoundMode(self: *@This(), value: ElementSoundMode) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.putElementSoundMode(value);
     }
     pub fn addClosing(self: *@This(), handler: *TypedEventHandler(FlyoutBase,FlyoutBaseClosingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.addClosing(handler);
     }
     pub fn removeClosing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         return try this.?.removeClosing(token);
     }
     pub fn getOverlayInputPassThroughElement(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IFlyoutBase3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase3.IID, @ptrCast(&this));
         return try this.?.getOverlayInputPassThroughElement();
     }
     pub fn putOverlayInputPassThroughElement(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IFlyoutBase3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase3.IID, @ptrCast(&this));
         return try this.?.putOverlayInputPassThroughElement(value);
     }
     pub fn TryInvokeKeyboardAccelerator(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         var this: ?*IFlyoutBase4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase4.IID, @ptrCast(&this));
         return try this.?.TryInvokeKeyboardAccelerator(args);
     }
     pub fn getShowMode(self: *@This()) core.HResult!FlyoutShowMode {
         var this: ?*IFlyoutBase5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         return try this.?.getShowMode();
     }
     pub fn putShowMode(self: *@This(), value: FlyoutShowMode) core.HResult!void {
         var this: ?*IFlyoutBase5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         return try this.?.putShowMode(value);
     }
     pub fn getInputDevicePrefersPrimaryCommands(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         return try this.?.getInputDevicePrefersPrimaryCommands();
     }
     pub fn getAreOpenCloseAnimationsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         return try this.?.getAreOpenCloseAnimationsEnabled();
     }
     pub fn putAreOpenCloseAnimationsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         return try this.?.putAreOpenCloseAnimationsEnabled(value);
     }
     pub fn getIsOpen(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         return try this.?.getIsOpen();
     }
     pub fn ShowAtWithPlacementTargetAndShowOptions(self: *@This(), placementTarget: *DependencyObject, showOptions: *FlyoutShowOptions) core.HResult!void {
         var this: ?*IFlyoutBase5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         return try this.?.ShowAtWithPlacementTargetAndShowOptions(placementTarget, showOptions);
     }
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         return try this.?.getShouldConstrainToRootBounds();
     }
     pub fn putShouldConstrainToRootBounds(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         return try this.?.putShouldConstrainToRootBounds(value);
     }
     pub fn getIsConstrainedToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         return try this.?.getIsConstrainedToRootBounds();
     }
     pub fn getXamlRoot(self: *@This()) core.HResult!*XamlRoot {
         var this: ?*IFlyoutBase6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         return try this.?.getXamlRoot();
     }
     pub fn putXamlRoot(self: *@This(), value: *XamlRoot) core.HResult!void {
         var this: ?*IFlyoutBase6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         return try this.?.putXamlRoot(value);
     }
     pub fn CreatePresenter(self: *@This()) core.HResult!*Control {
         var this: ?*IFlyoutBaseOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBaseOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBaseOverrides.IID, @ptrCast(&this));
         return try this.?.CreatePresenter();
     }
     pub fn OnProcessKeyboardAccelerators(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         var this: ?*IFlyoutBaseOverrides4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBaseOverrides4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBaseOverrides4.IID, @ptrCast(&this));
         return try this.?.OnProcessKeyboardAccelerators(args);
     }
     pub fn getOverlayInputPassThroughElementProperty() core.HResult!*DependencyProperty {
@@ -630,14 +586,11 @@ pub const FlyoutBase = extern struct {
 };
 pub const PickerFlyoutBase = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -645,15 +598,13 @@ pub const PickerFlyoutBase = extern struct {
     pub fn OnConfirmed(self: *@This()) core.HResult!void {
         var this: ?*IPickerFlyoutBaseOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPickerFlyoutBaseOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPickerFlyoutBaseOverrides.IID, @ptrCast(&this));
         return try this.?.OnConfirmed();
     }
     pub fn ShouldShowConfirmationButtons(self: *@This()) core.HResult!bool {
         var this: ?*IPickerFlyoutBaseOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPickerFlyoutBaseOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPickerFlyoutBaseOverrides.IID, @ptrCast(&this));
         return try this.?.ShouldShowConfirmationButtons();
     }
     pub fn getTitleProperty() core.HResult!*DependencyProperty {
@@ -688,14 +639,11 @@ pub const AnimationDirection = enum(i32) {
 };
 pub const AppBarButtonTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -712,14 +660,11 @@ pub const AppBarButtonTemplateSettings = extern struct {
 };
 pub const AppBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -755,22 +700,19 @@ pub const AppBarTemplateSettings = extern struct {
     pub fn getNegativeCompactVerticalDelta(self: *@This()) core.HResult!f64 {
         var this: ?*IAppBarTemplateSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
         return try this.?.getNegativeCompactVerticalDelta();
     }
     pub fn getNegativeMinimalVerticalDelta(self: *@This()) core.HResult!f64 {
         var this: ?*IAppBarTemplateSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
         return try this.?.getNegativeMinimalVerticalDelta();
     }
     pub fn getNegativeHiddenVerticalDelta(self: *@This()) core.HResult!f64 {
         var this: ?*IAppBarTemplateSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
         return try this.?.getNegativeHiddenVerticalDelta();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.AppBarTemplateSettings";
@@ -781,14 +723,11 @@ pub const AppBarTemplateSettings = extern struct {
 };
 pub const AppBarToggleButtonTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -805,14 +744,11 @@ pub const AppBarToggleButtonTemplateSettings = extern struct {
 };
 pub const CalendarPanel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -830,14 +766,11 @@ pub const CalendarPanel = extern struct {
 };
 pub const CalendarViewTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -910,14 +843,11 @@ pub const CalendarViewTemplateSettings = extern struct {
 };
 pub const CarouselPanel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1033,57 +963,49 @@ pub const CarouselPanel = extern struct {
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CarouselPanel {
@@ -1099,14 +1021,11 @@ pub const CarouselPanel = extern struct {
 };
 pub const RangeBase = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1162,22 +1081,19 @@ pub const RangeBase = extern struct {
     pub fn OnMinimumChanged(self: *@This(), oldMinimum: f64, newMinimum: f64) core.HResult!void {
         var this: ?*IRangeBaseOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
         return try this.?.OnMinimumChanged(oldMinimum, newMinimum);
     }
     pub fn OnMaximumChanged(self: *@This(), oldMaximum: f64, newMaximum: f64) core.HResult!void {
         var this: ?*IRangeBaseOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
         return try this.?.OnMaximumChanged(oldMaximum, newMaximum);
     }
     pub fn OnValueChanged(self: *@This(), oldValue: f64, newValue: f64) core.HResult!void {
         var this: ?*IRangeBaseOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
         return try this.?.OnValueChanged(oldValue, newValue);
     }
     pub fn getMinimumProperty() core.HResult!*DependencyProperty {
@@ -1214,14 +1130,11 @@ pub const RangeBase = extern struct {
 };
 pub const ColorPickerSlider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1252,14 +1165,11 @@ pub const ColorPickerSlider = extern struct {
 };
 pub const ColorSpectrum = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1406,14 +1316,11 @@ pub const ColorSpectrum = extern struct {
 };
 pub const ComboBoxTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1437,8 +1344,7 @@ pub const ComboBoxTemplateSettings = extern struct {
     pub fn getDropDownContentMinWidth(self: *@This()) core.HResult!f64 {
         var this: ?*IComboBoxTemplateSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBoxTemplateSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IComboBoxTemplateSettings2.IID, @ptrCast(&this));
         return try this.?.getDropDownContentMinWidth();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ComboBoxTemplateSettings";
@@ -1449,14 +1355,11 @@ pub const ComboBoxTemplateSettings = extern struct {
 };
 pub const CommandBarFlyoutCommandBar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1478,14 +1381,11 @@ pub const CommandBarFlyoutCommandBar = extern struct {
 };
 pub const CommandBarFlyoutCommandBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1578,14 +1478,11 @@ pub const CommandBarFlyoutCommandBarTemplateSettings = extern struct {
 };
 pub const CommandBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1621,36 +1518,31 @@ pub const CommandBarTemplateSettings = extern struct {
     pub fn getOverflowContentMaxWidth(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings2.IID, @ptrCast(&this));
         return try this.?.getOverflowContentMaxWidth();
     }
     pub fn getEffectiveOverflowButtonVisibility(self: *@This()) core.HResult!Visibility {
         var this: ?*ICommandBarTemplateSettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings3.IID, @ptrCast(&this));
         return try this.?.getEffectiveOverflowButtonVisibility();
     }
     pub fn getOverflowContentCompactYTranslation(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
         return try this.?.getOverflowContentCompactYTranslation();
     }
     pub fn getOverflowContentMinimalYTranslation(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
         return try this.?.getOverflowContentMinimalYTranslation();
     }
     pub fn getOverflowContentHiddenYTranslation(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
         return try this.?.getOverflowContentHiddenYTranslation();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.CommandBarTemplateSettings";
@@ -1665,14 +1557,11 @@ pub const ComponentResourceLocation = enum(i32) {
 };
 pub const DragCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1791,14 +1680,11 @@ pub const DragCompletedEventHandler = extern struct {
 };
 pub const DragDeltaEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1913,14 +1799,11 @@ pub const DragDeltaEventHandler = extern struct {
 };
 pub const DragStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2041,14 +1924,11 @@ pub const EdgeTransitionLocation = enum(i32) {
 };
 pub const FlyoutBaseClosingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2091,14 +1971,11 @@ pub const FlyoutShowMode = enum(i32) {
 };
 pub const FlyoutShowOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2156,14 +2033,11 @@ pub const GeneratorPosition = extern struct {
 };
 pub const GeneratorPositionHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2181,14 +2055,11 @@ pub const GeneratorPositionHelper = extern struct {
 };
 pub const GridViewItemPresenter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2471,14 +2342,11 @@ pub const GridViewItemPresenter = extern struct {
 };
 pub const GridViewItemTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2499,8 +2367,11 @@ pub const GroupHeaderPlacement = enum(i32) {
 };
 pub const IAppBarButtonTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2508,7 +2379,7 @@ pub const IAppBarButtonTemplateSettings = extern struct {
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextMinWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IAppBarButtonTemplateSettings";
@@ -2528,8 +2399,11 @@ pub const IAppBarButtonTemplateSettings = extern struct {
 };
 pub const IAppBarTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2537,43 +2411,43 @@ pub const IAppBarTemplateSettings = extern struct {
     pub fn getClipRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_ClipRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCompactVerticalDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CompactVerticalDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCompactRootMargin(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_CompactRootMargin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinimalVerticalDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MinimalVerticalDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinimalRootMargin(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_MinimalRootMargin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHiddenVerticalDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HiddenVerticalDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHiddenRootMargin(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_HiddenRootMargin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IAppBarTemplateSettings";
@@ -2599,8 +2473,11 @@ pub const IAppBarTemplateSettings = extern struct {
 };
 pub const IAppBarTemplateSettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2608,19 +2485,19 @@ pub const IAppBarTemplateSettings2 = extern struct {
     pub fn getNegativeCompactVerticalDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NegativeCompactVerticalDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNegativeMinimalVerticalDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NegativeMinimalVerticalDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNegativeHiddenVerticalDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NegativeHiddenVerticalDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IAppBarTemplateSettings2";
@@ -2642,8 +2519,11 @@ pub const IAppBarTemplateSettings2 = extern struct {
 };
 pub const IAppBarToggleButtonTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2651,7 +2531,7 @@ pub const IAppBarToggleButtonTemplateSettings = extern struct {
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextMinWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IAppBarToggleButtonTemplateSettings";
@@ -2671,8 +2551,11 @@ pub const IAppBarToggleButtonTemplateSettings = extern struct {
 };
 pub const IButtonBase = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2680,54 +2563,54 @@ pub const IButtonBase = extern struct {
     pub fn getClickMode(self: *@This()) core.HResult!ClickMode {
         var _r: ClickMode = undefined;
         const _c = self.vtable.get_ClickMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putClickMode(self: *@This(), value: ClickMode) core.HResult!void {
         const _c = self.vtable.put_ClickMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsPointerOver(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPointerOver(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPressed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCommand(self: *@This()) core.HResult!*ICommand {
         var _r: *ICommand = undefined;
         const _c = self.vtable.get_Command(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCommand(self: *@This(), value: *ICommand) core.HResult!void {
         const _c = self.vtable.put_Command(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCommandParameter(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_CommandParameter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCommandParameter(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_CommandParameter(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addClick(self: *@This(), handler: *RoutedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Click(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Click(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IButtonBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2755,8 +2638,11 @@ pub const IButtonBase = extern struct {
 };
 pub const IButtonBaseFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2764,7 +2650,7 @@ pub const IButtonBaseFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonBase {
         var _r: *ButtonBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IButtonBaseFactory";
@@ -2784,8 +2670,11 @@ pub const IButtonBaseFactory = extern struct {
 };
 pub const IButtonBaseStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2793,31 +2682,31 @@ pub const IButtonBaseStatics = extern struct {
     pub fn getClickModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ClickModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPointerOverProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsPointerOverProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPressedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsPressedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCommandProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CommandProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCommandParameterProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CommandParameterProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IButtonBaseStatics";
@@ -2841,8 +2730,11 @@ pub const IButtonBaseStatics = extern struct {
 };
 pub const ICalendarPanel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2863,8 +2755,11 @@ pub const ICalendarPanel = extern struct {
 };
 pub const ICalendarViewTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2872,91 +2767,91 @@ pub const ICalendarViewTemplateSettings = extern struct {
     pub fn getMinViewWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MinViewWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeaderText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HeaderText(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeekDay1(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeekDay2(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeekDay3(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay3(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeekDay4(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay4(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeekDay5(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeekDay6(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay6(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeekDay7(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay7(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasMoreContentAfter(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasMoreContentAfter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasMoreContentBefore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasMoreContentBefore(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasMoreViews(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasMoreViews(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClipRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_ClipRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCenterX(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CenterX(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCenterY(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CenterY(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICalendarViewTemplateSettings";
@@ -2990,8 +2885,11 @@ pub const ICalendarViewTemplateSettings = extern struct {
 };
 pub const ICarouselPanel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2999,129 +2897,129 @@ pub const ICarouselPanel = extern struct {
     pub fn getCanVerticallyScroll(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanVerticallyScroll(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanVerticallyScroll(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanVerticallyScroll(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanHorizontallyScroll(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanHorizontallyScroll(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanHorizontallyScroll(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanHorizontallyScroll(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getExtentWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExtentWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtentHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExtentHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewportWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ViewportWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewportHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ViewportHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_VerticalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScrollOwner(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_ScrollOwner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScrollOwner(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_ScrollOwner(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineUp(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineUp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineDown(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineDown(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineLeft(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineLeft(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineRight(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineRight(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageUp(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageUp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageDown(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageDown(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageLeft(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageLeft(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageRight(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageRight(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelUp(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelUp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelDown(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelDown(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelLeft(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelLeft(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelRight(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelRight(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetHorizontalOffset(self: *@This(), offset: f64) core.HResult!void {
         const _c = self.vtable.SetHorizontalOffset(@ptrCast(self), offset);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetVerticalOffset(self: *@This(), offset: f64) core.HResult!void {
         const _c = self.vtable.SetVerticalOffset(@ptrCast(self), offset);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MakeVisible(self: *@This(), visual: *UIElement, rectangle: Rect) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.MakeVisible(@ptrCast(self), visual, rectangle, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICarouselPanel";
@@ -3167,8 +3065,11 @@ pub const ICarouselPanel = extern struct {
 };
 pub const ICarouselPanelFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3176,7 +3077,7 @@ pub const ICarouselPanelFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CarouselPanel {
         var _r: *CarouselPanel = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICarouselPanelFactory";
@@ -3196,8 +3097,11 @@ pub const ICarouselPanelFactory = extern struct {
 };
 pub const IColorPickerSlider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3205,12 +3109,12 @@ pub const IColorPickerSlider = extern struct {
     pub fn getColorChannel(self: *@This()) core.HResult!ColorPickerHsvChannel {
         var _r: ColorPickerHsvChannel = undefined;
         const _c = self.vtable.get_ColorChannel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putColorChannel(self: *@This(), value: ColorPickerHsvChannel) core.HResult!void {
         const _c = self.vtable.put_ColorChannel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IColorPickerSlider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3230,8 +3134,11 @@ pub const IColorPickerSlider = extern struct {
 };
 pub const IColorPickerSliderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3239,7 +3146,7 @@ pub const IColorPickerSliderFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorPickerSlider {
         var _r: *ColorPickerSlider = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IColorPickerSliderFactory";
@@ -3259,8 +3166,11 @@ pub const IColorPickerSliderFactory = extern struct {
 };
 pub const IColorPickerSliderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3268,7 +3178,7 @@ pub const IColorPickerSliderStatics = extern struct {
     pub fn getColorChannelProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ColorChannelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IColorPickerSliderStatics";
@@ -3288,8 +3198,11 @@ pub const IColorPickerSliderStatics = extern struct {
 };
 pub const IColorSpectrum = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3297,112 +3210,112 @@ pub const IColorSpectrum = extern struct {
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_Color(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHsvColor(self: *@This()) core.HResult!Vector4 {
         var _r: Vector4 = undefined;
         const _c = self.vtable.get_HsvColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHsvColor(self: *@This(), value: Vector4) core.HResult!void {
         const _c = self.vtable.put_HsvColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinHue(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MinHue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinHue(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MinHue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxHue(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxHue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxHue(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MaxHue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinSaturation(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MinSaturation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinSaturation(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MinSaturation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxSaturation(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxSaturation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxSaturation(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MaxSaturation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinValue(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MinValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinValue(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MinValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxValue(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxValue(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_MaxValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShape(self: *@This()) core.HResult!ColorSpectrumShape {
         var _r: ColorSpectrumShape = undefined;
         const _c = self.vtable.get_Shape(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShape(self: *@This(), value: ColorSpectrumShape) core.HResult!void {
         const _c = self.vtable.put_Shape(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getComponents(self: *@This()) core.HResult!ColorSpectrumComponents {
         var _r: ColorSpectrumComponents = undefined;
         const _c = self.vtable.get_Components(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putComponents(self: *@This(), value: ColorSpectrumComponents) core.HResult!void {
         const _c = self.vtable.put_Components(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addColorChanged(self: *@This(), handler: *TypedEventHandler(ColorSpectrum,ColorChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ColorChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeColorChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ColorChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IColorSpectrum";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3442,8 +3355,11 @@ pub const IColorSpectrum = extern struct {
 };
 pub const IColorSpectrumFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3451,7 +3367,7 @@ pub const IColorSpectrumFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorSpectrum {
         var _r: *ColorSpectrum = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IColorSpectrumFactory";
@@ -3471,8 +3387,11 @@ pub const IColorSpectrumFactory = extern struct {
 };
 pub const IColorSpectrumStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3480,61 +3399,61 @@ pub const IColorSpectrumStatics = extern struct {
     pub fn getColorProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ColorProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHsvColorProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HsvColorProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinHueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MinHueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxHueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MaxHueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinSaturationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MinSaturationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxSaturationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MaxSaturationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MinValueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MaxValueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShapeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShapeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getComponentsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ComponentsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IColorSpectrumStatics";
@@ -3563,8 +3482,11 @@ pub const IColorSpectrumStatics = extern struct {
 };
 pub const IComboBoxTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3572,25 +3494,25 @@ pub const IComboBoxTemplateSettings = extern struct {
     pub fn getDropDownOpenedHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DropDownOpenedHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDropDownClosedHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DropDownClosedHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDropDownOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DropDownOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedItemDirection(self: *@This()) core.HResult!AnimationDirection {
         var _r: AnimationDirection = undefined;
         const _c = self.vtable.get_SelectedItemDirection(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IComboBoxTemplateSettings";
@@ -3613,8 +3535,11 @@ pub const IComboBoxTemplateSettings = extern struct {
 };
 pub const IComboBoxTemplateSettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3622,7 +3547,7 @@ pub const IComboBoxTemplateSettings2 = extern struct {
     pub fn getDropDownContentMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DropDownContentMinWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IComboBoxTemplateSettings2";
@@ -3642,8 +3567,11 @@ pub const IComboBoxTemplateSettings2 = extern struct {
 };
 pub const ICommandBarFlyoutCommandBar = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3651,7 +3579,7 @@ pub const ICommandBarFlyoutCommandBar = extern struct {
     pub fn getFlyoutTemplateSettings(self: *@This()) core.HResult!*CommandBarFlyoutCommandBarTemplateSettings {
         var _r: *CommandBarFlyoutCommandBarTemplateSettings = undefined;
         const _c = self.vtable.get_FlyoutTemplateSettings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICommandBarFlyoutCommandBar";
@@ -3671,8 +3599,11 @@ pub const ICommandBarFlyoutCommandBar = extern struct {
 };
 pub const ICommandBarFlyoutCommandBarFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3680,7 +3611,7 @@ pub const ICommandBarFlyoutCommandBarFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CommandBarFlyoutCommandBar {
         var _r: *CommandBarFlyoutCommandBar = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICommandBarFlyoutCommandBarFactory";
@@ -3700,8 +3631,11 @@ pub const ICommandBarFlyoutCommandBarFactory = extern struct {
 };
 pub const ICommandBarFlyoutCommandBarTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3709,121 +3643,121 @@ pub const ICommandBarFlyoutCommandBarTemplateSettings = extern struct {
     pub fn getOpenAnimationStartPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OpenAnimationStartPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOpenAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OpenAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCloseAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CloseAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CurrentWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandedWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandedWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidthExpansionDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_WidthExpansionDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidthExpansionAnimationStartPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_WidthExpansionAnimationStartPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidthExpansionAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_WidthExpansionAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidthExpansionMoreButtonAnimationStartPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_WidthExpansionMoreButtonAnimationStartPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidthExpansionMoreButtonAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_WidthExpansionMoreButtonAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandUpOverflowVerticalPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandUpOverflowVerticalPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandDownOverflowVerticalPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandDownOverflowVerticalPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandUpAnimationStartPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandUpAnimationStartPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandUpAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandUpAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandUpAnimationHoldPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandUpAnimationHoldPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandDownAnimationStartPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandDownAnimationStartPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandDownAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandDownAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpandDownAnimationHoldPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExpandDownAnimationHoldPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentClipRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_ContentClipRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentClipRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_OverflowContentClipRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICommandBarFlyoutCommandBarTemplateSettings";
@@ -3862,8 +3796,11 @@ pub const ICommandBarFlyoutCommandBarTemplateSettings = extern struct {
 };
 pub const ICommandBarTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3871,43 +3808,43 @@ pub const ICommandBarTemplateSettings = extern struct {
     pub fn getContentHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ContentHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentClipRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_OverflowContentClipRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentMinWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentMaxHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentMaxHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentHorizontalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNegativeOverflowContentHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NegativeOverflowContentHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICommandBarTemplateSettings";
@@ -3933,8 +3870,11 @@ pub const ICommandBarTemplateSettings = extern struct {
 };
 pub const ICommandBarTemplateSettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3942,7 +3882,7 @@ pub const ICommandBarTemplateSettings2 = extern struct {
     pub fn getOverflowContentMaxWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentMaxWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICommandBarTemplateSettings2";
@@ -3962,8 +3902,11 @@ pub const ICommandBarTemplateSettings2 = extern struct {
 };
 pub const ICommandBarTemplateSettings3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3971,7 +3914,7 @@ pub const ICommandBarTemplateSettings3 = extern struct {
     pub fn getEffectiveOverflowButtonVisibility(self: *@This()) core.HResult!Visibility {
         var _r: Visibility = undefined;
         const _c = self.vtable.get_EffectiveOverflowButtonVisibility(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICommandBarTemplateSettings3";
@@ -3991,8 +3934,11 @@ pub const ICommandBarTemplateSettings3 = extern struct {
 };
 pub const ICommandBarTemplateSettings4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4000,19 +3946,19 @@ pub const ICommandBarTemplateSettings4 = extern struct {
     pub fn getOverflowContentCompactYTranslation(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentCompactYTranslation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentMinimalYTranslation(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentMinimalYTranslation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOverflowContentHiddenYTranslation(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentHiddenYTranslation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICommandBarTemplateSettings4";
@@ -4034,8 +3980,11 @@ pub const ICommandBarTemplateSettings4 = extern struct {
 };
 pub const IDragCompletedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4043,19 +3992,19 @@ pub const IDragCompletedEventArgs = extern struct {
     pub fn getHorizontalChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_VerticalChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanceled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Canceled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IDragCompletedEventArgs";
@@ -4077,8 +4026,11 @@ pub const IDragCompletedEventArgs = extern struct {
 };
 pub const IDragCompletedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4086,7 +4038,7 @@ pub const IDragCompletedEventArgsFactory = extern struct {
     pub fn CreateInstanceWithHorizontalChangeVerticalChangeAndCanceled(self: *@This(), horizontalChange: f64, verticalChange: f64, canceled: bool, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragCompletedEventArgs {
         var _r: *DragCompletedEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithHorizontalChangeVerticalChangeAndCanceled(@ptrCast(self), horizontalChange, verticalChange, canceled, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IDragCompletedEventArgsFactory";
@@ -4106,8 +4058,11 @@ pub const IDragCompletedEventArgsFactory = extern struct {
 };
 pub const IDragDeltaEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4115,13 +4070,13 @@ pub const IDragDeltaEventArgs = extern struct {
     pub fn getHorizontalChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_VerticalChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IDragDeltaEventArgs";
@@ -4142,8 +4097,11 @@ pub const IDragDeltaEventArgs = extern struct {
 };
 pub const IDragDeltaEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4151,7 +4109,7 @@ pub const IDragDeltaEventArgsFactory = extern struct {
     pub fn CreateInstanceWithHorizontalChangeAndVerticalChange(self: *@This(), horizontalChange: f64, verticalChange: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragDeltaEventArgs {
         var _r: *DragDeltaEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithHorizontalChangeAndVerticalChange(@ptrCast(self), horizontalChange, verticalChange, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IDragDeltaEventArgsFactory";
@@ -4171,8 +4129,11 @@ pub const IDragDeltaEventArgsFactory = extern struct {
 };
 pub const IDragStartedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4180,13 +4141,13 @@ pub const IDragStartedEventArgs = extern struct {
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_VerticalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IDragStartedEventArgs";
@@ -4207,8 +4168,11 @@ pub const IDragStartedEventArgs = extern struct {
 };
 pub const IDragStartedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4216,7 +4180,7 @@ pub const IDragStartedEventArgsFactory = extern struct {
     pub fn CreateInstanceWithHorizontalOffsetAndVerticalOffset(self: *@This(), horizontalOffset: f64, verticalOffset: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragStartedEventArgs {
         var _r: *DragStartedEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithHorizontalOffsetAndVerticalOffset(@ptrCast(self), horizontalOffset, verticalOffset, baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IDragStartedEventArgsFactory";
@@ -4236,8 +4200,11 @@ pub const IDragStartedEventArgsFactory = extern struct {
 };
 pub const IFlyoutBase = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4245,50 +4212,50 @@ pub const IFlyoutBase = extern struct {
     pub fn getPlacement(self: *@This()) core.HResult!FlyoutPlacementMode {
         var _r: FlyoutPlacementMode = undefined;
         const _c = self.vtable.get_Placement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPlacement(self: *@This(), value: FlyoutPlacementMode) core.HResult!void {
         const _c = self.vtable.put_Placement(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addOpened(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Opened(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeOpened(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Opened(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addClosed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addOpening(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Opening(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeOpening(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Opening(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ShowAt(self: *@This(), placementTarget: *FrameworkElement) core.HResult!void {
         const _c = self.vtable.ShowAt(@ptrCast(self), placementTarget);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Hide(self: *@This()) core.HResult!void {
         const _c = self.vtable.Hide(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4316,8 +4283,11 @@ pub const IFlyoutBase = extern struct {
 };
 pub const IFlyoutBase2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4325,58 +4295,58 @@ pub const IFlyoutBase2 = extern struct {
     pub fn getTarget(self: *@This()) core.HResult!*FrameworkElement {
         var _r: *FrameworkElement = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllowFocusOnInteraction(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowFocusOnInteraction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowFocusOnInteraction(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowFocusOnInteraction(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var _r: LightDismissOverlayMode = undefined;
         const _c = self.vtable.get_LightDismissOverlayMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         const _c = self.vtable.put_LightDismissOverlayMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowFocusWhenDisabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowFocusWhenDisabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowFocusWhenDisabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowFocusWhenDisabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getElementSoundMode(self: *@This()) core.HResult!ElementSoundMode {
         var _r: ElementSoundMode = undefined;
         const _c = self.vtable.get_ElementSoundMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putElementSoundMode(self: *@This(), value: ElementSoundMode) core.HResult!void {
         const _c = self.vtable.put_ElementSoundMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addClosing(self: *@This(), handler: *TypedEventHandler(FlyoutBase,FlyoutBaseClosingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closing(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closing(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBase2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4405,8 +4375,11 @@ pub const IFlyoutBase2 = extern struct {
 };
 pub const IFlyoutBase3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4414,12 +4387,12 @@ pub const IFlyoutBase3 = extern struct {
     pub fn getOverlayInputPassThroughElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_OverlayInputPassThroughElement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOverlayInputPassThroughElement(self: *@This(), value: *DependencyObject) core.HResult!void {
         const _c = self.vtable.put_OverlayInputPassThroughElement(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBase3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4439,15 +4412,18 @@ pub const IFlyoutBase3 = extern struct {
 };
 pub const IFlyoutBase4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryInvokeKeyboardAccelerator(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         const _c = self.vtable.TryInvokeKeyboardAccelerator(@ptrCast(self), args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBase4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4466,8 +4442,11 @@ pub const IFlyoutBase4 = extern struct {
 };
 pub const IFlyoutBase5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4475,38 +4454,38 @@ pub const IFlyoutBase5 = extern struct {
     pub fn getShowMode(self: *@This()) core.HResult!FlyoutShowMode {
         var _r: FlyoutShowMode = undefined;
         const _c = self.vtable.get_ShowMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShowMode(self: *@This(), value: FlyoutShowMode) core.HResult!void {
         const _c = self.vtable.put_ShowMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInputDevicePrefersPrimaryCommands(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InputDevicePrefersPrimaryCommands(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAreOpenCloseAnimationsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreOpenCloseAnimationsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAreOpenCloseAnimationsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AreOpenCloseAnimationsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsOpen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOpen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAt(self: *@This(), placementTarget: *DependencyObject, showOptions: *FlyoutShowOptions) core.HResult!void {
         const _c = self.vtable.ShowAt(@ptrCast(self), placementTarget, showOptions);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBase5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4531,8 +4510,11 @@ pub const IFlyoutBase5 = extern struct {
 };
 pub const IFlyoutBase6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4540,28 +4522,28 @@ pub const IFlyoutBase6 = extern struct {
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShouldConstrainToRootBounds(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShouldConstrainToRootBounds(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsConstrainedToRootBounds(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConstrainedToRootBounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXamlRoot(self: *@This()) core.HResult!*XamlRoot {
         var _r: *XamlRoot = undefined;
         const _c = self.vtable.get_XamlRoot(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putXamlRoot(self: *@This(), value: *XamlRoot) core.HResult!void {
         const _c = self.vtable.put_XamlRoot(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBase6";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4584,8 +4566,11 @@ pub const IFlyoutBase6 = extern struct {
 };
 pub const IFlyoutBaseClosingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4593,12 +4578,12 @@ pub const IFlyoutBaseClosingEventArgs = extern struct {
     pub fn getCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Cancel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCancel(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Cancel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseClosingEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4618,8 +4603,11 @@ pub const IFlyoutBaseClosingEventArgs = extern struct {
 };
 pub const IFlyoutBaseFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4627,7 +4615,7 @@ pub const IFlyoutBaseFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutBase {
         var _r: *FlyoutBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseFactory";
@@ -4647,8 +4635,11 @@ pub const IFlyoutBaseFactory = extern struct {
 };
 pub const IFlyoutBaseOverrides = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4656,7 +4647,7 @@ pub const IFlyoutBaseOverrides = extern struct {
     pub fn CreatePresenter(self: *@This()) core.HResult!*Control {
         var _r: *Control = undefined;
         const _c = self.vtable.CreatePresenter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseOverrides";
@@ -4676,15 +4667,18 @@ pub const IFlyoutBaseOverrides = extern struct {
 };
 pub const IFlyoutBaseOverrides4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnProcessKeyboardAccelerators(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         const _c = self.vtable.OnProcessKeyboardAccelerators(@ptrCast(self), args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseOverrides4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4703,8 +4697,11 @@ pub const IFlyoutBaseOverrides4 = extern struct {
 };
 pub const IFlyoutBaseStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4712,28 +4709,28 @@ pub const IFlyoutBaseStatics = extern struct {
     pub fn getPlacementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PlacementProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAttachedFlyoutProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AttachedFlyoutProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAttachedFlyout(self: *@This(), element: *FrameworkElement) core.HResult!*FlyoutBase {
         var _r: *FlyoutBase = undefined;
         const _c = self.vtable.GetAttachedFlyout(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAttachedFlyout(self: *@This(), element: *FrameworkElement, value: *FlyoutBase) core.HResult!void {
         const _c = self.vtable.SetAttachedFlyout(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ShowAttachedFlyout(self: *@This(), flyoutOwner: *FrameworkElement) core.HResult!void {
         const _c = self.vtable.ShowAttachedFlyout(@ptrCast(self), flyoutOwner);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4756,8 +4753,11 @@ pub const IFlyoutBaseStatics = extern struct {
 };
 pub const IFlyoutBaseStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4765,25 +4765,25 @@ pub const IFlyoutBaseStatics2 = extern struct {
     pub fn getAllowFocusOnInteractionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AllowFocusOnInteractionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLightDismissOverlayModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LightDismissOverlayModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllowFocusWhenDisabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AllowFocusWhenDisabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getElementSoundModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ElementSoundModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseStatics2";
@@ -4806,8 +4806,11 @@ pub const IFlyoutBaseStatics2 = extern struct {
 };
 pub const IFlyoutBaseStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4815,7 +4818,7 @@ pub const IFlyoutBaseStatics3 = extern struct {
     pub fn getOverlayInputPassThroughElementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_OverlayInputPassThroughElementProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseStatics3";
@@ -4835,8 +4838,11 @@ pub const IFlyoutBaseStatics3 = extern struct {
 };
 pub const IFlyoutBaseStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4844,31 +4850,31 @@ pub const IFlyoutBaseStatics5 = extern struct {
     pub fn getTargetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShowModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShowModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInputDevicePrefersPrimaryCommandsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_InputDevicePrefersPrimaryCommandsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAreOpenCloseAnimationsEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AreOpenCloseAnimationsEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsOpenProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsOpenProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseStatics5";
@@ -4892,8 +4898,11 @@ pub const IFlyoutBaseStatics5 = extern struct {
 };
 pub const IFlyoutBaseStatics6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4901,7 +4910,7 @@ pub const IFlyoutBaseStatics6 = extern struct {
     pub fn getShouldConstrainToRootBoundsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBoundsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutBaseStatics6";
@@ -4921,8 +4930,11 @@ pub const IFlyoutBaseStatics6 = extern struct {
 };
 pub const IFlyoutShowOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4930,42 +4942,42 @@ pub const IFlyoutShowOptions = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!*IReference(Point) {
         var _r: *IReference(Point) = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPosition(self: *@This(), value: *IReference(Point)) core.HResult!void {
         const _c = self.vtable.put_Position(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getExclusionRect(self: *@This()) core.HResult!*IReference(Rect) {
         var _r: *IReference(Rect) = undefined;
         const _c = self.vtable.get_ExclusionRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExclusionRect(self: *@This(), value: *IReference(Rect)) core.HResult!void {
         const _c = self.vtable.put_ExclusionRect(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getShowMode(self: *@This()) core.HResult!FlyoutShowMode {
         var _r: FlyoutShowMode = undefined;
         const _c = self.vtable.get_ShowMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShowMode(self: *@This(), value: FlyoutShowMode) core.HResult!void {
         const _c = self.vtable.put_ShowMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlacement(self: *@This()) core.HResult!FlyoutPlacementMode {
         var _r: FlyoutPlacementMode = undefined;
         const _c = self.vtable.get_Placement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPlacement(self: *@This(), value: FlyoutPlacementMode) core.HResult!void {
         const _c = self.vtable.put_Placement(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutShowOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4991,8 +5003,11 @@ pub const IFlyoutShowOptions = extern struct {
 };
 pub const IFlyoutShowOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5000,7 +5015,7 @@ pub const IFlyoutShowOptionsFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutShowOptions {
         var _r: *FlyoutShowOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IFlyoutShowOptionsFactory";
@@ -5020,8 +5035,11 @@ pub const IFlyoutShowOptionsFactory = extern struct {
 };
 pub const IGeneratorPositionHelper = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5042,8 +5060,11 @@ pub const IGeneratorPositionHelper = extern struct {
 };
 pub const IGeneratorPositionHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5051,7 +5072,7 @@ pub const IGeneratorPositionHelperStatics = extern struct {
     pub fn FromIndexAndOffset(self: *@This(), index: i32, offset: i32) core.HResult!GeneratorPosition {
         var _r: GeneratorPosition = undefined;
         const _c = self.vtable.FromIndexAndOffset(@ptrCast(self), index, offset, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IGeneratorPositionHelperStatics";
@@ -5071,8 +5092,11 @@ pub const IGeneratorPositionHelperStatics = extern struct {
 };
 pub const IGridViewItemPresenter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5080,222 +5104,222 @@ pub const IGridViewItemPresenter = extern struct {
     pub fn getSelectionCheckMarkVisualEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionCheckMarkVisualEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_SelectionCheckMarkVisualEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckHintBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckHintBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckHintBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckHintBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckSelectingBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckSelectingBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckSelectingBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckSelectingBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDragBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_DragBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDragBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_DragBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDragForeground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_DragForeground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDragForeground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_DragForeground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFocusBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_FocusBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFocusBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_FocusBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlaceholderBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_PlaceholderBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPlaceholderBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_PlaceholderBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerOverBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_PointerOverBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPointerOverBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_PointerOverBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedForeground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedForeground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedForeground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedForeground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedPointerOverBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedPointerOverBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedPointerOverBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedPointerOverBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedPointerOverBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedPointerOverBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedBorderThickness(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_SelectedBorderThickness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_SelectedBorderThickness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisabledOpacity(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DisabledOpacity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisabledOpacity(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DisabledOpacity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDragOpacity(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DragOpacity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDragOpacity(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DragOpacity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReorderHintOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ReorderHintOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReorderHintOffset(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_ReorderHintOffset(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGridViewItemPresenterHorizontalContentAlignment(self: *@This()) core.HResult!HorizontalAlignment {
         var _r: HorizontalAlignment = undefined;
         const _c = self.vtable.get_GridViewItemPresenterHorizontalContentAlignment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGridViewItemPresenterHorizontalContentAlignment(self: *@This(), value: HorizontalAlignment) core.HResult!void {
         const _c = self.vtable.put_GridViewItemPresenterHorizontalContentAlignment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGridViewItemPresenterVerticalContentAlignment(self: *@This()) core.HResult!VerticalAlignment {
         var _r: VerticalAlignment = undefined;
         const _c = self.vtable.get_GridViewItemPresenterVerticalContentAlignment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGridViewItemPresenterVerticalContentAlignment(self: *@This(), value: VerticalAlignment) core.HResult!void {
         const _c = self.vtable.put_GridViewItemPresenterVerticalContentAlignment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGridViewItemPresenterPadding(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_GridViewItemPresenterPadding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGridViewItemPresenterPadding(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_GridViewItemPresenterPadding(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerOverBackgroundMargin(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_PointerOverBackgroundMargin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPointerOverBackgroundMargin(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_PointerOverBackgroundMargin(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContentMargin(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_ContentMargin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContentMargin(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_ContentMargin(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IGridViewItemPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5357,8 +5381,11 @@ pub const IGridViewItemPresenter = extern struct {
 };
 pub const IGridViewItemPresenterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5366,7 +5393,7 @@ pub const IGridViewItemPresenterFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemPresenter {
         var _r: *GridViewItemPresenter = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IGridViewItemPresenterFactory";
@@ -5386,8 +5413,11 @@ pub const IGridViewItemPresenterFactory = extern struct {
 };
 pub const IGridViewItemPresenterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5395,133 +5425,133 @@ pub const IGridViewItemPresenterStatics = extern struct {
     pub fn getSelectionCheckMarkVisualEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckHintBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckHintBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckSelectingBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckSelectingBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDragBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DragBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDragForegroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DragForegroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFocusBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FocusBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlaceholderBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PlaceholderBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointerOverBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PointerOverBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedForegroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedForegroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedPointerOverBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedPointerOverBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedPointerOverBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedPointerOverBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedBorderThicknessProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedBorderThicknessProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisabledOpacityProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DisabledOpacityProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDragOpacityProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DragOpacityProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReorderHintOffsetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ReorderHintOffsetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGridViewItemPresenterHorizontalContentAlignmentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_GridViewItemPresenterHorizontalContentAlignmentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGridViewItemPresenterVerticalContentAlignmentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_GridViewItemPresenterVerticalContentAlignmentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGridViewItemPresenterPaddingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_GridViewItemPresenterPaddingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointerOverBackgroundMarginProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PointerOverBackgroundMarginProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentMarginProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ContentMarginProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IGridViewItemPresenterStatics";
@@ -5562,8 +5592,11 @@ pub const IGridViewItemPresenterStatics = extern struct {
 };
 pub const IGridViewItemTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5571,7 +5604,7 @@ pub const IGridViewItemTemplateSettings = extern struct {
     pub fn getDragItemsCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DragItemsCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IGridViewItemTemplateSettings";
@@ -5591,8 +5624,11 @@ pub const IGridViewItemTemplateSettings = extern struct {
 };
 pub const IItemsChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5600,31 +5636,31 @@ pub const IItemsChangedEventArgs = extern struct {
     pub fn getAction(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!GeneratorPosition {
         var _r: GeneratorPosition = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOldPosition(self: *@This()) core.HResult!GeneratorPosition {
         var _r: GeneratorPosition = undefined;
         const _c = self.vtable.get_OldPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ItemCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemUICount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ItemUICount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IItemsChangedEventArgs";
@@ -5648,8 +5684,11 @@ pub const IItemsChangedEventArgs = extern struct {
 };
 pub const IJumpListItemBackgroundConverter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5657,22 +5696,22 @@ pub const IJumpListItemBackgroundConverter = extern struct {
     pub fn getEnabled(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEnabled(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_Enabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisabled(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Disabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisabled(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_Disabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IJumpListItemBackgroundConverter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5694,8 +5733,11 @@ pub const IJumpListItemBackgroundConverter = extern struct {
 };
 pub const IJumpListItemBackgroundConverterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5703,13 +5745,13 @@ pub const IJumpListItemBackgroundConverterStatics = extern struct {
     pub fn getEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DisabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IJumpListItemBackgroundConverterStatics";
@@ -5730,8 +5772,11 @@ pub const IJumpListItemBackgroundConverterStatics = extern struct {
 };
 pub const IJumpListItemForegroundConverter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5739,22 +5784,22 @@ pub const IJumpListItemForegroundConverter = extern struct {
     pub fn getEnabled(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEnabled(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_Enabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisabled(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Disabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisabled(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_Disabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IJumpListItemForegroundConverter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5776,8 +5821,11 @@ pub const IJumpListItemForegroundConverter = extern struct {
 };
 pub const IJumpListItemForegroundConverterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5785,13 +5833,13 @@ pub const IJumpListItemForegroundConverterStatics = extern struct {
     pub fn getEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DisabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IJumpListItemForegroundConverterStatics";
@@ -5812,8 +5860,11 @@ pub const IJumpListItemForegroundConverterStatics = extern struct {
 };
 pub const ILayoutInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5834,8 +5885,11 @@ pub const ILayoutInformation = extern struct {
 };
 pub const ILayoutInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5843,13 +5897,13 @@ pub const ILayoutInformationStatics = extern struct {
     pub fn GetLayoutExceptionElement(self: *@This(), dispatcher: *IInspectable) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.GetLayoutExceptionElement(@ptrCast(self), dispatcher, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLayoutSlot(self: *@This(), element: *FrameworkElement) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.GetLayoutSlot(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ILayoutInformationStatics";
@@ -5870,8 +5924,11 @@ pub const ILayoutInformationStatics = extern struct {
 };
 pub const ILayoutInformationStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5879,7 +5936,7 @@ pub const ILayoutInformationStatics2 = extern struct {
     pub fn GetAvailableSize(self: *@This(), element: *UIElement) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.GetAvailableSize(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ILayoutInformationStatics2";
@@ -5899,8 +5956,11 @@ pub const ILayoutInformationStatics2 = extern struct {
 };
 pub const IListViewItemPresenter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5908,222 +5968,222 @@ pub const IListViewItemPresenter = extern struct {
     pub fn getSelectionCheckMarkVisualEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionCheckMarkVisualEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_SelectionCheckMarkVisualEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckHintBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckHintBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckHintBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckHintBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckSelectingBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckSelectingBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckSelectingBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckSelectingBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDragBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_DragBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDragBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_DragBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDragForeground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_DragForeground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDragForeground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_DragForeground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFocusBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_FocusBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFocusBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_FocusBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPlaceholderBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_PlaceholderBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPlaceholderBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_PlaceholderBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerOverBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_PointerOverBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPointerOverBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_PointerOverBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedForeground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedForeground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedForeground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedForeground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedPointerOverBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedPointerOverBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedPointerOverBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedPointerOverBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedPointerOverBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedPointerOverBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedBorderThickness(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_SelectedBorderThickness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_SelectedBorderThickness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisabledOpacity(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DisabledOpacity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisabledOpacity(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DisabledOpacity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDragOpacity(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DragOpacity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDragOpacity(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_DragOpacity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReorderHintOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ReorderHintOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReorderHintOffset(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_ReorderHintOffset(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListViewItemPresenterHorizontalContentAlignment(self: *@This()) core.HResult!HorizontalAlignment {
         var _r: HorizontalAlignment = undefined;
         const _c = self.vtable.get_ListViewItemPresenterHorizontalContentAlignment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListViewItemPresenterHorizontalContentAlignment(self: *@This(), value: HorizontalAlignment) core.HResult!void {
         const _c = self.vtable.put_ListViewItemPresenterHorizontalContentAlignment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListViewItemPresenterVerticalContentAlignment(self: *@This()) core.HResult!VerticalAlignment {
         var _r: VerticalAlignment = undefined;
         const _c = self.vtable.get_ListViewItemPresenterVerticalContentAlignment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListViewItemPresenterVerticalContentAlignment(self: *@This(), value: VerticalAlignment) core.HResult!void {
         const _c = self.vtable.put_ListViewItemPresenterVerticalContentAlignment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getListViewItemPresenterPadding(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_ListViewItemPresenterPadding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putListViewItemPresenterPadding(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_ListViewItemPresenterPadding(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerOverBackgroundMargin(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_PointerOverBackgroundMargin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPointerOverBackgroundMargin(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_PointerOverBackgroundMargin(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContentMargin(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_ContentMargin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContentMargin(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_ContentMargin(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6185,8 +6245,11 @@ pub const IListViewItemPresenter = extern struct {
 };
 pub const IListViewItemPresenter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6194,62 +6257,62 @@ pub const IListViewItemPresenter2 = extern struct {
     pub fn getSelectedPressedBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedPressedBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedPressedBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPressedBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_PressedBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_PressedBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFocusSecondaryBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_FocusSecondaryBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFocusSecondaryBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_FocusSecondaryBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckMode(self: *@This()) core.HResult!ListViewItemPresenterCheckMode {
         var _r: ListViewItemPresenterCheckMode = undefined;
         const _c = self.vtable.get_CheckMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckMode(self: *@This(), value: ListViewItemPresenterCheckMode) core.HResult!void {
         const _c = self.vtable.put_CheckMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerOverForeground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_PointerOverForeground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPointerOverForeground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_PointerOverForeground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenter2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6279,8 +6342,11 @@ pub const IListViewItemPresenter2 = extern struct {
 };
 pub const IListViewItemPresenter3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6288,42 +6354,42 @@ pub const IListViewItemPresenter3 = extern struct {
     pub fn getRevealBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_RevealBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRevealBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_RevealBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRevealBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_RevealBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRevealBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_RevealBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRevealBorderThickness(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_RevealBorderThickness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRevealBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         const _c = self.vtable.put_RevealBorderThickness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRevealBackgroundShowsAboveContent(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RevealBackgroundShowsAboveContent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRevealBackgroundShowsAboveContent(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_RevealBackgroundShowsAboveContent(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenter3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6349,8 +6415,11 @@ pub const IListViewItemPresenter3 = extern struct {
 };
 pub const IListViewItemPresenter4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6358,272 +6427,272 @@ pub const IListViewItemPresenter4 = extern struct {
     pub fn getSelectedDisabledBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedDisabledBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedDisabledBackground(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedDisabledBackground(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckPressedBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckPressedBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckPressedBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckDisabledBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckDisabledBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckDisabledBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxPointerOverBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxPointerOverBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxPressedBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxPressedBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxPressedBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxDisabledBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxDisabledBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxDisabledBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxSelectedBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxSelectedBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxSelectedBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxSelectedBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxSelectedPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxSelectedPointerOverBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxSelectedPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxSelectedPointerOverBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxSelectedPressedBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxSelectedPressedBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxSelectedPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxSelectedPressedBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxSelectedDisabledBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxSelectedDisabledBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxSelectedDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxSelectedDisabledBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxPointerOverBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxPointerOverBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxPressedBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxPressedBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxPressedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxPressedBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxDisabledBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_CheckBoxDisabledBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxDisabledBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_CheckBoxDisabledBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCheckBoxCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var _r: CornerRadius = undefined;
         const _c = self.vtable.get_CheckBoxCornerRadius(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCheckBoxCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         const _c = self.vtable.put_CheckBoxCornerRadius(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionIndicatorCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var _r: CornerRadius = undefined;
         const _c = self.vtable.get_SelectionIndicatorCornerRadius(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionIndicatorCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         const _c = self.vtable.put_SelectionIndicatorCornerRadius(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionIndicatorVisualEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SelectionIndicatorVisualEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionIndicatorVisualEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_SelectionIndicatorVisualEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionIndicatorMode(self: *@This()) core.HResult!ListViewItemPresenterSelectionIndicatorMode {
         var _r: ListViewItemPresenterSelectionIndicatorMode = undefined;
         const _c = self.vtable.get_SelectionIndicatorMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionIndicatorMode(self: *@This(), value: ListViewItemPresenterSelectionIndicatorMode) core.HResult!void {
         const _c = self.vtable.put_SelectionIndicatorMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionIndicatorBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectionIndicatorBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionIndicatorBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectionIndicatorBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionIndicatorPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectionIndicatorPointerOverBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionIndicatorPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectionIndicatorPointerOverBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionIndicatorPressedBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectionIndicatorPressedBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionIndicatorPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectionIndicatorPressedBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionIndicatorDisabledBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectionIndicatorDisabledBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectionIndicatorDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectionIndicatorDisabledBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedPressedBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedPressedBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedPressedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedPressedBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedDisabledBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedDisabledBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedDisabledBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedDisabledBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedInnerBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedInnerBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedInnerBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_SelectedInnerBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_PointerOverBorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_PointerOverBorderBrush(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenter4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6695,8 +6764,11 @@ pub const IListViewItemPresenter4 = extern struct {
 };
 pub const IListViewItemPresenterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6704,7 +6776,7 @@ pub const IListViewItemPresenterFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemPresenter {
         var _r: *ListViewItemPresenter = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenterFactory";
@@ -6724,8 +6796,11 @@ pub const IListViewItemPresenterFactory = extern struct {
 };
 pub const IListViewItemPresenterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6733,133 +6808,133 @@ pub const IListViewItemPresenterStatics = extern struct {
     pub fn getSelectionCheckMarkVisualEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckHintBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckHintBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckSelectingBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckSelectingBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDragBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DragBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDragForegroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DragForegroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFocusBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FocusBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlaceholderBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PlaceholderBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointerOverBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PointerOverBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedForegroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedForegroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedPointerOverBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedPointerOverBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedPointerOverBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedPointerOverBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedBorderThicknessProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedBorderThicknessProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisabledOpacityProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DisabledOpacityProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDragOpacityProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DragOpacityProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReorderHintOffsetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ReorderHintOffsetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getListViewItemPresenterHorizontalContentAlignmentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ListViewItemPresenterHorizontalContentAlignmentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getListViewItemPresenterVerticalContentAlignmentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ListViewItemPresenterVerticalContentAlignmentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getListViewItemPresenterPaddingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ListViewItemPresenterPaddingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointerOverBackgroundMarginProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PointerOverBackgroundMarginProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentMarginProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ContentMarginProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenterStatics";
@@ -6900,8 +6975,11 @@ pub const IListViewItemPresenterStatics = extern struct {
 };
 pub const IListViewItemPresenterStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6909,37 +6987,37 @@ pub const IListViewItemPresenterStatics2 = extern struct {
     pub fn getSelectedPressedBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedPressedBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPressedBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PressedBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFocusSecondaryBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FocusSecondaryBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointerOverForegroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PointerOverForegroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenterStatics2";
@@ -6964,8 +7042,11 @@ pub const IListViewItemPresenterStatics2 = extern struct {
 };
 pub const IListViewItemPresenterStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6973,25 +7054,25 @@ pub const IListViewItemPresenterStatics3 = extern struct {
     pub fn getRevealBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RevealBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRevealBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RevealBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRevealBorderThicknessProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RevealBorderThicknessProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRevealBackgroundShowsAboveContentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RevealBackgroundShowsAboveContentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenterStatics3";
@@ -7014,8 +7095,11 @@ pub const IListViewItemPresenterStatics3 = extern struct {
 };
 pub const IListViewItemPresenterStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7023,163 +7107,163 @@ pub const IListViewItemPresenterStatics4 = extern struct {
     pub fn getSelectedDisabledBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedDisabledBackgroundProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckPressedBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckPressedBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckDisabledBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckDisabledBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxPointerOverBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxPointerOverBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxPressedBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxPressedBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxDisabledBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxDisabledBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxSelectedBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxSelectedBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxSelectedPointerOverBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxSelectedPointerOverBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxSelectedPressedBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxSelectedPressedBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxSelectedDisabledBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxSelectedDisabledBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxPointerOverBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxPointerOverBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxPressedBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxPressedBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxDisabledBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxDisabledBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCheckBoxCornerRadiusProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CheckBoxCornerRadiusProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionIndicatorCornerRadiusProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionIndicatorCornerRadiusProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionIndicatorVisualEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionIndicatorVisualEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionIndicatorModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionIndicatorModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionIndicatorBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionIndicatorBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionIndicatorPointerOverBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionIndicatorPointerOverBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionIndicatorPressedBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionIndicatorPressedBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionIndicatorDisabledBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionIndicatorDisabledBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedPressedBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedPressedBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedDisabledBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedDisabledBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedInnerBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedInnerBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPointerOverBorderBrushProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PointerOverBorderBrushProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemPresenterStatics4";
@@ -7225,8 +7309,11 @@ pub const IListViewItemPresenterStatics4 = extern struct {
 };
 pub const IListViewItemTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7234,7 +7321,7 @@ pub const IListViewItemTemplateSettings = extern struct {
     pub fn getDragItemsCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DragItemsCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IListViewItemTemplateSettings";
@@ -7254,8 +7341,11 @@ pub const IListViewItemTemplateSettings = extern struct {
 };
 pub const ILoopingSelector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7263,82 +7353,82 @@ pub const ILoopingSelector = extern struct {
     pub fn getShouldLoop(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldLoop(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShouldLoop(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShouldLoop(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItems(self: *@This()) core.HResult!*IVector(IInspectable) {
         var _r: *IVector(IInspectable) = undefined;
         const _c = self.vtable.get_Items(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItems(self: *@This(), value: *IVector(IInspectable)) core.HResult!void {
         const _c = self.vtable.put_Items(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SelectedIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_SelectedIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedItem(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_SelectedItem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedItem(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_SelectedItem(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItemWidth(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ItemWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItemWidth(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ItemWidth(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItemHeight(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ItemHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItemHeight(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ItemHeight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItemTemplate(self: *@This()) core.HResult!*DataTemplate {
         var _r: *DataTemplate = undefined;
         const _c = self.vtable.get_ItemTemplate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItemTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         const _c = self.vtable.put_ItemTemplate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSelectionChanged(self: *@This(), handler: *SelectionChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SelectionChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSelectionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SelectionChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ILoopingSelector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7372,8 +7462,11 @@ pub const ILoopingSelector = extern struct {
 };
 pub const ILoopingSelectorItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7394,8 +7487,11 @@ pub const ILoopingSelectorItem = extern struct {
 };
 pub const ILoopingSelectorPanel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7416,8 +7512,11 @@ pub const ILoopingSelectorPanel = extern struct {
 };
 pub const ILoopingSelectorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7425,43 +7524,43 @@ pub const ILoopingSelectorStatics = extern struct {
     pub fn getShouldLoopProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShouldLoopProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedIndexProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedItemProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedItemProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemWidthProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemWidthProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemHeightProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemHeightProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemTemplateProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemTemplateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ILoopingSelectorStatics";
@@ -7487,8 +7586,11 @@ pub const ILoopingSelectorStatics = extern struct {
 };
 pub const IMenuFlyoutItemTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7496,7 +7598,7 @@ pub const IMenuFlyoutItemTemplateSettings = extern struct {
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextMinWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IMenuFlyoutItemTemplateSettings";
@@ -7516,8 +7618,11 @@ pub const IMenuFlyoutItemTemplateSettings = extern struct {
 };
 pub const IMenuFlyoutPresenterTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7525,7 +7630,7 @@ pub const IMenuFlyoutPresenterTemplateSettings = extern struct {
     pub fn getFlyoutContentMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FlyoutContentMinWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IMenuFlyoutPresenterTemplateSettings";
@@ -7545,8 +7650,11 @@ pub const IMenuFlyoutPresenterTemplateSettings = extern struct {
 };
 pub const INavigationViewItemPresenter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7554,12 +7662,12 @@ pub const INavigationViewItemPresenter = extern struct {
     pub fn getIcon(self: *@This()) core.HResult!*IconElement {
         var _r: *IconElement = undefined;
         const _c = self.vtable.get_Icon(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIcon(self: *@This(), value: *IconElement) core.HResult!void {
         const _c = self.vtable.put_Icon(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.INavigationViewItemPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7579,8 +7687,11 @@ pub const INavigationViewItemPresenter = extern struct {
 };
 pub const INavigationViewItemPresenterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7588,7 +7699,7 @@ pub const INavigationViewItemPresenterFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemPresenter {
         var _r: *NavigationViewItemPresenter = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.INavigationViewItemPresenterFactory";
@@ -7608,8 +7719,11 @@ pub const INavigationViewItemPresenterFactory = extern struct {
 };
 pub const INavigationViewItemPresenterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7617,7 +7731,7 @@ pub const INavigationViewItemPresenterStatics = extern struct {
     pub fn getIconProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IconProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.INavigationViewItemPresenterStatics";
@@ -7637,8 +7751,11 @@ pub const INavigationViewItemPresenterStatics = extern struct {
 };
 pub const IOrientedVirtualizingPanel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7646,129 +7763,129 @@ pub const IOrientedVirtualizingPanel = extern struct {
     pub fn getCanVerticallyScroll(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanVerticallyScroll(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanVerticallyScroll(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanVerticallyScroll(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanHorizontallyScroll(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanHorizontallyScroll(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanHorizontallyScroll(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanHorizontallyScroll(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getExtentWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExtentWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtentHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ExtentHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewportWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ViewportWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewportHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ViewportHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_VerticalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScrollOwner(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_ScrollOwner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScrollOwner(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_ScrollOwner(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineUp(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineUp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineDown(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineDown(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineLeft(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineLeft(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LineRight(self: *@This()) core.HResult!void {
         const _c = self.vtable.LineRight(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageUp(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageUp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageDown(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageDown(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageLeft(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageLeft(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PageRight(self: *@This()) core.HResult!void {
         const _c = self.vtable.PageRight(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelUp(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelUp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelDown(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelDown(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelLeft(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelLeft(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MouseWheelRight(self: *@This()) core.HResult!void {
         const _c = self.vtable.MouseWheelRight(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetHorizontalOffset(self: *@This(), offset: f64) core.HResult!void {
         const _c = self.vtable.SetHorizontalOffset(@ptrCast(self), offset);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetVerticalOffset(self: *@This(), offset: f64) core.HResult!void {
         const _c = self.vtable.SetVerticalOffset(@ptrCast(self), offset);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MakeVisible(self: *@This(), visual: *UIElement, rectangle: Rect) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.MakeVisible(@ptrCast(self), visual, rectangle, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IOrientedVirtualizingPanel";
@@ -7814,8 +7931,11 @@ pub const IOrientedVirtualizingPanel = extern struct {
 };
 pub const IOrientedVirtualizingPanelFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7836,8 +7956,11 @@ pub const IOrientedVirtualizingPanelFactory = extern struct {
 };
 pub const IPickerFlyoutBase = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7858,8 +7981,11 @@ pub const IPickerFlyoutBase = extern struct {
 };
 pub const IPickerFlyoutBaseFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7867,7 +7993,7 @@ pub const IPickerFlyoutBaseFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PickerFlyoutBase {
         var _r: *PickerFlyoutBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPickerFlyoutBaseFactory";
@@ -7887,20 +8013,23 @@ pub const IPickerFlyoutBaseFactory = extern struct {
 };
 pub const IPickerFlyoutBaseOverrides = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnConfirmed(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnConfirmed(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ShouldShowConfirmationButtons(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ShouldShowConfirmationButtons(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPickerFlyoutBaseOverrides";
@@ -7921,8 +8050,11 @@ pub const IPickerFlyoutBaseOverrides = extern struct {
 };
 pub const IPickerFlyoutBaseStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7930,18 +8062,18 @@ pub const IPickerFlyoutBaseStatics = extern struct {
     pub fn getTitleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TitleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTitle(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetTitle(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetTitle(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetTitle(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPickerFlyoutBaseStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7962,8 +8094,11 @@ pub const IPickerFlyoutBaseStatics = extern struct {
 };
 pub const IPivotHeaderItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7984,8 +8119,11 @@ pub const IPivotHeaderItem = extern struct {
 };
 pub const IPivotHeaderItemFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7993,7 +8131,7 @@ pub const IPivotHeaderItemFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PivotHeaderItem {
         var _r: *PivotHeaderItem = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPivotHeaderItemFactory";
@@ -8013,8 +8151,11 @@ pub const IPivotHeaderItemFactory = extern struct {
 };
 pub const IPivotHeaderPanel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8035,8 +8176,11 @@ pub const IPivotHeaderPanel = extern struct {
 };
 pub const IPivotPanel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8057,8 +8201,11 @@ pub const IPivotPanel = extern struct {
 };
 pub const IPopup = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8066,82 +8213,82 @@ pub const IPopup = extern struct {
     pub fn getChild(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Child(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putChild(self: *@This(), value: *UIElement) core.HResult!void {
         const _c = self.vtable.put_Child(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsOpen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOpen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsOpen(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsOpen(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHorizontalOffset(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_HorizontalOffset(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVerticalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_VerticalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVerticalOffset(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_VerticalOffset(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getChildTransitions(self: *@This()) core.HResult!*TransitionCollection {
         var _r: *TransitionCollection = undefined;
         const _c = self.vtable.get_ChildTransitions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putChildTransitions(self: *@This(), value: *TransitionCollection) core.HResult!void {
         const _c = self.vtable.put_ChildTransitions(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsLightDismissEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLightDismissEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsLightDismissEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsLightDismissEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addOpened(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Opened(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeOpened(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Opened(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addClosed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8175,8 +8322,11 @@ pub const IPopup = extern struct {
 };
 pub const IPopup2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8184,12 +8334,12 @@ pub const IPopup2 = extern struct {
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var _r: LightDismissOverlayMode = undefined;
         const _c = self.vtable.get_LightDismissOverlayMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         const _c = self.vtable.put_LightDismissOverlayMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopup2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8209,8 +8359,11 @@ pub const IPopup2 = extern struct {
 };
 pub const IPopup3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8218,17 +8371,17 @@ pub const IPopup3 = extern struct {
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putShouldConstrainToRootBounds(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShouldConstrainToRootBounds(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsConstrainedToRootBounds(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConstrainedToRootBounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopup3";
@@ -8250,8 +8403,11 @@ pub const IPopup3 = extern struct {
 };
 pub const IPopup4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8259,38 +8415,38 @@ pub const IPopup4 = extern struct {
     pub fn getPlacementTarget(self: *@This()) core.HResult!*FrameworkElement {
         var _r: *FrameworkElement = undefined;
         const _c = self.vtable.get_PlacementTarget(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPlacementTarget(self: *@This(), value: *FrameworkElement) core.HResult!void {
         const _c = self.vtable.put_PlacementTarget(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDesiredPlacement(self: *@This()) core.HResult!PopupPlacementMode {
         var _r: PopupPlacementMode = undefined;
         const _c = self.vtable.get_DesiredPlacement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredPlacement(self: *@This(), value: PopupPlacementMode) core.HResult!void {
         const _c = self.vtable.put_DesiredPlacement(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getActualPlacement(self: *@This()) core.HResult!PopupPlacementMode {
         var _r: PopupPlacementMode = undefined;
         const _c = self.vtable.get_ActualPlacement(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addActualPlacementChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ActualPlacementChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeActualPlacementChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ActualPlacementChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopup4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8315,8 +8471,11 @@ pub const IPopup4 = extern struct {
 };
 pub const IPopupStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8324,37 +8483,37 @@ pub const IPopupStatics = extern struct {
     pub fn getChildProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ChildProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsOpenProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsOpenProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHorizontalOffsetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HorizontalOffsetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalOffsetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_VerticalOffsetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChildTransitionsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ChildTransitionsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsLightDismissEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsLightDismissEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopupStatics";
@@ -8379,8 +8538,11 @@ pub const IPopupStatics = extern struct {
 };
 pub const IPopupStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8388,7 +8550,7 @@ pub const IPopupStatics2 = extern struct {
     pub fn getLightDismissOverlayModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LightDismissOverlayModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopupStatics2";
@@ -8408,8 +8570,11 @@ pub const IPopupStatics2 = extern struct {
 };
 pub const IPopupStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8417,7 +8582,7 @@ pub const IPopupStatics3 = extern struct {
     pub fn getShouldConstrainToRootBoundsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBoundsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopupStatics3";
@@ -8437,8 +8602,11 @@ pub const IPopupStatics3 = extern struct {
 };
 pub const IPopupStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8446,13 +8614,13 @@ pub const IPopupStatics4 = extern struct {
     pub fn getPlacementTargetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PlacementTargetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDesiredPlacementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DesiredPlacementProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPopupStatics4";
@@ -8473,8 +8641,11 @@ pub const IPopupStatics4 = extern struct {
 };
 pub const IProgressBarTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8482,43 +8653,43 @@ pub const IProgressBarTemplateSettings = extern struct {
     pub fn getEllipseDiameter(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_EllipseDiameter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEllipseOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_EllipseOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEllipseAnimationWellPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_EllipseAnimationWellPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEllipseAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_EllipseAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContainerAnimationStartPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ContainerAnimationStartPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContainerAnimationEndPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ContainerAnimationEndPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIndicatorLengthDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_IndicatorLengthDelta(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IProgressBarTemplateSettings";
@@ -8544,8 +8715,11 @@ pub const IProgressBarTemplateSettings = extern struct {
 };
 pub const IProgressRingTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8553,19 +8727,19 @@ pub const IProgressRingTemplateSettings = extern struct {
     pub fn getEllipseDiameter(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_EllipseDiameter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEllipseOffset(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_EllipseOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxSideLength(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxSideLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IProgressRingTemplateSettings";
@@ -8587,8 +8761,11 @@ pub const IProgressRingTemplateSettings = extern struct {
 };
 pub const IRangeBase = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8596,62 +8773,62 @@ pub const IRangeBase = extern struct {
     pub fn getMinimum(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Minimum(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinimum(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Minimum(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaximum(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Maximum(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaximum(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Maximum(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSmallChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_SmallChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSmallChange(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_SmallChange(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLargeChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_LargeChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLargeChange(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_LargeChange(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getValue(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValue(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addValueChanged(self: *@This(), handler: *RangeBaseValueChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ValueChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeValueChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ValueChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IRangeBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8681,8 +8858,11 @@ pub const IRangeBase = extern struct {
 };
 pub const IRangeBaseFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8690,7 +8870,7 @@ pub const IRangeBaseFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBase {
         var _r: *RangeBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IRangeBaseFactory";
@@ -8710,23 +8890,26 @@ pub const IRangeBaseFactory = extern struct {
 };
 pub const IRangeBaseOverrides = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnMinimumChanged(self: *@This(), oldMinimum: f64, newMinimum: f64) core.HResult!void {
         const _c = self.vtable.OnMinimumChanged(@ptrCast(self), oldMinimum, newMinimum);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnMaximumChanged(self: *@This(), oldMaximum: f64, newMaximum: f64) core.HResult!void {
         const _c = self.vtable.OnMaximumChanged(@ptrCast(self), oldMaximum, newMaximum);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnValueChanged(self: *@This(), oldValue: f64, newValue: f64) core.HResult!void {
         const _c = self.vtable.OnValueChanged(@ptrCast(self), oldValue, newValue);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IRangeBaseOverrides";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8747,8 +8930,11 @@ pub const IRangeBaseOverrides = extern struct {
 };
 pub const IRangeBaseStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8756,31 +8942,31 @@ pub const IRangeBaseStatics = extern struct {
     pub fn getMinimumProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MinimumProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaximumProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MaximumProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSmallChangeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SmallChangeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLargeChangeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LargeChangeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ValueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IRangeBaseStatics";
@@ -8804,8 +8990,11 @@ pub const IRangeBaseStatics = extern struct {
 };
 pub const IRangeBaseValueChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8813,13 +9002,13 @@ pub const IRangeBaseValueChangedEventArgs = extern struct {
     pub fn getOldValue(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OldValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNewValue(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NewValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IRangeBaseValueChangedEventArgs";
@@ -8840,8 +9029,11 @@ pub const IRangeBaseValueChangedEventArgs = extern struct {
 };
 pub const IRepeatButton = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8849,22 +9041,22 @@ pub const IRepeatButton = extern struct {
     pub fn getDelay(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Delay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDelay(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Delay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInterval(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Interval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInterval(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Interval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IRepeatButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8886,8 +9078,11 @@ pub const IRepeatButton = extern struct {
 };
 pub const IRepeatButtonStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8895,13 +9090,13 @@ pub const IRepeatButtonStatics = extern struct {
     pub fn getDelayProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DelayProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIntervalProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IntervalProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IRepeatButtonStatics";
@@ -8922,8 +9117,11 @@ pub const IRepeatButtonStatics = extern struct {
 };
 pub const IScrollBar = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8931,42 +9129,42 @@ pub const IScrollBar = extern struct {
     pub fn getOrientation(self: *@This()) core.HResult!Orientation {
         var _r: Orientation = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOrientation(self: *@This(), value: Orientation) core.HResult!void {
         const _c = self.vtable.put_Orientation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getViewportSize(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ViewportSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewportSize(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_ViewportSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIndicatorMode(self: *@This()) core.HResult!ScrollingIndicatorMode {
         var _r: ScrollingIndicatorMode = undefined;
         const _c = self.vtable.get_IndicatorMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIndicatorMode(self: *@This(), value: ScrollingIndicatorMode) core.HResult!void {
         const _c = self.vtable.put_IndicatorMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addScroll(self: *@This(), handler: *ScrollEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Scroll(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeScroll(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Scroll(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IScrollBar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8992,8 +9190,11 @@ pub const IScrollBar = extern struct {
 };
 pub const IScrollBarStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9001,19 +9202,19 @@ pub const IScrollBarStatics = extern struct {
     pub fn getOrientationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_OrientationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewportSizeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ViewportSizeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIndicatorModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IndicatorModeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IScrollBarStatics";
@@ -9035,8 +9236,11 @@ pub const IScrollBarStatics = extern struct {
 };
 pub const IScrollEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9044,13 +9248,13 @@ pub const IScrollEventArgs = extern struct {
     pub fn getNewValue(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NewValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScrollEventType(self: *@This()) core.HResult!ScrollEventType {
         var _r: ScrollEventType = undefined;
         const _c = self.vtable.get_ScrollEventType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IScrollEventArgs";
@@ -9071,8 +9275,11 @@ pub const IScrollEventArgs = extern struct {
 };
 pub const IScrollSnapPointsInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9080,45 +9287,45 @@ pub const IScrollSnapPointsInfo = extern struct {
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreHorizontalSnapPointsRegular(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreVerticalSnapPointsRegular(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HorizontalSnapPointsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HorizontalSnapPointsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VerticalSnapPointsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VerticalSnapPointsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var _r: *IVectorView(f32) = undefined;
         const _c = self.vtable.GetIrregularSnapPoints(@ptrCast(self), orientation, alignment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.GetRegularSnapPoints(@ptrCast(self), orientation, alignment, offset, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IScrollSnapPointsInfo";
@@ -9145,8 +9352,11 @@ pub const IScrollSnapPointsInfo = extern struct {
 };
 pub const ISelector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9154,62 +9364,62 @@ pub const ISelector = extern struct {
     pub fn getSelectedIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SelectedIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedIndex(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_SelectedIndex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedItem(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_SelectedItem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedItem(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_SelectedItem(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_SelectedValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedValue(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_SelectedValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedValuePath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedValuePath(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedValuePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SelectedValuePath(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsSynchronizedWithCurrentItem(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsSynchronizedWithCurrentItem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsSynchronizedWithCurrentItem(self: *@This(), value: *IReference(bool)) core.HResult!void {
         const _c = self.vtable.put_IsSynchronizedWithCurrentItem(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSelectionChanged(self: *@This(), handler: *SelectionChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SelectionChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSelectionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SelectionChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISelector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9239,8 +9449,11 @@ pub const ISelector = extern struct {
 };
 pub const ISelectorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9261,8 +9474,11 @@ pub const ISelectorFactory = extern struct {
 };
 pub const ISelectorItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9270,12 +9486,12 @@ pub const ISelectorItem = extern struct {
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSelected(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsSelected(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsSelected(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISelectorItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9295,8 +9511,11 @@ pub const ISelectorItem = extern struct {
 };
 pub const ISelectorItemFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9304,7 +9523,7 @@ pub const ISelectorItemFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItem {
         var _r: *SelectorItem = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISelectorItemFactory";
@@ -9324,8 +9543,11 @@ pub const ISelectorItemFactory = extern struct {
 };
 pub const ISelectorItemStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9333,7 +9555,7 @@ pub const ISelectorItemStatics = extern struct {
     pub fn getIsSelectedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsSelectedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISelectorItemStatics";
@@ -9353,8 +9575,11 @@ pub const ISelectorItemStatics = extern struct {
 };
 pub const ISelectorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9362,37 +9587,37 @@ pub const ISelectorStatics = extern struct {
     pub fn getSelectedIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedIndexProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedItemProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedItemProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedValueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedValuePathProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedValuePathProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSynchronizedWithCurrentItemProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsSynchronizedWithCurrentItemProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsSelectionActive(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetIsSelectionActive(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISelectorStatics";
@@ -9417,8 +9642,11 @@ pub const ISelectorStatics = extern struct {
 };
 pub const ISettingsFlyoutTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9426,37 +9654,37 @@ pub const ISettingsFlyoutTemplateSettings = extern struct {
     pub fn getHeaderBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_HeaderBackground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeaderForeground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_HeaderForeground(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBorderBrush(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_BorderBrush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBorderThickness(self: *@This()) core.HResult!Thickness {
         var _r: Thickness = undefined;
         const _c = self.vtable.get_BorderThickness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIconSource(self: *@This()) core.HResult!*ImageSource {
         var _r: *ImageSource = undefined;
         const _c = self.vtable.get_IconSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentTransitions(self: *@This()) core.HResult!*TransitionCollection {
         var _r: *TransitionCollection = undefined;
         const _c = self.vtable.get_ContentTransitions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISettingsFlyoutTemplateSettings";
@@ -9481,8 +9709,11 @@ pub const ISettingsFlyoutTemplateSettings = extern struct {
 };
 pub const ISplitViewTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9490,37 +9721,37 @@ pub const ISplitViewTemplateSettings = extern struct {
     pub fn getOpenPaneLength(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OpenPaneLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNegativeOpenPaneLength(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NegativeOpenPaneLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOpenPaneLengthMinusCompactLength(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OpenPaneLengthMinusCompactLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNegativeOpenPaneLengthMinusCompactLength(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NegativeOpenPaneLengthMinusCompactLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOpenPaneGridLength(self: *@This()) core.HResult!GridLength {
         var _r: GridLength = undefined;
         const _c = self.vtable.get_OpenPaneGridLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCompactPaneGridLength(self: *@This()) core.HResult!GridLength {
         var _r: GridLength = undefined;
         const _c = self.vtable.get_CompactPaneGridLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISplitViewTemplateSettings";
@@ -9545,8 +9776,11 @@ pub const ISplitViewTemplateSettings = extern struct {
 };
 pub const IThumb = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9554,42 +9788,42 @@ pub const IThumb = extern struct {
     pub fn getIsDragging(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDragging(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addDragStarted(self: *@This(), handler: *DragStartedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DragStarted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDragStarted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DragStarted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDragDelta(self: *@This(), handler: *DragDeltaEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DragDelta(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDragDelta(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DragDelta(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDragCompleted(self: *@This(), handler: *DragCompletedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DragCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDragCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DragCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CancelDrag(self: *@This()) core.HResult!void {
         const _c = self.vtable.CancelDrag(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IThumb";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9615,8 +9849,11 @@ pub const IThumb = extern struct {
 };
 pub const IThumbStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9624,7 +9861,7 @@ pub const IThumbStatics = extern struct {
     pub fn getIsDraggingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsDraggingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IThumbStatics";
@@ -9644,8 +9881,11 @@ pub const IThumbStatics = extern struct {
 };
 pub const ITickBar = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9653,12 +9893,12 @@ pub const ITickBar = extern struct {
     pub fn getFill(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Fill(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFill(self: *@This(), value: *Brush) core.HResult!void {
         const _c = self.vtable.put_Fill(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ITickBar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9678,8 +9918,11 @@ pub const ITickBar = extern struct {
 };
 pub const ITickBarStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9687,7 +9930,7 @@ pub const ITickBarStatics = extern struct {
     pub fn getFillProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FillProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ITickBarStatics";
@@ -9707,8 +9950,11 @@ pub const ITickBarStatics = extern struct {
 };
 pub const IToggleButton = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9716,52 +9962,52 @@ pub const IToggleButton = extern struct {
     pub fn getIsChecked(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsChecked(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsChecked(self: *@This(), value: *IReference(bool)) core.HResult!void {
         const _c = self.vtable.put_IsChecked(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsThreeState(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsThreeState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsThreeState(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsThreeState(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addChecked(self: *@This(), handler: *RoutedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Checked(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeChecked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Checked(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUnchecked(self: *@This(), handler: *RoutedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Unchecked(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUnchecked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Unchecked(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addIndeterminate(self: *@This(), handler: *RoutedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Indeterminate(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeIndeterminate(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Indeterminate(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IToggleButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9789,8 +10035,11 @@ pub const IToggleButton = extern struct {
 };
 pub const IToggleButtonFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9798,7 +10047,7 @@ pub const IToggleButtonFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButton {
         var _r: *ToggleButton = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IToggleButtonFactory";
@@ -9818,15 +10067,18 @@ pub const IToggleButtonFactory = extern struct {
 };
 pub const IToggleButtonOverrides = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnToggle(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnToggle(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IToggleButtonOverrides";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9845,8 +10097,11 @@ pub const IToggleButtonOverrides = extern struct {
 };
 pub const IToggleButtonStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9854,13 +10109,13 @@ pub const IToggleButtonStatics = extern struct {
     pub fn getIsCheckedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsCheckedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsThreeStateProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsThreeStateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IToggleButtonStatics";
@@ -9881,8 +10136,11 @@ pub const IToggleButtonStatics = extern struct {
 };
 pub const IToggleSwitchTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9890,49 +10148,49 @@ pub const IToggleSwitchTemplateSettings = extern struct {
     pub fn getKnobCurrentToOnOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KnobCurrentToOnOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKnobCurrentToOffOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KnobCurrentToOffOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKnobOnToOffOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KnobOnToOffOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKnobOffToOnOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KnobOffToOnOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurtainCurrentToOnOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CurtainCurrentToOnOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurtainCurrentToOffOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CurtainCurrentToOffOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurtainOnToOffOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CurtainOnToOffOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurtainOffToOnOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_CurtainOffToOnOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IToggleSwitchTemplateSettings";
@@ -9959,8 +10217,11 @@ pub const IToggleSwitchTemplateSettings = extern struct {
 };
 pub const IToolTipTemplateSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9968,13 +10229,13 @@ pub const IToolTipTemplateSettings = extern struct {
     pub fn getFromHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FromHorizontalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFromVerticalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FromVerticalOffset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IToolTipTemplateSettings";
@@ -9995,14 +10256,11 @@ pub const IToolTipTemplateSettings = extern struct {
 };
 pub const ItemsChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10124,14 +10382,11 @@ pub const ItemsChangedEventHandler = extern struct {
 };
 pub const JumpListItemBackgroundConverter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10155,15 +10410,13 @@ pub const JumpListItemBackgroundConverter = extern struct {
     pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         return try this.?.Convert(value, targetType, parameter, language);
     }
     pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         return try this.?.ConvertBack(value, targetType, parameter, language);
     }
     pub fn init() core.HResult!*@This() {
@@ -10188,14 +10441,11 @@ pub const JumpListItemBackgroundConverter = extern struct {
 };
 pub const JumpListItemForegroundConverter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10219,15 +10469,13 @@ pub const JumpListItemForegroundConverter = extern struct {
     pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         return try this.?.Convert(value, targetType, parameter, language);
     }
     pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         return try this.?.ConvertBack(value, targetType, parameter, language);
     }
     pub fn init() core.HResult!*@This() {
@@ -10252,14 +10500,11 @@ pub const JumpListItemForegroundConverter = extern struct {
 };
 pub const LayoutInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10286,14 +10531,11 @@ pub const LayoutInformation = extern struct {
 };
 pub const ListViewItemPresenter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10477,519 +10719,445 @@ pub const ListViewItemPresenter = extern struct {
     pub fn getSelectedPressedBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.getSelectedPressedBackground();
     }
     pub fn putSelectedPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.putSelectedPressedBackground(value);
     }
     pub fn getPressedBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.getPressedBackground();
     }
     pub fn putPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.putPressedBackground(value);
     }
     pub fn getCheckBoxBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.getCheckBoxBrush();
     }
     pub fn putCheckBoxBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.putCheckBoxBrush(value);
     }
     pub fn getFocusSecondaryBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.getFocusSecondaryBorderBrush();
     }
     pub fn putFocusSecondaryBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.putFocusSecondaryBorderBrush(value);
     }
     pub fn getCheckMode(self: *@This()) core.HResult!ListViewItemPresenterCheckMode {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.getCheckMode();
     }
     pub fn putCheckMode(self: *@This(), value: ListViewItemPresenterCheckMode) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.putCheckMode(value);
     }
     pub fn getPointerOverForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.getPointerOverForeground();
     }
     pub fn putPointerOverForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         return try this.?.putPointerOverForeground(value);
     }
     pub fn getRevealBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.getRevealBackground();
     }
     pub fn putRevealBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.putRevealBackground(value);
     }
     pub fn getRevealBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.getRevealBorderBrush();
     }
     pub fn putRevealBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.putRevealBorderBrush(value);
     }
     pub fn getRevealBorderThickness(self: *@This()) core.HResult!Thickness {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.getRevealBorderThickness();
     }
     pub fn putRevealBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.putRevealBorderThickness(value);
     }
     pub fn getRevealBackgroundShowsAboveContent(self: *@This()) core.HResult!bool {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.getRevealBackgroundShowsAboveContent();
     }
     pub fn putRevealBackgroundShowsAboveContent(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         return try this.?.putRevealBackgroundShowsAboveContent(value);
     }
     pub fn getSelectedDisabledBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectedDisabledBackground();
     }
     pub fn putSelectedDisabledBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectedDisabledBackground(value);
     }
     pub fn getCheckPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckPressedBrush();
     }
     pub fn putCheckPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckPressedBrush(value);
     }
     pub fn getCheckDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckDisabledBrush();
     }
     pub fn putCheckDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckDisabledBrush(value);
     }
     pub fn getCheckBoxPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxPointerOverBrush();
     }
     pub fn putCheckBoxPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxPointerOverBrush(value);
     }
     pub fn getCheckBoxPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxPressedBrush();
     }
     pub fn putCheckBoxPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxPressedBrush(value);
     }
     pub fn getCheckBoxDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxDisabledBrush();
     }
     pub fn putCheckBoxDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxDisabledBrush(value);
     }
     pub fn getCheckBoxSelectedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxSelectedBrush();
     }
     pub fn putCheckBoxSelectedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxSelectedBrush(value);
     }
     pub fn getCheckBoxSelectedPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxSelectedPointerOverBrush();
     }
     pub fn putCheckBoxSelectedPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxSelectedPointerOverBrush(value);
     }
     pub fn getCheckBoxSelectedPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxSelectedPressedBrush();
     }
     pub fn putCheckBoxSelectedPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxSelectedPressedBrush(value);
     }
     pub fn getCheckBoxSelectedDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxSelectedDisabledBrush();
     }
     pub fn putCheckBoxSelectedDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxSelectedDisabledBrush(value);
     }
     pub fn getCheckBoxBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxBorderBrush();
     }
     pub fn putCheckBoxBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxBorderBrush(value);
     }
     pub fn getCheckBoxPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxPointerOverBorderBrush();
     }
     pub fn putCheckBoxPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxPointerOverBorderBrush(value);
     }
     pub fn getCheckBoxPressedBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxPressedBorderBrush();
     }
     pub fn putCheckBoxPressedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxPressedBorderBrush(value);
     }
     pub fn getCheckBoxDisabledBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxDisabledBorderBrush();
     }
     pub fn putCheckBoxDisabledBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxDisabledBorderBrush(value);
     }
     pub fn getCheckBoxCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getCheckBoxCornerRadius();
     }
     pub fn putCheckBoxCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putCheckBoxCornerRadius(value);
     }
     pub fn getSelectionIndicatorCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectionIndicatorCornerRadius();
     }
     pub fn putSelectionIndicatorCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectionIndicatorCornerRadius(value);
     }
     pub fn getSelectionIndicatorVisualEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectionIndicatorVisualEnabled();
     }
     pub fn putSelectionIndicatorVisualEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectionIndicatorVisualEnabled(value);
     }
     pub fn getSelectionIndicatorMode(self: *@This()) core.HResult!ListViewItemPresenterSelectionIndicatorMode {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectionIndicatorMode();
     }
     pub fn putSelectionIndicatorMode(self: *@This(), value: ListViewItemPresenterSelectionIndicatorMode) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectionIndicatorMode(value);
     }
     pub fn getSelectionIndicatorBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectionIndicatorBrush();
     }
     pub fn putSelectionIndicatorBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectionIndicatorBrush(value);
     }
     pub fn getSelectionIndicatorPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectionIndicatorPointerOverBrush();
     }
     pub fn putSelectionIndicatorPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectionIndicatorPointerOverBrush(value);
     }
     pub fn getSelectionIndicatorPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectionIndicatorPressedBrush();
     }
     pub fn putSelectionIndicatorPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectionIndicatorPressedBrush(value);
     }
     pub fn getSelectionIndicatorDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectionIndicatorDisabledBrush();
     }
     pub fn putSelectionIndicatorDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectionIndicatorDisabledBrush(value);
     }
     pub fn getSelectedBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectedBorderBrush();
     }
     pub fn putSelectedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectedBorderBrush(value);
     }
     pub fn getSelectedPressedBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectedPressedBorderBrush();
     }
     pub fn putSelectedPressedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectedPressedBorderBrush(value);
     }
     pub fn getSelectedDisabledBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectedDisabledBorderBrush();
     }
     pub fn putSelectedDisabledBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectedDisabledBorderBrush(value);
     }
     pub fn getSelectedInnerBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getSelectedInnerBorderBrush();
     }
     pub fn putSelectedInnerBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putSelectedInnerBorderBrush(value);
     }
     pub fn getPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.getPointerOverBorderBrush();
     }
     pub fn putPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         return try this.?.putPointerOverBorderBrush(value);
     }
     pub fn getSelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
@@ -11253,14 +11421,11 @@ pub const ListViewItemPresenterSelectionIndicatorMode = enum(i32) {
 };
 pub const ListViewItemTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11277,14 +11442,11 @@ pub const ListViewItemTemplateSettings = extern struct {
 };
 pub const LoopingSelector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11390,14 +11552,11 @@ pub const LoopingSelector = extern struct {
 };
 pub const LoopingSelectorItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11410,14 +11569,11 @@ pub const LoopingSelectorItem = extern struct {
 };
 pub const LoopingSelectorPanel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11425,57 +11581,49 @@ pub const LoopingSelectorPanel = extern struct {
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.LoopingSelectorPanel";
@@ -11486,14 +11634,11 @@ pub const LoopingSelectorPanel = extern struct {
 };
 pub const MenuFlyoutItemTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11510,14 +11655,11 @@ pub const MenuFlyoutItemTemplateSettings = extern struct {
 };
 pub const MenuFlyoutPresenterTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11534,14 +11676,11 @@ pub const MenuFlyoutPresenterTemplateSettings = extern struct {
 };
 pub const NavigationViewItemPresenter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11572,14 +11711,11 @@ pub const NavigationViewItemPresenter = extern struct {
 };
 pub const OrientedVirtualizingPanel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11695,64 +11831,55 @@ pub const OrientedVirtualizingPanel = extern struct {
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
     pub fn GetInsertionIndexes(self: *@This(), position: Point, first: i32, second: i32) core.HResult!void {
         var this: ?*IInsertionPanel = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInsertionPanel.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInsertionPanel.IID, @ptrCast(&this));
         return try this.?.GetInsertionIndexes(position, first, second);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.OrientedVirtualizingPanel";
@@ -11764,14 +11891,11 @@ pub const OrientedVirtualizingPanel = extern struct {
 };
 pub const PivotHeaderItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11789,14 +11913,11 @@ pub const PivotHeaderItem = extern struct {
 };
 pub const PivotHeaderPanel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11814,14 +11935,11 @@ pub const PivotHeaderPanel = extern struct {
 };
 pub const PivotPanel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11829,57 +11947,49 @@ pub const PivotPanel = extern struct {
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
     pub fn init() core.HResult!*@This() {
@@ -11902,14 +12012,11 @@ pub const PlacementMode = enum(i32) {
 };
 pub const Popup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11981,85 +12088,73 @@ pub const Popup = extern struct {
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IPopup2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup2.IID, @ptrCast(&this));
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IPopup2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup2.IID, @ptrCast(&this));
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IPopup3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
         return try this.?.getShouldConstrainToRootBounds();
     }
     pub fn putShouldConstrainToRootBounds(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPopup3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
         return try this.?.putShouldConstrainToRootBounds(value);
     }
     pub fn getIsConstrainedToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IPopup3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
         return try this.?.getIsConstrainedToRootBounds();
     }
     pub fn getPlacementTarget(self: *@This()) core.HResult!*FrameworkElement {
         var this: ?*IPopup4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         return try this.?.getPlacementTarget();
     }
     pub fn putPlacementTarget(self: *@This(), value: *FrameworkElement) core.HResult!void {
         var this: ?*IPopup4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         return try this.?.putPlacementTarget(value);
     }
     pub fn getDesiredPlacement(self: *@This()) core.HResult!PopupPlacementMode {
         var this: ?*IPopup4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         return try this.?.getDesiredPlacement();
     }
     pub fn putDesiredPlacement(self: *@This(), value: PopupPlacementMode) core.HResult!void {
         var this: ?*IPopup4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         return try this.?.putDesiredPlacement(value);
     }
     pub fn getActualPlacement(self: *@This()) core.HResult!PopupPlacementMode {
         var this: ?*IPopup4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         return try this.?.getActualPlacement();
     }
     pub fn addActualPlacementChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IPopup4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         return try this.?.addActualPlacementChanged(handler);
     }
     pub fn removeActualPlacementChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPopup4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         return try this.?.removeActualPlacementChanged(token);
     }
     pub fn init() core.HResult!*@This() {
@@ -12134,14 +12229,11 @@ pub const PopupPlacementMode = enum(i32) {
 };
 pub const ProgressBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12182,14 +12274,11 @@ pub const ProgressBarTemplateSettings = extern struct {
 };
 pub const ProgressRingTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12214,14 +12303,11 @@ pub const ProgressRingTemplateSettings = extern struct {
 };
 pub const RangeBaseValueChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12331,14 +12417,11 @@ pub const RangeBaseValueChangedEventHandler = extern struct {
 };
 pub const RepeatButton = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12381,14 +12464,11 @@ pub const RepeatButton = extern struct {
 };
 pub const ScrollBar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12451,14 +12531,11 @@ pub const ScrollBar = extern struct {
 };
 pub const ScrollEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12589,14 +12666,11 @@ pub const ScrollingIndicatorMode = enum(i32) {
 };
 pub const SettingsFlyoutTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12642,14 +12716,11 @@ pub const SnapPointsAlignment = enum(i32) {
 };
 pub const SplitViewTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12686,14 +12757,11 @@ pub const SplitViewTemplateSettings = extern struct {
 };
 pub const Thumb = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12748,14 +12816,11 @@ pub const Thumb = extern struct {
 };
 pub const TickBar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12793,14 +12858,11 @@ pub const TickPlacement = enum(i32) {
 };
 pub const ToggleSwitchTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -12845,14 +12907,11 @@ pub const ToggleSwitchTemplateSettings = extern struct {
 };
 pub const ToolTipTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

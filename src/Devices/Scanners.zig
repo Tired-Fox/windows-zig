@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IImageScanner = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,55 +13,55 @@ pub const IImageScanner = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultScanSource(self: *@This()) core.HResult!ImageScannerScanSource {
         var _r: ImageScannerScanSource = undefined;
         const _c = self.vtable.get_DefaultScanSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsScanSourceSupported(self: *@This(), value: ImageScannerScanSource) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsScanSourceSupported(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFlatbedConfiguration(self: *@This()) core.HResult!*ImageScannerFlatbedConfiguration {
         var _r: *ImageScannerFlatbedConfiguration = undefined;
         const _c = self.vtable.get_FlatbedConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFeederConfiguration(self: *@This()) core.HResult!*ImageScannerFeederConfiguration {
         var _r: *ImageScannerFeederConfiguration = undefined;
         const _c = self.vtable.get_FeederConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAutoConfiguration(self: *@This()) core.HResult!*ImageScannerAutoConfiguration {
         var _r: *ImageScannerAutoConfiguration = undefined;
         const _c = self.vtable.get_AutoConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsPreviewSupported(self: *@This(), scanSource: ImageScannerScanSource) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPreviewSupported(@ptrCast(self), scanSource, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ScanPreviewToStreamAsync(self: *@This(), scanSource: ImageScannerScanSource, targetStream: *IRandomAccessStream) core.HResult!*IAsyncOperation(ImageScannerPreviewResult) {
         var _r: *IAsyncOperation(ImageScannerPreviewResult) = undefined;
         const _c = self.vtable.ScanPreviewToStreamAsync(@ptrCast(self), scanSource, targetStream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ScanFilesToFolderAsync(self: *@This(), scanSource: ImageScannerScanSource, storageFolder: *StorageFolder) core.HResult!*IAsyncOperationWithProgress(ImageScannerScanResult,u32) {
         var _r: *IAsyncOperationWithProgress(ImageScannerScanResult,u32) = undefined;
         const _c = self.vtable.ScanFilesToFolderAsync(@ptrCast(self), scanSource, storageFolder, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.IImageScanner";
@@ -86,8 +89,11 @@ pub const IImageScanner = extern struct {
 };
 pub const IImageScannerFeederConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -95,92 +101,92 @@ pub const IImageScannerFeederConfiguration = extern struct {
     pub fn getCanAutoDetectPageSize(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanAutoDetectPageSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAutoDetectPageSize(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutoDetectPageSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutoDetectPageSize(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AutoDetectPageSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPageSize(self: *@This()) core.HResult!PrintMediaSize {
         var _r: PrintMediaSize = undefined;
         const _c = self.vtable.get_PageSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPageSize(self: *@This(), value: PrintMediaSize) core.HResult!void {
         const _c = self.vtable.put_PageSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPageOrientation(self: *@This()) core.HResult!PrintOrientation {
         var _r: PrintOrientation = undefined;
         const _c = self.vtable.get_PageOrientation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPageOrientation(self: *@This(), value: PrintOrientation) core.HResult!void {
         const _c = self.vtable.put_PageOrientation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPageSizeDimensions(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_PageSizeDimensions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsPageSizeSupported(self: *@This(), pageSize: PrintMediaSize, pageOrientation: PrintOrientation) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPageSizeSupported(@ptrCast(self), pageSize, pageOrientation, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxNumberOfPages(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxNumberOfPages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxNumberOfPages(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_MaxNumberOfPages(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanScanDuplex(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanScanDuplex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuplex(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Duplex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDuplex(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Duplex(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanScanAhead(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanScanAhead(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScanAhead(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ScanAhead(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScanAhead(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ScanAhead(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.IImageScannerFeederConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -215,8 +221,11 @@ pub const IImageScannerFeederConfiguration = extern struct {
 };
 pub const IImageScannerFormatConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -224,23 +233,23 @@ pub const IImageScannerFormatConfiguration = extern struct {
     pub fn getDefaultFormat(self: *@This()) core.HResult!ImageScannerFormat {
         var _r: ImageScannerFormat = undefined;
         const _c = self.vtable.get_DefaultFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFormat(self: *@This()) core.HResult!ImageScannerFormat {
         var _r: ImageScannerFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFormat(self: *@This(), value: ImageScannerFormat) core.HResult!void {
         const _c = self.vtable.put_Format(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsFormatSupported(self: *@This(), value: ImageScannerFormat) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsFormatSupported(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.IImageScannerFormatConfiguration";
@@ -263,8 +272,11 @@ pub const IImageScannerFormatConfiguration = extern struct {
 };
 pub const IImageScannerPreviewResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -272,13 +284,13 @@ pub const IImageScannerPreviewResult = extern struct {
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFormat(self: *@This()) core.HResult!ImageScannerFormat {
         var _r: ImageScannerFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.IImageScannerPreviewResult";
@@ -299,8 +311,11 @@ pub const IImageScannerPreviewResult = extern struct {
 };
 pub const IImageScannerScanResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -308,7 +323,7 @@ pub const IImageScannerScanResult = extern struct {
     pub fn getScannedFiles(self: *@This()) core.HResult!*IVectorView(StorageFile) {
         var _r: *IVectorView(StorageFile) = undefined;
         const _c = self.vtable.get_ScannedFiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.IImageScannerScanResult";
@@ -328,8 +343,11 @@ pub const IImageScannerScanResult = extern struct {
 };
 pub const IImageScannerSourceConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -337,164 +355,164 @@ pub const IImageScannerSourceConfiguration = extern struct {
     pub fn getMinScanArea(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_MinScanArea(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxScanArea(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_MaxScanArea(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectedScanRegion(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_SelectedScanRegion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedScanRegion(self: *@This(), value: Rect) core.HResult!void {
         const _c = self.vtable.put_SelectedScanRegion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAutoCroppingMode(self: *@This()) core.HResult!ImageScannerAutoCroppingMode {
         var _r: ImageScannerAutoCroppingMode = undefined;
         const _c = self.vtable.get_AutoCroppingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutoCroppingMode(self: *@This(), value: ImageScannerAutoCroppingMode) core.HResult!void {
         const _c = self.vtable.put_AutoCroppingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsAutoCroppingModeSupported(self: *@This(), value: ImageScannerAutoCroppingMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsAutoCroppingModeSupported(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var _r: ImageScannerResolution = undefined;
         const _c = self.vtable.get_MinResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var _r: ImageScannerResolution = undefined;
         const _c = self.vtable.get_MaxResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOpticalResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var _r: ImageScannerResolution = undefined;
         const _c = self.vtable.get_OpticalResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDesiredResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var _r: ImageScannerResolution = undefined;
         const _c = self.vtable.get_DesiredResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredResolution(self: *@This(), value: ImageScannerResolution) core.HResult!void {
         const _c = self.vtable.put_DesiredResolution(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getActualResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var _r: ImageScannerResolution = undefined;
         const _c = self.vtable.get_ActualResolution(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultColorMode(self: *@This()) core.HResult!ImageScannerColorMode {
         var _r: ImageScannerColorMode = undefined;
         const _c = self.vtable.get_DefaultColorMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getColorMode(self: *@This()) core.HResult!ImageScannerColorMode {
         var _r: ImageScannerColorMode = undefined;
         const _c = self.vtable.get_ColorMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putColorMode(self: *@This(), value: ImageScannerColorMode) core.HResult!void {
         const _c = self.vtable.put_ColorMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsColorModeSupported(self: *@This(), value: ImageScannerColorMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsColorModeSupported(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinBrightness(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MinBrightness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxBrightness(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxBrightness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBrightnessStep(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BrightnessStep(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultBrightness(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DefaultBrightness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBrightness(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Brightness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBrightness(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Brightness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinContrast(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MinContrast(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxContrast(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxContrast(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContrastStep(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContrastStep(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultContrast(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DefaultContrast(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContrast(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Contrast(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContrast(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Contrast(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.IImageScannerSourceConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -541,8 +559,11 @@ pub const IImageScannerSourceConfiguration = extern struct {
 };
 pub const IImageScannerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -550,13 +571,13 @@ pub const IImageScannerStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ImageScanner) {
         var _r: *IAsyncOperation(ImageScanner) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.IImageScannerStatics";
@@ -577,14 +598,11 @@ pub const IImageScannerStatics = extern struct {
 };
 pub const ImageScanner = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -642,14 +660,11 @@ pub const ImageScanner = extern struct {
 };
 pub const ImageScannerAutoConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -689,14 +704,11 @@ pub const ImageScannerColorMode = enum(i32) {
 };
 pub const ImageScannerFeederConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -720,323 +732,277 @@ pub const ImageScannerFeederConfiguration = extern struct {
     pub fn getMinScanArea(self: *@This()) core.HResult!Size {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinScanArea();
     }
     pub fn getMaxScanArea(self: *@This()) core.HResult!Size {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxScanArea();
     }
     pub fn getSelectedScanRegion(self: *@This()) core.HResult!Rect {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getSelectedScanRegion();
     }
     pub fn putSelectedScanRegion(self: *@This(), value: Rect) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putSelectedScanRegion(value);
     }
     pub fn getAutoCroppingMode(self: *@This()) core.HResult!ImageScannerAutoCroppingMode {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getAutoCroppingMode();
     }
     pub fn putAutoCroppingMode(self: *@This(), value: ImageScannerAutoCroppingMode) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putAutoCroppingMode(value);
     }
     pub fn IsAutoCroppingModeSupported(self: *@This(), value: ImageScannerAutoCroppingMode) core.HResult!bool {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.IsAutoCroppingModeSupported(value);
     }
     pub fn getMinResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinResolution();
     }
     pub fn getMaxResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxResolution();
     }
     pub fn getOpticalResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getOpticalResolution();
     }
     pub fn getDesiredResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDesiredResolution();
     }
     pub fn putDesiredResolution(self: *@This(), value: ImageScannerResolution) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putDesiredResolution(value);
     }
     pub fn getActualResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getActualResolution();
     }
     pub fn getDefaultColorMode(self: *@This()) core.HResult!ImageScannerColorMode {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDefaultColorMode();
     }
     pub fn getColorMode(self: *@This()) core.HResult!ImageScannerColorMode {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getColorMode();
     }
     pub fn putColorMode(self: *@This(), value: ImageScannerColorMode) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putColorMode(value);
     }
     pub fn IsColorModeSupported(self: *@This(), value: ImageScannerColorMode) core.HResult!bool {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.IsColorModeSupported(value);
     }
     pub fn getMinBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinBrightness();
     }
     pub fn getMaxBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxBrightness();
     }
     pub fn getBrightnessStep(self: *@This()) core.HResult!u32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getBrightnessStep();
     }
     pub fn getDefaultBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDefaultBrightness();
     }
     pub fn getBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getBrightness();
     }
     pub fn putBrightness(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putBrightness(value);
     }
     pub fn getMinContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinContrast();
     }
     pub fn getMaxContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxContrast();
     }
     pub fn getContrastStep(self: *@This()) core.HResult!u32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getContrastStep();
     }
     pub fn getDefaultContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDefaultContrast();
     }
     pub fn getContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getContrast();
     }
     pub fn putContrast(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putContrast(value);
     }
     pub fn getCanAutoDetectPageSize(self: *@This()) core.HResult!bool {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getCanAutoDetectPageSize();
     }
     pub fn getAutoDetectPageSize(self: *@This()) core.HResult!bool {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getAutoDetectPageSize();
     }
     pub fn putAutoDetectPageSize(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.putAutoDetectPageSize(value);
     }
     pub fn getPageSize(self: *@This()) core.HResult!PrintMediaSize {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getPageSize();
     }
     pub fn putPageSize(self: *@This(), value: PrintMediaSize) core.HResult!void {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.putPageSize(value);
     }
     pub fn getPageOrientation(self: *@This()) core.HResult!PrintOrientation {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getPageOrientation();
     }
     pub fn putPageOrientation(self: *@This(), value: PrintOrientation) core.HResult!void {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.putPageOrientation(value);
     }
     pub fn getPageSizeDimensions(self: *@This()) core.HResult!Size {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getPageSizeDimensions();
     }
     pub fn IsPageSizeSupported(self: *@This(), pageSize: PrintMediaSize, pageOrientation: PrintOrientation) core.HResult!bool {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.IsPageSizeSupported(pageSize, pageOrientation);
     }
     pub fn getMaxNumberOfPages(self: *@This()) core.HResult!u32 {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxNumberOfPages();
     }
     pub fn putMaxNumberOfPages(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.putMaxNumberOfPages(value);
     }
     pub fn getCanScanDuplex(self: *@This()) core.HResult!bool {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getCanScanDuplex();
     }
     pub fn getDuplex(self: *@This()) core.HResult!bool {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getDuplex();
     }
     pub fn putDuplex(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.putDuplex(value);
     }
     pub fn getCanScanAhead(self: *@This()) core.HResult!bool {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getCanScanAhead();
     }
     pub fn getScanAhead(self: *@This()) core.HResult!bool {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.getScanAhead();
     }
     pub fn putScanAhead(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IImageScannerFeederConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerFeederConfiguration.IID, @ptrCast(&this));
         return try this.?.putScanAhead(value);
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.ImageScannerFeederConfiguration";
@@ -1047,14 +1013,11 @@ pub const ImageScannerFeederConfiguration = extern struct {
 };
 pub const ImageScannerFlatbedConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1078,204 +1041,175 @@ pub const ImageScannerFlatbedConfiguration = extern struct {
     pub fn getMinScanArea(self: *@This()) core.HResult!Size {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinScanArea();
     }
     pub fn getMaxScanArea(self: *@This()) core.HResult!Size {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxScanArea();
     }
     pub fn getSelectedScanRegion(self: *@This()) core.HResult!Rect {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getSelectedScanRegion();
     }
     pub fn putSelectedScanRegion(self: *@This(), value: Rect) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putSelectedScanRegion(value);
     }
     pub fn getAutoCroppingMode(self: *@This()) core.HResult!ImageScannerAutoCroppingMode {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getAutoCroppingMode();
     }
     pub fn putAutoCroppingMode(self: *@This(), value: ImageScannerAutoCroppingMode) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putAutoCroppingMode(value);
     }
     pub fn IsAutoCroppingModeSupported(self: *@This(), value: ImageScannerAutoCroppingMode) core.HResult!bool {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.IsAutoCroppingModeSupported(value);
     }
     pub fn getMinResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinResolution();
     }
     pub fn getMaxResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxResolution();
     }
     pub fn getOpticalResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getOpticalResolution();
     }
     pub fn getDesiredResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDesiredResolution();
     }
     pub fn putDesiredResolution(self: *@This(), value: ImageScannerResolution) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putDesiredResolution(value);
     }
     pub fn getActualResolution(self: *@This()) core.HResult!ImageScannerResolution {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getActualResolution();
     }
     pub fn getDefaultColorMode(self: *@This()) core.HResult!ImageScannerColorMode {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDefaultColorMode();
     }
     pub fn getColorMode(self: *@This()) core.HResult!ImageScannerColorMode {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getColorMode();
     }
     pub fn putColorMode(self: *@This(), value: ImageScannerColorMode) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putColorMode(value);
     }
     pub fn IsColorModeSupported(self: *@This(), value: ImageScannerColorMode) core.HResult!bool {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.IsColorModeSupported(value);
     }
     pub fn getMinBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinBrightness();
     }
     pub fn getMaxBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxBrightness();
     }
     pub fn getBrightnessStep(self: *@This()) core.HResult!u32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getBrightnessStep();
     }
     pub fn getDefaultBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDefaultBrightness();
     }
     pub fn getBrightness(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getBrightness();
     }
     pub fn putBrightness(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putBrightness(value);
     }
     pub fn getMinContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMinContrast();
     }
     pub fn getMaxContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getMaxContrast();
     }
     pub fn getContrastStep(self: *@This()) core.HResult!u32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getContrastStep();
     }
     pub fn getDefaultContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getDefaultContrast();
     }
     pub fn getContrast(self: *@This()) core.HResult!i32 {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.getContrast();
     }
     pub fn putContrast(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IImageScannerSourceConfiguration = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageScannerSourceConfiguration.IID, @ptrCast(&this));
         return try this.?.putContrast(value);
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.ImageScannerFlatbedConfiguration";
@@ -1295,14 +1229,11 @@ pub const ImageScannerFormat = enum(i32) {
 };
 pub const ImageScannerPreviewResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1327,14 +1258,11 @@ pub const ImageScannerResolution = extern struct {
 };
 pub const ImageScannerScanResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

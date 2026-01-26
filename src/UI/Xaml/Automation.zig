@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AnnotationPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -82,14 +79,11 @@ pub const AutomationAnimationStyle = enum(i32) {
 };
 pub const AutomationAnnotation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -159,14 +153,11 @@ pub const AutomationCaretPosition = enum(i32) {
 };
 pub const AutomationElementIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -356,14 +347,11 @@ pub const AutomationOutlineStyles = enum(i32) {
 };
 pub const AutomationProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -713,14 +701,11 @@ pub const AutomationProperties = extern struct {
 };
 pub const AutomationProperty = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -777,14 +762,11 @@ pub const AutomationTextEditChangeType = enum(i32) {
 };
 pub const DockPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -810,14 +792,11 @@ pub const DockPosition = enum(i32) {
 };
 pub const DragPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -847,14 +826,11 @@ pub const DragPatternIdentifiers = extern struct {
 };
 pub const DropTargetPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -876,14 +852,11 @@ pub const DropTargetPatternIdentifiers = extern struct {
 };
 pub const ExpandCollapsePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -907,14 +880,11 @@ pub const ExpandCollapseState = enum(i32) {
 };
 pub const GridItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -948,14 +918,11 @@ pub const GridItemPatternIdentifiers = extern struct {
 };
 pub const GridPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -977,8 +944,11 @@ pub const GridPatternIdentifiers = extern struct {
 };
 pub const IAnnotationPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -999,8 +969,11 @@ pub const IAnnotationPatternIdentifiers = extern struct {
 };
 pub const IAnnotationPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1008,31 +981,31 @@ pub const IAnnotationPatternIdentifiersStatics = extern struct {
     pub fn getAnnotationTypeIdProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AnnotationTypeIdProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAnnotationTypeNameProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AnnotationTypeNameProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthorProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AuthorProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDateTimeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DateTimeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTargetProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_TargetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAnnotationPatternIdentifiersStatics";
@@ -1056,8 +1029,11 @@ pub const IAnnotationPatternIdentifiersStatics = extern struct {
 };
 pub const IAutomationAnnotation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1065,22 +1041,22 @@ pub const IAutomationAnnotation = extern struct {
     pub fn getType(self: *@This()) core.HResult!AnnotationType {
         var _r: AnnotationType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putType(self: *@This(), value: AnnotationType) core.HResult!void {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getElement(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Element(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putElement(self: *@This(), value: *UIElement) core.HResult!void {
         const _c = self.vtable.put_Element(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationAnnotation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1102,8 +1078,11 @@ pub const IAutomationAnnotation = extern struct {
 };
 pub const IAutomationAnnotationFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1111,13 +1090,13 @@ pub const IAutomationAnnotationFactory = extern struct {
     pub fn CreateInstance(self: *@This(), ty: AnnotationType) core.HResult!*AutomationAnnotation {
         var _r: *AutomationAnnotation = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithElementParameter(self: *@This(), ty: AnnotationType, element: *UIElement) core.HResult!*AutomationAnnotation {
         var _r: *AutomationAnnotation = undefined;
         const _c = self.vtable.CreateWithElementParameter(@ptrCast(self), ty, element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationAnnotationFactory";
@@ -1138,8 +1117,11 @@ pub const IAutomationAnnotationFactory = extern struct {
 };
 pub const IAutomationAnnotationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1147,13 +1129,13 @@ pub const IAutomationAnnotationStatics = extern struct {
     pub fn getTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getElementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ElementProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationAnnotationStatics";
@@ -1174,8 +1156,11 @@ pub const IAutomationAnnotationStatics = extern struct {
 };
 pub const IAutomationElementIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1196,8 +1181,11 @@ pub const IAutomationElementIdentifiers = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1205,139 +1193,139 @@ pub const IAutomationElementIdentifiersStatics = extern struct {
     pub fn getAcceleratorKeyProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AcceleratorKeyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccessKeyProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AccessKeyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAutomationIdProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AutomationIdProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBoundingRectangleProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_BoundingRectangleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClassNameProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ClassNameProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClickablePointProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ClickablePointProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getControlTypeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ControlTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasKeyboardFocusProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HasKeyboardFocusProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHelpTextProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HelpTextProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsContentElementProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsContentElementProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsControlElementProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsControlElementProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabledProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsEnabledProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsKeyboardFocusableProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsKeyboardFocusableProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsOffscreenProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsOffscreenProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPasswordProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsPasswordProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsRequiredForFormProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsRequiredForFormProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemStatusProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ItemStatusProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemTypeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ItemTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLabeledByProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LabeledByProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocalizedControlTypeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LocalizedControlTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNameProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_NameProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOrientationProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_OrientationProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLiveSettingProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LiveSettingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics";
@@ -1379,8 +1367,11 @@ pub const IAutomationElementIdentifiersStatics = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1388,7 +1379,7 @@ pub const IAutomationElementIdentifiersStatics2 = extern struct {
     pub fn getControlledPeersProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ControlledPeersProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics2";
@@ -1408,8 +1399,11 @@ pub const IAutomationElementIdentifiersStatics2 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1417,25 +1411,25 @@ pub const IAutomationElementIdentifiersStatics3 = extern struct {
     pub fn getPositionInSetProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_PositionInSetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSizeOfSetProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_SizeOfSetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLevelProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LevelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAnnotationsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AnnotationsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics3";
@@ -1458,8 +1452,11 @@ pub const IAutomationElementIdentifiersStatics3 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1467,13 +1464,13 @@ pub const IAutomationElementIdentifiersStatics4 = extern struct {
     pub fn getLandmarkTypeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LandmarkTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocalizedLandmarkTypeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LocalizedLandmarkTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics4";
@@ -1494,8 +1491,11 @@ pub const IAutomationElementIdentifiersStatics4 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1503,37 +1503,37 @@ pub const IAutomationElementIdentifiersStatics5 = extern struct {
     pub fn getIsPeripheralProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsPeripheralProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDataValidForFormProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsDataValidForFormProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFullDescriptionProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FullDescriptionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDescribedByProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DescribedByProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFlowsToProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FlowsToProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFlowsFromProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FlowsFromProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics5";
@@ -1558,8 +1558,11 @@ pub const IAutomationElementIdentifiersStatics5 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1567,7 +1570,7 @@ pub const IAutomationElementIdentifiersStatics6 = extern struct {
     pub fn getCultureProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CultureProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics6";
@@ -1587,8 +1590,11 @@ pub const IAutomationElementIdentifiersStatics6 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1596,7 +1602,7 @@ pub const IAutomationElementIdentifiersStatics7 = extern struct {
     pub fn getHeadingLevelProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HeadingLevelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics7";
@@ -1616,8 +1622,11 @@ pub const IAutomationElementIdentifiersStatics7 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics8 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1625,7 +1634,7 @@ pub const IAutomationElementIdentifiersStatics8 = extern struct {
     pub fn getIsDialogProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsDialogProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiersStatics8";
@@ -1645,8 +1654,11 @@ pub const IAutomationElementIdentifiersStatics8 = extern struct {
 };
 pub const IAutomationProperties = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1667,8 +1679,11 @@ pub const IAutomationProperties = extern struct {
 };
 pub const IAutomationPropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1676,162 +1691,162 @@ pub const IAutomationPropertiesStatics = extern struct {
     pub fn getAcceleratorKeyProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AcceleratorKeyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAcceleratorKey(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAcceleratorKey(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAcceleratorKey(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAcceleratorKey(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAccessKeyProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AccessKeyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAccessKey(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAccessKey(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAccessKey(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAccessKey(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAutomationIdProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AutomationIdProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAutomationId(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAutomationId(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAutomationId(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAutomationId(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHelpTextProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HelpTextProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetHelpText(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetHelpText(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetHelpText(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetHelpText(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsRequiredForFormProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsRequiredForFormProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsRequiredForForm(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetIsRequiredForForm(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetIsRequiredForForm(self: *@This(), element: *DependencyObject, value: bool) core.HResult!void {
         const _c = self.vtable.SetIsRequiredForForm(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItemStatusProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemStatusProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemStatus(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemStatus(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetItemStatus(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetItemStatus(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItemTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemType(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemType(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetItemType(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetItemType(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLabeledByProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LabeledByProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLabeledBy(self: *@This(), element: *DependencyObject) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.GetLabeledBy(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLabeledBy(self: *@This(), element: *DependencyObject, value: *UIElement) core.HResult!void {
         const _c = self.vtable.SetLabeledBy(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_NameProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetName(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetName(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetName(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetName(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLiveSettingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LiveSettingProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLiveSetting(self: *@This(), element: *DependencyObject) core.HResult!AutomationLiveSetting {
         var _r: AutomationLiveSetting = undefined;
         const _c = self.vtable.GetLiveSetting(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLiveSetting(self: *@This(), element: *DependencyObject, value: AutomationLiveSetting) core.HResult!void {
         const _c = self.vtable.SetLiveSetting(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1879,8 +1894,11 @@ pub const IAutomationPropertiesStatics = extern struct {
 };
 pub const IAutomationPropertiesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1888,29 +1906,29 @@ pub const IAutomationPropertiesStatics2 = extern struct {
     pub fn getAccessibilityViewProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AccessibilityViewProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAccessibilityView(self: *@This(), element: *DependencyObject) core.HResult!AccessibilityView {
         var _r: AccessibilityView = undefined;
         const _c = self.vtable.GetAccessibilityView(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAccessibilityView(self: *@This(), element: *DependencyObject, value: AccessibilityView) core.HResult!void {
         const _c = self.vtable.SetAccessibilityView(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getControlledPeersProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ControlledPeersProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetControlledPeers(self: *@This(), element: *DependencyObject) core.HResult!*IVector(UIElement) {
         var _r: *IVector(UIElement) = undefined;
         const _c = self.vtable.GetControlledPeers(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics2";
@@ -1934,8 +1952,11 @@ pub const IAutomationPropertiesStatics2 = extern struct {
 };
 pub const IAutomationPropertiesStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1943,61 +1964,61 @@ pub const IAutomationPropertiesStatics3 = extern struct {
     pub fn getPositionInSetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PositionInSetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPositionInSet(self: *@This(), element: *DependencyObject) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetPositionInSet(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPositionInSet(self: *@This(), element: *DependencyObject, value: i32) core.HResult!void {
         const _c = self.vtable.SetPositionInSet(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSizeOfSetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SizeOfSetProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSizeOfSet(self: *@This(), element: *DependencyObject) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetSizeOfSet(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetSizeOfSet(self: *@This(), element: *DependencyObject, value: i32) core.HResult!void {
         const _c = self.vtable.SetSizeOfSet(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLevelProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LevelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLevel(self: *@This(), element: *DependencyObject) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetLevel(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLevel(self: *@This(), element: *DependencyObject, value: i32) core.HResult!void {
         const _c = self.vtable.SetLevel(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAnnotationsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AnnotationsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAnnotations(self: *@This(), element: *DependencyObject) core.HResult!*IVector(AutomationAnnotation) {
         var _r: *IVector(AutomationAnnotation) = undefined;
         const _c = self.vtable.GetAnnotations(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics3";
@@ -2027,8 +2048,11 @@ pub const IAutomationPropertiesStatics3 = extern struct {
 };
 pub const IAutomationPropertiesStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2036,34 +2060,34 @@ pub const IAutomationPropertiesStatics4 = extern struct {
     pub fn getLandmarkTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LandmarkTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLandmarkType(self: *@This(), element: *DependencyObject) core.HResult!AutomationLandmarkType {
         var _r: AutomationLandmarkType = undefined;
         const _c = self.vtable.GetLandmarkType(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLandmarkType(self: *@This(), element: *DependencyObject, value: AutomationLandmarkType) core.HResult!void {
         const _c = self.vtable.SetLandmarkType(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLocalizedLandmarkTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocalizedLandmarkTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalizedLandmarkType(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedLandmarkType(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLocalizedLandmarkType(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetLocalizedLandmarkType(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2087,8 +2111,11 @@ pub const IAutomationPropertiesStatics4 = extern struct {
 };
 pub const IAutomationPropertiesStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2096,101 +2123,101 @@ pub const IAutomationPropertiesStatics5 = extern struct {
     pub fn getIsPeripheralProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsPeripheralProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsPeripheral(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetIsPeripheral(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetIsPeripheral(self: *@This(), element: *DependencyObject, value: bool) core.HResult!void {
         const _c = self.vtable.SetIsPeripheral(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDataValidForFormProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsDataValidForFormProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsDataValidForForm(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetIsDataValidForForm(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetIsDataValidForForm(self: *@This(), element: *DependencyObject, value: bool) core.HResult!void {
         const _c = self.vtable.SetIsDataValidForForm(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFullDescriptionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FullDescriptionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFullDescription(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFullDescription(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetFullDescription(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetFullDescription(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLocalizedControlTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocalizedControlTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLocalizedControlType(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedControlType(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetLocalizedControlType(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetLocalizedControlType(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDescribedByProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DescribedByProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDescribedBy(self: *@This(), element: *DependencyObject) core.HResult!*IVector(DependencyObject) {
         var _r: *IVector(DependencyObject) = undefined;
         const _c = self.vtable.GetDescribedBy(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFlowsToProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FlowsToProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFlowsTo(self: *@This(), element: *DependencyObject) core.HResult!*IVector(DependencyObject) {
         var _r: *IVector(DependencyObject) = undefined;
         const _c = self.vtable.GetFlowsTo(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFlowsFromProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FlowsFromProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFlowsFrom(self: *@This(), element: *DependencyObject) core.HResult!*IVector(DependencyObject) {
         var _r: *IVector(DependencyObject) = undefined;
         const _c = self.vtable.GetFlowsFrom(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics5";
@@ -2227,8 +2254,11 @@ pub const IAutomationPropertiesStatics5 = extern struct {
 };
 pub const IAutomationPropertiesStatics6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2236,18 +2266,18 @@ pub const IAutomationPropertiesStatics6 = extern struct {
     pub fn getCultureProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CultureProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCulture(self: *@This(), element: *DependencyObject) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetCulture(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetCulture(self: *@This(), element: *DependencyObject, value: i32) core.HResult!void {
         const _c = self.vtable.SetCulture(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics6";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2268,8 +2298,11 @@ pub const IAutomationPropertiesStatics6 = extern struct {
 };
 pub const IAutomationPropertiesStatics7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2277,18 +2310,18 @@ pub const IAutomationPropertiesStatics7 = extern struct {
     pub fn getHeadingLevelProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HeadingLevelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetHeadingLevel(self: *@This(), element: *DependencyObject) core.HResult!AutomationHeadingLevel {
         var _r: AutomationHeadingLevel = undefined;
         const _c = self.vtable.GetHeadingLevel(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetHeadingLevel(self: *@This(), element: *DependencyObject, value: AutomationHeadingLevel) core.HResult!void {
         const _c = self.vtable.SetHeadingLevel(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics7";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2309,8 +2342,11 @@ pub const IAutomationPropertiesStatics7 = extern struct {
 };
 pub const IAutomationPropertiesStatics8 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2318,18 +2354,18 @@ pub const IAutomationPropertiesStatics8 = extern struct {
     pub fn getIsDialogProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsDialogProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsDialog(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetIsDialog(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetIsDialog(self: *@This(), element: *DependencyObject, value: bool) core.HResult!void {
         const _c = self.vtable.SetIsDialog(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics8";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2350,8 +2386,11 @@ pub const IAutomationPropertiesStatics8 = extern struct {
 };
 pub const IAutomationPropertiesStatics9 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2359,18 +2398,18 @@ pub const IAutomationPropertiesStatics9 = extern struct {
     pub fn getAutomationControlTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AutomationControlTypeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAutomationControlType(self: *@This(), element: *UIElement) core.HResult!AutomationControlType {
         var _r: AutomationControlType = undefined;
         const _c = self.vtable.GetAutomationControlType(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAutomationControlType(self: *@This(), element: *UIElement, value: AutomationControlType) core.HResult!void {
         const _c = self.vtable.SetAutomationControlType(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationPropertiesStatics9";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2391,8 +2430,11 @@ pub const IAutomationPropertiesStatics9 = extern struct {
 };
 pub const IAutomationProperty = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2413,8 +2455,11 @@ pub const IAutomationProperty = extern struct {
 };
 pub const IDockPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2435,8 +2480,11 @@ pub const IDockPatternIdentifiers = extern struct {
 };
 pub const IDockPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2444,7 +2492,7 @@ pub const IDockPatternIdentifiersStatics = extern struct {
     pub fn getDockPositionProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DockPositionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IDockPatternIdentifiersStatics";
@@ -2464,8 +2512,11 @@ pub const IDockPatternIdentifiersStatics = extern struct {
 };
 pub const IDragPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2486,8 +2537,11 @@ pub const IDragPatternIdentifiers = extern struct {
 };
 pub const IDragPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2495,25 +2549,25 @@ pub const IDragPatternIdentifiersStatics = extern struct {
     pub fn getDropEffectProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DropEffectProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDropEffectsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DropEffectsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGrabbedItemsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_GrabbedItemsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsGrabbedProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsGrabbedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IDragPatternIdentifiersStatics";
@@ -2536,8 +2590,11 @@ pub const IDragPatternIdentifiersStatics = extern struct {
 };
 pub const IDropTargetPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2558,8 +2615,11 @@ pub const IDropTargetPatternIdentifiers = extern struct {
 };
 pub const IDropTargetPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2567,13 +2627,13 @@ pub const IDropTargetPatternIdentifiersStatics = extern struct {
     pub fn getDropTargetEffectProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DropTargetEffectProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDropTargetEffectsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DropTargetEffectsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IDropTargetPatternIdentifiersStatics";
@@ -2594,8 +2654,11 @@ pub const IDropTargetPatternIdentifiersStatics = extern struct {
 };
 pub const IExpandCollapsePatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2616,8 +2679,11 @@ pub const IExpandCollapsePatternIdentifiers = extern struct {
 };
 pub const IExpandCollapsePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2625,7 +2691,7 @@ pub const IExpandCollapsePatternIdentifiersStatics = extern struct {
     pub fn getExpandCollapseStateProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ExpandCollapseStateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IExpandCollapsePatternIdentifiersStatics";
@@ -2645,8 +2711,11 @@ pub const IExpandCollapsePatternIdentifiersStatics = extern struct {
 };
 pub const IGridItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2667,8 +2736,11 @@ pub const IGridItemPatternIdentifiers = extern struct {
 };
 pub const IGridItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2676,31 +2748,31 @@ pub const IGridItemPatternIdentifiersStatics = extern struct {
     pub fn getColumnProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getColumnSpanProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnSpanProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContainingGridProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ContainingGridProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRowProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_RowProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRowSpanProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_RowSpanProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IGridItemPatternIdentifiersStatics";
@@ -2724,8 +2796,11 @@ pub const IGridItemPatternIdentifiersStatics = extern struct {
 };
 pub const IGridPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2746,8 +2821,11 @@ pub const IGridPatternIdentifiers = extern struct {
 };
 pub const IGridPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2755,13 +2833,13 @@ pub const IGridPatternIdentifiersStatics = extern struct {
     pub fn getColumnCountProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnCountProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRowCountProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_RowCountProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IGridPatternIdentifiersStatics";
@@ -2782,8 +2860,11 @@ pub const IGridPatternIdentifiersStatics = extern struct {
 };
 pub const IMultipleViewPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2804,8 +2885,11 @@ pub const IMultipleViewPatternIdentifiers = extern struct {
 };
 pub const IMultipleViewPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2813,13 +2897,13 @@ pub const IMultipleViewPatternIdentifiersStatics = extern struct {
     pub fn getCurrentViewProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CurrentViewProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedViewsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_SupportedViewsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IMultipleViewPatternIdentifiersStatics";
@@ -2840,8 +2924,11 @@ pub const IMultipleViewPatternIdentifiersStatics = extern struct {
 };
 pub const IRangeValuePatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2862,8 +2949,11 @@ pub const IRangeValuePatternIdentifiers = extern struct {
 };
 pub const IRangeValuePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2871,37 +2961,37 @@ pub const IRangeValuePatternIdentifiersStatics = extern struct {
     pub fn getIsReadOnlyProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsReadOnlyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLargeChangeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LargeChangeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaximumProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_MaximumProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinimumProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_MinimumProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSmallChangeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_SmallChangeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValueProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ValueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IRangeValuePatternIdentifiersStatics";
@@ -2926,8 +3016,11 @@ pub const IRangeValuePatternIdentifiersStatics = extern struct {
 };
 pub const IScrollPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2948,8 +3041,11 @@ pub const IScrollPatternIdentifiers = extern struct {
 };
 pub const IScrollPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2957,43 +3053,43 @@ pub const IScrollPatternIdentifiersStatics = extern struct {
     pub fn getHorizontallyScrollableProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HorizontallyScrollableProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHorizontalScrollPercentProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HorizontalScrollPercentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHorizontalViewSizeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HorizontalViewSizeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNoScroll(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NoScroll(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticallyScrollableProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_VerticallyScrollableProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalScrollPercentProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_VerticalScrollPercentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalViewSizeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_VerticalViewSizeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IScrollPatternIdentifiersStatics";
@@ -3019,8 +3115,11 @@ pub const IScrollPatternIdentifiersStatics = extern struct {
 };
 pub const ISelectionItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3041,8 +3140,11 @@ pub const ISelectionItemPatternIdentifiers = extern struct {
 };
 pub const ISelectionItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3050,13 +3152,13 @@ pub const ISelectionItemPatternIdentifiersStatics = extern struct {
     pub fn getIsSelectedProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsSelectedProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionContainerProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_SelectionContainerProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ISelectionItemPatternIdentifiersStatics";
@@ -3077,8 +3179,11 @@ pub const ISelectionItemPatternIdentifiersStatics = extern struct {
 };
 pub const ISelectionPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3099,8 +3204,11 @@ pub const ISelectionPatternIdentifiers = extern struct {
 };
 pub const ISelectionPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3108,19 +3216,19 @@ pub const ISelectionPatternIdentifiersStatics = extern struct {
     pub fn getCanSelectMultipleProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanSelectMultipleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSelectionRequiredProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsSelectionRequiredProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSelectionProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_SelectionProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ISelectionPatternIdentifiersStatics";
@@ -3142,8 +3250,11 @@ pub const ISelectionPatternIdentifiersStatics = extern struct {
 };
 pub const ISpreadsheetItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3164,8 +3275,11 @@ pub const ISpreadsheetItemPatternIdentifiers = extern struct {
 };
 pub const ISpreadsheetItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3173,7 +3287,7 @@ pub const ISpreadsheetItemPatternIdentifiersStatics = extern struct {
     pub fn getFormulaProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FormulaProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ISpreadsheetItemPatternIdentifiersStatics";
@@ -3193,8 +3307,11 @@ pub const ISpreadsheetItemPatternIdentifiersStatics = extern struct {
 };
 pub const IStylesPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3215,8 +3332,11 @@ pub const IStylesPatternIdentifiers = extern struct {
 };
 pub const IStylesPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3224,43 +3344,43 @@ pub const IStylesPatternIdentifiersStatics = extern struct {
     pub fn getExtendedPropertiesProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ExtendedPropertiesProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFillColorProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FillColorProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFillPatternColorProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FillPatternColorProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFillPatternStyleProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FillPatternStyleProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShapeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ShapeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStyleIdProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_StyleIdProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStyleNameProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_StyleNameProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IStylesPatternIdentifiersStatics";
@@ -3286,8 +3406,11 @@ pub const IStylesPatternIdentifiersStatics = extern struct {
 };
 pub const ITableItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3308,8 +3431,11 @@ pub const ITableItemPatternIdentifiers = extern struct {
 };
 pub const ITableItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3317,13 +3443,13 @@ pub const ITableItemPatternIdentifiersStatics = extern struct {
     pub fn getColumnHeaderItemsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnHeaderItemsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRowHeaderItemsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_RowHeaderItemsProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITableItemPatternIdentifiersStatics";
@@ -3344,8 +3470,11 @@ pub const ITableItemPatternIdentifiersStatics = extern struct {
 };
 pub const ITablePatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3366,8 +3495,11 @@ pub const ITablePatternIdentifiers = extern struct {
 };
 pub const ITablePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3375,19 +3507,19 @@ pub const ITablePatternIdentifiersStatics = extern struct {
     pub fn getColumnHeadersProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnHeadersProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRowHeadersProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_RowHeadersProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRowOrColumnMajorProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_RowOrColumnMajorProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITablePatternIdentifiersStatics";
@@ -3409,8 +3541,11 @@ pub const ITablePatternIdentifiersStatics = extern struct {
 };
 pub const ITogglePatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3431,8 +3566,11 @@ pub const ITogglePatternIdentifiers = extern struct {
 };
 pub const ITogglePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3440,7 +3578,7 @@ pub const ITogglePatternIdentifiersStatics = extern struct {
     pub fn getToggleStateProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ToggleStateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITogglePatternIdentifiersStatics";
@@ -3460,8 +3598,11 @@ pub const ITogglePatternIdentifiersStatics = extern struct {
 };
 pub const ITransformPattern2Identifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3482,8 +3623,11 @@ pub const ITransformPattern2Identifiers = extern struct {
 };
 pub const ITransformPattern2IdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3491,25 +3635,25 @@ pub const ITransformPattern2IdentifiersStatics = extern struct {
     pub fn getCanZoomProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanZoomProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getZoomLevelProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ZoomLevelProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxZoomProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_MaxZoomProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinZoomProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_MinZoomProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITransformPattern2IdentifiersStatics";
@@ -3532,8 +3676,11 @@ pub const ITransformPattern2IdentifiersStatics = extern struct {
 };
 pub const ITransformPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3554,8 +3701,11 @@ pub const ITransformPatternIdentifiers = extern struct {
 };
 pub const ITransformPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3563,19 +3713,19 @@ pub const ITransformPatternIdentifiersStatics = extern struct {
     pub fn getCanMoveProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanMoveProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanResizeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanResizeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanRotateProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanRotateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITransformPatternIdentifiersStatics";
@@ -3597,8 +3747,11 @@ pub const ITransformPatternIdentifiersStatics = extern struct {
 };
 pub const IValuePatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3619,8 +3772,11 @@ pub const IValuePatternIdentifiers = extern struct {
 };
 pub const IValuePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3628,13 +3784,13 @@ pub const IValuePatternIdentifiersStatics = extern struct {
     pub fn getIsReadOnlyProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsReadOnlyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValueProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ValueProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IValuePatternIdentifiersStatics";
@@ -3655,8 +3811,11 @@ pub const IValuePatternIdentifiersStatics = extern struct {
 };
 pub const IWindowPatternIdentifiers = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3677,8 +3836,11 @@ pub const IWindowPatternIdentifiers = extern struct {
 };
 pub const IWindowPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3686,37 +3848,37 @@ pub const IWindowPatternIdentifiersStatics = extern struct {
     pub fn getCanMaximizeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanMaximizeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanMinimizeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanMinimizeProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsModalProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsModalProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsTopmostProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsTopmostProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWindowInteractionStateProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_WindowInteractionStateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWindowVisualStateProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_WindowVisualStateProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IWindowPatternIdentifiersStatics";
@@ -3741,14 +3903,11 @@ pub const IWindowPatternIdentifiersStatics = extern struct {
 };
 pub const MultipleViewPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3770,14 +3929,11 @@ pub const MultipleViewPatternIdentifiers = extern struct {
 };
 pub const RangeValuePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3827,14 +3983,11 @@ pub const ScrollAmount = enum(i32) {
 };
 pub const ScrollPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3876,14 +4029,11 @@ pub const ScrollPatternIdentifiers = extern struct {
 };
 pub const SelectionItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3905,14 +4055,11 @@ pub const SelectionItemPatternIdentifiers = extern struct {
 };
 pub const SelectionPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3938,14 +4085,11 @@ pub const SelectionPatternIdentifiers = extern struct {
 };
 pub const SpreadsheetItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3963,14 +4107,11 @@ pub const SpreadsheetItemPatternIdentifiers = extern struct {
 };
 pub const StylesPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4025,14 +4166,11 @@ pub const SynchronizedInputType = enum(i32) {
 };
 pub const TableItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4054,14 +4192,11 @@ pub const TableItemPatternIdentifiers = extern struct {
 };
 pub const TablePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4087,14 +4222,11 @@ pub const TablePatternIdentifiers = extern struct {
 };
 pub const TogglePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4117,14 +4249,11 @@ pub const ToggleState = enum(i32) {
 };
 pub const TransformPattern2Identifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4154,14 +4283,11 @@ pub const TransformPattern2Identifiers = extern struct {
 };
 pub const TransformPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4187,14 +4313,11 @@ pub const TransformPatternIdentifiers = extern struct {
 };
 pub const ValuePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4223,14 +4346,11 @@ pub const WindowInteractionState = enum(i32) {
 };
 pub const WindowPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

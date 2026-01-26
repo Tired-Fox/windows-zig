@@ -8,16 +8,19 @@ pub const CollectionChange = enum(i32) {
 pub fn IIterable(T: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
         pub fn First(self: *@This()) core.HResult!*IIterator(T) {
             var _r: *IIterator(T) = undefined;
             const _c = self.vtable.First(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IIterable";
@@ -39,34 +42,37 @@ pub fn IIterable(T: type) type {
 pub fn IIterator(T: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
-            var _r: core.generic(T) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn getCurrent(self: *@This()) core.HResult!core.genericArg(T) {
+            var _r: core.genericArg(T) = undefined;
             const _c = self.vtable.get_Current(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn getHasCurrent(self: *@This()) core.HResult!bool {
             var _r: bool = undefined;
             const _c = self.vtable.get_HasCurrent(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn MoveNext(self: *@This()) core.HResult!bool {
             var _r: bool = undefined;
             const _c = self.vtable.MoveNext(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
+        pub fn GetMany(self: *@This(), items: [*]core.genericArg(T)) core.HResult!u32 {
             var _r: u32 = undefined;
             const _c = self.vtable.GetMany(@ptrCast(self), items, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IIterator";
@@ -81,32 +87,35 @@ pub fn IIterator(T: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            get_Current: *const fn(self: *anyopaque, _r: *core.generic(T)) callconv(.winapi) HRESULT,
+            get_Current: *const fn(self: *anyopaque, _r: *core.genericArg(T)) callconv(.winapi) HRESULT,
             get_HasCurrent: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
             MoveNext: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-            GetMany: *const fn(self: *anyopaque, items: [*]core.generic(T), _r: *u32) callconv(.winapi) HRESULT,
+            GetMany: *const fn(self: *anyopaque, items: [*]core.genericArg(T), _r: *u32) callconv(.winapi) HRESULT,
         };
     };
 }
 pub fn IKeyValuePair(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn getKey(self: *@This()) core.HResult!core.generic(K) {
-            var _r: core.generic(K) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn getKey(self: *@This()) core.HResult!core.genericArg(K) {
+            var _r: core.genericArg(K) = undefined;
             const _c = self.vtable.get_Key(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn getValue(self: *@This()) core.HResult!core.generic(V) {
-            var _r: core.generic(V) = undefined;
+        pub fn getValue(self: *@This()) core.HResult!core.genericArg(V) {
+            var _r: core.genericArg(V) = undefined;
             const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IKeyValuePair";
@@ -121,30 +130,33 @@ pub fn IKeyValuePair(K: type, V: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            get_Key: *const fn(self: *anyopaque, _r: *core.generic(K)) callconv(.winapi) HRESULT,
-            get_Value: *const fn(self: *anyopaque, _r: *core.generic(V)) callconv(.winapi) HRESULT,
+            get_Key: *const fn(self: *anyopaque, _r: *core.genericArg(K)) callconv(.winapi) HRESULT,
+            get_Value: *const fn(self: *anyopaque, _r: *core.genericArg(V)) callconv(.winapi) HRESULT,
         };
     };
 }
 pub fn IMapChangedEventArgs(K: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
         pub fn getCollectionChange(self: *@This()) core.HResult!CollectionChange {
             var _r: CollectionChange = undefined;
             const _c = self.vtable.get_CollectionChange(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn getKey(self: *@This()) core.HResult!core.generic(K) {
-            var _r: core.generic(K) = undefined;
+        pub fn getKey(self: *@This()) core.HResult!core.genericArg(K) {
+            var _r: core.genericArg(K) = undefined;
             const _c = self.vtable.get_Key(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IMapChangedEventArgs";
@@ -160,40 +172,43 @@ pub fn IMapChangedEventArgs(K: type) type {
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
             get_CollectionChange: *const fn(self: *anyopaque, _r: *CollectionChange) callconv(.winapi) HRESULT,
-            get_Key: *const fn(self: *anyopaque, _r: *core.generic(K)) callconv(.winapi) HRESULT,
+            get_Key: *const fn(self: *anyopaque, _r: *core.genericArg(K)) callconv(.winapi) HRESULT,
         };
     };
 }
 pub fn IMapView(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-            var _r: core.generic(V) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn Lookup(self: *@This(), key: core.genericArg(K)) core.HResult!core.genericArg(V) {
+            var _r: core.genericArg(V) = undefined;
             const _c = self.vtable.Lookup(@ptrCast(self), key, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn getSize(self: *@This()) core.HResult!u32 {
             var _r: u32 = undefined;
             const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        pub fn HasKey(self: *@This(), key: core.genericArg(K)) core.HResult!bool {
             var _r: bool = undefined;
             const _c = self.vtable.HasKey(@ptrCast(self), key, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
             const _c = self.vtable.Split(@ptrCast(self), first, second);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IMapView";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -207,9 +222,9 @@ pub fn IMapView(K: type, V: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            Lookup: *const fn(self: *anyopaque, key: core.generic(K), _r: *core.generic(V)) callconv(.winapi) HRESULT,
+            Lookup: *const fn(self: *anyopaque, key: core.genericArg(K), _r: *core.genericArg(V)) callconv(.winapi) HRESULT,
             get_Size: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-            HasKey: *const fn(self: *anyopaque, key: core.generic(K), _r: *bool) callconv(.winapi) HRESULT,
+            HasKey: *const fn(self: *anyopaque, key: core.genericArg(K), _r: *bool) callconv(.winapi) HRESULT,
             Split: *const fn(self: *anyopaque, first: *IMapView(K,V), second: *IMapView(K,V)) callconv(.winapi) HRESULT,
         };
     };
@@ -217,49 +232,52 @@ pub fn IMapView(K: type, V: type) type {
 pub fn IMap(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-            var _r: core.generic(V) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn Lookup(self: *@This(), key: core.genericArg(K)) core.HResult!core.genericArg(V) {
+            var _r: core.genericArg(V) = undefined;
             const _c = self.vtable.Lookup(@ptrCast(self), key, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn getSize(self: *@This()) core.HResult!u32 {
             var _r: u32 = undefined;
             const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        pub fn HasKey(self: *@This(), key: core.genericArg(K)) core.HResult!bool {
             var _r: bool = undefined;
             const _c = self.vtable.HasKey(@ptrCast(self), key, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
             var _r: *IMapView(K,V) = undefined;
             const _c = self.vtable.GetView(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        pub fn Insert(self: *@This(), key: core.genericArg(K), value: core.genericArg(V)) core.HResult!bool {
             var _r: bool = undefined;
             const _c = self.vtable.Insert(@ptrCast(self), key, value, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        pub fn Remove(self: *@This(), key: core.genericArg(K)) core.HResult!void {
             const _c = self.vtable.Remove(@ptrCast(self), key);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn Clear(self: *@This()) core.HResult!void {
             const _c = self.vtable.Clear(@ptrCast(self));
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IMap";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -273,12 +291,12 @@ pub fn IMap(K: type, V: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            Lookup: *const fn(self: *anyopaque, key: core.generic(K), _r: *core.generic(V)) callconv(.winapi) HRESULT,
+            Lookup: *const fn(self: *anyopaque, key: core.genericArg(K), _r: *core.genericArg(V)) callconv(.winapi) HRESULT,
             get_Size: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-            HasKey: *const fn(self: *anyopaque, key: core.generic(K), _r: *bool) callconv(.winapi) HRESULT,
+            HasKey: *const fn(self: *anyopaque, key: core.genericArg(K), _r: *bool) callconv(.winapi) HRESULT,
             GetView: *const fn(self: *anyopaque, _r: **IMapView(K,V)) callconv(.winapi) HRESULT,
-            Insert: *const fn(self: *anyopaque, key: core.generic(K), value: core.generic(V), _r: *bool) callconv(.winapi) HRESULT,
-            Remove: *const fn(self: *anyopaque, key: core.generic(K)) callconv(.winapi) HRESULT,
+            Insert: *const fn(self: *anyopaque, key: core.genericArg(K), value: core.genericArg(V), _r: *bool) callconv(.winapi) HRESULT,
+            Remove: *const fn(self: *anyopaque, key: core.genericArg(K)) callconv(.winapi) HRESULT,
             Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         };
     };
@@ -286,21 +304,24 @@ pub fn IMap(K: type, V: type) type {
 pub fn IObservableMap(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
         pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(K,V)) core.HResult!EventRegistrationToken {
             var _r: EventRegistrationToken = undefined;
             const _c = self.vtable.add_MapChanged(@ptrCast(self), vhnd, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
             const _c = self.vtable.remove_MapChanged(@ptrCast(self), token);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IObservableMap";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -322,21 +343,24 @@ pub fn IObservableMap(K: type, V: type) type {
 pub fn IObservableVector(T: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
         pub fn addVectorChanged(self: *@This(), vhnd: *VectorChangedEventHandler(T)) core.HResult!EventRegistrationToken {
             var _r: EventRegistrationToken = undefined;
             const _c = self.vtable.add_VectorChanged(@ptrCast(self), vhnd, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn removeVectorChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
             const _c = self.vtable.remove_VectorChanged(@ptrCast(self), token);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IObservableVector";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -357,8 +381,11 @@ pub fn IObservableVector(T: type) type {
 }
 pub const IPropertySet = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -379,8 +406,11 @@ pub const IPropertySet = extern struct {
 };
 pub const IVectorChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -388,13 +418,13 @@ pub const IVectorChangedEventArgs = extern struct {
     pub fn getCollectionChange(self: *@This()) core.HResult!CollectionChange {
         var _r: CollectionChange = undefined;
         const _c = self.vtable.get_CollectionChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIndex(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Index(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Collections.IVectorChangedEventArgs";
@@ -416,34 +446,37 @@ pub const IVectorChangedEventArgs = extern struct {
 pub fn IVectorView(T: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-            var _r: core.generic(T) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn GetAt(self: *@This(), index: u32) core.HResult!core.genericArg(T) {
+            var _r: core.genericArg(T) = undefined;
             const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn getSize(self: *@This()) core.HResult!u32 {
             var _r: u32 = undefined;
             const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        pub fn IndexOf(self: *@This(), value: core.genericArg(T), index: u32) core.HResult!bool {
             var _r: bool = undefined;
             const _c = self.vtable.IndexOf(@ptrCast(self), value, index, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.genericArg(T)) core.HResult!u32 {
             var _r: u32 = undefined;
             const _c = self.vtable.GetMany(@ptrCast(self), startIndex, items, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IVectorView";
@@ -458,79 +491,82 @@ pub fn IVectorView(T: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            GetAt: *const fn(self: *anyopaque, index: u32, _r: *core.generic(T)) callconv(.winapi) HRESULT,
+            GetAt: *const fn(self: *anyopaque, index: u32, _r: *core.genericArg(T)) callconv(.winapi) HRESULT,
             get_Size: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-            IndexOf: *const fn(self: *anyopaque, value: core.generic(T), index: u32, _r: *bool) callconv(.winapi) HRESULT,
-            GetMany: *const fn(self: *anyopaque, startIndex: u32, items: [*]core.generic(T), _r: *u32) callconv(.winapi) HRESULT,
+            IndexOf: *const fn(self: *anyopaque, value: core.genericArg(T), index: u32, _r: *bool) callconv(.winapi) HRESULT,
+            GetMany: *const fn(self: *anyopaque, startIndex: u32, items: [*]core.genericArg(T), _r: *u32) callconv(.winapi) HRESULT,
         };
     };
 }
 pub fn IVector(T: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-            var _r: core.generic(T) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn GetAt(self: *@This(), index: u32) core.HResult!core.genericArg(T) {
+            var _r: core.genericArg(T) = undefined;
             const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn getSize(self: *@This()) core.HResult!u32 {
             var _r: u32 = undefined;
             const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
             var _r: *IVectorView(T) = undefined;
             const _c = self.vtable.GetView(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        pub fn IndexOf(self: *@This(), value: core.genericArg(T), index: u32) core.HResult!bool {
             var _r: bool = undefined;
             const _c = self.vtable.IndexOf(@ptrCast(self), value, index, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        pub fn SetAt(self: *@This(), index: u32, value: core.genericArg(T)) core.HResult!void {
             const _c = self.vtable.SetAt(@ptrCast(self), index, value);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
-        pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        pub fn InsertAt(self: *@This(), index: u32, value: core.genericArg(T)) core.HResult!void {
             const _c = self.vtable.InsertAt(@ptrCast(self), index, value);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
             const _c = self.vtable.RemoveAt(@ptrCast(self), index);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
-        pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        pub fn Append(self: *@This(), value: core.genericArg(T)) core.HResult!void {
             const _c = self.vtable.Append(@ptrCast(self), value);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
             const _c = self.vtable.RemoveAtEnd(@ptrCast(self));
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn Clear(self: *@This()) core.HResult!void {
             const _c = self.vtable.Clear(@ptrCast(self));
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
-        pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.genericArg(T)) core.HResult!u32 {
             var _r: u32 = undefined;
             const _c = self.vtable.GetMany(@ptrCast(self), startIndex, items, &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        pub fn ReplaceAll(self: *@This(), items: [*]core.genericArg(T)) core.HResult!void {
             const _c = self.vtable.ReplaceAll(@ptrCast(self), items);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.IVector";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -544,18 +580,18 @@ pub fn IVector(T: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            GetAt: *const fn(self: *anyopaque, index: u32, _r: *core.generic(T)) callconv(.winapi) HRESULT,
+            GetAt: *const fn(self: *anyopaque, index: u32, _r: *core.genericArg(T)) callconv(.winapi) HRESULT,
             get_Size: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
             GetView: *const fn(self: *anyopaque, _r: **IVectorView(T)) callconv(.winapi) HRESULT,
-            IndexOf: *const fn(self: *anyopaque, value: core.generic(T), index: u32, _r: *bool) callconv(.winapi) HRESULT,
-            SetAt: *const fn(self: *anyopaque, index: u32, value: core.generic(T)) callconv(.winapi) HRESULT,
-            InsertAt: *const fn(self: *anyopaque, index: u32, value: core.generic(T)) callconv(.winapi) HRESULT,
+            IndexOf: *const fn(self: *anyopaque, value: core.genericArg(T), index: u32, _r: *bool) callconv(.winapi) HRESULT,
+            SetAt: *const fn(self: *anyopaque, index: u32, value: core.genericArg(T)) callconv(.winapi) HRESULT,
+            InsertAt: *const fn(self: *anyopaque, index: u32, value: core.genericArg(T)) callconv(.winapi) HRESULT,
             RemoveAt: *const fn(self: *anyopaque, index: u32) callconv(.winapi) HRESULT,
-            Append: *const fn(self: *anyopaque, value: core.generic(T)) callconv(.winapi) HRESULT,
+            Append: *const fn(self: *anyopaque, value: core.genericArg(T)) callconv(.winapi) HRESULT,
             RemoveAtEnd: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
             Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-            GetMany: *const fn(self: *anyopaque, startIndex: u32, items: [*]core.generic(T), _r: *u32) callconv(.winapi) HRESULT,
-            ReplaceAll: *const fn(self: *anyopaque, items: [*]core.generic(T)) callconv(.winapi) HRESULT,
+            GetMany: *const fn(self: *anyopaque, startIndex: u32, items: [*]core.genericArg(T), _r: *u32) callconv(.winapi) HRESULT,
+            ReplaceAll: *const fn(self: *anyopaque, items: [*]core.genericArg(T)) callconv(.winapi) HRESULT,
         };
     };
 }
@@ -652,14 +688,11 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
 }
 pub const PropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -667,43 +700,37 @@ pub const PropertySet = extern struct {
     pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.removeMapChanged(token);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn init() core.HResult!*@This() {
@@ -719,14 +746,11 @@ pub const PropertySet = extern struct {
 };
 pub const StringMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -746,22 +770,19 @@ pub const StringMap = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,?HSTRING)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,?HSTRING)) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,?HSTRING)).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,?HSTRING)).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,?HSTRING)) core.HResult!EventRegistrationToken {
         var this: ?*IObservableMap(?HSTRING,?HSTRING) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,?HSTRING).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,?HSTRING).IID, @ptrCast(&this));
         return try this.?.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IObservableMap(?HSTRING,?HSTRING) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,?HSTRING).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,?HSTRING).IID, @ptrCast(&this));
         return try this.?.removeMapChanged(token);
     }
     pub fn init() core.HResult!*@This() {
@@ -777,14 +798,11 @@ pub const StringMap = extern struct {
 };
 pub const ValueSet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -792,43 +810,37 @@ pub const ValueSet = extern struct {
     pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IObservableMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.removeMapChanged(token);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn init() core.HResult!*@This() {

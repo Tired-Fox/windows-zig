@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ILowLevelDevicesAggregateProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,31 +13,31 @@ pub const ILowLevelDevicesAggregateProvider = extern struct {
     pub fn getAdcControllerProvider(self: *@This()) core.HResult!*IAdcControllerProvider {
         var _r: *IAdcControllerProvider = undefined;
         const _c = self.vtable.get_AdcControllerProvider(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPwmControllerProvider(self: *@This()) core.HResult!*IPwmControllerProvider {
         var _r: *IPwmControllerProvider = undefined;
         const _c = self.vtable.get_PwmControllerProvider(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGpioControllerProvider(self: *@This()) core.HResult!*IGpioControllerProvider {
         var _r: *IGpioControllerProvider = undefined;
         const _c = self.vtable.get_GpioControllerProvider(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getI2cControllerProvider(self: *@This()) core.HResult!*II2cControllerProvider {
         var _r: *II2cControllerProvider = undefined;
         const _c = self.vtable.get_I2cControllerProvider(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSpiControllerProvider(self: *@This()) core.HResult!*ISpiControllerProvider {
         var _r: *ISpiControllerProvider = undefined;
         const _c = self.vtable.get_SpiControllerProvider(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.ILowLevelDevicesAggregateProvider";
@@ -58,8 +61,11 @@ pub const ILowLevelDevicesAggregateProvider = extern struct {
 };
 pub const ILowLevelDevicesAggregateProviderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -67,7 +73,7 @@ pub const ILowLevelDevicesAggregateProviderFactory = extern struct {
     pub fn Create(self: *@This(), adc: *IAdcControllerProvider, pwm: *IPwmControllerProvider, gpio: *IGpioControllerProvider, i2c: *II2cControllerProvider, spi: *ISpiControllerProvider) core.HResult!*LowLevelDevicesAggregateProvider {
         var _r: *LowLevelDevicesAggregateProvider = undefined;
         const _c = self.vtable.Create(@ptrCast(self), adc, pwm, gpio, i2c, spi, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.ILowLevelDevicesAggregateProviderFactory";
@@ -87,8 +93,11 @@ pub const ILowLevelDevicesAggregateProviderFactory = extern struct {
 };
 pub const ILowLevelDevicesController = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -109,8 +118,11 @@ pub const ILowLevelDevicesController = extern struct {
 };
 pub const ILowLevelDevicesControllerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -118,12 +130,12 @@ pub const ILowLevelDevicesControllerStatics = extern struct {
     pub fn getDefaultProvider(self: *@This()) core.HResult!*ILowLevelDevicesAggregateProvider {
         var _r: *ILowLevelDevicesAggregateProvider = undefined;
         const _c = self.vtable.get_DefaultProvider(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDefaultProvider(self: *@This(), value: *ILowLevelDevicesAggregateProvider) core.HResult!void {
         const _c = self.vtable.put_DefaultProvider(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.ILowLevelDevicesControllerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -143,14 +155,11 @@ pub const ILowLevelDevicesControllerStatics = extern struct {
 };
 pub const LowLevelDevicesAggregateProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -188,14 +197,11 @@ pub const LowLevelDevicesAggregateProvider = extern struct {
 };
 pub const LowLevelDevicesController = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

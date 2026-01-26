@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AsyncCausalityTracer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -69,14 +66,11 @@ pub const CausalityTraceLevel = enum(i32) {
 };
 pub const ErrorDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -113,14 +107,11 @@ pub const ErrorOptions = enum(i32) {
 };
 pub const FileLoggingSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -156,8 +147,7 @@ pub const FileLoggingSession = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create(name: ?HSTRING) core.HResult!*FileLoggingSession {
@@ -173,41 +163,44 @@ pub const FileLoggingSession = extern struct {
 };
 pub const IAsyncCausalityTracerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TraceOperationCreation(self: *@This(), traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, operationName: ?HSTRING, relatedContext: u64) core.HResult!void {
         const _c = self.vtable.TraceOperationCreation(@ptrCast(self), traceLevel, source, platformId, operationId, operationName, relatedContext);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TraceOperationCompletion(self: *@This(), traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, status: AsyncStatus) core.HResult!void {
         const _c = self.vtable.TraceOperationCompletion(@ptrCast(self), traceLevel, source, platformId, operationId, status);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TraceOperationRelation(self: *@This(), traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, relation: CausalityRelation) core.HResult!void {
         const _c = self.vtable.TraceOperationRelation(@ptrCast(self), traceLevel, source, platformId, operationId, relation);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TraceSynchronousWorkStart(self: *@This(), traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, work: CausalitySynchronousWork) core.HResult!void {
         const _c = self.vtable.TraceSynchronousWorkStart(@ptrCast(self), traceLevel, source, platformId, operationId, work);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TraceSynchronousWorkCompletion(self: *@This(), traceLevel: CausalityTraceLevel, source: CausalitySource, work: CausalitySynchronousWork) core.HResult!void {
         const _c = self.vtable.TraceSynchronousWorkCompletion(@ptrCast(self), traceLevel, source, work);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTracingStatusChanged(self: *@This(), handler: *EventHandler(TracingStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TracingStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTracingStatusChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TracingStatusChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.IAsyncCausalityTracerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -232,8 +225,11 @@ pub const IAsyncCausalityTracerStatics = extern struct {
 };
 pub const IErrorDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -241,19 +237,19 @@ pub const IErrorDetails = extern struct {
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLongDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LongDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHelpUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_HelpUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.IErrorDetails";
@@ -275,8 +271,11 @@ pub const IErrorDetails = extern struct {
 };
 pub const IErrorDetailsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -284,7 +283,7 @@ pub const IErrorDetailsStatics = extern struct {
     pub fn CreateFromHResultAsync(self: *@This(), errorCode: i32) core.HResult!*IAsyncOperation(ErrorDetails) {
         var _r: *IAsyncOperation(ErrorDetails) = undefined;
         const _c = self.vtable.CreateFromHResultAsync(@ptrCast(self), errorCode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.IErrorDetailsStatics";
@@ -304,20 +303,23 @@ pub const IErrorDetailsStatics = extern struct {
 };
 pub const IErrorReportingSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetErrorOptions(self: *@This(), value: ErrorOptions) core.HResult!void {
         const _c = self.vtable.SetErrorOptions(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetErrorOptions(self: *@This()) core.HResult!ErrorOptions {
         var _r: ErrorOptions = undefined;
         const _c = self.vtable.GetErrorOptions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.IErrorReportingSettings";
@@ -338,8 +340,11 @@ pub const IErrorReportingSettings = extern struct {
 };
 pub const IFileLoggingSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -347,36 +352,36 @@ pub const IFileLoggingSession = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddLoggingChannel(self: *@This(), loggingChannel: *ILoggingChannel) core.HResult!void {
         const _c = self.vtable.AddLoggingChannel(@ptrCast(self), loggingChannel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddLoggingChannelWithMaxLevel(self: *@This(), loggingChannel: *ILoggingChannel, maxLevel: LoggingLevel) core.HResult!void {
         const _c = self.vtable.AddLoggingChannelWithMaxLevel(@ptrCast(self), loggingChannel, maxLevel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveLoggingChannel(self: *@This(), loggingChannel: *ILoggingChannel) core.HResult!void {
         const _c = self.vtable.RemoveLoggingChannel(@ptrCast(self), loggingChannel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CloseAndSaveToFileAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.CloseAndSaveToFileAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addLogFileGenerated(self: *@This(), handler: *TypedEventHandler(IFileLoggingSession,LogFileGeneratedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LogFileGenerated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLogFileGenerated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LogFileGenerated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.IFileLoggingSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -401,8 +406,11 @@ pub const IFileLoggingSession = extern struct {
 };
 pub const IFileLoggingSessionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -410,7 +418,7 @@ pub const IFileLoggingSessionFactory = extern struct {
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*FileLoggingSession {
         var _r: *FileLoggingSession = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.IFileLoggingSessionFactory";
@@ -430,8 +438,11 @@ pub const IFileLoggingSessionFactory = extern struct {
 };
 pub const ILogFileGeneratedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -439,7 +450,7 @@ pub const ILogFileGeneratedEventArgs = extern struct {
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILogFileGeneratedEventArgs";
@@ -459,8 +470,11 @@ pub const ILogFileGeneratedEventArgs = extern struct {
 };
 pub const ILoggingActivity = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -468,13 +482,13 @@ pub const ILoggingActivity = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingActivity";
@@ -495,8 +509,11 @@ pub const ILoggingActivity = extern struct {
 };
 pub const ILoggingActivity2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -504,20 +521,20 @@ pub const ILoggingActivity2 = extern struct {
     pub fn getChannel(self: *@This()) core.HResult!*LoggingChannel {
         var _r: *LoggingChannel = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopActivity(self: *@This(), stopEventName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.StopActivity(@ptrCast(self), stopEventName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopActivityWithFields(self: *@This(), stopEventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         const _c = self.vtable.StopActivityWithFields(@ptrCast(self), stopEventName, fields);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopActivityWithFieldsAndOptions(self: *@This(), stopEventName: ?HSTRING, fields: *LoggingFields, options: *LoggingOptions) core.HResult!void {
         const _c = self.vtable.StopActivityWithFieldsAndOptions(@ptrCast(self), stopEventName, fields, options);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingActivity2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -539,8 +556,11 @@ pub const ILoggingActivity2 = extern struct {
 };
 pub const ILoggingActivityFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -548,13 +568,13 @@ pub const ILoggingActivityFactory = extern struct {
     pub fn CreateLoggingActivity(self: *@This(), activityName: ?HSTRING, loggingChannel: *ILoggingChannel) core.HResult!*LoggingActivity {
         var _r: *LoggingActivity = undefined;
         const _c = self.vtable.CreateLoggingActivity(@ptrCast(self), activityName, loggingChannel, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateLoggingActivityWithLevel(self: *@This(), activityName: ?HSTRING, loggingChannel: *ILoggingChannel, level: LoggingLevel) core.HResult!*LoggingActivity {
         var _r: *LoggingActivity = undefined;
         const _c = self.vtable.CreateLoggingActivityWithLevel(@ptrCast(self), activityName, loggingChannel, level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingActivityFactory";
@@ -575,8 +595,11 @@ pub const ILoggingActivityFactory = extern struct {
 };
 pub const ILoggingChannel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -584,46 +607,46 @@ pub const ILoggingChannel = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLevel(self: *@This()) core.HResult!LoggingLevel {
         var _r: LoggingLevel = undefined;
         const _c = self.vtable.get_Level(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LogMessage(self: *@This(), eventString: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LogMessage(@ptrCast(self), eventString);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LogMessageWithLevel(self: *@This(), eventString: ?HSTRING, level: LoggingLevel) core.HResult!void {
         const _c = self.vtable.LogMessageWithLevel(@ptrCast(self), eventString, level);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LogValuePair(self: *@This(), value1: ?HSTRING, value2: i32) core.HResult!void {
         const _c = self.vtable.LogValuePair(@ptrCast(self), value1, value2);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LogValuePairWithLevel(self: *@This(), value1: ?HSTRING, value2: i32, level: LoggingLevel) core.HResult!void {
         const _c = self.vtable.LogValuePairWithLevel(@ptrCast(self), value1, value2, level);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLoggingEnabled(self: *@This(), handler: *TypedEventHandler(ILoggingChannel,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LoggingEnabled(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLoggingEnabled(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LoggingEnabled(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingChannel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -650,8 +673,11 @@ pub const ILoggingChannel = extern struct {
 };
 pub const ILoggingChannel2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -659,7 +685,7 @@ pub const ILoggingChannel2 = extern struct {
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingChannel2";
@@ -679,8 +705,11 @@ pub const ILoggingChannel2 = extern struct {
 };
 pub const ILoggingChannelFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -688,7 +717,7 @@ pub const ILoggingChannelFactory = extern struct {
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*LoggingChannel {
         var _r: *LoggingChannel = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingChannelFactory";
@@ -708,8 +737,11 @@ pub const ILoggingChannelFactory = extern struct {
 };
 pub const ILoggingChannelFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -717,13 +749,13 @@ pub const ILoggingChannelFactory2 = extern struct {
     pub fn CreateWithOptions(self: *@This(), name: ?HSTRING, options: *LoggingChannelOptions) core.HResult!*LoggingChannel {
         var _r: *LoggingChannel = undefined;
         const _c = self.vtable.CreateWithOptions(@ptrCast(self), name, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithOptionsAndId(self: *@This(), name: ?HSTRING, options: *LoggingChannelOptions, id: *Guid) core.HResult!*LoggingChannel {
         var _r: *LoggingChannel = undefined;
         const _c = self.vtable.CreateWithOptionsAndId(@ptrCast(self), name, options, id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingChannelFactory2";
@@ -744,8 +776,11 @@ pub const ILoggingChannelFactory2 = extern struct {
 };
 pub const ILoggingChannelOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -753,12 +788,12 @@ pub const ILoggingChannelOptions = extern struct {
     pub fn getGroup(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGroup(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_Group(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingChannelOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -778,8 +813,11 @@ pub const ILoggingChannelOptions = extern struct {
 };
 pub const ILoggingChannelOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -787,7 +825,7 @@ pub const ILoggingChannelOptionsFactory = extern struct {
     pub fn Create(self: *@This(), group: *Guid) core.HResult!*LoggingChannelOptions {
         var _r: *LoggingChannelOptions = undefined;
         const _c = self.vtable.Create(@ptrCast(self), group, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingChannelOptionsFactory";
@@ -807,471 +845,474 @@ pub const ILoggingChannelOptionsFactory = extern struct {
 };
 pub const ILoggingFields = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const _c = self.vtable.Clear(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn BeginStruct(self: *@This(), name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.BeginStruct(@ptrCast(self), name);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn BeginStructWithTags(self: *@This(), name: ?HSTRING, tags: i32) core.HResult!void {
         const _c = self.vtable.BeginStructWithTags(@ptrCast(self), name, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EndStruct(self: *@This()) core.HResult!void {
         const _c = self.vtable.EndStruct(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddEmpty(self: *@This(), name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddEmpty(@ptrCast(self), name);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddEmptyWithFormat(self: *@This(), name: ?HSTRING, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddEmptyWithFormat(@ptrCast(self), name, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddEmptyWithFormatAndTags(self: *@This(), name: ?HSTRING, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddEmptyWithFormatAndTags(@ptrCast(self), name, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt8(self: *@This(), name: ?HSTRING, value: u8) core.HResult!void {
         const _c = self.vtable.AddUInt8(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt8WithFormat(self: *@This(), name: ?HSTRING, value: u8, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt8WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt8WithFormatAndTags(self: *@This(), name: ?HSTRING, value: u8, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt8WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt8Array(self: *@This(), name: ?HSTRING, value: [*]u8) core.HResult!void {
         const _c = self.vtable.AddUInt8Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt8ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]u8, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt8ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt8ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]u8, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt8ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt16(self: *@This(), name: ?HSTRING, value: i16) core.HResult!void {
         const _c = self.vtable.AddInt16(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt16WithFormat(self: *@This(), name: ?HSTRING, value: i16, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddInt16WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt16WithFormatAndTags(self: *@This(), name: ?HSTRING, value: i16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddInt16WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt16Array(self: *@This(), name: ?HSTRING, value: [*]i16) core.HResult!void {
         const _c = self.vtable.AddInt16Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt16ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]i16, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddInt16ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt16ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]i16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddInt16ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt16(self: *@This(), name: ?HSTRING, value: u16) core.HResult!void {
         const _c = self.vtable.AddUInt16(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt16WithFormat(self: *@This(), name: ?HSTRING, value: u16, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt16WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt16WithFormatAndTags(self: *@This(), name: ?HSTRING, value: u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt16WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt16Array(self: *@This(), name: ?HSTRING, value: [*]u16) core.HResult!void {
         const _c = self.vtable.AddUInt16Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt16ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]u16, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt16ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt16ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt16ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt32(self: *@This(), name: ?HSTRING, value: i32) core.HResult!void {
         const _c = self.vtable.AddInt32(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt32WithFormat(self: *@This(), name: ?HSTRING, value: i32, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddInt32WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt32WithFormatAndTags(self: *@This(), name: ?HSTRING, value: i32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddInt32WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt32Array(self: *@This(), name: ?HSTRING, value: [*]i32) core.HResult!void {
         const _c = self.vtable.AddInt32Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt32ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]i32, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddInt32ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt32ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]i32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddInt32ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt32(self: *@This(), name: ?HSTRING, value: u32) core.HResult!void {
         const _c = self.vtable.AddUInt32(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt32WithFormat(self: *@This(), name: ?HSTRING, value: u32, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt32WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt32WithFormatAndTags(self: *@This(), name: ?HSTRING, value: u32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt32WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt32Array(self: *@This(), name: ?HSTRING, value: [*]u32) core.HResult!void {
         const _c = self.vtable.AddUInt32Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt32ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]u32, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt32ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt32ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]u32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt32ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt64(self: *@This(), name: ?HSTRING, value: i64) core.HResult!void {
         const _c = self.vtable.AddInt64(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt64WithFormat(self: *@This(), name: ?HSTRING, value: i64, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddInt64WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt64WithFormatAndTags(self: *@This(), name: ?HSTRING, value: i64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddInt64WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt64Array(self: *@This(), name: ?HSTRING, value: [*]i64) core.HResult!void {
         const _c = self.vtable.AddInt64Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt64ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]i64, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddInt64ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddInt64ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]i64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddInt64ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt64(self: *@This(), name: ?HSTRING, value: u64) core.HResult!void {
         const _c = self.vtable.AddUInt64(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt64WithFormat(self: *@This(), name: ?HSTRING, value: u64, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt64WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt64WithFormatAndTags(self: *@This(), name: ?HSTRING, value: u64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt64WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt64Array(self: *@This(), name: ?HSTRING, value: [*]u64) core.HResult!void {
         const _c = self.vtable.AddUInt64Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt64ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]u64, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddUInt64ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddUInt64ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]u64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddUInt64ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSingle(self: *@This(), name: ?HSTRING, value: f32) core.HResult!void {
         const _c = self.vtable.AddSingle(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSingleWithFormat(self: *@This(), name: ?HSTRING, value: f32, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddSingleWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSingleWithFormatAndTags(self: *@This(), name: ?HSTRING, value: f32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddSingleWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSingleArray(self: *@This(), name: ?HSTRING, value: [*]f32) core.HResult!void {
         const _c = self.vtable.AddSingleArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSingleArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]f32, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddSingleArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSingleArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]f32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddSingleArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDouble(self: *@This(), name: ?HSTRING, value: f64) core.HResult!void {
         const _c = self.vtable.AddDouble(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDoubleWithFormat(self: *@This(), name: ?HSTRING, value: f64, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddDoubleWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDoubleWithFormatAndTags(self: *@This(), name: ?HSTRING, value: f64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddDoubleWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDoubleArray(self: *@This(), name: ?HSTRING, value: [*]f64) core.HResult!void {
         const _c = self.vtable.AddDoubleArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDoubleArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]f64, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddDoubleArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDoubleArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]f64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddDoubleArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddChar16(self: *@This(), name: ?HSTRING, value: u16) core.HResult!void {
         const _c = self.vtable.AddChar16(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddChar16WithFormat(self: *@This(), name: ?HSTRING, value: u16, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddChar16WithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddChar16WithFormatAndTags(self: *@This(), name: ?HSTRING, value: u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddChar16WithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddChar16Array(self: *@This(), name: ?HSTRING, value: [*]u16) core.HResult!void {
         const _c = self.vtable.AddChar16Array(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddChar16ArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]u16, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddChar16ArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddChar16ArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddChar16ArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddBoolean(self: *@This(), name: ?HSTRING, value: bool) core.HResult!void {
         const _c = self.vtable.AddBoolean(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddBooleanWithFormat(self: *@This(), name: ?HSTRING, value: bool, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddBooleanWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddBooleanWithFormatAndTags(self: *@This(), name: ?HSTRING, value: bool, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddBooleanWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddBooleanArray(self: *@This(), name: ?HSTRING, value: [*]bool) core.HResult!void {
         const _c = self.vtable.AddBooleanArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddBooleanArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]bool, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddBooleanArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddBooleanArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]bool, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddBooleanArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddString(self: *@This(), name: ?HSTRING, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddString(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddStringWithFormat(self: *@This(), name: ?HSTRING, value: ?HSTRING, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddStringWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddStringWithFormatAndTags(self: *@This(), name: ?HSTRING, value: ?HSTRING, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddStringWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddStringArray(self: *@This(), name: ?HSTRING, value: ?[*]HSTRING) core.HResult!void {
         const _c = self.vtable.AddStringArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddStringArrayWithFormat(self: *@This(), name: ?HSTRING, value: ?[*]HSTRING, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddStringArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddStringArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: ?[*]HSTRING, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddStringArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddGuid(self: *@This(), name: ?HSTRING, value: *Guid) core.HResult!void {
         const _c = self.vtable.AddGuid(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddGuidWithFormat(self: *@This(), name: ?HSTRING, value: *Guid, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddGuidWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddGuidWithFormatAndTags(self: *@This(), name: ?HSTRING, value: *Guid, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddGuidWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddGuidArray(self: *@This(), name: ?HSTRING, value: [*]Guid) core.HResult!void {
         const _c = self.vtable.AddGuidArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddGuidArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]Guid, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddGuidArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddGuidArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]Guid, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddGuidArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDateTime(self: *@This(), name: ?HSTRING, value: DateTime) core.HResult!void {
         const _c = self.vtable.AddDateTime(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDateTimeWithFormat(self: *@This(), name: ?HSTRING, value: DateTime, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddDateTimeWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDateTimeWithFormatAndTags(self: *@This(), name: ?HSTRING, value: DateTime, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddDateTimeWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDateTimeArray(self: *@This(), name: ?HSTRING, value: [*]DateTime) core.HResult!void {
         const _c = self.vtable.AddDateTimeArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDateTimeArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]DateTime, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddDateTimeArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddDateTimeArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]DateTime, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddDateTimeArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddTimeSpan(self: *@This(), name: ?HSTRING, value: TimeSpan) core.HResult!void {
         const _c = self.vtable.AddTimeSpan(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddTimeSpanWithFormat(self: *@This(), name: ?HSTRING, value: TimeSpan, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddTimeSpanWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddTimeSpanWithFormatAndTags(self: *@This(), name: ?HSTRING, value: TimeSpan, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddTimeSpanWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddTimeSpanArray(self: *@This(), name: ?HSTRING, value: [*]TimeSpan) core.HResult!void {
         const _c = self.vtable.AddTimeSpanArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddTimeSpanArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]TimeSpan, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddTimeSpanArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddTimeSpanArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]TimeSpan, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddTimeSpanArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddPoint(self: *@This(), name: ?HSTRING, value: Point) core.HResult!void {
         const _c = self.vtable.AddPoint(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddPointWithFormat(self: *@This(), name: ?HSTRING, value: Point, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddPointWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddPointWithFormatAndTags(self: *@This(), name: ?HSTRING, value: Point, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddPointWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddPointArray(self: *@This(), name: ?HSTRING, value: [*]Point) core.HResult!void {
         const _c = self.vtable.AddPointArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddPointArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]Point, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddPointArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddPointArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]Point, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddPointArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSize(self: *@This(), name: ?HSTRING, value: Size) core.HResult!void {
         const _c = self.vtable.AddSize(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSizeWithFormat(self: *@This(), name: ?HSTRING, value: Size, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddSizeWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSizeWithFormatAndTags(self: *@This(), name: ?HSTRING, value: Size, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddSizeWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSizeArray(self: *@This(), name: ?HSTRING, value: [*]Size) core.HResult!void {
         const _c = self.vtable.AddSizeArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSizeArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]Size, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddSizeArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddSizeArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]Size, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddSizeArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddRect(self: *@This(), name: ?HSTRING, value: Rect) core.HResult!void {
         const _c = self.vtable.AddRect(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddRectWithFormat(self: *@This(), name: ?HSTRING, value: Rect, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddRectWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddRectWithFormatAndTags(self: *@This(), name: ?HSTRING, value: Rect, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddRectWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddRectArray(self: *@This(), name: ?HSTRING, value: [*]Rect) core.HResult!void {
         const _c = self.vtable.AddRectArray(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddRectArrayWithFormat(self: *@This(), name: ?HSTRING, value: [*]Rect, format: LoggingFieldFormat) core.HResult!void {
         const _c = self.vtable.AddRectArrayWithFormat(@ptrCast(self), name, value, format);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddRectArrayWithFormatAndTags(self: *@This(), name: ?HSTRING, value: [*]Rect, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const _c = self.vtable.AddRectArrayWithFormatAndTags(@ptrCast(self), name, value, format, tags);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingFields";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1404,8 +1445,11 @@ pub const ILoggingFields = extern struct {
 };
 pub const ILoggingOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1413,62 +1457,62 @@ pub const ILoggingOptions = extern struct {
     pub fn getKeywords(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_Keywords(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putKeywords(self: *@This(), value: i64) core.HResult!void {
         const _c = self.vtable.put_Keywords(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTags(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Tags(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTags(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Tags(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTask(self: *@This()) core.HResult!i16 {
         var _r: i16 = undefined;
         const _c = self.vtable.get_Task(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTask(self: *@This(), value: i16) core.HResult!void {
         const _c = self.vtable.put_Task(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOpcode(self: *@This()) core.HResult!LoggingOpcode {
         var _r: LoggingOpcode = undefined;
         const _c = self.vtable.get_Opcode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOpcode(self: *@This(), value: LoggingOpcode) core.HResult!void {
         const _c = self.vtable.put_Opcode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putActivityId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_ActivityId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRelatedActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_RelatedActivityId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRelatedActivityId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_RelatedActivityId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1498,8 +1542,11 @@ pub const ILoggingOptions = extern struct {
 };
 pub const ILoggingOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1507,7 +1554,7 @@ pub const ILoggingOptionsFactory = extern struct {
     pub fn CreateWithKeywords(self: *@This(), keywords: i64) core.HResult!*LoggingOptions {
         var _r: *LoggingOptions = undefined;
         const _c = self.vtable.CreateWithKeywords(@ptrCast(self), keywords, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingOptionsFactory";
@@ -1527,8 +1574,11 @@ pub const ILoggingOptionsFactory = extern struct {
 };
 pub const ILoggingSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1536,26 +1586,26 @@ pub const ILoggingSession = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SaveToFileAsync(self: *@This(), folder: *IStorageFolder, fileName: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.SaveToFileAsync(@ptrCast(self), folder, fileName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddLoggingChannel(self: *@This(), loggingChannel: *ILoggingChannel) core.HResult!void {
         const _c = self.vtable.AddLoggingChannel(@ptrCast(self), loggingChannel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddLoggingChannelWithMaxLevel(self: *@This(), loggingChannel: *ILoggingChannel, maxLevel: LoggingLevel) core.HResult!void {
         const _c = self.vtable.AddLoggingChannelWithMaxLevel(@ptrCast(self), loggingChannel, maxLevel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveLoggingChannel(self: *@This(), loggingChannel: *ILoggingChannel) core.HResult!void {
         const _c = self.vtable.RemoveLoggingChannel(@ptrCast(self), loggingChannel);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1578,8 +1628,11 @@ pub const ILoggingSession = extern struct {
 };
 pub const ILoggingSessionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1587,7 +1640,7 @@ pub const ILoggingSessionFactory = extern struct {
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*LoggingSession {
         var _r: *LoggingSession = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingSessionFactory";
@@ -1607,8 +1660,11 @@ pub const ILoggingSessionFactory = extern struct {
 };
 pub const ILoggingTarget = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1616,59 +1672,59 @@ pub const ILoggingTarget = extern struct {
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEnabledWithLevel(self: *@This(), level: LoggingLevel) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEnabledWithLevel(@ptrCast(self), level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsEnabledWithLevelAndKeywords(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEnabledWithLevelAndKeywords(@ptrCast(self), level, keywords, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LogEvent(self: *@This(), eventName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LogEvent(@ptrCast(self), eventName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LogEventWithFields(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         const _c = self.vtable.LogEventWithFields(@ptrCast(self), eventName, fields);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LogEventWithFieldsAndLevel(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
         const _c = self.vtable.LogEventWithFieldsAndLevel(@ptrCast(self), eventName, fields, level);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LogEventWithFieldsAndLevelAndOptions(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
         const _c = self.vtable.LogEventWithFieldsAndLevelAndOptions(@ptrCast(self), eventName, fields, level, options);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartActivity(self: *@This(), startEventName: ?HSTRING) core.HResult!*LoggingActivity {
         var _r: *LoggingActivity = undefined;
         const _c = self.vtable.StartActivity(@ptrCast(self), startEventName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartActivityWithFields(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields) core.HResult!*LoggingActivity {
         var _r: *LoggingActivity = undefined;
         const _c = self.vtable.StartActivityWithFields(@ptrCast(self), startEventName, fields, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartActivityWithFieldsAndLevel(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
         var _r: *LoggingActivity = undefined;
         const _c = self.vtable.StartActivityWithFieldsAndLevel(@ptrCast(self), startEventName, fields, level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartActivityWithFieldsAndLevelAndOptions(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
         var _r: *LoggingActivity = undefined;
         const _c = self.vtable.StartActivityWithFieldsAndLevelAndOptions(@ptrCast(self), startEventName, fields, level, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ILoggingTarget";
@@ -1698,8 +1754,11 @@ pub const ILoggingTarget = extern struct {
 };
 pub const ITracingStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1707,13 +1766,13 @@ pub const ITracingStatusChangedEventArgs = extern struct {
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTraceLevel(self: *@This()) core.HResult!CausalityTraceLevel {
         var _r: CausalityTraceLevel = undefined;
         const _c = self.vtable.get_TraceLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ITracingStatusChangedEventArgs";
@@ -1734,14 +1793,11 @@ pub const ITracingStatusChangedEventArgs = extern struct {
 };
 pub const LogFileGeneratedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1758,14 +1814,11 @@ pub const LogFileGeneratedEventArgs = extern struct {
 };
 pub const LoggingActivity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1781,113 +1834,97 @@ pub const LoggingActivity = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getChannel(self: *@This()) core.HResult!*LoggingChannel {
         var this: ?*ILoggingActivity2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         return try this.?.getChannel();
     }
     pub fn StopActivity(self: *@This(), stopEventName: ?HSTRING) core.HResult!void {
         var this: ?*ILoggingActivity2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         return try this.?.StopActivity(stopEventName);
     }
     pub fn StopActivityWithFields(self: *@This(), stopEventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         var this: ?*ILoggingActivity2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         return try this.?.StopActivityWithFields(stopEventName, fields);
     }
     pub fn StopActivityWithFieldsAndOptions(self: *@This(), stopEventName: ?HSTRING, fields: *LoggingFields, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingActivity2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         return try this.?.StopActivityWithFieldsAndOptions(stopEventName, fields, options);
     }
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.IsEnabled();
     }
     pub fn IsEnabledWithLevel(self: *@This(), level: LoggingLevel) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.IsEnabledWithLevel(level);
     }
     pub fn IsEnabledWithLevelAndKeywords(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.IsEnabledWithLevelAndKeywords(level, keywords);
     }
     pub fn LogEvent(self: *@This(), eventName: ?HSTRING) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEvent(eventName);
     }
     pub fn LogEventWithFields(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEventWithFields(eventName, fields);
     }
     pub fn LogEventWithFieldsAndLevel(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEventWithFieldsAndLevel(eventName, fields, level);
     }
     pub fn LogEventWithFieldsAndLevelAndOptions(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEventWithFieldsAndLevelAndOptions(eventName, fields, level, options);
     }
     pub fn StartActivity(self: *@This(), startEventName: ?HSTRING) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivity(startEventName);
     }
     pub fn StartActivityWithFields(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivityWithFields(startEventName, fields);
     }
     pub fn StartActivityWithFieldsAndLevel(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivityWithFieldsAndLevel(startEventName, fields, level);
     }
     pub fn StartActivityWithFieldsAndLevelAndOptions(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivityWithFieldsAndLevelAndOptions(startEventName, fields, level, options);
     }
     pub fn CreateLoggingActivity(activityName: ?HSTRING, loggingChannel: *ILoggingChannel) core.HResult!*LoggingActivity {
@@ -1907,14 +1944,11 @@ pub const LoggingActivity = extern struct {
 };
 pub const LoggingChannel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1958,92 +1992,79 @@ pub const LoggingChannel = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var this: ?*ILoggingChannel2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingChannel2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingChannel2.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.IsEnabled();
     }
     pub fn IsEnabledWithLevel(self: *@This(), level: LoggingLevel) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.IsEnabledWithLevel(level);
     }
     pub fn IsEnabledWithLevelAndKeywords(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.IsEnabledWithLevelAndKeywords(level, keywords);
     }
     pub fn LogEvent(self: *@This(), eventName: ?HSTRING) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEvent(eventName);
     }
     pub fn LogEventWithFields(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEventWithFields(eventName, fields);
     }
     pub fn LogEventWithFieldsAndLevel(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEventWithFieldsAndLevel(eventName, fields, level);
     }
     pub fn LogEventWithFieldsAndLevelAndOptions(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.LogEventWithFieldsAndLevelAndOptions(eventName, fields, level, options);
     }
     pub fn StartActivity(self: *@This(), startEventName: ?HSTRING) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivity(startEventName);
     }
     pub fn StartActivityWithFields(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivityWithFields(startEventName, fields);
     }
     pub fn StartActivityWithFieldsAndLevel(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivityWithFieldsAndLevel(startEventName, fields, level);
     }
     pub fn StartActivityWithFieldsAndLevelAndOptions(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         return try this.?.StartActivityWithFieldsAndLevelAndOptions(startEventName, fields, level, options);
     }
     pub fn CreateWithOptions(name: ?HSTRING, options: *LoggingChannelOptions) core.HResult!*LoggingChannel {
@@ -2068,14 +2089,11 @@ pub const LoggingChannel = extern struct {
 };
 pub const LoggingChannelOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2127,14 +2145,11 @@ pub const LoggingFieldFormat = enum(i32) {
 };
 pub const LoggingFields = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2628,14 +2643,11 @@ pub const LoggingOpcode = enum(i32) {
 };
 pub const LoggingOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2706,14 +2718,11 @@ pub const LoggingOptions = extern struct {
 };
 pub const LoggingSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2741,8 +2750,7 @@ pub const LoggingSession = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create(name: ?HSTRING) core.HResult!*LoggingSession {
@@ -2758,14 +2766,11 @@ pub const LoggingSession = extern struct {
 };
 pub const RuntimeBrokerErrorSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2791,14 +2796,11 @@ pub const RuntimeBrokerErrorSettings = extern struct {
 };
 pub const TracingStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

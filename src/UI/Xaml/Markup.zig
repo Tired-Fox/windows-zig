@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ContentPropertyAttribute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -18,14 +15,11 @@ pub const ContentPropertyAttribute = extern struct {
 };
 pub const FullXamlMetadataProviderAttribute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -35,15 +29,18 @@ pub const FullXamlMetadataProviderAttribute = extern struct {
 };
 pub const IComponentConnector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Connect(self: *@This(), connectionId: i32, target: *IInspectable) core.HResult!void {
         const _c = self.vtable.Connect(@ptrCast(self), connectionId, target);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IComponentConnector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62,8 +59,11 @@ pub const IComponentConnector = extern struct {
 };
 pub const IComponentConnector2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -71,7 +71,7 @@ pub const IComponentConnector2 = extern struct {
     pub fn GetBindingConnector(self: *@This(), connectionId: i32, target: *IInspectable) core.HResult!*IComponentConnector {
         var _r: *IComponentConnector = undefined;
         const _c = self.vtable.GetBindingConnector(@ptrCast(self), connectionId, target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IComponentConnector2";
@@ -91,19 +91,22 @@ pub const IComponentConnector2 = extern struct {
 };
 pub const IDataTemplateComponent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Recycle(self: *@This()) core.HResult!void {
         const _c = self.vtable.Recycle(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ProcessBindings(self: *@This(), item: *IInspectable, itemIndex: i32, phase: i32, nextPhase: i32) core.HResult!void {
         const _c = self.vtable.ProcessBindings(@ptrCast(self), item, itemIndex, phase, nextPhase);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IDataTemplateComponent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -123,8 +126,11 @@ pub const IDataTemplateComponent = extern struct {
 };
 pub const IMarkupExtension = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -145,8 +151,11 @@ pub const IMarkupExtension = extern struct {
 };
 pub const IMarkupExtensionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -154,7 +163,7 @@ pub const IMarkupExtensionFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MarkupExtension {
         var _r: *MarkupExtension = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IMarkupExtensionFactory";
@@ -174,8 +183,11 @@ pub const IMarkupExtensionFactory = extern struct {
 };
 pub const IMarkupExtensionOverrides = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -183,7 +195,7 @@ pub const IMarkupExtensionOverrides = extern struct {
     pub fn ProvideValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.ProvideValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IMarkupExtensionOverrides";
@@ -203,8 +215,11 @@ pub const IMarkupExtensionOverrides = extern struct {
 };
 pub const IXamlBinaryWriter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -225,8 +240,11 @@ pub const IXamlBinaryWriter = extern struct {
 };
 pub const IXamlBinaryWriterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -234,7 +252,7 @@ pub const IXamlBinaryWriterStatics = extern struct {
     pub fn Write(self: *@This(), inputStreams: *IVector(IRandomAccessStream), outputStreams: *IVector(IRandomAccessStream), xamlMetadataProvider: *IXamlMetadataProvider) core.HResult!XamlBinaryWriterErrorInformation {
         var _r: XamlBinaryWriterErrorInformation = undefined;
         const _c = self.vtable.Write(@ptrCast(self), inputStreams, outputStreams, xamlMetadataProvider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlBinaryWriterStatics";
@@ -254,15 +272,18 @@ pub const IXamlBinaryWriterStatics = extern struct {
 };
 pub const IXamlBindScopeDiagnostics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Disable(self: *@This(), lineNumber: i32, columnNumber: i32) core.HResult!void {
         const _c = self.vtable.Disable(@ptrCast(self), lineNumber, columnNumber);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlBindScopeDiagnostics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -281,8 +302,11 @@ pub const IXamlBindScopeDiagnostics = extern struct {
 };
 pub const IXamlBindingHelper = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -303,8 +327,11 @@ pub const IXamlBindingHelper = extern struct {
 };
 pub const IXamlBindingHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -312,100 +339,100 @@ pub const IXamlBindingHelperStatics = extern struct {
     pub fn getDataTemplateComponentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DataTemplateComponentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDataTemplateComponent(self: *@This(), element: *DependencyObject) core.HResult!*IDataTemplateComponent {
         var _r: *IDataTemplateComponent = undefined;
         const _c = self.vtable.GetDataTemplateComponent(@ptrCast(self), element, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetDataTemplateComponent(self: *@This(), element: *DependencyObject, value: *IDataTemplateComponent) core.HResult!void {
         const _c = self.vtable.SetDataTemplateComponent(@ptrCast(self), element, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SuspendRendering(self: *@This(), target: *UIElement) core.HResult!void {
         const _c = self.vtable.SuspendRendering(@ptrCast(self), target);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ResumeRendering(self: *@This(), target: *UIElement) core.HResult!void {
         const _c = self.vtable.ResumeRendering(@ptrCast(self), target);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConvertValue(self: *@This(), ty: TypeName, value: *IInspectable) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.ConvertValue(@ptrCast(self), ty, value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPropertyFromString(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetPropertyFromString(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromBoolean(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: bool) core.HResult!void {
         const _c = self.vtable.SetPropertyFromBoolean(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromChar16(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u16) core.HResult!void {
         const _c = self.vtable.SetPropertyFromChar16(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromDateTime(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: DateTime) core.HResult!void {
         const _c = self.vtable.SetPropertyFromDateTime(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromDouble(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: f64) core.HResult!void {
         const _c = self.vtable.SetPropertyFromDouble(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromInt32(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: i32) core.HResult!void {
         const _c = self.vtable.SetPropertyFromInt32(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromUInt32(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u32) core.HResult!void {
         const _c = self.vtable.SetPropertyFromUInt32(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromInt64(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: i64) core.HResult!void {
         const _c = self.vtable.SetPropertyFromInt64(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromUInt64(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u64) core.HResult!void {
         const _c = self.vtable.SetPropertyFromUInt64(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromSingle(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: f32) core.HResult!void {
         const _c = self.vtable.SetPropertyFromSingle(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromPoint(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: Point) core.HResult!void {
         const _c = self.vtable.SetPropertyFromPoint(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromRect(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: Rect) core.HResult!void {
         const _c = self.vtable.SetPropertyFromRect(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromSize(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: Size) core.HResult!void {
         const _c = self.vtable.SetPropertyFromSize(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromTimeSpan(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: TimeSpan) core.HResult!void {
         const _c = self.vtable.SetPropertyFromTimeSpan(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromByte(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u8) core.HResult!void {
         const _c = self.vtable.SetPropertyFromByte(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromUri(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: *Uri) core.HResult!void {
         const _c = self.vtable.SetPropertyFromUri(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPropertyFromObject(self: *@This(), dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetPropertyFromObject(@ptrCast(self), dependencyObject, propertyToSet, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlBindingHelperStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -446,8 +473,11 @@ pub const IXamlBindingHelperStatics = extern struct {
 };
 pub const IXamlMarkupHelper = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -468,15 +498,18 @@ pub const IXamlMarkupHelper = extern struct {
 };
 pub const IXamlMarkupHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn UnloadObject(self: *@This(), element: *DependencyObject) core.HResult!void {
         const _c = self.vtable.UnloadObject(@ptrCast(self), element);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlMarkupHelperStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -495,8 +528,11 @@ pub const IXamlMarkupHelperStatics = extern struct {
 };
 pub const IXamlMember = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -504,48 +540,48 @@ pub const IXamlMember = extern struct {
     pub fn getIsAttachable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAttachable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDependencyProperty(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDependencyProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadOnly(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTargetType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_TargetType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetValue(self: *@This(), instance: *IInspectable) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetValue(@ptrCast(self), instance, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetValue(self: *@This(), instance: *IInspectable, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetValue(@ptrCast(self), instance, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlMember";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -571,8 +607,11 @@ pub const IXamlMember = extern struct {
 };
 pub const IXamlMetadataProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -580,19 +619,19 @@ pub const IXamlMetadataProvider = extern struct {
     pub fn GetXamlType(self: *@This(), ty: TypeName) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.GetXamlType(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetXamlTypeWithFullName(self: *@This(), fullName: ?HSTRING) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.GetXamlTypeWithFullName(@ptrCast(self), fullName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetXmlnsDefinitions(self: *@This()) core.HResult![*]XmlnsDefinition {
         var _r: [*]XmlnsDefinition = undefined;
         const _c = self.vtable.GetXmlnsDefinitions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlMetadataProvider";
@@ -614,8 +653,11 @@ pub const IXamlMetadataProvider = extern struct {
 };
 pub const IXamlReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -636,8 +678,11 @@ pub const IXamlReader = extern struct {
 };
 pub const IXamlReaderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -645,13 +690,13 @@ pub const IXamlReaderStatics = extern struct {
     pub fn Load(self: *@This(), xaml: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.Load(@ptrCast(self), xaml, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadWithInitialTemplateValidation(self: *@This(), xaml: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.LoadWithInitialTemplateValidation(@ptrCast(self), xaml, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlReaderStatics";
@@ -672,8 +717,11 @@ pub const IXamlReaderStatics = extern struct {
 };
 pub const IXamlType = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -681,104 +729,104 @@ pub const IXamlType = extern struct {
     pub fn getBaseType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_BaseType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentProperty(self: *@This()) core.HResult!*IXamlMember {
         var _r: *IXamlMember = undefined;
         const _c = self.vtable.get_ContentProperty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFullName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsArray(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsArray(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCollection(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCollection(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsConstructible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConstructible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDictionary(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDictionary(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsMarkupExtension(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMarkupExtension(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsBindable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBindable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_ItemType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_KeyType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUnderlyingType(self: *@This()) core.HResult!TypeName {
         var _r: TypeName = undefined;
         const _c = self.vtable.get_UnderlyingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ActivateInstance(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.ActivateInstance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromString(self: *@This(), value: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateFromString(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMember(self: *@This(), name: ?HSTRING) core.HResult!*IXamlMember {
         var _r: *IXamlMember = undefined;
         const _c = self.vtable.GetMember(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddToVector(self: *@This(), instance: *IInspectable, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.AddToVector(@ptrCast(self), instance, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddToMap(self: *@This(), instance: *IInspectable, key: *IInspectable, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.AddToMap(@ptrCast(self), instance, key, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RunInitializer(self: *@This()) core.HResult!void {
         const _c = self.vtable.RunInitializer(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlType";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -814,8 +862,11 @@ pub const IXamlType = extern struct {
 };
 pub const IXamlType2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -823,7 +874,7 @@ pub const IXamlType2 = extern struct {
     pub fn getBoxedType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_BoxedType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlType2";
@@ -843,14 +894,11 @@ pub const IXamlType2 = extern struct {
 };
 pub const MarkupExtension = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -858,8 +906,7 @@ pub const MarkupExtension = extern struct {
     pub fn ProvideValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IMarkupExtensionOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMarkupExtensionOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMarkupExtensionOverrides.IID, @ptrCast(&this));
         return try this.?.ProvideValue();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MarkupExtension {
@@ -875,14 +922,11 @@ pub const MarkupExtension = extern struct {
 };
 pub const MarkupExtensionReturnTypeAttribute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -892,14 +936,11 @@ pub const MarkupExtensionReturnTypeAttribute = extern struct {
 };
 pub const XamlBinaryWriter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -922,14 +963,11 @@ pub const XamlBinaryWriterErrorInformation = extern struct {
 };
 pub const XamlBindingHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1035,14 +1073,11 @@ pub const XamlBindingHelper = extern struct {
 };
 pub const XamlMarkupHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1060,14 +1095,11 @@ pub const XamlMarkupHelper = extern struct {
 };
 pub const XamlReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

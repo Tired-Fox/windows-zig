@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DisplayMonitor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -96,8 +93,7 @@ pub const DisplayMonitor = extern struct {
     pub fn getIsDolbyVisionSupportedInHdrMode(self: *@This()) core.HResult!bool {
         var this: ?*IDisplayMonitor2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayMonitor2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDisplayMonitor2.IID, @ptrCast(&this));
         return try this.?.getIsDolbyVisionSupportedInHdrMode();
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
@@ -146,8 +142,11 @@ pub const DisplayMonitorUsageKind = enum(i32) {
 };
 pub const IDisplayMonitor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -155,121 +154,121 @@ pub const IDisplayMonitor = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionKind(self: *@This()) core.HResult!DisplayMonitorConnectionKind {
         var _r: DisplayMonitorConnectionKind = undefined;
         const _c = self.vtable.get_ConnectionKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalConnector(self: *@This()) core.HResult!DisplayMonitorPhysicalConnectorKind {
         var _r: DisplayMonitorPhysicalConnectorKind = undefined;
         const _c = self.vtable.get_PhysicalConnector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayAdapterDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayAdapterDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         var _r: DisplayAdapterId = undefined;
         const _c = self.vtable.get_DisplayAdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayAdapterTargetId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DisplayAdapterTargetId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsageKind(self: *@This()) core.HResult!DisplayMonitorUsageKind {
         var _r: DisplayMonitorUsageKind = undefined;
         const _c = self.vtable.get_UsageKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNativeResolutionInRawPixels(self: *@This()) core.HResult!SizeInt32 {
         var _r: SizeInt32 = undefined;
         const _c = self.vtable.get_NativeResolutionInRawPixels(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalSizeInInches(self: *@This()) core.HResult!*IReference(Size) {
         var _r: *IReference(Size) = undefined;
         const _c = self.vtable.get_PhysicalSizeInInches(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRawDpiX(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_RawDpiX(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRawDpiY(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_RawDpiY(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRedPrimary(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_RedPrimary(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGreenPrimary(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_GreenPrimary(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBluePrimary(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_BluePrimary(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWhitePoint(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_WhitePoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxLuminanceInNits(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MaxLuminanceInNits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinLuminanceInNits(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MinLuminanceInNits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxAverageFullFrameLuminanceInNits(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MaxAverageFullFrameLuminanceInNits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDescriptor(self: *@This(), descriptorKind: DisplayMonitorDescriptorKind) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetDescriptor(@ptrCast(self), descriptorKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.IDisplayMonitor";
@@ -308,8 +307,11 @@ pub const IDisplayMonitor = extern struct {
 };
 pub const IDisplayMonitor2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -317,7 +319,7 @@ pub const IDisplayMonitor2 = extern struct {
     pub fn getIsDolbyVisionSupportedInHdrMode(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDolbyVisionSupportedInHdrMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.IDisplayMonitor2";
@@ -337,8 +339,11 @@ pub const IDisplayMonitor2 = extern struct {
 };
 pub const IDisplayMonitorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -346,19 +351,19 @@ pub const IDisplayMonitorStatics = extern struct {
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
         var _r: *IAsyncOperation(DisplayMonitor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromInterfaceIdAsync(self: *@This(), deviceInterfaceId: ?HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
         var _r: *IAsyncOperation(DisplayMonitor) = undefined;
         const _c = self.vtable.FromInterfaceIdAsync(@ptrCast(self), deviceInterfaceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.IDisplayMonitorStatics";

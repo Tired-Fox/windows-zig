@@ -13,14 +13,11 @@ pub const BasicGeoposition = extern struct {
 };
 pub const CivicAddress = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -53,14 +50,11 @@ pub const CivicAddress = extern struct {
 };
 pub const GeoboundingBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -88,22 +82,19 @@ pub const GeoboundingBox = extern struct {
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getAltitudeReferenceSystem();
     }
     pub fn Create(northwestCorner: BasicGeoposition, southeastCorner: BasicGeoposition) core.HResult!*GeoboundingBox {
@@ -140,14 +131,11 @@ pub const GeoboundingBox = extern struct {
 };
 pub const Geocircle = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -163,22 +151,19 @@ pub const Geocircle = extern struct {
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getAltitudeReferenceSystem();
     }
     pub fn Create(position: BasicGeoposition, radius: f64) core.HResult!*Geocircle {
@@ -202,14 +187,11 @@ pub const Geocircle = extern struct {
 };
 pub const Geocoordinate = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -249,36 +231,31 @@ pub const Geocoordinate = extern struct {
     pub fn getPositionSource(self: *@This()) core.HResult!PositionSource {
         var this: ?*IGeocoordinateWithPositionData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionData.IID, @ptrCast(&this));
         return try this.?.getPositionSource();
     }
     pub fn getSatelliteData(self: *@This()) core.HResult!*GeocoordinateSatelliteData {
         var this: ?*IGeocoordinateWithPositionData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionData.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionData.IID, @ptrCast(&this));
         return try this.?.getSatelliteData();
     }
     pub fn getPoint(self: *@This()) core.HResult!*Geopoint {
         var this: ?*IGeocoordinateWithPoint = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPoint.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPoint.IID, @ptrCast(&this));
         return try this.?.getPoint();
     }
     pub fn getPositionSourceTimestamp(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IGeocoordinateWithPositionSourceTimestamp = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionSourceTimestamp.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionSourceTimestamp.IID, @ptrCast(&this));
         return try this.?.getPositionSourceTimestamp();
     }
     pub fn getIsRemoteSource(self: *@This()) core.HResult!bool {
         var this: ?*IGeocoordinateWithRemoteSource = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithRemoteSource.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithRemoteSource.IID, @ptrCast(&this));
         return try this.?.getIsRemoteSource();
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geocoordinate";
@@ -289,14 +266,11 @@ pub const Geocoordinate = extern struct {
 };
 pub const GeocoordinateSatelliteData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -316,15 +290,13 @@ pub const GeocoordinateSatelliteData = extern struct {
     pub fn getGeometricDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IGeocoordinateSatelliteData2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateSatelliteData2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateSatelliteData2.IID, @ptrCast(&this));
         return try this.?.getGeometricDilutionOfPrecision();
     }
     pub fn getTimeDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IGeocoordinateSatelliteData2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateSatelliteData2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateSatelliteData2.IID, @ptrCast(&this));
         return try this.?.getTimeDilutionOfPrecision();
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.GeocoordinateSatelliteData";
@@ -340,14 +312,11 @@ pub const GeolocationAccessStatus = enum(i32) {
 };
 pub const Geolocator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -407,22 +376,19 @@ pub const Geolocator = extern struct {
     pub fn getDesiredAccuracyInMeters(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*IGeolocatorWithScalarAccuracy = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeolocatorWithScalarAccuracy.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeolocatorWithScalarAccuracy.IID, @ptrCast(&this));
         return try this.?.getDesiredAccuracyInMeters();
     }
     pub fn putDesiredAccuracyInMeters(self: *@This(), value: *IReference(u32)) core.HResult!void {
         var this: ?*IGeolocatorWithScalarAccuracy = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeolocatorWithScalarAccuracy.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeolocatorWithScalarAccuracy.IID, @ptrCast(&this));
         return try this.?.putDesiredAccuracyInMeters(value);
     }
     pub fn AllowFallbackToConsentlessPositions(self: *@This()) core.HResult!void {
         var this: ?*IGeolocator2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeolocator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeolocator2.IID, @ptrCast(&this));
         return try this.?.AllowFallbackToConsentlessPositions();
     }
     pub fn init() core.HResult!*@This() {
@@ -464,14 +430,11 @@ pub const Geolocator = extern struct {
 };
 pub const Geopath = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -483,22 +446,19 @@ pub const Geopath = extern struct {
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getAltitudeReferenceSystem();
     }
     pub fn Create(positions: *IIterable(BasicGeoposition)) core.HResult!*Geopath {
@@ -522,14 +482,11 @@ pub const Geopath = extern struct {
 };
 pub const Geopoint = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -541,22 +498,19 @@ pub const Geopoint = extern struct {
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         return try this.?.getAltitudeReferenceSystem();
     }
     pub fn Create(position: BasicGeoposition) core.HResult!*Geopoint {
@@ -580,14 +534,11 @@ pub const Geopoint = extern struct {
 };
 pub const Geoposition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -603,8 +554,7 @@ pub const Geoposition = extern struct {
     pub fn getVenueData(self: *@This()) core.HResult!*VenueData {
         var this: ?*IGeoposition2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoposition2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGeoposition2.IID, @ptrCast(&this));
         return try this.?.getVenueData();
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geoposition";
@@ -621,14 +571,11 @@ pub const GeoshapeType = enum(i32) {
 };
 pub const Geovisit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -653,14 +600,11 @@ pub const Geovisit = extern struct {
 };
 pub const GeovisitMonitor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -703,14 +647,11 @@ pub const GeovisitMonitor = extern struct {
 };
 pub const GeovisitStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -727,14 +668,11 @@ pub const GeovisitStateChangedEventArgs = extern struct {
 };
 pub const GeovisitTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -751,8 +689,11 @@ pub const GeovisitTriggerDetails = extern struct {
 };
 pub const ICivicAddress = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -760,31 +701,31 @@ pub const ICivicAddress = extern struct {
     pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Country(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCity(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_City(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PostalCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.ICivicAddress";
@@ -808,8 +749,11 @@ pub const ICivicAddress = extern struct {
 };
 pub const IGeoboundingBox = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -817,31 +761,31 @@ pub const IGeoboundingBox = extern struct {
     pub fn getNorthwestCorner(self: *@This()) core.HResult!BasicGeoposition {
         var _r: BasicGeoposition = undefined;
         const _c = self.vtable.get_NorthwestCorner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSoutheastCorner(self: *@This()) core.HResult!BasicGeoposition {
         var _r: BasicGeoposition = undefined;
         const _c = self.vtable.get_SoutheastCorner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCenter(self: *@This()) core.HResult!BasicGeoposition {
         var _r: BasicGeoposition = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMinAltitude(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MinAltitude(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxAltitude(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxAltitude(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeoboundingBox";
@@ -865,8 +809,11 @@ pub const IGeoboundingBox = extern struct {
 };
 pub const IGeoboundingBoxFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -874,19 +821,19 @@ pub const IGeoboundingBoxFactory = extern struct {
     pub fn Create(self: *@This(), northwestCorner: BasicGeoposition, southeastCorner: BasicGeoposition) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.Create(@ptrCast(self), northwestCorner, southeastCorner, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReference(self: *@This(), northwestCorner: BasicGeoposition, southeastCorner: BasicGeoposition, altitudeReferenceSystem: AltitudeReferenceSystem) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.CreateWithAltitudeReference(@ptrCast(self), northwestCorner, southeastCorner, altitudeReferenceSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReferenceAndSpatialReference(self: *@This(), northwestCorner: BasicGeoposition, southeastCorner: BasicGeoposition, altitudeReferenceSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.CreateWithAltitudeReferenceAndSpatialReference(@ptrCast(self), northwestCorner, southeastCorner, altitudeReferenceSystem, spatialReferenceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeoboundingBoxFactory";
@@ -908,8 +855,11 @@ pub const IGeoboundingBoxFactory = extern struct {
 };
 pub const IGeoboundingBoxStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -917,19 +867,19 @@ pub const IGeoboundingBoxStatics = extern struct {
     pub fn TryCompute(self: *@This(), positions: *IIterable(BasicGeoposition)) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.TryCompute(@ptrCast(self), positions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryComputeWithAltitudeRefSystem(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.TryComputeWithAltitudeRefSystem(@ptrCast(self), positions, altitudeRefSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryComputeWithAltitudeRefSystemAndSpatialReferenceId(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.TryComputeWithAltitudeRefSystemAndSpatialReferenceId(@ptrCast(self), positions, altitudeRefSystem, spatialReferenceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeoboundingBoxStatics";
@@ -951,8 +901,11 @@ pub const IGeoboundingBoxStatics = extern struct {
 };
 pub const IGeocircle = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -960,13 +913,13 @@ pub const IGeocircle = extern struct {
     pub fn getCenter(self: *@This()) core.HResult!BasicGeoposition {
         var _r: BasicGeoposition = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRadius(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Radius(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocircle";
@@ -987,8 +940,11 @@ pub const IGeocircle = extern struct {
 };
 pub const IGeocircleFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -996,19 +952,19 @@ pub const IGeocircleFactory = extern struct {
     pub fn Create(self: *@This(), position: BasicGeoposition, radius: f64) core.HResult!*Geocircle {
         var _r: *Geocircle = undefined;
         const _c = self.vtable.Create(@ptrCast(self), position, radius, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReferenceSystem(self: *@This(), position: BasicGeoposition, radius: f64, altitudeReferenceSystem: AltitudeReferenceSystem) core.HResult!*Geocircle {
         var _r: *Geocircle = undefined;
         const _c = self.vtable.CreateWithAltitudeReferenceSystem(@ptrCast(self), position, radius, altitudeReferenceSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReferenceSystemAndSpatialReferenceId(self: *@This(), position: BasicGeoposition, radius: f64, altitudeReferenceSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*Geocircle {
         var _r: *Geocircle = undefined;
         const _c = self.vtable.CreateWithAltitudeReferenceSystemAndSpatialReferenceId(@ptrCast(self), position, radius, altitudeReferenceSystem, spatialReferenceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocircleFactory";
@@ -1030,8 +986,11 @@ pub const IGeocircleFactory = extern struct {
 };
 pub const IGeocoordinate = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1039,49 +998,49 @@ pub const IGeocoordinate = extern struct {
     pub fn getLatitude(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Latitude(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLongitude(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Longitude(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAltitude(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_Altitude(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccuracy(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Accuracy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAltitudeAccuracy(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_AltitudeAccuracy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeading(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_Heading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSpeed(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_Speed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocoordinate";
@@ -1108,8 +1067,11 @@ pub const IGeocoordinate = extern struct {
 };
 pub const IGeocoordinateSatelliteData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1117,19 +1079,19 @@ pub const IGeocoordinateSatelliteData = extern struct {
     pub fn getPositionDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_PositionDilutionOfPrecision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHorizontalDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_HorizontalDilutionOfPrecision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVerticalDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_VerticalDilutionOfPrecision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocoordinateSatelliteData";
@@ -1151,8 +1113,11 @@ pub const IGeocoordinateSatelliteData = extern struct {
 };
 pub const IGeocoordinateSatelliteData2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1160,13 +1125,13 @@ pub const IGeocoordinateSatelliteData2 = extern struct {
     pub fn getGeometricDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_GeometricDilutionOfPrecision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimeDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_TimeDilutionOfPrecision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocoordinateSatelliteData2";
@@ -1187,8 +1152,11 @@ pub const IGeocoordinateSatelliteData2 = extern struct {
 };
 pub const IGeocoordinateWithPoint = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1196,7 +1164,7 @@ pub const IGeocoordinateWithPoint = extern struct {
     pub fn getPoint(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Point(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocoordinateWithPoint";
@@ -1216,8 +1184,11 @@ pub const IGeocoordinateWithPoint = extern struct {
 };
 pub const IGeocoordinateWithPositionData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1225,13 +1196,13 @@ pub const IGeocoordinateWithPositionData = extern struct {
     pub fn getPositionSource(self: *@This()) core.HResult!PositionSource {
         var _r: PositionSource = undefined;
         const _c = self.vtable.get_PositionSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSatelliteData(self: *@This()) core.HResult!*GeocoordinateSatelliteData {
         var _r: *GeocoordinateSatelliteData = undefined;
         const _c = self.vtable.get_SatelliteData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocoordinateWithPositionData";
@@ -1252,8 +1223,11 @@ pub const IGeocoordinateWithPositionData = extern struct {
 };
 pub const IGeocoordinateWithPositionSourceTimestamp = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1261,7 +1235,7 @@ pub const IGeocoordinateWithPositionSourceTimestamp = extern struct {
     pub fn getPositionSourceTimestamp(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_PositionSourceTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocoordinateWithPositionSourceTimestamp";
@@ -1281,8 +1255,11 @@ pub const IGeocoordinateWithPositionSourceTimestamp = extern struct {
 };
 pub const IGeocoordinateWithRemoteSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1290,7 +1267,7 @@ pub const IGeocoordinateWithRemoteSource = extern struct {
     pub fn getIsRemoteSource(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRemoteSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeocoordinateWithRemoteSource";
@@ -1310,8 +1287,11 @@ pub const IGeocoordinateWithRemoteSource = extern struct {
 };
 pub const IGeolocator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1319,70 +1299,70 @@ pub const IGeolocator = extern struct {
     pub fn getDesiredAccuracy(self: *@This()) core.HResult!PositionAccuracy {
         var _r: PositionAccuracy = undefined;
         const _c = self.vtable.get_DesiredAccuracy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredAccuracy(self: *@This(), value: PositionAccuracy) core.HResult!void {
         const _c = self.vtable.put_DesiredAccuracy(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMovementThreshold(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MovementThreshold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMovementThreshold(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_MovementThreshold(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReportInterval(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ReportInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReportInterval(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportInterval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLocationStatus(self: *@This()) core.HResult!PositionStatus {
         var _r: PositionStatus = undefined;
         const _c = self.vtable.get_LocationStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGeopositionAsync(self: *@This()) core.HResult!*IAsyncOperation(Geoposition) {
         var _r: *IAsyncOperation(Geoposition) = undefined;
         const _c = self.vtable.GetGeopositionAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGeopositionAsyncWithMaximumAgeAndTimeout(self: *@This(), maximumAge: TimeSpan, timeout: TimeSpan) core.HResult!*IAsyncOperation(Geoposition) {
         var _r: *IAsyncOperation(Geoposition) = undefined;
         const _c = self.vtable.GetGeopositionAsyncWithMaximumAgeAndTimeout(@ptrCast(self), maximumAge, timeout, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addPositionChanged(self: *@This(), handler: *TypedEventHandler(Geolocator,PositionChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PositionChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePositionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PositionChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStatusChanged(self: *@This(), handler: *TypedEventHandler(Geolocator,StatusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeolocator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1413,15 +1393,18 @@ pub const IGeolocator = extern struct {
 };
 pub const IGeolocator2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AllowFallbackToConsentlessPositions(self: *@This()) core.HResult!void {
         const _c = self.vtable.AllowFallbackToConsentlessPositions(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeolocator2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1440,8 +1423,11 @@ pub const IGeolocator2 = extern struct {
 };
 pub const IGeolocatorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1449,19 +1435,19 @@ pub const IGeolocatorStatics = extern struct {
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(GeolocationAccessStatus) {
         var _r: *IAsyncOperation(GeolocationAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGeopositionHistoryAsync(self: *@This(), startTime: DateTime) core.HResult!*IAsyncOperation(IVectorView(Geoposition)) {
         var _r: *IAsyncOperation(IVectorView(Geoposition)) = undefined;
         const _c = self.vtable.GetGeopositionHistoryAsync(@ptrCast(self), startTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGeopositionHistoryAsyncWithDuration(self: *@This(), startTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Geoposition)) {
         var _r: *IAsyncOperation(IVectorView(Geoposition)) = undefined;
         const _c = self.vtable.GetGeopositionHistoryAsyncWithDuration(@ptrCast(self), startTime, duration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeolocatorStatics";
@@ -1483,8 +1469,11 @@ pub const IGeolocatorStatics = extern struct {
 };
 pub const IGeolocatorStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1492,17 +1481,17 @@ pub const IGeolocatorStatics2 = extern struct {
     pub fn getIsDefaultGeopositionRecommended(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDefaultGeopositionRecommended(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDefaultGeoposition(self: *@This(), value: *IReference(BasicGeoposition)) core.HResult!void {
         const _c = self.vtable.put_DefaultGeoposition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDefaultGeoposition(self: *@This()) core.HResult!*IReference(BasicGeoposition) {
         var _r: *IReference(BasicGeoposition) = undefined;
         const _c = self.vtable.get_DefaultGeoposition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeolocatorStatics2";
@@ -1524,8 +1513,11 @@ pub const IGeolocatorStatics2 = extern struct {
 };
 pub const IGeolocatorWithScalarAccuracy = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1533,12 +1525,12 @@ pub const IGeolocatorWithScalarAccuracy = extern struct {
     pub fn getDesiredAccuracyInMeters(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_DesiredAccuracyInMeters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredAccuracyInMeters(self: *@This(), value: *IReference(u32)) core.HResult!void {
         const _c = self.vtable.put_DesiredAccuracyInMeters(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeolocatorWithScalarAccuracy";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1558,8 +1550,11 @@ pub const IGeolocatorWithScalarAccuracy = extern struct {
 };
 pub const IGeopath = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1567,7 +1562,7 @@ pub const IGeopath = extern struct {
     pub fn getPositions(self: *@This()) core.HResult!*IVectorView(BasicGeoposition) {
         var _r: *IVectorView(BasicGeoposition) = undefined;
         const _c = self.vtable.get_Positions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeopath";
@@ -1587,8 +1582,11 @@ pub const IGeopath = extern struct {
 };
 pub const IGeopathFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1596,19 +1594,19 @@ pub const IGeopathFactory = extern struct {
     pub fn Create(self: *@This(), positions: *IIterable(BasicGeoposition)) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.Create(@ptrCast(self), positions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReference(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeReferenceSystem: AltitudeReferenceSystem) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.CreateWithAltitudeReference(@ptrCast(self), positions, altitudeReferenceSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReferenceAndSpatialReference(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeReferenceSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.CreateWithAltitudeReferenceAndSpatialReference(@ptrCast(self), positions, altitudeReferenceSystem, spatialReferenceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeopathFactory";
@@ -1630,8 +1628,11 @@ pub const IGeopathFactory = extern struct {
 };
 pub const IGeopoint = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1639,7 +1640,7 @@ pub const IGeopoint = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!BasicGeoposition {
         var _r: BasicGeoposition = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeopoint";
@@ -1659,8 +1660,11 @@ pub const IGeopoint = extern struct {
 };
 pub const IGeopointFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1668,19 +1672,19 @@ pub const IGeopointFactory = extern struct {
     pub fn Create(self: *@This(), position: BasicGeoposition) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.Create(@ptrCast(self), position, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReferenceSystem(self: *@This(), position: BasicGeoposition, altitudeReferenceSystem: AltitudeReferenceSystem) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.CreateWithAltitudeReferenceSystem(@ptrCast(self), position, altitudeReferenceSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithAltitudeReferenceSystemAndSpatialReferenceId(self: *@This(), position: BasicGeoposition, altitudeReferenceSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.CreateWithAltitudeReferenceSystemAndSpatialReferenceId(@ptrCast(self), position, altitudeReferenceSystem, spatialReferenceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeopointFactory";
@@ -1702,8 +1706,11 @@ pub const IGeopointFactory = extern struct {
 };
 pub const IGeoposition = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1711,13 +1718,13 @@ pub const IGeoposition = extern struct {
     pub fn getCoordinate(self: *@This()) core.HResult!*Geocoordinate {
         var _r: *Geocoordinate = undefined;
         const _c = self.vtable.get_Coordinate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCivicAddress(self: *@This()) core.HResult!*CivicAddress {
         var _r: *CivicAddress = undefined;
         const _c = self.vtable.get_CivicAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeoposition";
@@ -1738,8 +1745,11 @@ pub const IGeoposition = extern struct {
 };
 pub const IGeoposition2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1747,7 +1757,7 @@ pub const IGeoposition2 = extern struct {
     pub fn getVenueData(self: *@This()) core.HResult!*VenueData {
         var _r: *VenueData = undefined;
         const _c = self.vtable.get_VenueData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeoposition2";
@@ -1767,8 +1777,11 @@ pub const IGeoposition2 = extern struct {
 };
 pub const IGeoshape = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1776,19 +1789,19 @@ pub const IGeoshape = extern struct {
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var _r: GeoshapeType = undefined;
         const _c = self.vtable.get_GeoshapeType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SpatialReferenceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var _r: AltitudeReferenceSystem = undefined;
         const _c = self.vtable.get_AltitudeReferenceSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeoshape";
@@ -1810,8 +1823,11 @@ pub const IGeoshape = extern struct {
 };
 pub const IGeovisit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1819,19 +1835,19 @@ pub const IGeovisit = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!*Geoposition {
         var _r: *Geoposition = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStateChange(self: *@This()) core.HResult!VisitStateChange {
         var _r: VisitStateChange = undefined;
         const _c = self.vtable.get_StateChange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeovisit";
@@ -1853,8 +1869,11 @@ pub const IGeovisit = extern struct {
 };
 pub const IGeovisitMonitor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1862,26 +1881,26 @@ pub const IGeovisitMonitor = extern struct {
     pub fn getMonitoringScope(self: *@This()) core.HResult!VisitMonitoringScope {
         var _r: VisitMonitoringScope = undefined;
         const _c = self.vtable.get_MonitoringScope(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This(), value: VisitMonitoringScope) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVisitStateChanged(self: *@This(), handler: *TypedEventHandler(GeovisitMonitor,GeovisitStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VisitStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVisitStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VisitStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeovisitMonitor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1904,8 +1923,11 @@ pub const IGeovisitMonitor = extern struct {
 };
 pub const IGeovisitMonitorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1913,7 +1935,7 @@ pub const IGeovisitMonitorStatics = extern struct {
     pub fn GetLastReportAsync(self: *@This()) core.HResult!*IAsyncOperation(Geovisit) {
         var _r: *IAsyncOperation(Geovisit) = undefined;
         const _c = self.vtable.GetLastReportAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeovisitMonitorStatics";
@@ -1933,8 +1955,11 @@ pub const IGeovisitMonitorStatics = extern struct {
 };
 pub const IGeovisitStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1942,7 +1967,7 @@ pub const IGeovisitStateChangedEventArgs = extern struct {
     pub fn getVisit(self: *@This()) core.HResult!*Geovisit {
         var _r: *Geovisit = undefined;
         const _c = self.vtable.get_Visit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeovisitStateChangedEventArgs";
@@ -1962,8 +1987,11 @@ pub const IGeovisitStateChangedEventArgs = extern struct {
 };
 pub const IGeovisitTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1971,7 +1999,7 @@ pub const IGeovisitTriggerDetails = extern struct {
     pub fn ReadReports(self: *@This()) core.HResult!*IVectorView(Geovisit) {
         var _r: *IVectorView(Geovisit) = undefined;
         const _c = self.vtable.ReadReports(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IGeovisitTriggerDetails";
@@ -1991,8 +2019,11 @@ pub const IGeovisitTriggerDetails = extern struct {
 };
 pub const IPositionChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2000,7 +2031,7 @@ pub const IPositionChangedEventArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!*Geoposition {
         var _r: *Geoposition = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IPositionChangedEventArgs";
@@ -2020,8 +2051,11 @@ pub const IPositionChangedEventArgs = extern struct {
 };
 pub const IStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2029,7 +2063,7 @@ pub const IStatusChangedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!PositionStatus {
         var _r: PositionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IStatusChangedEventArgs";
@@ -2049,8 +2083,11 @@ pub const IStatusChangedEventArgs = extern struct {
 };
 pub const IVenueData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2058,13 +2095,13 @@ pub const IVenueData = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLevel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Level(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.IVenueData";
@@ -2089,14 +2126,11 @@ pub const PositionAccuracy = enum(i32) {
 };
 pub const PositionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2130,14 +2164,11 @@ pub const PositionStatus = enum(i32) {
 };
 pub const StatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2154,14 +2185,11 @@ pub const StatusChangedEventArgs = extern struct {
 };
 pub const VenueData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

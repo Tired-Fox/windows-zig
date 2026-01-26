@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPrintSupportCommunicationErrorDetectedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,25 +13,25 @@ pub const IPrintSupportCommunicationErrorDetectedEventArgs = extern struct {
     pub fn getErrorKind(self: *@This()) core.HResult!IppCommunicationErrorKind {
         var _r: IppCommunicationErrorKind = undefined;
         const _c = self.vtable.get_ErrorKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCommunicationConfiguration(self: *@This()) core.HResult!*PrintSupportIppCommunicationConfiguration {
         var _r: *PrintSupportIppCommunicationConfiguration = undefined;
         const _c = self.vtable.get_CommunicationConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportCommunicationErrorDetectedEventArgs";
@@ -51,8 +54,11 @@ pub const IPrintSupportCommunicationErrorDetectedEventArgs = extern struct {
 };
 pub const IPrintSupportEnterpriseManagementUIEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -60,7 +66,7 @@ pub const IPrintSupportEnterpriseManagementUIEventArgs = extern struct {
     pub fn getPrinter(self: *@This()) core.HResult!*IppPrintDevice {
         var _r: *IppPrintDevice = undefined;
         const _c = self.vtable.get_Printer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs";
@@ -80,8 +86,11 @@ pub const IPrintSupportEnterpriseManagementUIEventArgs = extern struct {
 };
 pub const IPrintSupportExtensionSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -89,32 +98,32 @@ pub const IPrintSupportExtensionSession = extern struct {
     pub fn getPrinter(self: *@This()) core.HResult!*IppPrintDevice {
         var _r: *IppPrintDevice = undefined;
         const _c = self.vtable.get_Printer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addPrintTicketValidationRequested(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportPrintTicketValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrintTicketValidationRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePrintTicketValidationRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PrintTicketValidationRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPrintDeviceCapabilitiesChanged(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportPrintDeviceCapabilitiesChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrintDeviceCapabilitiesChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePrintDeviceCapabilitiesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PrintDeviceCapabilitiesChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportExtensionSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -138,8 +147,11 @@ pub const IPrintSupportExtensionSession = extern struct {
 };
 pub const IPrintSupportExtensionSession2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -147,12 +159,12 @@ pub const IPrintSupportExtensionSession2 = extern struct {
     pub fn addPrinterSelected(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportPrinterSelectedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrinterSelected(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePrinterSelected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PrinterSelected(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportExtensionSession2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -172,8 +184,11 @@ pub const IPrintSupportExtensionSession2 = extern struct {
 };
 pub const IPrintSupportExtensionSession3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -181,12 +196,12 @@ pub const IPrintSupportExtensionSession3 = extern struct {
     pub fn addCommunicationErrorDetected(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportCommunicationErrorDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CommunicationErrorDetected(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCommunicationErrorDetected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CommunicationErrorDetected(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportExtensionSession3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -206,8 +221,11 @@ pub const IPrintSupportExtensionSession3 = extern struct {
 };
 pub const IPrintSupportExtensionTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -215,7 +233,7 @@ pub const IPrintSupportExtensionTriggerDetails = extern struct {
     pub fn getSession(self: *@This()) core.HResult!*PrintSupportExtensionSession {
         var _r: *PrintSupportExtensionSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportExtensionTriggerDetails";
@@ -235,8 +253,11 @@ pub const IPrintSupportExtensionTriggerDetails = extern struct {
 };
 pub const IPrintSupportIppCommunicationConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -244,25 +265,25 @@ pub const IPrintSupportIppCommunicationConfiguration = extern struct {
     pub fn getCommunicationKind(self: *@This()) core.HResult!IppPrinterCommunicationKind {
         var _r: IppPrinterCommunicationKind = undefined;
         const _c = self.vtable.get_CommunicationKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanModifyTimeouts(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanModifyTimeouts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIppAttributeTimeouts(self: *@This()) core.HResult!*PrintSupportIppCommunicationTimeouts {
         var _r: *PrintSupportIppCommunicationTimeouts = undefined;
         const _c = self.vtable.get_IppAttributeTimeouts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIppJobTimeouts(self: *@This()) core.HResult!*PrintSupportIppCommunicationTimeouts {
         var _r: *PrintSupportIppCommunicationTimeouts = undefined;
         const _c = self.vtable.get_IppJobTimeouts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportIppCommunicationConfiguration";
@@ -285,8 +306,11 @@ pub const IPrintSupportIppCommunicationConfiguration = extern struct {
 };
 pub const IPrintSupportIppCommunicationTimeouts = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -294,32 +318,32 @@ pub const IPrintSupportIppCommunicationTimeouts = extern struct {
     pub fn getConnectTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_ConnectTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putConnectTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_ConnectTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSendTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SendTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSendTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_SendTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReceiveTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_ReceiveTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReceiveTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_ReceiveTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportIppCommunicationTimeouts";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -343,8 +367,11 @@ pub const IPrintSupportIppCommunicationTimeouts = extern struct {
 };
 pub const IPrintSupportMxdcImageQualityConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -352,72 +379,72 @@ pub const IPrintSupportMxdcImageQualityConfiguration = extern struct {
     pub fn getNormalOutputQuality(self: *@This()) core.HResult!XpsImageQuality {
         var _r: XpsImageQuality = undefined;
         const _c = self.vtable.get_NormalOutputQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNormalOutputQuality(self: *@This(), value: XpsImageQuality) core.HResult!void {
         const _c = self.vtable.put_NormalOutputQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDraftOutputQuality(self: *@This()) core.HResult!XpsImageQuality {
         var _r: XpsImageQuality = undefined;
         const _c = self.vtable.get_DraftOutputQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDraftOutputQuality(self: *@This(), value: XpsImageQuality) core.HResult!void {
         const _c = self.vtable.put_DraftOutputQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHighOutputQuality(self: *@This()) core.HResult!XpsImageQuality {
         var _r: XpsImageQuality = undefined;
         const _c = self.vtable.get_HighOutputQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHighOutputQuality(self: *@This(), value: XpsImageQuality) core.HResult!void {
         const _c = self.vtable.put_HighOutputQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPhotographicOutputQuality(self: *@This()) core.HResult!XpsImageQuality {
         var _r: XpsImageQuality = undefined;
         const _c = self.vtable.get_PhotographicOutputQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPhotographicOutputQuality(self: *@This(), value: XpsImageQuality) core.HResult!void {
         const _c = self.vtable.put_PhotographicOutputQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTextOutputQuality(self: *@This()) core.HResult!XpsImageQuality {
         var _r: XpsImageQuality = undefined;
         const _c = self.vtable.get_TextOutputQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTextOutputQuality(self: *@This(), value: XpsImageQuality) core.HResult!void {
         const _c = self.vtable.put_TextOutputQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAutomaticOutputQuality(self: *@This()) core.HResult!XpsImageQuality {
         var _r: XpsImageQuality = undefined;
         const _c = self.vtable.get_AutomaticOutputQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutomaticOutputQuality(self: *@This(), value: XpsImageQuality) core.HResult!void {
         const _c = self.vtable.put_AutomaticOutputQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFaxOutputQuality(self: *@This()) core.HResult!XpsImageQuality {
         var _r: XpsImageQuality = undefined;
         const _c = self.vtable.get_FaxOutputQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFaxOutputQuality(self: *@This(), value: XpsImageQuality) core.HResult!void {
         const _c = self.vtable.put_FaxOutputQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportMxdcImageQualityConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -449,8 +476,11 @@ pub const IPrintSupportMxdcImageQualityConfiguration = extern struct {
 };
 pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -458,17 +488,17 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
     pub fn GetCurrentPrintDeviceCapabilities(self: *@This()) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.GetCurrentPrintDeviceCapabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdatePrintDeviceCapabilities(self: *@This(), updatedPdc: *XmlDocument) core.HResult!void {
         const _c = self.vtable.UpdatePrintDeviceCapabilities(@ptrCast(self), updatedPdc);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs";
@@ -490,35 +520,38 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
 };
 pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetSupportedPdlPassthroughContentTypes(self: *@This(), supportedPdlContentTypes: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.SetSupportedPdlPassthroughContentTypes(@ptrCast(self), supportedPdlContentTypes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentPrintDeviceResources(self: *@This()) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.GetCurrentPrintDeviceResources(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdatePrintDeviceResources(self: *@This(), updatedPdr: *XmlDocument) core.HResult!void {
         const _c = self.vtable.UpdatePrintDeviceResources(@ptrCast(self), updatedPdr);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPrintDeviceCapabilitiesUpdatePolicy(self: *@This(), updatePolicy: *PrintSupportPrintDeviceCapabilitiesUpdatePolicy) core.HResult!void {
         const _c = self.vtable.SetPrintDeviceCapabilitiesUpdatePolicy(@ptrCast(self), updatePolicy);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -541,8 +574,11 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = extern struct 
 };
 pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -550,7 +586,7 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3 = extern struct 
     pub fn getCommunicationConfiguration(self: *@This()) core.HResult!*PrintSupportIppCommunicationConfiguration {
         var _r: *PrintSupportIppCommunicationConfiguration = undefined;
         const _c = self.vtable.get_CommunicationConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3";
@@ -570,8 +606,11 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3 = extern struct 
 };
 pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -579,7 +618,7 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4 = extern struct 
     pub fn getMxdcImageQualityConfiguration(self: *@This()) core.HResult!*PrintSupportMxdcImageQualityConfiguration {
         var _r: *PrintSupportMxdcImageQualityConfiguration = undefined;
         const _c = self.vtable.get_MxdcImageQualityConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4";
@@ -599,8 +638,11 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4 = extern struct 
 };
 pub const IPrintSupportPrintDeviceCapabilitiesUpdatePolicy = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -621,8 +663,11 @@ pub const IPrintSupportPrintDeviceCapabilitiesUpdatePolicy = extern struct {
 };
 pub const IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -630,13 +675,13 @@ pub const IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics = extern struc
     pub fn CreatePeriodicRefresh(self: *@This(), updatePeriod: TimeSpan) core.HResult!*PrintSupportPrintDeviceCapabilitiesUpdatePolicy {
         var _r: *PrintSupportPrintDeviceCapabilitiesUpdatePolicy = undefined;
         const _c = self.vtable.CreatePeriodicRefresh(@ptrCast(self), updatePeriod, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreatePrintJobRefresh(self: *@This(), numberOfJobs: u32) core.HResult!*PrintSupportPrintDeviceCapabilitiesUpdatePolicy {
         var _r: *PrintSupportPrintDeviceCapabilitiesUpdatePolicy = undefined;
         const _c = self.vtable.CreatePrintJobRefresh(@ptrCast(self), numberOfJobs, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics";
@@ -657,8 +702,11 @@ pub const IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics = extern struc
 };
 pub const IPrintSupportPrintTicketElement = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -666,22 +714,22 @@ pub const IPrintSupportPrintTicketElement = extern struct {
     pub fn getLocalName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLocalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LocalName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNamespaceUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NamespaceUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNamespaceUri(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NamespaceUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintTicketElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -703,8 +751,11 @@ pub const IPrintSupportPrintTicketElement = extern struct {
 };
 pub const IPrintSupportPrintTicketValidationRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -712,17 +763,17 @@ pub const IPrintSupportPrintTicketValidationRequestedEventArgs = extern struct {
     pub fn getPrintTicket(self: *@This()) core.HResult!*WorkflowPrintTicket {
         var _r: *WorkflowPrintTicket = undefined;
         const _c = self.vtable.get_PrintTicket(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPrintTicketValidationStatus(self: *@This(), status: WorkflowPrintTicketValidationStatus) core.HResult!void {
         const _c = self.vtable.SetPrintTicketValidationStatus(@ptrCast(self), status);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintTicketValidationRequestedEventArgs";
@@ -744,8 +795,11 @@ pub const IPrintSupportPrintTicketValidationRequestedEventArgs = extern struct {
 };
 pub const IPrintSupportPrinterSelectedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -753,41 +807,41 @@ pub const IPrintSupportPrinterSelectedEventArgs = extern struct {
     pub fn getSourceAppInfo(self: *@This()) core.HResult!*AppInfo {
         var _r: *AppInfo = undefined;
         const _c = self.vtable.get_SourceAppInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrintTicket(self: *@This()) core.HResult!*WorkflowPrintTicket {
         var _r: *WorkflowPrintTicket = undefined;
         const _c = self.vtable.get_PrintTicket(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPrintTicket(self: *@This(), value: *WorkflowPrintTicket) core.HResult!void {
         const _c = self.vtable.put_PrintTicket(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetAdditionalFeatures(self: *@This(), features: *IIterable(PrintSupportPrintTicketElement)) core.HResult!void {
         const _c = self.vtable.SetAdditionalFeatures(@ptrCast(self), features);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetAdditionalParameters(self: *@This(), parameters: *IIterable(PrintSupportPrintTicketElement)) core.HResult!void {
         const _c = self.vtable.SetAdditionalParameters(@ptrCast(self), parameters);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowedAdditionalFeaturesAndParametersCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AllowedAdditionalFeaturesAndParametersCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetAdaptiveCard(self: *@This(), adaptiveCard: *IAdaptiveCard) core.HResult!void {
         const _c = self.vtable.SetAdaptiveCard(@ptrCast(self), adaptiveCard);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportPrinterSelectedEventArgs";
@@ -814,8 +868,11 @@ pub const IPrintSupportPrinterSelectedEventArgs = extern struct {
 };
 pub const IPrintSupportSessionInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -823,13 +880,13 @@ pub const IPrintSupportSessionInfo = extern struct {
     pub fn getSourceAppInfo(self: *@This()) core.HResult!*AppInfo {
         var _r: *AppInfo = undefined;
         const _c = self.vtable.get_SourceAppInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrinter(self: *@This()) core.HResult!*IppPrintDevice {
         var _r: *IppPrintDevice = undefined;
         const _c = self.vtable.get_Printer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportSessionInfo";
@@ -850,8 +907,11 @@ pub const IPrintSupportSessionInfo = extern struct {
 };
 pub const IPrintSupportSettingsActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -859,13 +919,13 @@ pub const IPrintSupportSettingsActivatedEventArgs = extern struct {
     pub fn getSession(self: *@This()) core.HResult!*PrintSupportSettingsUISession {
         var _r: *PrintSupportSettingsUISession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportSettingsActivatedEventArgs";
@@ -886,8 +946,11 @@ pub const IPrintSupportSettingsActivatedEventArgs = extern struct {
 };
 pub const IPrintSupportSettingsActivatedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -895,7 +958,7 @@ pub const IPrintSupportSettingsActivatedEventArgs2 = extern struct {
     pub fn getOwnerWindowId(self: *@This()) core.HResult!WindowId {
         var _r: WindowId = undefined;
         const _c = self.vtable.get_OwnerWindowId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportSettingsActivatedEventArgs2";
@@ -915,8 +978,11 @@ pub const IPrintSupportSettingsActivatedEventArgs2 = extern struct {
 };
 pub const IPrintSupportSettingsUISession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -924,29 +990,29 @@ pub const IPrintSupportSettingsUISession = extern struct {
     pub fn getSessionPrintTicket(self: *@This()) core.HResult!*WorkflowPrintTicket {
         var _r: *WorkflowPrintTicket = undefined;
         const _c = self.vtable.get_SessionPrintTicket(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DocumentTitle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLaunchKind(self: *@This()) core.HResult!SettingsLaunchKind {
         var _r: SettingsLaunchKind = undefined;
         const _c = self.vtable.get_LaunchKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdatePrintTicket(self: *@This(), printTicket: *WorkflowPrintTicket) core.HResult!void {
         const _c = self.vtable.UpdatePrintTicket(@ptrCast(self), printTicket);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSessionInfo(self: *@This()) core.HResult!*PrintSupportSessionInfo {
         var _r: *PrintSupportSessionInfo = undefined;
         const _c = self.vtable.get_SessionInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.IPrintSupportSettingsUISession";
@@ -983,14 +1049,11 @@ pub const IppPrinterCommunicationKind = enum(i32) {
 };
 pub const PrintSupportCommunicationErrorDetectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1019,14 +1082,11 @@ pub const PrintSupportCommunicationErrorDetectedEventArgs = extern struct {
 };
 pub const PrintSupportEnterpriseManagementUIEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1043,14 +1103,11 @@ pub const PrintSupportEnterpriseManagementUIEventArgs = extern struct {
 };
 pub const PrintSupportExtensionSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1082,29 +1139,25 @@ pub const PrintSupportExtensionSession = extern struct {
     pub fn addPrinterSelected(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportPrinterSelectedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPrintSupportExtensionSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession2.IID, @ptrCast(&this));
         return try this.?.addPrinterSelected(handler);
     }
     pub fn removePrinterSelected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPrintSupportExtensionSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession2.IID, @ptrCast(&this));
         return try this.?.removePrinterSelected(token);
     }
     pub fn addCommunicationErrorDetected(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportCommunicationErrorDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPrintSupportExtensionSession3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession3.IID, @ptrCast(&this));
         return try this.?.addCommunicationErrorDetected(handler);
     }
     pub fn removeCommunicationErrorDetected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPrintSupportExtensionSession3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession3.IID, @ptrCast(&this));
         return try this.?.removeCommunicationErrorDetected(token);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.PrintSupportExtensionSession";
@@ -1115,14 +1168,11 @@ pub const PrintSupportExtensionSession = extern struct {
 };
 pub const PrintSupportExtensionTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1139,14 +1189,11 @@ pub const PrintSupportExtensionTriggerDetails = extern struct {
 };
 pub const PrintSupportIppCommunicationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1175,14 +1222,11 @@ pub const PrintSupportIppCommunicationConfiguration = extern struct {
 };
 pub const PrintSupportIppCommunicationTimeouts = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1219,14 +1263,11 @@ pub const PrintSupportIppCommunicationTimeouts = extern struct {
 };
 pub const PrintSupportMxdcImageQualityConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1295,14 +1336,11 @@ pub const PrintSupportMxdcImageQualityConfiguration = extern struct {
 };
 pub const PrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1322,50 +1360,43 @@ pub const PrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
     pub fn SetSupportedPdlPassthroughContentTypes(self: *@This(), supportedPdlContentTypes: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.SetSupportedPdlPassthroughContentTypes(supportedPdlContentTypes);
     }
     pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getResourceLanguage();
     }
     pub fn GetCurrentPrintDeviceResources(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.GetCurrentPrintDeviceResources();
     }
     pub fn UpdatePrintDeviceResources(self: *@This(), updatedPdr: *XmlDocument) core.HResult!void {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.UpdatePrintDeviceResources(updatedPdr);
     }
     pub fn SetPrintDeviceCapabilitiesUpdatePolicy(self: *@This(), updatePolicy: *PrintSupportPrintDeviceCapabilitiesUpdatePolicy) core.HResult!void {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.SetPrintDeviceCapabilitiesUpdatePolicy(updatePolicy);
     }
     pub fn getCommunicationConfiguration(self: *@This()) core.HResult!*PrintSupportIppCommunicationConfiguration {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3.IID, @ptrCast(&this));
         return try this.?.getCommunicationConfiguration();
     }
     pub fn getMxdcImageQualityConfiguration(self: *@This()) core.HResult!*PrintSupportMxdcImageQualityConfiguration {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4.IID, @ptrCast(&this));
         return try this.?.getMxdcImageQualityConfiguration();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.PrintSupportPrintDeviceCapabilitiesChangedEventArgs";
@@ -1376,14 +1407,11 @@ pub const PrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
 };
 pub const PrintSupportPrintDeviceCapabilitiesUpdatePolicy = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1405,14 +1433,11 @@ pub const PrintSupportPrintDeviceCapabilitiesUpdatePolicy = extern struct {
 };
 pub const PrintSupportPrintTicketElement = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1446,14 +1471,11 @@ pub const PrintSupportPrintTicketElement = extern struct {
 };
 pub const PrintSupportPrintTicketValidationRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1478,14 +1500,11 @@ pub const PrintSupportPrintTicketValidationRequestedEventArgs = extern struct {
 };
 pub const PrintSupportPrinterSelectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1530,14 +1549,11 @@ pub const PrintSupportPrinterSelectedEventArgs = extern struct {
 };
 pub const PrintSupportSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1558,14 +1574,11 @@ pub const PrintSupportSessionInfo = extern struct {
 };
 pub const PrintSupportSettingsActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1581,36 +1594,31 @@ pub const PrintSupportSettingsActivatedEventArgs = extern struct {
     pub fn getOwnerWindowId(self: *@This()) core.HResult!WindowId {
         var this: ?*IPrintSupportSettingsActivatedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportSettingsActivatedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportSettingsActivatedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getOwnerWindowId();
     }
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         var this: ?*IActivatedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
         var this: ?*IActivatedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         return try this.?.getPreviousExecutionState();
     }
     pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
         var this: ?*IActivatedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         return try this.?.getSplashScreen();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IActivatedEventArgsWithUser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.PrintSupportSettingsActivatedEventArgs";
@@ -1621,14 +1629,11 @@ pub const PrintSupportSettingsActivatedEventArgs = extern struct {
 };
 pub const PrintSupportSettingsUISession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

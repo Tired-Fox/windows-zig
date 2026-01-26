@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ISceneLightingEffect = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,52 +13,52 @@ pub const ISceneLightingEffect = extern struct {
     pub fn getAmbientAmount(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_AmbientAmount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAmbientAmount(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_AmbientAmount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDiffuseAmount(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_DiffuseAmount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDiffuseAmount(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_DiffuseAmount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNormalMapSource(self: *@This()) core.HResult!*IGraphicsEffectSource {
         var _r: *IGraphicsEffectSource = undefined;
         const _c = self.vtable.get_NormalMapSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNormalMapSource(self: *@This(), value: *IGraphicsEffectSource) core.HResult!void {
         const _c = self.vtable.put_NormalMapSource(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSpecularAmount(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_SpecularAmount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSpecularAmount(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_SpecularAmount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSpecularShine(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_SpecularShine(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSpecularShine(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_SpecularShine(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Effects.ISceneLightingEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -83,8 +86,11 @@ pub const ISceneLightingEffect = extern struct {
 };
 pub const ISceneLightingEffect2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -92,12 +98,12 @@ pub const ISceneLightingEffect2 = extern struct {
     pub fn getReflectanceModel(self: *@This()) core.HResult!SceneLightingEffectReflectanceModel {
         var _r: SceneLightingEffectReflectanceModel = undefined;
         const _c = self.vtable.get_ReflectanceModel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReflectanceModel(self: *@This(), value: SceneLightingEffectReflectanceModel) core.HResult!void {
         const _c = self.vtable.put_ReflectanceModel(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Effects.ISceneLightingEffect2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -117,14 +123,11 @@ pub const ISceneLightingEffect2 = extern struct {
 };
 pub const SceneLightingEffect = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -172,29 +175,25 @@ pub const SceneLightingEffect = extern struct {
     pub fn getReflectanceModel(self: *@This()) core.HResult!SceneLightingEffectReflectanceModel {
         var this: ?*ISceneLightingEffect2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISceneLightingEffect2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISceneLightingEffect2.IID, @ptrCast(&this));
         return try this.?.getReflectanceModel();
     }
     pub fn putReflectanceModel(self: *@This(), value: SceneLightingEffectReflectanceModel) core.HResult!void {
         var this: ?*ISceneLightingEffect2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISceneLightingEffect2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISceneLightingEffect2.IID, @ptrCast(&this));
         return try this.?.putReflectanceModel(value);
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGraphicsEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
         return try this.?.getName();
     }
     pub fn putName(self: *@This(), name: ?HSTRING) core.HResult!void {
         var this: ?*IGraphicsEffect = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
         return try this.?.putName(name);
     }
     pub fn init() core.HResult!*@This() {

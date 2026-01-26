@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IOfflineMapPackage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,41 +13,41 @@ pub const IOfflineMapPackage = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageStatus {
         var _r: OfflineMapPackageStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnclosingRegionName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnclosingRegionName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEstimatedSizeInBytes(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_EstimatedSizeInBytes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStatusChanged(self: *@This(), value: *TypedEventHandler(OfflineMapPackage,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestStartDownloadAsync(self: *@This()) core.HResult!*IAsyncOperation(OfflineMapPackageStartDownloadResult) {
         var _r: *IAsyncOperation(OfflineMapPackageStartDownloadResult) = undefined;
         const _c = self.vtable.RequestStartDownloadAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.OfflineMaps.IOfflineMapPackage";
@@ -70,8 +73,11 @@ pub const IOfflineMapPackage = extern struct {
 };
 pub const IOfflineMapPackageQueryResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -79,13 +85,13 @@ pub const IOfflineMapPackageQueryResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageQueryStatus {
         var _r: OfflineMapPackageQueryStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPackages(self: *@This()) core.HResult!*IVectorView(OfflineMapPackage) {
         var _r: *IVectorView(OfflineMapPackage) = undefined;
         const _c = self.vtable.get_Packages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.OfflineMaps.IOfflineMapPackageQueryResult";
@@ -106,8 +112,11 @@ pub const IOfflineMapPackageQueryResult = extern struct {
 };
 pub const IOfflineMapPackageStartDownloadResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -115,7 +124,7 @@ pub const IOfflineMapPackageStartDownloadResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageStartDownloadStatus {
         var _r: OfflineMapPackageStartDownloadStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.OfflineMaps.IOfflineMapPackageStartDownloadResult";
@@ -135,8 +144,11 @@ pub const IOfflineMapPackageStartDownloadResult = extern struct {
 };
 pub const IOfflineMapPackageStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -144,19 +156,19 @@ pub const IOfflineMapPackageStatics = extern struct {
     pub fn FindPackagesAsync(self: *@This(), queryPoint: *Geopoint) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
         var _r: *IAsyncOperation(OfflineMapPackageQueryResult) = undefined;
         const _c = self.vtable.FindPackagesAsync(@ptrCast(self), queryPoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindPackagesInBoundingBoxAsync(self: *@This(), queryBoundingBox: *GeoboundingBox) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
         var _r: *IAsyncOperation(OfflineMapPackageQueryResult) = undefined;
         const _c = self.vtable.FindPackagesInBoundingBoxAsync(@ptrCast(self), queryBoundingBox, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindPackagesInGeocircleAsync(self: *@This(), queryCircle: *Geocircle) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
         var _r: *IAsyncOperation(OfflineMapPackageQueryResult) = undefined;
         const _c = self.vtable.FindPackagesInGeocircleAsync(@ptrCast(self), queryCircle, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.OfflineMaps.IOfflineMapPackageStatics";
@@ -178,14 +190,11 @@ pub const IOfflineMapPackageStatics = extern struct {
 };
 pub const OfflineMapPackage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -239,14 +248,11 @@ pub const OfflineMapPackage = extern struct {
 };
 pub const OfflineMapPackageQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -273,14 +279,11 @@ pub const OfflineMapPackageQueryStatus = enum(i32) {
 };
 pub const OfflineMapPackageStartDownloadResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

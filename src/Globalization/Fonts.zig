@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ILanguageFont = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,31 +13,31 @@ pub const ILanguageFont = extern struct {
     pub fn getFontFamily(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FontFamily(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFontWeight(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_FontWeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFontStretch(self: *@This()) core.HResult!FontStretch {
         var _r: FontStretch = undefined;
         const _c = self.vtable.get_FontStretch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFontStyle(self: *@This()) core.HResult!FontStyle {
         var _r: FontStyle = undefined;
         const _c = self.vtable.get_FontStyle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScaleFactor(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ScaleFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.Fonts.ILanguageFont";
@@ -58,8 +61,11 @@ pub const ILanguageFont = extern struct {
 };
 pub const ILanguageFontGroup = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -67,67 +73,67 @@ pub const ILanguageFontGroup = extern struct {
     pub fn getUITextFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_UITextFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUIHeadingFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_UIHeadingFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUITitleFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_UITitleFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUICaptionFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_UICaptionFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUINotificationHeadingFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_UINotificationHeadingFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTraditionalDocumentFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_TraditionalDocumentFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModernDocumentFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_ModernDocumentFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentHeadingFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_DocumentHeadingFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFixedWidthTextFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_FixedWidthTextFont(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentAlternate1Font(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_DocumentAlternate1Font(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentAlternate2Font(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_DocumentAlternate2Font(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.Fonts.ILanguageFontGroup";
@@ -157,8 +163,11 @@ pub const ILanguageFontGroup = extern struct {
 };
 pub const ILanguageFontGroupFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -166,7 +175,7 @@ pub const ILanguageFontGroupFactory = extern struct {
     pub fn CreateLanguageFontGroup(self: *@This(), languageTag: ?HSTRING) core.HResult!*LanguageFontGroup {
         var _r: *LanguageFontGroup = undefined;
         const _c = self.vtable.CreateLanguageFontGroup(@ptrCast(self), languageTag, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.Fonts.ILanguageFontGroupFactory";
@@ -186,14 +195,11 @@ pub const ILanguageFontGroupFactory = extern struct {
 };
 pub const LanguageFont = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -226,14 +232,11 @@ pub const LanguageFont = extern struct {
 };
 pub const LanguageFontGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

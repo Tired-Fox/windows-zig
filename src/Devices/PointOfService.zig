@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const BarcodeScanner = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -60,15 +57,13 @@ pub const BarcodeScanner = extern struct {
     pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBarcodeScanner2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScanner2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScanner2.IID, @ptrCast(&this));
         return try this.?.getVideoDeviceId();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(BarcodeScanner) {
@@ -97,14 +92,11 @@ pub const BarcodeScanner = extern struct {
 };
 pub const BarcodeScannerCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -128,15 +120,13 @@ pub const BarcodeScannerCapabilities = extern struct {
     pub fn getIsSoftwareTriggerSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBarcodeScannerCapabilities1 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerCapabilities1.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerCapabilities1.IID, @ptrCast(&this));
         return try this.?.getIsSoftwareTriggerSupported();
     }
     pub fn getIsVideoPreviewSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBarcodeScannerCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsVideoPreviewSupported();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.BarcodeScannerCapabilities";
@@ -147,14 +137,11 @@ pub const BarcodeScannerCapabilities = extern struct {
 };
 pub const BarcodeScannerDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -171,14 +158,11 @@ pub const BarcodeScannerDataReceivedEventArgs = extern struct {
 };
 pub const BarcodeScannerErrorOccurredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -203,14 +187,11 @@ pub const BarcodeScannerErrorOccurredEventArgs = extern struct {
 };
 pub const BarcodeScannerImagePreviewReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -227,14 +208,11 @@ pub const BarcodeScannerImagePreviewReceivedEventArgs = extern struct {
 };
 pub const BarcodeScannerReport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -271,14 +249,11 @@ pub const BarcodeScannerStatus = enum(i32) {
 };
 pub const BarcodeScannerStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -299,14 +274,11 @@ pub const BarcodeScannerStatusUpdatedEventArgs = extern struct {
 };
 pub const BarcodeSymbologies = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -698,14 +670,11 @@ pub const BarcodeSymbologies = extern struct {
 };
 pub const BarcodeSymbologyAttributes = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -775,14 +744,11 @@ pub const BarcodeSymbologyDecodeLengthKind = enum(i32) {
 };
 pub const CashDrawer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -830,8 +796,7 @@ pub const CashDrawer = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(CashDrawer) {
@@ -860,14 +825,11 @@ pub const CashDrawer = extern struct {
 };
 pub const CashDrawerCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -904,14 +866,11 @@ pub const CashDrawerCapabilities = extern struct {
 };
 pub const CashDrawerCloseAlarm = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -968,14 +927,11 @@ pub const CashDrawerCloseAlarm = extern struct {
 };
 pub const CashDrawerClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -992,14 +948,11 @@ pub const CashDrawerClosedEventArgs = extern struct {
 };
 pub const CashDrawerEventSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1028,14 +981,11 @@ pub const CashDrawerEventSource = extern struct {
 };
 pub const CashDrawerOpenedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1052,14 +1002,11 @@ pub const CashDrawerOpenedEventArgs = extern struct {
 };
 pub const CashDrawerStatus = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1087,14 +1034,11 @@ pub const CashDrawerStatusKind = enum(i32) {
 };
 pub const CashDrawerStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1111,14 +1055,11 @@ pub const CashDrawerStatusUpdatedEventArgs = extern struct {
 };
 pub const ClaimedBarcodeScanner = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1226,78 +1167,67 @@ pub const ClaimedBarcodeScanner = extern struct {
     pub fn StartSoftwareTriggerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IClaimedBarcodeScanner1 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner1.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner1.IID, @ptrCast(&this));
         return try this.?.StartSoftwareTriggerAsync();
     }
     pub fn StopSoftwareTriggerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IClaimedBarcodeScanner1 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner1.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner1.IID, @ptrCast(&this));
         return try this.?.StopSoftwareTriggerAsync();
     }
     pub fn GetSymbologyAttributesAsync(self: *@This(), barcodeSymbology: u32) core.HResult!*IAsyncOperation(BarcodeSymbologyAttributes) {
         var this: ?*IClaimedBarcodeScanner2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner2.IID, @ptrCast(&this));
         return try this.?.GetSymbologyAttributesAsync(barcodeSymbology);
     }
     pub fn SetSymbologyAttributesAsync(self: *@This(), barcodeSymbology: u32, attributes: *BarcodeSymbologyAttributes) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedBarcodeScanner2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner2.IID, @ptrCast(&this));
         return try this.?.SetSymbologyAttributesAsync(barcodeSymbology, attributes);
     }
     pub fn ShowVideoPreviewAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         return try this.?.ShowVideoPreviewAsync();
     }
     pub fn HideVideoPreview(self: *@This()) core.HResult!void {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         return try this.?.HideVideoPreview();
     }
     pub fn putIsVideoPreviewShownOnEnable(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         return try this.?.putIsVideoPreviewShownOnEnable(value);
     }
     pub fn getIsVideoPreviewShownOnEnable(self: *@This()) core.HResult!bool {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         return try this.?.getIsVideoPreviewShownOnEnable();
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedBarcodeScanner,ClaimedBarcodeScannerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedBarcodeScanner4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner4.IID, @ptrCast(&this));
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedBarcodeScanner4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner4.IID, @ptrCast(&this));
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedBarcodeScanner";
@@ -1308,14 +1238,11 @@ pub const ClaimedBarcodeScanner = extern struct {
 };
 pub const ClaimedBarcodeScannerClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1328,14 +1255,11 @@ pub const ClaimedBarcodeScannerClosedEventArgs = extern struct {
 };
 pub const ClaimedCashDrawer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1391,22 +1315,19 @@ pub const ClaimedCashDrawer = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedCashDrawer,ClaimedCashDrawerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedCashDrawer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedCashDrawer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedCashDrawer2.IID, @ptrCast(&this));
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedCashDrawer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedCashDrawer2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedCashDrawer2.IID, @ptrCast(&this));
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedCashDrawer";
@@ -1417,14 +1338,11 @@ pub const ClaimedCashDrawer = extern struct {
 };
 pub const ClaimedCashDrawerClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1437,14 +1355,11 @@ pub const ClaimedCashDrawerClosedEventArgs = extern struct {
 };
 pub const ClaimedJournalPrinter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1456,134 +1371,115 @@ pub const ClaimedJournalPrinter = extern struct {
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putCharactersPerLine(value);
     }
     pub fn getCharactersPerLine(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getCharactersPerLine();
     }
     pub fn putLineHeight(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putLineHeight(value);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineHeight();
     }
     pub fn putLineSpacing(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putLineSpacing(value);
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineSpacing();
     }
     pub fn getLineWidth(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineWidth();
     }
     pub fn putIsLetterQuality(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putIsLetterQuality(value);
     }
     pub fn getIsLetterQuality(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsLetterQuality();
     }
     pub fn getIsPaperNearEnd(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsPaperNearEnd();
     }
     pub fn putColorCartridge(self: *@This(), value: PosPrinterColorCartridge) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putColorCartridge(value);
     }
     pub fn getColorCartridge(self: *@This()) core.HResult!PosPrinterColorCartridge {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getColorCartridge();
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCoverOpen();
     }
     pub fn getIsCartridgeRemoved(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCartridgeRemoved();
     }
     pub fn getIsCartridgeEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCartridgeEmpty();
     }
     pub fn getIsHeadCleaning(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsHeadCleaning();
     }
     pub fn getIsPaperEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsPaperEmpty();
     }
     pub fn getIsReadyToPrint(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsReadyToPrint();
     }
     pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.ValidateData(data);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedJournalPrinter";
@@ -1594,14 +1490,11 @@ pub const ClaimedJournalPrinter = extern struct {
 };
 pub const ClaimedLineDisplay = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1653,141 +1546,121 @@ pub const ClaimedLineDisplay = extern struct {
     pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.GetStatisticsAsync(statisticsCategories);
     }
     pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.CheckHealthAsync(level);
     }
     pub fn CheckPowerStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplayPowerStatus) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.CheckPowerStatusAsync();
     }
     pub fn addStatusUpdated(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,LineDisplayStatusUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.addStatusUpdated(handler);
     }
     pub fn removeStatusUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.removeStatusUpdated(token);
     }
     pub fn getSupportedScreenSizesInCharacters(self: *@This()) core.HResult!*IVectorView(Size) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.getSupportedScreenSizesInCharacters();
     }
     pub fn getMaxBitmapSizeInPixels(self: *@This()) core.HResult!Size {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.getMaxBitmapSizeInPixels();
     }
     pub fn getSupportedCharacterSets(self: *@This()) core.HResult!*IVectorView(i32) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.getSupportedCharacterSets();
     }
     pub fn getCustomGlyphs(self: *@This()) core.HResult!*LineDisplayCustomGlyphs {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.getCustomGlyphs();
     }
     pub fn GetAttributes(self: *@This()) core.HResult!*LineDisplayAttributes {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.GetAttributes();
     }
     pub fn TryUpdateAttributesAsync(self: *@This(), attributes: *LineDisplayAttributes) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.TryUpdateAttributesAsync(attributes);
     }
     pub fn TrySetDescriptorAsync(self: *@This(), descriptor: u32, descriptorState: LineDisplayDescriptorState) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.TrySetDescriptorAsync(descriptor, descriptorState);
     }
     pub fn TryClearDescriptorsAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.TryClearDescriptorsAsync();
     }
     pub fn TryCreateWindowAsync(self: *@This(), viewport: Rect, windowSize: Size) core.HResult!*IAsyncOperation(LineDisplayWindow) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.TryCreateWindowAsync(viewport, windowSize);
     }
     pub fn TryStoreStorageFileBitmapAsync(self: *@This(), bitmap: *StorageFile) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.TryStoreStorageFileBitmapAsync(bitmap);
     }
     pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
     pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,ClaimedLineDisplayClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedLineDisplay3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay3.IID, @ptrCast(&this));
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedLineDisplay3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay3.IID, @ptrCast(&this));
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
@@ -1811,14 +1684,11 @@ pub const ClaimedLineDisplay = extern struct {
 };
 pub const ClaimedLineDisplayClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1831,14 +1701,11 @@ pub const ClaimedLineDisplayClosedEventArgs = extern struct {
 };
 pub const ClaimedMagneticStripeReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1978,22 +1845,19 @@ pub const ClaimedMagneticStripeReader = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,ClaimedMagneticStripeReaderClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedMagneticStripeReader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedMagneticStripeReader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedMagneticStripeReader2.IID, @ptrCast(&this));
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedMagneticStripeReader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedMagneticStripeReader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedMagneticStripeReader2.IID, @ptrCast(&this));
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedMagneticStripeReader";
@@ -2004,14 +1868,11 @@ pub const ClaimedMagneticStripeReader = extern struct {
 };
 pub const ClaimedMagneticStripeReaderClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2024,14 +1885,11 @@ pub const ClaimedMagneticStripeReaderClosedEventArgs = extern struct {
 };
 pub const ClaimedPosPrinter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2115,22 +1973,19 @@ pub const ClaimedPosPrinter = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedPosPrinter,ClaimedPosPrinterClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedPosPrinter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedPosPrinter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedPosPrinter2.IID, @ptrCast(&this));
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedPosPrinter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedPosPrinter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClaimedPosPrinter2.IID, @ptrCast(&this));
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedPosPrinter";
@@ -2141,14 +1996,11 @@ pub const ClaimedPosPrinter = extern struct {
 };
 pub const ClaimedPosPrinterClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2161,14 +2013,11 @@ pub const ClaimedPosPrinterClosedEventArgs = extern struct {
 };
 pub const ClaimedReceiptPrinter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2200,134 +2049,115 @@ pub const ClaimedReceiptPrinter = extern struct {
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putCharactersPerLine(value);
     }
     pub fn getCharactersPerLine(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getCharactersPerLine();
     }
     pub fn putLineHeight(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putLineHeight(value);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineHeight();
     }
     pub fn putLineSpacing(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putLineSpacing(value);
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineSpacing();
     }
     pub fn getLineWidth(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineWidth();
     }
     pub fn putIsLetterQuality(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putIsLetterQuality(value);
     }
     pub fn getIsLetterQuality(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsLetterQuality();
     }
     pub fn getIsPaperNearEnd(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsPaperNearEnd();
     }
     pub fn putColorCartridge(self: *@This(), value: PosPrinterColorCartridge) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putColorCartridge(value);
     }
     pub fn getColorCartridge(self: *@This()) core.HResult!PosPrinterColorCartridge {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getColorCartridge();
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCoverOpen();
     }
     pub fn getIsCartridgeRemoved(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCartridgeRemoved();
     }
     pub fn getIsCartridgeEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCartridgeEmpty();
     }
     pub fn getIsHeadCleaning(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsHeadCleaning();
     }
     pub fn getIsPaperEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsPaperEmpty();
     }
     pub fn getIsReadyToPrint(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsReadyToPrint();
     }
     pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.ValidateData(data);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedReceiptPrinter";
@@ -2338,14 +2168,11 @@ pub const ClaimedReceiptPrinter = extern struct {
 };
 pub const ClaimedSlipPrinter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2405,134 +2232,115 @@ pub const ClaimedSlipPrinter = extern struct {
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putCharactersPerLine(value);
     }
     pub fn getCharactersPerLine(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getCharactersPerLine();
     }
     pub fn putLineHeight(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putLineHeight(value);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineHeight();
     }
     pub fn putLineSpacing(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putLineSpacing(value);
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineSpacing();
     }
     pub fn getLineWidth(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getLineWidth();
     }
     pub fn putIsLetterQuality(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putIsLetterQuality(value);
     }
     pub fn getIsLetterQuality(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsLetterQuality();
     }
     pub fn getIsPaperNearEnd(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsPaperNearEnd();
     }
     pub fn putColorCartridge(self: *@This(), value: PosPrinterColorCartridge) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.putColorCartridge(value);
     }
     pub fn getColorCartridge(self: *@This()) core.HResult!PosPrinterColorCartridge {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getColorCartridge();
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCoverOpen();
     }
     pub fn getIsCartridgeRemoved(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCartridgeRemoved();
     }
     pub fn getIsCartridgeEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsCartridgeEmpty();
     }
     pub fn getIsHeadCleaning(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsHeadCleaning();
     }
     pub fn getIsPaperEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsPaperEmpty();
     }
     pub fn getIsReadyToPrint(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.getIsReadyToPrint();
     }
     pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         return try this.?.ValidateData(data);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedSlipPrinter";
@@ -2543,8 +2351,11 @@ pub const ClaimedSlipPrinter = extern struct {
 };
 pub const IBarcodeScanner = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2552,66 +2363,66 @@ pub const IBarcodeScanner = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCapabilities(self: *@This()) core.HResult!*BarcodeScannerCapabilities {
         var _r: *BarcodeScannerCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClaimScannerAsync(self: *@This()) core.HResult!*IAsyncOperation(ClaimedBarcodeScanner) {
         var _r: *IAsyncOperation(ClaimedBarcodeScanner) = undefined;
         const _c = self.vtable.ClaimScannerAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedSymbologiesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(u32)) {
         var _r: *IAsyncOperation(IVectorView(u32)) = undefined;
         const _c = self.vtable.GetSupportedSymbologiesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsSymbologySupportedAsync(self: *@This(), barcodeSymbology: u32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsSymbologySupportedAsync(@ptrCast(self), barcodeSymbology, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.RetrieveStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedProfiles(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetSupportedProfiles(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsProfileSupported(self: *@This(), profile: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsProfileSupported(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusUpdated(self: *@This(), handler: *TypedEventHandler(BarcodeScanner,BarcodeScannerStatusUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusUpdated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScanner";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2640,8 +2451,11 @@ pub const IBarcodeScanner = extern struct {
 };
 pub const IBarcodeScanner2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2649,7 +2463,7 @@ pub const IBarcodeScanner2 = extern struct {
     pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScanner2";
@@ -2669,8 +2483,11 @@ pub const IBarcodeScanner2 = extern struct {
 };
 pub const IBarcodeScannerCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2678,25 +2495,25 @@ pub const IBarcodeScannerCapabilities = extern struct {
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsReportingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsReportingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsUpdatingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsUpdatingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsImagePreviewSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsImagePreviewSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerCapabilities";
@@ -2719,8 +2536,11 @@ pub const IBarcodeScannerCapabilities = extern struct {
 };
 pub const IBarcodeScannerCapabilities1 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2728,7 +2548,7 @@ pub const IBarcodeScannerCapabilities1 = extern struct {
     pub fn getIsSoftwareTriggerSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSoftwareTriggerSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerCapabilities1";
@@ -2748,8 +2568,11 @@ pub const IBarcodeScannerCapabilities1 = extern struct {
 };
 pub const IBarcodeScannerCapabilities2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2757,7 +2580,7 @@ pub const IBarcodeScannerCapabilities2 = extern struct {
     pub fn getIsVideoPreviewSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVideoPreviewSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerCapabilities2";
@@ -2777,8 +2600,11 @@ pub const IBarcodeScannerCapabilities2 = extern struct {
 };
 pub const IBarcodeScannerDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2786,7 +2612,7 @@ pub const IBarcodeScannerDataReceivedEventArgs = extern struct {
     pub fn getReport(self: *@This()) core.HResult!*BarcodeScannerReport {
         var _r: *BarcodeScannerReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerDataReceivedEventArgs";
@@ -2806,8 +2632,11 @@ pub const IBarcodeScannerDataReceivedEventArgs = extern struct {
 };
 pub const IBarcodeScannerErrorOccurredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2815,19 +2644,19 @@ pub const IBarcodeScannerErrorOccurredEventArgs = extern struct {
     pub fn getPartialInputData(self: *@This()) core.HResult!*BarcodeScannerReport {
         var _r: *BarcodeScannerReport = undefined;
         const _c = self.vtable.get_PartialInputData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsRetriable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRetriable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorData(self: *@This()) core.HResult!*UnifiedPosErrorData {
         var _r: *UnifiedPosErrorData = undefined;
         const _c = self.vtable.get_ErrorData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerErrorOccurredEventArgs";
@@ -2849,8 +2678,11 @@ pub const IBarcodeScannerErrorOccurredEventArgs = extern struct {
 };
 pub const IBarcodeScannerImagePreviewReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2858,7 +2690,7 @@ pub const IBarcodeScannerImagePreviewReceivedEventArgs = extern struct {
     pub fn getPreview(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         var _r: *IRandomAccessStreamWithContentType = undefined;
         const _c = self.vtable.get_Preview(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerImagePreviewReceivedEventArgs";
@@ -2878,8 +2710,11 @@ pub const IBarcodeScannerImagePreviewReceivedEventArgs = extern struct {
 };
 pub const IBarcodeScannerReport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2887,19 +2722,19 @@ pub const IBarcodeScannerReport = extern struct {
     pub fn getScanDataType(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ScanDataType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScanData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ScanData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScanDataLabel(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ScanDataLabel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerReport";
@@ -2921,8 +2756,11 @@ pub const IBarcodeScannerReport = extern struct {
 };
 pub const IBarcodeScannerReportFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2930,7 +2768,7 @@ pub const IBarcodeScannerReportFactory = extern struct {
     pub fn CreateInstance(self: *@This(), scanDataType: u32, scanData: *IBuffer, scanDataLabel: *IBuffer) core.HResult!*BarcodeScannerReport {
         var _r: *BarcodeScannerReport = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), scanDataType, scanData, scanDataLabel, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerReportFactory";
@@ -2950,8 +2788,11 @@ pub const IBarcodeScannerReportFactory = extern struct {
 };
 pub const IBarcodeScannerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2959,19 +2800,19 @@ pub const IBarcodeScannerStatics = extern struct {
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(BarcodeScanner) {
         var _r: *IAsyncOperation(BarcodeScanner) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BarcodeScanner) {
         var _r: *IAsyncOperation(BarcodeScanner) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerStatics";
@@ -2993,8 +2834,11 @@ pub const IBarcodeScannerStatics = extern struct {
 };
 pub const IBarcodeScannerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3002,7 +2846,7 @@ pub const IBarcodeScannerStatics2 = extern struct {
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerStatics2";
@@ -3022,8 +2866,11 @@ pub const IBarcodeScannerStatics2 = extern struct {
 };
 pub const IBarcodeScannerStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3031,13 +2878,13 @@ pub const IBarcodeScannerStatusUpdatedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!BarcodeScannerStatus {
         var _r: BarcodeScannerStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedStatus(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeScannerStatusUpdatedEventArgs";
@@ -3058,8 +2905,11 @@ pub const IBarcodeScannerStatusUpdatedEventArgs = extern struct {
 };
 pub const IBarcodeSymbologiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3067,565 +2917,565 @@ pub const IBarcodeSymbologiesStatics = extern struct {
     pub fn getUnknown(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Unknown(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan8(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean8(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan8Add2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean8Add2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan8Add5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean8Add5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEanv(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Eanv(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEanvAdd2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_EanvAdd2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEanvAdd5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_EanvAdd5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan13(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean13(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan13Add2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean13Add2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan13Add5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean13Add5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsbn(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Isbn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsbnAdd5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_IsbnAdd5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsmn(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ismn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsmnAdd2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_IsmnAdd2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsmnAdd5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_IsmnAdd5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIssn(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Issn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIssnAdd2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_IssnAdd2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIssnAdd5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_IssnAdd5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan99(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean99(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan99Add2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean99Add2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEan99Add5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ean99Add5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpca(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Upca(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpcaAdd2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UpcaAdd2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpcaAdd5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UpcaAdd5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpce(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Upce(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpceAdd2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UpceAdd2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpceAdd5(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UpceAdd5(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpcCoupon(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UpcCoupon(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTfStd(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TfStd(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTfDis(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TfDis(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTfInt(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TfInt(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTfInd(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TfInd(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTfMat(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TfMat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTfIata(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TfIata(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGs1DatabarType1(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Gs1DatabarType1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGs1DatabarType2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Gs1DatabarType2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGs1DatabarType3(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Gs1DatabarType3(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode39(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code39(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode39Ex(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code39Ex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrioptic39(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Trioptic39(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode32(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code32(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPzn(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Pzn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode93(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code93(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode93Ex(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code93Ex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode128(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code128(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGs1128(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Gs1128(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGs1128Coupon(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Gs1128Coupon(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUccEan128(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UccEan128(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSisac(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Sisac(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsbt(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Isbt(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCodabar(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Codabar(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode11(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code11(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMsi(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Msi(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlessey(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Plessey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTelepen(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Telepen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode16k(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code16k(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCodablockA(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CodablockA(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCodablockF(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CodablockF(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCodablock128(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Codablock128(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCode49(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Code49(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAztec(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Aztec(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDataCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DataCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDataMatrix(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DataMatrix(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHanXin(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_HanXin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxicode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Maxicode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMicroPdf417(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MicroPdf417(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMicroQr(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MicroQr(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPdf417(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Pdf417(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getQr(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Qr(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMsTag(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MsTag(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCcab(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ccab(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCcc(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ccc(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTlc39(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Tlc39(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAusPost(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AusPost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanPost(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CanPost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChinaPost(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ChinaPost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDutchKix(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DutchKix(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInfoMail(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_InfoMail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItalianPost25(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ItalianPost25(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItalianPost39(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ItalianPost39(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getJapanPost(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_JapanPost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKoreanPost(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_KoreanPost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSwedenPost(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SwedenPost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUkPost(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UkPost(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsIntelligent(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UsIntelligent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsIntelligentPkg(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UsIntelligentPkg(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsPlanet(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UsPlanet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsPostNet(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UsPostNet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUs4StateFics(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Us4StateFics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOcrA(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_OcrA(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOcrB(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_OcrB(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMicr(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Micr(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedBase(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedBase(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetName(self: *@This(), scanDataType: u32) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetName(@ptrCast(self), scanDataType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeSymbologiesStatics";
@@ -3738,8 +3588,11 @@ pub const IBarcodeSymbologiesStatics = extern struct {
 };
 pub const IBarcodeSymbologiesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3747,7 +3600,7 @@ pub const IBarcodeSymbologiesStatics2 = extern struct {
     pub fn getGs1DWCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Gs1DWCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeSymbologiesStatics2";
@@ -3767,8 +3620,11 @@ pub const IBarcodeSymbologiesStatics2 = extern struct {
 };
 pub const IBarcodeSymbologyAttributes = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3776,69 +3632,69 @@ pub const IBarcodeSymbologyAttributes = extern struct {
     pub fn getIsCheckDigitValidationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCheckDigitValidationEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCheckDigitValidationEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCheckDigitValidationEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCheckDigitValidationSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCheckDigitValidationSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCheckDigitTransmissionEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCheckDigitTransmissionEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCheckDigitTransmissionEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCheckDigitTransmissionEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCheckDigitTransmissionSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCheckDigitTransmissionSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDecodeLength1(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DecodeLength1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDecodeLength1(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_DecodeLength1(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDecodeLength2(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DecodeLength2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDecodeLength2(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_DecodeLength2(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDecodeLengthKind(self: *@This()) core.HResult!BarcodeSymbologyDecodeLengthKind {
         var _r: BarcodeSymbologyDecodeLengthKind = undefined;
         const _c = self.vtable.get_DecodeLengthKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDecodeLengthKind(self: *@This(), value: BarcodeSymbologyDecodeLengthKind) core.HResult!void {
         const _c = self.vtable.put_DecodeLengthKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDecodeLengthSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDecodeLengthSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IBarcodeSymbologyAttributes";
@@ -3870,8 +3726,11 @@ pub const IBarcodeSymbologyAttributes = extern struct {
 };
 pub const ICashDrawer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3879,60 +3738,60 @@ pub const ICashDrawer = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCapabilities(self: *@This()) core.HResult!*CashDrawerCapabilities {
         var _r: *CashDrawerCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!*CashDrawerStatus {
         var _r: *CashDrawerStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDrawerOpen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDrawerOpen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDrawerEventSource(self: *@This()) core.HResult!*CashDrawerEventSource {
         var _r: *CashDrawerEventSource = undefined;
         const _c = self.vtable.get_DrawerEventSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClaimDrawerAsync(self: *@This()) core.HResult!*IAsyncOperation(ClaimedCashDrawer) {
         var _r: *IAsyncOperation(ClaimedCashDrawer) = undefined;
         const _c = self.vtable.ClaimDrawerAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusUpdated(self: *@This(), handler: *TypedEventHandler(CashDrawer,CashDrawerStatusUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusUpdated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3960,8 +3819,11 @@ pub const ICashDrawer = extern struct {
 };
 pub const ICashDrawerCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3969,37 +3831,37 @@ pub const ICashDrawerCapabilities = extern struct {
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsReportingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsReportingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsUpdatingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsUpdatingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatusReportingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatusReportingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatusMultiDrawerDetectSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatusMultiDrawerDetectSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDrawerOpenSensorAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDrawerOpenSensorAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerCapabilities";
@@ -4024,66 +3886,69 @@ pub const ICashDrawerCapabilities = extern struct {
 };
 pub const ICashDrawerCloseAlarm = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putAlarmTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_AlarmTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAlarmTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_AlarmTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBeepFrequency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_BeepFrequency(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBeepFrequency(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BeepFrequency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBeepDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_BeepDuration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBeepDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_BeepDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBeepDelay(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_BeepDelay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBeepDelay(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_BeepDelay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAlarmTimeoutExpired(self: *@This(), handler: *TypedEventHandler(CashDrawerCloseAlarm,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AlarmTimeoutExpired(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAlarmTimeoutExpired(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AlarmTimeoutExpired(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerCloseAlarm";
@@ -4113,8 +3978,11 @@ pub const ICashDrawerCloseAlarm = extern struct {
 };
 pub const ICashDrawerEventSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4122,22 +3990,22 @@ pub const ICashDrawerEventSource = extern struct {
     pub fn addDrawerClosed(self: *@This(), handler: *TypedEventHandler(CashDrawerEventSource,CashDrawerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DrawerClosed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDrawerClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DrawerClosed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDrawerOpened(self: *@This(), handler: *TypedEventHandler(CashDrawerEventSource,CashDrawerOpenedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DrawerOpened(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDrawerOpened(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DrawerOpened(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerEventSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4159,8 +4027,11 @@ pub const ICashDrawerEventSource = extern struct {
 };
 pub const ICashDrawerEventSourceEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4168,7 +4039,7 @@ pub const ICashDrawerEventSourceEventArgs = extern struct {
     pub fn getCashDrawer(self: *@This()) core.HResult!*CashDrawer {
         var _r: *CashDrawer = undefined;
         const _c = self.vtable.get_CashDrawer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerEventSourceEventArgs";
@@ -4188,8 +4059,11 @@ pub const ICashDrawerEventSourceEventArgs = extern struct {
 };
 pub const ICashDrawerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4197,19 +4071,19 @@ pub const ICashDrawerStatics = extern struct {
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(CashDrawer) {
         var _r: *IAsyncOperation(CashDrawer) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(CashDrawer) {
         var _r: *IAsyncOperation(CashDrawer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerStatics";
@@ -4231,8 +4105,11 @@ pub const ICashDrawerStatics = extern struct {
 };
 pub const ICashDrawerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4240,7 +4117,7 @@ pub const ICashDrawerStatics2 = extern struct {
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerStatics2";
@@ -4260,8 +4137,11 @@ pub const ICashDrawerStatics2 = extern struct {
 };
 pub const ICashDrawerStatus = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4269,13 +4149,13 @@ pub const ICashDrawerStatus = extern struct {
     pub fn getStatusKind(self: *@This()) core.HResult!CashDrawerStatusKind {
         var _r: CashDrawerStatusKind = undefined;
         const _c = self.vtable.get_StatusKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedStatus(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerStatus";
@@ -4296,8 +4176,11 @@ pub const ICashDrawerStatus = extern struct {
 };
 pub const ICashDrawerStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4305,7 +4188,7 @@ pub const ICashDrawerStatusUpdatedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!*CashDrawerStatus {
         var _r: *CashDrawerStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICashDrawerStatusUpdatedEventArgs";
@@ -4325,8 +4208,11 @@ pub const ICashDrawerStatusUpdatedEventArgs = extern struct {
 };
 pub const IClaimedBarcodeScanner = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4334,134 +4220,134 @@ pub const IClaimedBarcodeScanner = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDisabledOnDataReceived(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDisabledOnDataReceived(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDisabledOnDataReceived(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDisabledOnDataReceived(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDecodeDataEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDecodeDataEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDecodeDataEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDecodeDataEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.EnableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DisableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RetainDevice(self: *@This()) core.HResult!void {
         const _c = self.vtable.RetainDevice(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetActiveSymbologiesAsync(self: *@This(), symbologies: *IIterable(u32)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetActiveSymbologiesAsync(@ptrCast(self), symbologies, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetActiveProfileAsync(self: *@This(), profile: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetActiveProfileAsync(@ptrCast(self), profile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addDataReceived(self: *@This(), handler: *TypedEventHandler(ClaimedBarcodeScanner,BarcodeScannerDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DataReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDataReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DataReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTriggerPressed(self: *@This(), handler: *EventHandler(ClaimedBarcodeScanner)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TriggerPressed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTriggerPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TriggerPressed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addTriggerReleased(self: *@This(), handler: *EventHandler(ClaimedBarcodeScanner)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TriggerReleased(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTriggerReleased(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TriggerReleased(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addReleaseDeviceRequested(self: *@This(), handler: *EventHandler(ClaimedBarcodeScanner)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ReleaseDeviceRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeReleaseDeviceRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ReleaseDeviceRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addImagePreviewReceived(self: *@This(), handler: *TypedEventHandler(ClaimedBarcodeScanner,BarcodeScannerImagePreviewReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ImagePreviewReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeImagePreviewReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ImagePreviewReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addErrorOccurred(self: *@This(), handler: *TypedEventHandler(ClaimedBarcodeScanner,BarcodeScannerErrorOccurredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ErrorOccurred(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeErrorOccurred(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ErrorOccurred(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedBarcodeScanner";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4504,8 +4390,11 @@ pub const IClaimedBarcodeScanner = extern struct {
 };
 pub const IClaimedBarcodeScanner1 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4513,13 +4402,13 @@ pub const IClaimedBarcodeScanner1 = extern struct {
     pub fn StartSoftwareTriggerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartSoftwareTriggerAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopSoftwareTriggerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopSoftwareTriggerAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedBarcodeScanner1";
@@ -4540,8 +4429,11 @@ pub const IClaimedBarcodeScanner1 = extern struct {
 };
 pub const IClaimedBarcodeScanner2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4549,13 +4441,13 @@ pub const IClaimedBarcodeScanner2 = extern struct {
     pub fn GetSymbologyAttributesAsync(self: *@This(), barcodeSymbology: u32) core.HResult!*IAsyncOperation(BarcodeSymbologyAttributes) {
         var _r: *IAsyncOperation(BarcodeSymbologyAttributes) = undefined;
         const _c = self.vtable.GetSymbologyAttributesAsync(@ptrCast(self), barcodeSymbology, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetSymbologyAttributesAsync(self: *@This(), barcodeSymbology: u32, attributes: *BarcodeSymbologyAttributes) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.SetSymbologyAttributesAsync(@ptrCast(self), barcodeSymbology, attributes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedBarcodeScanner2";
@@ -4576,8 +4468,11 @@ pub const IClaimedBarcodeScanner2 = extern struct {
 };
 pub const IClaimedBarcodeScanner3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4585,21 +4480,21 @@ pub const IClaimedBarcodeScanner3 = extern struct {
     pub fn ShowVideoPreviewAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowVideoPreviewAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn HideVideoPreview(self: *@This()) core.HResult!void {
         const _c = self.vtable.HideVideoPreview(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putIsVideoPreviewShownOnEnable(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsVideoPreviewShownOnEnable(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsVideoPreviewShownOnEnable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVideoPreviewShownOnEnable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedBarcodeScanner3";
@@ -4622,8 +4517,11 @@ pub const IClaimedBarcodeScanner3 = extern struct {
 };
 pub const IClaimedBarcodeScanner4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4631,12 +4529,12 @@ pub const IClaimedBarcodeScanner4 = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedBarcodeScanner,ClaimedBarcodeScannerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedBarcodeScanner4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4656,8 +4554,11 @@ pub const IClaimedBarcodeScanner4 = extern struct {
 };
 pub const IClaimedBarcodeScannerClosedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4678,8 +4579,11 @@ pub const IClaimedBarcodeScannerClosedEventArgs = extern struct {
 };
 pub const IClaimedCashDrawer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4687,72 +4591,72 @@ pub const IClaimedCashDrawer = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDrawerOpen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDrawerOpen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCloseAlarm(self: *@This()) core.HResult!*CashDrawerCloseAlarm {
         var _r: *CashDrawerCloseAlarm = undefined;
         const _c = self.vtable.get_CloseAlarm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenDrawerAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.OpenDrawerAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.EnableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.DisableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RetainDeviceAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RetainDeviceAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addReleaseDeviceRequested(self: *@This(), handler: *TypedEventHandler(ClaimedCashDrawer,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ReleaseDeviceRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeReleaseDeviceRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ReleaseDeviceRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedCashDrawer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4782,8 +4686,11 @@ pub const IClaimedCashDrawer = extern struct {
 };
 pub const IClaimedCashDrawer2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4791,12 +4698,12 @@ pub const IClaimedCashDrawer2 = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedCashDrawer,ClaimedCashDrawerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedCashDrawer2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4816,8 +4723,11 @@ pub const IClaimedCashDrawer2 = extern struct {
 };
 pub const IClaimedCashDrawerClosedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4838,8 +4748,11 @@ pub const IClaimedCashDrawerClosedEventArgs = extern struct {
 };
 pub const IClaimedJournalPrinter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4847,7 +4760,7 @@ pub const IClaimedJournalPrinter = extern struct {
     pub fn CreateJob(self: *@This()) core.HResult!*JournalPrintJob {
         var _r: *JournalPrintJob = undefined;
         const _c = self.vtable.CreateJob(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedJournalPrinter";
@@ -4867,8 +4780,11 @@ pub const IClaimedJournalPrinter = extern struct {
 };
 pub const IClaimedLineDisplay = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4876,64 +4792,64 @@ pub const IClaimedLineDisplay = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCapabilities(self: *@This()) core.HResult!*LineDisplayCapabilities {
         var _r: *LineDisplayCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalDeviceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceControlDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceControlVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceServiceVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceServiceVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultWindow(self: *@This()) core.HResult!*LineDisplayWindow {
         var _r: *LineDisplayWindow = undefined;
         const _c = self.vtable.get_DefaultWindow(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RetainDevice(self: *@This()) core.HResult!void {
         const _c = self.vtable.RetainDevice(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addReleaseDeviceRequested(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ReleaseDeviceRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeReleaseDeviceRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ReleaseDeviceRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedLineDisplay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4962,8 +4878,11 @@ pub const IClaimedLineDisplay = extern struct {
 };
 pub const IClaimedLineDisplay2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4971,101 +4890,101 @@ pub const IClaimedLineDisplay2 = extern struct {
     pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckPowerStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplayPowerStatus) {
         var _r: *IAsyncOperation(LineDisplayPowerStatus) = undefined;
         const _c = self.vtable.CheckPowerStatusAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusUpdated(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,LineDisplayStatusUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusUpdated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSupportedScreenSizesInCharacters(self: *@This()) core.HResult!*IVectorView(Size) {
         var _r: *IVectorView(Size) = undefined;
         const _c = self.vtable.get_SupportedScreenSizesInCharacters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxBitmapSizeInPixels(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_MaxBitmapSizeInPixels(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedCharacterSets(self: *@This()) core.HResult!*IVectorView(i32) {
         var _r: *IVectorView(i32) = undefined;
         const _c = self.vtable.get_SupportedCharacterSets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustomGlyphs(self: *@This()) core.HResult!*LineDisplayCustomGlyphs {
         var _r: *LineDisplayCustomGlyphs = undefined;
         const _c = self.vtable.get_CustomGlyphs(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAttributes(self: *@This()) core.HResult!*LineDisplayAttributes {
         var _r: *LineDisplayAttributes = undefined;
         const _c = self.vtable.GetAttributes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdateAttributesAsync(self: *@This(), attributes: *LineDisplayAttributes) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryUpdateAttributesAsync(@ptrCast(self), attributes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetDescriptorAsync(self: *@This(), descriptor: u32, descriptorState: LineDisplayDescriptorState) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetDescriptorAsync(@ptrCast(self), descriptor, descriptorState, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryClearDescriptorsAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryClearDescriptorsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryCreateWindowAsync(self: *@This(), viewport: Rect, windowSize: Size) core.HResult!*IAsyncOperation(LineDisplayWindow) {
         var _r: *IAsyncOperation(LineDisplayWindow) = undefined;
         const _c = self.vtable.TryCreateWindowAsync(@ptrCast(self), viewport, windowSize, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryStoreStorageFileBitmapAsync(self: *@This(), bitmap: *StorageFile) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var _r: *IAsyncOperation(LineDisplayStoredBitmap) = undefined;
         const _c = self.vtable.TryStoreStorageFileBitmapAsync(@ptrCast(self), bitmap, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var _r: *IAsyncOperation(LineDisplayStoredBitmap) = undefined;
         const _c = self.vtable.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var _r: *IAsyncOperation(LineDisplayStoredBitmap) = undefined;
         const _c = self.vtable.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, widthInPixels, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedLineDisplay2";
@@ -5101,8 +5020,11 @@ pub const IClaimedLineDisplay2 = extern struct {
 };
 pub const IClaimedLineDisplay3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5110,12 +5032,12 @@ pub const IClaimedLineDisplay3 = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,ClaimedLineDisplayClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedLineDisplay3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5135,8 +5057,11 @@ pub const IClaimedLineDisplay3 = extern struct {
 };
 pub const IClaimedLineDisplayClosedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5157,8 +5082,11 @@ pub const IClaimedLineDisplayClosedEventArgs = extern struct {
 };
 pub const IClaimedLineDisplayStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5166,19 +5094,19 @@ pub const IClaimedLineDisplayStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
         var _r: *IAsyncOperation(ClaimedLineDisplay) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithConnectionTypes(@ptrCast(self), connectionTypes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedLineDisplayStatics";
@@ -5200,8 +5128,11 @@ pub const IClaimedLineDisplayStatics = extern struct {
 };
 pub const IClaimedMagneticStripeReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5209,176 +5140,176 @@ pub const IClaimedMagneticStripeReader = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDisabledOnDataReceived(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDisabledOnDataReceived(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDisabledOnDataReceived(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDisabledOnDataReceived(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDecodeDataEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDecodeDataEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDecodeDataEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDecodeDataEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDeviceAuthenticated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDeviceAuthenticated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDataEncryptionAlgorithm(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_DataEncryptionAlgorithm(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDataEncryptionAlgorithm(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DataEncryptionAlgorithm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTracksToRead(self: *@This(), value: MagneticStripeReaderTrackIds) core.HResult!void {
         const _c = self.vtable.put_TracksToRead(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTracksToRead(self: *@This()) core.HResult!MagneticStripeReaderTrackIds {
         var _r: MagneticStripeReaderTrackIds = undefined;
         const _c = self.vtable.get_TracksToRead(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsTransmitSentinelsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsTransmitSentinelsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsTransmitSentinelsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTransmitSentinelsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.EnableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DisableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RetainDevice(self: *@This()) core.HResult!void {
         const _c = self.vtable.RetainDevice(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetErrorReportingType(self: *@This(), value: MagneticStripeReaderErrorReportingType) core.HResult!void {
         const _c = self.vtable.SetErrorReportingType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RetrieveDeviceAuthenticationDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.RetrieveDeviceAuthenticationDataAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AuthenticateDeviceAsync(self: *@This(), responseToken: [*]u8) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AuthenticateDeviceAsync(@ptrCast(self), responseToken, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeAuthenticateDeviceAsync(self: *@This(), responseToken: [*]u8) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeAuthenticateDeviceAsync(@ptrCast(self), responseToken, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateKeyAsync(self: *@This(), key: ?HSTRING, keyName: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateKeyAsync(@ptrCast(self), key, keyName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addBankCardDataReceived(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,MagneticStripeReaderBankCardDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BankCardDataReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeBankCardDataReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_BankCardDataReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAamvaCardDataReceived(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,MagneticStripeReaderAamvaCardDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AamvaCardDataReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAamvaCardDataReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AamvaCardDataReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addVendorSpecificDataReceived(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,MagneticStripeReaderVendorSpecificCardDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VendorSpecificDataReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVendorSpecificDataReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VendorSpecificDataReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addReleaseDeviceRequested(self: *@This(), handler: *EventHandler(ClaimedMagneticStripeReader)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ReleaseDeviceRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeReleaseDeviceRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ReleaseDeviceRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addErrorOccurred(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,MagneticStripeReaderErrorOccurredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ErrorOccurred(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeErrorOccurred(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ErrorOccurred(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedMagneticStripeReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5429,8 +5360,11 @@ pub const IClaimedMagneticStripeReader = extern struct {
 };
 pub const IClaimedMagneticStripeReader2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5438,12 +5372,12 @@ pub const IClaimedMagneticStripeReader2 = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,ClaimedMagneticStripeReaderClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedMagneticStripeReader2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5463,8 +5397,11 @@ pub const IClaimedMagneticStripeReader2 = extern struct {
 };
 pub const IClaimedMagneticStripeReaderClosedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5485,8 +5422,11 @@ pub const IClaimedMagneticStripeReaderClosedEventArgs = extern struct {
 };
 pub const IClaimedPosPrinter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5494,108 +5434,108 @@ pub const IClaimedPosPrinter = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCharacterSet(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CharacterSet(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCharacterSet(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CharacterSet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCoverOpen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCharacterSetMappingEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCharacterSetMappingEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCharacterSetMappingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCharacterSetMappingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMapMode(self: *@This(), value: PosPrinterMapMode) core.HResult!void {
         const _c = self.vtable.put_MapMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMapMode(self: *@This()) core.HResult!PosPrinterMapMode {
         var _r: PosPrinterMapMode = undefined;
         const _c = self.vtable.get_MapMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceipt(self: *@This()) core.HResult!*ClaimedReceiptPrinter {
         var _r: *ClaimedReceiptPrinter = undefined;
         const _c = self.vtable.get_Receipt(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSlip(self: *@This()) core.HResult!*ClaimedSlipPrinter {
         var _r: *ClaimedSlipPrinter = undefined;
         const _c = self.vtable.get_Slip(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getJournal(self: *@This()) core.HResult!*ClaimedJournalPrinter {
         var _r: *ClaimedJournalPrinter = undefined;
         const _c = self.vtable.get_Journal(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EnableAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.EnableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DisableAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.DisableAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RetainDeviceAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RetainDeviceAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addReleaseDeviceRequested(self: *@This(), handler: *TypedEventHandler(ClaimedPosPrinter,PosPrinterReleaseDeviceRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ReleaseDeviceRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeReleaseDeviceRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ReleaseDeviceRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedPosPrinter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5632,8 +5572,11 @@ pub const IClaimedPosPrinter = extern struct {
 };
 pub const IClaimedPosPrinter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5641,12 +5584,12 @@ pub const IClaimedPosPrinter2 = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedPosPrinter,ClaimedPosPrinterClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedPosPrinter2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5666,8 +5609,11 @@ pub const IClaimedPosPrinter2 = extern struct {
 };
 pub const IClaimedPosPrinterClosedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5688,8 +5634,11 @@ pub const IClaimedPosPrinterClosedEventArgs = extern struct {
 };
 pub const IClaimedReceiptPrinter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5697,37 +5646,37 @@ pub const IClaimedReceiptPrinter = extern struct {
     pub fn getSidewaysMaxLines(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SidewaysMaxLines(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSidewaysMaxChars(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SidewaysMaxChars(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLinesToPaperCut(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_LinesToPaperCut(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_PageSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrintArea(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_PrintArea(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateJob(self: *@This()) core.HResult!*ReceiptPrintJob {
         var _r: *ReceiptPrintJob = undefined;
         const _c = self.vtable.CreateJob(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedReceiptPrinter";
@@ -5752,8 +5701,11 @@ pub const IClaimedReceiptPrinter = extern struct {
 };
 pub const IClaimedSlipPrinter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5761,73 +5713,73 @@ pub const IClaimedSlipPrinter = extern struct {
     pub fn getSidewaysMaxLines(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SidewaysMaxLines(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSidewaysMaxChars(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SidewaysMaxChars(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxLines(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxLines(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLinesNearEndToEnd(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_LinesNearEndToEnd(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrintSide(self: *@This()) core.HResult!PosPrinterPrintSide {
         var _r: PosPrinterPrintSide = undefined;
         const _c = self.vtable.get_PrintSide(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_PageSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPrintArea(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_PrintArea(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenJaws(self: *@This()) core.HResult!void {
         const _c = self.vtable.OpenJaws(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CloseJaws(self: *@This()) core.HResult!void {
         const _c = self.vtable.CloseJaws(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InsertSlipAsync(self: *@This(), timeout: TimeSpan) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.InsertSlipAsync(@ptrCast(self), timeout, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveSlipAsync(self: *@This(), timeout: TimeSpan) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RemoveSlipAsync(@ptrCast(self), timeout, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ChangePrintSide(self: *@This(), printSide: PosPrinterPrintSide) core.HResult!void {
         const _c = self.vtable.ChangePrintSide(@ptrCast(self), printSide);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateJob(self: *@This()) core.HResult!*SlipPrintJob {
         var _r: *SlipPrintJob = undefined;
         const _c = self.vtable.CreateJob(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedSlipPrinter";
@@ -5859,114 +5811,117 @@ pub const IClaimedSlipPrinter = extern struct {
 };
 pub const ICommonClaimedPosPrinterStation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CharactersPerLine(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCharactersPerLine(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CharactersPerLine(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLineHeight(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_LineHeight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_LineHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLineSpacing(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_LineSpacing(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_LineSpacing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLineWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_LineWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsLetterQuality(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsLetterQuality(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsLetterQuality(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLetterQuality(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPaperNearEnd(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaperNearEnd(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putColorCartridge(self: *@This(), value: PosPrinterColorCartridge) core.HResult!void {
         const _c = self.vtable.put_ColorCartridge(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getColorCartridge(self: *@This()) core.HResult!PosPrinterColorCartridge {
         var _r: PosPrinterColorCartridge = undefined;
         const _c = self.vtable.get_ColorCartridge(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCoverOpen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCartridgeRemoved(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCartridgeRemoved(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCartridgeEmpty(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCartridgeEmpty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHeadCleaning(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHeadCleaning(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPaperEmpty(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaperEmpty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReadyToPrint(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadyToPrint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ValidateData(@ptrCast(self), data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICommonClaimedPosPrinterStation";
@@ -6004,8 +5959,11 @@ pub const ICommonClaimedPosPrinterStation = extern struct {
 };
 pub const ICommonPosPrintStationCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6013,79 +5971,79 @@ pub const ICommonPosPrintStationCapabilities = extern struct {
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPrinterPresent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDualColorSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDualColorSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getColorCartridgeCapabilities(self: *@This()) core.HResult!PosPrinterColorCapabilities {
         var _r: PosPrinterColorCapabilities = undefined;
         const _c = self.vtable.get_ColorCartridgeCapabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCartridgeSensors(self: *@This()) core.HResult!PosPrinterCartridgeSensors {
         var _r: PosPrinterCartridgeSensors = undefined;
         const _c = self.vtable.get_CartridgeSensors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsBoldSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBoldSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsItalicSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsItalicSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUnderlineSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDoubleHighPrintSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDoubleHighPrintSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDoubleWidePrintSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDoubleHighDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDoubleHighDoubleWidePrintSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPaperEmptySensorSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaperEmptySensorSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPaperNearEndSensorSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaperNearEndSensorSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedCharactersPerLine(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_SupportedCharactersPerLine(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICommonPosPrintStationCapabilities";
@@ -6117,8 +6075,11 @@ pub const ICommonPosPrintStationCapabilities = extern struct {
 };
 pub const ICommonReceiptSlipCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6126,55 +6087,55 @@ pub const ICommonReceiptSlipCapabilities = extern struct {
     pub fn getIsBarcodeSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBarcodeSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsBitmapSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBitmapSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsLeft90RotationSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLeft90RotationSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsRight90RotationSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRight90RotationSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIs180RotationSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Is180RotationSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPrintAreaSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPrintAreaSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRuledLineCapabilities(self: *@This()) core.HResult!PosPrinterRuledLineCapabilities {
         var _r: PosPrinterRuledLineCapabilities = undefined;
         const _c = self.vtable.get_RuledLineCapabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedBarcodeRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var _r: *IVectorView(PosPrinterRotation) = undefined;
         const _c = self.vtable.get_SupportedBarcodeRotations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedBitmapRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var _r: *IVectorView(PosPrinterRotation) = undefined;
         const _c = self.vtable.get_SupportedBitmapRotations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ICommonReceiptSlipCapabilities";
@@ -6202,23 +6163,26 @@ pub const ICommonReceiptSlipCapabilities = extern struct {
 };
 pub const IJournalPrintJob = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         const _c = self.vtable.FeedPaperByLine(@ptrCast(self), lineCount);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         const _c = self.vtable.FeedPaperByMapModeUnit(@ptrCast(self), distance);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IJournalPrintJob";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6239,8 +6203,11 @@ pub const IJournalPrintJob = extern struct {
 };
 pub const IJournalPrinterCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6261,8 +6228,11 @@ pub const IJournalPrinterCapabilities = extern struct {
 };
 pub const IJournalPrinterCapabilities2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6270,37 +6240,37 @@ pub const IJournalPrinterCapabilities2 = extern struct {
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReverseVideoSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStrikethroughSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuperscriptSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSubscriptSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReversePaperFeedByLineSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReversePaperFeedByMapModeUnitSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IJournalPrinterCapabilities2";
@@ -6325,8 +6295,11 @@ pub const IJournalPrinterCapabilities2 = extern struct {
 };
 pub const ILineDisplay = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6334,49 +6307,49 @@ pub const ILineDisplay = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCapabilities(self: *@This()) core.HResult!*LineDisplayCapabilities {
         var _r: *LineDisplayCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalDeviceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceControlDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlDescription(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceControlVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceServiceVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceServiceVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClaimAsync(self: *@This()) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
         var _r: *IAsyncOperation(ClaimedLineDisplay) = undefined;
         const _c = self.vtable.ClaimAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplay";
@@ -6403,8 +6376,11 @@ pub const ILineDisplay = extern struct {
 };
 pub const ILineDisplay2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6412,7 +6388,7 @@ pub const ILineDisplay2 = extern struct {
     pub fn CheckPowerStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplayPowerStatus) {
         var _r: *IAsyncOperation(LineDisplayPowerStatus) = undefined;
         const _c = self.vtable.CheckPowerStatusAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplay2";
@@ -6432,8 +6408,11 @@ pub const ILineDisplay2 = extern struct {
 };
 pub const ILineDisplayAttributes = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6441,72 +6420,72 @@ pub const ILineDisplayAttributes = extern struct {
     pub fn getIsPowerNotifyEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPowerNotifyEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsPowerNotifyEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPowerNotifyEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBrightness(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Brightness(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBrightness(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Brightness(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBlinkRate(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_BlinkRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBlinkRate(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_BlinkRate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScreenSizeInCharacters(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_ScreenSizeInCharacters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScreenSizeInCharacters(self: *@This(), value: Size) core.HResult!void {
         const _c = self.vtable.put_ScreenSizeInCharacters(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCharacterSet(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_CharacterSet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCharacterSet(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_CharacterSet(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCharacterSetMappingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCharacterSetMappingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCharacterSetMappingEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCharacterSetMappingEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCurrentWindow(self: *@This()) core.HResult!*LineDisplayWindow {
         var _r: *LineDisplayWindow = undefined;
         const _c = self.vtable.get_CurrentWindow(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCurrentWindow(self: *@This(), value: *LineDisplayWindow) core.HResult!void {
         const _c = self.vtable.put_CurrentWindow(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayAttributes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6538,8 +6517,11 @@ pub const ILineDisplayAttributes = extern struct {
 };
 pub const ILineDisplayCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6547,109 +6529,109 @@ pub const ILineDisplayCapabilities = extern struct {
     pub fn getIsStatisticsReportingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsReportingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsUpdatingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsUpdatingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanChangeScreenSize(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanChangeScreenSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanDisplayBitmaps(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanDisplayBitmaps(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanReadCharacterAtCursor(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanReadCharacterAtCursor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanMapCharacterSets(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanMapCharacterSets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanDisplayCustomGlyphs(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanDisplayCustomGlyphs(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanReverse(self: *@This()) core.HResult!LineDisplayTextAttributeGranularity {
         var _r: LineDisplayTextAttributeGranularity = undefined;
         const _c = self.vtable.get_CanReverse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanBlink(self: *@This()) core.HResult!LineDisplayTextAttributeGranularity {
         var _r: LineDisplayTextAttributeGranularity = undefined;
         const _c = self.vtable.get_CanBlink(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanChangeBlinkRate(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanChangeBlinkRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsBrightnessSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBrightnessSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCursorSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCursorSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHorizontalMarqueeSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHorizontalMarqueeSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsVerticalMarqueeSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVerticalMarqueeSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInterCharacterWaitSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInterCharacterWaitSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedDescriptors(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SupportedDescriptors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedWindows(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SupportedWindows(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayCapabilities";
@@ -6686,8 +6668,11 @@ pub const ILineDisplayCapabilities = extern struct {
 };
 pub const ILineDisplayCursor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6695,55 +6680,55 @@ pub const ILineDisplayCursor = extern struct {
     pub fn getCanCustomize(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCustomize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsBlinkSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBlinkSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsBlockSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBlockSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHalfBlockSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHalfBlockSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUnderlineSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReverseSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReverseSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsOtherSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOtherSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAttributes(self: *@This()) core.HResult!*LineDisplayCursorAttributes {
         var _r: *LineDisplayCursorAttributes = undefined;
         const _c = self.vtable.GetAttributes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdateAttributesAsync(self: *@This(), attributes: *LineDisplayCursorAttributes) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryUpdateAttributesAsync(@ptrCast(self), attributes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayCursor";
@@ -6771,8 +6756,11 @@ pub const ILineDisplayCursor = extern struct {
 };
 pub const ILineDisplayCursorAttributes = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6780,42 +6768,42 @@ pub const ILineDisplayCursorAttributes = extern struct {
     pub fn getIsBlinkEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBlinkEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsBlinkEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsBlinkEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCursorType(self: *@This()) core.HResult!LineDisplayCursorType {
         var _r: LineDisplayCursorType = undefined;
         const _c = self.vtable.get_CursorType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCursorType(self: *@This(), value: LineDisplayCursorType) core.HResult!void {
         const _c = self.vtable.put_CursorType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsAutoAdvanceEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAutoAdvanceEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsAutoAdvanceEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsAutoAdvanceEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPosition(self: *@This(), value: Point) core.HResult!void {
         const _c = self.vtable.put_Position(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayCursorAttributes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6841,8 +6829,11 @@ pub const ILineDisplayCursorAttributes = extern struct {
 };
 pub const ILineDisplayCustomGlyphs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6850,19 +6841,19 @@ pub const ILineDisplayCustomGlyphs = extern struct {
     pub fn getSizeInPixels(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_SizeInPixels(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedGlyphCodes(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_SupportedGlyphCodes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryRedefineAsync(self: *@This(), glyphCode: u32, glyphData: *IBuffer) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryRedefineAsync(@ptrCast(self), glyphCode, glyphData, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayCustomGlyphs";
@@ -6884,8 +6875,11 @@ pub const ILineDisplayCustomGlyphs = extern struct {
 };
 pub const ILineDisplayMarquee = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6893,43 +6887,43 @@ pub const ILineDisplayMarquee = extern struct {
     pub fn getFormat(self: *@This()) core.HResult!LineDisplayMarqueeFormat {
         var _r: LineDisplayMarqueeFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFormat(self: *@This(), value: LineDisplayMarqueeFormat) core.HResult!void {
         const _c = self.vtable.put_Format(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRepeatWaitInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RepeatWaitInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRepeatWaitInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_RepeatWaitInterval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScrollWaitInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_ScrollWaitInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScrollWaitInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_ScrollWaitInterval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryStartScrollingAsync(self: *@This(), direction: LineDisplayScrollDirection) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryStartScrollingAsync(@ptrCast(self), direction, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryStopScrollingAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryStopScrollingAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayMarquee";
@@ -6956,8 +6950,11 @@ pub const ILineDisplayMarquee = extern struct {
 };
 pub const ILineDisplayStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6965,25 +6962,25 @@ pub const ILineDisplayStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
         var _r: *IAsyncOperation(LineDisplay) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplay) {
         var _r: *IAsyncOperation(LineDisplay) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithConnectionTypes(@ptrCast(self), connectionTypes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayStatics";
@@ -7006,8 +7003,11 @@ pub const ILineDisplayStatics = extern struct {
 };
 pub const ILineDisplayStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7015,7 +7015,7 @@ pub const ILineDisplayStatics2 = extern struct {
     pub fn getStatisticsCategorySelector(self: *@This()) core.HResult!*LineDisplayStatisticsCategorySelector {
         var _r: *LineDisplayStatisticsCategorySelector = undefined;
         const _c = self.vtable.get_StatisticsCategorySelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayStatics2";
@@ -7035,8 +7035,11 @@ pub const ILineDisplayStatics2 = extern struct {
 };
 pub const ILineDisplayStatisticsCategorySelector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7044,19 +7047,19 @@ pub const ILineDisplayStatisticsCategorySelector = extern struct {
     pub fn getAllStatistics(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AllStatistics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUnifiedPosStatistics(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnifiedPosStatistics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getManufacturerStatistics(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ManufacturerStatistics(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayStatisticsCategorySelector";
@@ -7078,8 +7081,11 @@ pub const ILineDisplayStatisticsCategorySelector = extern struct {
 };
 pub const ILineDisplayStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7087,7 +7093,7 @@ pub const ILineDisplayStatusUpdatedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!LineDisplayPowerStatus {
         var _r: LineDisplayPowerStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayStatusUpdatedEventArgs";
@@ -7107,8 +7113,11 @@ pub const ILineDisplayStatusUpdatedEventArgs = extern struct {
 };
 pub const ILineDisplayStoredBitmap = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7116,13 +7125,13 @@ pub const ILineDisplayStoredBitmap = extern struct {
     pub fn getEscapeSequence(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EscapeSequence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDeleteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDeleteAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayStoredBitmap";
@@ -7143,8 +7152,11 @@ pub const ILineDisplayStoredBitmap = extern struct {
 };
 pub const ILineDisplayWindow = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7152,53 +7164,53 @@ pub const ILineDisplayWindow = extern struct {
     pub fn getSizeInCharacters(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_SizeInCharacters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInterCharacterWaitInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_InterCharacterWaitInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInterCharacterWaitInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_InterCharacterWaitInterval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryRefreshAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryRefreshAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayTextAsyncWithDisplayAttribute(self: *@This(), text: ?HSTRING, displayAttribute: LineDisplayTextAttribute) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayTextAsyncWithDisplayAttribute(@ptrCast(self), text, displayAttribute, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(self: *@This(), text: ?HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(@ptrCast(self), text, displayAttribute, startPosition, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayTextAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayTextAsync(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryScrollTextAsync(self: *@This(), direction: LineDisplayScrollDirection, numberOfColumnsOrRows: u32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryScrollTextAsync(@ptrCast(self), direction, numberOfColumnsOrRows, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryClearTextAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryClearTextAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayWindow";
@@ -7226,8 +7238,11 @@ pub const ILineDisplayWindow = extern struct {
 };
 pub const ILineDisplayWindow2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7235,55 +7250,55 @@ pub const ILineDisplayWindow2 = extern struct {
     pub fn getCursor(self: *@This()) core.HResult!*LineDisplayCursor {
         var _r: *LineDisplayCursor = undefined;
         const _c = self.vtable.get_Cursor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMarquee(self: *@This()) core.HResult!*LineDisplayMarquee {
         var _r: *LineDisplayMarquee = undefined;
         const _c = self.vtable.get_Marquee(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReadCharacterAtCursorAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.ReadCharacterAtCursorAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayStoredBitmapAtCursorAsync(self: *@This(), bitmap: *LineDisplayStoredBitmap) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayStoredBitmapAtCursorAsync(@ptrCast(self), bitmap, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsync(self: *@This(), bitmap: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayStorageFileBitmapAtCursorAsync(@ptrCast(self), bitmap, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, widthInPixels, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsync(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayStorageFileBitmapAtPointAsync(@ptrCast(self), bitmap, offsetInPixels, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(@ptrCast(self), bitmap, offsetInPixels, widthInPixels, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ILineDisplayWindow2";
@@ -7311,8 +7326,11 @@ pub const ILineDisplayWindow2 = extern struct {
 };
 pub const IMagneticStripeReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7320,60 +7338,60 @@ pub const IMagneticStripeReader = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCapabilities(self: *@This()) core.HResult!*MagneticStripeReaderCapabilities {
         var _r: *MagneticStripeReaderCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedCardTypes(self: *@This()) core.HResult![*]u32 {
         var _r: [*]u32 = undefined;
         const _c = self.vtable.get_SupportedCardTypes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceAuthenticationProtocol(self: *@This()) core.HResult!MagneticStripeReaderAuthenticationProtocol {
         var _r: MagneticStripeReaderAuthenticationProtocol = undefined;
         const _c = self.vtable.get_DeviceAuthenticationProtocol(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClaimReaderAsync(self: *@This()) core.HResult!*IAsyncOperation(ClaimedMagneticStripeReader) {
         var _r: *IAsyncOperation(ClaimedMagneticStripeReader) = undefined;
         const _c = self.vtable.ClaimReaderAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.RetrieveStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetErrorReportingType(self: *@This()) core.HResult!MagneticStripeReaderErrorReportingType {
         var _r: MagneticStripeReaderErrorReportingType = undefined;
         const _c = self.vtable.GetErrorReportingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusUpdated(self: *@This(), handler: *TypedEventHandler(MagneticStripeReader,MagneticStripeReaderStatusUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusUpdated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7401,8 +7419,11 @@ pub const IMagneticStripeReader = extern struct {
 };
 pub const IMagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7410,115 +7431,115 @@ pub const IMagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         var _r: *MagneticStripeReaderReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLicenseNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LicenseNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpirationDate(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExpirationDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRestrictions(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Restrictions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClass(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Class(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEndorsements(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Endorsements(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBirthDate(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BirthDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSurname(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Surname(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSuffix(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Suffix(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGender(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Gender(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHairColor(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HairColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEyeColor(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EyeColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeight(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWeight(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Weight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCity(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_City(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getState(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PostalCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderAamvaCardDataReceivedEventArgs";
@@ -7556,8 +7577,11 @@ pub const IMagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7565,55 +7589,55 @@ pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         var _r: *MagneticStripeReaderReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccountNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpirationDate(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExpirationDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMiddleInitial(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MiddleInitial(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSurname(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Surname(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSuffix(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Suffix(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderBankCardDataReceivedEventArgs";
@@ -7641,8 +7665,11 @@ pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7650,67 +7677,67 @@ pub const IMagneticStripeReaderCapabilities = extern struct {
     pub fn getCardAuthentication(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CardAuthentication(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedEncryptionAlgorithms(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SupportedEncryptionAlgorithms(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationLevel(self: *@This()) core.HResult!MagneticStripeReaderAuthenticationLevel {
         var _r: MagneticStripeReaderAuthenticationLevel = undefined;
         const _c = self.vtable.get_AuthenticationLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsIsoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsIsoSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsJisOneSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsJisOneSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsJisTwoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsJisTwoSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsReportingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsReportingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsUpdatingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsUpdatingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsTrackDataMaskingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTrackDataMaskingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsTransmitSentinelsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTransmitSentinelsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderCapabilities";
@@ -7740,8 +7767,11 @@ pub const IMagneticStripeReaderCapabilities = extern struct {
 };
 pub const IMagneticStripeReaderCardTypesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7749,25 +7779,25 @@ pub const IMagneticStripeReaderCardTypesStatics = extern struct {
     pub fn getUnknown(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Unknown(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBank(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Bank(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAamva(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Aamva(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedBase(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedBase(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderCardTypesStatics";
@@ -7790,8 +7820,11 @@ pub const IMagneticStripeReaderCardTypesStatics = extern struct {
 };
 pub const IMagneticStripeReaderEncryptionAlgorithmsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7799,19 +7832,19 @@ pub const IMagneticStripeReaderEncryptionAlgorithmsStatics = extern struct {
     pub fn getNone(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_None(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTripleDesDukpt(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TripleDesDukpt(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedBase(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedBase(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderEncryptionAlgorithmsStatics";
@@ -7833,8 +7866,11 @@ pub const IMagneticStripeReaderEncryptionAlgorithmsStatics = extern struct {
 };
 pub const IMagneticStripeReaderErrorOccurredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7842,37 +7878,37 @@ pub const IMagneticStripeReaderErrorOccurredEventArgs = extern struct {
     pub fn getTrack1Status(self: *@This()) core.HResult!MagneticStripeReaderTrackErrorType {
         var _r: MagneticStripeReaderTrackErrorType = undefined;
         const _c = self.vtable.get_Track1Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrack2Status(self: *@This()) core.HResult!MagneticStripeReaderTrackErrorType {
         var _r: MagneticStripeReaderTrackErrorType = undefined;
         const _c = self.vtable.get_Track2Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrack3Status(self: *@This()) core.HResult!MagneticStripeReaderTrackErrorType {
         var _r: MagneticStripeReaderTrackErrorType = undefined;
         const _c = self.vtable.get_Track3Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrack4Status(self: *@This()) core.HResult!MagneticStripeReaderTrackErrorType {
         var _r: MagneticStripeReaderTrackErrorType = undefined;
         const _c = self.vtable.get_Track4Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorData(self: *@This()) core.HResult!*UnifiedPosErrorData {
         var _r: *UnifiedPosErrorData = undefined;
         const _c = self.vtable.get_ErrorData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPartialInputData(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         var _r: *MagneticStripeReaderReport = undefined;
         const _c = self.vtable.get_PartialInputData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderErrorOccurredEventArgs";
@@ -7897,8 +7933,11 @@ pub const IMagneticStripeReaderErrorOccurredEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderReport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7906,55 +7945,55 @@ pub const IMagneticStripeReaderReport = extern struct {
     pub fn getCardType(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CardType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrack1(self: *@This()) core.HResult!*MagneticStripeReaderTrackData {
         var _r: *MagneticStripeReaderTrackData = undefined;
         const _c = self.vtable.get_Track1(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrack2(self: *@This()) core.HResult!*MagneticStripeReaderTrackData {
         var _r: *MagneticStripeReaderTrackData = undefined;
         const _c = self.vtable.get_Track2(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrack3(self: *@This()) core.HResult!*MagneticStripeReaderTrackData {
         var _r: *MagneticStripeReaderTrackData = undefined;
         const _c = self.vtable.get_Track3(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrack4(self: *@This()) core.HResult!*MagneticStripeReaderTrackData {
         var _r: *MagneticStripeReaderTrackData = undefined;
         const _c = self.vtable.get_Track4(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCardAuthenticationData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_CardAuthenticationData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCardAuthenticationDataLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CardAuthenticationDataLength(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdditionalSecurityInformation(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_AdditionalSecurityInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderReport";
@@ -7982,8 +8021,11 @@ pub const IMagneticStripeReaderReport = extern struct {
 };
 pub const IMagneticStripeReaderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -7991,19 +8033,19 @@ pub const IMagneticStripeReaderStatics = extern struct {
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(MagneticStripeReader) {
         var _r: *IAsyncOperation(MagneticStripeReader) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(MagneticStripeReader) {
         var _r: *IAsyncOperation(MagneticStripeReader) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderStatics";
@@ -8025,8 +8067,11 @@ pub const IMagneticStripeReaderStatics = extern struct {
 };
 pub const IMagneticStripeReaderStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8034,7 +8079,7 @@ pub const IMagneticStripeReaderStatics2 = extern struct {
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderStatics2";
@@ -8054,8 +8099,11 @@ pub const IMagneticStripeReaderStatics2 = extern struct {
 };
 pub const IMagneticStripeReaderStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8063,13 +8111,13 @@ pub const IMagneticStripeReaderStatusUpdatedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!MagneticStripeReaderStatus {
         var _r: MagneticStripeReaderStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedStatus(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderStatusUpdatedEventArgs";
@@ -8090,8 +8138,11 @@ pub const IMagneticStripeReaderStatusUpdatedEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderTrackData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8099,19 +8150,19 @@ pub const IMagneticStripeReaderTrackData = extern struct {
     pub fn getData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDiscretionaryData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_DiscretionaryData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEncryptedData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_EncryptedData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderTrackData";
@@ -8133,8 +8184,11 @@ pub const IMagneticStripeReaderTrackData = extern struct {
 };
 pub const IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8142,7 +8196,7 @@ pub const IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern 
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         var _r: *MagneticStripeReaderReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs";
@@ -8162,8 +8216,11 @@ pub const IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern 
 };
 pub const IPosPrinter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8171,60 +8228,60 @@ pub const IPosPrinter = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCapabilities(self: *@This()) core.HResult!*PosPrinterCapabilities {
         var _r: *PosPrinterCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedCharacterSets(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_SupportedCharacterSets(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedTypeFaces(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedTypeFaces(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!*PosPrinterStatus {
         var _r: *PosPrinterStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClaimPrinterAsync(self: *@This()) core.HResult!*IAsyncOperation(ClaimedPosPrinter) {
         var _r: *IAsyncOperation(ClaimedPosPrinter) = undefined;
         const _c = self.vtable.ClaimPrinterAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addStatusUpdated(self: *@This(), handler: *TypedEventHandler(PosPrinter,PosPrinterStatusUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusUpdated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8252,8 +8309,11 @@ pub const IPosPrinter = extern struct {
 };
 pub const IPosPrinter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8261,13 +8321,13 @@ pub const IPosPrinter2 = extern struct {
     pub fn getSupportedBarcodeSymbologies(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_SupportedBarcodeSymbologies(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFontProperty(self: *@This(), typeface: ?HSTRING) core.HResult!*PosPrinterFontProperty {
         var _r: *PosPrinterFontProperty = undefined;
         const _c = self.vtable.GetFontProperty(@ptrCast(self), typeface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinter2";
@@ -8288,8 +8348,11 @@ pub const IPosPrinter2 = extern struct {
 };
 pub const IPosPrinterCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8297,61 +8360,61 @@ pub const IPosPrinterCapabilities = extern struct {
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsReportingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsReportingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStatisticsUpdatingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsUpdatingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultCharacterSet(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DefaultCharacterSet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasCoverSensor(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasCoverSensor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanMapCharacterSet(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanMapCharacterSet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsTransactionSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTransactionSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReceipt(self: *@This()) core.HResult!*ReceiptPrinterCapabilities {
         var _r: *ReceiptPrinterCapabilities = undefined;
         const _c = self.vtable.get_Receipt(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSlip(self: *@This()) core.HResult!*SlipPrinterCapabilities {
         var _r: *SlipPrinterCapabilities = undefined;
         const _c = self.vtable.get_Slip(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getJournal(self: *@This()) core.HResult!*JournalPrinterCapabilities {
         var _r: *JournalPrinterCapabilities = undefined;
         const _c = self.vtable.get_Journal(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterCapabilities";
@@ -8380,8 +8443,11 @@ pub const IPosPrinterCapabilities = extern struct {
 };
 pub const IPosPrinterCharacterSetIdsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8389,19 +8455,19 @@ pub const IPosPrinterCharacterSetIdsStatics = extern struct {
     pub fn getUtf16LE(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Utf16LE(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAscii(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ascii(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAnsi(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Ansi(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterCharacterSetIdsStatics";
@@ -8423,8 +8489,11 @@ pub const IPosPrinterCharacterSetIdsStatics = extern struct {
 };
 pub const IPosPrinterFontProperty = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8432,19 +8501,19 @@ pub const IPosPrinterFontProperty = extern struct {
     pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TypeFace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsScalableToAnySize(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsScalableToAnySize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCharacterSizes(self: *@This()) core.HResult!*IVectorView(SizeUInt32) {
         var _r: *IVectorView(SizeUInt32) = undefined;
         const _c = self.vtable.get_CharacterSizes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterFontProperty";
@@ -8466,28 +8535,31 @@ pub const IPosPrinterFontProperty = extern struct {
 };
 pub const IPosPrinterJob = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.PrintLineWithData(@ptrCast(self), data);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         const _c = self.vtable.PrintLine(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ExecuteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ExecuteAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterJob";
@@ -8510,8 +8582,11 @@ pub const IPosPrinterJob = extern struct {
 };
 pub const IPosPrinterPrintOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8519,132 +8594,132 @@ pub const IPosPrinterPrintOptions = extern struct {
     pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TypeFace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTypeFace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TypeFace(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCharacterHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CharacterHeight(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCharacterHeight(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CharacterHeight(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBold(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Bold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBold(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Bold(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItalic(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Italic(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putItalic(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Italic(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUnderline(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Underline(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUnderline(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Underline(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReverseVideo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ReverseVideo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReverseVideo(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ReverseVideo(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStrikethrough(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Strikethrough(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStrikethrough(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Strikethrough(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSuperscript(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Superscript(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuperscript(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Superscript(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSubscript(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Subscript(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSubscript(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Subscript(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDoubleWide(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DoubleWide(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDoubleWide(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_DoubleWide(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDoubleHigh(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DoubleHigh(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDoubleHigh(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_DoubleHigh(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAlignment(self: *@This()) core.HResult!PosPrinterAlignment {
         var _r: PosPrinterAlignment = undefined;
         const _c = self.vtable.get_Alignment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAlignment(self: *@This(), value: PosPrinterAlignment) core.HResult!void {
         const _c = self.vtable.put_Alignment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCharacterSet(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CharacterSet(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCharacterSet(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CharacterSet(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterPrintOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8688,8 +8763,11 @@ pub const IPosPrinterPrintOptions = extern struct {
 };
 pub const IPosPrinterReleaseDeviceRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8710,8 +8788,11 @@ pub const IPosPrinterReleaseDeviceRequestedEventArgs = extern struct {
 };
 pub const IPosPrinterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8719,19 +8800,19 @@ pub const IPosPrinterStatics = extern struct {
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(PosPrinter) {
         var _r: *IAsyncOperation(PosPrinter) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(PosPrinter) {
         var _r: *IAsyncOperation(PosPrinter) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterStatics";
@@ -8753,8 +8834,11 @@ pub const IPosPrinterStatics = extern struct {
 };
 pub const IPosPrinterStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8762,7 +8846,7 @@ pub const IPosPrinterStatics2 = extern struct {
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterStatics2";
@@ -8782,8 +8866,11 @@ pub const IPosPrinterStatics2 = extern struct {
 };
 pub const IPosPrinterStatus = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8791,13 +8878,13 @@ pub const IPosPrinterStatus = extern struct {
     pub fn getStatusKind(self: *@This()) core.HResult!PosPrinterStatusKind {
         var _r: PosPrinterStatusKind = undefined;
         const _c = self.vtable.get_StatusKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedStatus(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterStatus";
@@ -8818,8 +8905,11 @@ pub const IPosPrinterStatus = extern struct {
 };
 pub const IPosPrinterStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -8827,7 +8917,7 @@ pub const IPosPrinterStatusUpdatedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!*PosPrinterStatus {
         var _r: *PosPrinterStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterStatusUpdatedEventArgs";
@@ -8847,71 +8937,74 @@ pub const IPosPrinterStatusUpdatedEventArgs = extern struct {
 };
 pub const IReceiptOrSlipJob = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetBarcodeRotation(self: *@This(), value: PosPrinterRotation) core.HResult!void {
         const _c = self.vtable.SetBarcodeRotation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPrintRotation(self: *@This(), value: PosPrinterRotation, includeBitmaps: bool) core.HResult!void {
         const _c = self.vtable.SetPrintRotation(@ptrCast(self), value, includeBitmaps);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetPrintArea(self: *@This(), value: Rect) core.HResult!void {
         const _c = self.vtable.SetPrintArea(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment) core.HResult!void {
         const _c = self.vtable.SetBitmap(@ptrCast(self), bitmapNumber, bitmap, alignment);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         const _c = self.vtable.SetBitmapWithWidth(@ptrCast(self), bitmapNumber, bitmap, alignment, width);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetCustomAlignedBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         const _c = self.vtable.SetCustomAlignedBitmap(@ptrCast(self), bitmapNumber, bitmap, alignmentDistance);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetCustomAlignedBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         const _c = self.vtable.SetCustomAlignedBitmapWithWidth(@ptrCast(self), bitmapNumber, bitmap, alignmentDistance, width);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintSavedBitmap(self: *@This(), bitmapNumber: u32) core.HResult!void {
         const _c = self.vtable.PrintSavedBitmap(@ptrCast(self), bitmapNumber);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DrawRuledLine(self: *@This(), positionList: ?HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
         const _c = self.vtable.DrawRuledLine(@ptrCast(self), positionList, lineDirection, lineWidth, lineStyle, lineColor);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintBarcode(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
         const _c = self.vtable.PrintBarcode(@ptrCast(self), data, symbology, height, width, textPosition, alignment);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintBarcodeCustomAlign(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
         const _c = self.vtable.PrintBarcodeCustomAlign(@ptrCast(self), data, symbology, height, width, textPosition, alignmentDistance);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintBitmap(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment) core.HResult!void {
         const _c = self.vtable.PrintBitmap(@ptrCast(self), bitmap, alignment);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         const _c = self.vtable.PrintBitmapWithWidth(@ptrCast(self), bitmap, alignment, width);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintCustomAlignedBitmap(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         const _c = self.vtable.PrintCustomAlignedBitmap(@ptrCast(self), bitmap, alignmentDistance);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PrintCustomAlignedBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         const _c = self.vtable.PrintCustomAlignedBitmapWithWidth(@ptrCast(self), bitmap, alignmentDistance, width);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IReceiptOrSlipJob";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8944,23 +9037,26 @@ pub const IReceiptOrSlipJob = extern struct {
 };
 pub const IReceiptPrintJob = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn MarkFeed(self: *@This(), kind: PosPrinterMarkFeedKind) core.HResult!void {
         const _c = self.vtable.MarkFeed(@ptrCast(self), kind);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CutPaperWithPercentage(self: *@This(), percentage: f64) core.HResult!void {
         const _c = self.vtable.CutPaperWithPercentage(@ptrCast(self), percentage);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CutPaper(self: *@This()) core.HResult!void {
         const _c = self.vtable.CutPaper(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IReceiptPrintJob";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8981,27 +9077,30 @@ pub const IReceiptPrintJob = extern struct {
 };
 pub const IReceiptPrintJob2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StampPaper(self: *@This()) core.HResult!void {
         const _c = self.vtable.StampPaper(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         const _c = self.vtable.FeedPaperByLine(@ptrCast(self), lineCount);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         const _c = self.vtable.FeedPaperByMapModeUnit(@ptrCast(self), distance);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IReceiptPrintJob2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9023,8 +9122,11 @@ pub const IReceiptPrintJob2 = extern struct {
 };
 pub const IReceiptPrinterCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9032,19 +9134,19 @@ pub const IReceiptPrinterCapabilities = extern struct {
     pub fn getCanCutPaper(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCutPaper(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStampSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStampSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMarkFeedCapabilities(self: *@This()) core.HResult!PosPrinterMarkFeedCapabilities {
         var _r: PosPrinterMarkFeedCapabilities = undefined;
         const _c = self.vtable.get_MarkFeedCapabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IReceiptPrinterCapabilities";
@@ -9066,8 +9168,11 @@ pub const IReceiptPrinterCapabilities = extern struct {
 };
 pub const IReceiptPrinterCapabilities2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9075,37 +9180,37 @@ pub const IReceiptPrinterCapabilities2 = extern struct {
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReverseVideoSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStrikethroughSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuperscriptSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSubscriptSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReversePaperFeedByLineSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReversePaperFeedByMapModeUnitSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IReceiptPrinterCapabilities2";
@@ -9130,23 +9235,26 @@ pub const IReceiptPrinterCapabilities2 = extern struct {
 };
 pub const ISlipPrintJob = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         const _c = self.vtable.FeedPaperByLine(@ptrCast(self), lineCount);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         const _c = self.vtable.FeedPaperByMapModeUnit(@ptrCast(self), distance);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ISlipPrintJob";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9167,8 +9275,11 @@ pub const ISlipPrintJob = extern struct {
 };
 pub const ISlipPrinterCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9176,13 +9287,13 @@ pub const ISlipPrinterCapabilities = extern struct {
     pub fn getIsFullLengthSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFullLengthSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsBothSidesPrintingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBothSidesPrintingSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ISlipPrinterCapabilities";
@@ -9203,8 +9314,11 @@ pub const ISlipPrinterCapabilities = extern struct {
 };
 pub const ISlipPrinterCapabilities2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9212,37 +9326,37 @@ pub const ISlipPrinterCapabilities2 = extern struct {
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReverseVideoSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStrikethroughSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuperscriptSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSubscriptSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReversePaperFeedByLineSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReversePaperFeedByMapModeUnitSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ISlipPrinterCapabilities2";
@@ -9267,8 +9381,11 @@ pub const ISlipPrinterCapabilities2 = extern struct {
 };
 pub const IUnifiedPosErrorData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9276,25 +9393,25 @@ pub const IUnifiedPosErrorData = extern struct {
     pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSeverity(self: *@This()) core.HResult!UnifiedPosErrorSeverity {
         var _r: UnifiedPosErrorSeverity = undefined;
         const _c = self.vtable.get_Severity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReason(self: *@This()) core.HResult!UnifiedPosErrorReason {
         var _r: UnifiedPosErrorReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedReason(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedReason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IUnifiedPosErrorData";
@@ -9317,8 +9434,11 @@ pub const IUnifiedPosErrorData = extern struct {
 };
 pub const IUnifiedPosErrorDataFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9326,7 +9446,7 @@ pub const IUnifiedPosErrorDataFactory = extern struct {
     pub fn CreateInstance(self: *@This(), message: ?HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
         var _r: *UnifiedPosErrorData = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), message, severity, reason, extendedReason, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IUnifiedPosErrorDataFactory";
@@ -9346,14 +9466,11 @@ pub const IUnifiedPosErrorDataFactory = extern struct {
 };
 pub const JournalPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9361,22 +9478,19 @@ pub const JournalPrintJob = extern struct {
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
         return try this.?.FeedPaperByLine(lineCount);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
         return try this.?.FeedPaperByMapModeUnit(distance);
     }
     pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
@@ -9403,14 +9517,11 @@ pub const JournalPrintJob = extern struct {
 };
 pub const JournalPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9418,134 +9529,115 @@ pub const JournalPrinterCapabilities = extern struct {
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReverseVideoSupported();
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsStrikethroughSupported();
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsSuperscriptSupported();
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsSubscriptSupported();
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReversePaperFeedByLineSupported();
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReversePaperFeedByMapModeUnitSupported();
     }
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPrinterPresent();
     }
     pub fn getIsDualColorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDualColorSupported();
     }
     pub fn getColorCartridgeCapabilities(self: *@This()) core.HResult!PosPrinterColorCapabilities {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getColorCartridgeCapabilities();
     }
     pub fn getCartridgeSensors(self: *@This()) core.HResult!PosPrinterCartridgeSensors {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getCartridgeSensors();
     }
     pub fn getIsBoldSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsBoldSupported();
     }
     pub fn getIsItalicSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsItalicSupported();
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsUnderlineSupported();
     }
     pub fn getIsDoubleHighPrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleHighPrintSupported();
     }
     pub fn getIsDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleWidePrintSupported();
     }
     pub fn getIsDoubleHighDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleHighDoubleWidePrintSupported();
     }
     pub fn getIsPaperEmptySensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPaperEmptySensorSupported();
     }
     pub fn getIsPaperNearEndSensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPaperNearEndSensorSupported();
     }
     pub fn getSupportedCharactersPerLine(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getSupportedCharactersPerLine();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.JournalPrinterCapabilities";
@@ -9556,14 +9648,11 @@ pub const JournalPrinterCapabilities = extern struct {
 };
 pub const LineDisplay = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9603,15 +9692,13 @@ pub const LineDisplay = extern struct {
     pub fn CheckPowerStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplayPowerStatus) {
         var this: ?*ILineDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplay2.IID, @ptrCast(&this));
         return try this.?.CheckPowerStatusAsync();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getStatisticsCategorySelector() core.HResult!*LineDisplayStatisticsCategorySelector {
@@ -9644,14 +9731,11 @@ pub const LineDisplay = extern struct {
 };
 pub const LineDisplayAttributes = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9720,14 +9804,11 @@ pub const LineDisplayAttributes = extern struct {
 };
 pub const LineDisplayCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9812,14 +9893,11 @@ pub const LineDisplayCapabilities = extern struct {
 };
 pub const LineDisplayCursor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9868,14 +9946,11 @@ pub const LineDisplayCursor = extern struct {
 };
 pub const LineDisplayCursorAttributes = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9928,14 +10003,11 @@ pub const LineDisplayCursorType = enum(i32) {
 };
 pub const LineDisplayCustomGlyphs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -9970,14 +10042,11 @@ pub const LineDisplayHorizontalAlignment = enum(i32) {
 };
 pub const LineDisplayMarquee = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10040,14 +10109,11 @@ pub const LineDisplayScrollDirection = enum(i32) {
 };
 pub const LineDisplayStatisticsCategorySelector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10072,14 +10138,11 @@ pub const LineDisplayStatisticsCategorySelector = extern struct {
 };
 pub const LineDisplayStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10096,14 +10159,11 @@ pub const LineDisplayStatusUpdatedEventArgs = extern struct {
 };
 pub const LineDisplayStoredBitmap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10140,14 +10200,11 @@ pub const LineDisplayVerticalAlignment = enum(i32) {
 };
 pub const LineDisplayWindow = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10191,71 +10248,61 @@ pub const LineDisplayWindow = extern struct {
     pub fn getCursor(self: *@This()) core.HResult!*LineDisplayCursor {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.getCursor();
     }
     pub fn getMarquee(self: *@This()) core.HResult!*LineDisplayMarquee {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.getMarquee();
     }
     pub fn ReadCharacterAtCursorAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.ReadCharacterAtCursorAsync();
     }
     pub fn TryDisplayStoredBitmapAtCursorAsync(self: *@This(), bitmap: *LineDisplayStoredBitmap) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.TryDisplayStoredBitmapAtCursorAsync(bitmap);
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsync(self: *@This(), bitmap: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsync(bitmap);
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsync(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.TryDisplayStorageFileBitmapAtPointAsync(bitmap, offsetInPixels);
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         return try this.?.TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(bitmap, offsetInPixels, widthInPixels);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.LineDisplayWindow";
@@ -10266,14 +10313,11 @@ pub const LineDisplayWindow = extern struct {
 };
 pub const MagneticStripeReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10321,8 +10365,7 @@ pub const MagneticStripeReader = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(MagneticStripeReader) {
@@ -10351,14 +10394,11 @@ pub const MagneticStripeReader = extern struct {
 };
 pub const MagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10456,14 +10496,11 @@ pub const MagneticStripeReaderAuthenticationProtocol = enum(i32) {
 };
 pub const MagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10512,14 +10549,11 @@ pub const MagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
 };
 pub const MagneticStripeReaderCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10576,14 +10610,11 @@ pub const MagneticStripeReaderCapabilities = extern struct {
 };
 pub const MagneticStripeReaderCardTypes = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10610,14 +10641,11 @@ pub const MagneticStripeReaderCardTypes = extern struct {
 };
 pub const MagneticStripeReaderEncryptionAlgorithms = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10640,14 +10668,11 @@ pub const MagneticStripeReaderEncryptionAlgorithms = extern struct {
 };
 pub const MagneticStripeReaderErrorOccurredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10688,14 +10713,11 @@ pub const MagneticStripeReaderErrorReportingType = enum(i32) {
 };
 pub const MagneticStripeReaderReport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10749,14 +10771,11 @@ pub const MagneticStripeReaderStatus = enum(i32) {
 };
 pub const MagneticStripeReaderStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10777,14 +10796,11 @@ pub const MagneticStripeReaderStatusUpdatedEventArgs = extern struct {
 };
 pub const MagneticStripeReaderTrackData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10824,14 +10840,11 @@ pub const MagneticStripeReaderTrackIds = enum(i32) {
 };
 pub const MagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10854,14 +10867,11 @@ pub const PosConnectionTypes = enum(i32) {
 };
 pub const PosPrinter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10909,22 +10919,19 @@ pub const PosPrinter = extern struct {
     pub fn getSupportedBarcodeSymbologies(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IPosPrinter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinter2.IID, @ptrCast(&this));
         return try this.?.getSupportedBarcodeSymbologies();
     }
     pub fn GetFontProperty(self: *@This(), typeface: ?HSTRING) core.HResult!*PosPrinterFontProperty {
         var this: ?*IPosPrinter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinter2.IID, @ptrCast(&this));
         return try this.?.GetFontProperty(typeface);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
@@ -10963,14 +10970,11 @@ pub const PosPrinterBarcodeTextPosition = enum(i32) {
 };
 pub const PosPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11030,14 +11034,11 @@ pub const PosPrinterCartridgeSensors = enum(i32) {
 };
 pub const PosPrinterCharacterSetIds = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11087,14 +11088,11 @@ pub const PosPrinterColorCartridge = enum(i32) {
 };
 pub const PosPrinterFontProperty = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11148,14 +11146,11 @@ pub const PosPrinterMarkFeedKind = enum(i32) {
 };
 pub const PosPrinterPrintOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11282,14 +11277,11 @@ pub const PosPrinterPrintSide = enum(i32) {
 };
 pub const PosPrinterReleaseDeviceRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11313,14 +11305,11 @@ pub const PosPrinterRuledLineCapabilities = enum(i32) {
 };
 pub const PosPrinterStatus = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11348,14 +11337,11 @@ pub const PosPrinterStatusKind = enum(i32) {
 };
 pub const PosPrinterStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11372,14 +11358,11 @@ pub const PosPrinterStatusUpdatedEventArgs = extern struct {
 };
 pub const ReceiptPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11399,162 +11382,139 @@ pub const ReceiptPrintJob = extern struct {
     pub fn StampPaper(self: *@This()) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         return try this.?.StampPaper();
     }
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         return try this.?.FeedPaperByLine(lineCount);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         return try this.?.FeedPaperByMapModeUnit(distance);
     }
     pub fn SetBarcodeRotation(self: *@This(), value: PosPrinterRotation) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.SetBarcodeRotation(value);
     }
     pub fn SetPrintRotation(self: *@This(), value: PosPrinterRotation, includeBitmaps: bool) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.SetPrintRotation(value, includeBitmaps);
     }
     pub fn SetPrintArea(self: *@This(), value: Rect) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.SetPrintArea(value);
     }
     pub fn SetBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.SetBitmap(bitmapNumber, bitmap, alignment);
     }
     pub fn SetBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.SetBitmapWithWidth(bitmapNumber, bitmap, alignment, width);
     }
     pub fn SetCustomAlignedBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.SetCustomAlignedBitmap(bitmapNumber, bitmap, alignmentDistance);
     }
     pub fn SetCustomAlignedBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.SetCustomAlignedBitmapWithWidth(bitmapNumber, bitmap, alignmentDistance, width);
     }
     pub fn PrintSavedBitmap(self: *@This(), bitmapNumber: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.PrintSavedBitmap(bitmapNumber);
     }
     pub fn DrawRuledLine(self: *@This(), positionList: ?HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.DrawRuledLine(positionList, lineDirection, lineWidth, lineStyle, lineColor);
     }
     pub fn PrintBarcode(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.PrintBarcode(data, symbology, height, width, textPosition, alignment);
     }
     pub fn PrintBarcodeCustomAlign(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.PrintBarcodeCustomAlign(data, symbology, height, width, textPosition, alignmentDistance);
     }
     pub fn PrintBitmap(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.PrintBitmap(bitmap, alignment);
     }
     pub fn PrintBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.PrintBitmapWithWidth(bitmap, alignment, width);
     }
     pub fn PrintCustomAlignedBitmap(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.PrintCustomAlignedBitmap(bitmap, alignmentDistance);
     }
     pub fn PrintCustomAlignedBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         return try this.?.PrintCustomAlignedBitmapWithWidth(bitmap, alignmentDistance, width);
     }
     pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.Print(data);
     }
     pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.PrintLineWithData(data);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.PrintLine();
     }
     pub fn ExecuteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.ExecuteAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ReceiptPrintJob";
@@ -11565,14 +11525,11 @@ pub const ReceiptPrintJob = extern struct {
 };
 pub const ReceiptPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11592,197 +11549,169 @@ pub const ReceiptPrinterCapabilities = extern struct {
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReverseVideoSupported();
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsStrikethroughSupported();
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsSuperscriptSupported();
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsSubscriptSupported();
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReversePaperFeedByLineSupported();
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReversePaperFeedByMapModeUnitSupported();
     }
     pub fn getIsBarcodeSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsBarcodeSupported();
     }
     pub fn getIsBitmapSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsBitmapSupported();
     }
     pub fn getIsLeft90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsLeft90RotationSupported();
     }
     pub fn getIsRight90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsRight90RotationSupported();
     }
     pub fn getIs180RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIs180RotationSupported();
     }
     pub fn getIsPrintAreaSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPrintAreaSupported();
     }
     pub fn getRuledLineCapabilities(self: *@This()) core.HResult!PosPrinterRuledLineCapabilities {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getRuledLineCapabilities();
     }
     pub fn getSupportedBarcodeRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getSupportedBarcodeRotations();
     }
     pub fn getSupportedBitmapRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getSupportedBitmapRotations();
     }
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPrinterPresent();
     }
     pub fn getIsDualColorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDualColorSupported();
     }
     pub fn getColorCartridgeCapabilities(self: *@This()) core.HResult!PosPrinterColorCapabilities {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getColorCartridgeCapabilities();
     }
     pub fn getCartridgeSensors(self: *@This()) core.HResult!PosPrinterCartridgeSensors {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getCartridgeSensors();
     }
     pub fn getIsBoldSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsBoldSupported();
     }
     pub fn getIsItalicSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsItalicSupported();
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsUnderlineSupported();
     }
     pub fn getIsDoubleHighPrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleHighPrintSupported();
     }
     pub fn getIsDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleWidePrintSupported();
     }
     pub fn getIsDoubleHighDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleHighDoubleWidePrintSupported();
     }
     pub fn getIsPaperEmptySensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPaperEmptySensorSupported();
     }
     pub fn getIsPaperNearEndSensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPaperNearEndSensorSupported();
     }
     pub fn getSupportedCharactersPerLine(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getSupportedCharactersPerLine();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ReceiptPrinterCapabilities";
@@ -11797,14 +11726,11 @@ pub const SizeUInt32 = extern struct {
 };
 pub const SlipPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11812,22 +11738,19 @@ pub const SlipPrintJob = extern struct {
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         return try this.?.FeedPaperByLine(lineCount);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         return try this.?.FeedPaperByMapModeUnit(distance);
     }
     pub fn SetBarcodeRotation(self: *@This(), value: PosPrinterRotation) core.HResult!void {
@@ -11893,29 +11816,25 @@ pub const SlipPrintJob = extern struct {
     pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.Print(data);
     }
     pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.PrintLineWithData(data);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.PrintLine();
     }
     pub fn ExecuteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPosPrinterJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         return try this.?.ExecuteAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.SlipPrintJob";
@@ -11926,14 +11845,11 @@ pub const SlipPrintJob = extern struct {
 };
 pub const SlipPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -11949,197 +11865,169 @@ pub const SlipPrinterCapabilities = extern struct {
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReverseVideoSupported();
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsStrikethroughSupported();
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsSuperscriptSupported();
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsSubscriptSupported();
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReversePaperFeedByLineSupported();
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         return try this.?.getIsReversePaperFeedByMapModeUnitSupported();
     }
     pub fn getIsBarcodeSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsBarcodeSupported();
     }
     pub fn getIsBitmapSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsBitmapSupported();
     }
     pub fn getIsLeft90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsLeft90RotationSupported();
     }
     pub fn getIsRight90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsRight90RotationSupported();
     }
     pub fn getIs180RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIs180RotationSupported();
     }
     pub fn getIsPrintAreaSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPrintAreaSupported();
     }
     pub fn getRuledLineCapabilities(self: *@This()) core.HResult!PosPrinterRuledLineCapabilities {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getRuledLineCapabilities();
     }
     pub fn getSupportedBarcodeRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getSupportedBarcodeRotations();
     }
     pub fn getSupportedBitmapRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         return try this.?.getSupportedBitmapRotations();
     }
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPrinterPresent();
     }
     pub fn getIsDualColorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDualColorSupported();
     }
     pub fn getColorCartridgeCapabilities(self: *@This()) core.HResult!PosPrinterColorCapabilities {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getColorCartridgeCapabilities();
     }
     pub fn getCartridgeSensors(self: *@This()) core.HResult!PosPrinterCartridgeSensors {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getCartridgeSensors();
     }
     pub fn getIsBoldSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsBoldSupported();
     }
     pub fn getIsItalicSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsItalicSupported();
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsUnderlineSupported();
     }
     pub fn getIsDoubleHighPrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleHighPrintSupported();
     }
     pub fn getIsDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleWidePrintSupported();
     }
     pub fn getIsDoubleHighDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsDoubleHighDoubleWidePrintSupported();
     }
     pub fn getIsPaperEmptySensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPaperEmptySensorSupported();
     }
     pub fn getIsPaperNearEndSensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getIsPaperNearEndSensorSupported();
     }
     pub fn getSupportedCharactersPerLine(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         return try this.?.getSupportedCharactersPerLine();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.SlipPrinterCapabilities";
@@ -12150,14 +12038,11 @@ pub const SlipPrinterCapabilities = extern struct {
 };
 pub const UnifiedPosErrorData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

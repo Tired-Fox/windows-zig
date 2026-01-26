@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ActivationSignalDetectionConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -112,43 +109,37 @@ pub const ActivationSignalDetectionConfiguration = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn SetModelDataWithResult(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!ActivationSignalDetectionConfigurationSetModelDataResult {
         var this: ?*IActivationSignalDetectionConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
         return try this.?.SetModelDataWithResult(dataType, data);
     }
     pub fn SetModelDataWithResultAsync(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) {
         var this: ?*IActivationSignalDetectionConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
         return try this.?.SetModelDataWithResultAsync(dataType, data);
     }
     pub fn SetEnabledWithResultAsync(self: *@This(), value: bool) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationStateChangeResult) {
         var this: ?*IActivationSignalDetectionConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
         return try this.?.SetEnabledWithResultAsync(value);
     }
     pub fn SetEnabledWithResult(self: *@This(), value: bool) core.HResult!ActivationSignalDetectionConfigurationStateChangeResult {
         var this: ?*IActivationSignalDetectionConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
         return try this.?.SetEnabledWithResult(value);
     }
     pub fn getTrainingStepCompletionMaxAllowedTime(self: *@This()) core.HResult!u32 {
         var this: ?*IActivationSignalDetectionConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
         return try this.?.getTrainingStepCompletionMaxAllowedTime();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.ActivationSignalDetectionConfiguration";
@@ -159,14 +150,11 @@ pub const ActivationSignalDetectionConfiguration = extern struct {
 };
 pub const ActivationSignalDetectionConfigurationCreationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -231,14 +219,11 @@ pub const ActivationSignalDetectionTrainingDataFormat = enum(i32) {
 };
 pub const ActivationSignalDetector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -310,50 +295,43 @@ pub const ActivationSignalDetector = extern struct {
     pub fn GetAvailableModelIdsForSignalIdAsync(self: *@This(), signalId: ?HSTRING) core.HResult!*IAsyncOperation(IVector(?HSTRING)) {
         var this: ?*IActivationSignalDetector2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         return try this.?.GetAvailableModelIdsForSignalIdAsync(signalId);
     }
     pub fn GetAvailableModelIdsForSignalId(self: *@This(), signalId: ?HSTRING) core.HResult!*IVector(?HSTRING) {
         var this: ?*IActivationSignalDetector2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         return try this.?.GetAvailableModelIdsForSignalId(signalId);
     }
     pub fn CreateConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) {
         var this: ?*IActivationSignalDetector2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         return try this.?.CreateConfigurationWithResultAsync(signalId, modelId, displayName);
     }
     pub fn CreateConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*ActivationSignalDetectionConfigurationCreationResult {
         var this: ?*IActivationSignalDetector2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         return try this.?.CreateConfigurationWithResult(signalId, modelId, displayName);
     }
     pub fn RemoveConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) {
         var this: ?*IActivationSignalDetector2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         return try this.?.RemoveConfigurationWithResultAsync(signalId, modelId);
     }
     pub fn RemoveConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!ActivationSignalDetectionConfigurationRemovalResult {
         var this: ?*IActivationSignalDetector2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         return try this.?.RemoveConfigurationWithResult(signalId, modelId);
     }
     pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActivationSignalDetector2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         return try this.?.getDetectorId();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.ActivationSignalDetector";
@@ -384,14 +362,11 @@ pub const ConversationalAgentActivationResult = enum(i32) {
 };
 pub const ConversationalAgentDetectorManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -415,15 +390,13 @@ pub const ConversationalAgentDetectorManager = extern struct {
     pub fn GetActivationSignalDetectorFromId(self: *@This(), detectorId: ?HSTRING) core.HResult!*ActivationSignalDetector {
         var this: ?*IConversationalAgentDetectorManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentDetectorManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentDetectorManager2.IID, @ptrCast(&this));
         return try this.?.GetActivationSignalDetectorFromId(detectorId);
     }
     pub fn GetActivationSignalDetectorFromIdAsync(self: *@This(), detectorId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetector) {
         var this: ?*IConversationalAgentDetectorManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentDetectorManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentDetectorManager2.IID, @ptrCast(&this));
         return try this.?.GetActivationSignalDetectorFromIdAsync(detectorId);
     }
     pub fn getDefault() core.HResult!*ConversationalAgentDetectorManager {
@@ -439,14 +412,11 @@ pub const ConversationalAgentDetectorManager = extern struct {
 };
 pub const ConversationalAgentSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -590,50 +560,43 @@ pub const ConversationalAgentSession = extern struct {
     pub fn RequestActivationAsync(self: *@This(), activationKind: ConversationalAgentActivationKind) core.HResult!*IAsyncOperation(ConversationalAgentActivationResult) {
         var this: ?*IConversationalAgentSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
         return try this.?.RequestActivationAsync(activationKind);
     }
     pub fn RequestActivation(self: *@This(), activationKind: ConversationalAgentActivationKind) core.HResult!ConversationalAgentActivationResult {
         var this: ?*IConversationalAgentSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
         return try this.?.RequestActivation(activationKind);
     }
     pub fn SetSupportLockScreenActivationAsync(self: *@This(), lockScreenActivationSupported: bool) core.HResult!*IAsyncAction {
         var this: ?*IConversationalAgentSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
         return try this.?.SetSupportLockScreenActivationAsync(lockScreenActivationSupported);
     }
     pub fn SetSupportLockScreenActivation(self: *@This(), lockScreenActivationSupported: bool) core.HResult!void {
         var this: ?*IConversationalAgentSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
         return try this.?.SetSupportLockScreenActivation(lockScreenActivationSupported);
     }
     pub fn GetMissingPrerequisites(self: *@This()) core.HResult!*IVectorView(ConversationalAgentVoiceActivationPrerequisiteKind) {
         var this: ?*IConversationalAgentSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
         return try this.?.GetMissingPrerequisites();
     }
     pub fn GetMissingPrerequisitesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ConversationalAgentVoiceActivationPrerequisiteKind)) {
         var this: ?*IConversationalAgentSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSession2.IID, @ptrCast(&this));
         return try this.?.GetMissingPrerequisitesAsync();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn GetCurrentSessionAsync() core.HResult!*IAsyncOperation(ConversationalAgentSession) {
@@ -653,14 +616,11 @@ pub const ConversationalAgentSession = extern struct {
 };
 pub const ConversationalAgentSessionInterruptedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -677,14 +637,11 @@ pub const ConversationalAgentSessionUpdateResponse = enum(i32) {
 };
 pub const ConversationalAgentSignal = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -740,15 +697,13 @@ pub const ConversationalAgentSignal = extern struct {
     pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IConversationalAgentSignal2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSignal2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSignal2.IID, @ptrCast(&this));
         return try this.?.getDetectorId();
     }
     pub fn getDetectorKind(self: *@This()) core.HResult!ActivationSignalDetectorKind {
         var this: ?*IConversationalAgentSignal2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSignal2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSignal2.IID, @ptrCast(&this));
         return try this.?.getDetectorKind();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.ConversationalAgentSignal";
@@ -759,14 +714,11 @@ pub const ConversationalAgentSignal = extern struct {
 };
 pub const ConversationalAgentSignalDetectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -793,14 +745,11 @@ pub const ConversationalAgentSystemStateChangeType = enum(i32) {
 };
 pub const ConversationalAgentSystemStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -830,14 +779,11 @@ pub const DetectionConfigurationAvailabilityChangeKind = enum(i32) {
 };
 pub const DetectionConfigurationAvailabilityChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -854,14 +800,11 @@ pub const DetectionConfigurationAvailabilityChangedEventArgs = extern struct {
 };
 pub const DetectionConfigurationAvailabilityInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -885,8 +828,7 @@ pub const DetectionConfigurationAvailabilityInfo = extern struct {
     pub fn getUnavailableSystemResources(self: *@This()) core.HResult!*IVectorView(SignalDetectorResourceKind) {
         var this: ?*IDetectionConfigurationAvailabilityInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDetectionConfigurationAvailabilityInfo2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDetectionConfigurationAvailabilityInfo2.IID, @ptrCast(&this));
         return try this.?.getUnavailableSystemResources();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.DetectionConfigurationAvailabilityInfo";
@@ -909,8 +851,11 @@ pub const DetectionConfigurationTrainingStatus = enum(i32) {
 };
 pub const IActivationSignalDetectionConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -918,135 +863,135 @@ pub const IActivationSignalDetectionConfiguration = extern struct {
     pub fn getSignalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignalId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModelId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsActive(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.SetEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetEnabledAsync(self: *@This(), value: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetEnabledAsync(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailabilityInfo(self: *@This()) core.HResult!*DetectionConfigurationAvailabilityInfo {
         var _r: *DetectionConfigurationAvailabilityInfo = undefined;
         const _c = self.vtable.get_AvailabilityInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAvailabilityChanged(self: *@This(), handler: *TypedEventHandler(ActivationSignalDetectionConfiguration,DetectionConfigurationAvailabilityChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailabilityChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAvailabilityChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AvailabilityChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetModelData(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!void {
         const _c = self.vtable.SetModelData(@ptrCast(self), dataType, data);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetModelDataAsync(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetModelDataAsync(@ptrCast(self), dataType, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetModelDataType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetModelDataType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetModelDataTypeAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetModelDataTypeAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetModelData(self: *@This()) core.HResult!*IInputStream {
         var _r: *IInputStream = undefined;
         const _c = self.vtable.GetModelData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetModelDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IInputStream) {
         var _r: *IAsyncOperation(IInputStream) = undefined;
         const _c = self.vtable.GetModelDataAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearModelData(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearModelData(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearModelDataAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ClearModelDataAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrainingStepsCompleted(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TrainingStepsCompleted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrainingStepsRemaining(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TrainingStepsRemaining(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrainingDataFormat(self: *@This()) core.HResult!ActivationSignalDetectionTrainingDataFormat {
         var _r: ActivationSignalDetectionTrainingDataFormat = undefined;
         const _c = self.vtable.get_TrainingDataFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplyTrainingData(self: *@This(), trainingDataFormat: ActivationSignalDetectionTrainingDataFormat, trainingData: *IInputStream) core.HResult!DetectionConfigurationTrainingStatus {
         var _r: DetectionConfigurationTrainingStatus = undefined;
         const _c = self.vtable.ApplyTrainingData(@ptrCast(self), trainingDataFormat, trainingData, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApplyTrainingDataAsync(self: *@This(), trainingDataFormat: ActivationSignalDetectionTrainingDataFormat, trainingData: *IInputStream) core.HResult!*IAsyncOperation(DetectionConfigurationTrainingStatus) {
         var _r: *IAsyncOperation(DetectionConfigurationTrainingStatus) = undefined;
         const _c = self.vtable.ApplyTrainingDataAsync(@ptrCast(self), trainingDataFormat, trainingData, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearTrainingData(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearTrainingData(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearTrainingDataAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ClearTrainingDataAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IActivationSignalDetectionConfiguration";
@@ -1089,8 +1034,11 @@ pub const IActivationSignalDetectionConfiguration = extern struct {
 };
 pub const IActivationSignalDetectionConfiguration2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1098,31 +1046,31 @@ pub const IActivationSignalDetectionConfiguration2 = extern struct {
     pub fn SetModelDataWithResult(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!ActivationSignalDetectionConfigurationSetModelDataResult {
         var _r: ActivationSignalDetectionConfigurationSetModelDataResult = undefined;
         const _c = self.vtable.SetModelDataWithResult(@ptrCast(self), dataType, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetModelDataWithResultAsync(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) = undefined;
         const _c = self.vtable.SetModelDataWithResultAsync(@ptrCast(self), dataType, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetEnabledWithResultAsync(self: *@This(), value: bool) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationStateChangeResult) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfigurationStateChangeResult) = undefined;
         const _c = self.vtable.SetEnabledWithResultAsync(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetEnabledWithResult(self: *@This(), value: bool) core.HResult!ActivationSignalDetectionConfigurationStateChangeResult {
         var _r: ActivationSignalDetectionConfigurationStateChangeResult = undefined;
         const _c = self.vtable.SetEnabledWithResult(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTrainingStepCompletionMaxAllowedTime(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TrainingStepCompletionMaxAllowedTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IActivationSignalDetectionConfiguration2";
@@ -1146,8 +1094,11 @@ pub const IActivationSignalDetectionConfiguration2 = extern struct {
 };
 pub const IActivationSignalDetectionConfigurationCreationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1155,13 +1106,13 @@ pub const IActivationSignalDetectionConfigurationCreationResult = extern struct 
     pub fn getStatus(self: *@This()) core.HResult!ActivationSignalDetectionConfigurationCreationStatus {
         var _r: ActivationSignalDetectionConfigurationCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConfiguration(self: *@This()) core.HResult!*ActivationSignalDetectionConfiguration {
         var _r: *ActivationSignalDetectionConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IActivationSignalDetectionConfigurationCreationResult";
@@ -1182,8 +1133,11 @@ pub const IActivationSignalDetectionConfigurationCreationResult = extern struct 
 };
 pub const IActivationSignalDetector = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1191,93 +1145,93 @@ pub const IActivationSignalDetector = extern struct {
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKind(self: *@This()) core.HResult!ActivationSignalDetectorKind {
         var _r: ActivationSignalDetectorKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanCreateConfigurations(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCreateConfigurations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedModelDataTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedModelDataTypes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedTrainingDataFormats(self: *@This()) core.HResult!*IVectorView(ActivationSignalDetectionTrainingDataFormat) {
         var _r: *IVectorView(ActivationSignalDetectionTrainingDataFormat) = undefined;
         const _c = self.vtable.get_SupportedTrainingDataFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedPowerStates(self: *@This()) core.HResult!*IVectorView(ActivationSignalDetectorPowerState) {
         var _r: *IVectorView(ActivationSignalDetectorPowerState) = undefined;
         const _c = self.vtable.get_SupportedPowerStates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedModelIdsForSignalId(self: *@This(), signalId: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetSupportedModelIdsForSignalId(@ptrCast(self), signalId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedModelIdsForSignalIdAsync(self: *@This(), signalId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetSupportedModelIdsForSignalIdAsync(@ptrCast(self), signalId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.CreateConfiguration(@ptrCast(self), signalId, modelId, displayName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CreateConfigurationAsync(@ptrCast(self), signalId, modelId, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConfigurations(self: *@This()) core.HResult!*IVectorView(ActivationSignalDetectionConfiguration) {
         var _r: *IVectorView(ActivationSignalDetectionConfiguration) = undefined;
         const _c = self.vtable.GetConfigurations(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConfigurationsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ActivationSignalDetectionConfiguration)) {
         var _r: *IAsyncOperation(IVectorView(ActivationSignalDetectionConfiguration)) = undefined;
         const _c = self.vtable.GetConfigurationsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*ActivationSignalDetectionConfiguration {
         var _r: *ActivationSignalDetectionConfiguration = undefined;
         const _c = self.vtable.GetConfiguration(@ptrCast(self), signalId, modelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfiguration) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfiguration) = undefined;
         const _c = self.vtable.GetConfigurationAsync(@ptrCast(self), signalId, modelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveConfiguration(@ptrCast(self), signalId, modelId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RemoveConfigurationAsync(@ptrCast(self), signalId, modelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IActivationSignalDetector";
@@ -1312,8 +1266,11 @@ pub const IActivationSignalDetector = extern struct {
 };
 pub const IActivationSignalDetector2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1321,43 +1278,43 @@ pub const IActivationSignalDetector2 = extern struct {
     pub fn GetAvailableModelIdsForSignalIdAsync(self: *@This(), signalId: ?HSTRING) core.HResult!*IAsyncOperation(IVector(?HSTRING)) {
         var _r: *IAsyncOperation(IVector(?HSTRING)) = undefined;
         const _c = self.vtable.GetAvailableModelIdsForSignalIdAsync(@ptrCast(self), signalId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAvailableModelIdsForSignalId(self: *@This(), signalId: ?HSTRING) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetAvailableModelIdsForSignalId(@ptrCast(self), signalId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) = undefined;
         const _c = self.vtable.CreateConfigurationWithResultAsync(@ptrCast(self), signalId, modelId, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*ActivationSignalDetectionConfigurationCreationResult {
         var _r: *ActivationSignalDetectionConfigurationCreationResult = undefined;
         const _c = self.vtable.CreateConfigurationWithResult(@ptrCast(self), signalId, modelId, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) = undefined;
         const _c = self.vtable.RemoveConfigurationWithResultAsync(@ptrCast(self), signalId, modelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!ActivationSignalDetectionConfigurationRemovalResult {
         var _r: ActivationSignalDetectionConfigurationRemovalResult = undefined;
         const _c = self.vtable.RemoveConfigurationWithResult(@ptrCast(self), signalId, modelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DetectorId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IActivationSignalDetector2";
@@ -1383,8 +1340,11 @@ pub const IActivationSignalDetector2 = extern struct {
 };
 pub const IConversationalAgentDetectorManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1392,25 +1352,25 @@ pub const IConversationalAgentDetectorManager = extern struct {
     pub fn GetAllActivationSignalDetectors(self: *@This()) core.HResult!*IVectorView(ActivationSignalDetector) {
         var _r: *IVectorView(ActivationSignalDetector) = undefined;
         const _c = self.vtable.GetAllActivationSignalDetectors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAllActivationSignalDetectorsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ActivationSignalDetector)) {
         var _r: *IAsyncOperation(IVectorView(ActivationSignalDetector)) = undefined;
         const _c = self.vtable.GetAllActivationSignalDetectorsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetActivationSignalDetectors(self: *@This(), kind: ActivationSignalDetectorKind) core.HResult!*IVectorView(ActivationSignalDetector) {
         var _r: *IVectorView(ActivationSignalDetector) = undefined;
         const _c = self.vtable.GetActivationSignalDetectors(@ptrCast(self), kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetActivationSignalDetectorsAsync(self: *@This(), kind: ActivationSignalDetectorKind) core.HResult!*IAsyncOperation(IVectorView(ActivationSignalDetector)) {
         var _r: *IAsyncOperation(IVectorView(ActivationSignalDetector)) = undefined;
         const _c = self.vtable.GetActivationSignalDetectorsAsync(@ptrCast(self), kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentDetectorManager";
@@ -1433,8 +1393,11 @@ pub const IConversationalAgentDetectorManager = extern struct {
 };
 pub const IConversationalAgentDetectorManager2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1442,13 +1405,13 @@ pub const IConversationalAgentDetectorManager2 = extern struct {
     pub fn GetActivationSignalDetectorFromId(self: *@This(), detectorId: ?HSTRING) core.HResult!*ActivationSignalDetector {
         var _r: *ActivationSignalDetector = undefined;
         const _c = self.vtable.GetActivationSignalDetectorFromId(@ptrCast(self), detectorId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetActivationSignalDetectorFromIdAsync(self: *@This(), detectorId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetector) {
         var _r: *IAsyncOperation(ActivationSignalDetector) = undefined;
         const _c = self.vtable.GetActivationSignalDetectorFromIdAsync(@ptrCast(self), detectorId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentDetectorManager2";
@@ -1469,8 +1432,11 @@ pub const IConversationalAgentDetectorManager2 = extern struct {
 };
 pub const IConversationalAgentDetectorManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1478,7 +1444,7 @@ pub const IConversationalAgentDetectorManagerStatics = extern struct {
     pub fn getDefault(self: *@This()) core.HResult!*ConversationalAgentDetectorManager {
         var _r: *ConversationalAgentDetectorManager = undefined;
         const _c = self.vtable.get_Default(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentDetectorManagerStatics";
@@ -1498,8 +1464,11 @@ pub const IConversationalAgentDetectorManagerStatics = extern struct {
 };
 pub const IConversationalAgentSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1507,199 +1476,199 @@ pub const IConversationalAgentSession = extern struct {
     pub fn addSessionInterrupted(self: *@This(), handler: *TypedEventHandler(ConversationalAgentSession,ConversationalAgentSessionInterruptedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SessionInterrupted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSessionInterrupted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SessionInterrupted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSignalDetected(self: *@This(), handler: *TypedEventHandler(ConversationalAgentSession,ConversationalAgentSignalDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SignalDetected(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSignalDetected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SignalDetected(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addSystemStateChanged(self: *@This(), handler: *TypedEventHandler(ConversationalAgentSession,ConversationalAgentSystemStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SystemStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSystemStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SystemStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAgentState(self: *@This()) core.HResult!ConversationalAgentState {
         var _r: ConversationalAgentState = undefined;
         const _c = self.vtable.get_AgentState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSignal(self: *@This()) core.HResult!*ConversationalAgentSignal {
         var _r: *ConversationalAgentSignal = undefined;
         const _c = self.vtable.get_Signal(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsIndicatorLightAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsIndicatorLightAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsScreenAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsScreenAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsUserAuthenticated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUserAuthenticated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsVoiceActivationAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVoiceActivationAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInterruptible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInterruptible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInterrupted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInterrupted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestInterruptibleAsync(self: *@This(), interruptible: bool) core.HResult!*IAsyncOperation(ConversationalAgentSessionUpdateResponse) {
         var _r: *IAsyncOperation(ConversationalAgentSessionUpdateResponse) = undefined;
         const _c = self.vtable.RequestInterruptibleAsync(@ptrCast(self), interruptible, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestInterruptible(self: *@This(), interruptible: bool) core.HResult!ConversationalAgentSessionUpdateResponse {
         var _r: ConversationalAgentSessionUpdateResponse = undefined;
         const _c = self.vtable.RequestInterruptible(@ptrCast(self), interruptible, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAgentStateChangeAsync(self: *@This(), state: ConversationalAgentState) core.HResult!*IAsyncOperation(ConversationalAgentSessionUpdateResponse) {
         var _r: *IAsyncOperation(ConversationalAgentSessionUpdateResponse) = undefined;
         const _c = self.vtable.RequestAgentStateChangeAsync(@ptrCast(self), state, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAgentStateChange(self: *@This(), state: ConversationalAgentState) core.HResult!ConversationalAgentSessionUpdateResponse {
         var _r: ConversationalAgentSessionUpdateResponse = undefined;
         const _c = self.vtable.RequestAgentStateChange(@ptrCast(self), state, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestForegroundActivationAsync(self: *@This()) core.HResult!*IAsyncOperation(ConversationalAgentSessionUpdateResponse) {
         var _r: *IAsyncOperation(ConversationalAgentSessionUpdateResponse) = undefined;
         const _c = self.vtable.RequestForegroundActivationAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestForegroundActivation(self: *@This()) core.HResult!ConversationalAgentSessionUpdateResponse {
         var _r: ConversationalAgentSessionUpdateResponse = undefined;
         const _c = self.vtable.RequestForegroundActivation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAudioClientAsync(self: *@This()) core.HResult!*IAsyncOperation(IInspectable) {
         var _r: *IAsyncOperation(IInspectable) = undefined;
         const _c = self.vtable.GetAudioClientAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAudioClient(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetAudioClient(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateAudioDeviceInputNodeAsync(self: *@This(), graph: *AudioGraph) core.HResult!*IAsyncOperation(AudioDeviceInputNode) {
         var _r: *IAsyncOperation(AudioDeviceInputNode) = undefined;
         const _c = self.vtable.CreateAudioDeviceInputNodeAsync(@ptrCast(self), graph, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateAudioDeviceInputNode(self: *@This(), graph: *AudioGraph) core.HResult!*AudioDeviceInputNode {
         var _r: *AudioDeviceInputNode = undefined;
         const _c = self.vtable.CreateAudioDeviceInputNode(@ptrCast(self), graph, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAudioCaptureDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAudioCaptureDeviceIdAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAudioCaptureDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioCaptureDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAudioRenderDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAudioRenderDeviceIdAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAudioRenderDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioRenderDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSignalModelIdAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.GetSignalModelIdAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSignalModelId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetSignalModelId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetSignalModelIdAsync(self: *@This(), signalModelId: u32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.SetSignalModelIdAsync(@ptrCast(self), signalModelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetSignalModelId(self: *@This(), signalModelId: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.SetSignalModelId(@ptrCast(self), signalModelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedSignalModelIdsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(u32)) {
         var _r: *IAsyncOperation(IVectorView(u32)) = undefined;
         const _c = self.vtable.GetSupportedSignalModelIdsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSupportedSignalModelIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.GetSupportedSignalModelIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentSession";
@@ -1752,8 +1721,11 @@ pub const IConversationalAgentSession = extern struct {
 };
 pub const IConversationalAgentSession2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1761,35 +1733,35 @@ pub const IConversationalAgentSession2 = extern struct {
     pub fn RequestActivationAsync(self: *@This(), activationKind: ConversationalAgentActivationKind) core.HResult!*IAsyncOperation(ConversationalAgentActivationResult) {
         var _r: *IAsyncOperation(ConversationalAgentActivationResult) = undefined;
         const _c = self.vtable.RequestActivationAsync(@ptrCast(self), activationKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestActivation(self: *@This(), activationKind: ConversationalAgentActivationKind) core.HResult!ConversationalAgentActivationResult {
         var _r: ConversationalAgentActivationResult = undefined;
         const _c = self.vtable.RequestActivation(@ptrCast(self), activationKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetSupportLockScreenActivationAsync(self: *@This(), lockScreenActivationSupported: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetSupportLockScreenActivationAsync(@ptrCast(self), lockScreenActivationSupported, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetSupportLockScreenActivation(self: *@This(), lockScreenActivationSupported: bool) core.HResult!void {
         const _c = self.vtable.SetSupportLockScreenActivation(@ptrCast(self), lockScreenActivationSupported);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetMissingPrerequisites(self: *@This()) core.HResult!*IVectorView(ConversationalAgentVoiceActivationPrerequisiteKind) {
         var _r: *IVectorView(ConversationalAgentVoiceActivationPrerequisiteKind) = undefined;
         const _c = self.vtable.GetMissingPrerequisites(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetMissingPrerequisitesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ConversationalAgentVoiceActivationPrerequisiteKind)) {
         var _r: *IAsyncOperation(IVectorView(ConversationalAgentVoiceActivationPrerequisiteKind)) = undefined;
         const _c = self.vtable.GetMissingPrerequisitesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentSession2";
@@ -1814,8 +1786,11 @@ pub const IConversationalAgentSession2 = extern struct {
 };
 pub const IConversationalAgentSessionInterruptedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1836,8 +1811,11 @@ pub const IConversationalAgentSessionInterruptedEventArgs = extern struct {
 };
 pub const IConversationalAgentSessionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1845,13 +1823,13 @@ pub const IConversationalAgentSessionStatics = extern struct {
     pub fn GetCurrentSessionAsync(self: *@This()) core.HResult!*IAsyncOperation(ConversationalAgentSession) {
         var _r: *IAsyncOperation(ConversationalAgentSession) = undefined;
         const _c = self.vtable.GetCurrentSessionAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentSessionSync(self: *@This()) core.HResult!*ConversationalAgentSession {
         var _r: *ConversationalAgentSession = undefined;
         const _c = self.vtable.GetCurrentSessionSync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentSessionStatics";
@@ -1872,8 +1850,11 @@ pub const IConversationalAgentSessionStatics = extern struct {
 };
 pub const IConversationalAgentSignal = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1881,62 +1862,62 @@ pub const IConversationalAgentSignal = extern struct {
     pub fn getIsSignalVerificationRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSignalVerificationRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsSignalVerificationRequired(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsSignalVerificationRequired(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignalId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignalId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SignalId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignalName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignalName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SignalName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignalContext(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_SignalContext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignalContext(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.put_SignalContext(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignalStart(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SignalStart(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignalStart(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_SignalStart(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignalEnd(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SignalEnd(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignalEnd(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_SignalEnd(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentSignal";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1966,8 +1947,11 @@ pub const IConversationalAgentSignal = extern struct {
 };
 pub const IConversationalAgentSignal2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1975,13 +1959,13 @@ pub const IConversationalAgentSignal2 = extern struct {
     pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DetectorId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDetectorKind(self: *@This()) core.HResult!ActivationSignalDetectorKind {
         var _r: ActivationSignalDetectorKind = undefined;
         const _c = self.vtable.get_DetectorKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentSignal2";
@@ -2002,8 +1986,11 @@ pub const IConversationalAgentSignal2 = extern struct {
 };
 pub const IConversationalAgentSignalDetectedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2024,8 +2011,11 @@ pub const IConversationalAgentSignalDetectedEventArgs = extern struct {
 };
 pub const IConversationalAgentSystemStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2033,7 +2023,7 @@ pub const IConversationalAgentSystemStateChangedEventArgs = extern struct {
     pub fn getSystemStateChangeType(self: *@This()) core.HResult!ConversationalAgentSystemStateChangeType {
         var _r: ConversationalAgentSystemStateChangeType = undefined;
         const _c = self.vtable.get_SystemStateChangeType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IConversationalAgentSystemStateChangedEventArgs";
@@ -2053,8 +2043,11 @@ pub const IConversationalAgentSystemStateChangedEventArgs = extern struct {
 };
 pub const IDetectionConfigurationAvailabilityChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2062,7 +2055,7 @@ pub const IDetectionConfigurationAvailabilityChangedEventArgs = extern struct {
     pub fn getKind(self: *@This()) core.HResult!DetectionConfigurationAvailabilityChangeKind {
         var _r: DetectionConfigurationAvailabilityChangeKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IDetectionConfigurationAvailabilityChangedEventArgs";
@@ -2082,8 +2075,11 @@ pub const IDetectionConfigurationAvailabilityChangedEventArgs = extern struct {
 };
 pub const IDetectionConfigurationAvailabilityInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2091,25 +2087,25 @@ pub const IDetectionConfigurationAvailabilityInfo = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasSystemResourceAccess(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasSystemResourceAccess(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasPermission(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasPermission(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasLockScreenPermission(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasLockScreenPermission(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IDetectionConfigurationAvailabilityInfo";
@@ -2132,8 +2128,11 @@ pub const IDetectionConfigurationAvailabilityInfo = extern struct {
 };
 pub const IDetectionConfigurationAvailabilityInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2141,7 +2140,7 @@ pub const IDetectionConfigurationAvailabilityInfo2 = extern struct {
     pub fn getUnavailableSystemResources(self: *@This()) core.HResult!*IVectorView(SignalDetectorResourceKind) {
         var _r: *IVectorView(SignalDetectorResourceKind) = undefined;
         const _c = self.vtable.get_UnavailableSystemResources(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.IDetectionConfigurationAvailabilityInfo2";

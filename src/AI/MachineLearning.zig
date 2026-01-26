@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IImageFeatureDescriptor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,25 +13,25 @@ pub const IImageFeatureDescriptor = extern struct {
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBitmapAlphaMode(self: *@This()) core.HResult!BitmapAlphaMode {
         var _r: BitmapAlphaMode = undefined;
         const _c = self.vtable.get_BitmapAlphaMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.IImageFeatureDescriptor";
@@ -51,8 +54,11 @@ pub const IImageFeatureDescriptor = extern struct {
 };
 pub const IImageFeatureDescriptor2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -60,7 +66,7 @@ pub const IImageFeatureDescriptor2 = extern struct {
     pub fn getPixelRange(self: *@This()) core.HResult!LearningModelPixelRange {
         var _r: LearningModelPixelRange = undefined;
         const _c = self.vtable.get_PixelRange(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.IImageFeatureDescriptor2";
@@ -80,8 +86,11 @@ pub const IImageFeatureDescriptor2 = extern struct {
 };
 pub const IImageFeatureValue = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -89,7 +98,7 @@ pub const IImageFeatureValue = extern struct {
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.IImageFeatureValue";
@@ -109,8 +118,11 @@ pub const IImageFeatureValue = extern struct {
 };
 pub const IImageFeatureValueStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -118,7 +130,7 @@ pub const IImageFeatureValueStatics = extern struct {
     pub fn CreateFromVideoFrame(self: *@This(), image: *VideoFrame) core.HResult!*ImageFeatureValue {
         var _r: *ImageFeatureValue = undefined;
         const _c = self.vtable.CreateFromVideoFrame(@ptrCast(self), image, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.IImageFeatureValueStatics";
@@ -138,8 +150,11 @@ pub const IImageFeatureValueStatics = extern struct {
 };
 pub const ILearningModel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -147,49 +162,49 @@ pub const ILearningModel = extern struct {
     pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVersion(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_Version(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMetadata(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Metadata(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInputFeatures(self: *@This()) core.HResult!*IVectorView(ILearningModelFeatureDescriptor) {
         var _r: *IVectorView(ILearningModelFeatureDescriptor) = undefined;
         const _c = self.vtable.get_InputFeatures(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOutputFeatures(self: *@This()) core.HResult!*IVectorView(ILearningModelFeatureDescriptor) {
         var _r: *IVectorView(ILearningModelFeatureDescriptor) = undefined;
         const _c = self.vtable.get_OutputFeatures(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModel";
@@ -216,23 +231,26 @@ pub const ILearningModel = extern struct {
 };
 pub const ILearningModelBinding = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn BindWithProps(self: *@This(), name: ?HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
         const _c = self.vtable.BindWithProps(@ptrCast(self), name, value, props);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const _c = self.vtable.Clear(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelBinding";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -253,8 +271,11 @@ pub const ILearningModelBinding = extern struct {
 };
 pub const ILearningModelBindingFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -262,7 +283,7 @@ pub const ILearningModelBindingFactory = extern struct {
     pub fn CreateFromSession(self: *@This(), session: *LearningModelSession) core.HResult!*LearningModelBinding {
         var _r: *LearningModelBinding = undefined;
         const _c = self.vtable.CreateFromSession(@ptrCast(self), session, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelBindingFactory";
@@ -282,8 +303,11 @@ pub const ILearningModelBindingFactory = extern struct {
 };
 pub const ILearningModelDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -291,13 +315,13 @@ pub const ILearningModelDevice = extern struct {
     pub fn getAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         var _r: DisplayAdapterId = undefined;
         const _c = self.vtable.get_AdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
         var _r: *IDirect3DDevice = undefined;
         const _c = self.vtable.get_Direct3D11Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelDevice";
@@ -318,8 +342,11 @@ pub const ILearningModelDevice = extern struct {
 };
 pub const ILearningModelDeviceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -327,7 +354,7 @@ pub const ILearningModelDeviceFactory = extern struct {
     pub fn Create(self: *@This(), deviceKind: LearningModelDeviceKind) core.HResult!*LearningModelDevice {
         var _r: *LearningModelDevice = undefined;
         const _c = self.vtable.Create(@ptrCast(self), deviceKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelDeviceFactory";
@@ -347,8 +374,11 @@ pub const ILearningModelDeviceFactory = extern struct {
 };
 pub const ILearningModelDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -356,7 +386,7 @@ pub const ILearningModelDeviceStatics = extern struct {
     pub fn CreateFromDirect3D11Device(self: *@This(), device: *IDirect3DDevice) core.HResult!*LearningModelDevice {
         var _r: *LearningModelDevice = undefined;
         const _c = self.vtable.CreateFromDirect3D11Device(@ptrCast(self), device, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelDeviceStatics";
@@ -376,8 +406,11 @@ pub const ILearningModelDeviceStatics = extern struct {
 };
 pub const ILearningModelEvaluationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -385,25 +418,25 @@ pub const ILearningModelEvaluationResult = extern struct {
     pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorStatus(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ErrorStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOutputs(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Outputs(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelEvaluationResult";
@@ -426,8 +459,11 @@ pub const ILearningModelEvaluationResult = extern struct {
 };
 pub const ILearningModelFeatureDescriptor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -435,25 +471,25 @@ pub const ILearningModelFeatureDescriptor = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var _r: LearningModelFeatureKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelFeatureDescriptor";
@@ -476,8 +512,11 @@ pub const ILearningModelFeatureDescriptor = extern struct {
 };
 pub const ILearningModelFeatureValue = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -485,7 +524,7 @@ pub const ILearningModelFeatureValue = extern struct {
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var _r: LearningModelFeatureKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelFeatureValue";
@@ -505,8 +544,11 @@ pub const ILearningModelFeatureValue = extern struct {
 };
 pub const ILearningModelOperatorProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -527,8 +569,11 @@ pub const ILearningModelOperatorProvider = extern struct {
 };
 pub const ILearningModelSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -536,43 +581,43 @@ pub const ILearningModelSession = extern struct {
     pub fn getModel(self: *@This()) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.get_Model(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDevice(self: *@This()) core.HResult!*LearningModelDevice {
         var _r: *LearningModelDevice = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEvaluationProperties(self: *@This()) core.HResult!*IPropertySet {
         var _r: *IPropertySet = undefined;
         const _c = self.vtable.get_EvaluationProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EvaluateAsync(self: *@This(), bindings: *LearningModelBinding, correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
         var _r: *IAsyncOperation(LearningModelEvaluationResult) = undefined;
         const _c = self.vtable.EvaluateAsync(@ptrCast(self), bindings, correlationId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
         var _r: *IAsyncOperation(LearningModelEvaluationResult) = undefined;
         const _c = self.vtable.EvaluateFeaturesAsync(@ptrCast(self), features, correlationId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Evaluate(self: *@This(), bindings: *LearningModelBinding, correlationId: ?HSTRING) core.HResult!*LearningModelEvaluationResult {
         var _r: *LearningModelEvaluationResult = undefined;
         const _c = self.vtable.Evaluate(@ptrCast(self), bindings, correlationId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EvaluateFeatures(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*LearningModelEvaluationResult {
         var _r: *LearningModelEvaluationResult = undefined;
         const _c = self.vtable.EvaluateFeatures(@ptrCast(self), features, correlationId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelSession";
@@ -598,8 +643,11 @@ pub const ILearningModelSession = extern struct {
 };
 pub const ILearningModelSessionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -607,13 +655,13 @@ pub const ILearningModelSessionFactory = extern struct {
     pub fn CreateFromModel(self: *@This(), model: *LearningModel) core.HResult!*LearningModelSession {
         var _r: *LearningModelSession = undefined;
         const _c = self.vtable.CreateFromModel(@ptrCast(self), model, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromModelOnDevice(self: *@This(), model: *LearningModel, deviceToRunOn: *LearningModelDevice) core.HResult!*LearningModelSession {
         var _r: *LearningModelSession = undefined;
         const _c = self.vtable.CreateFromModelOnDevice(@ptrCast(self), model, deviceToRunOn, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelSessionFactory";
@@ -634,8 +682,11 @@ pub const ILearningModelSessionFactory = extern struct {
 };
 pub const ILearningModelSessionFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -643,7 +694,7 @@ pub const ILearningModelSessionFactory2 = extern struct {
     pub fn CreateFromModelOnDeviceWithSessionOptions(self: *@This(), model: *LearningModel, deviceToRunOn: *LearningModelDevice, learningModelSessionOptions: *LearningModelSessionOptions) core.HResult!*LearningModelSession {
         var _r: *LearningModelSession = undefined;
         const _c = self.vtable.CreateFromModelOnDeviceWithSessionOptions(@ptrCast(self), model, deviceToRunOn, learningModelSessionOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelSessionFactory2";
@@ -663,8 +714,11 @@ pub const ILearningModelSessionFactory2 = extern struct {
 };
 pub const ILearningModelSessionOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -672,12 +726,12 @@ pub const ILearningModelSessionOptions = extern struct {
     pub fn getBatchSizeOverride(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BatchSizeOverride(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBatchSizeOverride(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_BatchSizeOverride(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelSessionOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -697,8 +751,11 @@ pub const ILearningModelSessionOptions = extern struct {
 };
 pub const ILearningModelSessionOptions2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -706,12 +763,12 @@ pub const ILearningModelSessionOptions2 = extern struct {
     pub fn getCloseModelOnSessionCreation(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CloseModelOnSessionCreation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCloseModelOnSessionCreation(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CloseModelOnSessionCreation(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelSessionOptions2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -731,15 +788,18 @@ pub const ILearningModelSessionOptions2 = extern struct {
 };
 pub const ILearningModelSessionOptions3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OverrideNamedDimension(self: *@This(), name: ?HSTRING, dimension: u32) core.HResult!void {
         const _c = self.vtable.OverrideNamedDimension(@ptrCast(self), name, dimension);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelSessionOptions3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -758,8 +818,11 @@ pub const ILearningModelSessionOptions3 = extern struct {
 };
 pub const ILearningModelStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -767,49 +830,49 @@ pub const ILearningModelStatics = extern struct {
     pub fn LoadFromStorageFileAsync(self: *@This(), modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModel) {
         var _r: *IAsyncOperation(LearningModel) = undefined;
         const _c = self.vtable.LoadFromStorageFileAsync(@ptrCast(self), modelFile, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromStreamAsync(self: *@This(), modelStream: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(LearningModel) {
         var _r: *IAsyncOperation(LearningModel) = undefined;
         const _c = self.vtable.LoadFromStreamAsync(@ptrCast(self), modelStream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromFilePath(self: *@This(), filePath: ?HSTRING) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.LoadFromFilePath(@ptrCast(self), filePath, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromStream(self: *@This(), modelStream: *IRandomAccessStreamReference) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.LoadFromStream(@ptrCast(self), modelStream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromStorageFileAsyncWithOperatorProvider(self: *@This(), modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
         var _r: *IAsyncOperation(LearningModel) = undefined;
         const _c = self.vtable.LoadFromStorageFileAsyncWithOperatorProvider(@ptrCast(self), modelFile, operatorProvider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromStreamAsyncWithOperatorProvider(self: *@This(), modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
         var _r: *IAsyncOperation(LearningModel) = undefined;
         const _c = self.vtable.LoadFromStreamAsyncWithOperatorProvider(@ptrCast(self), modelStream, operatorProvider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromFilePathWithOperatorProvider(self: *@This(), filePath: ?HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.LoadFromFilePathWithOperatorProvider(@ptrCast(self), filePath, operatorProvider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LoadFromStreamWithOperatorProvider(self: *@This(), modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.LoadFromStreamWithOperatorProvider(@ptrCast(self), modelStream, operatorProvider, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelStatics";
@@ -836,8 +899,11 @@ pub const ILearningModelStatics = extern struct {
 };
 pub const IMapFeatureDescriptor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -845,13 +911,13 @@ pub const IMapFeatureDescriptor = extern struct {
     pub fn getKeyKind(self: *@This()) core.HResult!TensorKind {
         var _r: TensorKind = undefined;
         const _c = self.vtable.get_KeyKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValueDescriptor(self: *@This()) core.HResult!*ILearningModelFeatureDescriptor {
         var _r: *ILearningModelFeatureDescriptor = undefined;
         const _c = self.vtable.get_ValueDescriptor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.IMapFeatureDescriptor";
@@ -872,8 +938,11 @@ pub const IMapFeatureDescriptor = extern struct {
 };
 pub const ISequenceFeatureDescriptor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -881,7 +950,7 @@ pub const ISequenceFeatureDescriptor = extern struct {
     pub fn getElementDescriptor(self: *@This()) core.HResult!*ILearningModelFeatureDescriptor {
         var _r: *ILearningModelFeatureDescriptor = undefined;
         const _c = self.vtable.get_ElementDescriptor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ISequenceFeatureDescriptor";
@@ -901,8 +970,11 @@ pub const ISequenceFeatureDescriptor = extern struct {
 };
 pub const ITensor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -910,13 +982,13 @@ pub const ITensor = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var _r: TensorKind = undefined;
         const _c = self.vtable.get_TensorKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var _r: *IVectorView(i64) = undefined;
         const _c = self.vtable.get_Shape(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensor";
@@ -937,8 +1009,11 @@ pub const ITensor = extern struct {
 };
 pub const ITensorBoolean = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -946,7 +1021,7 @@ pub const ITensorBoolean = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(bool) {
         var _r: *IVectorView(bool) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorBoolean";
@@ -966,8 +1041,11 @@ pub const ITensorBoolean = extern struct {
 };
 pub const ITensorBooleanStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -975,25 +1053,25 @@ pub const ITensorBooleanStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]bool) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(bool)) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorBooleanStatics";
@@ -1016,8 +1094,11 @@ pub const ITensorBooleanStatics = extern struct {
 };
 pub const ITensorBooleanStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1025,13 +1106,13 @@ pub const ITensorBooleanStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]bool) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorBooleanStatics2";
@@ -1052,8 +1133,11 @@ pub const ITensorBooleanStatics2 = extern struct {
 };
 pub const ITensorDouble = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1061,7 +1145,7 @@ pub const ITensorDouble = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f64) {
         var _r: *IVectorView(f64) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorDouble";
@@ -1081,8 +1165,11 @@ pub const ITensorDouble = extern struct {
 };
 pub const ITensorDoubleStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1090,25 +1177,25 @@ pub const ITensorDoubleStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]f64) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(f64)) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorDoubleStatics";
@@ -1131,8 +1218,11 @@ pub const ITensorDoubleStatics = extern struct {
 };
 pub const ITensorDoubleStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1140,13 +1230,13 @@ pub const ITensorDoubleStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]f64) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorDoubleStatics2";
@@ -1167,8 +1257,11 @@ pub const ITensorDoubleStatics2 = extern struct {
 };
 pub const ITensorFeatureDescriptor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1176,13 +1269,13 @@ pub const ITensorFeatureDescriptor = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var _r: TensorKind = undefined;
         const _c = self.vtable.get_TensorKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var _r: *IVectorView(i64) = undefined;
         const _c = self.vtable.get_Shape(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorFeatureDescriptor";
@@ -1203,8 +1296,11 @@ pub const ITensorFeatureDescriptor = extern struct {
 };
 pub const ITensorFloat = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1212,7 +1308,7 @@ pub const ITensorFloat = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f32) {
         var _r: *IVectorView(f32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorFloat";
@@ -1232,8 +1328,11 @@ pub const ITensorFloat = extern struct {
 };
 pub const ITensorFloat16Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1241,7 +1340,7 @@ pub const ITensorFloat16Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f32) {
         var _r: *IVectorView(f32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorFloat16Bit";
@@ -1261,8 +1360,11 @@ pub const ITensorFloat16Bit = extern struct {
 };
 pub const ITensorFloat16BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1270,25 +1372,25 @@ pub const ITensorFloat16BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]f32) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(f32)) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorFloat16BitStatics";
@@ -1311,8 +1413,11 @@ pub const ITensorFloat16BitStatics = extern struct {
 };
 pub const ITensorFloat16BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1320,13 +1425,13 @@ pub const ITensorFloat16BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorFloat16BitStatics2";
@@ -1347,8 +1452,11 @@ pub const ITensorFloat16BitStatics2 = extern struct {
 };
 pub const ITensorFloatStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1356,25 +1464,25 @@ pub const ITensorFloatStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]f32) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(f32)) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorFloatStatics";
@@ -1397,8 +1505,11 @@ pub const ITensorFloatStatics = extern struct {
 };
 pub const ITensorFloatStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1406,13 +1517,13 @@ pub const ITensorFloatStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorFloatStatics2";
@@ -1433,8 +1544,11 @@ pub const ITensorFloatStatics2 = extern struct {
 };
 pub const ITensorInt16Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1442,7 +1556,7 @@ pub const ITensorInt16Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i16) {
         var _r: *IVectorView(i16) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt16Bit";
@@ -1462,8 +1576,11 @@ pub const ITensorInt16Bit = extern struct {
 };
 pub const ITensorInt16BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1471,25 +1588,25 @@ pub const ITensorInt16BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]i16) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(i16)) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt16BitStatics";
@@ -1512,8 +1629,11 @@ pub const ITensorInt16BitStatics = extern struct {
 };
 pub const ITensorInt16BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1521,13 +1641,13 @@ pub const ITensorInt16BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]i16) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt16BitStatics2";
@@ -1548,8 +1668,11 @@ pub const ITensorInt16BitStatics2 = extern struct {
 };
 pub const ITensorInt32Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1557,7 +1680,7 @@ pub const ITensorInt32Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i32) {
         var _r: *IVectorView(i32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt32Bit";
@@ -1577,8 +1700,11 @@ pub const ITensorInt32Bit = extern struct {
 };
 pub const ITensorInt32BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1586,25 +1712,25 @@ pub const ITensorInt32BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]i32) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(i32)) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt32BitStatics";
@@ -1627,8 +1753,11 @@ pub const ITensorInt32BitStatics = extern struct {
 };
 pub const ITensorInt32BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1636,13 +1765,13 @@ pub const ITensorInt32BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]i32) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt32BitStatics2";
@@ -1663,8 +1792,11 @@ pub const ITensorInt32BitStatics2 = extern struct {
 };
 pub const ITensorInt64Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1672,7 +1804,7 @@ pub const ITensorInt64Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i64) {
         var _r: *IVectorView(i64) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt64Bit";
@@ -1692,8 +1824,11 @@ pub const ITensorInt64Bit = extern struct {
 };
 pub const ITensorInt64BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1701,25 +1836,25 @@ pub const ITensorInt64BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]i64) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(i64)) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt64BitStatics";
@@ -1742,8 +1877,11 @@ pub const ITensorInt64BitStatics = extern struct {
 };
 pub const ITensorInt64BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1751,13 +1889,13 @@ pub const ITensorInt64BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]i64) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt64BitStatics2";
@@ -1778,8 +1916,11 @@ pub const ITensorInt64BitStatics2 = extern struct {
 };
 pub const ITensorInt8Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1787,7 +1928,7 @@ pub const ITensorInt8Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u8) {
         var _r: *IVectorView(u8) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt8Bit";
@@ -1807,8 +1948,11 @@ pub const ITensorInt8Bit = extern struct {
 };
 pub const ITensorInt8BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1816,25 +1960,25 @@ pub const ITensorInt8BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]u8) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(u8)) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt8BitStatics";
@@ -1857,8 +2001,11 @@ pub const ITensorInt8BitStatics = extern struct {
 };
 pub const ITensorInt8BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1866,13 +2013,13 @@ pub const ITensorInt8BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u8) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorInt8BitStatics2";
@@ -1893,8 +2040,11 @@ pub const ITensorInt8BitStatics2 = extern struct {
 };
 pub const ITensorString = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1902,7 +2052,7 @@ pub const ITensorString = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorString";
@@ -1922,8 +2072,11 @@ pub const ITensorString = extern struct {
 };
 pub const ITensorStringStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1931,25 +2084,25 @@ pub const ITensorStringStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: ?[*]HSTRING) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(?HSTRING)) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorStringStatics";
@@ -1972,8 +2125,11 @@ pub const ITensorStringStatics = extern struct {
 };
 pub const ITensorStringStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1981,7 +2137,7 @@ pub const ITensorStringStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: ?[*]HSTRING) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorStringStatics2";
@@ -2001,8 +2157,11 @@ pub const ITensorStringStatics2 = extern struct {
 };
 pub const ITensorUInt16Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2010,7 +2169,7 @@ pub const ITensorUInt16Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u16) {
         var _r: *IVectorView(u16) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt16Bit";
@@ -2030,8 +2189,11 @@ pub const ITensorUInt16Bit = extern struct {
 };
 pub const ITensorUInt16BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2039,25 +2201,25 @@ pub const ITensorUInt16BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]u16) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(u16)) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt16BitStatics";
@@ -2080,8 +2242,11 @@ pub const ITensorUInt16BitStatics = extern struct {
 };
 pub const ITensorUInt16BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2089,13 +2254,13 @@ pub const ITensorUInt16BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u16) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt16BitStatics2";
@@ -2116,8 +2281,11 @@ pub const ITensorUInt16BitStatics2 = extern struct {
 };
 pub const ITensorUInt32Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2125,7 +2293,7 @@ pub const ITensorUInt32Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt32Bit";
@@ -2145,8 +2313,11 @@ pub const ITensorUInt32Bit = extern struct {
 };
 pub const ITensorUInt32BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2154,25 +2325,25 @@ pub const ITensorUInt32BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]u32) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(u32)) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt32BitStatics";
@@ -2195,8 +2366,11 @@ pub const ITensorUInt32BitStatics = extern struct {
 };
 pub const ITensorUInt32BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2204,13 +2378,13 @@ pub const ITensorUInt32BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u32) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt32BitStatics2";
@@ -2231,8 +2405,11 @@ pub const ITensorUInt32BitStatics2 = extern struct {
 };
 pub const ITensorUInt64Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2240,7 +2417,7 @@ pub const ITensorUInt64Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u64) {
         var _r: *IVectorView(u64) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt64Bit";
@@ -2260,8 +2437,11 @@ pub const ITensorUInt64Bit = extern struct {
 };
 pub const ITensorUInt64BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2269,25 +2449,25 @@ pub const ITensorUInt64BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]u64) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(u64)) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt64BitStatics";
@@ -2310,8 +2490,11 @@ pub const ITensorUInt64BitStatics = extern struct {
 };
 pub const ITensorUInt64BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2319,13 +2502,13 @@ pub const ITensorUInt64BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u64) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt64BitStatics2";
@@ -2346,8 +2529,11 @@ pub const ITensorUInt64BitStatics2 = extern struct {
 };
 pub const ITensorUInt8Bit = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2355,7 +2541,7 @@ pub const ITensorUInt8Bit = extern struct {
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u8) {
         var _r: *IVectorView(u8) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt8Bit";
@@ -2375,8 +2561,11 @@ pub const ITensorUInt8Bit = extern struct {
 };
 pub const ITensorUInt8BitStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2384,25 +2573,25 @@ pub const ITensorUInt8BitStatics = extern struct {
     pub fn Create(self: *@This()) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]u8) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(u8)) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt8BitStatics";
@@ -2425,8 +2614,11 @@ pub const ITensorUInt8BitStatics = extern struct {
 };
 pub const ITensorUInt8BitStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2434,13 +2626,13 @@ pub const ITensorUInt8BitStatics2 = extern struct {
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u8) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromBuffer(self: *@This(), shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), shape, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ITensorUInt8BitStatics2";
@@ -2461,14 +2653,11 @@ pub const ITensorUInt8BitStatics2 = extern struct {
 };
 pub const ImageFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2492,36 +2681,31 @@ pub const ImageFeatureDescriptor = extern struct {
     pub fn getPixelRange(self: *@This()) core.HResult!LearningModelPixelRange {
         var this: ?*IImageFeatureDescriptor2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageFeatureDescriptor2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IImageFeatureDescriptor2.IID, @ptrCast(&this));
         return try this.?.getPixelRange();
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getDescription();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getIsRequired();
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ImageFeatureDescriptor";
@@ -2532,14 +2716,11 @@ pub const ImageFeatureDescriptor = extern struct {
 };
 pub const ImageFeatureValue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2551,8 +2732,7 @@ pub const ImageFeatureValue = extern struct {
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateFromVideoFrame(image: *VideoFrame) core.HResult!*ImageFeatureValue {
@@ -2568,14 +2748,11 @@ pub const ImageFeatureValue = extern struct {
 };
 pub const LearningModel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2615,8 +2792,7 @@ pub const LearningModel = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn LoadFromStorageFileAsync(modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModel) {
@@ -2660,14 +2836,11 @@ pub const LearningModel = extern struct {
 };
 pub const LearningModelBinding = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2687,22 +2860,19 @@ pub const LearningModelBinding = extern struct {
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn Split(self: *@This(), first: *IMapView(?HSTRING,IInspectable), second: *IMapView(?HSTRING,IInspectable)) core.HResult!void {
         var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
         return try this.?.Split(first, second);
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn CreateFromSession(session: *LearningModelSession) core.HResult!*LearningModelBinding {
@@ -2718,14 +2888,11 @@ pub const LearningModelBinding = extern struct {
 };
 pub const LearningModelDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2763,14 +2930,11 @@ pub const LearningModelDeviceKind = enum(i32) {
 };
 pub const LearningModelEvaluationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2810,14 +2974,11 @@ pub const LearningModelPixelRange = enum(i32) {
 };
 pub const LearningModelSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2853,8 +3014,7 @@ pub const LearningModelSession = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateFromModelOnDeviceWithSessionOptions(model: *LearningModel, deviceToRunOn: *LearningModelDevice, learningModelSessionOptions: *LearningModelSessionOptions) core.HResult!*LearningModelSession {
@@ -2879,14 +3039,11 @@ pub const LearningModelSession = extern struct {
 };
 pub const LearningModelSessionOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2902,22 +3059,19 @@ pub const LearningModelSessionOptions = extern struct {
     pub fn getCloseModelOnSessionCreation(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelSessionOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelSessionOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelSessionOptions2.IID, @ptrCast(&this));
         return try this.?.getCloseModelOnSessionCreation();
     }
     pub fn putCloseModelOnSessionCreation(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ILearningModelSessionOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelSessionOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelSessionOptions2.IID, @ptrCast(&this));
         return try this.?.putCloseModelOnSessionCreation(value);
     }
     pub fn OverrideNamedDimension(self: *@This(), name: ?HSTRING, dimension: u32) core.HResult!void {
         var this: ?*ILearningModelSessionOptions3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelSessionOptions3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelSessionOptions3.IID, @ptrCast(&this));
         return try this.?.OverrideNamedDimension(name, dimension);
     }
     pub fn init() core.HResult!*@This() {
@@ -2933,14 +3087,11 @@ pub const LearningModelSessionOptions = extern struct {
 };
 pub const MapFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2956,29 +3107,25 @@ pub const MapFeatureDescriptor = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getDescription();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getIsRequired();
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.MapFeatureDescriptor";
@@ -2989,14 +3136,11 @@ pub const MapFeatureDescriptor = extern struct {
 };
 pub const SequenceFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3008,29 +3152,25 @@ pub const SequenceFeatureDescriptor = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getDescription();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getIsRequired();
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.SequenceFeatureDescriptor";
@@ -3041,14 +3181,11 @@ pub const SequenceFeatureDescriptor = extern struct {
 };
 pub const TensorBoolean = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3060,36 +3197,31 @@ pub const TensorBoolean = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]bool) core.HResult!*TensorBoolean {
@@ -3126,14 +3258,11 @@ pub const TensorBoolean = extern struct {
 };
 pub const TensorDouble = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3145,36 +3274,31 @@ pub const TensorDouble = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorDouble {
@@ -3211,14 +3335,11 @@ pub const TensorDouble = extern struct {
 };
 pub const TensorFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3234,29 +3355,25 @@ pub const TensorFeatureDescriptor = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getDescription();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         return try this.?.getIsRequired();
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorFeatureDescriptor";
@@ -3267,14 +3384,11 @@ pub const TensorFeatureDescriptor = extern struct {
 };
 pub const TensorFloat = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3286,36 +3400,31 @@ pub const TensorFloat = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorFloat {
@@ -3352,14 +3461,11 @@ pub const TensorFloat = extern struct {
 };
 pub const TensorFloat16Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3371,36 +3477,31 @@ pub const TensorFloat16Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat16Bit {
@@ -3437,14 +3538,11 @@ pub const TensorFloat16Bit = extern struct {
 };
 pub const TensorInt16Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3456,36 +3554,31 @@ pub const TensorInt16Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorInt16Bit {
@@ -3522,14 +3615,11 @@ pub const TensorInt16Bit = extern struct {
 };
 pub const TensorInt32Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3541,36 +3631,31 @@ pub const TensorInt32Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorInt32Bit {
@@ -3607,14 +3692,11 @@ pub const TensorInt32Bit = extern struct {
 };
 pub const TensorInt64Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3626,36 +3708,31 @@ pub const TensorInt64Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorInt64Bit {
@@ -3692,14 +3769,11 @@ pub const TensorInt64Bit = extern struct {
 };
 pub const TensorInt8Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3711,36 +3785,31 @@ pub const TensorInt8Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u8) core.HResult!*TensorInt8Bit {
@@ -3795,14 +3864,11 @@ pub const TensorKind = enum(i32) {
 };
 pub const TensorString = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3814,36 +3880,31 @@ pub const TensorString = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorString {
@@ -3876,14 +3937,11 @@ pub const TensorString = extern struct {
 };
 pub const TensorUInt16Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3895,36 +3953,31 @@ pub const TensorUInt16Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorUInt16Bit {
@@ -3961,14 +4014,11 @@ pub const TensorUInt16Bit = extern struct {
 };
 pub const TensorUInt32Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3980,36 +4030,31 @@ pub const TensorUInt32Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorUInt32Bit {
@@ -4046,14 +4091,11 @@ pub const TensorUInt32Bit = extern struct {
 };
 pub const TensorUInt64Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4065,36 +4107,31 @@ pub const TensorUInt64Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create() core.HResult!*TensorUInt64Bit {
@@ -4131,14 +4168,11 @@ pub const TensorUInt64Bit = extern struct {
 };
 pub const TensorUInt8Bit = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4150,36 +4184,31 @@ pub const TensorUInt8Bit = extern struct {
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getTensorKind();
     }
     pub fn getShape(self: *@This()) core.HResult!*IVectorView(i64) {
         var this: ?*ITensor = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ITensor.IID, @ptrCast(&this));
         return try this.?.getShape();
     }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var this: ?*ILearningModelFeatureValue = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var this: ?*IMemoryBuffer = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMemoryBuffer.IID, @ptrCast(&this));
         return try this.?.CreateReference();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u8) core.HResult!*TensorUInt8Bit {

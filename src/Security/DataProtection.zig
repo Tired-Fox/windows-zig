@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IUserDataAvailabilityStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const IUserDataAvailabilityStateChangedEventArgs = extern struct {
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.DataProtection.IUserDataAvailabilityStateChangedEventArgs";
@@ -30,8 +33,11 @@ pub const IUserDataAvailabilityStateChangedEventArgs = extern struct {
 };
 pub const IUserDataBufferUnprotectResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,13 +45,13 @@ pub const IUserDataBufferUnprotectResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!UserDataBufferUnprotectStatus {
         var _r: UserDataBufferUnprotectStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUnprotectedBuffer(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_UnprotectedBuffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.DataProtection.IUserDataBufferUnprotectResult";
@@ -66,8 +72,11 @@ pub const IUserDataBufferUnprotectResult = extern struct {
 };
 pub const IUserDataProtectionManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -75,42 +84,42 @@ pub const IUserDataProtectionManager = extern struct {
     pub fn ProtectStorageItemAsync(self: *@This(), storageItem: *IStorageItem, availability: UserDataAvailability) core.HResult!*IAsyncOperation(UserDataStorageItemProtectionStatus) {
         var _r: *IAsyncOperation(UserDataStorageItemProtectionStatus) = undefined;
         const _c = self.vtable.ProtectStorageItemAsync(@ptrCast(self), storageItem, availability, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetStorageItemProtectionInfoAsync(self: *@This(), storageItem: *IStorageItem) core.HResult!*IAsyncOperation(UserDataStorageItemProtectionInfo) {
         var _r: *IAsyncOperation(UserDataStorageItemProtectionInfo) = undefined;
         const _c = self.vtable.GetStorageItemProtectionInfoAsync(@ptrCast(self), storageItem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ProtectBufferAsync(self: *@This(), unprotectedBuffer: *IBuffer, availability: UserDataAvailability) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.ProtectBufferAsync(@ptrCast(self), unprotectedBuffer, availability, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnprotectBufferAsync(self: *@This(), protectedBuffer: *IBuffer) core.HResult!*IAsyncOperation(UserDataBufferUnprotectResult) {
         var _r: *IAsyncOperation(UserDataBufferUnprotectResult) = undefined;
         const _c = self.vtable.UnprotectBufferAsync(@ptrCast(self), protectedBuffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsContinuedDataAvailabilityExpected(self: *@This(), availability: UserDataAvailability) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsContinuedDataAvailabilityExpected(@ptrCast(self), availability, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addDataAvailabilityStateChanged(self: *@This(), handler: *TypedEventHandler(UserDataProtectionManager,UserDataAvailabilityStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DataAvailabilityStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDataAvailabilityStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DataAvailabilityStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.DataProtection.IUserDataProtectionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -135,8 +144,11 @@ pub const IUserDataProtectionManager = extern struct {
 };
 pub const IUserDataProtectionManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -144,13 +156,13 @@ pub const IUserDataProtectionManagerStatics = extern struct {
     pub fn TryGetDefault(self: *@This()) core.HResult!*UserDataProtectionManager {
         var _r: *UserDataProtectionManager = undefined;
         const _c = self.vtable.TryGetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetForUser(self: *@This(), user: *User) core.HResult!*UserDataProtectionManager {
         var _r: *UserDataProtectionManager = undefined;
         const _c = self.vtable.TryGetForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.DataProtection.IUserDataProtectionManagerStatics";
@@ -171,8 +183,11 @@ pub const IUserDataProtectionManagerStatics = extern struct {
 };
 pub const IUserDataStorageItemProtectionInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -180,7 +195,7 @@ pub const IUserDataStorageItemProtectionInfo = extern struct {
     pub fn getAvailability(self: *@This()) core.HResult!UserDataAvailability {
         var _r: UserDataAvailability = undefined;
         const _c = self.vtable.get_Availability(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.DataProtection.IUserDataStorageItemProtectionInfo";
@@ -205,14 +220,11 @@ pub const UserDataAvailability = enum(i32) {
 };
 pub const UserDataAvailabilityStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -229,14 +241,11 @@ pub const UserDataAvailabilityStateChangedEventArgs = extern struct {
 };
 pub const UserDataBufferUnprotectResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -261,14 +270,11 @@ pub const UserDataBufferUnprotectStatus = enum(i32) {
 };
 pub const UserDataProtectionManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -318,14 +324,11 @@ pub const UserDataProtectionManager = extern struct {
 };
 pub const UserDataStorageItemProtectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

@@ -5,14 +5,11 @@ pub const HolographicAdapterId = extern struct {
 };
 pub const HolographicCamera = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -48,85 +45,73 @@ pub const HolographicCamera = extern struct {
     pub fn getLeftViewportParameters(self: *@This()) core.HResult!*HolographicCameraViewportParameters {
         var this: ?*IHolographicCamera2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
         return try this.?.getLeftViewportParameters();
     }
     pub fn getRightViewportParameters(self: *@This()) core.HResult!*HolographicCameraViewportParameters {
         var this: ?*IHolographicCamera2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
         return try this.?.getRightViewportParameters();
     }
     pub fn getDisplay(self: *@This()) core.HResult!*HolographicDisplay {
         var this: ?*IHolographicCamera2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
         return try this.?.getDisplay();
     }
     pub fn getIsPrimaryLayerEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         return try this.?.getIsPrimaryLayerEnabled();
     }
     pub fn putIsPrimaryLayerEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHolographicCamera3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         return try this.?.putIsPrimaryLayerEnabled(value);
     }
     pub fn getMaxQuadLayerCount(self: *@This()) core.HResult!u32 {
         var this: ?*IHolographicCamera3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         return try this.?.getMaxQuadLayerCount();
     }
     pub fn getQuadLayers(self: *@This()) core.HResult!*IVector(HolographicQuadLayer) {
         var this: ?*IHolographicCamera3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         return try this.?.getQuadLayers();
     }
     pub fn getCanOverrideViewport(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera4.IID, @ptrCast(&this));
         return try this.?.getCanOverrideViewport();
     }
     pub fn getIsHardwareContentProtectionSupported(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
         return try this.?.getIsHardwareContentProtectionSupported();
     }
     pub fn getIsHardwareContentProtectionEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
         return try this.?.getIsHardwareContentProtectionEnabled();
     }
     pub fn putIsHardwareContentProtectionEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHolographicCamera5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
         return try this.?.putIsHardwareContentProtectionEnabled(value);
     }
     pub fn getViewConfiguration(self: *@This()) core.HResult!*HolographicViewConfiguration {
         var this: ?*IHolographicCamera6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera6.IID, @ptrCast(&this));
         return try this.?.getViewConfiguration();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicCamera";
@@ -137,14 +122,11 @@ pub const HolographicCamera = extern struct {
 };
 pub const HolographicCameraPose = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -184,22 +166,19 @@ pub const HolographicCameraPose = extern struct {
     pub fn OverrideViewTransform(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, coordinateSystemToViewTransform: HolographicStereoTransform) core.HResult!void {
         var this: ?*IHolographicCameraPose2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
         return try this.?.OverrideViewTransform(coordinateSystem, coordinateSystemToViewTransform);
     }
     pub fn OverrideProjectionTransform(self: *@This(), projectionTransform: HolographicStereoTransform) core.HResult!void {
         var this: ?*IHolographicCameraPose2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
         return try this.?.OverrideProjectionTransform(projectionTransform);
     }
     pub fn OverrideViewport(self: *@This(), leftViewport: Rect, rightViewport: Rect) core.HResult!void {
         var this: ?*IHolographicCameraPose2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
         return try this.?.OverrideViewport(leftViewport, rightViewport);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicCameraPose";
@@ -210,14 +189,11 @@ pub const HolographicCameraPose = extern struct {
 };
 pub const HolographicCameraRenderingParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -245,50 +221,43 @@ pub const HolographicCameraRenderingParameters = extern struct {
     pub fn getReprojectionMode(self: *@This()) core.HResult!HolographicReprojectionMode {
         var this: ?*IHolographicCameraRenderingParameters2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
         return try this.?.getReprojectionMode();
     }
     pub fn putReprojectionMode(self: *@This(), value: HolographicReprojectionMode) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
         return try this.?.putReprojectionMode(value);
     }
     pub fn CommitDirect3D11DepthBuffer(self: *@This(), value: *IDirect3DSurface) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
         return try this.?.CommitDirect3D11DepthBuffer(value);
     }
     pub fn getIsContentProtectionEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCameraRenderingParameters3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters3.IID, @ptrCast(&this));
         return try this.?.getIsContentProtectionEnabled();
     }
     pub fn putIsContentProtectionEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters3.IID, @ptrCast(&this));
         return try this.?.putIsContentProtectionEnabled(value);
     }
     pub fn getDepthReprojectionMethod(self: *@This()) core.HResult!HolographicDepthReprojectionMethod {
         var this: ?*IHolographicCameraRenderingParameters4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters4.IID, @ptrCast(&this));
         return try this.?.getDepthReprojectionMethod();
     }
     pub fn putDepthReprojectionMethod(self: *@This(), value: HolographicDepthReprojectionMethod) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters4.IID, @ptrCast(&this));
         return try this.?.putDepthReprojectionMethod(value);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicCameraRenderingParameters";
@@ -299,14 +268,11 @@ pub const HolographicCameraRenderingParameters = extern struct {
 };
 pub const HolographicCameraViewportParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -331,14 +297,11 @@ pub const HolographicDepthReprojectionMethod = enum(i32) {
 };
 pub const HolographicDisplay = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -370,15 +333,13 @@ pub const HolographicDisplay = extern struct {
     pub fn getRefreshRate(self: *@This()) core.HResult!f64 {
         var this: ?*IHolographicDisplay2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicDisplay2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicDisplay2.IID, @ptrCast(&this));
         return try this.?.getRefreshRate();
     }
     pub fn TryGetViewConfiguration(self: *@This(), kind: HolographicViewConfigurationKind) core.HResult!*HolographicViewConfiguration {
         var this: ?*IHolographicDisplay3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicDisplay3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicDisplay3.IID, @ptrCast(&this));
         return try this.?.TryGetViewConfiguration(kind);
     }
     pub fn GetDefault() core.HResult!*HolographicDisplay {
@@ -394,14 +355,11 @@ pub const HolographicDisplay = extern struct {
 };
 pub const HolographicFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -445,15 +403,13 @@ pub const HolographicFrame = extern struct {
     pub fn GetQuadLayerUpdateParameters(self: *@This(), layer: *HolographicQuadLayer) core.HResult!*HolographicQuadLayerUpdateParameters {
         var this: ?*IHolographicFrame2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicFrame2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicFrame2.IID, @ptrCast(&this));
         return try this.?.GetQuadLayerUpdateParameters(layer);
     }
     pub fn getId(self: *@This()) core.HResult!HolographicFrameId {
         var this: ?*IHolographicFrame3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicFrame3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicFrame3.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicFrame";
@@ -467,14 +423,11 @@ pub const HolographicFrameId = extern struct {
 };
 pub const HolographicFramePrediction = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -503,14 +456,11 @@ pub const HolographicFramePresentWaitBehavior = enum(i32) {
 };
 pub const HolographicFramePresentationMonitor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -522,8 +472,7 @@ pub const HolographicFramePresentationMonitor = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicFramePresentationMonitor";
@@ -534,14 +483,11 @@ pub const HolographicFramePresentationMonitor = extern struct {
 };
 pub const HolographicFramePresentationReport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -574,14 +520,11 @@ pub const HolographicFramePresentationReport = extern struct {
 };
 pub const HolographicFrameRenderingReport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -614,14 +557,11 @@ pub const HolographicFrameRenderingReport = extern struct {
 };
 pub const HolographicFrameScanoutMonitor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -633,8 +573,7 @@ pub const HolographicFrameScanoutMonitor = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicFrameScanoutMonitor";
@@ -645,14 +584,11 @@ pub const HolographicFrameScanoutMonitor = extern struct {
 };
 pub const HolographicFrameScanoutReport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -685,14 +621,11 @@ pub const HolographicFrameScanoutReport = extern struct {
 };
 pub const HolographicQuadLayer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -700,8 +633,7 @@ pub const HolographicQuadLayer = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getPixelFormat(self: *@This()) core.HResult!DirectXPixelFormat {
@@ -729,14 +661,11 @@ pub const HolographicQuadLayer = extern struct {
 };
 pub const HolographicQuadLayerUpdateParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -768,15 +697,13 @@ pub const HolographicQuadLayerUpdateParameters = extern struct {
     pub fn getCanAcquireWithHardwareProtection(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicQuadLayerUpdateParameters2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicQuadLayerUpdateParameters2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicQuadLayerUpdateParameters2.IID, @ptrCast(&this));
         return try this.?.getCanAcquireWithHardwareProtection();
     }
     pub fn AcquireBufferToUpdateContentWithHardwareProtection(self: *@This()) core.HResult!*IDirect3DSurface {
         var this: ?*IHolographicQuadLayerUpdateParameters2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicQuadLayerUpdateParameters2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicQuadLayerUpdateParameters2.IID, @ptrCast(&this));
         return try this.?.AcquireBufferToUpdateContentWithHardwareProtection();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicQuadLayerUpdateParameters";
@@ -792,14 +719,11 @@ pub const HolographicReprojectionMode = enum(i32) {
 };
 pub const HolographicSpace = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -835,50 +759,43 @@ pub const HolographicSpace = extern struct {
     pub fn getUserPresence(self: *@This()) core.HResult!HolographicSpaceUserPresence {
         var this: ?*IHolographicSpace2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         return try this.?.getUserPresence();
     }
     pub fn addUserPresenceChanged(self: *@This(), handler: *TypedEventHandler(HolographicSpace,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IHolographicSpace2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         return try this.?.addUserPresenceChanged(handler);
     }
     pub fn removeUserPresenceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IHolographicSpace2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         return try this.?.removeUserPresenceChanged(token);
     }
     pub fn WaitForNextFrameReady(self: *@This()) core.HResult!void {
         var this: ?*IHolographicSpace2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         return try this.?.WaitForNextFrameReady();
     }
     pub fn WaitForNextFrameReadyWithHeadStart(self: *@This(), requestedHeadStartDuration: TimeSpan) core.HResult!void {
         var this: ?*IHolographicSpace2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         return try this.?.WaitForNextFrameReadyWithHeadStart(requestedHeadStartDuration);
     }
     pub fn CreateFramePresentationMonitor(self: *@This(), maxQueuedReports: u32) core.HResult!*HolographicFramePresentationMonitor {
         var this: ?*IHolographicSpace2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         return try this.?.CreateFramePresentationMonitor(maxQueuedReports);
     }
     pub fn CreateFrameScanoutMonitor(self: *@This(), maxQueuedReports: u32) core.HResult!*HolographicFrameScanoutMonitor {
         var this: ?*IHolographicSpace3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace3.IID, @ptrCast(&this));
         return try this.?.CreateFrameScanoutMonitor(maxQueuedReports);
     }
     pub fn getIsSupported() core.HResult!bool {
@@ -916,14 +833,11 @@ pub const HolographicSpace = extern struct {
 };
 pub const HolographicSpaceCameraAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -944,14 +858,11 @@ pub const HolographicSpaceCameraAddedEventArgs = extern struct {
 };
 pub const HolographicSpaceCameraRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -977,14 +888,11 @@ pub const HolographicStereoTransform = extern struct {
 };
 pub const HolographicViewConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1040,8 +948,7 @@ pub const HolographicViewConfiguration = extern struct {
     pub fn getSupportedDepthReprojectionMethods(self: *@This()) core.HResult!*IVectorView(HolographicDepthReprojectionMethod) {
         var this: ?*IHolographicViewConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicViewConfiguration2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHolographicViewConfiguration2.IID, @ptrCast(&this));
         return try this.?.getSupportedDepthReprojectionMethods();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicViewConfiguration";
@@ -1056,8 +963,11 @@ pub const HolographicViewConfigurationKind = enum(i32) {
 };
 pub const IHolographicCamera = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1065,38 +975,38 @@ pub const IHolographicCamera = extern struct {
     pub fn getRenderTargetSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_RenderTargetSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewportScaleFactor(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ViewportScaleFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewportScaleFactor(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_ViewportScaleFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsStereo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStereo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetNearPlaneDistance(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.SetNearPlaneDistance(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetFarPlaneDistance(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.SetFarPlaneDistance(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCamera";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1121,8 +1031,11 @@ pub const IHolographicCamera = extern struct {
 };
 pub const IHolographicCamera2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1130,19 +1043,19 @@ pub const IHolographicCamera2 = extern struct {
     pub fn getLeftViewportParameters(self: *@This()) core.HResult!*HolographicCameraViewportParameters {
         var _r: *HolographicCameraViewportParameters = undefined;
         const _c = self.vtable.get_LeftViewportParameters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRightViewportParameters(self: *@This()) core.HResult!*HolographicCameraViewportParameters {
         var _r: *HolographicCameraViewportParameters = undefined;
         const _c = self.vtable.get_RightViewportParameters(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplay(self: *@This()) core.HResult!*HolographicDisplay {
         var _r: *HolographicDisplay = undefined;
         const _c = self.vtable.get_Display(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCamera2";
@@ -1164,8 +1077,11 @@ pub const IHolographicCamera2 = extern struct {
 };
 pub const IHolographicCamera3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1173,23 +1089,23 @@ pub const IHolographicCamera3 = extern struct {
     pub fn getIsPrimaryLayerEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPrimaryLayerEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsPrimaryLayerEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPrimaryLayerEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxQuadLayerCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxQuadLayerCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getQuadLayers(self: *@This()) core.HResult!*IVector(HolographicQuadLayer) {
         var _r: *IVector(HolographicQuadLayer) = undefined;
         const _c = self.vtable.get_QuadLayers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCamera3";
@@ -1212,8 +1128,11 @@ pub const IHolographicCamera3 = extern struct {
 };
 pub const IHolographicCamera4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1221,7 +1140,7 @@ pub const IHolographicCamera4 = extern struct {
     pub fn getCanOverrideViewport(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanOverrideViewport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCamera4";
@@ -1241,8 +1160,11 @@ pub const IHolographicCamera4 = extern struct {
 };
 pub const IHolographicCamera5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1250,18 +1172,18 @@ pub const IHolographicCamera5 = extern struct {
     pub fn getIsHardwareContentProtectionSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHardwareContentProtectionSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHardwareContentProtectionEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHardwareContentProtectionEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsHardwareContentProtectionEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsHardwareContentProtectionEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCamera5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1282,8 +1204,11 @@ pub const IHolographicCamera5 = extern struct {
 };
 pub const IHolographicCamera6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1291,7 +1216,7 @@ pub const IHolographicCamera6 = extern struct {
     pub fn getViewConfiguration(self: *@This()) core.HResult!*HolographicViewConfiguration {
         var _r: *HolographicViewConfiguration = undefined;
         const _c = self.vtable.get_ViewConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCamera6";
@@ -1311,8 +1236,11 @@ pub const IHolographicCamera6 = extern struct {
 };
 pub const IHolographicCameraPose = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1320,49 +1248,49 @@ pub const IHolographicCameraPose = extern struct {
     pub fn getHolographicCamera(self: *@This()) core.HResult!*HolographicCamera {
         var _r: *HolographicCamera = undefined;
         const _c = self.vtable.get_HolographicCamera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getViewport(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_Viewport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetViewTransform(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*IReference(HolographicStereoTransform) {
         var _r: *IReference(HolographicStereoTransform) = undefined;
         const _c = self.vtable.TryGetViewTransform(@ptrCast(self), coordinateSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProjectionTransform(self: *@This()) core.HResult!HolographicStereoTransform {
         var _r: HolographicStereoTransform = undefined;
         const _c = self.vtable.get_ProjectionTransform(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetCullingFrustum(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*IReference(SpatialBoundingFrustum) {
         var _r: *IReference(SpatialBoundingFrustum) = undefined;
         const _c = self.vtable.TryGetCullingFrustum(@ptrCast(self), coordinateSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryGetVisibleFrustum(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*IReference(SpatialBoundingFrustum) {
         var _r: *IReference(SpatialBoundingFrustum) = undefined;
         const _c = self.vtable.TryGetVisibleFrustum(@ptrCast(self), coordinateSystem, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNearPlaneDistance(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NearPlaneDistance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFarPlaneDistance(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FarPlaneDistance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCameraPose";
@@ -1389,23 +1317,26 @@ pub const IHolographicCameraPose = extern struct {
 };
 pub const IHolographicCameraPose2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OverrideViewTransform(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, coordinateSystemToViewTransform: HolographicStereoTransform) core.HResult!void {
         const _c = self.vtable.OverrideViewTransform(@ptrCast(self), coordinateSystem, coordinateSystemToViewTransform);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OverrideProjectionTransform(self: *@This(), projectionTransform: HolographicStereoTransform) core.HResult!void {
         const _c = self.vtable.OverrideProjectionTransform(@ptrCast(self), projectionTransform);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OverrideViewport(self: *@This(), leftViewport: Rect, rightViewport: Rect) core.HResult!void {
         const _c = self.vtable.OverrideViewport(@ptrCast(self), leftViewport, rightViewport);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCameraPose2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1426,34 +1357,37 @@ pub const IHolographicCameraPose2 = extern struct {
 };
 pub const IHolographicCameraRenderingParameters = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetFocusPoint(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3) core.HResult!void {
         const _c = self.vtable.SetFocusPoint(@ptrCast(self), coordinateSystem, position);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetFocusPointWithNormal(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
         const _c = self.vtable.SetFocusPointWithNormal(@ptrCast(self), coordinateSystem, position, normal);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetFocusPointWithNormalAndLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
         const _c = self.vtable.SetFocusPointWithNormalAndLinearVelocity(@ptrCast(self), coordinateSystem, position, normal, linearVelocity);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
         var _r: *IDirect3DDevice = undefined;
         const _c = self.vtable.get_Direct3D11Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDirect3D11BackBuffer(self: *@This()) core.HResult!*IDirect3DSurface {
         var _r: *IDirect3DSurface = undefined;
         const _c = self.vtable.get_Direct3D11BackBuffer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCameraRenderingParameters";
@@ -1477,8 +1411,11 @@ pub const IHolographicCameraRenderingParameters = extern struct {
 };
 pub const IHolographicCameraRenderingParameters2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1486,16 +1423,16 @@ pub const IHolographicCameraRenderingParameters2 = extern struct {
     pub fn getReprojectionMode(self: *@This()) core.HResult!HolographicReprojectionMode {
         var _r: HolographicReprojectionMode = undefined;
         const _c = self.vtable.get_ReprojectionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReprojectionMode(self: *@This(), value: HolographicReprojectionMode) core.HResult!void {
         const _c = self.vtable.put_ReprojectionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CommitDirect3D11DepthBuffer(self: *@This(), value: *IDirect3DSurface) core.HResult!void {
         const _c = self.vtable.CommitDirect3D11DepthBuffer(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCameraRenderingParameters2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1516,8 +1453,11 @@ pub const IHolographicCameraRenderingParameters2 = extern struct {
 };
 pub const IHolographicCameraRenderingParameters3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1525,12 +1465,12 @@ pub const IHolographicCameraRenderingParameters3 = extern struct {
     pub fn getIsContentProtectionEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsContentProtectionEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsContentProtectionEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsContentProtectionEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCameraRenderingParameters3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1550,8 +1490,11 @@ pub const IHolographicCameraRenderingParameters3 = extern struct {
 };
 pub const IHolographicCameraRenderingParameters4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1559,12 +1502,12 @@ pub const IHolographicCameraRenderingParameters4 = extern struct {
     pub fn getDepthReprojectionMethod(self: *@This()) core.HResult!HolographicDepthReprojectionMethod {
         var _r: HolographicDepthReprojectionMethod = undefined;
         const _c = self.vtable.get_DepthReprojectionMethod(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDepthReprojectionMethod(self: *@This(), value: HolographicDepthReprojectionMethod) core.HResult!void {
         const _c = self.vtable.put_DepthReprojectionMethod(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCameraRenderingParameters4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1584,8 +1527,11 @@ pub const IHolographicCameraRenderingParameters4 = extern struct {
 };
 pub const IHolographicCameraViewportParameters = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1593,13 +1539,13 @@ pub const IHolographicCameraViewportParameters = extern struct {
     pub fn getHiddenAreaMesh(self: *@This()) core.HResult![*]Vector2 {
         var _r: [*]Vector2 = undefined;
         const _c = self.vtable.get_HiddenAreaMesh(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVisibleAreaMesh(self: *@This()) core.HResult![*]Vector2 {
         var _r: [*]Vector2 = undefined;
         const _c = self.vtable.get_VisibleAreaMesh(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicCameraViewportParameters";
@@ -1620,8 +1566,11 @@ pub const IHolographicCameraViewportParameters = extern struct {
 };
 pub const IHolographicDisplay = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1629,37 +1578,37 @@ pub const IHolographicDisplay = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxViewportSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_MaxViewportSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsStereo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStereo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsOpaque(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOpaque(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdapterId(self: *@This()) core.HResult!HolographicAdapterId {
         var _r: HolographicAdapterId = undefined;
         const _c = self.vtable.get_AdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSpatialLocator(self: *@This()) core.HResult!*SpatialLocator {
         var _r: *SpatialLocator = undefined;
         const _c = self.vtable.get_SpatialLocator(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicDisplay";
@@ -1684,8 +1633,11 @@ pub const IHolographicDisplay = extern struct {
 };
 pub const IHolographicDisplay2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1693,7 +1645,7 @@ pub const IHolographicDisplay2 = extern struct {
     pub fn getRefreshRate(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RefreshRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicDisplay2";
@@ -1713,8 +1665,11 @@ pub const IHolographicDisplay2 = extern struct {
 };
 pub const IHolographicDisplay3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1722,7 +1677,7 @@ pub const IHolographicDisplay3 = extern struct {
     pub fn TryGetViewConfiguration(self: *@This(), kind: HolographicViewConfigurationKind) core.HResult!*HolographicViewConfiguration {
         var _r: *HolographicViewConfiguration = undefined;
         const _c = self.vtable.TryGetViewConfiguration(@ptrCast(self), kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicDisplay3";
@@ -1742,8 +1697,11 @@ pub const IHolographicDisplay3 = extern struct {
 };
 pub const IHolographicDisplayStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1751,7 +1709,7 @@ pub const IHolographicDisplayStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*HolographicDisplay {
         var _r: *HolographicDisplay = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicDisplayStatics";
@@ -1771,8 +1729,11 @@ pub const IHolographicDisplayStatics = extern struct {
 };
 pub const IHolographicFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1780,52 +1741,52 @@ pub const IHolographicFrame = extern struct {
     pub fn getAddedCameras(self: *@This()) core.HResult!*IVectorView(HolographicCamera) {
         var _r: *IVectorView(HolographicCamera) = undefined;
         const _c = self.vtable.get_AddedCameras(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemovedCameras(self: *@This()) core.HResult!*IVectorView(HolographicCamera) {
         var _r: *IVectorView(HolographicCamera) = undefined;
         const _c = self.vtable.get_RemovedCameras(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRenderingParameters(self: *@This(), cameraPose: *HolographicCameraPose) core.HResult!*HolographicCameraRenderingParameters {
         var _r: *HolographicCameraRenderingParameters = undefined;
         const _c = self.vtable.GetRenderingParameters(@ptrCast(self), cameraPose, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCurrentPrediction(self: *@This()) core.HResult!*HolographicFramePrediction {
         var _r: *HolographicFramePrediction = undefined;
         const _c = self.vtable.get_CurrentPrediction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateCurrentPrediction(self: *@This()) core.HResult!void {
         const _c = self.vtable.UpdateCurrentPrediction(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PresentUsingCurrentPrediction(self: *@This()) core.HResult!HolographicFramePresentResult {
         var _r: HolographicFramePresentResult = undefined;
         const _c = self.vtable.PresentUsingCurrentPrediction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PresentUsingCurrentPredictionWithWaitBehavior(self: *@This(), waitBehavior: HolographicFramePresentWaitBehavior) core.HResult!HolographicFramePresentResult {
         var _r: HolographicFramePresentResult = undefined;
         const _c = self.vtable.PresentUsingCurrentPredictionWithWaitBehavior(@ptrCast(self), waitBehavior, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn WaitForFrameToFinish(self: *@This()) core.HResult!void {
         const _c = self.vtable.WaitForFrameToFinish(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1852,8 +1813,11 @@ pub const IHolographicFrame = extern struct {
 };
 pub const IHolographicFrame2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1861,7 +1825,7 @@ pub const IHolographicFrame2 = extern struct {
     pub fn GetQuadLayerUpdateParameters(self: *@This(), layer: *HolographicQuadLayer) core.HResult!*HolographicQuadLayerUpdateParameters {
         var _r: *HolographicQuadLayerUpdateParameters = undefined;
         const _c = self.vtable.GetQuadLayerUpdateParameters(@ptrCast(self), layer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFrame2";
@@ -1881,8 +1845,11 @@ pub const IHolographicFrame2 = extern struct {
 };
 pub const IHolographicFrame3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1890,7 +1857,7 @@ pub const IHolographicFrame3 = extern struct {
     pub fn getId(self: *@This()) core.HResult!HolographicFrameId {
         var _r: HolographicFrameId = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFrame3";
@@ -1910,8 +1877,11 @@ pub const IHolographicFrame3 = extern struct {
 };
 pub const IHolographicFramePrediction = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1919,13 +1889,13 @@ pub const IHolographicFramePrediction = extern struct {
     pub fn getCameraPoses(self: *@This()) core.HResult!*IVectorView(HolographicCameraPose) {
         var _r: *IVectorView(HolographicCameraPose) = undefined;
         const _c = self.vtable.get_CameraPoses(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimestamp(self: *@This()) core.HResult!*PerceptionTimestamp {
         var _r: *PerceptionTimestamp = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFramePrediction";
@@ -1946,8 +1916,11 @@ pub const IHolographicFramePrediction = extern struct {
 };
 pub const IHolographicFramePresentationMonitor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1955,7 +1928,7 @@ pub const IHolographicFramePresentationMonitor = extern struct {
     pub fn ReadReports(self: *@This()) core.HResult!*IVectorView(HolographicFramePresentationReport) {
         var _r: *IVectorView(HolographicFramePresentationReport) = undefined;
         const _c = self.vtable.ReadReports(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFramePresentationMonitor";
@@ -1975,8 +1948,11 @@ pub const IHolographicFramePresentationMonitor = extern struct {
 };
 pub const IHolographicFramePresentationReport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1984,31 +1960,31 @@ pub const IHolographicFramePresentationReport = extern struct {
     pub fn getCompositorGpuDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_CompositorGpuDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppGpuDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_AppGpuDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppGpuOverrun(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_AppGpuOverrun(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMissedPresentationOpportunityCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MissedPresentationOpportunityCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPresentationCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PresentationCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFramePresentationReport";
@@ -2032,8 +2008,11 @@ pub const IHolographicFramePresentationReport = extern struct {
 };
 pub const IHolographicFrameRenderingReport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2041,31 +2020,31 @@ pub const IHolographicFrameRenderingReport = extern struct {
     pub fn getFrameId(self: *@This()) core.HResult!HolographicFrameId {
         var _r: HolographicFrameId = undefined;
         const _c = self.vtable.get_FrameId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMissedLatchCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MissedLatchCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemRelativeFrameReadyTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativeFrameReadyTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemRelativeActualGpuFinishTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativeActualGpuFinishTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemRelativeTargetLatchTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativeTargetLatchTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFrameRenderingReport";
@@ -2089,8 +2068,11 @@ pub const IHolographicFrameRenderingReport = extern struct {
 };
 pub const IHolographicFrameScanoutMonitor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2098,7 +2080,7 @@ pub const IHolographicFrameScanoutMonitor = extern struct {
     pub fn ReadReports(self: *@This()) core.HResult!*IVector(HolographicFrameScanoutReport) {
         var _r: *IVector(HolographicFrameScanoutReport) = undefined;
         const _c = self.vtable.ReadReports(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFrameScanoutMonitor";
@@ -2118,8 +2100,11 @@ pub const IHolographicFrameScanoutMonitor = extern struct {
 };
 pub const IHolographicFrameScanoutReport = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2127,31 +2112,31 @@ pub const IHolographicFrameScanoutReport = extern struct {
     pub fn getRenderingReport(self: *@This()) core.HResult!*HolographicFrameRenderingReport {
         var _r: *HolographicFrameRenderingReport = undefined;
         const _c = self.vtable.get_RenderingReport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMissedScanoutCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MissedScanoutCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemRelativeLatchTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativeLatchTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemRelativeScanoutStartTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativeScanoutStartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemRelativePhotonTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativePhotonTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicFrameScanoutReport";
@@ -2175,8 +2160,11 @@ pub const IHolographicFrameScanoutReport = extern struct {
 };
 pub const IHolographicQuadLayer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2184,13 +2172,13 @@ pub const IHolographicQuadLayer = extern struct {
     pub fn getPixelFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_PixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicQuadLayer";
@@ -2211,8 +2199,11 @@ pub const IHolographicQuadLayer = extern struct {
 };
 pub const IHolographicQuadLayerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2220,13 +2211,13 @@ pub const IHolographicQuadLayerFactory = extern struct {
     pub fn Create(self: *@This(), size: Size) core.HResult!*HolographicQuadLayer {
         var _r: *HolographicQuadLayer = undefined;
         const _c = self.vtable.Create(@ptrCast(self), size, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithPixelFormat(self: *@This(), size: Size, pixelFormat: DirectXPixelFormat) core.HResult!*HolographicQuadLayer {
         var _r: *HolographicQuadLayer = undefined;
         const _c = self.vtable.CreateWithPixelFormat(@ptrCast(self), size, pixelFormat, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicQuadLayerFactory";
@@ -2247,8 +2238,11 @@ pub const IHolographicQuadLayerFactory = extern struct {
 };
 pub const IHolographicQuadLayerUpdateParameters = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2256,28 +2250,28 @@ pub const IHolographicQuadLayerUpdateParameters = extern struct {
     pub fn AcquireBufferToUpdateContent(self: *@This()) core.HResult!*IDirect3DSurface {
         var _r: *IDirect3DSurface = undefined;
         const _c = self.vtable.AcquireBufferToUpdateContent(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateViewport(self: *@This(), value: Rect) core.HResult!void {
         const _c = self.vtable.UpdateViewport(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UpdateContentProtectionEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.UpdateContentProtectionEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UpdateExtents(self: *@This(), value: Vector2) core.HResult!void {
         const _c = self.vtable.UpdateExtents(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UpdateLocationWithStationaryMode(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!void {
         const _c = self.vtable.UpdateLocationWithStationaryMode(@ptrCast(self), coordinateSystem, position, orientation);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UpdateLocationWithDisplayRelativeMode(self: *@This(), position: Vector3, orientation: Quaternion) core.HResult!void {
         const _c = self.vtable.UpdateLocationWithDisplayRelativeMode(@ptrCast(self), position, orientation);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicQuadLayerUpdateParameters";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2301,8 +2295,11 @@ pub const IHolographicQuadLayerUpdateParameters = extern struct {
 };
 pub const IHolographicQuadLayerUpdateParameters2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2310,13 +2307,13 @@ pub const IHolographicQuadLayerUpdateParameters2 = extern struct {
     pub fn getCanAcquireWithHardwareProtection(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanAcquireWithHardwareProtection(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcquireBufferToUpdateContentWithHardwareProtection(self: *@This()) core.HResult!*IDirect3DSurface {
         var _r: *IDirect3DSurface = undefined;
         const _c = self.vtable.AcquireBufferToUpdateContentWithHardwareProtection(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicQuadLayerUpdateParameters2";
@@ -2337,8 +2334,11 @@ pub const IHolographicQuadLayerUpdateParameters2 = extern struct {
 };
 pub const IHolographicSpace = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2346,37 +2346,37 @@ pub const IHolographicSpace = extern struct {
     pub fn getPrimaryAdapterId(self: *@This()) core.HResult!HolographicAdapterId {
         var _r: HolographicAdapterId = undefined;
         const _c = self.vtable.get_PrimaryAdapterId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetDirect3D11Device(self: *@This(), value: *IDirect3DDevice) core.HResult!void {
         const _c = self.vtable.SetDirect3D11Device(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCameraAdded(self: *@This(), handler: *TypedEventHandler(HolographicSpace,HolographicSpaceCameraAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CameraAdded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCameraAdded(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CameraAdded(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCameraRemoved(self: *@This(), handler: *TypedEventHandler(HolographicSpace,HolographicSpaceCameraRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CameraRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCameraRemoved(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CameraRemoved(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateNextFrame(self: *@This()) core.HResult!*HolographicFrame {
         var _r: *HolographicFrame = undefined;
         const _c = self.vtable.CreateNextFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpace";
@@ -2402,8 +2402,11 @@ pub const IHolographicSpace = extern struct {
 };
 pub const IHolographicSpace2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2411,31 +2414,31 @@ pub const IHolographicSpace2 = extern struct {
     pub fn getUserPresence(self: *@This()) core.HResult!HolographicSpaceUserPresence {
         var _r: HolographicSpaceUserPresence = undefined;
         const _c = self.vtable.get_UserPresence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addUserPresenceChanged(self: *@This(), handler: *TypedEventHandler(HolographicSpace,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UserPresenceChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUserPresenceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UserPresenceChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn WaitForNextFrameReady(self: *@This()) core.HResult!void {
         const _c = self.vtable.WaitForNextFrameReady(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn WaitForNextFrameReadyWithHeadStart(self: *@This(), requestedHeadStartDuration: TimeSpan) core.HResult!void {
         const _c = self.vtable.WaitForNextFrameReadyWithHeadStart(@ptrCast(self), requestedHeadStartDuration);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateFramePresentationMonitor(self: *@This(), maxQueuedReports: u32) core.HResult!*HolographicFramePresentationMonitor {
         var _r: *HolographicFramePresentationMonitor = undefined;
         const _c = self.vtable.CreateFramePresentationMonitor(@ptrCast(self), maxQueuedReports, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpace2";
@@ -2460,8 +2463,11 @@ pub const IHolographicSpace2 = extern struct {
 };
 pub const IHolographicSpace3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2469,7 +2475,7 @@ pub const IHolographicSpace3 = extern struct {
     pub fn CreateFrameScanoutMonitor(self: *@This(), maxQueuedReports: u32) core.HResult!*HolographicFrameScanoutMonitor {
         var _r: *HolographicFrameScanoutMonitor = undefined;
         const _c = self.vtable.CreateFrameScanoutMonitor(@ptrCast(self), maxQueuedReports, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpace3";
@@ -2489,8 +2495,11 @@ pub const IHolographicSpace3 = extern struct {
 };
 pub const IHolographicSpaceCameraAddedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2498,13 +2507,13 @@ pub const IHolographicSpaceCameraAddedEventArgs = extern struct {
     pub fn getCamera(self: *@This()) core.HResult!*HolographicCamera {
         var _r: *HolographicCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpaceCameraAddedEventArgs";
@@ -2525,8 +2534,11 @@ pub const IHolographicSpaceCameraAddedEventArgs = extern struct {
 };
 pub const IHolographicSpaceCameraRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2534,7 +2546,7 @@ pub const IHolographicSpaceCameraRemovedEventArgs = extern struct {
     pub fn getCamera(self: *@This()) core.HResult!*HolographicCamera {
         var _r: *HolographicCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpaceCameraRemovedEventArgs";
@@ -2554,8 +2566,11 @@ pub const IHolographicSpaceCameraRemovedEventArgs = extern struct {
 };
 pub const IHolographicSpaceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2563,7 +2578,7 @@ pub const IHolographicSpaceStatics = extern struct {
     pub fn CreateForCoreWindow(self: *@This(), window: *CoreWindow) core.HResult!*HolographicSpace {
         var _r: *HolographicSpace = undefined;
         const _c = self.vtable.CreateForCoreWindow(@ptrCast(self), window, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpaceStatics";
@@ -2583,8 +2598,11 @@ pub const IHolographicSpaceStatics = extern struct {
 };
 pub const IHolographicSpaceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2592,24 +2610,24 @@ pub const IHolographicSpaceStatics2 = extern struct {
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addIsAvailableChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_IsAvailableChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeIsAvailableChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_IsAvailableChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpaceStatics2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2631,8 +2649,11 @@ pub const IHolographicSpaceStatics2 = extern struct {
 };
 pub const IHolographicSpaceStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2640,7 +2661,7 @@ pub const IHolographicSpaceStatics3 = extern struct {
     pub fn getIsConfigured(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConfigured(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicSpaceStatics3";
@@ -2660,8 +2681,11 @@ pub const IHolographicSpaceStatics3 = extern struct {
 };
 pub const IHolographicViewConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2669,70 +2693,70 @@ pub const IHolographicViewConfiguration = extern struct {
     pub fn getNativeRenderTargetSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_NativeRenderTargetSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRenderTargetSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_RenderTargetSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestRenderTargetSize(self: *@This(), size: Size) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.RequestRenderTargetSize(@ptrCast(self), size, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedPixelFormats(self: *@This()) core.HResult!*IVectorView(DirectXPixelFormat) {
         var _r: *IVectorView(DirectXPixelFormat) = undefined;
         const _c = self.vtable.get_SupportedPixelFormats(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPixelFormat(self: *@This()) core.HResult!DirectXPixelFormat {
         var _r: DirectXPixelFormat = undefined;
         const _c = self.vtable.get_PixelFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPixelFormat(self: *@This(), value: DirectXPixelFormat) core.HResult!void {
         const _c = self.vtable.put_PixelFormat(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsStereo(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStereo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRefreshRate(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RefreshRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKind(self: *@This()) core.HResult!HolographicViewConfigurationKind {
         var _r: HolographicViewConfigurationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplay(self: *@This()) core.HResult!*HolographicDisplay {
         var _r: *HolographicDisplay = undefined;
         const _c = self.vtable.get_Display(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicViewConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2762,8 +2786,11 @@ pub const IHolographicViewConfiguration = extern struct {
 };
 pub const IHolographicViewConfiguration2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2771,7 +2798,7 @@ pub const IHolographicViewConfiguration2 = extern struct {
     pub fn getSupportedDepthReprojectionMethods(self: *@This()) core.HResult!*IVectorView(HolographicDepthReprojectionMethod) {
         var _r: *IVectorView(HolographicDepthReprojectionMethod) = undefined;
         const _c = self.vtable.get_SupportedDepthReprojectionMethods(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.IHolographicViewConfiguration2";

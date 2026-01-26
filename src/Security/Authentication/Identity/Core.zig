@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,61 +13,61 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     pub fn GetOneTimePassCodeAsync(self: *@This(), userAccountId: ?HSTRING, codeLength: u32) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) = undefined;
         const _c = self.vtable.GetOneTimePassCodeAsync(@ptrCast(self), userAccountId, codeLength, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddDeviceAsync(self: *@This(), userAccountId: ?HSTRING, authenticationToken: ?HSTRING, wnsChannelId: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.AddDeviceAsync(@ptrCast(self), userAccountId, authenticationToken, wnsChannelId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RemoveDeviceAsync(self: *@This(), userAccountId: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.RemoveDeviceAsync(@ptrCast(self), userAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateWnsChannelAsync(self: *@This(), userAccountId: ?HSTRING, channelUri: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.UpdateWnsChannelAsync(@ptrCast(self), userAccountId, channelUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSessionsAsync(self: *@This(), userAccountIdList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult) = undefined;
         const _c = self.vtable.GetSessionsAsync(@ptrCast(self), userAccountIdList, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSessionsAndUnregisteredAccountsAsync(self: *@This(), userAccountIdList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo) = undefined;
         const _c = self.vtable.GetSessionsAndUnregisteredAccountsAsync(@ptrCast(self), userAccountIdList, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApproveSessionAsync(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, authenticationSessionInfo: *MicrosoftAccountMultiFactorSessionInfo) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.ApproveSessionAsync(@ptrCast(self), sessionAuthentictionStatus, authenticationSessionInfo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(@ptrCast(self), sessionAuthentictionStatus, userAccountId, sessionId, sessionAuthenticationType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DenySessionAsync(self: *@This(), authenticationSessionInfo: *MicrosoftAccountMultiFactorSessionInfo) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.DenySessionAsync(@ptrCast(self), authenticationSessionInfo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(@ptrCast(self), userAccountId, sessionId, sessionAuthenticationType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.IMicrosoftAccountMultiFactorAuthenticationManager";
@@ -93,8 +96,11 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorAuthenticatorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -102,7 +108,7 @@ pub const IMicrosoftAccountMultiFactorAuthenticatorStatics = extern struct {
     pub fn getCurrent(self: *@This()) core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
         var _r: *MicrosoftAccountMultiFactorAuthenticationManager = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.IMicrosoftAccountMultiFactorAuthenticatorStatics";
@@ -122,8 +128,11 @@ pub const IMicrosoftAccountMultiFactorAuthenticatorStatics = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorGetSessionsResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -131,13 +140,13 @@ pub const IMicrosoftAccountMultiFactorGetSessionsResult = extern struct {
     pub fn getSessions(self: *@This()) core.HResult!*IVectorView(MicrosoftAccountMultiFactorSessionInfo) {
         var _r: *IVectorView(MicrosoftAccountMultiFactorSessionInfo) = undefined;
         const _c = self.vtable.get_Sessions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceResponse(self: *@This()) core.HResult!MicrosoftAccountMultiFactorServiceResponse {
         var _r: MicrosoftAccountMultiFactorServiceResponse = undefined;
         const _c = self.vtable.get_ServiceResponse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.IMicrosoftAccountMultiFactorGetSessionsResult";
@@ -158,8 +167,11 @@ pub const IMicrosoftAccountMultiFactorGetSessionsResult = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -167,25 +179,25 @@ pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
     pub fn getCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimeInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_TimeInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimeToLive(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_TimeToLive(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceResponse(self: *@This()) core.HResult!MicrosoftAccountMultiFactorServiceResponse {
         var _r: MicrosoftAccountMultiFactorServiceResponse = undefined;
         const _c = self.vtable.get_ServiceResponse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.IMicrosoftAccountMultiFactorOneTimeCodedInfo";
@@ -208,8 +220,11 @@ pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorSessionInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -217,43 +232,43 @@ pub const IMicrosoftAccountMultiFactorSessionInfo = extern struct {
     pub fn getUserAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplaySessionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplaySessionId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getApprovalStatus(self: *@This()) core.HResult!MicrosoftAccountMultiFactorSessionApprovalStatus {
         var _r: MicrosoftAccountMultiFactorSessionApprovalStatus = undefined;
         const _c = self.vtable.get_ApprovalStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAuthenticationType(self: *@This()) core.HResult!MicrosoftAccountMultiFactorAuthenticationType {
         var _r: MicrosoftAccountMultiFactorAuthenticationType = undefined;
         const _c = self.vtable.get_AuthenticationType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_RequestTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpirationTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_ExpirationTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.IMicrosoftAccountMultiFactorSessionInfo";
@@ -279,8 +294,11 @@ pub const IMicrosoftAccountMultiFactorSessionInfo = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -288,19 +306,19 @@ pub const IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = exter
     pub fn getSessions(self: *@This()) core.HResult!*IVectorView(MicrosoftAccountMultiFactorSessionInfo) {
         var _r: *IVectorView(MicrosoftAccountMultiFactorSessionInfo) = undefined;
         const _c = self.vtable.get_Sessions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUnregisteredAccounts(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_UnregisteredAccounts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceResponse(self: *@This()) core.HResult!MicrosoftAccountMultiFactorServiceResponse {
         var _r: MicrosoftAccountMultiFactorServiceResponse = undefined;
         const _c = self.vtable.get_ServiceResponse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo";
@@ -322,14 +340,11 @@ pub const IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = exter
 };
 pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -391,14 +406,11 @@ pub const MicrosoftAccountMultiFactorAuthenticationType = enum(i32) {
 };
 pub const MicrosoftAccountMultiFactorGetSessionsResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -419,14 +431,11 @@ pub const MicrosoftAccountMultiFactorGetSessionsResult = extern struct {
 };
 pub const MicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -488,14 +497,11 @@ pub const MicrosoftAccountMultiFactorSessionAuthenticationStatus = enum(i32) {
 };
 pub const MicrosoftAccountMultiFactorSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -536,14 +542,11 @@ pub const MicrosoftAccountMultiFactorSessionInfo = extern struct {
 };
 pub const MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

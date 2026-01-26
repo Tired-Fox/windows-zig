@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ISyndicationAttribute = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,32 +13,32 @@ pub const ISyndicationAttribute = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Namespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Namespace(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59,8 +62,11 @@ pub const ISyndicationAttribute = extern struct {
 };
 pub const ISyndicationAttributeFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -68,7 +74,7 @@ pub const ISyndicationAttributeFactory = extern struct {
     pub fn CreateSyndicationAttribute(self: *@This(), attributeName: ?HSTRING, attributeNamespace: ?HSTRING, attributeValue: ?HSTRING) core.HResult!*SyndicationAttribute {
         var _r: *SyndicationAttribute = undefined;
         const _c = self.vtable.CreateSyndicationAttribute(@ptrCast(self), attributeName, attributeNamespace, attributeValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationAttributeFactory";
@@ -88,8 +94,11 @@ pub const ISyndicationAttributeFactory = extern struct {
 };
 pub const ISyndicationCategory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -97,32 +106,32 @@ pub const ISyndicationCategory = extern struct {
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScheme(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Scheme(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScheme(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Scheme(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTerm(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Term(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTerm(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Term(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationCategory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -146,8 +155,11 @@ pub const ISyndicationCategory = extern struct {
 };
 pub const ISyndicationCategoryFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -155,13 +167,13 @@ pub const ISyndicationCategoryFactory = extern struct {
     pub fn CreateSyndicationCategory(self: *@This(), term: ?HSTRING) core.HResult!*SyndicationCategory {
         var _r: *SyndicationCategory = undefined;
         const _c = self.vtable.CreateSyndicationCategory(@ptrCast(self), term, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSyndicationCategoryEx(self: *@This(), term: ?HSTRING, scheme: ?HSTRING, label: ?HSTRING) core.HResult!*SyndicationCategory {
         var _r: *SyndicationCategory = undefined;
         const _c = self.vtable.CreateSyndicationCategoryEx(@ptrCast(self), term, scheme, label, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationCategoryFactory";
@@ -182,8 +194,11 @@ pub const ISyndicationCategoryFactory = extern struct {
 };
 pub const ISyndicationClient = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -191,61 +206,61 @@ pub const ISyndicationClient = extern struct {
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_ServerCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_ServerCredential(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_ProxyCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProxyCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_ProxyCredential(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxResponseBufferSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxResponseBufferSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxResponseBufferSize(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_MaxResponseBufferSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTimeout(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Timeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTimeout(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Timeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBypassCacheOnRetrieve(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BypassCacheOnRetrieve(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBypassCacheOnRetrieve(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_BypassCacheOnRetrieve(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetRequestHeader(self: *@This(), name: ?HSTRING, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), name, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RetrieveFeedAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(SyndicationFeed,RetrievalProgress) {
         var _r: *IAsyncOperationWithProgress(SyndicationFeed,RetrievalProgress) = undefined;
         const _c = self.vtable.RetrieveFeedAsync(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationClient";
@@ -276,8 +291,11 @@ pub const ISyndicationClient = extern struct {
 };
 pub const ISyndicationClientFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -285,7 +303,7 @@ pub const ISyndicationClientFactory = extern struct {
     pub fn CreateSyndicationClient(self: *@This(), serverCredential: *PasswordCredential) core.HResult!*SyndicationClient {
         var _r: *SyndicationClient = undefined;
         const _c = self.vtable.CreateSyndicationClient(@ptrCast(self), serverCredential, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationClientFactory";
@@ -305,8 +323,11 @@ pub const ISyndicationClientFactory = extern struct {
 };
 pub const ISyndicationContent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -314,12 +335,12 @@ pub const ISyndicationContent = extern struct {
     pub fn getSourceUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_SourceUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSourceUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_SourceUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -339,8 +360,11 @@ pub const ISyndicationContent = extern struct {
 };
 pub const ISyndicationContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -348,13 +372,13 @@ pub const ISyndicationContentFactory = extern struct {
     pub fn CreateSyndicationContent(self: *@This(), text: ?HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
         var _r: *SyndicationContent = undefined;
         const _c = self.vtable.CreateSyndicationContent(@ptrCast(self), text, ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSyndicationContentWithSourceUri(self: *@This(), sourceUri: *Uri) core.HResult!*SyndicationContent {
         var _r: *SyndicationContent = undefined;
         const _c = self.vtable.CreateSyndicationContentWithSourceUri(@ptrCast(self), sourceUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationContentFactory";
@@ -375,8 +399,11 @@ pub const ISyndicationContentFactory = extern struct {
 };
 pub const ISyndicationErrorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -384,7 +411,7 @@ pub const ISyndicationErrorStatics = extern struct {
     pub fn GetStatus(self: *@This(), hresult: i32) core.HResult!SyndicationErrorStatus {
         var _r: SyndicationErrorStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), hresult, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationErrorStatics";
@@ -404,8 +431,11 @@ pub const ISyndicationErrorStatics = extern struct {
 };
 pub const ISyndicationFeed = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -413,150 +443,150 @@ pub const ISyndicationFeed = extern struct {
     pub fn getAuthors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         var _r: *IVector(SyndicationPerson) = undefined;
         const _c = self.vtable.get_Authors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCategories(self: *@This()) core.HResult!*IVector(SyndicationCategory) {
         var _r: *IVector(SyndicationCategory) = undefined;
         const _c = self.vtable.get_Categories(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContributors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         var _r: *IVector(SyndicationPerson) = undefined;
         const _c = self.vtable.get_Contributors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGenerator(self: *@This()) core.HResult!*SyndicationGenerator {
         var _r: *SyndicationGenerator = undefined;
         const _c = self.vtable.get_Generator(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putGenerator(self: *@This(), value: *SyndicationGenerator) core.HResult!void {
         const _c = self.vtable.put_Generator(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIconUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_IconUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIconUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_IconUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getItems(self: *@This()) core.HResult!*IVector(SyndicationItem) {
         var _r: *IVector(SyndicationItem) = undefined;
         const _c = self.vtable.get_Items(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastUpdatedTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_LastUpdatedTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLastUpdatedTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_LastUpdatedTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLinks(self: *@This()) core.HResult!*IVector(SyndicationLink) {
         var _r: *IVector(SyndicationLink) = undefined;
         const _c = self.vtable.get_Links(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getImageUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ImageUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putImageUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_ImageUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRights(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Rights(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRights(self: *@This(), value: *ISyndicationText) core.HResult!void {
         const _c = self.vtable.put_Rights(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSubtitle(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Subtitle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSubtitle(self: *@This(), value: *ISyndicationText) core.HResult!void {
         const _c = self.vtable.put_Subtitle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTitle(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTitle(self: *@This(), value: *ISyndicationText) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFirstUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_FirstUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_LastUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNextUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_NextUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPreviousUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_PreviousUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceFormat(self: *@This()) core.HResult!SyndicationFormat {
         var _r: SyndicationFormat = undefined;
         const _c = self.vtable.get_SourceFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Load(self: *@This(), feed: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Load(@ptrCast(self), feed);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LoadFromXml(self: *@This(), feedDocument: *XmlDocument) core.HResult!void {
         const _c = self.vtable.LoadFromXml(@ptrCast(self), feedDocument);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationFeed";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -602,8 +632,11 @@ pub const ISyndicationFeed = extern struct {
 };
 pub const ISyndicationFeedFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -611,7 +644,7 @@ pub const ISyndicationFeedFactory = extern struct {
     pub fn CreateSyndicationFeed(self: *@This(), title: ?HSTRING, subtitle: ?HSTRING, uri: *Uri) core.HResult!*SyndicationFeed {
         var _r: *SyndicationFeed = undefined;
         const _c = self.vtable.CreateSyndicationFeed(@ptrCast(self), title, subtitle, uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationFeedFactory";
@@ -631,8 +664,11 @@ pub const ISyndicationFeedFactory = extern struct {
 };
 pub const ISyndicationGenerator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -640,32 +676,32 @@ pub const ISyndicationGenerator = extern struct {
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Version(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Version(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationGenerator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -689,8 +725,11 @@ pub const ISyndicationGenerator = extern struct {
 };
 pub const ISyndicationGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -698,7 +737,7 @@ pub const ISyndicationGeneratorFactory = extern struct {
     pub fn CreateSyndicationGenerator(self: *@This(), text: ?HSTRING) core.HResult!*SyndicationGenerator {
         var _r: *SyndicationGenerator = undefined;
         const _c = self.vtable.CreateSyndicationGenerator(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationGeneratorFactory";
@@ -718,8 +757,11 @@ pub const ISyndicationGeneratorFactory = extern struct {
 };
 pub const ISyndicationItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -727,148 +769,148 @@ pub const ISyndicationItem = extern struct {
     pub fn getAuthors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         var _r: *IVector(SyndicationPerson) = undefined;
         const _c = self.vtable.get_Authors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCategories(self: *@This()) core.HResult!*IVector(SyndicationCategory) {
         var _r: *IVector(SyndicationCategory) = undefined;
         const _c = self.vtable.get_Categories(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContributors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         var _r: *IVector(SyndicationPerson) = undefined;
         const _c = self.vtable.get_Contributors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContent(self: *@This()) core.HResult!*SyndicationContent {
         var _r: *SyndicationContent = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContent(self: *@This(), value: *SyndicationContent) core.HResult!void {
         const _c = self.vtable.put_Content(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLastUpdatedTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_LastUpdatedTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLastUpdatedTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_LastUpdatedTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLinks(self: *@This()) core.HResult!*IVector(SyndicationLink) {
         var _r: *IVector(SyndicationLink) = undefined;
         const _c = self.vtable.get_Links(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPublishedDate(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_PublishedDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPublishedDate(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_PublishedDate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRights(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Rights(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRights(self: *@This(), value: *ISyndicationText) core.HResult!void {
         const _c = self.vtable.put_Rights(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSource(self: *@This()) core.HResult!*SyndicationFeed {
         var _r: *SyndicationFeed = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSource(self: *@This(), value: *SyndicationFeed) core.HResult!void {
         const _c = self.vtable.put_Source(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSummary(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Summary(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSummary(self: *@This(), value: *ISyndicationText) core.HResult!void {
         const _c = self.vtable.put_Summary(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTitle(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTitle(self: *@This(), value: *ISyndicationText) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCommentsUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_CommentsUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCommentsUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_CommentsUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEditUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_EditUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEditMediaUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_EditMediaUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getETag(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ETag(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ItemUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Load(self: *@This(), item: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Load(@ptrCast(self), item);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn LoadFromXml(self: *@This(), itemDocument: *XmlDocument) core.HResult!void {
         const _c = self.vtable.LoadFromXml(@ptrCast(self), itemDocument);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -914,8 +956,11 @@ pub const ISyndicationItem = extern struct {
 };
 pub const ISyndicationItemFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -923,7 +968,7 @@ pub const ISyndicationItemFactory = extern struct {
     pub fn CreateSyndicationItem(self: *@This(), title: ?HSTRING, content: *SyndicationContent, uri: *Uri) core.HResult!*SyndicationItem {
         var _r: *SyndicationItem = undefined;
         const _c = self.vtable.CreateSyndicationItem(@ptrCast(self), title, content, uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationItemFactory";
@@ -943,8 +988,11 @@ pub const ISyndicationItemFactory = extern struct {
 };
 pub const ISyndicationLink = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -952,62 +1000,62 @@ pub const ISyndicationLink = extern struct {
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLength(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Length(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMediaType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MediaType(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRelationship(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Relationship(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRelationship(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Relationship(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putResourceLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ResourceLanguage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationLink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1037,8 +1085,11 @@ pub const ISyndicationLink = extern struct {
 };
 pub const ISyndicationLinkFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1046,13 +1097,13 @@ pub const ISyndicationLinkFactory = extern struct {
     pub fn CreateSyndicationLink(self: *@This(), uri: *Uri) core.HResult!*SyndicationLink {
         var _r: *SyndicationLink = undefined;
         const _c = self.vtable.CreateSyndicationLink(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSyndicationLinkEx(self: *@This(), uri: *Uri, relationship: ?HSTRING, title: ?HSTRING, mediaType: ?HSTRING, length: u32) core.HResult!*SyndicationLink {
         var _r: *SyndicationLink = undefined;
         const _c = self.vtable.CreateSyndicationLinkEx(@ptrCast(self), uri, relationship, title, mediaType, length, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationLinkFactory";
@@ -1073,8 +1124,11 @@ pub const ISyndicationLinkFactory = extern struct {
 };
 pub const ISyndicationNode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1082,69 +1136,69 @@ pub const ISyndicationNode = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NodeName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeNamespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NodeNamespace(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NodeValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_BaseUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_BaseUri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var _r: *IVector(SyndicationAttribute) = undefined;
         const _c = self.vtable.get_AttributeExtensions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var _r: *IVector(ISyndicationNode) = undefined;
         const _c = self.vtable.get_ElementExtensions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.GetXmlDocument(@ptrCast(self), format, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationNode";
@@ -1176,8 +1230,11 @@ pub const ISyndicationNode = extern struct {
 };
 pub const ISyndicationNodeFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1185,7 +1242,7 @@ pub const ISyndicationNodeFactory = extern struct {
     pub fn CreateSyndicationNode(self: *@This(), nodeName: ?HSTRING, nodeNamespace: ?HSTRING, nodeValue: ?HSTRING) core.HResult!*SyndicationNode {
         var _r: *SyndicationNode = undefined;
         const _c = self.vtable.CreateSyndicationNode(@ptrCast(self), nodeName, nodeNamespace, nodeValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationNodeFactory";
@@ -1205,8 +1262,11 @@ pub const ISyndicationNodeFactory = extern struct {
 };
 pub const ISyndicationPerson = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1214,32 +1274,32 @@ pub const ISyndicationPerson = extern struct {
     pub fn getEmail(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Email(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEmail(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Email(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationPerson";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1263,8 +1323,11 @@ pub const ISyndicationPerson = extern struct {
 };
 pub const ISyndicationPersonFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1272,13 +1335,13 @@ pub const ISyndicationPersonFactory = extern struct {
     pub fn CreateSyndicationPerson(self: *@This(), name: ?HSTRING) core.HResult!*SyndicationPerson {
         var _r: *SyndicationPerson = undefined;
         const _c = self.vtable.CreateSyndicationPerson(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSyndicationPersonEx(self: *@This(), name: ?HSTRING, email: ?HSTRING, uri: *Uri) core.HResult!*SyndicationPerson {
         var _r: *SyndicationPerson = undefined;
         const _c = self.vtable.CreateSyndicationPersonEx(@ptrCast(self), name, email, uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationPersonFactory";
@@ -1299,8 +1362,11 @@ pub const ISyndicationPersonFactory = extern struct {
 };
 pub const ISyndicationText = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1308,32 +1374,32 @@ pub const ISyndicationText = extern struct {
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getXml(self: *@This()) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.get_Xml(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putXml(self: *@This(), value: *XmlDocument) core.HResult!void {
         const _c = self.vtable.put_Xml(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationText";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1357,8 +1423,11 @@ pub const ISyndicationText = extern struct {
 };
 pub const ISyndicationTextFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1366,13 +1435,13 @@ pub const ISyndicationTextFactory = extern struct {
     pub fn CreateSyndicationText(self: *@This(), text: ?HSTRING) core.HResult!*SyndicationText {
         var _r: *SyndicationText = undefined;
         const _c = self.vtable.CreateSyndicationText(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSyndicationTextEx(self: *@This(), text: ?HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
         var _r: *SyndicationText = undefined;
         const _c = self.vtable.CreateSyndicationTextEx(@ptrCast(self), text, ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.ISyndicationTextFactory";
@@ -1397,14 +1466,11 @@ pub const RetrievalProgress = extern struct {
 };
 pub const SyndicationAttribute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1451,14 +1517,11 @@ pub const SyndicationAttribute = extern struct {
 };
 pub const SyndicationCategory = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1490,92 +1553,79 @@ pub const SyndicationCategory = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn init() core.HResult!*@This() {
@@ -1600,14 +1650,11 @@ pub const SyndicationCategory = extern struct {
 };
 pub const SyndicationClient = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1678,14 +1725,11 @@ pub const SyndicationClient = extern struct {
 };
 pub const SyndicationContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1693,134 +1737,115 @@ pub const SyndicationContent = extern struct {
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         return try this.?.getText();
     }
     pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         return try this.?.putText(value);
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         return try this.?.putType(value);
     }
     pub fn getXml(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*ISyndicationText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         return try this.?.getXml();
     }
     pub fn putXml(self: *@This(), value: *XmlDocument) core.HResult!void {
         var this: ?*ISyndicationText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         return try this.?.putXml(value);
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn getSourceUri(self: *@This()) core.HResult!*Uri {
@@ -1853,14 +1878,11 @@ pub const SyndicationContent = extern struct {
 };
 pub const SyndicationError = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1883,14 +1905,11 @@ pub const SyndicationErrorStatus = enum(i32) {
 };
 pub const SyndicationFeed = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2010,92 +2029,79 @@ pub const SyndicationFeed = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn init() core.HResult!*@This() {
@@ -2124,14 +2130,11 @@ pub const SyndicationFormat = enum(i32) {
 };
 pub const SyndicationGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2163,92 +2166,79 @@ pub const SyndicationGenerator = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn init() core.HResult!*@This() {
@@ -2269,14 +2259,11 @@ pub const SyndicationGenerator = extern struct {
 };
 pub const SyndicationItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2396,92 +2383,79 @@ pub const SyndicationItem = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn init() core.HResult!*@This() {
@@ -2502,14 +2476,11 @@ pub const SyndicationItem = extern struct {
 };
 pub const SyndicationLink = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2565,92 +2536,79 @@ pub const SyndicationLink = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn init() core.HResult!*@This() {
@@ -2675,14 +2633,11 @@ pub const SyndicationLink = extern struct {
 };
 pub const SyndicationNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2757,14 +2712,11 @@ pub const SyndicationNode = extern struct {
 };
 pub const SyndicationPerson = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2796,92 +2748,79 @@ pub const SyndicationPerson = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn init() core.HResult!*@This() {
@@ -2906,14 +2845,11 @@ pub const SyndicationPerson = extern struct {
 };
 pub const SyndicationText = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2945,92 +2881,79 @@ pub const SyndicationText = extern struct {
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         return try this.?.GetXmlDocument(format);
     }
     pub fn init() core.HResult!*@This() {

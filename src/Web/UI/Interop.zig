@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IWebViewControlAcceleratorKeyPressedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,36 +13,36 @@ pub const IWebViewControlAcceleratorKeyPressedEventArgs = extern struct {
     pub fn getEventType(self: *@This()) core.HResult!CoreAcceleratorKeyEventType {
         var _r: CoreAcceleratorKeyEventType = undefined;
         const _c = self.vtable.get_EventType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVirtualKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_VirtualKey(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyStatus(self: *@This()) core.HResult!CorePhysicalKeyStatus {
         var _r: CorePhysicalKeyStatus = undefined;
         const _c = self.vtable.get_KeyStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoutingStage(self: *@This()) core.HResult!WebViewControlAcceleratorKeyRoutingStage {
         var _r: WebViewControlAcceleratorKeyRoutingStage = undefined;
         const _c = self.vtable.get_RoutingStage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.IWebViewControlAcceleratorKeyPressedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -63,8 +66,11 @@ pub const IWebViewControlAcceleratorKeyPressedEventArgs = extern struct {
 };
 pub const IWebViewControlMoveFocusRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -72,7 +78,7 @@ pub const IWebViewControlMoveFocusRequestedEventArgs = extern struct {
     pub fn getReason(self: *@This()) core.HResult!WebViewControlMoveFocusReason {
         var _r: WebViewControlMoveFocusReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.IWebViewControlMoveFocusRequestedEventArgs";
@@ -92,8 +98,11 @@ pub const IWebViewControlMoveFocusRequestedEventArgs = extern struct {
 };
 pub const IWebViewControlProcess = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -101,46 +110,46 @@ pub const IWebViewControlProcess = extern struct {
     pub fn getProcessId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ProcessId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPrivateNetworkClientServerCapabilityEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPrivateNetworkClientServerCapabilityEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWebViewControlAsync(self: *@This(), hostWindowHandle: i64, bounds: Rect) core.HResult!*IAsyncOperation(WebViewControl) {
         var _r: *IAsyncOperation(WebViewControl) = undefined;
         const _c = self.vtable.CreateWebViewControlAsync(@ptrCast(self), hostWindowHandle, bounds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetWebViewControls(self: *@This()) core.HResult!*IVectorView(WebViewControl) {
         var _r: *IVectorView(WebViewControl) = undefined;
         const _c = self.vtable.GetWebViewControls(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Terminate(self: *@This()) core.HResult!void {
         const _c = self.vtable.Terminate(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addProcessExited(self: *@This(), handler: *TypedEventHandler(WebViewControlProcess,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ProcessExited(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeProcessExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ProcessExited(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.IWebViewControlProcess";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -166,8 +175,11 @@ pub const IWebViewControlProcess = extern struct {
 };
 pub const IWebViewControlProcessFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -175,7 +187,7 @@ pub const IWebViewControlProcessFactory = extern struct {
     pub fn CreateWithOptions(self: *@This(), processOptions: *WebViewControlProcessOptions) core.HResult!*WebViewControlProcess {
         var _r: *WebViewControlProcess = undefined;
         const _c = self.vtable.CreateWithOptions(@ptrCast(self), processOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.IWebViewControlProcessFactory";
@@ -195,30 +207,33 @@ pub const IWebViewControlProcessFactory = extern struct {
 };
 pub const IWebViewControlProcessOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EnterpriseId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPrivateNetworkClientServerCapability(self: *@This(), value: WebViewControlProcessCapabilityState) core.HResult!void {
         const _c = self.vtable.put_PrivateNetworkClientServerCapability(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPrivateNetworkClientServerCapability(self: *@This()) core.HResult!WebViewControlProcessCapabilityState {
         var _r: WebViewControlProcessCapabilityState = undefined;
         const _c = self.vtable.get_PrivateNetworkClientServerCapability(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.IWebViewControlProcessOptions";
@@ -241,8 +256,11 @@ pub const IWebViewControlProcessOptions = extern struct {
 };
 pub const IWebViewControlSite = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -250,66 +268,66 @@ pub const IWebViewControlSite = extern struct {
     pub fn getProcess(self: *@This()) core.HResult!*WebViewControlProcess {
         var _r: *WebViewControlProcess = undefined;
         const _c = self.vtable.get_Process(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScale(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Scale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScale(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Scale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBounds(self: *@This(), value: Rect) core.HResult!void {
         const _c = self.vtable.put_Bounds(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBounds(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_Bounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn MoveFocus(self: *@This(), reason: WebViewControlMoveFocusReason) core.HResult!void {
         const _c = self.vtable.MoveFocus(@ptrCast(self), reason);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMoveFocusRequested(self: *@This(), handler: *TypedEventHandler(WebViewControl,WebViewControlMoveFocusRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MoveFocusRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMoveFocusRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MoveFocusRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAcceleratorKeyPressed(self: *@This(), handler: *TypedEventHandler(WebViewControl,WebViewControlAcceleratorKeyPressedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AcceleratorKeyPressed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAcceleratorKeyPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AcceleratorKeyPressed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.IWebViewControlSite";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -340,8 +358,11 @@ pub const IWebViewControlSite = extern struct {
 };
 pub const IWebViewControlSite2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -349,22 +370,22 @@ pub const IWebViewControlSite2 = extern struct {
     pub fn addGotFocus(self: *@This(), handler: *TypedEventHandler(WebViewControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GotFocus(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGotFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GotFocus(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLostFocus(self: *@This(), handler: *TypedEventHandler(WebViewControl,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LostFocus(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLostFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LostFocus(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.IWebViewControlSite2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -386,14 +407,11 @@ pub const IWebViewControlSite2 = extern struct {
 };
 pub const WebViewControl = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -629,127 +647,109 @@ pub const WebViewControl = extern struct {
     pub fn getProcess(self: *@This()) core.HResult!*WebViewControlProcess {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.getProcess();
     }
     pub fn putScale(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.putScale(value);
     }
     pub fn getScale(self: *@This()) core.HResult!f64 {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.getScale();
     }
     pub fn putBounds(self: *@This(), value: Rect) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.putBounds(value);
     }
     pub fn getBounds(self: *@This()) core.HResult!Rect {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.getBounds();
     }
     pub fn putIsVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.putIsVisible(value);
     }
     pub fn getIsVisible(self: *@This()) core.HResult!bool {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.getIsVisible();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn MoveFocus(self: *@This(), reason: WebViewControlMoveFocusReason) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.MoveFocus(reason);
     }
     pub fn addMoveFocusRequested(self: *@This(), handler: *TypedEventHandler(WebViewControl,WebViewControlMoveFocusRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.addMoveFocusRequested(handler);
     }
     pub fn removeMoveFocusRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.removeMoveFocusRequested(token);
     }
     pub fn addAcceleratorKeyPressed(self: *@This(), handler: *TypedEventHandler(WebViewControl,WebViewControlAcceleratorKeyPressedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.addAcceleratorKeyPressed(handler);
     }
     pub fn removeAcceleratorKeyPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         return try this.?.removeAcceleratorKeyPressed(token);
     }
     pub fn AddInitializeScript(self: *@This(), script: ?HSTRING) core.HResult!void {
         var this: ?*IWebViewControl2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl2.IID, @ptrCast(&this));
         return try this.?.AddInitializeScript(script);
     }
     pub fn addGotFocus(self: *@This(), handler: *TypedEventHandler(WebViewControl,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         return try this.?.addGotFocus(handler);
     }
     pub fn removeGotFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         return try this.?.removeGotFocus(token);
     }
     pub fn addLostFocus(self: *@This(), handler: *TypedEventHandler(WebViewControl,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         return try this.?.addLostFocus(handler);
     }
     pub fn removeLostFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         return try this.?.removeLostFocus(token);
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.WebViewControl";
@@ -760,14 +760,11 @@ pub const WebViewControl = extern struct {
 };
 pub const WebViewControlAcceleratorKeyPressedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -813,14 +810,11 @@ pub const WebViewControlMoveFocusReason = enum(i32) {
 };
 pub const WebViewControlMoveFocusRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -837,14 +831,11 @@ pub const WebViewControlMoveFocusRequestedEventArgs = extern struct {
 };
 pub const WebViewControlProcess = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -904,14 +895,11 @@ pub const WebViewControlProcessCapabilityState = enum(i32) {
 };
 pub const WebViewControlProcessOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

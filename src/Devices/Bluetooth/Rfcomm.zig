@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IRfcommDeviceService = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,43 +13,43 @@ pub const IRfcommDeviceService = extern struct {
     pub fn getConnectionHostName(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_ConnectionHostName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getConnectionServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConnectionServiceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceId(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_ServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProtectionLevel(self: *@This()) core.HResult!SocketProtectionLevel {
         var _r: SocketProtectionLevel = undefined;
         const _c = self.vtable.get_ProtectionLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxProtectionLevel(self: *@This()) core.HResult!SocketProtectionLevel {
         var _r: SocketProtectionLevel = undefined;
         const _c = self.vtable.get_MaxProtectionLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSdpRawAttributesAsync(self: *@This()) core.HResult!*IAsyncOperation(IMapView(u32,IBuffer)) {
         var _r: *IAsyncOperation(IMapView(u32,IBuffer)) = undefined;
         const _c = self.vtable.GetSdpRawAttributesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSdpRawAttributesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(IMapView(u32,IBuffer)) {
         var _r: *IAsyncOperation(IMapView(u32,IBuffer)) = undefined;
         const _c = self.vtable.GetSdpRawAttributesAsyncWithCacheMode(@ptrCast(self), cacheMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommDeviceService";
@@ -72,8 +75,11 @@ pub const IRfcommDeviceService = extern struct {
 };
 pub const IRfcommDeviceService2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -81,7 +87,7 @@ pub const IRfcommDeviceService2 = extern struct {
     pub fn getDevice(self: *@This()) core.HResult!*BluetoothDevice {
         var _r: *BluetoothDevice = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommDeviceService2";
@@ -101,8 +107,11 @@ pub const IRfcommDeviceService2 = extern struct {
 };
 pub const IRfcommDeviceService3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -110,13 +119,13 @@ pub const IRfcommDeviceService3 = extern struct {
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.get_DeviceAccessInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var _r: *IAsyncOperation(DeviceAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommDeviceService3";
@@ -137,8 +146,11 @@ pub const IRfcommDeviceService3 = extern struct {
 };
 pub const IRfcommDeviceServiceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -146,13 +158,13 @@ pub const IRfcommDeviceServiceStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
         var _r: *IAsyncOperation(RfcommDeviceService) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This(), serviceId: *RfcommServiceId) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), serviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommDeviceServiceStatics";
@@ -173,8 +185,11 @@ pub const IRfcommDeviceServiceStatics = extern struct {
 };
 pub const IRfcommDeviceServiceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -182,25 +197,25 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
     pub fn GetDeviceSelectorForBluetoothDevice(self: *@This(), bluetoothDevice: *BluetoothDevice) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDevice(@ptrCast(self), bluetoothDevice, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceWithCacheMode(@ptrCast(self), bluetoothDevice, cacheMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceId(@ptrCast(self), bluetoothDevice, serviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(@ptrCast(self), bluetoothDevice, serviceId, cacheMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommDeviceServiceStatics2";
@@ -223,8 +238,11 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
 };
 pub const IRfcommDeviceServicesResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -232,13 +250,13 @@ pub const IRfcommDeviceServicesResult = extern struct {
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var _r: BluetoothError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServices(self: *@This()) core.HResult!*IVectorView(RfcommDeviceService) {
         var _r: *IVectorView(RfcommDeviceService) = undefined;
         const _c = self.vtable.get_Services(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommDeviceServicesResult";
@@ -259,8 +277,11 @@ pub const IRfcommDeviceServicesResult = extern struct {
 };
 pub const IRfcommServiceId = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -268,19 +289,19 @@ pub const IRfcommServiceId = extern struct {
     pub fn getUuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Uuid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AsShortId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.AsShortId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AsString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.AsString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommServiceId";
@@ -302,8 +323,11 @@ pub const IRfcommServiceId = extern struct {
 };
 pub const IRfcommServiceIdStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -311,49 +335,49 @@ pub const IRfcommServiceIdStatics = extern struct {
     pub fn FromUuid(self: *@This(), uuid: *Guid) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.FromUuid(@ptrCast(self), uuid, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromShortId(self: *@This(), shortId: u32) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.FromShortId(@ptrCast(self), shortId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSerialPort(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_SerialPort(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getObexObjectPush(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_ObexObjectPush(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getObexFileTransfer(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_ObexFileTransfer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhoneBookAccessPce(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_PhoneBookAccessPce(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhoneBookAccessPse(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_PhoneBookAccessPse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGenericFileTransfer(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_GenericFileTransfer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommServiceIdStatics";
@@ -380,8 +404,11 @@ pub const IRfcommServiceIdStatics = extern struct {
 };
 pub const IRfcommServiceProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -389,22 +416,22 @@ pub const IRfcommServiceProvider = extern struct {
     pub fn getServiceId(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_ServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSdpRawAttributes(self: *@This()) core.HResult!*IMap(u32,IBuffer) {
         var _r: *IMap(u32,IBuffer) = undefined;
         const _c = self.vtable.get_SdpRawAttributes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartAdvertising(self: *@This(), listener: *StreamSocketListener) core.HResult!void {
         const _c = self.vtable.StartAdvertising(@ptrCast(self), listener);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StopAdvertising(self: *@This()) core.HResult!void {
         const _c = self.vtable.StopAdvertising(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommServiceProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -426,15 +453,18 @@ pub const IRfcommServiceProvider = extern struct {
 };
 pub const IRfcommServiceProvider2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StartAdvertising(self: *@This(), listener: *StreamSocketListener, radioDiscoverable: bool) core.HResult!void {
         const _c = self.vtable.StartAdvertising(@ptrCast(self), listener, radioDiscoverable);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommServiceProvider2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -453,8 +483,11 @@ pub const IRfcommServiceProvider2 = extern struct {
 };
 pub const IRfcommServiceProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -462,7 +495,7 @@ pub const IRfcommServiceProviderStatics = extern struct {
     pub fn CreateAsync(self: *@This(), serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommServiceProvider) {
         var _r: *IAsyncOperation(RfcommServiceProvider) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), serviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.IRfcommServiceProviderStatics";
@@ -482,14 +515,11 @@ pub const IRfcommServiceProviderStatics = extern struct {
 };
 pub const RfcommDeviceService = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -525,29 +555,25 @@ pub const RfcommDeviceService = extern struct {
     pub fn getDevice(self: *@This()) core.HResult!*BluetoothDevice {
         var this: ?*IRfcommDeviceService2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRfcommDeviceService2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRfcommDeviceService2.IID, @ptrCast(&this));
         return try this.?.getDevice();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var this: ?*IRfcommDeviceService3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRfcommDeviceService3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRfcommDeviceService3.IID, @ptrCast(&this));
         return try this.?.getDeviceAccessInformation();
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var this: ?*IRfcommDeviceService3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRfcommDeviceService3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRfcommDeviceService3.IID, @ptrCast(&this));
         return try this.?.RequestAccessAsync();
     }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
@@ -584,14 +610,11 @@ pub const RfcommDeviceService = extern struct {
 };
 pub const RfcommDeviceServicesResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -612,14 +635,11 @@ pub const RfcommDeviceServicesResult = extern struct {
 };
 pub const RfcommServiceId = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -677,14 +697,11 @@ pub const RfcommServiceId = extern struct {
 };
 pub const RfcommServiceProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -708,8 +725,7 @@ pub const RfcommServiceProvider = extern struct {
     pub fn StartAdvertisingWithRadioDiscoverable(self: *@This(), listener: *StreamSocketListener, radioDiscoverable: bool) core.HResult!void {
         var this: ?*IRfcommServiceProvider2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRfcommServiceProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRfcommServiceProvider2.IID, @ptrCast(&this));
         return try this.?.StartAdvertisingWithRadioDiscoverable(listener, radioDiscoverable);
     }
     pub fn CreateAsync(serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommServiceProvider) {

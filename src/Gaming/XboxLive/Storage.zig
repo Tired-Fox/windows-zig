@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const GameSaveBlobGetResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -29,14 +26,11 @@ pub const GameSaveBlobGetResult = extern struct {
 };
 pub const GameSaveBlobInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -57,14 +51,11 @@ pub const GameSaveBlobInfo = extern struct {
 };
 pub const GameSaveBlobInfoGetResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -85,14 +76,11 @@ pub const GameSaveBlobInfoGetResult = extern struct {
 };
 pub const GameSaveBlobInfoQuery = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -117,14 +105,11 @@ pub const GameSaveBlobInfoQuery = extern struct {
 };
 pub const GameSaveContainer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -165,14 +150,11 @@ pub const GameSaveContainer = extern struct {
 };
 pub const GameSaveContainerInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -205,14 +187,11 @@ pub const GameSaveContainerInfo = extern struct {
 };
 pub const GameSaveContainerInfoGetResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -233,14 +212,11 @@ pub const GameSaveContainerInfoGetResult = extern struct {
 };
 pub const GameSaveContainerInfoQuery = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -282,14 +258,11 @@ pub const GameSaveErrorStatus = enum(i32) {
 };
 pub const GameSaveOperationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -306,14 +279,11 @@ pub const GameSaveOperationResult = extern struct {
 };
 pub const GameSaveProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -363,14 +333,11 @@ pub const GameSaveProvider = extern struct {
 };
 pub const GameSaveProviderGetResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -391,8 +358,11 @@ pub const GameSaveProviderGetResult = extern struct {
 };
 pub const IGameSaveBlobGetResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -400,13 +370,13 @@ pub const IGameSaveBlobGetResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!GameSaveErrorStatus {
         var _r: GameSaveErrorStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!*IMapView(?HSTRING,IBuffer) {
         var _r: *IMapView(?HSTRING,IBuffer) = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveBlobGetResult";
@@ -427,8 +397,11 @@ pub const IGameSaveBlobGetResult = extern struct {
 };
 pub const IGameSaveBlobInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -436,13 +409,13 @@ pub const IGameSaveBlobInfo = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveBlobInfo";
@@ -463,8 +436,11 @@ pub const IGameSaveBlobInfo = extern struct {
 };
 pub const IGameSaveBlobInfoGetResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -472,13 +448,13 @@ pub const IGameSaveBlobInfoGetResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!GameSaveErrorStatus {
         var _r: GameSaveErrorStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!*IVectorView(GameSaveBlobInfo) {
         var _r: *IVectorView(GameSaveBlobInfo) = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveBlobInfoGetResult";
@@ -499,8 +475,11 @@ pub const IGameSaveBlobInfoGetResult = extern struct {
 };
 pub const IGameSaveBlobInfoQuery = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -508,19 +487,19 @@ pub const IGameSaveBlobInfoQuery = extern struct {
     pub fn GetBlobInfoAsync(self: *@This()) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
         var _r: *IAsyncOperation(GameSaveBlobInfoGetResult) = undefined;
         const _c = self.vtable.GetBlobInfoAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBlobInfoAsyncWithStartIndexAndMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
         var _r: *IAsyncOperation(GameSaveBlobInfoGetResult) = undefined;
         const _c = self.vtable.GetBlobInfoAsyncWithStartIndexAndMaxNumberOfItems(@ptrCast(self), startIndex, maxNumberOfItems, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.GetItemCountAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveBlobInfoQuery";
@@ -542,8 +521,11 @@ pub const IGameSaveBlobInfoQuery = extern struct {
 };
 pub const IGameSaveContainer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -551,43 +533,43 @@ pub const IGameSaveContainer = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProvider(self: *@This()) core.HResult!*GameSaveProvider {
         var _r: *GameSaveProvider = undefined;
         const _c = self.vtable.get_Provider(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SubmitUpdatesAsync(self: *@This(), blobsToWrite: *IMapView(?HSTRING,IBuffer), blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.SubmitUpdatesAsync(@ptrCast(self), blobsToWrite, blobsToDelete, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReadAsync(self: *@This(), blobsToRead: *IMapView(?HSTRING,IBuffer)) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.ReadAsync(@ptrCast(self), blobsToRead, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAsync(self: *@This(), blobsToRead: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(GameSaveBlobGetResult) {
         var _r: *IAsyncOperation(GameSaveBlobGetResult) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), blobsToRead, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SubmitPropertySetUpdatesAsync(self: *@This(), blobsToWrite: *IPropertySet, blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.SubmitPropertySetUpdatesAsync(@ptrCast(self), blobsToWrite, blobsToDelete, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateBlobInfoQuery(self: *@This(), blobNamePrefix: ?HSTRING) core.HResult!*GameSaveBlobInfoQuery {
         var _r: *GameSaveBlobInfoQuery = undefined;
         const _c = self.vtable.CreateBlobInfoQuery(@ptrCast(self), blobNamePrefix, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveContainer";
@@ -613,8 +595,11 @@ pub const IGameSaveContainer = extern struct {
 };
 pub const IGameSaveContainerInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -622,31 +607,31 @@ pub const IGameSaveContainerInfo = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTotalSize(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_TotalSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastModifiedTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_LastModifiedTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNeedsSync(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_NeedsSync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveContainerInfo";
@@ -670,8 +655,11 @@ pub const IGameSaveContainerInfo = extern struct {
 };
 pub const IGameSaveContainerInfoGetResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -679,13 +667,13 @@ pub const IGameSaveContainerInfoGetResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!GameSaveErrorStatus {
         var _r: GameSaveErrorStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!*IVectorView(GameSaveContainerInfo) {
         var _r: *IVectorView(GameSaveContainerInfo) = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveContainerInfoGetResult";
@@ -706,8 +694,11 @@ pub const IGameSaveContainerInfoGetResult = extern struct {
 };
 pub const IGameSaveContainerInfoQuery = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -715,19 +706,19 @@ pub const IGameSaveContainerInfoQuery = extern struct {
     pub fn GetContainerInfoAsync(self: *@This()) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
         var _r: *IAsyncOperation(GameSaveContainerInfoGetResult) = undefined;
         const _c = self.vtable.GetContainerInfoAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetContainerInfoAsyncWithStartIndexAndMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
         var _r: *IAsyncOperation(GameSaveContainerInfoGetResult) = undefined;
         const _c = self.vtable.GetContainerInfoAsyncWithStartIndexAndMaxNumberOfItems(@ptrCast(self), startIndex, maxNumberOfItems, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.GetItemCountAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveContainerInfoQuery";
@@ -749,8 +740,11 @@ pub const IGameSaveContainerInfoQuery = extern struct {
 };
 pub const IGameSaveOperationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -758,7 +752,7 @@ pub const IGameSaveOperationResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!GameSaveErrorStatus {
         var _r: GameSaveErrorStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveOperationResult";
@@ -778,8 +772,11 @@ pub const IGameSaveOperationResult = extern struct {
 };
 pub const IGameSaveProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -787,43 +784,43 @@ pub const IGameSaveProvider = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateContainer(self: *@This(), name: ?HSTRING) core.HResult!*GameSaveContainer {
         var _r: *GameSaveContainer = undefined;
         const _c = self.vtable.CreateContainer(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteContainerAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.DeleteContainerAsync(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateContainerInfoQuery(self: *@This()) core.HResult!*GameSaveContainerInfoQuery {
         var _r: *GameSaveContainerInfoQuery = undefined;
         const _c = self.vtable.CreateContainerInfoQuery(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateContainerInfoQueryWithContainerNamePrefix(self: *@This(), containerNamePrefix: ?HSTRING) core.HResult!*GameSaveContainerInfoQuery {
         var _r: *GameSaveContainerInfoQuery = undefined;
         const _c = self.vtable.CreateContainerInfoQueryWithContainerNamePrefix(@ptrCast(self), containerNamePrefix, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRemainingBytesInQuotaAsync(self: *@This()) core.HResult!*IAsyncOperation(i64) {
         var _r: *IAsyncOperation(i64) = undefined;
         const _c = self.vtable.GetRemainingBytesInQuotaAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContainersChangedSinceLastSync(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_ContainersChangedSinceLastSync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveProvider";
@@ -849,8 +846,11 @@ pub const IGameSaveProvider = extern struct {
 };
 pub const IGameSaveProviderGetResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -858,13 +858,13 @@ pub const IGameSaveProviderGetResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!GameSaveErrorStatus {
         var _r: GameSaveErrorStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!*GameSaveProvider {
         var _r: *GameSaveProvider = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveProviderGetResult";
@@ -885,8 +885,11 @@ pub const IGameSaveProviderGetResult = extern struct {
 };
 pub const IGameSaveProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -894,13 +897,13 @@ pub const IGameSaveProviderStatics = extern struct {
     pub fn GetForUserAsync(self: *@This(), user: *User, serviceConfigId: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
         var _r: *IAsyncOperation(GameSaveProviderGetResult) = undefined;
         const _c = self.vtable.GetForUserAsync(@ptrCast(self), user, serviceConfigId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSyncOnDemandForUserAsync(self: *@This(), user: *User, serviceConfigId: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
         var _r: *IAsyncOperation(GameSaveProviderGetResult) = undefined;
         const _c = self.vtable.GetSyncOnDemandForUserAsync(@ptrCast(self), user, serviceConfigId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.IGameSaveProviderStatics";

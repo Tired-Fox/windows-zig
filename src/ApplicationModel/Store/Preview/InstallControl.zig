@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AppInstallItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -64,120 +61,103 @@ pub const AppInstallItem = extern struct {
     pub fn CancelWithCorrelationVector(self: *@This(), correlationVector: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallItem2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
         return try this.?.CancelWithCorrelationVector(correlationVector);
     }
     pub fn PauseWithCorrelationVector(self: *@This(), correlationVector: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallItem2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
         return try this.?.PauseWithCorrelationVector(correlationVector);
     }
     pub fn RestartWithCorrelationVector(self: *@This(), correlationVector: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallItem2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
         return try this.?.RestartWithCorrelationVector(correlationVector);
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var this: ?*IAppInstallItem3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem3.IID, @ptrCast(&this));
         return try this.?.getChildren();
     }
     pub fn getItemOperationsMightAffectOtherItems(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallItem3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem3.IID, @ptrCast(&this));
         return try this.?.getItemOperationsMightAffectOtherItems();
     }
     pub fn getLaunchAfterInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallItem4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem4.IID, @ptrCast(&this));
         return try this.?.getLaunchAfterInstall();
     }
     pub fn putLaunchAfterInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallItem4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem4.IID, @ptrCast(&this));
         return try this.?.putLaunchAfterInstall(value);
     }
     pub fn getPinToDesktopAfterInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.getPinToDesktopAfterInstall();
     }
     pub fn putPinToDesktopAfterInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.putPinToDesktopAfterInstall(value);
     }
     pub fn getPinToStartAfterInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.getPinToStartAfterInstall();
     }
     pub fn putPinToStartAfterInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.putPinToStartAfterInstall(value);
     }
     pub fn getPinToTaskbarAfterInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.getPinToTaskbarAfterInstall();
     }
     pub fn putPinToTaskbarAfterInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.putPinToTaskbarAfterInstall(value);
     }
     pub fn getCompletedInstallToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.getCompletedInstallToastNotificationMode();
     }
     pub fn putCompletedInstallToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.putCompletedInstallToastNotificationMode(value);
     }
     pub fn getInstallInProgressToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.getInstallInProgressToastNotificationMode();
     }
     pub fn putInstallInProgressToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         var this: ?*IAppInstallItem5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem5.IID, @ptrCast(&this));
         return try this.?.putInstallInProgressToastNotificationMode(value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.AppInstallItem";
@@ -188,14 +168,11 @@ pub const AppInstallItem = extern struct {
 };
 pub const AppInstallManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -279,204 +256,175 @@ pub const AppInstallManager = extern struct {
     pub fn StartAppInstallAsyncWithCatalogIdAndBundleIdAndCorrelationVector(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, catalogId: ?HSTRING, bundleId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.StartAppInstallAsyncWithCatalogIdAndBundleIdAndCorrelationVector(productId, skuId, repair, forceUseOfNonRemovableStorage, catalogId, bundleId, correlationVector);
     }
     pub fn UpdateAppByPackageFamilyNameAsyncWithCorrelationVector(self: *@This(), packageFamilyName: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.UpdateAppByPackageFamilyNameAsyncWithCorrelationVector(packageFamilyName, correlationVector);
     }
     pub fn SearchForUpdatesAsyncWithCatalogIdAndCorrelationVector(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.SearchForUpdatesAsyncWithCatalogIdAndCorrelationVector(productId, skuId, catalogId, correlationVector);
     }
     pub fn SearchForAllUpdatesAsyncWithCorrelationVector(self: *@This(), correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.SearchForAllUpdatesAsyncWithCorrelationVector(correlationVector);
     }
     pub fn GetIsAppAllowedToInstallAsyncWithSkuIdAndCatalogIdAndCorrelationVector(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.GetIsAppAllowedToInstallAsyncWithSkuIdAndCatalogIdAndCorrelationVector(productId, skuId, catalogId, correlationVector);
     }
     pub fn CancelWithCorrelationVector(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.CancelWithCorrelationVector(productId, correlationVector);
     }
     pub fn PauseWithCorrelationVector(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.PauseWithCorrelationVector(productId, correlationVector);
     }
     pub fn RestartWithCorrelationVector(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         return try this.?.RestartWithCorrelationVector(productId, correlationVector);
     }
     pub fn StartProductInstallAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(self: *@This(), productId: ?HSTRING, catalogId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: ?HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.StartProductInstallAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
     }
     pub fn StartProductInstallForUserAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(self: *@This(), user: *User, productId: ?HSTRING, catalogId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: ?HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.StartProductInstallForUserAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(user, productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
     }
     pub fn UpdateAppByPackageFamilyNameForUserAsync(self: *@This(), user: *User, packageFamilyName: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.UpdateAppByPackageFamilyNameForUserAsync(user, packageFamilyName, correlationVector);
     }
     pub fn SearchForUpdatesForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.SearchForUpdatesForUserAsync(user, productId, skuId, catalogId, correlationVector);
     }
     pub fn SearchForAllUpdatesForUserAsync(self: *@This(), user: *User, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.SearchForAllUpdatesForUserAsync(user, correlationVector);
     }
     pub fn GetIsAppAllowedToInstallForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.GetIsAppAllowedToInstallForUserAsync(user, productId, skuId, catalogId, correlationVector);
     }
     pub fn GetIsApplicableForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.GetIsApplicableForUserAsync(user, productId, skuId);
     }
     pub fn MoveToFrontOfDownloadQueue(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallManager3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         return try this.?.MoveToFrontOfDownloadQueue(productId, correlationVector);
     }
     pub fn GetFreeUserEntitlementAsync(self: *@This(), storeId: ?HSTRING, campaignId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(GetEntitlementResult) {
         var this: ?*IAppInstallManager4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager4.IID, @ptrCast(&this));
         return try this.?.GetFreeUserEntitlementAsync(storeId, campaignId, correlationVector);
     }
     pub fn GetFreeUserEntitlementForUserAsync(self: *@This(), user: *User, storeId: ?HSTRING, campaignId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(GetEntitlementResult) {
         var this: ?*IAppInstallManager4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager4.IID, @ptrCast(&this));
         return try this.?.GetFreeUserEntitlementForUserAsync(user, storeId, campaignId, correlationVector);
     }
     pub fn GetFreeDeviceEntitlementAsync(self: *@This(), storeId: ?HSTRING, campaignId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(GetEntitlementResult) {
         var this: ?*IAppInstallManager4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager4.IID, @ptrCast(&this));
         return try this.?.GetFreeDeviceEntitlementAsync(storeId, campaignId, correlationVector);
     }
     pub fn getAppInstallItemsWithGroupSupport(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var this: ?*IAppInstallManager5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager5.IID, @ptrCast(&this));
         return try this.?.getAppInstallItemsWithGroupSupport();
     }
     pub fn SearchForAllUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(self: *@This(), correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.SearchForAllUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(correlationVector, clientId, updateOptions);
     }
     pub fn SearchForAllUpdatesForUserAsyncWithClientIdAndUpdateOptions(self: *@This(), user: *User, correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.SearchForAllUpdatesForUserAsyncWithClientIdAndUpdateOptions(user, correlationVector, clientId, updateOptions);
     }
     pub fn SearchForUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.SearchForUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(productId, skuId, correlationVector, clientId, updateOptions);
     }
     pub fn SearchForUpdatesForUserAsyncWithUpdateOptions(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING, correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.SearchForUpdatesForUserAsyncWithUpdateOptions(user, productId, skuId, correlationVector, clientId, updateOptions);
     }
     pub fn StartProductInstallAsync(self: *@This(), productId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, correlationVector: ?HSTRING, installOptions: *AppInstallOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.StartProductInstallAsync(productId, flightId, clientId, correlationVector, installOptions);
     }
     pub fn StartProductInstallForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, correlationVector: ?HSTRING, installOptions: *AppInstallOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.StartProductInstallForUserAsync(user, productId, flightId, clientId, correlationVector, installOptions);
     }
     pub fn GetIsPackageIdentityAllowedToInstallAsync(self: *@This(), correlationVector: ?HSTRING, packageIdentityName: ?HSTRING, publisherCertificateName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.GetIsPackageIdentityAllowedToInstallAsync(correlationVector, packageIdentityName, publisherCertificateName);
     }
     pub fn GetIsPackageIdentityAllowedToInstallForUserAsync(self: *@This(), user: *User, correlationVector: ?HSTRING, packageIdentityName: ?HSTRING, publisherCertificateName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppInstallManager6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         return try this.?.GetIsPackageIdentityAllowedToInstallForUserAsync(user, correlationVector, packageIdentityName, publisherCertificateName);
     }
     pub fn getCanInstallForAllUsers(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallManager7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager7.IID, @ptrCast(&this));
         return try this.?.getCanInstallForAllUsers();
     }
     pub fn init() core.HResult!*@This() {
@@ -492,14 +440,11 @@ pub const AppInstallManager = extern struct {
 };
 pub const AppInstallManagerItemEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -516,14 +461,11 @@ pub const AppInstallManagerItemEventArgs = extern struct {
 };
 pub const AppInstallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -579,127 +521,109 @@ pub const AppInstallOptions = extern struct {
     pub fn getPinToDesktopAfterInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getPinToDesktopAfterInstall();
     }
     pub fn putPinToDesktopAfterInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putPinToDesktopAfterInstall(value);
     }
     pub fn getPinToStartAfterInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getPinToStartAfterInstall();
     }
     pub fn putPinToStartAfterInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putPinToStartAfterInstall(value);
     }
     pub fn getPinToTaskbarAfterInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getPinToTaskbarAfterInstall();
     }
     pub fn putPinToTaskbarAfterInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putPinToTaskbarAfterInstall(value);
     }
     pub fn getCompletedInstallToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getCompletedInstallToastNotificationMode();
     }
     pub fn putCompletedInstallToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putCompletedInstallToastNotificationMode(value);
     }
     pub fn getInstallInProgressToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getInstallInProgressToastNotificationMode();
     }
     pub fn putInstallInProgressToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putInstallInProgressToastNotificationMode(value);
     }
     pub fn getInstallForAllUsers(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getInstallForAllUsers();
     }
     pub fn putInstallForAllUsers(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putInstallForAllUsers(value);
     }
     pub fn getStageButDoNotInstall(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getStageButDoNotInstall();
     }
     pub fn putStageButDoNotInstall(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putStageButDoNotInstall(value);
     }
     pub fn getCampaignId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getCampaignId();
     }
     pub fn putCampaignId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putCampaignId(value);
     }
     pub fn getExtendedCampaignId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.getExtendedCampaignId();
     }
     pub fn putExtendedCampaignId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppInstallOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallOptions2.IID, @ptrCast(&this));
         return try this.?.putExtendedCampaignId(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -731,14 +655,11 @@ pub const AppInstallState = enum(i32) {
 };
 pub const AppInstallStatus = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -766,22 +687,19 @@ pub const AppInstallStatus = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IAppInstallStatus2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallStatus2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallStatus2.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn getReadyForLaunch(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallStatus2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallStatus2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallStatus2.IID, @ptrCast(&this));
         return try this.?.getReadyForLaunch();
     }
     pub fn getIsStaged(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallStatus3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallStatus3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppInstallStatus3.IID, @ptrCast(&this));
         return try this.?.getIsStaged();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.AppInstallStatus";
@@ -803,14 +721,11 @@ pub const AppInstallationToastNotificationMode = enum(i32) {
 };
 pub const AppUpdateOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -834,15 +749,13 @@ pub const AppUpdateOptions = extern struct {
     pub fn getAutomaticallyDownloadAndInstallUpdateIfFound(self: *@This()) core.HResult!bool {
         var this: ?*IAppUpdateOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUpdateOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppUpdateOptions2.IID, @ptrCast(&this));
         return try this.?.getAutomaticallyDownloadAndInstallUpdateIfFound();
     }
     pub fn putAutomaticallyDownloadAndInstallUpdateIfFound(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppUpdateOptions2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUpdateOptions2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppUpdateOptions2.IID, @ptrCast(&this));
         return try this.?.putAutomaticallyDownloadAndInstallUpdateIfFound(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -864,14 +777,11 @@ pub const AutoUpdateSetting = enum(i32) {
 };
 pub const GetEntitlementResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -883,29 +793,25 @@ pub const GetEntitlementResult = extern struct {
     pub fn getIsAlreadyOwned(self: *@This()) core.HResult!bool {
         var this: ?*IGetEntitlementResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
         return try this.?.getIsAlreadyOwned();
     }
     pub fn getOrderId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGetEntitlementResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
         return try this.?.getOrderId();
     }
     pub fn getSkuId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGetEntitlementResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
         return try this.?.getSkuId();
     }
     pub fn getAvailabilityId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGetEntitlementResult2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGetEntitlementResult2.IID, @ptrCast(&this));
         return try this.?.getAvailabilityId();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.GetEntitlementResult";
@@ -922,8 +828,11 @@ pub const GetEntitlementStatus = enum(i32) {
 };
 pub const IAppInstallItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -931,64 +840,64 @@ pub const IAppInstallItem = extern struct {
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInstallType(self: *@This()) core.HResult!AppInstallType {
         var _r: AppInstallType = undefined;
         const _c = self.vtable.get_InstallType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsUserInitiated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUserInitiated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentStatus(self: *@This()) core.HResult!*AppInstallStatus {
         var _r: *AppInstallStatus = undefined;
         const _c = self.vtable.GetCurrentStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Pause(self: *@This()) core.HResult!void {
         const _c = self.vtable.Pause(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Restart(self: *@This()) core.HResult!void {
         const _c = self.vtable.Restart(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addCompleted(self: *@This(), handler: *TypedEventHandler(AppInstallItem,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Completed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Completed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStatusChanged(self: *@This(), handler: *TypedEventHandler(AppInstallItem,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1018,23 +927,26 @@ pub const IAppInstallItem = extern struct {
 };
 pub const IAppInstallItem2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Cancel(self: *@This(), correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self), correlationVector);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Pause(self: *@This(), correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Pause(@ptrCast(self), correlationVector);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Restart(self: *@This(), correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Restart(@ptrCast(self), correlationVector);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallItem2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1055,8 +967,11 @@ pub const IAppInstallItem2 = extern struct {
 };
 pub const IAppInstallItem3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1064,13 +979,13 @@ pub const IAppInstallItem3 = extern struct {
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var _r: *IVectorView(AppInstallItem) = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getItemOperationsMightAffectOtherItems(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ItemOperationsMightAffectOtherItems(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallItem3";
@@ -1091,8 +1006,11 @@ pub const IAppInstallItem3 = extern struct {
 };
 pub const IAppInstallItem4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1100,12 +1018,12 @@ pub const IAppInstallItem4 = extern struct {
     pub fn getLaunchAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LaunchAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLaunchAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_LaunchAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallItem4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1125,8 +1043,11 @@ pub const IAppInstallItem4 = extern struct {
 };
 pub const IAppInstallItem5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1134,52 +1055,52 @@ pub const IAppInstallItem5 = extern struct {
     pub fn getPinToDesktopAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToDesktopAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPinToDesktopAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PinToDesktopAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPinToStartAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToStartAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPinToStartAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PinToStartAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPinToTaskbarAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToTaskbarAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPinToTaskbarAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PinToTaskbarAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCompletedInstallToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var _r: AppInstallationToastNotificationMode = undefined;
         const _c = self.vtable.get_CompletedInstallToastNotificationMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCompletedInstallToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         const _c = self.vtable.put_CompletedInstallToastNotificationMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInstallInProgressToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var _r: AppInstallationToastNotificationMode = undefined;
         const _c = self.vtable.get_InstallInProgressToastNotificationMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInstallInProgressToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         const _c = self.vtable.put_InstallInProgressToastNotificationMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallItem5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1207,8 +1128,11 @@ pub const IAppInstallItem5 = extern struct {
 };
 pub const IAppInstallManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1216,101 +1140,101 @@ pub const IAppInstallManager = extern struct {
     pub fn getAppInstallItems(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var _r: *IVectorView(AppInstallItem) = undefined;
         const _c = self.vtable.get_AppInstallItems(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Cancel(self: *@This(), productId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self), productId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Pause(self: *@This(), productId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Pause(@ptrCast(self), productId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Restart(self: *@This(), productId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Restart(@ptrCast(self), productId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addItemCompleted(self: *@This(), handler: *TypedEventHandler(AppInstallManager,AppInstallManagerItemEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ItemCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeItemCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ItemCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addItemStatusChanged(self: *@This(), handler: *TypedEventHandler(AppInstallManager,AppInstallManagerItemEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ItemStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeItemStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ItemStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAutoUpdateSetting(self: *@This()) core.HResult!AutoUpdateSetting {
         var _r: AutoUpdateSetting = undefined;
         const _c = self.vtable.get_AutoUpdateSetting(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutoUpdateSetting(self: *@This(), value: AutoUpdateSetting) core.HResult!void {
         const _c = self.vtable.put_AutoUpdateSetting(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAcquisitionIdentity(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AcquisitionIdentity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAcquisitionIdentity(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AcquisitionIdentity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetIsApplicableAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsApplicableAsync(@ptrCast(self), productId, skuId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartAppInstallAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.StartAppInstallAsync(@ptrCast(self), productId, skuId, repair, forceUseOfNonRemovableStorage, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateAppByPackageFamilyNameAsync(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.UpdateAppByPackageFamilyNameAsync(@ptrCast(self), packageFamilyName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForUpdatesAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.SearchForUpdatesAsync(@ptrCast(self), productId, skuId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForAllUpdatesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.SearchForAllUpdatesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsStoreBlockedByPolicyAsync(self: *@This(), storeClientName: ?HSTRING, storeClientPublisher: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsStoreBlockedByPolicyAsync(@ptrCast(self), storeClientName, storeClientPublisher, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsAppAllowedToInstallAsync(self: *@This(), productId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsAppAllowedToInstallAsync(@ptrCast(self), productId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManager";
@@ -1348,8 +1272,11 @@ pub const IAppInstallManager = extern struct {
 };
 pub const IAppInstallManager2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1357,44 +1284,44 @@ pub const IAppInstallManager2 = extern struct {
     pub fn StartAppInstallAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, catalogId: ?HSTRING, bundleId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.StartAppInstallAsync(@ptrCast(self), productId, skuId, repair, forceUseOfNonRemovableStorage, catalogId, bundleId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateAppByPackageFamilyNameAsync(self: *@This(), packageFamilyName: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.UpdateAppByPackageFamilyNameAsync(@ptrCast(self), packageFamilyName, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForUpdatesAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.SearchForUpdatesAsync(@ptrCast(self), productId, skuId, catalogId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForAllUpdatesAsync(self: *@This(), correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.SearchForAllUpdatesAsync(@ptrCast(self), correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsAppAllowedToInstallAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsAppAllowedToInstallAsync(@ptrCast(self), productId, skuId, catalogId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Cancel(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self), productId, correlationVector);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Pause(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Pause(@ptrCast(self), productId, correlationVector);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Restart(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Restart(@ptrCast(self), productId, correlationVector);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManager2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1420,8 +1347,11 @@ pub const IAppInstallManager2 = extern struct {
 };
 pub const IAppInstallManager3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1429,48 +1359,48 @@ pub const IAppInstallManager3 = extern struct {
     pub fn StartProductInstallAsync(self: *@This(), productId: ?HSTRING, catalogId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: ?HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.StartProductInstallAsync(@ptrCast(self), productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartProductInstallForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, catalogId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: ?HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.StartProductInstallForUserAsync(@ptrCast(self), user, productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UpdateAppByPackageFamilyNameForUserAsync(self: *@This(), user: *User, packageFamilyName: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.UpdateAppByPackageFamilyNameForUserAsync(@ptrCast(self), user, packageFamilyName, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForUpdatesForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.SearchForUpdatesForUserAsync(@ptrCast(self), user, productId, skuId, catalogId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForAllUpdatesForUserAsync(self: *@This(), user: *User, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.SearchForAllUpdatesForUserAsync(@ptrCast(self), user, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsAppAllowedToInstallForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING, catalogId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsAppAllowedToInstallForUserAsync(@ptrCast(self), user, productId, skuId, catalogId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsApplicableForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsApplicableForUserAsync(@ptrCast(self), user, productId, skuId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveToFrontOfDownloadQueue(self: *@This(), productId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.MoveToFrontOfDownloadQueue(@ptrCast(self), productId, correlationVector);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManager3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1496,8 +1426,11 @@ pub const IAppInstallManager3 = extern struct {
 };
 pub const IAppInstallManager4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1505,19 +1438,19 @@ pub const IAppInstallManager4 = extern struct {
     pub fn GetFreeUserEntitlementAsync(self: *@This(), storeId: ?HSTRING, campaignId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(GetEntitlementResult) {
         var _r: *IAsyncOperation(GetEntitlementResult) = undefined;
         const _c = self.vtable.GetFreeUserEntitlementAsync(@ptrCast(self), storeId, campaignId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFreeUserEntitlementForUserAsync(self: *@This(), user: *User, storeId: ?HSTRING, campaignId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(GetEntitlementResult) {
         var _r: *IAsyncOperation(GetEntitlementResult) = undefined;
         const _c = self.vtable.GetFreeUserEntitlementForUserAsync(@ptrCast(self), user, storeId, campaignId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFreeDeviceEntitlementAsync(self: *@This(), storeId: ?HSTRING, campaignId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(GetEntitlementResult) {
         var _r: *IAsyncOperation(GetEntitlementResult) = undefined;
         const _c = self.vtable.GetFreeDeviceEntitlementAsync(@ptrCast(self), storeId, campaignId, correlationVector, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManager4";
@@ -1539,8 +1472,11 @@ pub const IAppInstallManager4 = extern struct {
 };
 pub const IAppInstallManager5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1548,7 +1484,7 @@ pub const IAppInstallManager5 = extern struct {
     pub fn getAppInstallItemsWithGroupSupport(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var _r: *IVectorView(AppInstallItem) = undefined;
         const _c = self.vtable.get_AppInstallItemsWithGroupSupport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManager5";
@@ -1568,8 +1504,11 @@ pub const IAppInstallManager5 = extern struct {
 };
 pub const IAppInstallManager6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1577,49 +1516,49 @@ pub const IAppInstallManager6 = extern struct {
     pub fn SearchForAllUpdatesAsync(self: *@This(), correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.SearchForAllUpdatesAsync(@ptrCast(self), correlationVector, clientId, updateOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForAllUpdatesForUserAsync(self: *@This(), user: *User, correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.SearchForAllUpdatesForUserAsync(@ptrCast(self), user, correlationVector, clientId, updateOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForUpdatesAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.SearchForUpdatesAsync(@ptrCast(self), productId, skuId, correlationVector, clientId, updateOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SearchForUpdatesForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, skuId: ?HSTRING, correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.SearchForUpdatesForUserAsync(@ptrCast(self), user, productId, skuId, correlationVector, clientId, updateOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartProductInstallAsync(self: *@This(), productId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, correlationVector: ?HSTRING, installOptions: *AppInstallOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.StartProductInstallAsync(@ptrCast(self), productId, flightId, clientId, correlationVector, installOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StartProductInstallForUserAsync(self: *@This(), user: *User, productId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, correlationVector: ?HSTRING, installOptions: *AppInstallOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.StartProductInstallForUserAsync(@ptrCast(self), user, productId, flightId, clientId, correlationVector, installOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsPackageIdentityAllowedToInstallAsync(self: *@This(), correlationVector: ?HSTRING, packageIdentityName: ?HSTRING, publisherCertificateName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsPackageIdentityAllowedToInstallAsync(@ptrCast(self), correlationVector, packageIdentityName, publisherCertificateName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetIsPackageIdentityAllowedToInstallForUserAsync(self: *@This(), user: *User, correlationVector: ?HSTRING, packageIdentityName: ?HSTRING, publisherCertificateName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetIsPackageIdentityAllowedToInstallForUserAsync(@ptrCast(self), user, correlationVector, packageIdentityName, publisherCertificateName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManager6";
@@ -1646,8 +1585,11 @@ pub const IAppInstallManager6 = extern struct {
 };
 pub const IAppInstallManager7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1655,7 +1597,7 @@ pub const IAppInstallManager7 = extern struct {
     pub fn getCanInstallForAllUsers(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanInstallForAllUsers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManager7";
@@ -1675,8 +1617,11 @@ pub const IAppInstallManager7 = extern struct {
 };
 pub const IAppInstallManagerItemEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1684,7 +1629,7 @@ pub const IAppInstallManagerItemEventArgs = extern struct {
     pub fn getItem(self: *@This()) core.HResult!*AppInstallItem {
         var _r: *AppInstallItem = undefined;
         const _c = self.vtable.get_Item(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallManagerItemEventArgs";
@@ -1704,8 +1649,11 @@ pub const IAppInstallManagerItemEventArgs = extern struct {
 };
 pub const IAppInstallOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1713,62 +1661,62 @@ pub const IAppInstallOptions = extern struct {
     pub fn getCatalogId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CatalogId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCatalogId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CatalogId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getForceUseOfNonRemovableStorage(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ForceUseOfNonRemovableStorage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putForceUseOfNonRemovableStorage(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ForceUseOfNonRemovableStorage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowForcedAppRestart(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowForcedAppRestart(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowForcedAppRestart(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowForcedAppRestart(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRepair(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Repair(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRepair(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Repair(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTargetVolume(self: *@This()) core.HResult!*PackageVolume {
         var _r: *PackageVolume = undefined;
         const _c = self.vtable.get_TargetVolume(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTargetVolume(self: *@This(), value: *PackageVolume) core.HResult!void {
         const _c = self.vtable.put_TargetVolume(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLaunchAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LaunchAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLaunchAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_LaunchAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1798,8 +1746,11 @@ pub const IAppInstallOptions = extern struct {
 };
 pub const IAppInstallOptions2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1807,92 +1758,92 @@ pub const IAppInstallOptions2 = extern struct {
     pub fn getPinToDesktopAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToDesktopAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPinToDesktopAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PinToDesktopAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPinToStartAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToStartAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPinToStartAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PinToStartAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPinToTaskbarAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToTaskbarAfterInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPinToTaskbarAfterInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_PinToTaskbarAfterInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCompletedInstallToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var _r: AppInstallationToastNotificationMode = undefined;
         const _c = self.vtable.get_CompletedInstallToastNotificationMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCompletedInstallToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         const _c = self.vtable.put_CompletedInstallToastNotificationMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInstallInProgressToastNotificationMode(self: *@This()) core.HResult!AppInstallationToastNotificationMode {
         var _r: AppInstallationToastNotificationMode = undefined;
         const _c = self.vtable.get_InstallInProgressToastNotificationMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInstallInProgressToastNotificationMode(self: *@This(), value: AppInstallationToastNotificationMode) core.HResult!void {
         const _c = self.vtable.put_InstallInProgressToastNotificationMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInstallForAllUsers(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InstallForAllUsers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInstallForAllUsers(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_InstallForAllUsers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStageButDoNotInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_StageButDoNotInstall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStageButDoNotInstall(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_StageButDoNotInstall(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCampaignId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CampaignId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCampaignId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CampaignId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getExtendedCampaignId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedCampaignId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putExtendedCampaignId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ExtendedCampaignId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallOptions2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1928,8 +1879,11 @@ pub const IAppInstallOptions2 = extern struct {
 };
 pub const IAppInstallStatus = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1937,31 +1891,31 @@ pub const IAppInstallStatus = extern struct {
     pub fn getInstallState(self: *@This()) core.HResult!AppInstallState {
         var _r: AppInstallState = undefined;
         const _c = self.vtable.get_InstallState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDownloadSizeInBytes(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_DownloadSizeInBytes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBytesDownloaded(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_BytesDownloaded(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPercentComplete(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_PercentComplete(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallStatus";
@@ -1985,8 +1939,11 @@ pub const IAppInstallStatus = extern struct {
 };
 pub const IAppInstallStatus2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1994,13 +1951,13 @@ pub const IAppInstallStatus2 = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReadyForLaunch(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ReadyForLaunch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallStatus2";
@@ -2021,8 +1978,11 @@ pub const IAppInstallStatus2 = extern struct {
 };
 pub const IAppInstallStatus3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2030,7 +1990,7 @@ pub const IAppInstallStatus3 = extern struct {
     pub fn getIsStaged(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStaged(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppInstallStatus3";
@@ -2050,8 +2010,11 @@ pub const IAppInstallStatus3 = extern struct {
 };
 pub const IAppUpdateOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2059,22 +2022,22 @@ pub const IAppUpdateOptions = extern struct {
     pub fn getCatalogId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CatalogId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCatalogId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CatalogId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowForcedAppRestart(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowForcedAppRestart(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowForcedAppRestart(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowForcedAppRestart(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppUpdateOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2096,8 +2059,11 @@ pub const IAppUpdateOptions = extern struct {
 };
 pub const IAppUpdateOptions2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2105,12 +2071,12 @@ pub const IAppUpdateOptions2 = extern struct {
     pub fn getAutomaticallyDownloadAndInstallUpdateIfFound(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutomaticallyDownloadAndInstallUpdateIfFound(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutomaticallyDownloadAndInstallUpdateIfFound(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AutomaticallyDownloadAndInstallUpdateIfFound(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IAppUpdateOptions2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2130,8 +2096,11 @@ pub const IAppUpdateOptions2 = extern struct {
 };
 pub const IGetEntitlementResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2139,7 +2108,7 @@ pub const IGetEntitlementResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!GetEntitlementStatus {
         var _r: GetEntitlementStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IGetEntitlementResult";
@@ -2159,8 +2128,11 @@ pub const IGetEntitlementResult = extern struct {
 };
 pub const IGetEntitlementResult2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2168,25 +2140,25 @@ pub const IGetEntitlementResult2 = extern struct {
     pub fn getIsAlreadyOwned(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAlreadyOwned(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOrderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OrderId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSkuId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SkuId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAvailabilityId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AvailabilityId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.InstallControl.IGetEntitlementResult2";

@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPhoneNumberFormatter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,31 +13,31 @@ pub const IPhoneNumberFormatter = extern struct {
     pub fn Format(self: *@This(), number: *PhoneNumberInfo) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Format(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FormatWithNumberFormat(self: *@This(), number: *PhoneNumberInfo, numberFormat: PhoneNumberFormat) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatWithNumberFormat(@ptrCast(self), number, numberFormat, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FormatPartialString(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatPartialString(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FormatString(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatString(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FormatStringWithLeftToRightMarkers(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatStringWithLeftToRightMarkers(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.PhoneNumberFormatting.IPhoneNumberFormatter";
@@ -58,32 +61,35 @@ pub const IPhoneNumberFormatter = extern struct {
 };
 pub const IPhoneNumberFormatterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreate(self: *@This(), regionCode: ?HSTRING, phoneNumber: *PhoneNumberFormatter) core.HResult!void {
         const _c = self.vtable.TryCreate(@ptrCast(self), regionCode, phoneNumber);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetCountryCodeForRegion(self: *@This(), regionCode: ?HSTRING) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetCountryCodeForRegion(@ptrCast(self), regionCode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNationalDirectDialingPrefixForRegion(self: *@This(), regionCode: ?HSTRING, stripNonDigit: bool) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNationalDirectDialingPrefixForRegion(@ptrCast(self), regionCode, stripNonDigit, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn WrapWithLeftToRightMarkers(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.WrapWithLeftToRightMarkers(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.PhoneNumberFormatting.IPhoneNumberFormatterStatics";
@@ -106,8 +112,11 @@ pub const IPhoneNumberFormatterStatics = extern struct {
 };
 pub const IPhoneNumberInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -115,49 +124,49 @@ pub const IPhoneNumberInfo = extern struct {
     pub fn getCountryCode(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_CountryCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLengthOfGeographicalAreaCode(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetLengthOfGeographicalAreaCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNationalSignificantNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNationalSignificantNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetLengthOfNationalDestinationCode(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetLengthOfNationalDestinationCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PredictNumberKind(self: *@This()) core.HResult!PredictedPhoneNumberKind {
         var _r: PredictedPhoneNumberKind = undefined;
         const _c = self.vtable.PredictNumberKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGeographicRegionCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetGeographicRegionCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckNumberMatch(self: *@This(), otherNumber: *PhoneNumberInfo) core.HResult!PhoneNumberMatchResult {
         var _r: PhoneNumberMatchResult = undefined;
         const _c = self.vtable.CheckNumberMatch(@ptrCast(self), otherNumber, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.PhoneNumberFormatting.IPhoneNumberInfo";
@@ -184,8 +193,11 @@ pub const IPhoneNumberInfo = extern struct {
 };
 pub const IPhoneNumberInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -193,7 +205,7 @@ pub const IPhoneNumberInfoFactory = extern struct {
     pub fn Create(self: *@This(), number: ?HSTRING) core.HResult!*PhoneNumberInfo {
         var _r: *PhoneNumberInfo = undefined;
         const _c = self.vtable.Create(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.PhoneNumberFormatting.IPhoneNumberInfoFactory";
@@ -213,8 +225,11 @@ pub const IPhoneNumberInfoFactory = extern struct {
 };
 pub const IPhoneNumberInfoStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -222,13 +237,13 @@ pub const IPhoneNumberInfoStatics = extern struct {
     pub fn TryParse(self: *@This(), input: ?HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
         var _r: PhoneNumberParseResult = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, phoneNumber, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryParseWithRegionCodeAndPhoneNumber(self: *@This(), input: ?HSTRING, regionCode: ?HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
         var _r: PhoneNumberParseResult = undefined;
         const _c = self.vtable.TryParseWithRegionCodeAndPhoneNumber(@ptrCast(self), input, regionCode, phoneNumber, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.PhoneNumberFormatting.IPhoneNumberInfoStatics";
@@ -255,14 +270,11 @@ pub const PhoneNumberFormat = enum(i32) {
 };
 pub const PhoneNumberFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -317,14 +329,11 @@ pub const PhoneNumberFormatter = extern struct {
 };
 pub const PhoneNumberInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -364,8 +373,7 @@ pub const PhoneNumberInfo = extern struct {
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn Create(number: ?HSTRING) core.HResult!*PhoneNumberInfo {

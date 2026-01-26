@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPrintTicketCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,121 +13,121 @@ pub const IPrintTicketCapabilities = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNode(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_XmlNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentBindingFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentBindingFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentCollateFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentCollateFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentDuplexFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentDuplexFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentHolePunchFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentHolePunchFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentInputBinFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentInputBinFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentNUpFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentNUpFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentStapleFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentStapleFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getJobPasscodeFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_JobPasscodeFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageBorderlessFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageBorderlessFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageMediaSizeFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageMediaSizeFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageMediaTypeFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageMediaTypeFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageOrientationFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageOrientationFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageOutputColorFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageOutputColorFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageOutputQualityFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageOutputQualityFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageResolutionFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageResolutionFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFeature(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.GetFeature(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetParameterDefinition(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketParameterDefinition {
         var _r: *PrintTicketParameterDefinition = undefined;
         const _c = self.vtable.GetParameterDefinition(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IPrintTicketCapabilities";
@@ -163,8 +166,11 @@ pub const IPrintTicketCapabilities = extern struct {
 };
 pub const IPrintTicketFeature = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -172,53 +178,53 @@ pub const IPrintTicketFeature = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNode(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_XmlNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetOption(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketOption {
         var _r: *PrintTicketOption = undefined;
         const _c = self.vtable.GetOption(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOptions(self: *@This()) core.HResult!*IVectorView(PrintTicketOption) {
         var _r: *IVectorView(PrintTicketOption) = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSelectedOption(self: *@This()) core.HResult!*PrintTicketOption {
         var _r: *PrintTicketOption = undefined;
         const _c = self.vtable.GetSelectedOption(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetSelectedOption(self: *@This(), value: *PrintTicketOption) core.HResult!void {
         const _c = self.vtable.SetSelectedOption(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectionType(self: *@This()) core.HResult!PrintTicketFeatureSelectionType {
         var _r: PrintTicketFeatureSelectionType = undefined;
         const _c = self.vtable.get_SelectionType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IPrintTicketFeature";
@@ -246,8 +252,11 @@ pub const IPrintTicketFeature = extern struct {
 };
 pub const IPrintTicketOption = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -255,49 +264,49 @@ pub const IPrintTicketOption = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNode(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_XmlNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPropertyNode(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetPropertyNode(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetScoredPropertyNode(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetScoredPropertyNode(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPropertyValue(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketValue {
         var _r: *PrintTicketValue = undefined;
         const _c = self.vtable.GetPropertyValue(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetScoredPropertyValue(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketValue {
         var _r: *PrintTicketValue = undefined;
         const _c = self.vtable.GetScoredPropertyValue(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IPrintTicketOption";
@@ -324,8 +333,11 @@ pub const IPrintTicketOption = extern struct {
 };
 pub const IPrintTicketParameterDefinition = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -333,43 +345,43 @@ pub const IPrintTicketParameterDefinition = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNode(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_XmlNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDataType(self: *@This()) core.HResult!PrintTicketParameterDataType {
         var _r: PrintTicketParameterDataType = undefined;
         const _c = self.vtable.get_DataType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUnitType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnitType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRangeMin(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RangeMin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRangeMax(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RangeMax(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IPrintTicketParameterDefinition";
@@ -395,8 +407,11 @@ pub const IPrintTicketParameterDefinition = extern struct {
 };
 pub const IPrintTicketParameterInitializer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -404,29 +419,29 @@ pub const IPrintTicketParameterInitializer = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNode(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_XmlNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValue(self: *@This(), value: *PrintTicketValue) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getValue(self: *@This()) core.HResult!*PrintTicketValue {
         var _r: *PrintTicketValue = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IPrintTicketParameterInitializer";
@@ -450,8 +465,11 @@ pub const IPrintTicketParameterInitializer = extern struct {
 };
 pub const IPrintTicketValue = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -459,19 +477,19 @@ pub const IPrintTicketValue = extern struct {
     pub fn getType(self: *@This()) core.HResult!PrintTicketValueType {
         var _r: PrintTicketValueType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetValueAsInteger(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetValueAsInteger(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetValueAsString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetValueAsString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IPrintTicketValue";
@@ -493,8 +511,11 @@ pub const IPrintTicketValue = extern struct {
 };
 pub const IWorkflowPrintTicket = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -502,157 +523,157 @@ pub const IWorkflowPrintTicket = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getXmlNode(self: *@This()) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.get_XmlNode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCapabilities(self: *@This()) core.HResult!*PrintTicketCapabilities {
         var _r: *PrintTicketCapabilities = undefined;
         const _c = self.vtable.GetCapabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentBindingFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentBindingFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentCollateFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentCollateFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentDuplexFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentDuplexFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentHolePunchFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentHolePunchFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentInputBinFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentInputBinFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentNUpFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentNUpFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDocumentStapleFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_DocumentStapleFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getJobPasscodeFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_JobPasscodeFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageBorderlessFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageBorderlessFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageMediaSizeFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageMediaSizeFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageMediaTypeFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageMediaTypeFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageOrientationFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageOrientationFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageOutputColorFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageOutputColorFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageOutputQualityFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageOutputQualityFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPageResolutionFeature(self: *@This()) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.get_PageResolutionFeature(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetFeature(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.GetFeature(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn NotifyXmlChangedAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.NotifyXmlChangedAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ValidateAsync(self: *@This()) core.HResult!*IAsyncOperation(WorkflowPrintTicketValidationResult) {
         var _r: *IAsyncOperation(WorkflowPrintTicketValidationResult) = undefined;
         const _c = self.vtable.ValidateAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetParameterInitializer(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketParameterInitializer {
         var _r: *PrintTicketParameterInitializer = undefined;
         const _c = self.vtable.GetParameterInitializer(@ptrCast(self), name, xmlNamespace, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetParameterInitializerAsInteger(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING, integerValue: i32) core.HResult!*PrintTicketParameterInitializer {
         var _r: *PrintTicketParameterInitializer = undefined;
         const _c = self.vtable.SetParameterInitializerAsInteger(@ptrCast(self), name, xmlNamespace, integerValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetParameterInitializerAsString(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING, stringValue: ?HSTRING) core.HResult!*PrintTicketParameterInitializer {
         var _r: *PrintTicketParameterInitializer = undefined;
         const _c = self.vtable.SetParameterInitializerAsString(@ptrCast(self), name, xmlNamespace, stringValue, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MergeAndValidateTicket(self: *@This(), deltaShemaTicket: *WorkflowPrintTicket) core.HResult!*WorkflowPrintTicket {
         var _r: *WorkflowPrintTicket = undefined;
         const _c = self.vtable.MergeAndValidateTicket(@ptrCast(self), deltaShemaTicket, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IWorkflowPrintTicket";
@@ -697,8 +718,11 @@ pub const IWorkflowPrintTicket = extern struct {
 };
 pub const IWorkflowPrintTicketValidationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -706,13 +730,13 @@ pub const IWorkflowPrintTicketValidationResult = extern struct {
     pub fn getValidated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Validated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintTicket.IWorkflowPrintTicketValidationResult";
@@ -733,14 +757,11 @@ pub const IWorkflowPrintTicketValidationResult = extern struct {
 };
 pub const PrintTicketCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -833,14 +854,11 @@ pub const PrintTicketCapabilities = extern struct {
 };
 pub const PrintTicketFeature = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -893,14 +911,11 @@ pub const PrintTicketFeatureSelectionType = enum(i32) {
 };
 pub const PrintTicketOption = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -950,14 +965,11 @@ pub const PrintTicketParameterDataType = enum(i32) {
 };
 pub const PrintTicketParameterDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -998,14 +1010,11 @@ pub const PrintTicketParameterDefinition = extern struct {
 };
 pub const PrintTicketParameterInitializer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1038,14 +1047,11 @@ pub const PrintTicketParameterInitializer = extern struct {
 };
 pub const PrintTicketValue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1075,14 +1081,11 @@ pub const PrintTicketValueType = enum(i32) {
 };
 pub const WorkflowPrintTicket = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1199,14 +1202,11 @@ pub const WorkflowPrintTicket = extern struct {
 };
 pub const WorkflowPrintTicketValidationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

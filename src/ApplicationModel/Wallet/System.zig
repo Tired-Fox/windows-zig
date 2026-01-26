@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IWalletItemSystemStore = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,31 +13,31 @@ pub const IWalletItemSystemStore = extern struct {
     pub fn GetItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(WalletItem)) {
         var _r: *IAsyncOperation(IVectorView(WalletItem)) = undefined;
         const _c = self.vtable.GetItemsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteAsync(self: *@This(), item: *WalletItem) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteAsync(@ptrCast(self), item, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ImportItemAsync(self: *@This(), stream: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(WalletItem) {
         var _r: *IAsyncOperation(WalletItem) = undefined;
         const _c = self.vtable.ImportItemAsync(@ptrCast(self), stream, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAppStatusForItem(self: *@This(), item: *WalletItem) core.HResult!WalletItemAppAssociation {
         var _r: WalletItemAppAssociation = undefined;
         const _c = self.vtable.GetAppStatusForItem(@ptrCast(self), item, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LaunchAppForItemAsync(self: *@This(), item: *WalletItem) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.LaunchAppForItemAsync(@ptrCast(self), item, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.System.IWalletItemSystemStore";
@@ -58,8 +61,11 @@ pub const IWalletItemSystemStore = extern struct {
 };
 pub const IWalletItemSystemStore2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -67,12 +73,12 @@ pub const IWalletItemSystemStore2 = extern struct {
     pub fn addItemsChanged(self: *@This(), handler: *TypedEventHandler(WalletItemSystemStore,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ItemsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeItemsChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ItemsChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.System.IWalletItemSystemStore2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -92,8 +98,11 @@ pub const IWalletItemSystemStore2 = extern struct {
 };
 pub const IWalletManagerSystemStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -101,7 +110,7 @@ pub const IWalletManagerSystemStatics = extern struct {
     pub fn RequestStoreAsync(self: *@This()) core.HResult!*IAsyncOperation(WalletItemSystemStore) {
         var _r: *IAsyncOperation(WalletItemSystemStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.System.IWalletManagerSystemStatics";
@@ -126,14 +135,11 @@ pub const WalletItemAppAssociation = enum(i32) {
 };
 pub const WalletItemSystemStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -161,15 +167,13 @@ pub const WalletItemSystemStore = extern struct {
     pub fn addItemsChanged(self: *@This(), handler: *TypedEventHandler(WalletItemSystemStore,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IWalletItemSystemStore2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWalletItemSystemStore2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWalletItemSystemStore2.IID, @ptrCast(&this));
         return try this.?.addItemsChanged(handler);
     }
     pub fn removeItemsChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IWalletItemSystemStore2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWalletItemSystemStore2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWalletItemSystemStore2.IID, @ptrCast(&this));
         return try this.?.removeItemsChanged(cookie);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.System.WalletItemSystemStore";
@@ -180,14 +184,11 @@ pub const WalletItemSystemStore = extern struct {
 };
 pub const WalletManagerSystem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

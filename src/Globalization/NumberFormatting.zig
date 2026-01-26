@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const CurrencyFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -24,225 +21,193 @@ pub const CurrencyFormatter = extern struct {
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getLanguages();
     }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getGeographicRegion();
     }
     pub fn getIntegerDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIntegerDigits();
     }
     pub fn putIntegerDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIntegerDigits(value);
     }
     pub fn getFractionDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getFractionDigits();
     }
     pub fn putFractionDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putFractionDigits(value);
     }
     pub fn getIsGrouped(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsGrouped();
     }
     pub fn putIsGrouped(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsGrouped(value);
     }
     pub fn getIsDecimalPointAlwaysDisplayed(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsDecimalPointAlwaysDisplayed();
     }
     pub fn putIsDecimalPointAlwaysDisplayed(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
     pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getNumeralSystem();
     }
     pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putNumeralSystem(value);
     }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedLanguage();
     }
     pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedGeographicRegion();
     }
     pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         return try this.?.FormatWithValueInt64(value);
     }
     pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         return try this.?.FormatWithValueUInt64(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         return try this.?.Format(value);
     }
     pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatInt(value);
     }
     pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatUInt(value);
     }
     pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatDouble(value);
     }
     pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseInt(text);
     }
     pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseUInt(text);
     }
     pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseDouble(text);
     }
     pub fn getMode(self: *@This()) core.HResult!CurrencyFormatterMode {
         var this: ?*ICurrencyFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICurrencyFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICurrencyFormatter2.IID, @ptrCast(&this));
         return try this.?.getMode();
     }
     pub fn putMode(self: *@This(), value: CurrencyFormatterMode) core.HResult!void {
         var this: ?*ICurrencyFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICurrencyFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICurrencyFormatter2.IID, @ptrCast(&this));
         return try this.?.putMode(value);
     }
     pub fn ApplyRoundingForCurrency(self: *@This(), roundingAlgorithm: RoundingAlgorithm) core.HResult!void {
         var this: ?*ICurrencyFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICurrencyFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICurrencyFormatter2.IID, @ptrCast(&this));
         return try this.?.ApplyRoundingForCurrency(roundingAlgorithm);
     }
     pub fn getSignificantDigits(self: *@This()) core.HResult!i32 {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.getSignificantDigits();
     }
     pub fn putSignificantDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.putSignificantDigits(value);
     }
     pub fn getNumberRounder(self: *@This()) core.HResult!*INumberRounder {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.getNumberRounder();
     }
     pub fn putNumberRounder(self: *@This(), value: *INumberRounder) core.HResult!void {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.putNumberRounder(value);
     }
     pub fn getIsZeroSigned(self: *@This()) core.HResult!bool {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.getIsZeroSigned();
     }
     pub fn putIsZeroSigned(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.putIsZeroSigned(value);
     }
     pub fn CreateCurrencyFormatterCode(currencyCode: ?HSTRING) core.HResult!*CurrencyFormatter {
@@ -266,14 +231,11 @@ pub const CurrencyFormatterMode = enum(i32) {
 };
 pub const DecimalFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -281,99 +243,85 @@ pub const DecimalFormatter = extern struct {
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getLanguages();
     }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getGeographicRegion();
     }
     pub fn getIntegerDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIntegerDigits();
     }
     pub fn putIntegerDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIntegerDigits(value);
     }
     pub fn getFractionDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getFractionDigits();
     }
     pub fn putFractionDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putFractionDigits(value);
     }
     pub fn getIsGrouped(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsGrouped();
     }
     pub fn putIsGrouped(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsGrouped(value);
     }
     pub fn getIsDecimalPointAlwaysDisplayed(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsDecimalPointAlwaysDisplayed();
     }
     pub fn putIsDecimalPointAlwaysDisplayed(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
     pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getNumeralSystem();
     }
     pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putNumeralSystem(value);
     }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedLanguage();
     }
     pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedGeographicRegion();
     }
     pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
@@ -391,85 +339,73 @@ pub const DecimalFormatter = extern struct {
     pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatInt(value);
     }
     pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatUInt(value);
     }
     pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatDouble(value);
     }
     pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseInt(text);
     }
     pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseUInt(text);
     }
     pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseDouble(text);
     }
     pub fn getSignificantDigits(self: *@This()) core.HResult!i32 {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.getSignificantDigits();
     }
     pub fn putSignificantDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.putSignificantDigits(value);
     }
     pub fn getNumberRounder(self: *@This()) core.HResult!*INumberRounder {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.getNumberRounder();
     }
     pub fn putNumberRounder(self: *@This(), value: *INumberRounder) core.HResult!void {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.putNumberRounder(value);
     }
     pub fn getIsZeroSigned(self: *@This()) core.HResult!bool {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.getIsZeroSigned();
     }
     pub fn putIsZeroSigned(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.putIsZeroSigned(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -490,8 +426,11 @@ pub const DecimalFormatter = extern struct {
 };
 pub const ICurrencyFormatter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -499,12 +438,12 @@ pub const ICurrencyFormatter = extern struct {
     pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Currency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCurrency(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Currency(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.ICurrencyFormatter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -524,8 +463,11 @@ pub const ICurrencyFormatter = extern struct {
 };
 pub const ICurrencyFormatter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -533,16 +475,16 @@ pub const ICurrencyFormatter2 = extern struct {
     pub fn getMode(self: *@This()) core.HResult!CurrencyFormatterMode {
         var _r: CurrencyFormatterMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMode(self: *@This(), value: CurrencyFormatterMode) core.HResult!void {
         const _c = self.vtable.put_Mode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ApplyRoundingForCurrency(self: *@This(), roundingAlgorithm: RoundingAlgorithm) core.HResult!void {
         const _c = self.vtable.ApplyRoundingForCurrency(@ptrCast(self), roundingAlgorithm);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.ICurrencyFormatter2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -563,8 +505,11 @@ pub const ICurrencyFormatter2 = extern struct {
 };
 pub const ICurrencyFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -572,13 +517,13 @@ pub const ICurrencyFormatterFactory = extern struct {
     pub fn CreateCurrencyFormatterCode(self: *@This(), currencyCode: ?HSTRING) core.HResult!*CurrencyFormatter {
         var _r: *CurrencyFormatter = undefined;
         const _c = self.vtable.CreateCurrencyFormatterCode(@ptrCast(self), currencyCode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateCurrencyFormatterCodeContext(self: *@This(), currencyCode: ?HSTRING, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*CurrencyFormatter {
         var _r: *CurrencyFormatter = undefined;
         const _c = self.vtable.CreateCurrencyFormatterCodeContext(@ptrCast(self), currencyCode, languages, geographicRegion, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.ICurrencyFormatterFactory";
@@ -599,8 +544,11 @@ pub const ICurrencyFormatterFactory = extern struct {
 };
 pub const IDecimalFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -608,7 +556,7 @@ pub const IDecimalFormatterFactory = extern struct {
     pub fn CreateDecimalFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*DecimalFormatter {
         var _r: *DecimalFormatter = undefined;
         const _c = self.vtable.CreateDecimalFormatter(@ptrCast(self), languages, geographicRegion, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.IDecimalFormatterFactory";
@@ -628,8 +576,11 @@ pub const IDecimalFormatterFactory = extern struct {
 };
 pub const IIncrementNumberRounder = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -637,22 +588,22 @@ pub const IIncrementNumberRounder = extern struct {
     pub fn getRoundingAlgorithm(self: *@This()) core.HResult!RoundingAlgorithm {
         var _r: RoundingAlgorithm = undefined;
         const _c = self.vtable.get_RoundingAlgorithm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoundingAlgorithm(self: *@This(), value: RoundingAlgorithm) core.HResult!void {
         const _c = self.vtable.put_RoundingAlgorithm(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIncrement(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Increment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncrement(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.put_Increment(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.IIncrementNumberRounder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -674,8 +625,11 @@ pub const IIncrementNumberRounder = extern struct {
 };
 pub const INumberFormatter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -683,19 +637,19 @@ pub const INumberFormatter = extern struct {
     pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatWithValueInt64(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatWithValueUInt64(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Format(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumberFormatter";
@@ -717,8 +671,11 @@ pub const INumberFormatter = extern struct {
 };
 pub const INumberFormatter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -726,19 +683,19 @@ pub const INumberFormatter2 = extern struct {
     pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatInt(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatUInt(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatDouble(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumberFormatter2";
@@ -760,8 +717,11 @@ pub const INumberFormatter2 = extern struct {
 };
 pub const INumberFormatterOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -769,75 +729,75 @@ pub const INumberFormatterOptions = extern struct {
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GeographicRegion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIntegerDigits(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_IntegerDigits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIntegerDigits(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_IntegerDigits(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFractionDigits(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FractionDigits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFractionDigits(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_FractionDigits(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsGrouped(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsGrouped(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsGrouped(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsGrouped(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsDecimalPointAlwaysDisplayed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDecimalPointAlwaysDisplayed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsDecimalPointAlwaysDisplayed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsDecimalPointAlwaysDisplayed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumeralSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NumeralSystem(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedGeographicRegion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumberFormatterOptions";
@@ -870,8 +830,11 @@ pub const INumberFormatterOptions = extern struct {
 };
 pub const INumberParser = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -879,19 +842,19 @@ pub const INumberParser = extern struct {
     pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var _r: *IReference(i64) = undefined;
         const _c = self.vtable.ParseInt(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var _r: *IReference(u64) = undefined;
         const _c = self.vtable.ParseUInt(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.ParseDouble(@ptrCast(self), text, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumberParser";
@@ -913,8 +876,11 @@ pub const INumberParser = extern struct {
 };
 pub const INumberRounder = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -922,37 +888,37 @@ pub const INumberRounder = extern struct {
     pub fn RoundInt32(self: *@This(), value: i32) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.RoundInt32(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoundUInt32(self: *@This(), value: u32) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.RoundUInt32(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoundInt64(self: *@This(), value: i64) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.RoundInt64(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoundUInt64(self: *@This(), value: u64) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.RoundUInt64(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoundSingle(self: *@This(), value: f32) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.RoundSingle(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RoundDouble(self: *@This(), value: f64) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.RoundDouble(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumberRounder";
@@ -977,8 +943,11 @@ pub const INumberRounder = extern struct {
 };
 pub const INumberRounderOption = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -986,12 +955,12 @@ pub const INumberRounderOption = extern struct {
     pub fn getNumberRounder(self: *@This()) core.HResult!*INumberRounder {
         var _r: *INumberRounder = undefined;
         const _c = self.vtable.get_NumberRounder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNumberRounder(self: *@This(), value: *INumberRounder) core.HResult!void {
         const _c = self.vtable.put_NumberRounder(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumberRounderOption";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1011,8 +980,11 @@ pub const INumberRounderOption = extern struct {
 };
 pub const INumeralSystemTranslator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1020,29 +992,29 @@ pub const INumeralSystemTranslator = extern struct {
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumeralSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NumeralSystem(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TranslateNumerals(self: *@This(), value: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.TranslateNumerals(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumeralSystemTranslator";
@@ -1066,8 +1038,11 @@ pub const INumeralSystemTranslator = extern struct {
 };
 pub const INumeralSystemTranslatorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1075,7 +1050,7 @@ pub const INumeralSystemTranslatorFactory = extern struct {
     pub fn Create(self: *@This(), languages: *IIterable(?HSTRING)) core.HResult!*NumeralSystemTranslator {
         var _r: *NumeralSystemTranslator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languages, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.INumeralSystemTranslatorFactory";
@@ -1095,8 +1070,11 @@ pub const INumeralSystemTranslatorFactory = extern struct {
 };
 pub const IPercentFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1104,7 +1082,7 @@ pub const IPercentFormatterFactory = extern struct {
     pub fn CreatePercentFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PercentFormatter {
         var _r: *PercentFormatter = undefined;
         const _c = self.vtable.CreatePercentFormatter(@ptrCast(self), languages, geographicRegion, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.IPercentFormatterFactory";
@@ -1124,8 +1102,11 @@ pub const IPercentFormatterFactory = extern struct {
 };
 pub const IPermilleFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1133,7 +1114,7 @@ pub const IPermilleFormatterFactory = extern struct {
     pub fn CreatePermilleFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PermilleFormatter {
         var _r: *PermilleFormatter = undefined;
         const _c = self.vtable.CreatePermilleFormatter(@ptrCast(self), languages, geographicRegion, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.IPermilleFormatterFactory";
@@ -1153,8 +1134,11 @@ pub const IPermilleFormatterFactory = extern struct {
 };
 pub const ISignedZeroOption = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1162,12 +1146,12 @@ pub const ISignedZeroOption = extern struct {
     pub fn getIsZeroSigned(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsZeroSigned(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsZeroSigned(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsZeroSigned(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.ISignedZeroOption";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1187,8 +1171,11 @@ pub const ISignedZeroOption = extern struct {
 };
 pub const ISignificantDigitsNumberRounder = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1196,22 +1183,22 @@ pub const ISignificantDigitsNumberRounder = extern struct {
     pub fn getRoundingAlgorithm(self: *@This()) core.HResult!RoundingAlgorithm {
         var _r: RoundingAlgorithm = undefined;
         const _c = self.vtable.get_RoundingAlgorithm(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoundingAlgorithm(self: *@This(), value: RoundingAlgorithm) core.HResult!void {
         const _c = self.vtable.put_RoundingAlgorithm(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSignificantDigits(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SignificantDigits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignificantDigits(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_SignificantDigits(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.ISignificantDigitsNumberRounder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1233,8 +1220,11 @@ pub const ISignificantDigitsNumberRounder = extern struct {
 };
 pub const ISignificantDigitsOption = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1242,12 +1232,12 @@ pub const ISignificantDigitsOption = extern struct {
     pub fn getSignificantDigits(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SignificantDigits(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSignificantDigits(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_SignificantDigits(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.ISignificantDigitsOption";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1267,14 +1257,11 @@ pub const ISignificantDigitsOption = extern struct {
 };
 pub const IncrementNumberRounder = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1306,29 +1293,25 @@ pub const IncrementNumberRounder = extern struct {
     pub fn getRoundingAlgorithm(self: *@This()) core.HResult!RoundingAlgorithm {
         var this: ?*IIncrementNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
         return try this.?.getRoundingAlgorithm();
     }
     pub fn putRoundingAlgorithm(self: *@This(), value: RoundingAlgorithm) core.HResult!void {
         var this: ?*IIncrementNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
         return try this.?.putRoundingAlgorithm(value);
     }
     pub fn getIncrement(self: *@This()) core.HResult!f64 {
         var this: ?*IIncrementNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
         return try this.?.getIncrement();
     }
     pub fn putIncrement(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IIncrementNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIncrementNumberRounder.IID, @ptrCast(&this));
         return try this.?.putIncrement(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -1344,14 +1327,11 @@ pub const IncrementNumberRounder = extern struct {
 };
 pub const NumeralSystemTranslator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1394,14 +1374,11 @@ pub const NumeralSystemTranslator = extern struct {
 };
 pub const PercentFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1409,99 +1386,85 @@ pub const PercentFormatter = extern struct {
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getLanguages();
     }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getGeographicRegion();
     }
     pub fn getIntegerDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIntegerDigits();
     }
     pub fn putIntegerDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIntegerDigits(value);
     }
     pub fn getFractionDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getFractionDigits();
     }
     pub fn putFractionDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putFractionDigits(value);
     }
     pub fn getIsGrouped(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsGrouped();
     }
     pub fn putIsGrouped(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsGrouped(value);
     }
     pub fn getIsDecimalPointAlwaysDisplayed(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsDecimalPointAlwaysDisplayed();
     }
     pub fn putIsDecimalPointAlwaysDisplayed(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
     pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getNumeralSystem();
     }
     pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putNumeralSystem(value);
     }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedLanguage();
     }
     pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedGeographicRegion();
     }
     pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
@@ -1519,85 +1482,73 @@ pub const PercentFormatter = extern struct {
     pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatInt(value);
     }
     pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatUInt(value);
     }
     pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatDouble(value);
     }
     pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseInt(text);
     }
     pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseUInt(text);
     }
     pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseDouble(text);
     }
     pub fn getSignificantDigits(self: *@This()) core.HResult!i32 {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.getSignificantDigits();
     }
     pub fn putSignificantDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.putSignificantDigits(value);
     }
     pub fn getNumberRounder(self: *@This()) core.HResult!*INumberRounder {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.getNumberRounder();
     }
     pub fn putNumberRounder(self: *@This(), value: *INumberRounder) core.HResult!void {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.putNumberRounder(value);
     }
     pub fn getIsZeroSigned(self: *@This()) core.HResult!bool {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.getIsZeroSigned();
     }
     pub fn putIsZeroSigned(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.putIsZeroSigned(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -1618,14 +1569,11 @@ pub const PercentFormatter = extern struct {
 };
 pub const PermilleFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1633,99 +1581,85 @@ pub const PermilleFormatter = extern struct {
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getLanguages();
     }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getGeographicRegion();
     }
     pub fn getIntegerDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIntegerDigits();
     }
     pub fn putIntegerDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIntegerDigits(value);
     }
     pub fn getFractionDigits(self: *@This()) core.HResult!i32 {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getFractionDigits();
     }
     pub fn putFractionDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putFractionDigits(value);
     }
     pub fn getIsGrouped(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsGrouped();
     }
     pub fn putIsGrouped(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsGrouped(value);
     }
     pub fn getIsDecimalPointAlwaysDisplayed(self: *@This()) core.HResult!bool {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getIsDecimalPointAlwaysDisplayed();
     }
     pub fn putIsDecimalPointAlwaysDisplayed(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
     pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getNumeralSystem();
     }
     pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.putNumeralSystem(value);
     }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedLanguage();
     }
     pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         return try this.?.getResolvedGeographicRegion();
     }
     pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
@@ -1743,85 +1677,73 @@ pub const PermilleFormatter = extern struct {
     pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatInt(value);
     }
     pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatUInt(value);
     }
     pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatDouble(value);
     }
     pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseInt(text);
     }
     pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseUInt(text);
     }
     pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         return try this.?.ParseDouble(text);
     }
     pub fn getSignificantDigits(self: *@This()) core.HResult!i32 {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.getSignificantDigits();
     }
     pub fn putSignificantDigits(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ISignificantDigitsOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsOption.IID, @ptrCast(&this));
         return try this.?.putSignificantDigits(value);
     }
     pub fn getNumberRounder(self: *@This()) core.HResult!*INumberRounder {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.getNumberRounder();
     }
     pub fn putNumberRounder(self: *@This(), value: *INumberRounder) core.HResult!void {
         var this: ?*INumberRounderOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &INumberRounderOption.IID, @ptrCast(&this));
         return try this.?.putNumberRounder(value);
     }
     pub fn getIsZeroSigned(self: *@This()) core.HResult!bool {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.getIsZeroSigned();
     }
     pub fn putIsZeroSigned(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISignedZeroOption = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         return try this.?.putIsZeroSigned(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -1855,14 +1777,11 @@ pub const RoundingAlgorithm = enum(i32) {
 };
 pub const SignificantDigitsNumberRounder = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1894,29 +1813,25 @@ pub const SignificantDigitsNumberRounder = extern struct {
     pub fn getRoundingAlgorithm(self: *@This()) core.HResult!RoundingAlgorithm {
         var this: ?*ISignificantDigitsNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
         return try this.?.getRoundingAlgorithm();
     }
     pub fn putRoundingAlgorithm(self: *@This(), value: RoundingAlgorithm) core.HResult!void {
         var this: ?*ISignificantDigitsNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
         return try this.?.putRoundingAlgorithm(value);
     }
     pub fn getSignificantDigits(self: *@This()) core.HResult!u32 {
         var this: ?*ISignificantDigitsNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
         return try this.?.getSignificantDigits();
     }
     pub fn putSignificantDigits(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ISignificantDigitsNumberRounder = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
         return try this.?.putSignificantDigits(value);
     }
     pub fn init() core.HResult!*@This() {

@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ArcadeStick = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -24,71 +21,61 @@ pub const ArcadeStick = extern struct {
     pub fn addHeadsetConnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetConnected(value);
     }
     pub fn removeHeadsetConnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetConnected(token);
     }
     pub fn addHeadsetDisconnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetDisconnected(value);
     }
     pub fn removeHeadsetDisconnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetDisconnected(token);
     }
     pub fn addUserChanged(self: *@This(), value: *TypedEventHandler(IGameController,UserChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addUserChanged(value);
     }
     pub fn removeUserChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeUserChanged(token);
     }
     pub fn getHeadset(self: *@This()) core.HResult!*Headset {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getHeadset();
     }
     pub fn getIsWireless(self: *@This()) core.HResult!bool {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getIsWireless();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*IGameControllerBatteryInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
         return try this.?.TryGetBatteryReport();
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*ArcadeStick {
@@ -144,14 +131,11 @@ pub const ArcadeStickReading = extern struct {
 };
 pub const FlightStick = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -171,71 +155,61 @@ pub const FlightStick = extern struct {
     pub fn addHeadsetConnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetConnected(value);
     }
     pub fn removeHeadsetConnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetConnected(token);
     }
     pub fn addHeadsetDisconnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetDisconnected(value);
     }
     pub fn removeHeadsetDisconnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetDisconnected(token);
     }
     pub fn addUserChanged(self: *@This(), value: *TypedEventHandler(IGameController,UserChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addUserChanged(value);
     }
     pub fn removeUserChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeUserChanged(token);
     }
     pub fn getHeadset(self: *@This()) core.HResult!*Headset {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getHeadset();
     }
     pub fn getIsWireless(self: *@This()) core.HResult!bool {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getIsWireless();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*IGameControllerBatteryInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
         return try this.?.TryGetBatteryReport();
     }
     pub fn addFlightStickAdded(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
@@ -372,14 +346,11 @@ pub const GameControllerSwitchPosition = enum(i32) {
 };
 pub const Gamepad = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -399,78 +370,67 @@ pub const Gamepad = extern struct {
     pub fn addHeadsetConnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetConnected(value);
     }
     pub fn removeHeadsetConnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetConnected(token);
     }
     pub fn addHeadsetDisconnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetDisconnected(value);
     }
     pub fn removeHeadsetDisconnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetDisconnected(token);
     }
     pub fn addUserChanged(self: *@This(), value: *TypedEventHandler(IGameController,UserChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addUserChanged(value);
     }
     pub fn removeUserChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeUserChanged(token);
     }
     pub fn getHeadset(self: *@This()) core.HResult!*Headset {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getHeadset();
     }
     pub fn getIsWireless(self: *@This()) core.HResult!bool {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getIsWireless();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn GetButtonLabel(self: *@This(), button: GamepadButtons) core.HResult!GameControllerButtonLabel {
         var this: ?*IGamepad2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGamepad2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGamepad2.IID, @ptrCast(&this));
         return try this.?.GetButtonLabel(button);
     }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*IGameControllerBatteryInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
         return try this.?.TryGetBatteryReport();
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*Gamepad {
@@ -544,14 +504,11 @@ pub const GamepadVibration = extern struct {
 };
 pub const Headset = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -567,8 +524,7 @@ pub const Headset = extern struct {
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*IGameControllerBatteryInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
         return try this.?.TryGetBatteryReport();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Headset";
@@ -579,8 +535,11 @@ pub const Headset = extern struct {
 };
 pub const IArcadeStick = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -588,13 +547,13 @@ pub const IArcadeStick = extern struct {
     pub fn GetButtonLabel(self: *@This(), button: ArcadeStickButtons) core.HResult!GameControllerButtonLabel {
         var _r: GameControllerButtonLabel = undefined;
         const _c = self.vtable.GetButtonLabel(@ptrCast(self), button, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentReading(self: *@This()) core.HResult!ArcadeStickReading {
         var _r: ArcadeStickReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IArcadeStick";
@@ -615,8 +574,11 @@ pub const IArcadeStick = extern struct {
 };
 pub const IArcadeStickStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -624,27 +586,27 @@ pub const IArcadeStickStatics = extern struct {
     pub fn addArcadeStickAdded(self: *@This(), value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ArcadeStickAdded(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeArcadeStickAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ArcadeStickAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addArcadeStickRemoved(self: *@This(), value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ArcadeStickRemoved(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeArcadeStickRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ArcadeStickRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getArcadeSticks(self: *@This()) core.HResult!*IVectorView(ArcadeStick) {
         var _r: *IVectorView(ArcadeStick) = undefined;
         const _c = self.vtable.get_ArcadeSticks(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IArcadeStickStatics";
@@ -668,8 +630,11 @@ pub const IArcadeStickStatics = extern struct {
 };
 pub const IArcadeStickStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -677,7 +642,7 @@ pub const IArcadeStickStatics2 = extern struct {
     pub fn FromGameController(self: *@This(), gameController: *IGameController) core.HResult!*ArcadeStick {
         var _r: *ArcadeStick = undefined;
         const _c = self.vtable.FromGameController(@ptrCast(self), gameController, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IArcadeStickStatics2";
@@ -697,8 +662,11 @@ pub const IArcadeStickStatics2 = extern struct {
 };
 pub const IFlightStick = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -706,19 +674,19 @@ pub const IFlightStick = extern struct {
     pub fn getHatSwitchKind(self: *@This()) core.HResult!GameControllerSwitchKind {
         var _r: GameControllerSwitchKind = undefined;
         const _c = self.vtable.get_HatSwitchKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetButtonLabel(self: *@This(), button: FlightStickButtons) core.HResult!GameControllerButtonLabel {
         var _r: GameControllerButtonLabel = undefined;
         const _c = self.vtable.GetButtonLabel(@ptrCast(self), button, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentReading(self: *@This()) core.HResult!FlightStickReading {
         var _r: FlightStickReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IFlightStick";
@@ -740,8 +708,11 @@ pub const IFlightStick = extern struct {
 };
 pub const IFlightStickStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -749,33 +720,33 @@ pub const IFlightStickStatics = extern struct {
     pub fn addFlightStickAdded(self: *@This(), value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FlightStickAdded(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFlightStickAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FlightStickAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addFlightStickRemoved(self: *@This(), value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FlightStickRemoved(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFlightStickRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FlightStickRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getFlightSticks(self: *@This()) core.HResult!*IVectorView(FlightStick) {
         var _r: *IVectorView(FlightStick) = undefined;
         const _c = self.vtable.get_FlightSticks(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromGameController(self: *@This(), gameController: *IGameController) core.HResult!*FlightStick {
         var _r: *FlightStick = undefined;
         const _c = self.vtable.FromGameController(@ptrCast(self), gameController, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IFlightStickStatics";
@@ -800,8 +771,11 @@ pub const IFlightStickStatics = extern struct {
 };
 pub const IGameController = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -809,49 +783,49 @@ pub const IGameController = extern struct {
     pub fn addHeadsetConnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HeadsetConnected(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHeadsetConnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HeadsetConnected(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addHeadsetDisconnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HeadsetDisconnected(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHeadsetDisconnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HeadsetDisconnected(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUserChanged(self: *@This(), value: *TypedEventHandler(IGameController,UserChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UserChanged(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUserChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UserChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHeadset(self: *@This()) core.HResult!*Headset {
         var _r: *Headset = undefined;
         const _c = self.vtable.get_Headset(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsWireless(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWireless(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IGameController";
@@ -879,8 +853,11 @@ pub const IGameController = extern struct {
 };
 pub const IGameControllerBatteryInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -888,7 +865,7 @@ pub const IGameControllerBatteryInfo = extern struct {
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var _r: *BatteryReport = undefined;
         const _c = self.vtable.TryGetBatteryReport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IGameControllerBatteryInfo";
@@ -908,8 +885,11 @@ pub const IGameControllerBatteryInfo = extern struct {
 };
 pub const IGamepad = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -917,17 +897,17 @@ pub const IGamepad = extern struct {
     pub fn getVibration(self: *@This()) core.HResult!GamepadVibration {
         var _r: GamepadVibration = undefined;
         const _c = self.vtable.get_Vibration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVibration(self: *@This(), value: GamepadVibration) core.HResult!void {
         const _c = self.vtable.put_Vibration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetCurrentReading(self: *@This()) core.HResult!GamepadReading {
         var _r: GamepadReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IGamepad";
@@ -949,8 +929,11 @@ pub const IGamepad = extern struct {
 };
 pub const IGamepad2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -958,7 +941,7 @@ pub const IGamepad2 = extern struct {
     pub fn GetButtonLabel(self: *@This(), button: GamepadButtons) core.HResult!GameControllerButtonLabel {
         var _r: GameControllerButtonLabel = undefined;
         const _c = self.vtable.GetButtonLabel(@ptrCast(self), button, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IGamepad2";
@@ -978,8 +961,11 @@ pub const IGamepad2 = extern struct {
 };
 pub const IGamepadStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -987,27 +973,27 @@ pub const IGamepadStatics = extern struct {
     pub fn addGamepadAdded(self: *@This(), value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GamepadAdded(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGamepadAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GamepadAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addGamepadRemoved(self: *@This(), value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GamepadRemoved(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeGamepadRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_GamepadRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getGamepads(self: *@This()) core.HResult!*IVectorView(Gamepad) {
         var _r: *IVectorView(Gamepad) = undefined;
         const _c = self.vtable.get_Gamepads(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IGamepadStatics";
@@ -1031,8 +1017,11 @@ pub const IGamepadStatics = extern struct {
 };
 pub const IGamepadStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1040,7 +1029,7 @@ pub const IGamepadStatics2 = extern struct {
     pub fn FromGameController(self: *@This(), gameController: *IGameController) core.HResult!*Gamepad {
         var _r: *Gamepad = undefined;
         const _c = self.vtable.FromGameController(@ptrCast(self), gameController, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IGamepadStatics2";
@@ -1060,8 +1049,11 @@ pub const IGamepadStatics2 = extern struct {
 };
 pub const IHeadset = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1069,13 +1061,13 @@ pub const IHeadset = extern struct {
     pub fn getCaptureDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CaptureDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRenderDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RenderDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IHeadset";
@@ -1096,8 +1088,11 @@ pub const IHeadset = extern struct {
 };
 pub const IRacingWheel = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1105,49 +1100,49 @@ pub const IRacingWheel = extern struct {
     pub fn getHasClutch(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasClutch(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasHandbrake(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasHandbrake(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasPatternShifter(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasPatternShifter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxPatternShifterGear(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxPatternShifterGear(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxWheelAngle(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxWheelAngle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWheelMotor(self: *@This()) core.HResult!*ForceFeedbackMotor {
         var _r: *ForceFeedbackMotor = undefined;
         const _c = self.vtable.get_WheelMotor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetButtonLabel(self: *@This(), button: RacingWheelButtons) core.HResult!GameControllerButtonLabel {
         var _r: GameControllerButtonLabel = undefined;
         const _c = self.vtable.GetButtonLabel(@ptrCast(self), button, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentReading(self: *@This()) core.HResult!RacingWheelReading {
         var _r: RacingWheelReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IRacingWheel";
@@ -1174,8 +1169,11 @@ pub const IRacingWheel = extern struct {
 };
 pub const IRacingWheelStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1183,27 +1181,27 @@ pub const IRacingWheelStatics = extern struct {
     pub fn addRacingWheelAdded(self: *@This(), value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RacingWheelAdded(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRacingWheelAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RacingWheelAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addRacingWheelRemoved(self: *@This(), value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RacingWheelRemoved(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRacingWheelRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RacingWheelRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRacingWheels(self: *@This()) core.HResult!*IVectorView(RacingWheel) {
         var _r: *IVectorView(RacingWheel) = undefined;
         const _c = self.vtable.get_RacingWheels(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IRacingWheelStatics";
@@ -1227,8 +1225,11 @@ pub const IRacingWheelStatics = extern struct {
 };
 pub const IRacingWheelStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1236,7 +1237,7 @@ pub const IRacingWheelStatics2 = extern struct {
     pub fn FromGameController(self: *@This(), gameController: *IGameController) core.HResult!*RacingWheel {
         var _r: *RacingWheel = undefined;
         const _c = self.vtable.FromGameController(@ptrCast(self), gameController, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IRacingWheelStatics2";
@@ -1256,8 +1257,11 @@ pub const IRacingWheelStatics2 = extern struct {
 };
 pub const IRawGameController = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1265,55 +1269,55 @@ pub const IRawGameController = extern struct {
     pub fn getAxisCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_AxisCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getButtonCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ButtonCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getForceFeedbackMotors(self: *@This()) core.HResult!*IVectorView(ForceFeedbackMotor) {
         var _r: *IVectorView(ForceFeedbackMotor) = undefined;
         const _c = self.vtable.get_ForceFeedbackMotors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HardwareProductId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HardwareVendorId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSwitchCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SwitchCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetButtonLabel(self: *@This(), buttonIndex: i32) core.HResult!GameControllerButtonLabel {
         var _r: GameControllerButtonLabel = undefined;
         const _c = self.vtable.GetButtonLabel(@ptrCast(self), buttonIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentReading(self: *@This(), buttonArray: [*]bool, switchArray: [*]GameControllerSwitchPosition, axisArray: [*]f64) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), buttonArray, switchArray, axisArray, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSwitchKind(self: *@This(), switchIndex: i32) core.HResult!GameControllerSwitchKind {
         var _r: GameControllerSwitchKind = undefined;
         const _c = self.vtable.GetSwitchKind(@ptrCast(self), switchIndex, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IRawGameController";
@@ -1341,8 +1345,11 @@ pub const IRawGameController = extern struct {
 };
 pub const IRawGameController2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1350,19 +1357,19 @@ pub const IRawGameController2 = extern struct {
     pub fn getSimpleHapticsControllers(self: *@This()) core.HResult!*IVectorView(SimpleHapticsController) {
         var _r: *IVectorView(SimpleHapticsController) = undefined;
         const _c = self.vtable.get_SimpleHapticsControllers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNonRoamableId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NonRoamableId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IRawGameController2";
@@ -1384,8 +1391,11 @@ pub const IRawGameController2 = extern struct {
 };
 pub const IRawGameControllerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1393,33 +1403,33 @@ pub const IRawGameControllerStatics = extern struct {
     pub fn addRawGameControllerAdded(self: *@This(), value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RawGameControllerAdded(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRawGameControllerAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RawGameControllerAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addRawGameControllerRemoved(self: *@This(), value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RawGameControllerRemoved(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRawGameControllerRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RawGameControllerRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRawGameControllers(self: *@This()) core.HResult!*IVectorView(RawGameController) {
         var _r: *IVectorView(RawGameController) = undefined;
         const _c = self.vtable.get_RawGameControllers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FromGameController(self: *@This(), gameController: *IGameController) core.HResult!*RawGameController {
         var _r: *RawGameController = undefined;
         const _c = self.vtable.FromGameController(@ptrCast(self), gameController, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IRawGameControllerStatics";
@@ -1444,8 +1454,11 @@ pub const IRawGameControllerStatics = extern struct {
 };
 pub const IUINavigationController = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1453,19 +1466,19 @@ pub const IUINavigationController = extern struct {
     pub fn GetCurrentReading(self: *@This()) core.HResult!UINavigationReading {
         var _r: UINavigationReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetOptionalButtonLabel(self: *@This(), button: OptionalUINavigationButtons) core.HResult!GameControllerButtonLabel {
         var _r: GameControllerButtonLabel = undefined;
         const _c = self.vtable.GetOptionalButtonLabel(@ptrCast(self), button, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRequiredButtonLabel(self: *@This(), button: RequiredUINavigationButtons) core.HResult!GameControllerButtonLabel {
         var _r: GameControllerButtonLabel = undefined;
         const _c = self.vtable.GetRequiredButtonLabel(@ptrCast(self), button, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IUINavigationController";
@@ -1487,8 +1500,11 @@ pub const IUINavigationController = extern struct {
 };
 pub const IUINavigationControllerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1496,27 +1512,27 @@ pub const IUINavigationControllerStatics = extern struct {
     pub fn addUINavigationControllerAdded(self: *@This(), value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UINavigationControllerAdded(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUINavigationControllerAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UINavigationControllerAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUINavigationControllerRemoved(self: *@This(), value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UINavigationControllerRemoved(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUINavigationControllerRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_UINavigationControllerRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUINavigationControllers(self: *@This()) core.HResult!*IVectorView(UINavigationController) {
         var _r: *IVectorView(UINavigationController) = undefined;
         const _c = self.vtable.get_UINavigationControllers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IUINavigationControllerStatics";
@@ -1540,8 +1556,11 @@ pub const IUINavigationControllerStatics = extern struct {
 };
 pub const IUINavigationControllerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1549,7 +1568,7 @@ pub const IUINavigationControllerStatics2 = extern struct {
     pub fn FromGameController(self: *@This(), gameController: *IGameController) core.HResult!*UINavigationController {
         var _r: *UINavigationController = undefined;
         const _c = self.vtable.FromGameController(@ptrCast(self), gameController, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.IUINavigationControllerStatics2";
@@ -1584,14 +1603,11 @@ pub const OptionalUINavigationButtons = enum(i32) {
 };
 pub const RacingWheel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1631,71 +1647,61 @@ pub const RacingWheel = extern struct {
     pub fn addHeadsetConnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetConnected(value);
     }
     pub fn removeHeadsetConnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetConnected(token);
     }
     pub fn addHeadsetDisconnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetDisconnected(value);
     }
     pub fn removeHeadsetDisconnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetDisconnected(token);
     }
     pub fn addUserChanged(self: *@This(), value: *TypedEventHandler(IGameController,UserChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addUserChanged(value);
     }
     pub fn removeUserChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeUserChanged(token);
     }
     pub fn getHeadset(self: *@This()) core.HResult!*Headset {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getHeadset();
     }
     pub fn getIsWireless(self: *@This()) core.HResult!bool {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getIsWireless();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*IGameControllerBatteryInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
         return try this.?.TryGetBatteryReport();
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*RacingWheel {
@@ -1767,14 +1773,11 @@ pub const RacingWheelReading = extern struct {
 };
 pub const RawGameController = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1818,92 +1821,79 @@ pub const RawGameController = extern struct {
     pub fn addHeadsetConnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetConnected(value);
     }
     pub fn removeHeadsetConnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetConnected(token);
     }
     pub fn addHeadsetDisconnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetDisconnected(value);
     }
     pub fn removeHeadsetDisconnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetDisconnected(token);
     }
     pub fn addUserChanged(self: *@This(), value: *TypedEventHandler(IGameController,UserChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addUserChanged(value);
     }
     pub fn removeUserChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeUserChanged(token);
     }
     pub fn getHeadset(self: *@This()) core.HResult!*Headset {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getHeadset();
     }
     pub fn getIsWireless(self: *@This()) core.HResult!bool {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getIsWireless();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*IGameControllerBatteryInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
         return try this.?.TryGetBatteryReport();
     }
     pub fn getSimpleHapticsControllers(self: *@This()) core.HResult!*IVectorView(SimpleHapticsController) {
         var this: ?*IRawGameController2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
         return try this.?.getSimpleHapticsControllers();
     }
     pub fn getNonRoamableId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRawGameController2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
         return try this.?.getNonRoamableId();
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRawGameController2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
         return try this.?.getDisplayName();
     }
     pub fn addRawGameControllerAdded(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
@@ -1950,14 +1940,11 @@ pub const RequiredUINavigationButtons = enum(i32) {
 };
 pub const UINavigationController = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1977,71 +1964,61 @@ pub const UINavigationController = extern struct {
     pub fn addHeadsetConnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetConnected(value);
     }
     pub fn removeHeadsetConnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetConnected(token);
     }
     pub fn addHeadsetDisconnected(self: *@This(), value: *TypedEventHandler(IGameController,Headset)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addHeadsetDisconnected(value);
     }
     pub fn removeHeadsetDisconnected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeHeadsetDisconnected(token);
     }
     pub fn addUserChanged(self: *@This(), value: *TypedEventHandler(IGameController,UserChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.addUserChanged(value);
     }
     pub fn removeUserChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.removeUserChanged(token);
     }
     pub fn getHeadset(self: *@This()) core.HResult!*Headset {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getHeadset();
     }
     pub fn getIsWireless(self: *@This()) core.HResult!bool {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getIsWireless();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IGameController = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameController.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*IGameControllerBatteryInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGameControllerBatteryInfo.IID, @ptrCast(&this));
         return try this.?.TryGetBatteryReport();
     }
     pub fn addUINavigationControllerAdded(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {

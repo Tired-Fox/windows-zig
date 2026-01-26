@@ -6,14 +6,11 @@ pub const BinaryStringEncoding = enum(i32) {
 };
 pub const CryptographicBuffer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -68,8 +65,11 @@ pub const CryptographicBuffer = extern struct {
 };
 pub const ICryptographicBufferStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -77,65 +77,65 @@ pub const ICryptographicBufferStatics = extern struct {
     pub fn Compare(self: *@This(), object1: *IBuffer, object2: *IBuffer) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Compare(@ptrCast(self), object1, object2, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GenerateRandom(self: *@This(), length: u32) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.GenerateRandom(@ptrCast(self), length, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GenerateRandomNumber(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GenerateRandomNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromByteArray(self: *@This(), value: [*]u8) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.CreateFromByteArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CopyToByteArray(self: *@This(), buffer: *IBuffer, value: u8) core.HResult!void {
         const _c = self.vtable.CopyToByteArray(@ptrCast(self), buffer, value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DecodeFromHexString(self: *@This(), value: ?HSTRING) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.DecodeFromHexString(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EncodeToHexString(self: *@This(), buffer: *IBuffer) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.EncodeToHexString(@ptrCast(self), buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DecodeFromBase64String(self: *@This(), value: ?HSTRING) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.DecodeFromBase64String(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EncodeToBase64String(self: *@This(), buffer: *IBuffer) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.EncodeToBase64String(@ptrCast(self), buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConvertStringToBinary(self: *@This(), value: ?HSTRING, encoding: BinaryStringEncoding) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.ConvertStringToBinary(@ptrCast(self), value, encoding, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConvertBinaryToString(self: *@This(), encoding: BinaryStringEncoding, buffer: *IBuffer) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.ConvertBinaryToString(@ptrCast(self), encoding, buffer, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.ICryptographicBufferStatics";

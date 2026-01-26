@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const CustomXamlResourceLoader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -16,8 +13,7 @@ pub const CustomXamlResourceLoader = extern struct {
     pub fn GetResource(self: *@This(), resourceId: ?HSTRING, objectType: ?HSTRING, propertyName: ?HSTRING, propertyType: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*ICustomXamlResourceLoaderOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomXamlResourceLoaderOverrides.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICustomXamlResourceLoaderOverrides.IID, @ptrCast(&this));
         return try this.?.GetResource(resourceId, objectType, propertyName, propertyType);
     }
     pub fn getCurrent() core.HResult!*CustomXamlResourceLoader {
@@ -42,8 +38,11 @@ pub const CustomXamlResourceLoader = extern struct {
 };
 pub const ICustomXamlResourceLoader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -64,8 +63,11 @@ pub const ICustomXamlResourceLoader = extern struct {
 };
 pub const ICustomXamlResourceLoaderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -73,7 +75,7 @@ pub const ICustomXamlResourceLoaderFactory = extern struct {
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CustomXamlResourceLoader {
         var _r: *CustomXamlResourceLoader = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Resources.ICustomXamlResourceLoaderFactory";
@@ -93,8 +95,11 @@ pub const ICustomXamlResourceLoaderFactory = extern struct {
 };
 pub const ICustomXamlResourceLoaderOverrides = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -102,7 +107,7 @@ pub const ICustomXamlResourceLoaderOverrides = extern struct {
     pub fn GetResource(self: *@This(), resourceId: ?HSTRING, objectType: ?HSTRING, propertyName: ?HSTRING, propertyType: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetResource(@ptrCast(self), resourceId, objectType, propertyName, propertyType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Resources.ICustomXamlResourceLoaderOverrides";
@@ -122,8 +127,11 @@ pub const ICustomXamlResourceLoaderOverrides = extern struct {
 };
 pub const ICustomXamlResourceLoaderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -131,12 +139,12 @@ pub const ICustomXamlResourceLoaderStatics = extern struct {
     pub fn getCurrent(self: *@This()) core.HResult!*CustomXamlResourceLoader {
         var _r: *CustomXamlResourceLoader = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCurrent(self: *@This(), value: *CustomXamlResourceLoader) core.HResult!void {
         const _c = self.vtable.put_Current(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Resources.ICustomXamlResourceLoaderStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

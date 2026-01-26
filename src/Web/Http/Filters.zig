@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const HttpBaseProtocolFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -92,71 +89,61 @@ pub const HttpBaseProtocolFilter = extern struct {
     pub fn getMaxVersion(self: *@This()) core.HResult!HttpVersion {
         var this: ?*IHttpBaseProtocolFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter2.IID, @ptrCast(&this));
         return try this.?.getMaxVersion();
     }
     pub fn putMaxVersion(self: *@This(), value: HttpVersion) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter2.IID, @ptrCast(&this));
         return try this.?.putMaxVersion(value);
     }
     pub fn getCookieUsageBehavior(self: *@This()) core.HResult!HttpCookieUsageBehavior {
         var this: ?*IHttpBaseProtocolFilter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter3.IID, @ptrCast(&this));
         return try this.?.getCookieUsageBehavior();
     }
     pub fn putCookieUsageBehavior(self: *@This(), value: HttpCookieUsageBehavior) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter3.IID, @ptrCast(&this));
         return try this.?.putCookieUsageBehavior(value);
     }
     pub fn addServerCustomValidationRequested(self: *@This(), handler: *TypedEventHandler(HttpBaseProtocolFilter,HttpServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IHttpBaseProtocolFilter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
         return try this.?.addServerCustomValidationRequested(handler);
     }
     pub fn removeServerCustomValidationRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
         return try this.?.removeServerCustomValidationRequested(token);
     }
     pub fn ClearAuthenticationCache(self: *@This()) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
         return try this.?.ClearAuthenticationCache();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IHttpBaseProtocolFilter5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter5.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var this: ?*IHttpFilter = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpFilter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IHttpFilter.IID, @ptrCast(&this));
         return try this.?.SendRequestAsync(request);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn init() core.HResult!*@This() {
@@ -177,14 +164,11 @@ pub const HttpBaseProtocolFilter = extern struct {
 };
 pub const HttpCacheControl = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -227,14 +211,11 @@ pub const HttpCookieUsageBehavior = enum(i32) {
 };
 pub const HttpServerCustomValidationRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -275,8 +256,11 @@ pub const HttpServerCustomValidationRequestedEventArgs = extern struct {
 };
 pub const IHttpBaseProtocolFilter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -284,100 +268,100 @@ pub const IHttpBaseProtocolFilter = extern struct {
     pub fn getAllowAutoRedirect(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowAutoRedirect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowAutoRedirect(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowAutoRedirect(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowUI(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowUI(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowUI(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowUI(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAutomaticDecompression(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutomaticDecompression(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAutomaticDecompression(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AutomaticDecompression(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCacheControl(self: *@This()) core.HResult!*HttpCacheControl {
         var _r: *HttpCacheControl = undefined;
         const _c = self.vtable.get_CacheControl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCookieManager(self: *@This()) core.HResult!*HttpCookieManager {
         var _r: *HttpCookieManager = undefined;
         const _c = self.vtable.get_CookieManager(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClientCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_ClientCertificate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putClientCertificate(self: *@This(), value: *Certificate) core.HResult!void {
         const _c = self.vtable.put_ClientCertificate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIgnorableServerCertificateErrors(self: *@This()) core.HResult!*IVector(ChainValidationResult) {
         var _r: *IVector(ChainValidationResult) = undefined;
         const _c = self.vtable.get_IgnorableServerCertificateErrors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxConnectionsPerServer(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxConnectionsPerServer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxConnectionsPerServer(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_MaxConnectionsPerServer(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_ProxyCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putProxyCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_ProxyCredential(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_ServerCredential(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.put_ServerCredential(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUseProxy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UseProxy(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUseProxy(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_UseProxy(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpBaseProtocolFilter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -414,8 +398,11 @@ pub const IHttpBaseProtocolFilter = extern struct {
 };
 pub const IHttpBaseProtocolFilter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -423,12 +410,12 @@ pub const IHttpBaseProtocolFilter2 = extern struct {
     pub fn getMaxVersion(self: *@This()) core.HResult!HttpVersion {
         var _r: HttpVersion = undefined;
         const _c = self.vtable.get_MaxVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxVersion(self: *@This(), value: HttpVersion) core.HResult!void {
         const _c = self.vtable.put_MaxVersion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpBaseProtocolFilter2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -448,8 +435,11 @@ pub const IHttpBaseProtocolFilter2 = extern struct {
 };
 pub const IHttpBaseProtocolFilter3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -457,12 +447,12 @@ pub const IHttpBaseProtocolFilter3 = extern struct {
     pub fn getCookieUsageBehavior(self: *@This()) core.HResult!HttpCookieUsageBehavior {
         var _r: HttpCookieUsageBehavior = undefined;
         const _c = self.vtable.get_CookieUsageBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCookieUsageBehavior(self: *@This(), value: HttpCookieUsageBehavior) core.HResult!void {
         const _c = self.vtable.put_CookieUsageBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpBaseProtocolFilter3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -482,8 +472,11 @@ pub const IHttpBaseProtocolFilter3 = extern struct {
 };
 pub const IHttpBaseProtocolFilter4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -491,16 +484,16 @@ pub const IHttpBaseProtocolFilter4 = extern struct {
     pub fn addServerCustomValidationRequested(self: *@This(), handler: *TypedEventHandler(HttpBaseProtocolFilter,HttpServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ServerCustomValidationRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeServerCustomValidationRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ServerCustomValidationRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearAuthenticationCache(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearAuthenticationCache(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpBaseProtocolFilter4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -521,8 +514,11 @@ pub const IHttpBaseProtocolFilter4 = extern struct {
 };
 pub const IHttpBaseProtocolFilter5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -530,7 +526,7 @@ pub const IHttpBaseProtocolFilter5 = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpBaseProtocolFilter5";
@@ -550,8 +546,11 @@ pub const IHttpBaseProtocolFilter5 = extern struct {
 };
 pub const IHttpBaseProtocolFilterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -559,7 +558,7 @@ pub const IHttpBaseProtocolFilterStatics = extern struct {
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*HttpBaseProtocolFilter {
         var _r: *HttpBaseProtocolFilter = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpBaseProtocolFilterStatics";
@@ -579,8 +578,11 @@ pub const IHttpBaseProtocolFilterStatics = extern struct {
 };
 pub const IHttpCacheControl = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -588,22 +590,22 @@ pub const IHttpCacheControl = extern struct {
     pub fn getReadBehavior(self: *@This()) core.HResult!HttpCacheReadBehavior {
         var _r: HttpCacheReadBehavior = undefined;
         const _c = self.vtable.get_ReadBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReadBehavior(self: *@This(), value: HttpCacheReadBehavior) core.HResult!void {
         const _c = self.vtable.put_ReadBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWriteBehavior(self: *@This()) core.HResult!HttpCacheWriteBehavior {
         var _r: HttpCacheWriteBehavior = undefined;
         const _c = self.vtable.get_WriteBehavior(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWriteBehavior(self: *@This(), value: HttpCacheWriteBehavior) core.HResult!void {
         const _c = self.vtable.put_WriteBehavior(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpCacheControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -625,8 +627,11 @@ pub const IHttpCacheControl = extern struct {
 };
 pub const IHttpFilter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -634,7 +639,7 @@ pub const IHttpFilter = extern struct {
     pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.SendRequestAsync(@ptrCast(self), request, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpFilter";
@@ -654,8 +659,11 @@ pub const IHttpFilter = extern struct {
 };
 pub const IHttpServerCustomValidationRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -663,41 +671,41 @@ pub const IHttpServerCustomValidationRequestedEventArgs = extern struct {
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_ServerCertificate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerCertificateErrorSeverity(self: *@This()) core.HResult!SocketSslErrorSeverity {
         var _r: SocketSslErrorSeverity = undefined;
         const _c = self.vtable.get_ServerCertificateErrorSeverity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerCertificateErrors(self: *@This()) core.HResult!*IVectorView(ChainValidationResult) {
         var _r: *IVectorView(ChainValidationResult) = undefined;
         const _c = self.vtable.get_ServerCertificateErrors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServerIntermediateCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         var _r: *IVectorView(Certificate) = undefined;
         const _c = self.vtable.get_ServerIntermediateCertificates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Reject(self: *@This()) core.HResult!void {
         const _c = self.vtable.Reject(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.IHttpServerCustomValidationRequestedEventArgs";

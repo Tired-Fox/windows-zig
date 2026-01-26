@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IWebAuthenticationBrokerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,19 +13,19 @@ pub const IWebAuthenticationBrokerStatics = extern struct {
     pub fn AuthenticateAsyncWithCallbackUri(self: *@This(), options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         var _r: *IAsyncOperation(WebAuthenticationResult) = undefined;
         const _c = self.vtable.AuthenticateAsyncWithCallbackUri(@ptrCast(self), options, requestUri, callbackUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AuthenticateAsync(self: *@This(), options: WebAuthenticationOptions, requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         var _r: *IAsyncOperation(WebAuthenticationResult) = undefined;
         const _c = self.vtable.AuthenticateAsync(@ptrCast(self), options, requestUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetCurrentApplicationCallbackUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.GetCurrentApplicationCallbackUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.IWebAuthenticationBrokerStatics";
@@ -44,34 +47,37 @@ pub const IWebAuthenticationBrokerStatics = extern struct {
 };
 pub const IWebAuthenticationBrokerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AuthenticateAndContinue(self: *@This(), requestUri: *Uri) core.HResult!void {
         const _c = self.vtable.AuthenticateAndContinue(@ptrCast(self), requestUri);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AuthenticateAndContinueWithCallbackUri(self: *@This(), requestUri: *Uri, callbackUri: *Uri) core.HResult!void {
         const _c = self.vtable.AuthenticateAndContinueWithCallbackUri(@ptrCast(self), requestUri, callbackUri);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AuthenticateAndContinueWithCallbackUriAndContinuationDataAndOptions(self: *@This(), requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
         const _c = self.vtable.AuthenticateAndContinueWithCallbackUriAndContinuationDataAndOptions(@ptrCast(self), requestUri, callbackUri, continuationData, options);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AuthenticateSilentlyAsync(self: *@This(), requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         var _r: *IAsyncOperation(WebAuthenticationResult) = undefined;
         const _c = self.vtable.AuthenticateSilentlyAsync(@ptrCast(self), requestUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AuthenticateSilentlyAsyncWithOptions(self: *@This(), requestUri: *Uri, options: WebAuthenticationOptions) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         var _r: *IAsyncOperation(WebAuthenticationResult) = undefined;
         const _c = self.vtable.AuthenticateSilentlyAsyncWithOptions(@ptrCast(self), requestUri, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.IWebAuthenticationBrokerStatics2";
@@ -95,8 +101,11 @@ pub const IWebAuthenticationBrokerStatics2 = extern struct {
 };
 pub const IWebAuthenticationResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -104,19 +113,19 @@ pub const IWebAuthenticationResult = extern struct {
     pub fn getResponseData(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResponseData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseStatus(self: *@This()) core.HResult!WebAuthenticationStatus {
         var _r: WebAuthenticationStatus = undefined;
         const _c = self.vtable.get_ResponseStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseErrorDetail(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ResponseErrorDetail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.IWebAuthenticationResult";
@@ -143,14 +152,11 @@ pub const TokenBindingKeyType = enum(i32) {
 };
 pub const WebAuthenticationBroker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -201,14 +207,11 @@ pub const WebAuthenticationOptions = enum(i32) {
 };
 pub const WebAuthenticationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

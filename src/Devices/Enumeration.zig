@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DeviceAccessChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -20,15 +17,13 @@ pub const DeviceAccessChangedEventArgs = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccessChangedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessChangedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessChangedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getId();
     }
     pub fn getUserPromptRequired(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccessChangedEventArgs3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessChangedEventArgs3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessChangedEventArgs3.IID, @ptrCast(&this));
         return try this.?.getUserPromptRequired();
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceAccessChangedEventArgs";
@@ -39,14 +34,11 @@ pub const DeviceAccessChangedEventArgs = extern struct {
 };
 pub const DeviceAccessInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -66,8 +58,7 @@ pub const DeviceAccessInformation = extern struct {
     pub fn getUserPromptRequired(self: *@This()) core.HResult!bool {
         var this: ?*IDeviceAccessInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessInformation2.IID, @ptrCast(&this));
         return try this.?.getUserPromptRequired();
     }
     pub fn CreateFromId(deviceId: ?HSTRING) core.HResult!*DeviceAccessInformation {
@@ -106,14 +97,11 @@ pub const DeviceClass = enum(i32) {
 };
 pub const DeviceConnectionChangeTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -130,14 +118,11 @@ pub const DeviceConnectionChangeTriggerDetails = extern struct {
 };
 pub const DeviceDisconnectButtonClickedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -154,14 +139,11 @@ pub const DeviceDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const DeviceInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -205,15 +187,13 @@ pub const DeviceInformation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!DeviceInformationKind {
         var this: ?*IDeviceInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformation2.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn getPairing(self: *@This()) core.HResult!*DeviceInformationPairing {
         var this: ?*IDeviceInformation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformation2.IID, @ptrCast(&this));
         return try this.?.getPairing();
     }
     pub fn CreateFromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
@@ -295,14 +275,11 @@ pub const DeviceInformation = extern struct {
 };
 pub const DeviceInformationCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -314,8 +291,7 @@ pub const DeviceInformationCollection = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(DeviceInformation) {
         var this: ?*IIterable(DeviceInformation) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(DeviceInformation).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(DeviceInformation).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceInformationCollection";
@@ -326,14 +302,11 @@ pub const DeviceInformationCollection = extern struct {
 };
 pub const DeviceInformationCustomPairing = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -361,22 +334,19 @@ pub const DeviceInformationCustomPairing = extern struct {
     pub fn AddPairingSetMember(self: *@This(), device: *DeviceInformation) core.HResult!void {
         var this: ?*IDeviceInformationCustomPairing2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationCustomPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationCustomPairing2.IID, @ptrCast(&this));
         return try this.?.AddPairingSetMember(device);
     }
     pub fn addPairingSetMembersRequested(self: *@This(), handler: *TypedEventHandler(DeviceInformationCustomPairing,DevicePairingSetMembersRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IDeviceInformationCustomPairing2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationCustomPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationCustomPairing2.IID, @ptrCast(&this));
         return try this.?.addPairingSetMembersRequested(handler);
     }
     pub fn removePairingSetMembersRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDeviceInformationCustomPairing2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationCustomPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationCustomPairing2.IID, @ptrCast(&this));
         return try this.?.removePairingSetMembersRequested(token);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceInformationCustomPairing";
@@ -399,14 +369,11 @@ pub const DeviceInformationKind = enum(i32) {
 };
 pub const DeviceInformationPairing = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -430,29 +397,25 @@ pub const DeviceInformationPairing = extern struct {
     pub fn getProtectionLevel(self: *@This()) core.HResult!DevicePairingProtectionLevel {
         var this: ?*IDeviceInformationPairing2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
         return try this.?.getProtectionLevel();
     }
     pub fn getCustom(self: *@This()) core.HResult!*DeviceInformationCustomPairing {
         var this: ?*IDeviceInformationPairing2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
         return try this.?.getCustom();
     }
     pub fn PairAsyncWithMinProtectionLevelAndDevicePairingSettings(self: *@This(), minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var this: ?*IDeviceInformationPairing2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
         return try this.?.PairAsyncWithMinProtectionLevelAndDevicePairingSettings(minProtectionLevel, devicePairingSettings);
     }
     pub fn UnpairAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceUnpairingResult) {
         var this: ?*IDeviceInformationPairing2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
         return try this.?.UnpairAsync();
     }
     pub fn TryRegisterForAllInboundPairingRequests(pairingKindsSupported: DevicePairingKinds) core.HResult!bool {
@@ -473,14 +436,11 @@ pub const DeviceInformationPairing = extern struct {
 };
 pub const DeviceInformationUpdate = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -496,8 +456,7 @@ pub const DeviceInformationUpdate = extern struct {
     pub fn getKind(self: *@This()) core.HResult!DeviceInformationKind {
         var this: ?*IDeviceInformationUpdate2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationUpdate2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationUpdate2.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceInformationUpdate";
@@ -531,14 +490,11 @@ pub const DevicePairingProtectionLevel = enum(i32) {
 };
 pub const DevicePairingRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -570,15 +526,13 @@ pub const DevicePairingRequestedEventArgs = extern struct {
     pub fn AcceptWithPasswordCredential(self: *@This(), passwordCredential: *PasswordCredential) core.HResult!void {
         var this: ?*IDevicePairingRequestedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePairingRequestedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePairingRequestedEventArgs2.IID, @ptrCast(&this));
         return try this.?.AcceptWithPasswordCredential(passwordCredential);
     }
     pub fn AcceptWithAddress(self: *@This(), address: ?HSTRING) core.HResult!void {
         var this: ?*IDevicePairingRequestedEventArgs3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePairingRequestedEventArgs3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePairingRequestedEventArgs3.IID, @ptrCast(&this));
         return try this.?.AcceptWithAddress(address);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DevicePairingRequestedEventArgs";
@@ -589,14 +543,11 @@ pub const DevicePairingRequestedEventArgs = extern struct {
 };
 pub const DevicePairingResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -639,14 +590,11 @@ pub const DevicePairingResultStatus = enum(i32) {
 };
 pub const DevicePairingSetMembersRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -671,14 +619,11 @@ pub const DevicePairingSetMembersRequestedEventArgs = extern struct {
 };
 pub const DevicePicker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -756,14 +701,11 @@ pub const DevicePicker = extern struct {
 };
 pub const DevicePickerAppearance = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -838,14 +780,11 @@ pub const DevicePickerDisplayStatusOptions = enum(i32) {
 };
 pub const DevicePickerFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -866,14 +805,11 @@ pub const DevicePickerFilter = extern struct {
 };
 pub const DeviceSelectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -890,14 +826,11 @@ pub const DeviceSelectedEventArgs = extern struct {
 };
 pub const DeviceThumbnail = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -905,99 +838,85 @@ pub const DeviceThumbnail = extern struct {
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn putSize(self: *@This(), value: u64) core.HResult!void {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.putSize(value);
     }
     pub fn GetInputStreamAt(self: *@This(), position: u64) core.HResult!*IInputStream {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.GetInputStreamAt(position);
     }
     pub fn GetOutputStreamAt(self: *@This(), position: u64) core.HResult!*IOutputStream {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.GetOutputStreamAt(position);
     }
     pub fn getPosition(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getPosition();
     }
     pub fn Seek(self: *@This(), position: u64) core.HResult!void {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.Seek(position);
     }
     pub fn CloneStream(self: *@This()) core.HResult!*IRandomAccessStream {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.CloneStream();
     }
     pub fn getCanRead(self: *@This()) core.HResult!bool {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getCanRead();
     }
     pub fn getCanWrite(self: *@This()) core.HResult!bool {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
         return try this.?.getCanWrite();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
         var this: ?*IInputStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
         return try this.?.ReadAsync(buffer, count, options);
     }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
         return try this.?.WriteAsync(buffer);
     }
     pub fn FlushAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IOutputStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
         return try this.?.FlushAsync();
     }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentTypeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         return try this.?.getContentType();
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceThumbnail";
@@ -1008,14 +927,11 @@ pub const DeviceThumbnail = extern struct {
 };
 pub const DeviceUnpairingResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1039,14 +955,11 @@ pub const DeviceUnpairingResultStatus = enum(i32) {
 };
 pub const DeviceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1106,8 +1019,7 @@ pub const DeviceWatcher = extern struct {
     pub fn GetBackgroundTrigger(self: *@This(), requestedEventKinds: *IIterable(DeviceWatcherEventKind)) core.HResult!*DeviceWatcherTrigger {
         var this: ?*IDeviceWatcher2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceWatcher2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDeviceWatcher2.IID, @ptrCast(&this));
         return try this.?.GetBackgroundTrigger(requestedEventKinds);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceWatcher";
@@ -1118,14 +1030,11 @@ pub const DeviceWatcher = extern struct {
 };
 pub const DeviceWatcherEvent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1163,14 +1072,11 @@ pub const DeviceWatcherStatus = enum(i32) {
 };
 pub const DeviceWatcherTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1187,14 +1093,11 @@ pub const DeviceWatcherTriggerDetails = extern struct {
 };
 pub const EnclosureLocation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1214,8 +1117,7 @@ pub const EnclosureLocation = extern struct {
     pub fn getRotationAngleInDegreesClockwise(self: *@This()) core.HResult!u32 {
         var this: ?*IEnclosureLocation2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IEnclosureLocation2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IEnclosureLocation2.IID, @ptrCast(&this));
         return try this.?.getRotationAngleInDegreesClockwise();
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.EnclosureLocation";
@@ -1226,8 +1128,11 @@ pub const EnclosureLocation = extern struct {
 };
 pub const IDeviceAccessChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1235,7 +1140,7 @@ pub const IDeviceAccessChangedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!DeviceAccessStatus {
         var _r: DeviceAccessStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceAccessChangedEventArgs";
@@ -1255,8 +1160,11 @@ pub const IDeviceAccessChangedEventArgs = extern struct {
 };
 pub const IDeviceAccessChangedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1264,7 +1172,7 @@ pub const IDeviceAccessChangedEventArgs2 = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceAccessChangedEventArgs2";
@@ -1284,8 +1192,11 @@ pub const IDeviceAccessChangedEventArgs2 = extern struct {
 };
 pub const IDeviceAccessChangedEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1293,7 +1204,7 @@ pub const IDeviceAccessChangedEventArgs3 = extern struct {
     pub fn getUserPromptRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UserPromptRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceAccessChangedEventArgs3";
@@ -1313,8 +1224,11 @@ pub const IDeviceAccessChangedEventArgs3 = extern struct {
 };
 pub const IDeviceAccessInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1322,17 +1236,17 @@ pub const IDeviceAccessInformation = extern struct {
     pub fn addAccessChanged(self: *@This(), handler: *TypedEventHandler(DeviceAccessInformation,DeviceAccessChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccessChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAccessChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AccessChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCurrentStatus(self: *@This()) core.HResult!DeviceAccessStatus {
         var _r: DeviceAccessStatus = undefined;
         const _c = self.vtable.get_CurrentStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceAccessInformation";
@@ -1354,8 +1268,11 @@ pub const IDeviceAccessInformation = extern struct {
 };
 pub const IDeviceAccessInformation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1363,7 +1280,7 @@ pub const IDeviceAccessInformation2 = extern struct {
     pub fn getUserPromptRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UserPromptRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceAccessInformation2";
@@ -1383,8 +1300,11 @@ pub const IDeviceAccessInformation2 = extern struct {
 };
 pub const IDeviceAccessInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1392,19 +1312,19 @@ pub const IDeviceAccessInformationStatics = extern struct {
     pub fn CreateFromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.CreateFromId(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromDeviceClassId(self: *@This(), deviceClassId: *Guid) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.CreateFromDeviceClassId(@ptrCast(self), deviceClassId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromDeviceClass(self: *@This(), deviceClass: DeviceClass) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.CreateFromDeviceClass(@ptrCast(self), deviceClass, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceAccessInformationStatics";
@@ -1426,8 +1346,11 @@ pub const IDeviceAccessInformationStatics = extern struct {
 };
 pub const IDeviceConnectionChangeTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1435,7 +1358,7 @@ pub const IDeviceConnectionChangeTriggerDetails = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceConnectionChangeTriggerDetails";
@@ -1455,8 +1378,11 @@ pub const IDeviceConnectionChangeTriggerDetails = extern struct {
 };
 pub const IDeviceDisconnectButtonClickedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1464,7 +1390,7 @@ pub const IDeviceDisconnectButtonClickedEventArgs = extern struct {
     pub fn getDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceDisconnectButtonClickedEventArgs";
@@ -1484,8 +1410,11 @@ pub const IDeviceDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const IDeviceEnumerationSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1506,8 +1435,11 @@ pub const IDeviceEnumerationSettings = extern struct {
 };
 pub const IDeviceInformation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1515,53 +1447,53 @@ pub const IDeviceInformation = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDefault(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEnclosureLocation(self: *@This()) core.HResult!*EnclosureLocation {
         var _r: *EnclosureLocation = undefined;
         const _c = self.vtable.get_EnclosureLocation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Update(self: *@This(), updateInfo: *DeviceInformationUpdate) core.HResult!void {
         const _c = self.vtable.Update(@ptrCast(self), updateInfo);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetThumbnailAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceThumbnail) {
         var _r: *IAsyncOperation(DeviceThumbnail) = undefined;
         const _c = self.vtable.GetThumbnailAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGlyphThumbnailAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceThumbnail) {
         var _r: *IAsyncOperation(DeviceThumbnail) = undefined;
         const _c = self.vtable.GetGlyphThumbnailAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformation";
@@ -1589,8 +1521,11 @@ pub const IDeviceInformation = extern struct {
 };
 pub const IDeviceInformation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1598,13 +1533,13 @@ pub const IDeviceInformation2 = extern struct {
     pub fn getKind(self: *@This()) core.HResult!DeviceInformationKind {
         var _r: DeviceInformationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPairing(self: *@This()) core.HResult!*DeviceInformationPairing {
         var _r: *DeviceInformationPairing = undefined;
         const _c = self.vtable.get_Pairing(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformation2";
@@ -1625,8 +1560,11 @@ pub const IDeviceInformation2 = extern struct {
 };
 pub const IDeviceInformationCustomPairing = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1634,30 +1572,30 @@ pub const IDeviceInformationCustomPairing = extern struct {
     pub fn PairAsync(self: *@This(), pairingKindsSupported: DevicePairingKinds) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
         const _c = self.vtable.PairAsync(@ptrCast(self), pairingKindsSupported, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PairAsyncWithMinProtectionLevel(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
         const _c = self.vtable.PairAsyncWithMinProtectionLevel(@ptrCast(self), pairingKindsSupported, minProtectionLevel, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PairAsyncWithMinProtectionLevelAndDevicePairingSettings(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
         const _c = self.vtable.PairAsyncWithMinProtectionLevelAndDevicePairingSettings(@ptrCast(self), pairingKindsSupported, minProtectionLevel, devicePairingSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addPairingRequested(self: *@This(), handler: *TypedEventHandler(DeviceInformationCustomPairing,DevicePairingRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PairingRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePairingRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PairingRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationCustomPairing";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1680,25 +1618,28 @@ pub const IDeviceInformationCustomPairing = extern struct {
 };
 pub const IDeviceInformationCustomPairing2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddPairingSetMember(self: *@This(), device: *DeviceInformation) core.HResult!void {
         const _c = self.vtable.AddPairingSetMember(@ptrCast(self), device);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPairingSetMembersRequested(self: *@This(), handler: *TypedEventHandler(DeviceInformationCustomPairing,DevicePairingSetMembersRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PairingSetMembersRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePairingSetMembersRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PairingSetMembersRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationCustomPairing2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1719,8 +1660,11 @@ pub const IDeviceInformationCustomPairing2 = extern struct {
 };
 pub const IDeviceInformationPairing = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1728,25 +1672,25 @@ pub const IDeviceInformationPairing = extern struct {
     pub fn getIsPaired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanPair(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanPair(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PairAsync(self: *@This()) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
         const _c = self.vtable.PairAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PairAsyncWithMinProtectionLevel(self: *@This(), minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
         const _c = self.vtable.PairAsyncWithMinProtectionLevel(@ptrCast(self), minProtectionLevel, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationPairing";
@@ -1769,8 +1713,11 @@ pub const IDeviceInformationPairing = extern struct {
 };
 pub const IDeviceInformationPairing2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1778,25 +1725,25 @@ pub const IDeviceInformationPairing2 = extern struct {
     pub fn getProtectionLevel(self: *@This()) core.HResult!DevicePairingProtectionLevel {
         var _r: DevicePairingProtectionLevel = undefined;
         const _c = self.vtable.get_ProtectionLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustom(self: *@This()) core.HResult!*DeviceInformationCustomPairing {
         var _r: *DeviceInformationCustomPairing = undefined;
         const _c = self.vtable.get_Custom(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PairAsync(self: *@This(), minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
         const _c = self.vtable.PairAsync(@ptrCast(self), minProtectionLevel, devicePairingSettings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnpairAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceUnpairingResult) {
         var _r: *IAsyncOperation(DeviceUnpairingResult) = undefined;
         const _c = self.vtable.UnpairAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationPairing2";
@@ -1819,8 +1766,11 @@ pub const IDeviceInformationPairing2 = extern struct {
 };
 pub const IDeviceInformationPairingStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1828,7 +1778,7 @@ pub const IDeviceInformationPairingStatics = extern struct {
     pub fn TryRegisterForAllInboundPairingRequests(self: *@This(), pairingKindsSupported: DevicePairingKinds) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryRegisterForAllInboundPairingRequests(@ptrCast(self), pairingKindsSupported, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationPairingStatics";
@@ -1848,8 +1798,11 @@ pub const IDeviceInformationPairingStatics = extern struct {
 };
 pub const IDeviceInformationPairingStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1857,7 +1810,7 @@ pub const IDeviceInformationPairingStatics2 = extern struct {
     pub fn TryRegisterForAllInboundPairingRequestsWithProtectionLevel(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryRegisterForAllInboundPairingRequestsWithProtectionLevel(@ptrCast(self), pairingKindsSupported, minProtectionLevel, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationPairingStatics2";
@@ -1877,8 +1830,11 @@ pub const IDeviceInformationPairingStatics2 = extern struct {
 };
 pub const IDeviceInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1886,61 +1842,61 @@ pub const IDeviceInformationStatics = extern struct {
     pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIdAsyncWithAdditionalProperties(self: *@This(), deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsyncWithAdditionalProperties(@ptrCast(self), deviceId, additionalProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsyncWithDeviceClass(self: *@This(), deviceClass: DeviceClass) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsyncWithDeviceClass(@ptrCast(self), deviceClass, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsyncWithAqsFilter(self: *@This(), aqsFilter: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsyncWithAqsFilter(@ptrCast(self), aqsFilter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsyncWithAqsFilterAndAdditionalProperties(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsyncWithAqsFilterAndAdditionalProperties(@ptrCast(self), aqsFilter, additionalProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWatcher(self: *@This()) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWatcherWithDeviceClass(self: *@This(), deviceClass: DeviceClass) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcherWithDeviceClass(@ptrCast(self), deviceClass, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWatcherWithAqsFilter(self: *@This(), aqsFilter: ?HSTRING) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcherWithAqsFilter(@ptrCast(self), aqsFilter, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWatcherWithAqsFilterAndAdditionalProperties(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcherWithAqsFilterAndAdditionalProperties(@ptrCast(self), aqsFilter, additionalProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationStatics";
@@ -1969,8 +1925,11 @@ pub const IDeviceInformationStatics = extern struct {
 };
 pub const IDeviceInformationStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1978,25 +1937,25 @@ pub const IDeviceInformationStatics2 = extern struct {
     pub fn GetAqsFilterFromDeviceClass(self: *@This(), deviceClass: DeviceClass) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAqsFilterFromDeviceClass(@ptrCast(self), deviceClass, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, additionalProperties, kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsync(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), aqsFilter, additionalProperties, kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWatcher(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), aqsFilter, additionalProperties, kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationStatics2";
@@ -2019,8 +1978,11 @@ pub const IDeviceInformationStatics2 = extern struct {
 };
 pub const IDeviceInformationStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2028,19 +1990,19 @@ pub const IDeviceInformationStatics3 = extern struct {
     pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, additionalProperties, kind, settings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllAsync(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), aqsFilter, additionalProperties, kind, settings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWatcher(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), aqsFilter, additionalProperties, kind, settings, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationStatics3";
@@ -2062,8 +2024,11 @@ pub const IDeviceInformationStatics3 = extern struct {
 };
 pub const IDeviceInformationUpdate = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2071,13 +2036,13 @@ pub const IDeviceInformationUpdate = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationUpdate";
@@ -2098,8 +2063,11 @@ pub const IDeviceInformationUpdate = extern struct {
 };
 pub const IDeviceInformationUpdate2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2107,7 +2075,7 @@ pub const IDeviceInformationUpdate2 = extern struct {
     pub fn getKind(self: *@This()) core.HResult!DeviceInformationKind {
         var _r: DeviceInformationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceInformationUpdate2";
@@ -2127,8 +2095,11 @@ pub const IDeviceInformationUpdate2 = extern struct {
 };
 pub const IDevicePairingRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2136,33 +2107,33 @@ pub const IDevicePairingRequestedEventArgs = extern struct {
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_DeviceInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPairingKind(self: *@This()) core.HResult!DevicePairingKinds {
         var _r: DevicePairingKinds = undefined;
         const _c = self.vtable.get_PairingKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPin(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Accept(self: *@This()) core.HResult!void {
         const _c = self.vtable.Accept(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AcceptWithPin(self: *@This(), pin: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AcceptWithPin(@ptrCast(self), pin);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePairingRequestedEventArgs";
@@ -2187,15 +2158,18 @@ pub const IDevicePairingRequestedEventArgs = extern struct {
 };
 pub const IDevicePairingRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AcceptWithPasswordCredential(self: *@This(), passwordCredential: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.AcceptWithPasswordCredential(@ptrCast(self), passwordCredential);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePairingRequestedEventArgs2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2214,15 +2188,18 @@ pub const IDevicePairingRequestedEventArgs2 = extern struct {
 };
 pub const IDevicePairingRequestedEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AcceptWithAddress(self: *@This(), address: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AcceptWithAddress(@ptrCast(self), address);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePairingRequestedEventArgs3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2241,8 +2218,11 @@ pub const IDevicePairingRequestedEventArgs3 = extern struct {
 };
 pub const IDevicePairingResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2250,13 +2230,13 @@ pub const IDevicePairingResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!DevicePairingResultStatus {
         var _r: DevicePairingResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProtectionLevelUsed(self: *@This()) core.HResult!DevicePairingProtectionLevel {
         var _r: DevicePairingProtectionLevel = undefined;
         const _c = self.vtable.get_ProtectionLevelUsed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePairingResult";
@@ -2277,8 +2257,11 @@ pub const IDevicePairingResult = extern struct {
 };
 pub const IDevicePairingSetMembersRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2286,19 +2269,19 @@ pub const IDevicePairingSetMembersRequestedEventArgs = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!DevicePairingAddPairingSetMemberStatus {
         var _r: DevicePairingAddPairingSetMemberStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getParentDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_ParentDeviceInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPairingSetMembers(self: *@This()) core.HResult!*IVectorView(DeviceInformation) {
         var _r: *IVectorView(DeviceInformation) = undefined;
         const _c = self.vtable.get_PairingSetMembers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePairingSetMembersRequestedEventArgs";
@@ -2320,8 +2303,11 @@ pub const IDevicePairingSetMembersRequestedEventArgs = extern struct {
 };
 pub const IDevicePairingSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2342,8 +2328,11 @@ pub const IDevicePairingSettings = extern struct {
 };
 pub const IDevicePicker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2351,78 +2340,78 @@ pub const IDevicePicker = extern struct {
     pub fn getFilter(self: *@This()) core.HResult!*DevicePickerFilter {
         var _r: *DevicePickerFilter = undefined;
         const _c = self.vtable.get_Filter(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAppearance(self: *@This()) core.HResult!*DevicePickerAppearance {
         var _r: *DevicePickerAppearance = undefined;
         const _c = self.vtable.get_Appearance(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestedProperties(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RequestedProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addDeviceSelected(self: *@This(), handler: *TypedEventHandler(DevicePicker,DeviceSelectedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DeviceSelected(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDeviceSelected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DeviceSelected(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDisconnectButtonClicked(self: *@This(), handler: *TypedEventHandler(DevicePicker,DeviceDisconnectButtonClickedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DisconnectButtonClicked(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDisconnectButtonClicked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DisconnectButtonClicked(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addDevicePickerDismissed(self: *@This(), handler: *TypedEventHandler(DevicePicker,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DevicePickerDismissed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeDevicePickerDismissed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_DevicePickerDismissed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Show(self: *@This(), selection: Rect) core.HResult!void {
         const _c = self.vtable.Show(@ptrCast(self), selection);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ShowWithPlacement(self: *@This(), selection: Rect, placement: Placement) core.HResult!void {
         const _c = self.vtable.ShowWithPlacement(@ptrCast(self), selection, placement);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn PickSingleDeviceAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.PickSingleDeviceAsync(@ptrCast(self), selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PickSingleDeviceAsyncWithPlacement(self: *@This(), selection: Rect, placement: Placement) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.PickSingleDeviceAsyncWithPlacement(@ptrCast(self), selection, placement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Hide(self: *@This()) core.HResult!void {
         const _c = self.vtable.Hide(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDisplayStatus(self: *@This(), device: *DeviceInformation, status: ?HSTRING, options: DevicePickerDisplayStatusOptions) core.HResult!void {
         const _c = self.vtable.SetDisplayStatus(@ptrCast(self), device, status, options);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2455,8 +2444,11 @@ pub const IDevicePicker = extern struct {
 };
 pub const IDevicePickerAppearance = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2464,72 +2456,72 @@ pub const IDevicePickerAppearance = extern struct {
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getForegroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_ForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putForegroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_ForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBackgroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_BackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_BackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAccentColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_AccentColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAccentColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_AccentColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedForegroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_SelectedForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedForegroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_SelectedForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedBackgroundColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_SelectedBackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_SelectedBackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSelectedAccentColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_SelectedAccentColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSelectedAccentColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_SelectedAccentColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePickerAppearance";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2561,8 +2553,11 @@ pub const IDevicePickerAppearance = extern struct {
 };
 pub const IDevicePickerFilter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2570,13 +2565,13 @@ pub const IDevicePickerFilter = extern struct {
     pub fn getSupportedDeviceClasses(self: *@This()) core.HResult!*IVector(DeviceClass) {
         var _r: *IVector(DeviceClass) = undefined;
         const _c = self.vtable.get_SupportedDeviceClasses(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedDeviceSelectors(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedDeviceSelectors(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePickerFilter";
@@ -2597,8 +2592,11 @@ pub const IDevicePickerFilter = extern struct {
 };
 pub const IDeviceSelectedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2606,7 +2604,7 @@ pub const IDeviceSelectedEventArgs = extern struct {
     pub fn getSelectedDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_SelectedDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceSelectedEventArgs";
@@ -2626,8 +2624,11 @@ pub const IDeviceSelectedEventArgs = extern struct {
 };
 pub const IDeviceUnpairingResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2635,7 +2636,7 @@ pub const IDeviceUnpairingResult = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!DeviceUnpairingResultStatus {
         var _r: DeviceUnpairingResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceUnpairingResult";
@@ -2655,8 +2656,11 @@ pub const IDeviceUnpairingResult = extern struct {
 };
 pub const IDeviceWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2664,66 +2668,66 @@ pub const IDeviceWatcher = extern struct {
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(DeviceWatcher,DeviceInformation)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Added(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Added(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addUpdated(self: *@This(), handler: *TypedEventHandler(DeviceWatcher,DeviceInformationUpdate)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Updated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Updated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addRemoved(self: *@This(), handler: *TypedEventHandler(DeviceWatcher,DeviceInformationUpdate)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Removed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Removed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(DeviceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnumerationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EnumerationCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStopped(self: *@This(), handler: *TypedEventHandler(DeviceWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Stopped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStopped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Stopped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!DeviceWatcherStatus {
         var _r: DeviceWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2754,8 +2758,11 @@ pub const IDeviceWatcher = extern struct {
 };
 pub const IDeviceWatcher2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2763,7 +2770,7 @@ pub const IDeviceWatcher2 = extern struct {
     pub fn GetBackgroundTrigger(self: *@This(), requestedEventKinds: *IIterable(DeviceWatcherEventKind)) core.HResult!*DeviceWatcherTrigger {
         var _r: *DeviceWatcherTrigger = undefined;
         const _c = self.vtable.GetBackgroundTrigger(@ptrCast(self), requestedEventKinds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceWatcher2";
@@ -2783,8 +2790,11 @@ pub const IDeviceWatcher2 = extern struct {
 };
 pub const IDeviceWatcherEvent = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2792,19 +2802,19 @@ pub const IDeviceWatcherEvent = extern struct {
     pub fn getKind(self: *@This()) core.HResult!DeviceWatcherEventKind {
         var _r: DeviceWatcherEventKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_DeviceInformation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeviceInformationUpdate(self: *@This()) core.HResult!*DeviceInformationUpdate {
         var _r: *DeviceInformationUpdate = undefined;
         const _c = self.vtable.get_DeviceInformationUpdate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceWatcherEvent";
@@ -2826,8 +2836,11 @@ pub const IDeviceWatcherEvent = extern struct {
 };
 pub const IDeviceWatcherTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2835,7 +2848,7 @@ pub const IDeviceWatcherTriggerDetails = extern struct {
     pub fn getDeviceWatcherEvents(self: *@This()) core.HResult!*IVectorView(DeviceWatcherEvent) {
         var _r: *IVectorView(DeviceWatcherEvent) = undefined;
         const _c = self.vtable.get_DeviceWatcherEvents(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceWatcherTriggerDetails";
@@ -2855,8 +2868,11 @@ pub const IDeviceWatcherTriggerDetails = extern struct {
 };
 pub const IEnclosureLocation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2864,19 +2880,19 @@ pub const IEnclosureLocation = extern struct {
     pub fn getInDock(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InDock(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInLid(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InLid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPanel(self: *@This()) core.HResult!Panel {
         var _r: Panel = undefined;
         const _c = self.vtable.get_Panel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IEnclosureLocation";
@@ -2898,8 +2914,11 @@ pub const IEnclosureLocation = extern struct {
 };
 pub const IEnclosureLocation2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2907,7 +2926,7 @@ pub const IEnclosureLocation2 = extern struct {
     pub fn getRotationAngleInDegreesClockwise(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_RotationAngleInDegreesClockwise(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IEnclosureLocation2";

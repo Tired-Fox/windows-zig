@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ApplicationViewScaling = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -30,8 +27,11 @@ pub const ApplicationViewScaling = extern struct {
 };
 pub const IApplicationViewScaling = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -52,8 +52,11 @@ pub const IApplicationViewScaling = extern struct {
 };
 pub const IApplicationViewScalingStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -61,13 +64,13 @@ pub const IApplicationViewScalingStatics = extern struct {
     pub fn getDisableLayoutScaling(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DisableLayoutScaling(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TrySetDisableLayoutScaling(self: *@This(), disableLayoutScaling: bool) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetDisableLayoutScaling(@ptrCast(self), disableLayoutScaling, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewScalingStatics";
@@ -88,14 +91,11 @@ pub const IApplicationViewScalingStatics = extern struct {
 };
 pub const AccessibilitySettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -129,14 +129,11 @@ pub const AccessibilitySettings = extern struct {
 };
 pub const ActivationViewSwitcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -161,14 +158,11 @@ pub const ActivationViewSwitcher = extern struct {
 };
 pub const ApplicationView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -224,183 +218,157 @@ pub const ApplicationView = extern struct {
     pub fn getSuppressSystemOverlays(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         return try this.?.getSuppressSystemOverlays();
     }
     pub fn putSuppressSystemOverlays(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IApplicationView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         return try this.?.putSuppressSystemOverlays(value);
     }
     pub fn getVisibleBounds(self: *@This()) core.HResult!Rect {
         var this: ?*IApplicationView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         return try this.?.getVisibleBounds();
     }
     pub fn addVisibleBoundsChanged(self: *@This(), handler: *TypedEventHandler(ApplicationView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IApplicationView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         return try this.?.addVisibleBoundsChanged(handler);
     }
     pub fn removeVisibleBoundsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IApplicationView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         return try this.?.removeVisibleBoundsChanged(token);
     }
     pub fn SetDesiredBoundsMode(self: *@This(), boundsMode: ApplicationViewBoundsMode) core.HResult!bool {
         var this: ?*IApplicationView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         return try this.?.SetDesiredBoundsMode(boundsMode);
     }
     pub fn getDesiredBoundsMode(self: *@This()) core.HResult!ApplicationViewBoundsMode {
         var this: ?*IApplicationView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         return try this.?.getDesiredBoundsMode();
     }
     pub fn getTitleBar(self: *@This()) core.HResult!*ApplicationViewTitleBar {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.getTitleBar();
     }
     pub fn getFullScreenSystemOverlayMode(self: *@This()) core.HResult!FullScreenSystemOverlayMode {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.getFullScreenSystemOverlayMode();
     }
     pub fn putFullScreenSystemOverlayMode(self: *@This(), value: FullScreenSystemOverlayMode) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.putFullScreenSystemOverlayMode(value);
     }
     pub fn getIsFullScreenMode(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.getIsFullScreenMode();
     }
     pub fn TryEnterFullScreenMode(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.TryEnterFullScreenMode();
     }
     pub fn ExitFullScreenMode(self: *@This()) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.ExitFullScreenMode();
     }
     pub fn ShowStandardSystemOverlays(self: *@This()) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.ShowStandardSystemOverlays();
     }
     pub fn TryResizeView(self: *@This(), value: Size) core.HResult!bool {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.TryResizeView(value);
     }
     pub fn SetPreferredMinSize(self: *@This(), minSize: Size) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         return try this.?.SetPreferredMinSize(minSize);
     }
     pub fn getViewMode(self: *@This()) core.HResult!ApplicationViewMode {
         var this: ?*IApplicationView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         return try this.?.getViewMode();
     }
     pub fn IsViewModeSupported(self: *@This(), viewMode: ApplicationViewMode) core.HResult!bool {
         var this: ?*IApplicationView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         return try this.?.IsViewModeSupported(viewMode);
     }
     pub fn TryEnterViewModeAsync(self: *@This(), viewMode: ApplicationViewMode) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         return try this.?.TryEnterViewModeAsync(viewMode);
     }
     pub fn TryEnterViewModeAsyncWithViewModePreferences(self: *@This(), viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         return try this.?.TryEnterViewModeAsyncWithViewModePreferences(viewMode, viewModePreferences);
     }
     pub fn TryConsolidateAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         return try this.?.TryConsolidateAsync();
     }
     pub fn getPersistedStateId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IApplicationView7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
         return try this.?.getPersistedStateId();
     }
     pub fn putPersistedStateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IApplicationView7 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
         return try this.?.putPersistedStateId(value);
     }
     pub fn getWindowingEnvironment(self: *@This()) core.HResult!*WindowingEnvironment {
         var this: ?*IApplicationView9 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView9.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView9.IID, @ptrCast(&this));
         return try this.?.getWindowingEnvironment();
     }
     pub fn GetDisplayRegions(self: *@This()) core.HResult!*IVectorView(DisplayRegion) {
         var this: ?*IApplicationView9 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView9.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationView9.IID, @ptrCast(&this));
         return try this.?.GetDisplayRegions();
     }
     pub fn getUIContext(self: *@This()) core.HResult!*UIContext {
         var this: ?*IApplicationViewWithContext = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewWithContext.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewWithContext.IID, @ptrCast(&this));
         return try this.?.getUIContext();
     }
     pub fn TryUnsnapToFullscreen() core.HResult!bool {
@@ -473,14 +441,11 @@ pub const ApplicationViewBoundsMode = enum(i32) {
 };
 pub const ApplicationViewConsolidatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -492,8 +457,7 @@ pub const ApplicationViewConsolidatedEventArgs = extern struct {
     pub fn getIsAppInitiated(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationViewConsolidatedEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewConsolidatedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewConsolidatedEventArgs2.IID, @ptrCast(&this));
         return try this.?.getIsAppInitiated();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.ApplicationViewConsolidatedEventArgs";
@@ -518,14 +482,11 @@ pub const ApplicationViewState = enum(i32) {
 };
 pub const ApplicationViewSwitcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -587,14 +548,11 @@ pub const ApplicationViewSwitchingOptions = enum(i32) {
 };
 pub const ApplicationViewTitleBar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -703,14 +661,11 @@ pub const ApplicationViewTitleBar = extern struct {
 };
 pub const ApplicationViewTransferContext = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -756,8 +711,11 @@ pub const HandPreference = enum(i32) {
 };
 pub const IAccessibilitySettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -765,24 +723,24 @@ pub const IAccessibilitySettings = extern struct {
     pub fn getHighContrast(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HighContrast(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHighContrastScheme(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HighContrastScheme(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addHighContrastChanged(self: *@This(), handler: *TypedEventHandler(AccessibilitySettings,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HighContrastChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHighContrastChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HighContrastChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IAccessibilitySettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -804,8 +762,11 @@ pub const IAccessibilitySettings = extern struct {
 };
 pub const IActivationViewSwitcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -813,19 +774,19 @@ pub const IActivationViewSwitcher = extern struct {
     pub fn ShowAsStandaloneAsync(self: *@This(), viewId: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAsStandaloneAsync(@ptrCast(self), viewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAsStandaloneAsyncWithSizePreference(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAsStandaloneAsyncWithSizePreference(@ptrCast(self), viewId, sizePreference, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsViewPresentedOnActivationVirtualDesktop(self: *@This(), viewId: i32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsViewPresentedOnActivationVirtualDesktop(@ptrCast(self), viewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IActivationViewSwitcher";
@@ -847,8 +808,11 @@ pub const IActivationViewSwitcher = extern struct {
 };
 pub const IApplicationView = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -856,68 +820,68 @@ pub const IApplicationView = extern struct {
     pub fn getOrientation(self: *@This()) core.HResult!ApplicationViewOrientation {
         var _r: ApplicationViewOrientation = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdjacentToLeftDisplayEdge(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AdjacentToLeftDisplayEdge(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAdjacentToRightDisplayEdge(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AdjacentToRightDisplayEdge(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsFullScreen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFullScreen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsOnLockScreen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOnLockScreen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsScreenCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsScreenCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsScreenCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsScreenCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addConsolidated(self: *@This(), handler: *TypedEventHandler(ApplicationView,ApplicationViewConsolidatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Consolidated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeConsolidated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Consolidated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -947,8 +911,11 @@ pub const IApplicationView = extern struct {
 };
 pub const IApplicationView2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -956,39 +923,39 @@ pub const IApplicationView2 = extern struct {
     pub fn getSuppressSystemOverlays(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SuppressSystemOverlays(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSuppressSystemOverlays(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_SuppressSystemOverlays(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getVisibleBounds(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_VisibleBounds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addVisibleBoundsChanged(self: *@This(), handler: *TypedEventHandler(ApplicationView,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VisibleBoundsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeVisibleBoundsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_VisibleBoundsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetDesiredBoundsMode(self: *@This(), boundsMode: ApplicationViewBoundsMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.SetDesiredBoundsMode(@ptrCast(self), boundsMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDesiredBoundsMode(self: *@This()) core.HResult!ApplicationViewBoundsMode {
         var _r: ApplicationViewBoundsMode = undefined;
         const _c = self.vtable.get_DesiredBoundsMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationView2";
@@ -1014,8 +981,11 @@ pub const IApplicationView2 = extern struct {
 };
 pub const IApplicationView3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1023,48 +993,48 @@ pub const IApplicationView3 = extern struct {
     pub fn getTitleBar(self: *@This()) core.HResult!*ApplicationViewTitleBar {
         var _r: *ApplicationViewTitleBar = undefined;
         const _c = self.vtable.get_TitleBar(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFullScreenSystemOverlayMode(self: *@This()) core.HResult!FullScreenSystemOverlayMode {
         var _r: FullScreenSystemOverlayMode = undefined;
         const _c = self.vtable.get_FullScreenSystemOverlayMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putFullScreenSystemOverlayMode(self: *@This(), value: FullScreenSystemOverlayMode) core.HResult!void {
         const _c = self.vtable.put_FullScreenSystemOverlayMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsFullScreenMode(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFullScreenMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryEnterFullScreenMode(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryEnterFullScreenMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ExitFullScreenMode(self: *@This()) core.HResult!void {
         const _c = self.vtable.ExitFullScreenMode(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ShowStandardSystemOverlays(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowStandardSystemOverlays(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryResizeView(self: *@This(), value: Size) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryResizeView(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPreferredMinSize(self: *@This(), minSize: Size) core.HResult!void {
         const _c = self.vtable.SetPreferredMinSize(@ptrCast(self), minSize);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationView3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1091,8 +1061,11 @@ pub const IApplicationView3 = extern struct {
 };
 pub const IApplicationView4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1100,31 +1073,31 @@ pub const IApplicationView4 = extern struct {
     pub fn getViewMode(self: *@This()) core.HResult!ApplicationViewMode {
         var _r: ApplicationViewMode = undefined;
         const _c = self.vtable.get_ViewMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsViewModeSupported(self: *@This(), viewMode: ApplicationViewMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsViewModeSupported(@ptrCast(self), viewMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryEnterViewModeAsync(self: *@This(), viewMode: ApplicationViewMode) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryEnterViewModeAsync(@ptrCast(self), viewMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryEnterViewModeAsyncWithViewModePreferences(self: *@This(), viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryEnterViewModeAsyncWithViewModePreferences(@ptrCast(self), viewMode, viewModePreferences, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryConsolidateAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryConsolidateAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationView4";
@@ -1148,8 +1121,11 @@ pub const IApplicationView4 = extern struct {
 };
 pub const IApplicationView7 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1157,12 +1133,12 @@ pub const IApplicationView7 = extern struct {
     pub fn getPersistedStateId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PersistedStateId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPersistedStateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PersistedStateId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationView7";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1182,8 +1158,11 @@ pub const IApplicationView7 = extern struct {
 };
 pub const IApplicationView9 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1191,13 +1170,13 @@ pub const IApplicationView9 = extern struct {
     pub fn getWindowingEnvironment(self: *@This()) core.HResult!*WindowingEnvironment {
         var _r: *WindowingEnvironment = undefined;
         const _c = self.vtable.get_WindowingEnvironment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDisplayRegions(self: *@This()) core.HResult!*IVectorView(DisplayRegion) {
         var _r: *IVectorView(DisplayRegion) = undefined;
         const _c = self.vtable.GetDisplayRegions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationView9";
@@ -1218,8 +1197,11 @@ pub const IApplicationView9 = extern struct {
 };
 pub const IApplicationViewConsolidatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1227,7 +1209,7 @@ pub const IApplicationViewConsolidatedEventArgs = extern struct {
     pub fn getIsUserInitiated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUserInitiated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewConsolidatedEventArgs";
@@ -1247,8 +1229,11 @@ pub const IApplicationViewConsolidatedEventArgs = extern struct {
 };
 pub const IApplicationViewConsolidatedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1256,7 +1241,7 @@ pub const IApplicationViewConsolidatedEventArgs2 = extern struct {
     pub fn getIsAppInitiated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAppInitiated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewConsolidatedEventArgs2";
@@ -1276,8 +1261,11 @@ pub const IApplicationViewConsolidatedEventArgs2 = extern struct {
 };
 pub const IApplicationViewFullscreenStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1285,7 +1273,7 @@ pub const IApplicationViewFullscreenStatics = extern struct {
     pub fn TryUnsnapToFullscreen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryUnsnapToFullscreen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewFullscreenStatics";
@@ -1305,8 +1293,11 @@ pub const IApplicationViewFullscreenStatics = extern struct {
 };
 pub const IApplicationViewInteropStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1314,7 +1305,7 @@ pub const IApplicationViewInteropStatics = extern struct {
     pub fn GetApplicationViewIdForWindow(self: *@This(), window: *ICoreWindow) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetApplicationViewIdForWindow(@ptrCast(self), window, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewInteropStatics";
@@ -1334,8 +1325,11 @@ pub const IApplicationViewInteropStatics = extern struct {
 };
 pub const IApplicationViewStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1343,13 +1337,13 @@ pub const IApplicationViewStatics = extern struct {
     pub fn getValue(self: *@This()) core.HResult!ApplicationViewState {
         var _r: ApplicationViewState = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUnsnap(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryUnsnap(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewStatics";
@@ -1370,8 +1364,11 @@ pub const IApplicationViewStatics = extern struct {
 };
 pub const IApplicationViewStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1379,18 +1376,18 @@ pub const IApplicationViewStatics2 = extern struct {
     pub fn GetForCurrentView(self: *@This()) core.HResult!*ApplicationView {
         var _r: *ApplicationView = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTerminateAppOnFinalViewClose(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TerminateAppOnFinalViewClose(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTerminateAppOnFinalViewClose(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_TerminateAppOnFinalViewClose(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewStatics2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1411,8 +1408,11 @@ pub const IApplicationViewStatics2 = extern struct {
 };
 pub const IApplicationViewStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1420,22 +1420,22 @@ pub const IApplicationViewStatics3 = extern struct {
     pub fn getPreferredLaunchWindowingMode(self: *@This()) core.HResult!ApplicationViewWindowingMode {
         var _r: ApplicationViewWindowingMode = undefined;
         const _c = self.vtable.get_PreferredLaunchWindowingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPreferredLaunchWindowingMode(self: *@This(), value: ApplicationViewWindowingMode) core.HResult!void {
         const _c = self.vtable.put_PreferredLaunchWindowingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPreferredLaunchViewSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_PreferredLaunchViewSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPreferredLaunchViewSize(self: *@This(), value: Size) core.HResult!void {
         const _c = self.vtable.put_PreferredLaunchViewSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewStatics3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1457,19 +1457,22 @@ pub const IApplicationViewStatics3 = extern struct {
 };
 pub const IApplicationViewStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ClearAllPersistedState(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearAllPersistedState(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ClearPersistedState(self: *@This(), key: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ClearPersistedState(@ptrCast(self), key);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewStatics4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1489,56 +1492,59 @@ pub const IApplicationViewStatics4 = extern struct {
 };
 pub const IApplicationViewSwitcherStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn DisableShowingMainViewOnActivation(self: *@This()) core.HResult!void {
         const _c = self.vtable.DisableShowingMainViewOnActivation(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryShowAsStandaloneAsync(self: *@This(), viewId: i32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryShowAsStandaloneAsync(@ptrCast(self), viewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryShowAsStandaloneAsyncWithSizePreference(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryShowAsStandaloneAsyncWithSizePreference(@ptrCast(self), viewId, sizePreference, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryShowAsStandaloneAsyncWithSizePreferenceAndAnchorViewIdAndAnchorSizePreference(self: *@This(), viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryShowAsStandaloneAsyncWithSizePreferenceAndAnchorViewIdAndAnchorSizePreference(@ptrCast(self), viewId, sizePreference, anchorViewId, anchorSizePreference, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SwitchAsync(self: *@This(), viewId: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SwitchAsync(@ptrCast(self), viewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SwitchAsyncWithFromViewId(self: *@This(), toViewId: i32, fromViewId: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SwitchAsyncWithFromViewId(@ptrCast(self), toViewId, fromViewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SwitchAsyncWithFromViewIdAndOptions(self: *@This(), toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SwitchAsyncWithFromViewIdAndOptions(@ptrCast(self), toViewId, fromViewId, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PrepareForCustomAnimatedSwitchAsync(self: *@This(), toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.PrepareForCustomAnimatedSwitchAsync(@ptrCast(self), toViewId, fromViewId, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewSwitcherStatics";
@@ -1565,15 +1571,18 @@ pub const IApplicationViewSwitcherStatics = extern struct {
 };
 pub const IApplicationViewSwitcherStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn DisableSystemViewActivationPolicy(self: *@This()) core.HResult!void {
         const _c = self.vtable.DisableSystemViewActivationPolicy(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewSwitcherStatics2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1592,8 +1601,11 @@ pub const IApplicationViewSwitcherStatics2 = extern struct {
 };
 pub const IApplicationViewSwitcherStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1601,13 +1613,13 @@ pub const IApplicationViewSwitcherStatics3 = extern struct {
     pub fn TryShowAsViewModeAsync(self: *@This(), viewId: i32, viewMode: ApplicationViewMode) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryShowAsViewModeAsync(@ptrCast(self), viewId, viewMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryShowAsViewModeAsyncWithViewModePreferences(self: *@This(), viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryShowAsViewModeAsyncWithViewModePreferences(@ptrCast(self), viewId, viewMode, viewModePreferences, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewSwitcherStatics3";
@@ -1628,130 +1640,133 @@ pub const IApplicationViewSwitcherStatics3 = extern struct {
 };
 pub const IApplicationViewTitleBar = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putForegroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getForegroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBackgroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_BackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBackgroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_BackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonForegroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonForegroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonBackgroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonBackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonBackgroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonBackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonHoverForegroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonHoverForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonHoverForegroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonHoverForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonHoverBackgroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonHoverBackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonHoverBackgroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonHoverBackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonPressedForegroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonPressedForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonPressedForegroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonPressedForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonPressedBackgroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonPressedBackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonPressedBackgroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonPressedBackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInactiveForegroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_InactiveForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInactiveForegroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_InactiveForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInactiveBackgroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_InactiveBackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInactiveBackgroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_InactiveBackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonInactiveForegroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonInactiveForegroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonInactiveForegroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonInactiveForegroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putButtonInactiveBackgroundColor(self: *@This(), value: *IReference(Color)) core.HResult!void {
         const _c = self.vtable.put_ButtonInactiveBackgroundColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getButtonInactiveBackgroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_ButtonInactiveBackgroundColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewTitleBar";
@@ -1794,8 +1809,11 @@ pub const IApplicationViewTitleBar = extern struct {
 };
 pub const IApplicationViewTransferContext = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1803,12 +1821,12 @@ pub const IApplicationViewTransferContext = extern struct {
     pub fn getViewId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ViewId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewId(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_ViewId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewTransferContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1828,8 +1846,11 @@ pub const IApplicationViewTransferContext = extern struct {
 };
 pub const IApplicationViewTransferContextStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1837,7 +1858,7 @@ pub const IApplicationViewTransferContextStatics = extern struct {
     pub fn getDataPackageFormatId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DataPackageFormatId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewTransferContextStatics";
@@ -1857,8 +1878,11 @@ pub const IApplicationViewTransferContextStatics = extern struct {
 };
 pub const IApplicationViewWithContext = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1866,7 +1890,7 @@ pub const IApplicationViewWithContext = extern struct {
     pub fn getUIContext(self: *@This()) core.HResult!*UIContext {
         var _r: *UIContext = undefined;
         const _c = self.vtable.get_UIContext(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewWithContext";
@@ -1886,8 +1910,11 @@ pub const IApplicationViewWithContext = extern struct {
 };
 pub const IInputPane = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1895,27 +1922,27 @@ pub const IInputPane = extern struct {
     pub fn addShowing(self: *@This(), handler: *TypedEventHandler(InputPane,InputPaneVisibilityEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Showing(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeShowing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Showing(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addHiding(self: *@This(), handler: *TypedEventHandler(InputPane,InputPaneVisibilityEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Hiding(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHiding(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Hiding(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOccludedRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_OccludedRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IInputPane";
@@ -1939,8 +1966,11 @@ pub const IInputPane = extern struct {
 };
 pub const IInputPane2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1948,13 +1978,13 @@ pub const IInputPane2 = extern struct {
     pub fn TryShow(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryShow(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryHide(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IInputPane2";
@@ -1975,8 +2005,11 @@ pub const IInputPane2 = extern struct {
 };
 pub const IInputPaneControl = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1984,12 +2017,12 @@ pub const IInputPaneControl = extern struct {
     pub fn getVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Visible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Visible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IInputPaneControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2009,8 +2042,11 @@ pub const IInputPaneControl = extern struct {
 };
 pub const IInputPaneStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2018,7 +2054,7 @@ pub const IInputPaneStatics = extern struct {
     pub fn GetForCurrentView(self: *@This()) core.HResult!*InputPane {
         var _r: *InputPane = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IInputPaneStatics";
@@ -2038,8 +2074,11 @@ pub const IInputPaneStatics = extern struct {
 };
 pub const IInputPaneStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2047,7 +2086,7 @@ pub const IInputPaneStatics2 = extern struct {
     pub fn GetForUIContext(self: *@This(), context: *UIContext) core.HResult!*InputPane {
         var _r: *InputPane = undefined;
         const _c = self.vtable.GetForUIContext(@ptrCast(self), context, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IInputPaneStatics2";
@@ -2067,8 +2106,11 @@ pub const IInputPaneStatics2 = extern struct {
 };
 pub const IInputPaneVisibilityEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2076,17 +2118,17 @@ pub const IInputPaneVisibilityEventArgs = extern struct {
     pub fn getOccludedRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_OccludedRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putEnsuredFocusedElementInView(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_EnsuredFocusedElementInView(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getEnsuredFocusedElementInView(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_EnsuredFocusedElementInView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IInputPaneVisibilityEventArgs";
@@ -2108,8 +2150,11 @@ pub const IInputPaneVisibilityEventArgs = extern struct {
 };
 pub const IProjectionManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2117,36 +2162,36 @@ pub const IProjectionManagerStatics = extern struct {
     pub fn StartProjectingAsync(self: *@This(), projectionViewId: i32, anchorViewId: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartProjectingAsync(@ptrCast(self), projectionViewId, anchorViewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SwapDisplaysForViewsAsync(self: *@This(), projectionViewId: i32, anchorViewId: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SwapDisplaysForViewsAsync(@ptrCast(self), projectionViewId, anchorViewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn StopProjectingAsync(self: *@This(), projectionViewId: i32, anchorViewId: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StopProjectingAsync(@ptrCast(self), projectionViewId, anchorViewId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProjectionDisplayAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ProjectionDisplayAvailable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addProjectionDisplayAvailableChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ProjectionDisplayAvailableChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeProjectionDisplayAvailableChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ProjectionDisplayAvailableChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IProjectionManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2170,8 +2215,11 @@ pub const IProjectionManagerStatics = extern struct {
 };
 pub const IProjectionManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2179,25 +2227,25 @@ pub const IProjectionManagerStatics2 = extern struct {
     pub fn StartProjectingAsync(self: *@This(), projectionViewId: i32, anchorViewId: i32, displayDeviceInfo: *DeviceInformation) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartProjectingAsync(@ptrCast(self), projectionViewId, anchorViewId, displayDeviceInfo, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestStartProjectingAsync(self: *@This(), projectionViewId: i32, anchorViewId: i32, selection: Rect) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestStartProjectingAsync(@ptrCast(self), projectionViewId, anchorViewId, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestStartProjectingAsyncWithPrefferedPlacement(self: *@This(), projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestStartProjectingAsyncWithPrefferedPlacement(@ptrCast(self), projectionViewId, anchorViewId, selection, prefferedPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IProjectionManagerStatics2";
@@ -2220,8 +2268,11 @@ pub const IProjectionManagerStatics2 = extern struct {
 };
 pub const IUISettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2229,79 +2280,79 @@ pub const IUISettings = extern struct {
     pub fn getHandPreference(self: *@This()) core.HResult!HandPreference {
         var _r: HandPreference = undefined;
         const _c = self.vtable.get_HandPreference(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCursorSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_CursorSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScrollBarSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_ScrollBarSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScrollBarArrowSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_ScrollBarArrowSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScrollBarThumbBoxSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_ScrollBarThumbBoxSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageDuration(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MessageDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAnimationsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AnimationsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCaretBrowsingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CaretBrowsingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCaretBlinkRate(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CaretBlinkRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCaretWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CaretWidth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDoubleClickTime(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DoubleClickTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMouseHoverTime(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MouseHoverTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UIElementColor(self: *@This(), desiredElement: UIElementType) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.UIElementColor(@ptrCast(self), desiredElement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUISettings";
@@ -2333,8 +2384,11 @@ pub const IUISettings = extern struct {
 };
 pub const IUISettings2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2342,18 +2396,18 @@ pub const IUISettings2 = extern struct {
     pub fn getTextScaleFactor(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_TextScaleFactor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addTextScaleFactorChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TextScaleFactorChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeTextScaleFactorChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_TextScaleFactorChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUISettings2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2374,8 +2428,11 @@ pub const IUISettings2 = extern struct {
 };
 pub const IUISettings3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2383,18 +2440,18 @@ pub const IUISettings3 = extern struct {
     pub fn GetColorValue(self: *@This(), desiredColor: UIColorType) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.GetColorValue(@ptrCast(self), desiredColor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addColorValuesChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ColorValuesChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeColorValuesChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ColorValuesChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUISettings3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2415,8 +2472,11 @@ pub const IUISettings3 = extern struct {
 };
 pub const IUISettings4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2424,18 +2484,18 @@ pub const IUISettings4 = extern struct {
     pub fn getAdvancedEffectsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AdvancedEffectsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAdvancedEffectsEnabledChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AdvancedEffectsEnabledChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAdvancedEffectsEnabledChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AdvancedEffectsEnabledChanged(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUISettings4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2456,8 +2516,11 @@ pub const IUISettings4 = extern struct {
 };
 pub const IUISettings5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2465,18 +2528,18 @@ pub const IUISettings5 = extern struct {
     pub fn getAutoHideScrollBars(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutoHideScrollBars(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAutoHideScrollBarsChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsAutoHideScrollBarsChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AutoHideScrollBarsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAutoHideScrollBarsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AutoHideScrollBarsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUISettings5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2497,8 +2560,11 @@ pub const IUISettings5 = extern struct {
 };
 pub const IUISettings6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2506,22 +2572,22 @@ pub const IUISettings6 = extern struct {
     pub fn addAnimationsEnabledChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsAnimationsEnabledChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AnimationsEnabledChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAnimationsEnabledChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AnimationsEnabledChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addMessageDurationChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsMessageDurationChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MessageDurationChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMessageDurationChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MessageDurationChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUISettings6";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2543,8 +2609,11 @@ pub const IUISettings6 = extern struct {
 };
 pub const IUISettingsAnimationsEnabledChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2565,8 +2634,11 @@ pub const IUISettingsAnimationsEnabledChangedEventArgs = extern struct {
 };
 pub const IUISettingsAutoHideScrollBarsChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2587,8 +2659,11 @@ pub const IUISettingsAutoHideScrollBarsChangedEventArgs = extern struct {
 };
 pub const IUISettingsMessageDurationChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2609,8 +2684,11 @@ pub const IUISettingsMessageDurationChangedEventArgs = extern struct {
 };
 pub const IUIViewSettings = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2618,7 +2696,7 @@ pub const IUIViewSettings = extern struct {
     pub fn getUserInteractionMode(self: *@This()) core.HResult!UserInteractionMode {
         var _r: UserInteractionMode = undefined;
         const _c = self.vtable.get_UserInteractionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUIViewSettings";
@@ -2638,8 +2716,11 @@ pub const IUIViewSettings = extern struct {
 };
 pub const IUIViewSettingsPreferredInteractionMode = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2647,18 +2728,18 @@ pub const IUIViewSettingsPreferredInteractionMode = extern struct {
     pub fn GetPreferredInteractionMode(self: *@This(), supportedModes: [*]UserInteractionMode) core.HResult!UserInteractionMode {
         var _r: UserInteractionMode = undefined;
         const _c = self.vtable.GetPreferredInteractionMode(@ptrCast(self), supportedModes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addPreferredInteractionModeChanged(self: *@This(), handler: *TypedEventHandler(UIViewSettings,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PreferredInteractionModeChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePreferredInteractionModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PreferredInteractionModeChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUIViewSettingsPreferredInteractionMode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2679,8 +2760,11 @@ pub const IUIViewSettingsPreferredInteractionMode = extern struct {
 };
 pub const IUIViewSettingsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2688,7 +2772,7 @@ pub const IUIViewSettingsStatics = extern struct {
     pub fn GetForCurrentView(self: *@This()) core.HResult!*UIViewSettings {
         var _r: *UIViewSettings = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IUIViewSettingsStatics";
@@ -2708,8 +2792,11 @@ pub const IUIViewSettingsStatics = extern struct {
 };
 pub const IViewModePreferences = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2717,22 +2804,22 @@ pub const IViewModePreferences = extern struct {
     pub fn getViewSizePreference(self: *@This()) core.HResult!ViewSizePreference {
         var _r: ViewSizePreference = undefined;
         const _c = self.vtable.get_ViewSizePreference(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putViewSizePreference(self: *@This(), value: ViewSizePreference) core.HResult!void {
         const _c = self.vtable.put_ViewSizePreference(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCustomSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_CustomSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCustomSize(self: *@This(), value: Size) core.HResult!void {
         const _c = self.vtable.put_CustomSize(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IViewModePreferences";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2754,8 +2841,11 @@ pub const IViewModePreferences = extern struct {
 };
 pub const IViewModePreferencesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2763,7 +2853,7 @@ pub const IViewModePreferencesStatics = extern struct {
     pub fn CreateDefault(self: *@This(), mode: ApplicationViewMode) core.HResult!*ViewModePreferences {
         var _r: *ViewModePreferences = undefined;
         const _c = self.vtable.CreateDefault(@ptrCast(self), mode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.IViewModePreferencesStatics";
@@ -2783,14 +2873,11 @@ pub const IViewModePreferencesStatics = extern struct {
 };
 pub const InputPane = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2818,29 +2905,25 @@ pub const InputPane = extern struct {
     pub fn TryShow(self: *@This()) core.HResult!bool {
         var this: ?*IInputPane2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPane2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInputPane2.IID, @ptrCast(&this));
         return try this.?.TryShow();
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var this: ?*IInputPane2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPane2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInputPane2.IID, @ptrCast(&this));
         return try this.?.TryHide();
     }
     pub fn getVisible(self: *@This()) core.HResult!bool {
         var this: ?*IInputPaneControl = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPaneControl.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInputPaneControl.IID, @ptrCast(&this));
         return try this.?.getVisible();
     }
     pub fn putVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInputPaneControl = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPaneControl.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInputPaneControl.IID, @ptrCast(&this));
         return try this.?.putVisible(value);
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*InputPane {
@@ -2861,14 +2944,11 @@ pub const InputPane = extern struct {
 };
 pub const InputPaneVisibilityEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2893,14 +2973,11 @@ pub const InputPaneVisibilityEventArgs = extern struct {
 };
 pub const ProjectionManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2996,14 +3073,11 @@ pub const UIElementType = enum(i32) {
 };
 pub const UISettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3063,113 +3137,97 @@ pub const UISettings = extern struct {
     pub fn getTextScaleFactor(self: *@This()) core.HResult!f64 {
         var this: ?*IUISettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
         return try this.?.getTextScaleFactor();
     }
     pub fn addTextScaleFactorChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
         return try this.?.addTextScaleFactorChanged(handler);
     }
     pub fn removeTextScaleFactorChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
         return try this.?.removeTextScaleFactorChanged(cookie);
     }
     pub fn GetColorValue(self: *@This(), desiredColor: UIColorType) core.HResult!Color {
         var this: ?*IUISettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
         return try this.?.GetColorValue(desiredColor);
     }
     pub fn addColorValuesChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
         return try this.?.addColorValuesChanged(handler);
     }
     pub fn removeColorValuesChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
         return try this.?.removeColorValuesChanged(cookie);
     }
     pub fn getAdvancedEffectsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IUISettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
         return try this.?.getAdvancedEffectsEnabled();
     }
     pub fn addAdvancedEffectsEnabledChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
         return try this.?.addAdvancedEffectsEnabledChanged(handler);
     }
     pub fn removeAdvancedEffectsEnabledChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
         return try this.?.removeAdvancedEffectsEnabledChanged(cookie);
     }
     pub fn getAutoHideScrollBars(self: *@This()) core.HResult!bool {
         var this: ?*IUISettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
         return try this.?.getAutoHideScrollBars();
     }
     pub fn addAutoHideScrollBarsChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsAutoHideScrollBarsChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
         return try this.?.addAutoHideScrollBarsChanged(handler);
     }
     pub fn removeAutoHideScrollBarsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
         return try this.?.removeAutoHideScrollBarsChanged(token);
     }
     pub fn addAnimationsEnabledChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsAnimationsEnabledChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         return try this.?.addAnimationsEnabledChanged(handler);
     }
     pub fn removeAnimationsEnabledChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         return try this.?.removeAnimationsEnabledChanged(token);
     }
     pub fn addMessageDurationChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsMessageDurationChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         return try this.?.addMessageDurationChanged(handler);
     }
     pub fn removeMessageDurationChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         return try this.?.removeMessageDurationChanged(token);
     }
     pub fn init() core.HResult!*@This() {
@@ -3185,14 +3243,11 @@ pub const UISettings = extern struct {
 };
 pub const UISettingsAnimationsEnabledChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3205,14 +3260,11 @@ pub const UISettingsAnimationsEnabledChangedEventArgs = extern struct {
 };
 pub const UISettingsAutoHideScrollBarsChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3225,14 +3277,11 @@ pub const UISettingsAutoHideScrollBarsChangedEventArgs = extern struct {
 };
 pub const UISettingsMessageDurationChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3245,14 +3294,11 @@ pub const UISettingsMessageDurationChangedEventArgs = extern struct {
 };
 pub const UIViewSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3264,22 +3310,19 @@ pub const UIViewSettings = extern struct {
     pub fn GetPreferredInteractionMode(self: *@This(), supportedModes: [*]UserInteractionMode) core.HResult!UserInteractionMode {
         var this: ?*IUIViewSettingsPreferredInteractionMode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
         return try this.?.GetPreferredInteractionMode(supportedModes);
     }
     pub fn addPreferredInteractionModeChanged(self: *@This(), handler: *TypedEventHandler(UIViewSettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUIViewSettingsPreferredInteractionMode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
         return try this.?.addPreferredInteractionModeChanged(handler);
     }
     pub fn removePreferredInteractionModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUIViewSettingsPreferredInteractionMode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
         return try this.?.removePreferredInteractionModeChanged(token);
     }
     pub fn GetForCurrentView() core.HResult!*UIViewSettings {
@@ -3299,14 +3342,11 @@ pub const UserInteractionMode = enum(i32) {
 };
 pub const ViewModePreferences = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

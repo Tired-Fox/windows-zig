@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPalmRejectionDelayZonePreview = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -23,8 +26,11 @@ pub const IPalmRejectionDelayZonePreview = extern struct {
 };
 pub const IPalmRejectionDelayZonePreviewStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -32,13 +38,13 @@ pub const IPalmRejectionDelayZonePreviewStatics = extern struct {
     pub fn CreateForVisual(self: *@This(), inputPanelVisual: *Visual, inputPanelRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
         var _r: *PalmRejectionDelayZonePreview = undefined;
         const _c = self.vtable.CreateForVisual(@ptrCast(self), inputPanelVisual, inputPanelRect, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateForVisualWithViewportVisualAndViewportRect(self: *@This(), inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
         var _r: *PalmRejectionDelayZonePreview = undefined;
         const _c = self.vtable.CreateForVisualWithViewportVisualAndViewportRect(@ptrCast(self), inputPanelVisual, inputPanelRect, viewportVisual, viewportRect, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Preview.IPalmRejectionDelayZonePreviewStatics";
@@ -59,14 +65,11 @@ pub const IPalmRejectionDelayZonePreviewStatics = extern struct {
 };
 pub const PalmRejectionDelayZonePreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -74,8 +77,7 @@ pub const PalmRejectionDelayZonePreview = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateForVisual(inputPanelVisual: *Visual, inputPanelRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {

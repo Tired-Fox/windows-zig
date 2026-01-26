@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const INDClient = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,74 +13,74 @@ pub const INDClient = extern struct {
     pub fn addRegistrationCompleted(self: *@This(), handler: *TypedEventHandler(NDClient,INDRegistrationCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RegistrationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRegistrationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RegistrationCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addProximityDetectionCompleted(self: *@This(), handler: *TypedEventHandler(NDClient,INDProximityDetectionCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ProximityDetectionCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeProximityDetectionCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ProximityDetectionCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLicenseFetchCompleted(self: *@This(), handler: *TypedEventHandler(NDClient,INDLicenseFetchCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LicenseFetchCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLicenseFetchCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LicenseFetchCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addReRegistrationNeeded(self: *@This(), handler: *TypedEventHandler(NDClient,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ReRegistrationNeeded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeReRegistrationNeeded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ReRegistrationNeeded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addClosedCaptionDataReceived(self: *@This(), handler: *TypedEventHandler(NDClient,INDClosedCaptionDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ClosedCaptionDataReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosedCaptionDataReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ClosedCaptionDataReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn StartAsync(self: *@This(), contentUrl: *Uri, startAsyncOptions: u32, registrationCustomData: *INDCustomData, licenseFetchDescriptor: *INDLicenseFetchDescriptor) core.HResult!*IAsyncOperation(INDStartResult) {
         var _r: *IAsyncOperation(INDStartResult) = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), contentUrl, startAsyncOptions, registrationCustomData, licenseFetchDescriptor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn LicenseFetchAsync(self: *@This(), licenseFetchDescriptor: *INDLicenseFetchDescriptor) core.HResult!*IAsyncOperation(INDLicenseFetchResult) {
         var _r: *IAsyncOperation(INDLicenseFetchResult) = undefined;
         const _c = self.vtable.LicenseFetchAsync(@ptrCast(self), licenseFetchDescriptor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReRegistrationAsync(self: *@This(), registrationCustomData: *INDCustomData) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReRegistrationAsync(@ptrCast(self), registrationCustomData, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDClient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -109,8 +112,11 @@ pub const INDClient = extern struct {
 };
 pub const INDClientFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -118,7 +124,7 @@ pub const INDClientFactory = extern struct {
     pub fn CreateInstance(self: *@This(), downloadEngine: *INDDownloadEngine, streamParser: *INDStreamParser, pMessenger: *INDMessenger) core.HResult!*NDClient {
         var _r: *NDClient = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), downloadEngine, streamParser, pMessenger, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDClientFactory";
@@ -138,8 +144,11 @@ pub const INDClientFactory = extern struct {
 };
 pub const INDClosedCaptionDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -147,19 +156,19 @@ pub const INDClosedCaptionDataReceivedEventArgs = extern struct {
     pub fn getClosedCaptionDataFormat(self: *@This()) core.HResult!NDClosedCaptionFormat {
         var _r: NDClosedCaptionFormat = undefined;
         const _c = self.vtable.get_ClosedCaptionDataFormat(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPresentationTimestamp(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_PresentationTimestamp(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClosedCaptionData(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_ClosedCaptionData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDClosedCaptionDataReceivedEventArgs";
@@ -181,8 +190,11 @@ pub const INDClosedCaptionDataReceivedEventArgs = extern struct {
 };
 pub const INDCustomData = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -190,13 +202,13 @@ pub const INDCustomData = extern struct {
     pub fn getCustomDataTypeID(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_CustomDataTypeID(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustomData(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_CustomData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDCustomData";
@@ -217,8 +229,11 @@ pub const INDCustomData = extern struct {
 };
 pub const INDCustomDataFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -226,7 +241,7 @@ pub const INDCustomDataFactory = extern struct {
     pub fn CreateInstance(self: *@This(), customDataTypeIDBytes: [*]u8, customDataBytes: [*]u8) core.HResult!*NDCustomData {
         var _r: *NDCustomData = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), customDataTypeIDBytes, customDataBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDCustomDataFactory";
@@ -246,54 +261,57 @@ pub const INDCustomDataFactory = extern struct {
 };
 pub const INDDownloadEngine = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Open(self: *@This(), uri: *Uri, sessionIDBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.Open(@ptrCast(self), uri, sessionIDBytes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Pause(self: *@This()) core.HResult!void {
         const _c = self.vtable.Pause(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Resume(self: *@This()) core.HResult!void {
         const _c = self.vtable.Resume(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Seek(self: *@This(), startPosition: TimeSpan) core.HResult!void {
         const _c = self.vtable.Seek(@ptrCast(self), startPosition);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanSeek(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanSeek(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBufferFullMinThresholdInSamples(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BufferFullMinThresholdInSamples(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBufferFullMaxThresholdInSamples(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BufferFullMaxThresholdInSamples(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNotifier(self: *@This()) core.HResult!*NDDownloadEngineNotifier {
         var _r: *NDDownloadEngineNotifier = undefined;
         const _c = self.vtable.get_Notifier(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDDownloadEngine";
@@ -321,35 +339,38 @@ pub const INDDownloadEngine = extern struct {
 };
 pub const INDDownloadEngineNotifier = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnStreamOpened(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnStreamOpened(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnPlayReadyObjectReceived(self: *@This(), dataBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.OnPlayReadyObjectReceived(@ptrCast(self), dataBytes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnContentIDReceived(self: *@This(), licenseFetchDescriptor: *INDLicenseFetchDescriptor) core.HResult!void {
         const _c = self.vtable.OnContentIDReceived(@ptrCast(self), licenseFetchDescriptor);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnDataReceived(self: *@This(), dataBytes: [*]u8, bytesReceived: u32) core.HResult!void {
         const _c = self.vtable.OnDataReceived(@ptrCast(self), dataBytes, bytesReceived);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnEndOfStream(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnEndOfStream(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnNetworkError(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnNetworkError(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDDownloadEngineNotifier";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -373,8 +394,11 @@ pub const INDDownloadEngineNotifier = extern struct {
 };
 pub const INDLicenseFetchCompletedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -382,7 +406,7 @@ pub const INDLicenseFetchCompletedEventArgs = extern struct {
     pub fn getResponseCustomData(self: *@This()) core.HResult!*INDCustomData {
         var _r: *INDCustomData = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDLicenseFetchCompletedEventArgs";
@@ -402,8 +426,11 @@ pub const INDLicenseFetchCompletedEventArgs = extern struct {
 };
 pub const INDLicenseFetchDescriptor = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -411,24 +438,24 @@ pub const INDLicenseFetchDescriptor = extern struct {
     pub fn getContentIDType(self: *@This()) core.HResult!NDContentIDType {
         var _r: NDContentIDType = undefined;
         const _c = self.vtable.get_ContentIDType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentID(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_ContentID(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLicenseFetchChallengeCustomData(self: *@This()) core.HResult!*INDCustomData {
         var _r: *INDCustomData = undefined;
         const _c = self.vtable.get_LicenseFetchChallengeCustomData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLicenseFetchChallengeCustomData(self: *@This(), licenseFetchChallengeCustomData: *INDCustomData) core.HResult!void {
         const _c = self.vtable.put_LicenseFetchChallengeCustomData(@ptrCast(self), licenseFetchChallengeCustomData);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDLicenseFetchDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -450,8 +477,11 @@ pub const INDLicenseFetchDescriptor = extern struct {
 };
 pub const INDLicenseFetchDescriptorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -459,7 +489,7 @@ pub const INDLicenseFetchDescriptorFactory = extern struct {
     pub fn CreateInstance(self: *@This(), contentIDType: NDContentIDType, contentIDBytes: [*]u8, licenseFetchChallengeCustomData: *INDCustomData) core.HResult!*NDLicenseFetchDescriptor {
         var _r: *NDLicenseFetchDescriptor = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), contentIDType, contentIDBytes, licenseFetchChallengeCustomData, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDLicenseFetchDescriptorFactory";
@@ -479,8 +509,11 @@ pub const INDLicenseFetchDescriptorFactory = extern struct {
 };
 pub const INDLicenseFetchResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -488,7 +521,7 @@ pub const INDLicenseFetchResult = extern struct {
     pub fn getResponseCustomData(self: *@This()) core.HResult!*INDCustomData {
         var _r: *INDCustomData = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDLicenseFetchResult";
@@ -508,8 +541,11 @@ pub const INDLicenseFetchResult = extern struct {
 };
 pub const INDMessenger = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -517,25 +553,25 @@ pub const INDMessenger = extern struct {
     pub fn SendRegistrationRequestAsync(self: *@This(), sessionIDBytes: [*]u8, challengeDataBytes: [*]u8) core.HResult!*IAsyncOperation(INDSendResult) {
         var _r: *IAsyncOperation(INDSendResult) = undefined;
         const _c = self.vtable.SendRegistrationRequestAsync(@ptrCast(self), sessionIDBytes, challengeDataBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendProximityDetectionStartAsync(self: *@This(), pdType: NDProximityDetectionType, transmitterChannelBytes: [*]u8, sessionIDBytes: [*]u8, challengeDataBytes: [*]u8) core.HResult!*IAsyncOperation(INDSendResult) {
         var _r: *IAsyncOperation(INDSendResult) = undefined;
         const _c = self.vtable.SendProximityDetectionStartAsync(@ptrCast(self), pdType, transmitterChannelBytes, sessionIDBytes, challengeDataBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendProximityDetectionResponseAsync(self: *@This(), pdType: NDProximityDetectionType, transmitterChannelBytes: [*]u8, sessionIDBytes: [*]u8, responseDataBytes: [*]u8) core.HResult!*IAsyncOperation(INDSendResult) {
         var _r: *IAsyncOperation(INDSendResult) = undefined;
         const _c = self.vtable.SendProximityDetectionResponseAsync(@ptrCast(self), pdType, transmitterChannelBytes, sessionIDBytes, responseDataBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendLicenseFetchRequestAsync(self: *@This(), sessionIDBytes: [*]u8, challengeDataBytes: [*]u8) core.HResult!*IAsyncOperation(INDSendResult) {
         var _r: *IAsyncOperation(INDSendResult) = undefined;
         const _c = self.vtable.SendLicenseFetchRequestAsync(@ptrCast(self), sessionIDBytes, challengeDataBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDMessenger";
@@ -558,8 +594,11 @@ pub const INDMessenger = extern struct {
 };
 pub const INDProximityDetectionCompletedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -567,7 +606,7 @@ pub const INDProximityDetectionCompletedEventArgs = extern struct {
     pub fn getProximityDetectionRetryCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ProximityDetectionRetryCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDProximityDetectionCompletedEventArgs";
@@ -587,8 +626,11 @@ pub const INDProximityDetectionCompletedEventArgs = extern struct {
 };
 pub const INDRegistrationCompletedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -596,24 +638,24 @@ pub const INDRegistrationCompletedEventArgs = extern struct {
     pub fn getResponseCustomData(self: *@This()) core.HResult!*INDCustomData {
         var _r: *INDCustomData = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransmitterProperties(self: *@This()) core.HResult!*INDTransmitterProperties {
         var _r: *INDTransmitterProperties = undefined;
         const _c = self.vtable.get_TransmitterProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransmitterCertificateAccepted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TransmitterCertificateAccepted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransmitterCertificateAccepted(self: *@This(), accept: bool) core.HResult!void {
         const _c = self.vtable.put_TransmitterCertificateAccepted(@ptrCast(self), accept);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDRegistrationCompletedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -635,8 +677,11 @@ pub const INDRegistrationCompletedEventArgs = extern struct {
 };
 pub const INDSendResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -644,7 +689,7 @@ pub const INDSendResult = extern struct {
     pub fn getResponse(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_Response(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDSendResult";
@@ -664,8 +709,11 @@ pub const INDSendResult = extern struct {
 };
 pub const INDStartResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -673,7 +721,7 @@ pub const INDStartResult = extern struct {
     pub fn getMediaStreamSource(self: *@This()) core.HResult!*MediaStreamSource {
         var _r: *MediaStreamSource = undefined;
         const _c = self.vtable.get_MediaStreamSource(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDStartResult";
@@ -693,8 +741,11 @@ pub const INDStartResult = extern struct {
 };
 pub const INDStorageFileHelper = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -702,7 +753,7 @@ pub const INDStorageFileHelper = extern struct {
     pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetFileURLs(@ptrCast(self), file, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDStorageFileHelper";
@@ -722,34 +773,37 @@ pub const INDStorageFileHelper = extern struct {
 };
 pub const INDStreamParser = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ParseData(self: *@This(), dataBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.ParseData(@ptrCast(self), dataBytes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetStreamInformation(self: *@This(), descriptor: *IMediaStreamDescriptor, streamType: NDMediaStreamType) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetStreamInformation(@ptrCast(self), descriptor, streamType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn BeginOfStream(self: *@This()) core.HResult!void {
         const _c = self.vtable.BeginOfStream(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn EndOfStream(self: *@This()) core.HResult!void {
         const _c = self.vtable.EndOfStream(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNotifier(self: *@This()) core.HResult!*NDStreamParserNotifier {
         var _r: *NDStreamParserNotifier = undefined;
         const _c = self.vtable.get_Notifier(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDStreamParser";
@@ -773,27 +827,30 @@ pub const INDStreamParser = extern struct {
 };
 pub const INDStreamParserNotifier = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OnContentIDReceived(self: *@This(), licenseFetchDescriptor: *INDLicenseFetchDescriptor) core.HResult!void {
         const _c = self.vtable.OnContentIDReceived(@ptrCast(self), licenseFetchDescriptor);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnMediaStreamDescriptorCreated(self: *@This(), audioStreamDescriptors: *IVector(AudioStreamDescriptor), videoStreamDescriptors: *IVector(VideoStreamDescriptor)) core.HResult!void {
         const _c = self.vtable.OnMediaStreamDescriptorCreated(@ptrCast(self), audioStreamDescriptors, videoStreamDescriptors);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnSampleParsed(self: *@This(), streamID: u32, streamType: NDMediaStreamType, streamSample: *MediaStreamSample, pts: i64, ccFormat: NDClosedCaptionFormat, ccDataBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.OnSampleParsed(@ptrCast(self), streamID, streamType, streamSample, pts, ccFormat, ccDataBytes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn OnBeginSetupDecryptor(self: *@This(), descriptor: *IMediaStreamDescriptor, keyID: *Guid, proBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.OnBeginSetupDecryptor(@ptrCast(self), descriptor, keyID, proBytes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDStreamParserNotifier";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -815,8 +872,11 @@ pub const INDStreamParserNotifier = extern struct {
 };
 pub const INDTCPMessengerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -824,7 +884,7 @@ pub const INDTCPMessengerFactory = extern struct {
     pub fn CreateInstance(self: *@This(), remoteHostName: ?HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
         var _r: *NDTCPMessenger = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), remoteHostName, remoteHostPort, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDTCPMessengerFactory";
@@ -844,8 +904,11 @@ pub const INDTCPMessengerFactory = extern struct {
 };
 pub const INDTransmitterProperties = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -853,67 +916,67 @@ pub const INDTransmitterProperties = extern struct {
     pub fn getCertificateType(self: *@This()) core.HResult!NDCertificateType {
         var _r: NDCertificateType = undefined;
         const _c = self.vtable.get_CertificateType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlatformIdentifier(self: *@This()) core.HResult!NDCertificatePlatformID {
         var _r: NDCertificatePlatformID = undefined;
         const _c = self.vtable.get_PlatformIdentifier(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportedFeatures(self: *@This()) core.HResult![*]NDCertificateFeature {
         var _r: [*]NDCertificateFeature = undefined;
         const _c = self.vtable.get_SupportedFeatures(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSecurityLevel(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SecurityLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSecurityVersion(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SecurityVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpirationDate(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_ExpirationDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClientID(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_ClientID(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModelDigest(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_ModelDigest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModelManufacturerName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelManufacturerName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModelNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.INDTransmitterProperties";
@@ -943,8 +1006,11 @@ pub const INDTransmitterProperties = extern struct {
 };
 pub const IPlayReadyContentHeader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -952,61 +1018,61 @@ pub const IPlayReadyContentHeader = extern struct {
     pub fn getKeyId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_KeyId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyIdString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyIdString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLicenseAcquisitionUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_LicenseAcquisitionUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLicenseAcquisitionUserInterfaceUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_LicenseAcquisitionUserInterfaceUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomainServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEncryptionType(self: *@This()) core.HResult!PlayReadyEncryptionAlgorithm {
         var _r: PlayReadyEncryptionAlgorithm = undefined;
         const _c = self.vtable.get_EncryptionType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCustomAttributes(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomAttributes(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDecryptorSetup(self: *@This()) core.HResult!PlayReadyDecryptorSetup {
         var _r: PlayReadyDecryptorSetup = undefined;
         const _c = self.vtable.get_DecryptorSetup(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSerializedHeader(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetSerializedHeader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHeaderWithEmbeddedUpdates(self: *@This()) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.get_HeaderWithEmbeddedUpdates(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyContentHeader";
@@ -1035,8 +1101,11 @@ pub const IPlayReadyContentHeader = extern struct {
 };
 pub const IPlayReadyContentHeader2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1044,13 +1113,13 @@ pub const IPlayReadyContentHeader2 = extern struct {
     pub fn getKeyIds(self: *@This()) core.HResult![*]Guid {
         var _r: [*]Guid = undefined;
         const _c = self.vtable.get_KeyIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getKeyIdStrings(self: *@This()) core.HResult!?[*]HSTRING {
         var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.get_KeyIdStrings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyContentHeader2";
@@ -1071,8 +1140,11 @@ pub const IPlayReadyContentHeader2 = extern struct {
 };
 pub const IPlayReadyContentHeaderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1080,19 +1152,19 @@ pub const IPlayReadyContentHeaderFactory = extern struct {
     pub fn CreateInstanceFromWindowsMediaDrmHeader(self: *@This(), headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromWindowsMediaDrmHeader(@ptrCast(self), headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceFromComponents(self: *@This(), contentKeyId: *Guid, contentKeyIdString: ?HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromComponents(@ptrCast(self), contentKeyId, contentKeyIdString, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceFromPlayReadyHeader(self: *@This(), headerBytes: [*]u8) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromPlayReadyHeader(@ptrCast(self), headerBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyContentHeaderFactory";
@@ -1114,8 +1186,11 @@ pub const IPlayReadyContentHeaderFactory = extern struct {
 };
 pub const IPlayReadyContentHeaderFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1123,7 +1198,7 @@ pub const IPlayReadyContentHeaderFactory2 = extern struct {
     pub fn CreateInstanceFromComponents2(self: *@This(), dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: ?[*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromComponents2(@ptrCast(self), dwFlags, contentKeyIds, contentKeyIdStrings, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyContentHeaderFactory2";
@@ -1143,8 +1218,11 @@ pub const IPlayReadyContentHeaderFactory2 = extern struct {
 };
 pub const IPlayReadyContentResolver = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1152,7 +1230,7 @@ pub const IPlayReadyContentResolver = extern struct {
     pub fn ServiceRequest(self: *@This(), contentHeader: *PlayReadyContentHeader) core.HResult!*IPlayReadyServiceRequest {
         var _r: *IPlayReadyServiceRequest = undefined;
         const _c = self.vtable.ServiceRequest(@ptrCast(self), contentHeader, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyContentResolver";
@@ -1172,8 +1250,11 @@ pub const IPlayReadyContentResolver = extern struct {
 };
 pub const IPlayReadyDomain = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1181,31 +1262,31 @@ pub const IPlayReadyDomain = extern struct {
     pub fn getAccountId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_AccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRevision(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Revision(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomainJoinUrl(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_DomainJoinUrl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyDomain";
@@ -1229,8 +1310,11 @@ pub const IPlayReadyDomain = extern struct {
 };
 pub const IPlayReadyDomainIterableFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1238,7 +1322,7 @@ pub const IPlayReadyDomainIterableFactory = extern struct {
     pub fn CreateInstance(self: *@This(), domainAccountId: *Guid) core.HResult!*PlayReadyDomainIterable {
         var _r: *PlayReadyDomainIterable = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), domainAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyDomainIterableFactory";
@@ -1258,8 +1342,11 @@ pub const IPlayReadyDomainIterableFactory = extern struct {
 };
 pub const IPlayReadyDomainJoinServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1267,32 +1354,32 @@ pub const IPlayReadyDomainJoinServiceRequest = extern struct {
     pub fn getDomainAccountId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomainAccountId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_DomainAccountId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDomainFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DomainFriendlyName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomainFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DomainFriendlyName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDomainServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomainServiceId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_DomainServiceId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyDomainJoinServiceRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1316,8 +1403,11 @@ pub const IPlayReadyDomainJoinServiceRequest = extern struct {
 };
 pub const IPlayReadyDomainLeaveServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1325,22 +1415,22 @@ pub const IPlayReadyDomainLeaveServiceRequest = extern struct {
     pub fn getDomainAccountId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomainAccountId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_DomainAccountId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDomainServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomainServiceId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_DomainServiceId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyDomainLeaveServiceRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1362,8 +1452,11 @@ pub const IPlayReadyDomainLeaveServiceRequest = extern struct {
 };
 pub const IPlayReadyITADataGenerator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1371,7 +1464,7 @@ pub const IPlayReadyITADataGenerator = extern struct {
     pub fn GenerateData(self: *@This(), guidCPSystemId: *Guid, countOfStreams: u32, configuration: *IPropertySet, format: PlayReadyITADataFormat) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GenerateData(@ptrCast(self), guidCPSystemId, countOfStreams, configuration, format, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyITADataGenerator";
@@ -1391,8 +1484,11 @@ pub const IPlayReadyITADataGenerator = extern struct {
 };
 pub const IPlayReadyIndividualizationServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1413,8 +1509,11 @@ pub const IPlayReadyIndividualizationServiceRequest = extern struct {
 };
 pub const IPlayReadyLicense = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1422,43 +1521,43 @@ pub const IPlayReadyLicense = extern struct {
     pub fn getFullyEvaluated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_FullyEvaluated(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUsableForPlay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UsableForPlay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpirationDate(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_ExpirationDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpireAfterFirstPlay(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExpireAfterFirstPlay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomainAccountID(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainAccountID(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChainDepth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ChainDepth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetKIDAtChainDepth(self: *@This(), chainDepth: u32) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.GetKIDAtChainDepth(@ptrCast(self), chainDepth, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicense";
@@ -1484,8 +1583,11 @@ pub const IPlayReadyLicense = extern struct {
 };
 pub const IPlayReadyLicense2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1493,25 +1595,25 @@ pub const IPlayReadyLicense2 = extern struct {
     pub fn getSecureStopId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SecureStopId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSecurityLevel(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SecurityLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInMemoryOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InMemoryOnly(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExpiresInRealTime(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ExpiresInRealTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicense2";
@@ -1534,8 +1636,11 @@ pub const IPlayReadyLicense2 = extern struct {
 };
 pub const IPlayReadyLicenseAcquisitionServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1543,22 +1648,22 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest = extern struct {
     pub fn getContentHeader(self: *@This()) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.get_ContentHeader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContentHeader(self: *@This(), value: *PlayReadyContentHeader) core.HResult!void {
         const _c = self.vtable.put_ContentHeader(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDomainServiceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainServiceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDomainServiceId(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.put_DomainServiceId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseAcquisitionServiceRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1580,8 +1685,11 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest = extern struct {
 };
 pub const IPlayReadyLicenseAcquisitionServiceRequest2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1589,7 +1697,7 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest2 = extern struct {
     pub fn getSessionId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseAcquisitionServiceRequest2";
@@ -1609,8 +1717,11 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest2 = extern struct {
 };
 pub const IPlayReadyLicenseAcquisitionServiceRequest3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1618,7 +1729,7 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest3 = extern struct {
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var _r: *PlayReadyLicenseIterable = undefined;
         const _c = self.vtable.CreateLicenseIterable(@ptrCast(self), contentHeader, fullyEvaluated, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseAcquisitionServiceRequest3";
@@ -1638,8 +1749,11 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest3 = extern struct {
 };
 pub const IPlayReadyLicenseIterableFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1647,7 +1761,7 @@ pub const IPlayReadyLicenseIterableFactory = extern struct {
     pub fn CreateInstance(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var _r: *PlayReadyLicenseIterable = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), contentHeader, fullyEvaluated, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseIterableFactory";
@@ -1667,8 +1781,11 @@ pub const IPlayReadyLicenseIterableFactory = extern struct {
 };
 pub const IPlayReadyLicenseManagement = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1676,7 +1793,7 @@ pub const IPlayReadyLicenseManagement = extern struct {
     pub fn DeleteLicenses(self: *@This(), contentHeader: *PlayReadyContentHeader) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteLicenses(@ptrCast(self), contentHeader, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseManagement";
@@ -1696,8 +1813,11 @@ pub const IPlayReadyLicenseManagement = extern struct {
 };
 pub const IPlayReadyLicenseSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1705,12 +1825,12 @@ pub const IPlayReadyLicenseSession = extern struct {
     pub fn CreateLAServiceRequest(self: *@This()) core.HResult!*IPlayReadyLicenseAcquisitionServiceRequest {
         var _r: *IPlayReadyLicenseAcquisitionServiceRequest = undefined;
         const _c = self.vtable.CreateLAServiceRequest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConfigureMediaProtectionManager(self: *@This(), mpm: *MediaProtectionManager) core.HResult!void {
         const _c = self.vtable.ConfigureMediaProtectionManager(@ptrCast(self), mpm);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1730,8 +1850,11 @@ pub const IPlayReadyLicenseSession = extern struct {
 };
 pub const IPlayReadyLicenseSession2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1739,7 +1862,7 @@ pub const IPlayReadyLicenseSession2 = extern struct {
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var _r: *PlayReadyLicenseIterable = undefined;
         const _c = self.vtable.CreateLicenseIterable(@ptrCast(self), contentHeader, fullyEvaluated, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseSession2";
@@ -1759,8 +1882,11 @@ pub const IPlayReadyLicenseSession2 = extern struct {
 };
 pub const IPlayReadyLicenseSessionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1768,7 +1894,7 @@ pub const IPlayReadyLicenseSessionFactory = extern struct {
     pub fn CreateInstance(self: *@This(), configuration: *IPropertySet) core.HResult!*PlayReadyLicenseSession {
         var _r: *PlayReadyLicenseSession = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), configuration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyLicenseSessionFactory";
@@ -1788,8 +1914,11 @@ pub const IPlayReadyLicenseSessionFactory = extern struct {
 };
 pub const IPlayReadyMeteringReportServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1797,12 +1926,12 @@ pub const IPlayReadyMeteringReportServiceRequest = extern struct {
     pub fn getMeteringCertificate(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_MeteringCertificate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMeteringCertificate(self: *@This(), meteringCertBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.put_MeteringCertificate(@ptrCast(self), meteringCertBytes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyMeteringReportServiceRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1822,8 +1951,11 @@ pub const IPlayReadyMeteringReportServiceRequest = extern struct {
 };
 pub const IPlayReadyRevocationServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1844,8 +1976,11 @@ pub const IPlayReadyRevocationServiceRequest = extern struct {
 };
 pub const IPlayReadySecureStopIterableFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1853,7 +1988,7 @@ pub const IPlayReadySecureStopIterableFactory = extern struct {
     pub fn CreateInstance(self: *@This(), publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopIterable {
         var _r: *PlayReadySecureStopIterable = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), publisherCertBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadySecureStopIterableFactory";
@@ -1873,8 +2008,11 @@ pub const IPlayReadySecureStopIterableFactory = extern struct {
 };
 pub const IPlayReadySecureStopServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1882,31 +2020,31 @@ pub const IPlayReadySecureStopServiceRequest = extern struct {
     pub fn getSessionID(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SessionID(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUpdateTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_UpdateTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStopped(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Stopped(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPublisherCertificate(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_PublisherCertificate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadySecureStopServiceRequest";
@@ -1930,8 +2068,11 @@ pub const IPlayReadySecureStopServiceRequest = extern struct {
 };
 pub const IPlayReadySecureStopServiceRequestFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1939,13 +2080,13 @@ pub const IPlayReadySecureStopServiceRequestFactory = extern struct {
     pub fn CreateInstance(self: *@This(), publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
         var _r: *PlayReadySecureStopServiceRequest = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), publisherCertBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInstanceFromSessionID(self: *@This(), sessionID: *Guid, publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
         var _r: *PlayReadySecureStopServiceRequest = undefined;
         const _c = self.vtable.CreateInstanceFromSessionID(@ptrCast(self), sessionID, publisherCertBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadySecureStopServiceRequestFactory";
@@ -1966,8 +2107,11 @@ pub const IPlayReadySecureStopServiceRequestFactory = extern struct {
 };
 pub const IPlayReadyServiceRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1975,51 +2119,51 @@ pub const IPlayReadyServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ChallengeCustomData(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ChallengeCustomData(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.BeginServiceRequest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var _r: *IPlayReadyServiceRequest = undefined;
         const _c = self.vtable.NextServiceRequest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var _r: *PlayReadySoapMessage = undefined;
         const _c = self.vtable.GenerateManualEnablingChallenge(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.ProcessManualEnablingResponse(@ptrCast(self), responseBytes, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyServiceRequest";
@@ -2047,8 +2191,11 @@ pub const IPlayReadyServiceRequest = extern struct {
 };
 pub const IPlayReadySoapMessage = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2056,19 +2203,19 @@ pub const IPlayReadySoapMessage = extern struct {
     pub fn GetMessageBody(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetMessageBody(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageHeaders(self: *@This()) core.HResult!*IPropertySet {
         var _r: *IPropertySet = undefined;
         const _c = self.vtable.get_MessageHeaders(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadySoapMessage";
@@ -2090,8 +2237,11 @@ pub const IPlayReadySoapMessage = extern struct {
 };
 pub const IPlayReadyStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2099,49 +2249,49 @@ pub const IPlayReadyStatics = extern struct {
     pub fn getDomainJoinServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainJoinServiceRequestType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomainLeaveServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainLeaveServiceRequestType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIndividualizationServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_IndividualizationServiceRequestType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLicenseAcquirerServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_LicenseAcquirerServiceRequestType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMeteringReportServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_MeteringReportServiceRequestType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRevocationServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_RevocationServiceRequestType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMediaProtectionSystemId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_MediaProtectionSystemId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPlayReadySecurityVersion(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PlayReadySecurityVersion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyStatics";
@@ -2168,8 +2318,11 @@ pub const IPlayReadyStatics = extern struct {
 };
 pub const IPlayReadyStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2177,7 +2330,7 @@ pub const IPlayReadyStatics2 = extern struct {
     pub fn getPlayReadyCertificateSecurityLevel(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PlayReadyCertificateSecurityLevel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyStatics2";
@@ -2197,8 +2350,11 @@ pub const IPlayReadyStatics2 = extern struct {
 };
 pub const IPlayReadyStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2206,13 +2362,13 @@ pub const IPlayReadyStatics3 = extern struct {
     pub fn getSecureStopServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SecureStopServiceRequestType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckSupportedHardware(self: *@This(), hwdrmFeature: PlayReadyHardwareDRMFeatures) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CheckSupportedHardware(@ptrCast(self), hwdrmFeature, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyStatics3";
@@ -2233,8 +2389,11 @@ pub const IPlayReadyStatics3 = extern struct {
 };
 pub const IPlayReadyStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2242,13 +2401,13 @@ pub const IPlayReadyStatics4 = extern struct {
     pub fn getInputTrustAuthorityToCreate(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InputTrustAuthorityToCreate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProtectionSystemId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ProtectionSystemId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyStatics4";
@@ -2269,8 +2428,11 @@ pub const IPlayReadyStatics4 = extern struct {
 };
 pub const IPlayReadyStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2278,18 +2440,18 @@ pub const IPlayReadyStatics5 = extern struct {
     pub fn getHardwareDRMDisabledAtTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_HardwareDRMDisabledAtTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHardwareDRMDisabledUntilTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_HardwareDRMDisabledUntilTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResetHardwareDRMDisabled(self: *@This()) core.HResult!void {
         const _c = self.vtable.ResetHardwareDRMDisabled(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyStatics5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2348,14 +2510,11 @@ pub const NDCertificateType = enum(i32) {
 };
 pub const NDClient = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2439,14 +2598,11 @@ pub const NDContentIDType = enum(i32) {
 };
 pub const NDCustomData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2472,14 +2628,11 @@ pub const NDCustomData = extern struct {
 };
 pub const NDDownloadEngineNotifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2521,14 +2674,11 @@ pub const NDDownloadEngineNotifier = extern struct {
 };
 pub const NDLicenseFetchDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2575,14 +2725,11 @@ pub const NDStartAsyncOptions = enum(i32) {
 };
 pub const NDStorageFileHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2604,14 +2751,11 @@ pub const NDStorageFileHelper = extern struct {
 };
 pub const NDStreamParserNotifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2645,14 +2789,11 @@ pub const NDStreamParserNotifier = extern struct {
 };
 pub const NDTCPMessenger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2686,14 +2827,11 @@ pub const NDTCPMessenger = extern struct {
 };
 pub const PlayReadyContentHeader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2741,15 +2879,13 @@ pub const PlayReadyContentHeader = extern struct {
     pub fn getKeyIds(self: *@This()) core.HResult![*]Guid {
         var this: ?*IPlayReadyContentHeader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyContentHeader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyContentHeader2.IID, @ptrCast(&this));
         return try this.?.getKeyIds();
     }
     pub fn getKeyIdStrings(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IPlayReadyContentHeader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyContentHeader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyContentHeader2.IID, @ptrCast(&this));
         return try this.?.getKeyIdStrings();
     }
     pub fn CreateInstanceFromWindowsMediaDrmHeader(headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
@@ -2778,14 +2914,11 @@ pub const PlayReadyContentHeader = extern struct {
 };
 pub const PlayReadyContentResolver = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2804,14 +2937,11 @@ pub const PlayReadyDecryptorSetup = enum(i32) {
 };
 pub const PlayReadyDomain = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2844,14 +2974,11 @@ pub const PlayReadyDomain = extern struct {
 };
 pub const PlayReadyDomainIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2873,14 +3000,11 @@ pub const PlayReadyDomainIterable = extern struct {
 };
 pub const PlayReadyDomainIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2901,14 +3025,11 @@ pub const PlayReadyDomainIterator = extern struct {
 };
 pub const PlayReadyDomainJoinServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2940,78 +3061,67 @@ pub const PlayReadyDomainJoinServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn init() core.HResult!*@This() {
@@ -3027,14 +3137,11 @@ pub const PlayReadyDomainJoinServiceRequest = extern struct {
 };
 pub const PlayReadyDomainLeaveServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3058,78 +3165,67 @@ pub const PlayReadyDomainLeaveServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn init() core.HResult!*@This() {
@@ -3162,14 +3258,11 @@ pub const PlayReadyITADataFormat = enum(i32) {
 };
 pub const PlayReadyITADataGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3191,14 +3284,11 @@ pub const PlayReadyITADataGenerator = extern struct {
 };
 pub const PlayReadyIndividualizationServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3206,78 +3296,67 @@ pub const PlayReadyIndividualizationServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn init() core.HResult!*@This() {
@@ -3293,14 +3372,11 @@ pub const PlayReadyIndividualizationServiceRequest = extern struct {
 };
 pub const PlayReadyLicense = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3336,29 +3412,25 @@ pub const PlayReadyLicense = extern struct {
     pub fn getSecureStopId(self: *@This()) core.HResult!*Guid {
         var this: ?*IPlayReadyLicense2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         return try this.?.getSecureStopId();
     }
     pub fn getSecurityLevel(self: *@This()) core.HResult!u32 {
         var this: ?*IPlayReadyLicense2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         return try this.?.getSecurityLevel();
     }
     pub fn getInMemoryOnly(self: *@This()) core.HResult!bool {
         var this: ?*IPlayReadyLicense2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         return try this.?.getInMemoryOnly();
     }
     pub fn getExpiresInRealTime(self: *@This()) core.HResult!bool {
         var this: ?*IPlayReadyLicense2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         return try this.?.getExpiresInRealTime();
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicense";
@@ -3369,14 +3441,11 @@ pub const PlayReadyLicense = extern struct {
 };
 pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3400,92 +3469,79 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn getSessionId(self: *@This()) core.HResult!*Guid {
         var this: ?*IPlayReadyLicenseAcquisitionServiceRequest2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseAcquisitionServiceRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseAcquisitionServiceRequest2.IID, @ptrCast(&this));
         return try this.?.getSessionId();
     }
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var this: ?*IPlayReadyLicenseAcquisitionServiceRequest3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseAcquisitionServiceRequest3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseAcquisitionServiceRequest3.IID, @ptrCast(&this));
         return try this.?.CreateLicenseIterable(contentHeader, fullyEvaluated);
     }
     pub fn init() core.HResult!*@This() {
@@ -3501,14 +3557,11 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
 };
 pub const PlayReadyLicenseIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3535,14 +3588,11 @@ pub const PlayReadyLicenseIterable = extern struct {
 };
 pub const PlayReadyLicenseIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3563,14 +3613,11 @@ pub const PlayReadyLicenseIterator = extern struct {
 };
 pub const PlayReadyLicenseManagement = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3585,14 +3632,11 @@ pub const PlayReadyLicenseManagement = extern struct {
 };
 pub const PlayReadyLicenseSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3608,8 +3652,7 @@ pub const PlayReadyLicenseSession = extern struct {
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var this: ?*IPlayReadyLicenseSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseSession2.IID, @ptrCast(&this));
         return try this.?.CreateLicenseIterable(contentHeader, fullyEvaluated);
     }
     pub fn CreateInstance(configuration: *IPropertySet) core.HResult!*PlayReadyLicenseSession {
@@ -3625,14 +3668,11 @@ pub const PlayReadyLicenseSession = extern struct {
 };
 pub const PlayReadyMeteringReportServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3648,78 +3688,67 @@ pub const PlayReadyMeteringReportServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn init() core.HResult!*@This() {
@@ -3735,14 +3764,11 @@ pub const PlayReadyMeteringReportServiceRequest = extern struct {
 };
 pub const PlayReadyRevocationServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3750,78 +3776,67 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn init() core.HResult!*@This() {
@@ -3837,14 +3852,11 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
 };
 pub const PlayReadySecureStopIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3866,14 +3878,11 @@ pub const PlayReadySecureStopIterable = extern struct {
 };
 pub const PlayReadySecureStopIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3894,14 +3903,11 @@ pub const PlayReadySecureStopIterator = extern struct {
 };
 pub const PlayReadySecureStopServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3929,78 +3935,67 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         return try this.?.getType();
     }
     pub fn CreateInstance(publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
@@ -4020,14 +4015,11 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
 };
 pub const PlayReadySoapMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4052,14 +4044,11 @@ pub const PlayReadySoapMessage = extern struct {
 };
 pub const PlayReadyStatics = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IResourceLoader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const IResourceLoader = extern struct {
     pub fn GetString(self: *@This(), resource: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetString(@ptrCast(self), resource, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.IResourceLoader";
@@ -30,8 +33,11 @@ pub const IResourceLoader = extern struct {
 };
 pub const IResourceLoader2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,7 +45,7 @@ pub const IResourceLoader2 = extern struct {
     pub fn GetStringForUri(self: *@This(), uri: *Uri) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringForUri(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.IResourceLoader2";
@@ -59,8 +65,11 @@ pub const IResourceLoader2 = extern struct {
 };
 pub const IResourceLoaderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -68,7 +77,7 @@ pub const IResourceLoaderFactory = extern struct {
     pub fn CreateResourceLoaderByName(self: *@This(), name: ?HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.CreateResourceLoaderByName(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.IResourceLoaderFactory";
@@ -88,8 +97,11 @@ pub const IResourceLoaderFactory = extern struct {
 };
 pub const IResourceLoaderStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -97,7 +109,7 @@ pub const IResourceLoaderStatics = extern struct {
     pub fn GetStringForReference(self: *@This(), uri: *Uri) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringForReference(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.IResourceLoaderStatics";
@@ -117,8 +129,11 @@ pub const IResourceLoaderStatics = extern struct {
 };
 pub const IResourceLoaderStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -126,25 +141,25 @@ pub const IResourceLoaderStatics2 = extern struct {
     pub fn GetForCurrentView(self: *@This()) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetForCurrentViewWithName(self: *@This(), name: ?HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.GetForCurrentViewWithName(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetForViewIndependentUse(self: *@This()) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.GetForViewIndependentUse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetForViewIndependentUseWithName(self: *@This(), name: ?HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.GetForViewIndependentUseWithName(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.IResourceLoaderStatics2";
@@ -167,8 +182,11 @@ pub const IResourceLoaderStatics2 = extern struct {
 };
 pub const IResourceLoaderStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -176,7 +194,7 @@ pub const IResourceLoaderStatics3 = extern struct {
     pub fn GetForUIContext(self: *@This(), context: *UIContext) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.GetForUIContext(@ptrCast(self), context, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.IResourceLoaderStatics3";
@@ -196,8 +214,11 @@ pub const IResourceLoaderStatics3 = extern struct {
 };
 pub const IResourceLoaderStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -205,7 +226,7 @@ pub const IResourceLoaderStatics4 = extern struct {
     pub fn GetDefaultPriPath(self: *@This(), packageFullName: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDefaultPriPath(@ptrCast(self), packageFullName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.IResourceLoaderStatics4";
@@ -225,14 +246,11 @@ pub const IResourceLoaderStatics4 = extern struct {
 };
 pub const ResourceLoader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -244,8 +262,7 @@ pub const ResourceLoader = extern struct {
     pub fn GetStringForUri(self: *@This(), uri: *Uri) core.HResult!?HSTRING {
         var this: ?*IResourceLoader2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IResourceLoader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IResourceLoader2.IID, @ptrCast(&this));
         return try this.?.GetStringForUri(uri);
     }
     pub fn init() core.HResult!*@This() {

@@ -1,15 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ILockScreenCallEndCallDeferral = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallEndCallDeferral";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -28,8 +31,11 @@ pub const ILockScreenCallEndCallDeferral = extern struct {
 };
 pub const ILockScreenCallEndRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -37,13 +43,13 @@ pub const ILockScreenCallEndRequestedEventArgs = extern struct {
     pub fn GetDeferral(self: *@This()) core.HResult!*LockScreenCallEndCallDeferral {
         var _r: *LockScreenCallEndCallDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallEndRequestedEventArgs";
@@ -64,45 +70,48 @@ pub const ILockScreenCallEndRequestedEventArgs = extern struct {
 };
 pub const ILockScreenCallUI = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Dismiss(self: *@This()) core.HResult!void {
         const _c = self.vtable.Dismiss(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEndRequested(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,LockScreenCallEndRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EndRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEndRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EndRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCallTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallTitle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCallTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallTitle(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallUI";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -127,14 +136,11 @@ pub const ILockScreenCallUI = extern struct {
 };
 pub const LockScreenCallEndCallDeferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -151,14 +157,11 @@ pub const LockScreenCallEndCallDeferral = extern struct {
 };
 pub const LockScreenCallEndRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -179,14 +182,11 @@ pub const LockScreenCallEndRequestedEventArgs = extern struct {
 };
 pub const LockScreenCallUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -249,8 +249,11 @@ pub const DtmfToneAudioPlayback = enum(i32) {
 };
 pub const IPhoneCall = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -258,175 +261,175 @@ pub const IPhoneCall = extern struct {
     pub fn addStatusChanged(self: *@This(), handler: *TypedEventHandler(PhoneCall,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAudioDeviceChanged(self: *@This(), handler: *TypedEventHandler(PhoneCall,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AudioDeviceChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAudioDeviceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AudioDeviceChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addIsMutedChanged(self: *@This(), handler: *TypedEventHandler(PhoneCall,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_IsMutedChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeIsMutedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_IsMutedChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCallId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsMuted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMuted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!PhoneCallStatus {
         var _r: PhoneCallStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAudioDevice(self: *@This()) core.HResult!PhoneCallAudioDevice {
         var _r: PhoneCallAudioDevice = undefined;
         const _c = self.vtable.get_AudioDevice(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPhoneCallInfo(self: *@This()) core.HResult!*PhoneCallInfo {
         var _r: *PhoneCallInfo = undefined;
         const _c = self.vtable.GetPhoneCallInfo(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPhoneCallInfoAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallInfo) {
         var _r: *IAsyncOperation(PhoneCallInfo) = undefined;
         const _c = self.vtable.GetPhoneCallInfoAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn End(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.End(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EndAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.EndAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendDtmfKey(self: *@This(), key: DtmfKey, dtmfToneAudioPlayback: DtmfToneAudioPlayback) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.SendDtmfKey(@ptrCast(self), key, dtmfToneAudioPlayback, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SendDtmfKeyAsync(self: *@This(), key: DtmfKey, dtmfToneAudioPlayback: DtmfToneAudioPlayback) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.SendDtmfKeyAsync(@ptrCast(self), key, dtmfToneAudioPlayback, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcceptIncoming(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.AcceptIncoming(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcceptIncomingAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.AcceptIncomingAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Hold(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.Hold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn HoldAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.HoldAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResumeFromHold(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.ResumeFromHold(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ResumeFromHoldAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.ResumeFromHoldAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Mute(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.Mute(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MuteAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.MuteAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Unmute(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.Unmute(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn UnmuteAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.UnmuteAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RejectIncoming(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.RejectIncoming(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RejectIncomingAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.RejectIncomingAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ChangeAudioDevice(self: *@This(), endpoint: PhoneCallAudioDevice) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.ChangeAudioDevice(@ptrCast(self), endpoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ChangeAudioDeviceAsync(self: *@This(), endpoint: PhoneCallAudioDevice) core.HResult!*IAsyncOperation(PhoneCallOperationStatus) {
         var _r: *IAsyncOperation(PhoneCallOperationStatus) = undefined;
         const _c = self.vtable.ChangeAudioDeviceAsync(@ptrCast(self), endpoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCall";
@@ -475,8 +478,11 @@ pub const IPhoneCall = extern struct {
 };
 pub const IPhoneCallBlockingStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -484,27 +490,27 @@ pub const IPhoneCallBlockingStatics = extern struct {
     pub fn getBlockUnknownNumbers(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BlockUnknownNumbers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBlockUnknownNumbers(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_BlockUnknownNumbers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBlockPrivateNumbers(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BlockPrivateNumbers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBlockPrivateNumbers(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_BlockPrivateNumbers(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetCallBlockingListAsync(self: *@This(), phoneNumberList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.SetCallBlockingListAsync(@ptrCast(self), phoneNumberList, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallBlockingStatics";
@@ -528,8 +534,11 @@ pub const IPhoneCallBlockingStatics = extern struct {
 };
 pub const IPhoneCallInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -537,37 +546,37 @@ pub const IPhoneCallInfo = extern struct {
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_LineId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHoldSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHoldSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCallDirection(self: *@This()) core.HResult!PhoneCallDirection {
         var _r: PhoneCallDirection = undefined;
         const _c = self.vtable.get_CallDirection(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallInfo";
@@ -592,15 +601,18 @@ pub const IPhoneCallInfo = extern struct {
 };
 pub const IPhoneCallManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowPhoneCallUI(self: *@This(), phoneNumber: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ShowPhoneCallUI(@ptrCast(self), phoneNumber, displayName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallManagerStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -619,8 +631,11 @@ pub const IPhoneCallManagerStatics = extern struct {
 };
 pub const IPhoneCallManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -628,33 +643,33 @@ pub const IPhoneCallManagerStatics2 = extern struct {
     pub fn addCallStateChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CallStateChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeCallStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_CallStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCallActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCallActive(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCallIncoming(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCallIncoming(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowPhoneCallSettingsUI(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowPhoneCallSettingsUI(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RequestStoreAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallStore) {
         var _r: *IAsyncOperation(PhoneCallStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallManagerStatics2";
@@ -679,8 +694,11 @@ pub const IPhoneCallManagerStatics2 = extern struct {
 };
 pub const IPhoneCallStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -688,7 +706,7 @@ pub const IPhoneCallStatics = extern struct {
     pub fn GetFromId(self: *@This(), callId: ?HSTRING) core.HResult!*PhoneCall {
         var _r: *PhoneCall = undefined;
         const _c = self.vtable.GetFromId(@ptrCast(self), callId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallStatics";
@@ -708,8 +726,11 @@ pub const IPhoneCallStatics = extern struct {
 };
 pub const IPhoneCallStore = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -717,19 +738,19 @@ pub const IPhoneCallStore = extern struct {
     pub fn IsEmergencyPhoneNumberAsync(self: *@This(), number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsEmergencyPhoneNumberAsync(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDefaultLineAsync(self: *@This()) core.HResult!*IAsyncOperation(Guid) {
         var _r: *IAsyncOperation(Guid) = undefined;
         const _c = self.vtable.GetDefaultLineAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestLineWatcher(self: *@This()) core.HResult!*PhoneLineWatcher {
         var _r: *PhoneLineWatcher = undefined;
         const _c = self.vtable.RequestLineWatcher(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallStore";
@@ -751,8 +772,11 @@ pub const IPhoneCallStore = extern struct {
 };
 pub const IPhoneCallVideoCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -760,7 +784,7 @@ pub const IPhoneCallVideoCapabilities = extern struct {
     pub fn getIsVideoCallingCapable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVideoCallingCapable(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallVideoCapabilities";
@@ -780,8 +804,11 @@ pub const IPhoneCallVideoCapabilities = extern struct {
 };
 pub const IPhoneCallVideoCapabilitiesManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -789,7 +816,7 @@ pub const IPhoneCallVideoCapabilitiesManagerStatics = extern struct {
     pub fn GetCapabilitiesAsync(self: *@This(), phoneNumber: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallVideoCapabilities) {
         var _r: *IAsyncOperation(PhoneCallVideoCapabilities) = undefined;
         const _c = self.vtable.GetCapabilitiesAsync(@ptrCast(self), phoneNumber, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallVideoCapabilitiesManagerStatics";
@@ -809,8 +836,11 @@ pub const IPhoneCallVideoCapabilitiesManagerStatics = extern struct {
 };
 pub const IPhoneCallsResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -818,13 +848,13 @@ pub const IPhoneCallsResult = extern struct {
     pub fn getOperationStatus(self: *@This()) core.HResult!PhoneLineOperationStatus {
         var _r: PhoneLineOperationStatus = undefined;
         const _c = self.vtable.get_OperationStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllActivePhoneCalls(self: *@This()) core.HResult!*IVectorView(PhoneCall) {
         var _r: *IVectorView(PhoneCall) = undefined;
         const _c = self.vtable.get_AllActivePhoneCalls(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallsResult";
@@ -845,8 +875,11 @@ pub const IPhoneCallsResult = extern struct {
 };
 pub const IPhoneDialOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -854,62 +887,62 @@ pub const IPhoneDialOptions = extern struct {
     pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Number(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Number(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContact(self: *@This()) core.HResult!*Contact {
         var _r: *Contact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContact(self: *@This(), value: *Contact) core.HResult!void {
         const _c = self.vtable.put_Contact(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactPhone(self: *@This()) core.HResult!*ContactPhone {
         var _r: *ContactPhone = undefined;
         const _c = self.vtable.get_ContactPhone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactPhone(self: *@This(), value: *ContactPhone) core.HResult!void {
         const _c = self.vtable.put_ContactPhone(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMedia(self: *@This()) core.HResult!PhoneCallMedia {
         var _r: PhoneCallMedia = undefined;
         const _c = self.vtable.get_Media(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMedia(self: *@This(), value: PhoneCallMedia) core.HResult!void {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAudioEndpoint(self: *@This()) core.HResult!PhoneAudioRoutingEndpoint {
         var _r: PhoneAudioRoutingEndpoint = undefined;
         const _c = self.vtable.get_AudioEndpoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAudioEndpoint(self: *@This(), value: PhoneAudioRoutingEndpoint) core.HResult!void {
         const _c = self.vtable.put_AudioEndpoint(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneDialOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -939,8 +972,11 @@ pub const IPhoneDialOptions = extern struct {
 };
 pub const IPhoneLine = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -948,98 +984,98 @@ pub const IPhoneLine = extern struct {
     pub fn addLineChanged(self: *@This(), handler: *TypedEventHandler(PhoneLine,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LineChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLineChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LineChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_DisplayColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkState(self: *@This()) core.HResult!PhoneNetworkState {
         var _r: PhoneNetworkState = undefined;
         const _c = self.vtable.get_NetworkState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVoicemail(self: *@This()) core.HResult!*PhoneVoicemail {
         var _r: *PhoneVoicemail = undefined;
         const _c = self.vtable.get_Voicemail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNetworkName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCellularDetails(self: *@This()) core.HResult!*PhoneLineCellularDetails {
         var _r: *PhoneLineCellularDetails = undefined;
         const _c = self.vtable.get_CellularDetails(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransport(self: *@This()) core.HResult!PhoneLineTransport {
         var _r: PhoneLineTransport = undefined;
         const _c = self.vtable.get_Transport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanDial(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanDial(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSupportsTile(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SupportsTile(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getVideoCallingCapabilities(self: *@This()) core.HResult!*PhoneCallVideoCapabilities {
         var _r: *PhoneCallVideoCapabilities = undefined;
         const _c = self.vtable.get_VideoCallingCapabilities(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLineConfiguration(self: *@This()) core.HResult!*PhoneLineConfiguration {
         var _r: *PhoneLineConfiguration = undefined;
         const _c = self.vtable.get_LineConfiguration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsImmediateDialNumberAsync(self: *@This(), number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsImmediateDialNumberAsync(@ptrCast(self), number, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Dial(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Dial(@ptrCast(self), number, displayName);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn DialWithOptions(self: *@This(), options: *PhoneDialOptions) core.HResult!void {
         const _c = self.vtable.DialWithOptions(@ptrCast(self), options);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLine";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1074,20 +1110,23 @@ pub const IPhoneLine = extern struct {
 };
 pub const IPhoneLine2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn EnableTextReply(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.EnableTextReply(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransportDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLine2";
@@ -1108,8 +1147,11 @@ pub const IPhoneLine2 = extern struct {
 };
 pub const IPhoneLine3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1117,25 +1159,25 @@ pub const IPhoneLine3 = extern struct {
     pub fn DialWithResult(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*PhoneLineDialResult {
         var _r: *PhoneLineDialResult = undefined;
         const _c = self.vtable.DialWithResult(@ptrCast(self), number, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DialWithResultAsync(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(PhoneLineDialResult) {
         var _r: *IAsyncOperation(PhoneLineDialResult) = undefined;
         const _c = self.vtable.DialWithResultAsync(@ptrCast(self), number, displayName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAllActivePhoneCalls(self: *@This()) core.HResult!*PhoneCallsResult {
         var _r: *PhoneCallsResult = undefined;
         const _c = self.vtable.GetAllActivePhoneCalls(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAllActivePhoneCallsAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallsResult) {
         var _r: *IAsyncOperation(PhoneCallsResult) = undefined;
         const _c = self.vtable.GetAllActivePhoneCallsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLine3";
@@ -1158,8 +1200,11 @@ pub const IPhoneLine3 = extern struct {
 };
 pub const IPhoneLineCellularDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1167,31 +1212,31 @@ pub const IPhoneLineCellularDetails = extern struct {
     pub fn getSimState(self: *@This()) core.HResult!PhoneSimState {
         var _r: PhoneSimState = undefined;
         const _c = self.vtable.get_SimState(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSimSlotIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SimSlotIndex(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsModemOn(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsModemOn(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRegistrationRejectCode(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RegistrationRejectCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetNetworkOperatorDisplayText(self: *@This(), location: PhoneLineNetworkOperatorDisplayTextLocation) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNetworkOperatorDisplayText(@ptrCast(self), location, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineCellularDetails";
@@ -1215,8 +1260,11 @@ pub const IPhoneLineCellularDetails = extern struct {
 };
 pub const IPhoneLineConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1224,13 +1272,13 @@ pub const IPhoneLineConfiguration = extern struct {
     pub fn getIsVideoCallingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVideoCallingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_ExtendedProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineConfiguration";
@@ -1251,8 +1299,11 @@ pub const IPhoneLineConfiguration = extern struct {
 };
 pub const IPhoneLineDialResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1260,13 +1311,13 @@ pub const IPhoneLineDialResult = extern struct {
     pub fn getDialCallStatus(self: *@This()) core.HResult!PhoneCallOperationStatus {
         var _r: PhoneCallOperationStatus = undefined;
         const _c = self.vtable.get_DialCallStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDialedCall(self: *@This()) core.HResult!*PhoneCall {
         var _r: *PhoneCall = undefined;
         const _c = self.vtable.get_DialedCall(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineDialResult";
@@ -1287,8 +1338,11 @@ pub const IPhoneLineDialResult = extern struct {
 };
 pub const IPhoneLineStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1296,7 +1350,7 @@ pub const IPhoneLineStatics = extern struct {
     pub fn FromIdAsync(self: *@This(), lineId: *Guid) core.HResult!*IAsyncOperation(PhoneLine) {
         var _r: *IAsyncOperation(PhoneLine) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), lineId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineStatics";
@@ -1316,8 +1370,11 @@ pub const IPhoneLineStatics = extern struct {
 };
 pub const IPhoneLineTransportDevice = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1325,53 +1382,53 @@ pub const IPhoneLineTransportDevice = extern struct {
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTransport(self: *@This()) core.HResult!PhoneLineTransport {
         var _r: PhoneLineTransport = undefined;
         const _c = self.vtable.get_Transport(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var _r: *IAsyncOperation(DeviceAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RegisterApp(self: *@This()) core.HResult!void {
         const _c = self.vtable.RegisterApp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RegisterAppForUser(self: *@This(), user: *User) core.HResult!void {
         const _c = self.vtable.RegisterAppForUser(@ptrCast(self), user);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UnregisterApp(self: *@This()) core.HResult!void {
         const _c = self.vtable.UnregisterApp(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UnregisterAppForUser(self: *@This(), user: *User) core.HResult!void {
         const _c = self.vtable.UnregisterAppForUser(@ptrCast(self), user);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IsRegistered(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsRegistered(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Connect(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Connect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ConnectAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineTransportDevice";
@@ -1400,8 +1457,11 @@ pub const IPhoneLineTransportDevice = extern struct {
 };
 pub const IPhoneLineTransportDevice2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1409,34 +1469,34 @@ pub const IPhoneLineTransportDevice2 = extern struct {
     pub fn getAudioRoutingStatus(self: *@This()) core.HResult!TransportDeviceAudioRoutingStatus {
         var _r: TransportDeviceAudioRoutingStatus = undefined;
         const _c = self.vtable.get_AudioRoutingStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addAudioRoutingStatusChanged(self: *@This(), handler: *TypedEventHandler(PhoneLineTransportDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AudioRoutingStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAudioRoutingStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AudioRoutingStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInBandRingingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InBandRingingEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addInBandRingingEnabledChanged(self: *@This(), handler: *TypedEventHandler(PhoneLineTransportDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_InBandRingingEnabledChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeInBandRingingEnabledChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_InBandRingingEnabledChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineTransportDevice2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1460,8 +1520,11 @@ pub const IPhoneLineTransportDevice2 = extern struct {
 };
 pub const IPhoneLineTransportDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1469,19 +1532,19 @@ pub const IPhoneLineTransportDeviceStatics = extern struct {
     pub fn FromId(self: *@This(), id: ?HSTRING) core.HResult!*PhoneLineTransportDevice {
         var _r: *PhoneLineTransportDevice = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), id, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorWithTransport(self: *@This(), transport: PhoneLineTransport) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithTransport(@ptrCast(self), transport, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineTransportDeviceStatics";
@@ -1503,74 +1566,77 @@ pub const IPhoneLineTransportDeviceStatics = extern struct {
 };
 pub const IPhoneLineWatcher = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         const _c = self.vtable.Stop(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLineAdded(self: *@This(), handler: *TypedEventHandler(PhoneLineWatcher,PhoneLineWatcherEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LineAdded(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLineAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LineAdded(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLineRemoved(self: *@This(), handler: *TypedEventHandler(PhoneLineWatcher,PhoneLineWatcherEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LineRemoved(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLineRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LineRemoved(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addLineUpdated(self: *@This(), handler: *TypedEventHandler(PhoneLineWatcher,PhoneLineWatcherEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LineUpdated(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeLineUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_LineUpdated(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(PhoneLineWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEnumerationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EnumerationCompleted(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addStopped(self: *@This(), handler: *TypedEventHandler(PhoneLineWatcher,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Stopped(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStopped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Stopped(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStatus(self: *@This()) core.HResult!PhoneLineWatcherStatus {
         var _r: PhoneLineWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineWatcher";
@@ -1602,8 +1668,11 @@ pub const IPhoneLineWatcher = extern struct {
 };
 pub const IPhoneLineWatcherEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1611,7 +1680,7 @@ pub const IPhoneLineWatcherEventArgs = extern struct {
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_LineId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneLineWatcherEventArgs";
@@ -1631,8 +1700,11 @@ pub const IPhoneLineWatcherEventArgs = extern struct {
 };
 pub const IPhoneVoicemail = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1640,25 +1712,25 @@ pub const IPhoneVoicemail = extern struct {
     pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Number(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMessageCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MessageCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getType(self: *@This()) core.HResult!PhoneVoicemailType {
         var _r: PhoneVoicemailType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DialVoicemailAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DialVoicemailAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneVoicemail";
@@ -1686,14 +1758,11 @@ pub const PhoneAudioRoutingEndpoint = enum(i32) {
 };
 pub const PhoneCall = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1836,14 +1905,11 @@ pub const PhoneCallAudioDevice = enum(i32) {
 };
 pub const PhoneCallBlocking = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1879,14 +1945,11 @@ pub const PhoneCallDirection = enum(i32) {
 };
 pub const PhoneCallInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1923,14 +1986,11 @@ pub const PhoneCallInfo = extern struct {
 };
 pub const PhoneCallManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1990,14 +2050,11 @@ pub const PhoneCallStatus = enum(i32) {
 };
 pub const PhoneCallStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2022,14 +2079,11 @@ pub const PhoneCallStore = extern struct {
 };
 pub const PhoneCallVideoCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2046,14 +2100,11 @@ pub const PhoneCallVideoCapabilities = extern struct {
 };
 pub const PhoneCallVideoCapabilitiesManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2068,14 +2119,11 @@ pub const PhoneCallVideoCapabilitiesManager = extern struct {
 };
 pub const PhoneCallsResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2096,14 +2144,11 @@ pub const PhoneCallsResult = extern struct {
 };
 pub const PhoneDialOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2169,14 +2214,11 @@ pub const PhoneDialOptions = extern struct {
 };
 pub const PhoneLine = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2252,43 +2294,37 @@ pub const PhoneLine = extern struct {
     pub fn EnableTextReply(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPhoneLine2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine2.IID, @ptrCast(&this));
         return try this.?.EnableTextReply(value);
     }
     pub fn getTransportDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPhoneLine2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine2.IID, @ptrCast(&this));
         return try this.?.getTransportDeviceId();
     }
     pub fn DialWithResult(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*PhoneLineDialResult {
         var this: ?*IPhoneLine3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         return try this.?.DialWithResult(number, displayName);
     }
     pub fn DialWithResultAsync(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(PhoneLineDialResult) {
         var this: ?*IPhoneLine3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         return try this.?.DialWithResultAsync(number, displayName);
     }
     pub fn GetAllActivePhoneCalls(self: *@This()) core.HResult!*PhoneCallsResult {
         var this: ?*IPhoneLine3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         return try this.?.GetAllActivePhoneCalls();
     }
     pub fn GetAllActivePhoneCallsAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallsResult) {
         var this: ?*IPhoneLine3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         return try this.?.GetAllActivePhoneCallsAsync();
     }
     pub fn FromIdAsync(lineId: *Guid) core.HResult!*IAsyncOperation(PhoneLine) {
@@ -2304,14 +2340,11 @@ pub const PhoneLine = extern struct {
 };
 pub const PhoneLineCellularDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2344,14 +2377,11 @@ pub const PhoneLineCellularDetails = extern struct {
 };
 pub const PhoneLineConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2372,14 +2402,11 @@ pub const PhoneLineConfiguration = extern struct {
 };
 pub const PhoneLineDialResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2418,14 +2445,11 @@ pub const PhoneLineTransport = enum(i32) {
 };
 pub const PhoneLineTransportDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2473,43 +2497,37 @@ pub const PhoneLineTransportDevice = extern struct {
     pub fn getAudioRoutingStatus(self: *@This()) core.HResult!TransportDeviceAudioRoutingStatus {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         return try this.?.getAudioRoutingStatus();
     }
     pub fn addAudioRoutingStatusChanged(self: *@This(), handler: *TypedEventHandler(PhoneLineTransportDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         return try this.?.addAudioRoutingStatusChanged(handler);
     }
     pub fn removeAudioRoutingStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         return try this.?.removeAudioRoutingStatusChanged(token);
     }
     pub fn getInBandRingingEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         return try this.?.getInBandRingingEnabled();
     }
     pub fn addInBandRingingEnabledChanged(self: *@This(), handler: *TypedEventHandler(PhoneLineTransportDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         return try this.?.addInBandRingingEnabledChanged(handler);
     }
     pub fn removeInBandRingingEnabledChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         return try this.?.removeInBandRingingEnabledChanged(token);
     }
     pub fn FromId(id: ?HSTRING) core.HResult!*PhoneLineTransportDevice {
@@ -2533,14 +2551,11 @@ pub const PhoneLineTransportDevice = extern struct {
 };
 pub const PhoneLineWatcher = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2605,14 +2620,11 @@ pub const PhoneLineWatcher = extern struct {
 };
 pub const PhoneLineWatcherEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2655,14 +2667,11 @@ pub const PhoneSimState = enum(i32) {
 };
 pub const PhoneVoicemail = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2701,14 +2710,11 @@ pub const TransportDeviceAudioRoutingStatus = enum(i32) {
 };
 pub const AcceptedVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2775,14 +2781,11 @@ pub const AcceptedVoipPhoneCallOptions = extern struct {
 };
 pub const AppInitiatedVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2849,14 +2852,11 @@ pub const AppInitiatedVoipPhoneCallOptions = extern struct {
 };
 pub const CallAnswerEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2868,8 +2868,7 @@ pub const CallAnswerEventArgs = extern struct {
     pub fn getSourceDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICallAnswerEventArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICallAnswerEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICallAnswerEventArgs2.IID, @ptrCast(&this));
         return try this.?.getSourceDeviceId();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.CallAnswerEventArgs";
@@ -2880,14 +2879,11 @@ pub const CallAnswerEventArgs = extern struct {
 };
 pub const CallRejectEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2904,14 +2900,11 @@ pub const CallRejectEventArgs = extern struct {
 };
 pub const CallStateChangeEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2928,8 +2921,11 @@ pub const CallStateChangeEventArgs = extern struct {
 };
 pub const IAcceptedVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2937,57 +2933,57 @@ pub const IAcceptedVoipPhoneCallOptions = extern struct {
     pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMedia(self: *@This()) core.HResult!VoipPhoneCallMedia {
         var _r: VoipPhoneCallMedia = undefined;
         const _c = self.vtable.get_Media(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMedia(self: *@This(), value: VoipPhoneCallMedia) core.HResult!void {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IAcceptedVoipPhoneCallOptions";
@@ -3017,8 +3013,11 @@ pub const IAcceptedVoipPhoneCallOptions = extern struct {
 };
 pub const IAcceptedVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3026,7 +3025,7 @@ pub const IAcceptedVoipPhoneCallOptionsFactory = extern struct {
     pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*AcceptedVoipPhoneCallOptions {
         var _r: *AcceptedVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IAcceptedVoipPhoneCallOptionsFactory";
@@ -3046,8 +3045,11 @@ pub const IAcceptedVoipPhoneCallOptionsFactory = extern struct {
 };
 pub const IAppInitiatedVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3055,57 +3057,57 @@ pub const IAppInitiatedVoipPhoneCallOptions = extern struct {
     pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMedia(self: *@This()) core.HResult!VoipPhoneCallMedia {
         var _r: VoipPhoneCallMedia = undefined;
         const _c = self.vtable.get_Media(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMedia(self: *@This(), value: VoipPhoneCallMedia) core.HResult!void {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IAppInitiatedVoipPhoneCallOptions";
@@ -3135,8 +3137,11 @@ pub const IAppInitiatedVoipPhoneCallOptions = extern struct {
 };
 pub const IAppInitiatedVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3144,7 +3149,7 @@ pub const IAppInitiatedVoipPhoneCallOptionsFactory = extern struct {
     pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*AppInitiatedVoipPhoneCallOptions {
         var _r: *AppInitiatedVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IAppInitiatedVoipPhoneCallOptionsFactory";
@@ -3164,8 +3169,11 @@ pub const IAppInitiatedVoipPhoneCallOptionsFactory = extern struct {
 };
 pub const ICallAnswerEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3173,7 +3181,7 @@ pub const ICallAnswerEventArgs = extern struct {
     pub fn getAcceptedMedia(self: *@This()) core.HResult!VoipPhoneCallMedia {
         var _r: VoipPhoneCallMedia = undefined;
         const _c = self.vtable.get_AcceptedMedia(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ICallAnswerEventArgs";
@@ -3193,8 +3201,11 @@ pub const ICallAnswerEventArgs = extern struct {
 };
 pub const ICallAnswerEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3202,7 +3213,7 @@ pub const ICallAnswerEventArgs2 = extern struct {
     pub fn getSourceDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDeviceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ICallAnswerEventArgs2";
@@ -3222,8 +3233,11 @@ pub const ICallAnswerEventArgs2 = extern struct {
 };
 pub const ICallRejectEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3231,7 +3245,7 @@ pub const ICallRejectEventArgs = extern struct {
     pub fn getRejectReason(self: *@This()) core.HResult!VoipPhoneCallRejectReason {
         var _r: VoipPhoneCallRejectReason = undefined;
         const _c = self.vtable.get_RejectReason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ICallRejectEventArgs";
@@ -3251,8 +3265,11 @@ pub const ICallRejectEventArgs = extern struct {
 };
 pub const ICallStateChangeEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3260,7 +3277,7 @@ pub const ICallStateChangeEventArgs = extern struct {
     pub fn getState(self: *@This()) core.HResult!VoipPhoneCallState {
         var _r: VoipPhoneCallState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ICallStateChangeEventArgs";
@@ -3280,8 +3297,11 @@ pub const ICallStateChangeEventArgs = extern struct {
 };
 pub const IIncomingVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3289,117 +3309,117 @@ pub const IIncomingVoipPhoneCallOptions = extern struct {
     pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactImage(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ContactImage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactImage(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_ContactImage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBrandingImage(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_BrandingImage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBrandingImage(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_BrandingImage(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCallDetails(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallDetails(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCallDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallDetails(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRingtone(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Ringtone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRingtone(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Ringtone(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMedia(self: *@This()) core.HResult!VoipPhoneCallMedia {
         var _r: VoipPhoneCallMedia = undefined;
         const _c = self.vtable.get_Media(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMedia(self: *@This(), value: VoipPhoneCallMedia) core.HResult!void {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRingTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RingTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRingTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_RingTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactRemoteId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactRemoteId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactRemoteId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IIncomingVoipPhoneCallOptions";
@@ -3441,8 +3461,11 @@ pub const IIncomingVoipPhoneCallOptions = extern struct {
 };
 pub const IIncomingVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3450,7 +3473,7 @@ pub const IIncomingVoipPhoneCallOptionsFactory = extern struct {
     pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*IncomingVoipPhoneCallOptions {
         var _r: *IncomingVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IIncomingVoipPhoneCallOptionsFactory";
@@ -3470,8 +3493,11 @@ pub const IIncomingVoipPhoneCallOptionsFactory = extern struct {
 };
 pub const IMuteChangeEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3479,7 +3505,7 @@ pub const IMuteChangeEventArgs = extern struct {
     pub fn getMuted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Muted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IMuteChangeEventArgs";
@@ -3499,8 +3525,11 @@ pub const IMuteChangeEventArgs = extern struct {
 };
 pub const IOutgoingVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3508,47 +3537,47 @@ pub const IOutgoingVoipPhoneCallOptions = extern struct {
     pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMedia(self: *@This()) core.HResult!VoipPhoneCallMedia {
         var _r: VoipPhoneCallMedia = undefined;
         const _c = self.vtable.get_Media(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMedia(self: *@This(), value: VoipPhoneCallMedia) core.HResult!void {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IOutgoingVoipPhoneCallOptions";
@@ -3576,8 +3605,11 @@ pub const IOutgoingVoipPhoneCallOptions = extern struct {
 };
 pub const IOutgoingVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3585,7 +3617,7 @@ pub const IOutgoingVoipPhoneCallOptionsFactory = extern struct {
     pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*OutgoingVoipPhoneCallOptions {
         var _r: *OutgoingVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IOutgoingVoipPhoneCallOptionsFactory";
@@ -3605,8 +3637,11 @@ pub const IOutgoingVoipPhoneCallOptionsFactory = extern struct {
 };
 pub const IVoipCallCoordinator = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3614,58 +3649,58 @@ pub const IVoipCallCoordinator = extern struct {
     pub fn ReserveCallResourcesAsync(self: *@This(), taskEntryPoint: ?HSTRING) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         var _r: *IAsyncOperation(VoipPhoneCallResourceReservationStatus) = undefined;
         const _c = self.vtable.ReserveCallResourcesAsync(@ptrCast(self), taskEntryPoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addMuteStateChanged(self: *@This(), muteChangeHandler: *TypedEventHandler(VoipCallCoordinator,MuteChangeEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MuteStateChanged(@ptrCast(self), muteChangeHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeMuteStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_MuteStateChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RequestNewIncomingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewIncomingCall(@ptrCast(self), context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestNewOutgoingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewOutgoingCall(@ptrCast(self), context, contactName, serviceName, media, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn NotifyMuted(self: *@This()) core.HResult!void {
         const _c = self.vtable.NotifyMuted(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn NotifyUnmuted(self: *@This()) core.HResult!void {
         const _c = self.vtable.NotifyUnmuted(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RequestOutgoingUpgradeToVideoCall(self: *@This(), callUpgradeGuid: *Guid, context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestOutgoingUpgradeToVideoCall(@ptrCast(self), callUpgradeGuid, context, contactName, serviceName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestIncomingUpgradeToVideoCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestIncomingUpgradeToVideoCall(@ptrCast(self), context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, ringTimeout, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TerminateCellularCall(self: *@This(), callUpgradeGuid: *Guid) core.HResult!void {
         const _c = self.vtable.TerminateCellularCall(@ptrCast(self), callUpgradeGuid);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CancelUpgrade(self: *@This(), callUpgradeGuid: *Guid) core.HResult!void {
         const _c = self.vtable.CancelUpgrade(@ptrCast(self), callUpgradeGuid);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipCallCoordinator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3694,8 +3729,11 @@ pub const IVoipCallCoordinator = extern struct {
 };
 pub const IVoipCallCoordinator2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3703,7 +3741,7 @@ pub const IVoipCallCoordinator2 = extern struct {
     pub fn SetupNewAcceptedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.SetupNewAcceptedCall(@ptrCast(self), context, contactName, contactNumber, serviceName, media, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipCallCoordinator2";
@@ -3723,8 +3761,11 @@ pub const IVoipCallCoordinator2 = extern struct {
 };
 pub const IVoipCallCoordinator3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3732,13 +3773,13 @@ pub const IVoipCallCoordinator3 = extern struct {
     pub fn RequestNewAppInitiatedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewAppInitiatedCall(@ptrCast(self), context, contactName, contactNumber, serviceName, media, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestNewIncomingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: ?HSTRING) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewIncomingCall(@ptrCast(self), context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipCallCoordinator3";
@@ -3759,8 +3800,11 @@ pub const IVoipCallCoordinator3 = extern struct {
 };
 pub const IVoipCallCoordinator4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3768,7 +3812,7 @@ pub const IVoipCallCoordinator4 = extern struct {
     pub fn ReserveCallResourcesAsync(self: *@This()) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         var _r: *IAsyncOperation(VoipPhoneCallResourceReservationStatus) = undefined;
         const _c = self.vtable.ReserveCallResourcesAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipCallCoordinator4";
@@ -3788,8 +3832,11 @@ pub const IVoipCallCoordinator4 = extern struct {
 };
 pub const IVoipCallCoordinator5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3797,25 +3844,25 @@ pub const IVoipCallCoordinator5 = extern struct {
     pub fn RequestNewIncomingCallWithOptions(self: *@This(), callOptions: *IncomingVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewIncomingCallWithOptions(@ptrCast(self), callOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestNewOutgoingCallWithOptions(self: *@This(), callOptions: *OutgoingVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewOutgoingCallWithOptions(@ptrCast(self), callOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetupNewAcceptedCallWithOptions(self: *@This(), callOptions: *AcceptedVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.SetupNewAcceptedCallWithOptions(@ptrCast(self), callOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestNewAppInitiatedCallWithOptions(self: *@This(), callOptions: *AppInitiatedVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewAppInitiatedCallWithOptions(@ptrCast(self), callOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipCallCoordinator5";
@@ -3838,8 +3885,11 @@ pub const IVoipCallCoordinator5 = extern struct {
 };
 pub const IVoipCallCoordinatorStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3847,7 +3897,7 @@ pub const IVoipCallCoordinatorStatics = extern struct {
     pub fn GetDefault(self: *@This()) core.HResult!*VoipCallCoordinator {
         var _r: *VoipCallCoordinator = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipCallCoordinatorStatics";
@@ -3867,8 +3917,11 @@ pub const IVoipCallCoordinatorStatics = extern struct {
 };
 pub const IVoipCallCoordinatorStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3876,13 +3929,13 @@ pub const IVoipCallCoordinatorStatics2 = extern struct {
     pub fn IsCallControlDeviceKindSupportedForAssociation(self: *@This(), kind: VoipCallControlDeviceKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCallControlDeviceKindSupportedForAssociation(@ptrCast(self), kind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeviceSelectorForCallControl(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForCallControl(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipCallCoordinatorStatics2";
@@ -3903,8 +3956,11 @@ pub const IVoipCallCoordinatorStatics2 = extern struct {
 };
 pub const IVoipPhoneCall = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3912,98 +3968,98 @@ pub const IVoipPhoneCall = extern struct {
     pub fn addEndRequested(self: *@This(), handler: *TypedEventHandler(VoipPhoneCall,CallStateChangeEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EndRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEndRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EndRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addHoldRequested(self: *@This(), handler: *TypedEventHandler(VoipPhoneCall,CallStateChangeEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_HoldRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeHoldRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_HoldRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addResumeRequested(self: *@This(), handler: *TypedEventHandler(VoipPhoneCall,CallStateChangeEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ResumeRequested(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeResumeRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ResumeRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addAnswerRequested(self: *@This(), acceptHandler: *TypedEventHandler(VoipPhoneCall,CallAnswerEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AnswerRequested(@ptrCast(self), acceptHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeAnswerRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_AnswerRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addRejectRequested(self: *@This(), rejectHandler: *TypedEventHandler(VoipPhoneCall,CallRejectEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RejectRequested(@ptrCast(self), rejectHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRejectRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RejectRequested(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn NotifyCallHeld(self: *@This()) core.HResult!void {
         const _c = self.vtable.NotifyCallHeld(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn NotifyCallActive(self: *@This()) core.HResult!void {
         const _c = self.vtable.NotifyCallActive(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn NotifyCallEnded(self: *@This()) core.HResult!void {
         const _c = self.vtable.NotifyCallEnded(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStartTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_StartTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCallMedia(self: *@This()) core.HResult!VoipPhoneCallMedia {
         var _r: VoipPhoneCallMedia = undefined;
         const _c = self.vtable.get_CallMedia(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCallMedia(self: *@This(), value: VoipPhoneCallMedia) core.HResult!void {
         const _c = self.vtable.put_CallMedia(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn NotifyCallReady(self: *@This()) core.HResult!void {
         const _c = self.vtable.NotifyCallReady(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipPhoneCall";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4041,15 +4097,18 @@ pub const IVoipPhoneCall = extern struct {
 };
 pub const IVoipPhoneCall2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryShowAppUI(self: *@This()) core.HResult!void {
         const _c = self.vtable.TryShowAppUI(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipPhoneCall2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4068,15 +4127,18 @@ pub const IVoipPhoneCall2 = extern struct {
 };
 pub const IVoipPhoneCall3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn NotifyCallAccepted(self: *@This(), media: VoipPhoneCallMedia) core.HResult!void {
         const _c = self.vtable.NotifyCallAccepted(@ptrCast(self), media);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipPhoneCall3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4095,8 +4157,11 @@ pub const IVoipPhoneCall3 = extern struct {
 };
 pub const IVoipPhoneCall4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4104,29 +4169,29 @@ pub const IVoipPhoneCall4 = extern struct {
     pub fn getIsUsingAssociatedDevicesList(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUsingAssociatedDevicesList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn NotifyCallActive(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.NotifyCallActive(@ptrCast(self), associatedDeviceIds);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddAssociatedCallControlDevice(@ptrCast(self), deviceId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveAssociatedCallControlDevice(@ptrCast(self), deviceId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetAssociatedCallControlDevices(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.SetAssociatedCallControlDevices(@ptrCast(self), associatedDeviceIds);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetAssociatedCallControlDevices(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetAssociatedCallControlDevices(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IVoipPhoneCall4";
@@ -4151,14 +4216,11 @@ pub const IVoipPhoneCall4 = extern struct {
 };
 pub const IncomingVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4273,14 +4335,11 @@ pub const IncomingVoipPhoneCallOptions = extern struct {
 };
 pub const MuteChangeEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4297,14 +4356,11 @@ pub const MuteChangeEventArgs = extern struct {
 };
 pub const OutgoingVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4367,14 +4423,11 @@ pub const VoipCallControlDeviceKind = enum(i32) {
 };
 pub const VoipCallCoordinator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4426,57 +4479,49 @@ pub const VoipCallCoordinator = extern struct {
     pub fn SetupNewAcceptedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator2.IID, @ptrCast(&this));
         return try this.?.SetupNewAcceptedCall(context, contactName, contactNumber, serviceName, media);
     }
     pub fn RequestNewAppInitiatedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         return try this.?.RequestNewAppInitiatedCall(context, contactName, contactNumber, serviceName, media);
     }
     pub fn RequestNewIncomingCallWithContactRemoteId(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: ?HSTRING) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         return try this.?.RequestNewIncomingCallWithContactRemoteId(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId);
     }
     pub fn ReserveCallResourcesAsync(self: *@This()) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         var this: ?*IVoipCallCoordinator4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator4.IID, @ptrCast(&this));
         return try this.?.ReserveCallResourcesAsync();
     }
     pub fn RequestNewIncomingCallWithOptions(self: *@This(), callOptions: *IncomingVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         return try this.?.RequestNewIncomingCallWithOptions(callOptions);
     }
     pub fn RequestNewOutgoingCallWithOptions(self: *@This(), callOptions: *OutgoingVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         return try this.?.RequestNewOutgoingCallWithOptions(callOptions);
     }
     pub fn SetupNewAcceptedCallWithOptions(self: *@This(), callOptions: *AcceptedVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         return try this.?.SetupNewAcceptedCallWithOptions(callOptions);
     }
     pub fn RequestNewAppInitiatedCallWithOptions(self: *@This(), callOptions: *AppInitiatedVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         return try this.?.RequestNewAppInitiatedCallWithOptions(callOptions);
     }
     pub fn GetDefault() core.HResult!*VoipCallCoordinator {
@@ -4501,14 +4546,11 @@ pub const VoipCallCoordinator = extern struct {
 };
 pub const VoipPhoneCall = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4596,57 +4638,49 @@ pub const VoipPhoneCall = extern struct {
     pub fn TryShowAppUI(self: *@This()) core.HResult!void {
         var this: ?*IVoipPhoneCall2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall2.IID, @ptrCast(&this));
         return try this.?.TryShowAppUI();
     }
     pub fn NotifyCallAccepted(self: *@This(), media: VoipPhoneCallMedia) core.HResult!void {
         var this: ?*IVoipPhoneCall3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall3.IID, @ptrCast(&this));
         return try this.?.NotifyCallAccepted(media);
     }
     pub fn getIsUsingAssociatedDevicesList(self: *@This()) core.HResult!bool {
         var this: ?*IVoipPhoneCall4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         return try this.?.getIsUsingAssociatedDevicesList();
     }
     pub fn NotifyCallActiveWithAssociatedDeviceIds(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         return try this.?.NotifyCallActiveWithAssociatedDeviceIds(associatedDeviceIds);
     }
     pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         return try this.?.AddAssociatedCallControlDevice(deviceId);
     }
     pub fn RemoveAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         return try this.?.RemoveAssociatedCallControlDevice(deviceId);
     }
     pub fn SetAssociatedCallControlDevices(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         return try this.?.SetAssociatedCallControlDevices(associatedDeviceIds);
     }
     pub fn GetAssociatedCallControlDevices(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*IVoipPhoneCall4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         return try this.?.GetAssociatedCallControlDevices();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.VoipPhoneCall";
@@ -4680,8 +4714,11 @@ pub const VoipPhoneCallState = enum(i32) {
 };
 pub const IPhoneCallHistoryEntry = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4689,174 +4726,174 @@ pub const IPhoneCallHistoryEntry = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAddress(self: *@This()) core.HResult!*PhoneCallHistoryEntryAddress {
         var _r: *PhoneCallHistoryEntryAddress = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAddress(self: *@This(), value: *PhoneCallHistoryEntryAddress) core.HResult!void {
         const _c = self.vtable.put_Address(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_Duration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsCallerIdBlocked(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCallerIdBlocked(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCallerIdBlocked(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCallerIdBlocked(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsEmergency(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEmergency(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEmergency(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEmergency(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsIncoming(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsIncoming(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsIncoming(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsIncoming(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsMissed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMissed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsMissed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsMissed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsRinging(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRinging(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsRinging(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsRinging(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsSeen(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSeen(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsSeen(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsSeen(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsSuppressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuppressed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsSuppressed(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsSuppressed(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsVoicemail(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVoicemail(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsVoicemail(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsVoicemail(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryMedia {
         var _r: PhoneCallHistoryEntryMedia = undefined;
         const _c = self.vtable.get_Media(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMedia(self: *@This(), value: PhoneCallHistoryEntryMedia) core.HResult!void {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOtherAppReadAccess(self: *@This()) core.HResult!PhoneCallHistoryEntryOtherAppReadAccess {
         var _r: PhoneCallHistoryEntryOtherAppReadAccess = undefined;
         const _c = self.vtable.get_OtherAppReadAccess(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOtherAppReadAccess(self: *@This(), value: PhoneCallHistoryEntryOtherAppReadAccess) core.HResult!void {
         const _c = self.vtable.put_OtherAppReadAccess(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSourceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SourceId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSourceIdKind(self: *@This()) core.HResult!PhoneCallHistorySourceIdKind {
         var _r: PhoneCallHistorySourceIdKind = undefined;
         const _c = self.vtable.get_SourceIdKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSourceIdKind(self: *@This(), value: PhoneCallHistorySourceIdKind) core.HResult!void {
         const _c = self.vtable.put_SourceIdKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStartTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_StartTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntry";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4908,8 +4945,11 @@ pub const IPhoneCallHistoryEntry = extern struct {
 };
 pub const IPhoneCallHistoryEntryAddress = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4917,42 +4957,42 @@ pub const IPhoneCallHistoryEntryAddress = extern struct {
     pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRawAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RawAddress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRawAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RawAddress(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRawAddressKind(self: *@This()) core.HResult!PhoneCallHistoryEntryRawAddressKind {
         var _r: PhoneCallHistoryEntryRawAddressKind = undefined;
         const _c = self.vtable.get_RawAddressKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRawAddressKind(self: *@This(), value: PhoneCallHistoryEntryRawAddressKind) core.HResult!void {
         const _c = self.vtable.put_RawAddressKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryAddress";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4978,8 +5018,11 @@ pub const IPhoneCallHistoryEntryAddress = extern struct {
 };
 pub const IPhoneCallHistoryEntryAddressFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4987,7 +5030,7 @@ pub const IPhoneCallHistoryEntryAddressFactory = extern struct {
     pub fn Create(self: *@This(), rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
         var _r: *PhoneCallHistoryEntryAddress = undefined;
         const _c = self.vtable.Create(@ptrCast(self), rawAddress, rawAddressKind, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryAddressFactory";
@@ -5007,8 +5050,11 @@ pub const IPhoneCallHistoryEntryAddressFactory = extern struct {
 };
 pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5016,17 +5062,17 @@ pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
     pub fn getDesiredMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryQueryDesiredMedia {
         var _r: PhoneCallHistoryEntryQueryDesiredMedia = undefined;
         const _c = self.vtable.get_DesiredMedia(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDesiredMedia(self: *@This(), value: PhoneCallHistoryEntryQueryDesiredMedia) core.HResult!void {
         const _c = self.vtable.put_DesiredMedia(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSourceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SourceIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryQueryOptions";
@@ -5048,8 +5094,11 @@ pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
 };
 pub const IPhoneCallHistoryEntryReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5057,7 +5106,7 @@ pub const IPhoneCallHistoryEntryReader = extern struct {
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) {
         var _r: *IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryReader";
@@ -5077,8 +5126,11 @@ pub const IPhoneCallHistoryEntryReader = extern struct {
 };
 pub const IPhoneCallHistoryManagerForUser = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5086,13 +5138,13 @@ pub const IPhoneCallHistoryManagerForUser = extern struct {
     pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
         var _r: *IAsyncOperation(PhoneCallHistoryStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), accessType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerForUser";
@@ -5113,8 +5165,11 @@ pub const IPhoneCallHistoryManagerForUser = extern struct {
 };
 pub const IPhoneCallHistoryManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5122,7 +5177,7 @@ pub const IPhoneCallHistoryManagerStatics = extern struct {
     pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
         var _r: *IAsyncOperation(PhoneCallHistoryStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), accessType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerStatics";
@@ -5142,8 +5197,11 @@ pub const IPhoneCallHistoryManagerStatics = extern struct {
 };
 pub const IPhoneCallHistoryManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5151,7 +5209,7 @@ pub const IPhoneCallHistoryManagerStatics2 = extern struct {
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*PhoneCallHistoryManagerForUser {
         var _r: *PhoneCallHistoryManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerStatics2";
@@ -5171,8 +5229,11 @@ pub const IPhoneCallHistoryManagerStatics2 = extern struct {
 };
 pub const IPhoneCallHistoryStore = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5180,73 +5241,73 @@ pub const IPhoneCallHistoryStore = extern struct {
     pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
         var _r: *IAsyncOperation(PhoneCallHistoryEntry) = undefined;
         const _c = self.vtable.GetEntryAsync(@ptrCast(self), callHistoryEntryId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetEntryReader(self: *@This()) core.HResult!*PhoneCallHistoryEntryReader {
         var _r: *PhoneCallHistoryEntryReader = undefined;
         const _c = self.vtable.GetEntryReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetEntryReaderWithQueryOptions(self: *@This(), queryOptions: *PhoneCallHistoryEntryQueryOptions) core.HResult!*PhoneCallHistoryEntryReader {
         var _r: *PhoneCallHistoryEntryReader = undefined;
         const _c = self.vtable.GetEntryReaderWithQueryOptions(@ptrCast(self), queryOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SaveEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveEntryAsync(@ptrCast(self), callHistoryEntry, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteEntryAsync(@ptrCast(self), callHistoryEntry, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteEntriesAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteEntriesAsync(@ptrCast(self), callHistoryEntries, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MarkEntryAsSeenAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkEntryAsSeenAsync(@ptrCast(self), callHistoryEntry, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MarkEntriesAsSeenAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkEntriesAsSeenAsync(@ptrCast(self), callHistoryEntries, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetUnseenCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.GetUnseenCountAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MarkAllAsSeenAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkAllAsSeenAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.GetSourcesUnseenCountAsync(@ptrCast(self), sourceIds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkSourcesAsSeenAsync(@ptrCast(self), sourceIds, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryStore";
@@ -5277,14 +5338,11 @@ pub const IPhoneCallHistoryStore = extern struct {
 };
 pub const PhoneCallHistoryEntry = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5438,14 +5496,11 @@ pub const PhoneCallHistoryEntry = extern struct {
 };
 pub const PhoneCallHistoryEntryAddress = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5514,14 +5569,11 @@ pub const PhoneCallHistoryEntryQueryDesiredMedia = enum(i32) {
 };
 pub const PhoneCallHistoryEntryQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5555,14 +5607,11 @@ pub const PhoneCallHistoryEntryRawAddressKind = enum(i32) {
 };
 pub const PhoneCallHistoryEntryReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5579,14 +5628,11 @@ pub const PhoneCallHistoryEntryReader = extern struct {
 };
 pub const PhoneCallHistoryManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5606,14 +5652,11 @@ pub const PhoneCallHistoryManager = extern struct {
 };
 pub const PhoneCallHistoryManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5638,14 +5681,11 @@ pub const PhoneCallHistorySourceIdKind = enum(i32) {
 };
 pub const PhoneCallHistoryStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

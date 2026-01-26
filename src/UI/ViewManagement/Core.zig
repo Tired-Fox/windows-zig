@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const CoreFrameworkInputView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -46,14 +43,11 @@ pub const CoreFrameworkInputView = extern struct {
 };
 pub const CoreFrameworkInputViewAnimationStartingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -78,14 +72,11 @@ pub const CoreFrameworkInputViewAnimationStartingEventArgs = extern struct {
 };
 pub const CoreFrameworkInputViewOcclusionsChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -106,14 +97,11 @@ pub const CoreFrameworkInputViewOcclusionsChangedEventArgs = extern struct {
 };
 pub const CoreInputView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -141,120 +129,103 @@ pub const CoreInputView = extern struct {
     pub fn addXYFocusTransferringFromPrimaryView(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewTransferringXYFocusEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         return try this.?.addXYFocusTransferringFromPrimaryView(handler);
     }
     pub fn removeXYFocusTransferringFromPrimaryView(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         return try this.?.removeXYFocusTransferringFromPrimaryView(token);
     }
     pub fn addXYFocusTransferredToPrimaryView(self: *@This(), handler: *TypedEventHandler(CoreInputView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         return try this.?.addXYFocusTransferredToPrimaryView(handler);
     }
     pub fn removeXYFocusTransferredToPrimaryView(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         return try this.?.removeXYFocusTransferredToPrimaryView(token);
     }
     pub fn TryTransferXYFocusToPrimaryView(self: *@This(), origin: Rect, direction: CoreInputViewXYFocusTransferDirection) core.HResult!bool {
         var this: ?*ICoreInputView2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         return try this.?.TryTransferXYFocusToPrimaryView(origin, direction);
     }
     pub fn TryShow(self: *@This()) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         return try this.?.TryShow();
     }
     pub fn TryShowWithTy(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         return try this.?.TryShowWithTy(ty);
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         return try this.?.TryHide();
     }
     pub fn addPrimaryViewShowing(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewShowingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         return try this.?.addPrimaryViewShowing(handler);
     }
     pub fn removePrimaryViewShowing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         return try this.?.removePrimaryViewShowing(token);
     }
     pub fn addPrimaryViewHiding(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewHidingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         return try this.?.addPrimaryViewHiding(handler);
     }
     pub fn removePrimaryViewHiding(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         return try this.?.removePrimaryViewHiding(token);
     }
     pub fn IsKindSupported(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var this: ?*ICoreInputView5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         return try this.?.IsKindSupported(ty);
     }
     pub fn addSupportedKindsChanged(self: *@This(), handler: *TypedEventHandler(CoreInputView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         return try this.?.addSupportedKindsChanged(handler);
     }
     pub fn removeSupportedKindsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         return try this.?.removeSupportedKindsChanged(token);
     }
     pub fn addPrimaryViewAnimationStarting(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewAnimationStartingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         return try this.?.addPrimaryViewAnimationStarting(handler);
     }
     pub fn removePrimaryViewAnimationStarting(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         return try this.?.removePrimaryViewAnimationStarting(token);
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*CoreInputView {
@@ -275,14 +246,11 @@ pub const CoreInputView = extern struct {
 };
 pub const CoreInputViewAnimationStartingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -311,14 +279,11 @@ pub const CoreInputViewAnimationStartingEventArgs = extern struct {
 };
 pub const CoreInputViewHidingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -345,14 +310,11 @@ pub const CoreInputViewKind = enum(i32) {
 };
 pub const CoreInputViewOcclusion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -378,14 +340,11 @@ pub const CoreInputViewOcclusionKind = enum(i32) {
 };
 pub const CoreInputViewOcclusionsChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -410,14 +369,11 @@ pub const CoreInputViewOcclusionsChangedEventArgs = extern struct {
 };
 pub const CoreInputViewShowingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -434,14 +390,11 @@ pub const CoreInputViewShowingEventArgs = extern struct {
 };
 pub const CoreInputViewTransferringXYFocusEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -484,8 +437,11 @@ pub const CoreInputViewXYFocusTransferDirection = enum(i32) {
 };
 pub const ICoreFrameworkInputView = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -493,22 +449,22 @@ pub const ICoreFrameworkInputView = extern struct {
     pub fn addPrimaryViewAnimationStarting(self: *@This(), handler: *TypedEventHandler(CoreFrameworkInputView,CoreFrameworkInputViewAnimationStartingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrimaryViewAnimationStarting(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePrimaryViewAnimationStarting(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PrimaryViewAnimationStarting(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addOcclusionsChanged(self: *@This(), handler: *TypedEventHandler(CoreFrameworkInputView,CoreFrameworkInputViewOcclusionsChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_OcclusionsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeOcclusionsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_OcclusionsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreFrameworkInputView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -530,8 +486,11 @@ pub const ICoreFrameworkInputView = extern struct {
 };
 pub const ICoreFrameworkInputViewAnimationStartingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -539,19 +498,19 @@ pub const ICoreFrameworkInputViewAnimationStartingEventArgs = extern struct {
     pub fn getOcclusions(self: *@This()) core.HResult!*IVectorView(CoreInputViewOcclusion) {
         var _r: *IVectorView(CoreInputViewOcclusion) = undefined;
         const _c = self.vtable.get_Occlusions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFrameworkAnimationRecommended(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_FrameworkAnimationRecommended(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAnimationDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_AnimationDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreFrameworkInputViewAnimationStartingEventArgs";
@@ -573,8 +532,11 @@ pub const ICoreFrameworkInputViewAnimationStartingEventArgs = extern struct {
 };
 pub const ICoreFrameworkInputViewOcclusionsChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -582,13 +544,13 @@ pub const ICoreFrameworkInputViewOcclusionsChangedEventArgs = extern struct {
     pub fn getOcclusions(self: *@This()) core.HResult!*IVectorView(CoreInputViewOcclusion) {
         var _r: *IVectorView(CoreInputViewOcclusion) = undefined;
         const _c = self.vtable.get_Occlusions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreFrameworkInputViewOcclusionsChangedEventArgs";
@@ -609,8 +571,11 @@ pub const ICoreFrameworkInputViewOcclusionsChangedEventArgs = extern struct {
 };
 pub const ICoreFrameworkInputViewStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -618,13 +583,13 @@ pub const ICoreFrameworkInputViewStatics = extern struct {
     pub fn GetForUIContext(self: *@This(), context: *UIContext) core.HResult!*CoreFrameworkInputView {
         var _r: *CoreFrameworkInputView = undefined;
         const _c = self.vtable.GetForUIContext(@ptrCast(self), context, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*CoreFrameworkInputView {
         var _r: *CoreFrameworkInputView = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreFrameworkInputViewStatics";
@@ -645,8 +610,11 @@ pub const ICoreFrameworkInputViewStatics = extern struct {
 };
 pub const ICoreInputView = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -654,29 +622,29 @@ pub const ICoreInputView = extern struct {
     pub fn addOcclusionsChanged(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewOcclusionsChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_OcclusionsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeOcclusionsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_OcclusionsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetCoreInputViewOcclusions(self: *@This()) core.HResult!*IVectorView(CoreInputViewOcclusion) {
         var _r: *IVectorView(CoreInputViewOcclusion) = undefined;
         const _c = self.vtable.GetCoreInputViewOcclusions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryShowPrimaryView(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryShowPrimaryView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryHidePrimaryView(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryHidePrimaryView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputView";
@@ -700,8 +668,11 @@ pub const ICoreInputView = extern struct {
 };
 pub const ICoreInputView2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -709,27 +680,27 @@ pub const ICoreInputView2 = extern struct {
     pub fn addXYFocusTransferringFromPrimaryView(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewTransferringXYFocusEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_XYFocusTransferringFromPrimaryView(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeXYFocusTransferringFromPrimaryView(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_XYFocusTransferringFromPrimaryView(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addXYFocusTransferredToPrimaryView(self: *@This(), handler: *TypedEventHandler(CoreInputView,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_XYFocusTransferredToPrimaryView(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeXYFocusTransferredToPrimaryView(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_XYFocusTransferredToPrimaryView(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryTransferXYFocusToPrimaryView(self: *@This(), origin: Rect, direction: CoreInputViewXYFocusTransferDirection) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryTransferXYFocusToPrimaryView(@ptrCast(self), origin, direction, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputView2";
@@ -753,8 +724,11 @@ pub const ICoreInputView2 = extern struct {
 };
 pub const ICoreInputView3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -762,19 +736,19 @@ pub const ICoreInputView3 = extern struct {
     pub fn TryShow(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryShow(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryShowWithTy(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryShowWithTy(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryHide(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputView3";
@@ -796,8 +770,11 @@ pub const ICoreInputView3 = extern struct {
 };
 pub const ICoreInputView4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -805,22 +782,22 @@ pub const ICoreInputView4 = extern struct {
     pub fn addPrimaryViewShowing(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewShowingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrimaryViewShowing(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePrimaryViewShowing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PrimaryViewShowing(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPrimaryViewHiding(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewHidingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrimaryViewHiding(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePrimaryViewHiding(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PrimaryViewHiding(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputView4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -842,8 +819,11 @@ pub const ICoreInputView4 = extern struct {
 };
 pub const ICoreInputView5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -851,28 +831,28 @@ pub const ICoreInputView5 = extern struct {
     pub fn IsKindSupported(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsKindSupported(@ptrCast(self), ty, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addSupportedKindsChanged(self: *@This(), handler: *TypedEventHandler(CoreInputView,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SupportedKindsChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSupportedKindsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SupportedKindsChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addPrimaryViewAnimationStarting(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewAnimationStartingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrimaryViewAnimationStarting(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removePrimaryViewAnimationStarting(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_PrimaryViewAnimationStarting(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputView5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -895,8 +875,11 @@ pub const ICoreInputView5 = extern struct {
 };
 pub const ICoreInputViewAnimationStartingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -904,23 +887,23 @@ pub const ICoreInputViewAnimationStartingEventArgs = extern struct {
     pub fn getOcclusions(self: *@This()) core.HResult!*IVectorView(CoreInputViewOcclusion) {
         var _r: *IVectorView(CoreInputViewOcclusion) = undefined;
         const _c = self.vtable.get_Occlusions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAnimationDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_AnimationDuration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewAnimationStartingEventArgs";
@@ -943,8 +926,11 @@ pub const ICoreInputViewAnimationStartingEventArgs = extern struct {
 };
 pub const ICoreInputViewHidingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -952,7 +938,7 @@ pub const ICoreInputViewHidingEventArgs = extern struct {
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryCancel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewHidingEventArgs";
@@ -972,8 +958,11 @@ pub const ICoreInputViewHidingEventArgs = extern struct {
 };
 pub const ICoreInputViewOcclusion = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -981,13 +970,13 @@ pub const ICoreInputViewOcclusion = extern struct {
     pub fn getOccludingRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_OccludingRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOcclusionKind(self: *@This()) core.HResult!CoreInputViewOcclusionKind {
         var _r: CoreInputViewOcclusionKind = undefined;
         const _c = self.vtable.get_OcclusionKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewOcclusion";
@@ -1008,8 +997,11 @@ pub const ICoreInputViewOcclusion = extern struct {
 };
 pub const ICoreInputViewOcclusionsChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1017,18 +1009,18 @@ pub const ICoreInputViewOcclusionsChangedEventArgs = extern struct {
     pub fn getOcclusions(self: *@This()) core.HResult!*IVectorView(CoreInputViewOcclusion) {
         var _r: *IVectorView(CoreInputViewOcclusion) = undefined;
         const _c = self.vtable.get_Occlusions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Handled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewOcclusionsChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1049,8 +1041,11 @@ pub const ICoreInputViewOcclusionsChangedEventArgs = extern struct {
 };
 pub const ICoreInputViewShowingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1058,7 +1053,7 @@ pub const ICoreInputViewShowingEventArgs = extern struct {
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryCancel(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewShowingEventArgs";
@@ -1078,8 +1073,11 @@ pub const ICoreInputViewShowingEventArgs = extern struct {
 };
 pub const ICoreInputViewStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1087,7 +1085,7 @@ pub const ICoreInputViewStatics = extern struct {
     pub fn GetForCurrentView(self: *@This()) core.HResult!*CoreInputView {
         var _r: *CoreInputView = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewStatics";
@@ -1107,8 +1105,11 @@ pub const ICoreInputViewStatics = extern struct {
 };
 pub const ICoreInputViewStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1116,7 +1117,7 @@ pub const ICoreInputViewStatics2 = extern struct {
     pub fn GetForUIContext(self: *@This(), context: *UIContext) core.HResult!*CoreInputView {
         var _r: *CoreInputView = undefined;
         const _c = self.vtable.GetForUIContext(@ptrCast(self), context, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewStatics2";
@@ -1136,8 +1137,11 @@ pub const ICoreInputViewStatics2 = extern struct {
 };
 pub const ICoreInputViewTransferringXYFocusEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1145,33 +1149,33 @@ pub const ICoreInputViewTransferringXYFocusEventArgs = extern struct {
     pub fn getOrigin(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_Origin(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDirection(self: *@This()) core.HResult!CoreInputViewXYFocusTransferDirection {
         var _r: CoreInputViewXYFocusTransferDirection = undefined;
         const _c = self.vtable.get_Direction(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTransferHandled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_TransferHandled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getTransferHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TransferHandled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putKeepPrimaryViewVisible(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_KeepPrimaryViewVisible(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getKeepPrimaryViewVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_KeepPrimaryViewVisible(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.ICoreInputViewTransferringXYFocusEventArgs";
@@ -1196,31 +1200,34 @@ pub const ICoreInputViewTransferringXYFocusEventArgs = extern struct {
 };
 pub const IUISettingsController = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetAdvancedEffectsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.SetAdvancedEffectsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetAnimationsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.SetAnimationsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetAutoHideScrollBars(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.SetAutoHideScrollBars(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetMessageDuration(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.SetMessageDuration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn SetTextScaleFactor(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.SetTextScaleFactor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.IUISettingsController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1243,8 +1250,11 @@ pub const IUISettingsController = extern struct {
 };
 pub const IUISettingsControllerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1252,7 +1262,7 @@ pub const IUISettingsControllerStatics = extern struct {
     pub fn RequestDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(UISettingsController) {
         var _r: *IAsyncOperation(UISettingsController) = undefined;
         const _c = self.vtable.RequestDefaultAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.IUISettingsControllerStatics";
@@ -1272,14 +1282,11 @@ pub const IUISettingsControllerStatics = extern struct {
 };
 pub const UISettingsController = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

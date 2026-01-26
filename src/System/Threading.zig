@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IThreadPoolStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,19 +13,19 @@ pub const IThreadPoolStatics = extern struct {
     pub fn RunAsync(self: *@This(), handler: *WorkItemHandler) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RunAsync(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RunAsyncWithPriority(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RunAsyncWithPriority(@ptrCast(self), handler, priority, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RunAsyncWithPriorityAndOptions(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RunAsyncWithPriorityAndOptions(@ptrCast(self), handler, priority, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.IThreadPoolStatics";
@@ -44,8 +47,11 @@ pub const IThreadPoolStatics = extern struct {
 };
 pub const IThreadPoolTimer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -53,18 +59,18 @@ pub const IThreadPoolTimer = extern struct {
     pub fn getPeriod(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Period(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDelay(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Delay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.IThreadPoolTimer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -85,8 +91,11 @@ pub const IThreadPoolTimer = extern struct {
 };
 pub const IThreadPoolTimerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -94,25 +103,25 @@ pub const IThreadPoolTimerStatics = extern struct {
     pub fn CreatePeriodicTimer(self: *@This(), handler: *TimerElapsedHandler, period: TimeSpan) core.HResult!*ThreadPoolTimer {
         var _r: *ThreadPoolTimer = undefined;
         const _c = self.vtable.CreatePeriodicTimer(@ptrCast(self), handler, period, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateTimer(self: *@This(), handler: *TimerElapsedHandler, delay: TimeSpan) core.HResult!*ThreadPoolTimer {
         var _r: *ThreadPoolTimer = undefined;
         const _c = self.vtable.CreateTimer(@ptrCast(self), handler, delay, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreatePeriodicTimerWithDestroyed(self: *@This(), handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         var _r: *ThreadPoolTimer = undefined;
         const _c = self.vtable.CreatePeriodicTimerWithDestroyed(@ptrCast(self), handler, period, destroyed, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateTimerWithDestroyed(self: *@This(), handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         var _r: *ThreadPoolTimer = undefined;
         const _c = self.vtable.CreateTimerWithDestroyed(@ptrCast(self), handler, delay, destroyed, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.IThreadPoolTimerStatics";
@@ -135,14 +144,11 @@ pub const IThreadPoolTimerStatics = extern struct {
 };
 pub const ThreadPool = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -165,14 +171,11 @@ pub const ThreadPool = extern struct {
 };
 pub const ThreadPoolTimer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

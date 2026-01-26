@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IPlatformDiagnosticActionsStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,49 +13,49 @@ pub const IPlatformDiagnosticActionsStatics = extern struct {
     pub fn IsScenarioEnabled(self: *@This(), scenarioId: *Guid) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsScenarioEnabled(@ptrCast(self), scenarioId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryEscalateScenario(self: *@This(), scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: ?HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(?HSTRING,?HSTRING)) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryEscalateScenario(@ptrCast(self), scenarioId, escalationType, outputDirectory, timestampOutputDirectory, forceEscalationUpload, triggers, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DownloadLatestSettingsForNamespace(self: *@This(), partner: ?HSTRING, feature: ?HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
         var _r: PlatformDiagnosticActionState = undefined;
         const _c = self.vtable.DownloadLatestSettingsForNamespace(@ptrCast(self), partner, feature, isScenarioNamespace, downloadOverCostedNetwork, downloadOverBattery, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetActiveScenarioList(self: *@This()) core.HResult!*IVectorView(Guid) {
         var _r: *IVectorView(Guid) = undefined;
         const _c = self.vtable.GetActiveScenarioList(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ForceUpload(self: *@This(), latency: PlatformDiagnosticEventBufferLatencies, uploadOverCostedNetwork: bool, uploadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
         var _r: PlatformDiagnosticActionState = undefined;
         const _c = self.vtable.ForceUpload(@ptrCast(self), latency, uploadOverCostedNetwork, uploadOverBattery, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsTraceRunning(self: *@This(), slotType: PlatformDiagnosticTraceSlotType, scenarioId: *Guid, traceProfileHash: u64) core.HResult!PlatformDiagnosticTraceSlotState {
         var _r: PlatformDiagnosticTraceSlotState = undefined;
         const _c = self.vtable.IsTraceRunning(@ptrCast(self), slotType, scenarioId, traceProfileHash, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetActiveTraceRuntime(self: *@This(), slotType: PlatformDiagnosticTraceSlotType) core.HResult!*PlatformDiagnosticTraceRuntimeInfo {
         var _r: *PlatformDiagnosticTraceRuntimeInfo = undefined;
         const _c = self.vtable.GetActiveTraceRuntime(@ptrCast(self), slotType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetKnownTraceList(self: *@This(), slotType: PlatformDiagnosticTraceSlotType) core.HResult!*IVectorView(PlatformDiagnosticTraceInfo) {
         var _r: *IVectorView(PlatformDiagnosticTraceInfo) = undefined;
         const _c = self.vtable.GetKnownTraceList(@ptrCast(self), slotType, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.TraceReporting.IPlatformDiagnosticActionsStatics";
@@ -79,8 +82,11 @@ pub const IPlatformDiagnosticActionsStatics = extern struct {
 };
 pub const IPlatformDiagnosticTraceInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -88,37 +94,37 @@ pub const IPlatformDiagnosticTraceInfo = extern struct {
     pub fn getScenarioId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ScenarioId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProfileHash(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_ProfileHash(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsExclusive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsExclusive(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsAutoLogger(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAutoLogger(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxTraceDurationFileTime(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_MaxTraceDurationFileTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPriority(self: *@This()) core.HResult!PlatformDiagnosticTracePriority {
         var _r: PlatformDiagnosticTracePriority = undefined;
         const _c = self.vtable.get_Priority(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.TraceReporting.IPlatformDiagnosticTraceInfo";
@@ -143,8 +149,11 @@ pub const IPlatformDiagnosticTraceInfo = extern struct {
 };
 pub const IPlatformDiagnosticTraceRuntimeInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -152,13 +161,13 @@ pub const IPlatformDiagnosticTraceRuntimeInfo = extern struct {
     pub fn getRuntimeFileTime(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_RuntimeFileTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEtwRuntimeFileTime(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_EtwRuntimeFileTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.TraceReporting.IPlatformDiagnosticTraceRuntimeInfo";
@@ -184,14 +193,11 @@ pub const PlatformDiagnosticActionState = enum(i32) {
 };
 pub const PlatformDiagnosticActions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -243,14 +249,11 @@ pub const PlatformDiagnosticEventBufferLatencies = enum(i32) {
 };
 pub const PlatformDiagnosticTraceInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -291,14 +294,11 @@ pub const PlatformDiagnosticTracePriority = enum(i32) {
 };
 pub const PlatformDiagnosticTraceRuntimeInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

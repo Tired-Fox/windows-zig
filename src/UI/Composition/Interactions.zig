@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const CompositionConditionalValue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -42,14 +39,11 @@ pub const CompositionConditionalValue = extern struct {
 };
 pub const CompositionInteractionSourceCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -73,8 +67,7 @@ pub const CompositionInteractionSourceCollection = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(ICompositionInteractionSource) {
         var this: ?*IIterable(ICompositionInteractionSource) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ICompositionInteractionSource).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(ICompositionInteractionSource).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.CompositionInteractionSourceCollection";
@@ -85,8 +78,11 @@ pub const CompositionInteractionSourceCollection = extern struct {
 };
 pub const ICompositionConditionalValue = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -94,22 +90,22 @@ pub const ICompositionConditionalValue = extern struct {
     pub fn getCondition(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_Condition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCondition(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_Condition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getValue(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putValue(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.ICompositionConditionalValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -131,8 +127,11 @@ pub const ICompositionConditionalValue = extern struct {
 };
 pub const ICompositionConditionalValueStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -140,7 +139,7 @@ pub const ICompositionConditionalValueStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*CompositionConditionalValue {
         var _r: *CompositionConditionalValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.ICompositionConditionalValueStatics";
@@ -160,8 +159,11 @@ pub const ICompositionConditionalValueStatics = extern struct {
 };
 pub const ICompositionInteractionSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -182,8 +184,11 @@ pub const ICompositionInteractionSource = extern struct {
 };
 pub const ICompositionInteractionSourceCollection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -191,20 +196,20 @@ pub const ICompositionInteractionSourceCollection = extern struct {
     pub fn getCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Count(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Add(self: *@This(), value: *ICompositionInteractionSource) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Remove(self: *@This(), value: *ICompositionInteractionSource) core.HResult!void {
         const _c = self.vtable.Remove(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RemoveAll(self: *@This()) core.HResult!void {
         const _c = self.vtable.RemoveAll(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.ICompositionInteractionSourceCollection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -226,8 +231,11 @@ pub const ICompositionInteractionSourceCollection = extern struct {
 };
 pub const IInteractionSourceConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -235,32 +243,32 @@ pub const IInteractionSourceConfiguration = extern struct {
     pub fn getPositionXSourceMode(self: *@This()) core.HResult!InteractionSourceRedirectionMode {
         var _r: InteractionSourceRedirectionMode = undefined;
         const _c = self.vtable.get_PositionXSourceMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionXSourceMode(self: *@This(), value: InteractionSourceRedirectionMode) core.HResult!void {
         const _c = self.vtable.put_PositionXSourceMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionYSourceMode(self: *@This()) core.HResult!InteractionSourceRedirectionMode {
         var _r: InteractionSourceRedirectionMode = undefined;
         const _c = self.vtable.get_PositionYSourceMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionYSourceMode(self: *@This(), value: InteractionSourceRedirectionMode) core.HResult!void {
         const _c = self.vtable.put_PositionYSourceMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScaleSourceMode(self: *@This()) core.HResult!InteractionSourceRedirectionMode {
         var _r: InteractionSourceRedirectionMode = undefined;
         const _c = self.vtable.get_ScaleSourceMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScaleSourceMode(self: *@This(), value: InteractionSourceRedirectionMode) core.HResult!void {
         const _c = self.vtable.put_ScaleSourceMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionSourceConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -284,8 +292,11 @@ pub const IInteractionSourceConfiguration = extern struct {
 };
 pub const IInteractionTracker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -293,177 +304,177 @@ pub const IInteractionTracker = extern struct {
     pub fn getInteractionSources(self: *@This()) core.HResult!*CompositionInteractionSourceCollection {
         var _r: *CompositionInteractionSourceCollection = undefined;
         const _c = self.vtable.get_InteractionSources(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsPositionRoundingSuggested(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPositionRoundingSuggested(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getMaxPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_MaxPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxPosition(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_MaxPosition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MaxScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxScale(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_MaxScale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_MinPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinPosition(self: *@This(), value: Vector3) core.HResult!void {
         const _c = self.vtable.put_MinPosition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMinScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MinScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinScale(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.put_MinScale(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNaturalRestingPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_NaturalRestingPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNaturalRestingScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_NaturalRestingScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOwner(self: *@This()) core.HResult!*IInteractionTrackerOwner {
         var _r: *IInteractionTrackerOwner = undefined;
         const _c = self.vtable.get_Owner(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPositionInertiaDecayRate(self: *@This()) core.HResult!*IReference(Vector3) {
         var _r: *IReference(Vector3) = undefined;
         const _c = self.vtable.get_PositionInertiaDecayRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionInertiaDecayRate(self: *@This(), value: *IReference(Vector3)) core.HResult!void {
         const _c = self.vtable.put_PositionInertiaDecayRate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionVelocityInPixelsPerSecond(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_PositionVelocityInPixelsPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Scale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScaleInertiaDecayRate(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_ScaleInertiaDecayRate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScaleInertiaDecayRate(self: *@This(), value: *IReference(f32)) core.HResult!void {
         const _c = self.vtable.put_ScaleInertiaDecayRate(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScaleVelocityInPercentPerSecond(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_ScaleVelocityInPercentPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AdjustPositionXIfGreaterThanThreshold(self: *@This(), adjustment: f32, positionThreshold: f32) core.HResult!void {
         const _c = self.vtable.AdjustPositionXIfGreaterThanThreshold(@ptrCast(self), adjustment, positionThreshold);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AdjustPositionYIfGreaterThanThreshold(self: *@This(), adjustment: f32, positionThreshold: f32) core.HResult!void {
         const _c = self.vtable.AdjustPositionYIfGreaterThanThreshold(@ptrCast(self), adjustment, positionThreshold);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigurePositionXInertiaModifiers(self: *@This(), modifiers: *IIterable(InteractionTrackerInertiaModifier)) core.HResult!void {
         const _c = self.vtable.ConfigurePositionXInertiaModifiers(@ptrCast(self), modifiers);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigurePositionYInertiaModifiers(self: *@This(), modifiers: *IIterable(InteractionTrackerInertiaModifier)) core.HResult!void {
         const _c = self.vtable.ConfigurePositionYInertiaModifiers(@ptrCast(self), modifiers);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigureScaleInertiaModifiers(self: *@This(), modifiers: *IIterable(InteractionTrackerInertiaModifier)) core.HResult!void {
         const _c = self.vtable.ConfigureScaleInertiaModifiers(@ptrCast(self), modifiers);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryUpdatePosition(self: *@This(), value: Vector3) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdatePosition(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdatePositionBy(self: *@This(), amount: Vector3) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdatePositionBy(@ptrCast(self), amount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdatePositionWithAnimation(self: *@This(), animation: *CompositionAnimation) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdatePositionWithAnimation(@ptrCast(self), animation, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdatePositionWithAdditionalVelocity(self: *@This(), velocityInPixelsPerSecond: Vector3) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdatePositionWithAdditionalVelocity(@ptrCast(self), velocityInPixelsPerSecond, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdateScale(self: *@This(), value: f32, centerPoint: Vector3) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdateScale(@ptrCast(self), value, centerPoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdateScaleWithAnimation(self: *@This(), animation: *CompositionAnimation, centerPoint: Vector3) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdateScaleWithAnimation(@ptrCast(self), animation, centerPoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdateScaleWithAdditionalVelocity(self: *@This(), velocityInPercentPerSecond: f32, centerPoint: Vector3) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdateScaleWithAdditionalVelocity(@ptrCast(self), velocityInPercentPerSecond, centerPoint, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTracker";
@@ -515,19 +526,22 @@ pub const IInteractionTracker = extern struct {
 };
 pub const IInteractionTracker2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ConfigureCenterPointXInertiaModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         const _c = self.vtable.ConfigureCenterPointXInertiaModifiers(@ptrCast(self), conditionalValues);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigureCenterPointYInertiaModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         const _c = self.vtable.ConfigureCenterPointYInertiaModifiers(@ptrCast(self), conditionalValues);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTracker2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -547,15 +561,18 @@ pub const IInteractionTracker2 = extern struct {
 };
 pub const IInteractionTracker3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ConfigureVector2PositionInertiaModifiers(self: *@This(), modifiers: *IIterable(InteractionTrackerVector2InertiaModifier)) core.HResult!void {
         const _c = self.vtable.ConfigureVector2PositionInertiaModifiers(@ptrCast(self), modifiers);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTracker3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -574,8 +591,11 @@ pub const IInteractionTracker3 = extern struct {
 };
 pub const IInteractionTracker4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -583,19 +603,19 @@ pub const IInteractionTracker4 = extern struct {
     pub fn TryUpdatePosition(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdatePosition(@ptrCast(self), value, option, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdatePositionBy(self: *@This(), amount: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdatePositionBy(@ptrCast(self), amount, option, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsInertiaFromImpulse(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInertiaFromImpulse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTracker4";
@@ -617,8 +637,11 @@ pub const IInteractionTracker4 = extern struct {
 };
 pub const IInteractionTracker5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -626,7 +649,7 @@ pub const IInteractionTracker5 = extern struct {
     pub fn TryUpdatePosition(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.TryUpdatePosition(@ptrCast(self), value, option, posUpdateOption, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTracker5";
@@ -646,8 +669,11 @@ pub const IInteractionTracker5 = extern struct {
 };
 pub const IInteractionTrackerCustomAnimationStateEnteredArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -655,7 +681,7 @@ pub const IInteractionTrackerCustomAnimationStateEnteredArgs = extern struct {
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerCustomAnimationStateEnteredArgs";
@@ -675,8 +701,11 @@ pub const IInteractionTrackerCustomAnimationStateEnteredArgs = extern struct {
 };
 pub const IInteractionTrackerCustomAnimationStateEnteredArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -684,7 +713,7 @@ pub const IInteractionTrackerCustomAnimationStateEnteredArgs2 = extern struct {
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFromBinding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerCustomAnimationStateEnteredArgs2";
@@ -704,8 +733,11 @@ pub const IInteractionTrackerCustomAnimationStateEnteredArgs2 = extern struct {
 };
 pub const IInteractionTrackerIdleStateEnteredArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -713,7 +745,7 @@ pub const IInteractionTrackerIdleStateEnteredArgs = extern struct {
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerIdleStateEnteredArgs";
@@ -733,8 +765,11 @@ pub const IInteractionTrackerIdleStateEnteredArgs = extern struct {
 };
 pub const IInteractionTrackerIdleStateEnteredArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -742,7 +777,7 @@ pub const IInteractionTrackerIdleStateEnteredArgs2 = extern struct {
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFromBinding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerIdleStateEnteredArgs2";
@@ -762,8 +797,11 @@ pub const IInteractionTrackerIdleStateEnteredArgs2 = extern struct {
 };
 pub const IInteractionTrackerInertiaModifier = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -784,8 +822,11 @@ pub const IInteractionTrackerInertiaModifier = extern struct {
 };
 pub const IInteractionTrackerInertiaModifierFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -806,8 +847,11 @@ pub const IInteractionTrackerInertiaModifierFactory = extern struct {
 };
 pub const IInteractionTrackerInertiaMotion = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -815,22 +859,22 @@ pub const IInteractionTrackerInertiaMotion = extern struct {
     pub fn getCondition(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_Condition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCondition(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_Condition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMotion(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_Motion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMotion(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_Motion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaMotion";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -852,8 +896,11 @@ pub const IInteractionTrackerInertiaMotion = extern struct {
 };
 pub const IInteractionTrackerInertiaMotionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -861,7 +908,7 @@ pub const IInteractionTrackerInertiaMotionStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*InteractionTrackerInertiaMotion {
         var _r: *InteractionTrackerInertiaMotion = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaMotionStatics";
@@ -881,8 +928,11 @@ pub const IInteractionTrackerInertiaMotionStatics = extern struct {
 };
 pub const IInteractionTrackerInertiaNaturalMotion = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -890,22 +940,22 @@ pub const IInteractionTrackerInertiaNaturalMotion = extern struct {
     pub fn getCondition(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_Condition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCondition(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_Condition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNaturalMotion(self: *@This()) core.HResult!*ScalarNaturalMotionAnimation {
         var _r: *ScalarNaturalMotionAnimation = undefined;
         const _c = self.vtable.get_NaturalMotion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNaturalMotion(self: *@This(), value: *ScalarNaturalMotionAnimation) core.HResult!void {
         const _c = self.vtable.put_NaturalMotion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaNaturalMotion";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -927,8 +977,11 @@ pub const IInteractionTrackerInertiaNaturalMotion = extern struct {
 };
 pub const IInteractionTrackerInertiaNaturalMotionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -936,7 +989,7 @@ pub const IInteractionTrackerInertiaNaturalMotionStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*InteractionTrackerInertiaNaturalMotion {
         var _r: *InteractionTrackerInertiaNaturalMotion = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaNaturalMotionStatics";
@@ -956,8 +1009,11 @@ pub const IInteractionTrackerInertiaNaturalMotionStatics = extern struct {
 };
 pub const IInteractionTrackerInertiaRestingValue = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -965,22 +1021,22 @@ pub const IInteractionTrackerInertiaRestingValue = extern struct {
     pub fn getCondition(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_Condition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCondition(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_Condition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getRestingValue(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_RestingValue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRestingValue(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_RestingValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaRestingValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1002,8 +1058,11 @@ pub const IInteractionTrackerInertiaRestingValue = extern struct {
 };
 pub const IInteractionTrackerInertiaRestingValueStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1011,7 +1070,7 @@ pub const IInteractionTrackerInertiaRestingValueStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*InteractionTrackerInertiaRestingValue {
         var _r: *InteractionTrackerInertiaRestingValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaRestingValueStatics";
@@ -1031,8 +1090,11 @@ pub const IInteractionTrackerInertiaRestingValueStatics = extern struct {
 };
 pub const IInteractionTrackerInertiaStateEnteredArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1040,43 +1102,43 @@ pub const IInteractionTrackerInertiaStateEnteredArgs = extern struct {
     pub fn getModifiedRestingPosition(self: *@This()) core.HResult!*IReference(Vector3) {
         var _r: *IReference(Vector3) = undefined;
         const _c = self.vtable.get_ModifiedRestingPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getModifiedRestingScale(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_ModifiedRestingScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNaturalRestingPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_NaturalRestingPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNaturalRestingScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_NaturalRestingScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPositionVelocityInPixelsPerSecond(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_PositionVelocityInPixelsPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScaleVelocityInPercentPerSecond(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_ScaleVelocityInPercentPerSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaStateEnteredArgs";
@@ -1102,8 +1164,11 @@ pub const IInteractionTrackerInertiaStateEnteredArgs = extern struct {
 };
 pub const IInteractionTrackerInertiaStateEnteredArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1111,7 +1176,7 @@ pub const IInteractionTrackerInertiaStateEnteredArgs2 = extern struct {
     pub fn getIsInertiaFromImpulse(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInertiaFromImpulse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaStateEnteredArgs2";
@@ -1131,8 +1196,11 @@ pub const IInteractionTrackerInertiaStateEnteredArgs2 = extern struct {
 };
 pub const IInteractionTrackerInertiaStateEnteredArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1140,7 +1208,7 @@ pub const IInteractionTrackerInertiaStateEnteredArgs3 = extern struct {
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFromBinding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInertiaStateEnteredArgs3";
@@ -1160,8 +1228,11 @@ pub const IInteractionTrackerInertiaStateEnteredArgs3 = extern struct {
 };
 pub const IInteractionTrackerInteractingStateEnteredArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1169,7 +1240,7 @@ pub const IInteractionTrackerInteractingStateEnteredArgs = extern struct {
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInteractingStateEnteredArgs";
@@ -1189,8 +1260,11 @@ pub const IInteractionTrackerInteractingStateEnteredArgs = extern struct {
 };
 pub const IInteractionTrackerInteractingStateEnteredArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1198,7 +1272,7 @@ pub const IInteractionTrackerInteractingStateEnteredArgs2 = extern struct {
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFromBinding(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerInteractingStateEnteredArgs2";
@@ -1218,35 +1292,38 @@ pub const IInteractionTrackerInteractingStateEnteredArgs2 = extern struct {
 };
 pub const IInteractionTrackerOwner = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CustomAnimationStateEntered(self: *@This(), sender: *InteractionTracker, args: *InteractionTrackerCustomAnimationStateEnteredArgs) core.HResult!void {
         const _c = self.vtable.CustomAnimationStateEntered(@ptrCast(self), sender, args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn IdleStateEntered(self: *@This(), sender: *InteractionTracker, args: *InteractionTrackerIdleStateEnteredArgs) core.HResult!void {
         const _c = self.vtable.IdleStateEntered(@ptrCast(self), sender, args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InertiaStateEntered(self: *@This(), sender: *InteractionTracker, args: *InteractionTrackerInertiaStateEnteredArgs) core.HResult!void {
         const _c = self.vtable.InertiaStateEntered(@ptrCast(self), sender, args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn InteractingStateEntered(self: *@This(), sender: *InteractionTracker, args: *InteractionTrackerInteractingStateEnteredArgs) core.HResult!void {
         const _c = self.vtable.InteractingStateEntered(@ptrCast(self), sender, args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RequestIgnored(self: *@This(), sender: *InteractionTracker, args: *InteractionTrackerRequestIgnoredArgs) core.HResult!void {
         const _c = self.vtable.RequestIgnored(@ptrCast(self), sender, args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ValuesChanged(self: *@This(), sender: *InteractionTracker, args: *InteractionTrackerValuesChangedArgs) core.HResult!void {
         const _c = self.vtable.ValuesChanged(@ptrCast(self), sender, args);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerOwner";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1270,8 +1347,11 @@ pub const IInteractionTrackerOwner = extern struct {
 };
 pub const IInteractionTrackerRequestIgnoredArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1279,7 +1359,7 @@ pub const IInteractionTrackerRequestIgnoredArgs = extern struct {
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerRequestIgnoredArgs";
@@ -1299,8 +1379,11 @@ pub const IInteractionTrackerRequestIgnoredArgs = extern struct {
 };
 pub const IInteractionTrackerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1308,13 +1391,13 @@ pub const IInteractionTrackerStatics = extern struct {
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*InteractionTracker {
         var _r: *InteractionTracker = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithOwner(self: *@This(), compositor: *Compositor, owner: *IInteractionTrackerOwner) core.HResult!*InteractionTracker {
         var _r: *InteractionTracker = undefined;
         const _c = self.vtable.CreateWithOwner(@ptrCast(self), compositor, owner, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerStatics";
@@ -1335,20 +1418,23 @@ pub const IInteractionTrackerStatics = extern struct {
 };
 pub const IInteractionTrackerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetBindingMode(self: *@This(), boundTracker1: *InteractionTracker, boundTracker2: *InteractionTracker, axisMode: InteractionBindingAxisModes) core.HResult!void {
         const _c = self.vtable.SetBindingMode(@ptrCast(self), boundTracker1, boundTracker2, axisMode);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetBindingMode(self: *@This(), boundTracker1: *InteractionTracker, boundTracker2: *InteractionTracker) core.HResult!InteractionBindingAxisModes {
         var _r: InteractionBindingAxisModes = undefined;
         const _c = self.vtable.GetBindingMode(@ptrCast(self), boundTracker1, boundTracker2, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerStatics2";
@@ -1369,8 +1455,11 @@ pub const IInteractionTrackerStatics2 = extern struct {
 };
 pub const IInteractionTrackerValuesChangedArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1378,19 +1467,19 @@ pub const IInteractionTrackerValuesChangedArgs = extern struct {
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Scale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerValuesChangedArgs";
@@ -1412,8 +1501,11 @@ pub const IInteractionTrackerValuesChangedArgs = extern struct {
 };
 pub const IInteractionTrackerVector2InertiaModifier = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1434,8 +1526,11 @@ pub const IInteractionTrackerVector2InertiaModifier = extern struct {
 };
 pub const IInteractionTrackerVector2InertiaModifierFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1456,8 +1551,11 @@ pub const IInteractionTrackerVector2InertiaModifierFactory = extern struct {
 };
 pub const IInteractionTrackerVector2InertiaNaturalMotion = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1465,22 +1563,22 @@ pub const IInteractionTrackerVector2InertiaNaturalMotion = extern struct {
     pub fn getCondition(self: *@This()) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.get_Condition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCondition(self: *@This(), value: *ExpressionAnimation) core.HResult!void {
         const _c = self.vtable.put_Condition(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getNaturalMotion(self: *@This()) core.HResult!*Vector2NaturalMotionAnimation {
         var _r: *Vector2NaturalMotionAnimation = undefined;
         const _c = self.vtable.get_NaturalMotion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNaturalMotion(self: *@This(), value: *Vector2NaturalMotionAnimation) core.HResult!void {
         const _c = self.vtable.put_NaturalMotion(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerVector2InertiaNaturalMotion";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1502,8 +1600,11 @@ pub const IInteractionTrackerVector2InertiaNaturalMotion = extern struct {
 };
 pub const IInteractionTrackerVector2InertiaNaturalMotionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1511,7 +1612,7 @@ pub const IInteractionTrackerVector2InertiaNaturalMotionStatics = extern struct 
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*InteractionTrackerVector2InertiaNaturalMotion {
         var _r: *InteractionTrackerVector2InertiaNaturalMotion = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IInteractionTrackerVector2InertiaNaturalMotionStatics";
@@ -1531,8 +1632,11 @@ pub const IInteractionTrackerVector2InertiaNaturalMotionStatics = extern struct 
 };
 pub const IVisualInteractionSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1540,102 +1644,102 @@ pub const IVisualInteractionSource = extern struct {
     pub fn getIsPositionXRailsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPositionXRailsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsPositionXRailsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPositionXRailsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsPositionYRailsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPositionYRailsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsPositionYRailsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPositionYRailsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getManipulationRedirectionMode(self: *@This()) core.HResult!VisualInteractionSourceRedirectionMode {
         var _r: VisualInteractionSourceRedirectionMode = undefined;
         const _c = self.vtable.get_ManipulationRedirectionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putManipulationRedirectionMode(self: *@This(), value: VisualInteractionSourceRedirectionMode) core.HResult!void {
         const _c = self.vtable.put_ManipulationRedirectionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionXChainingMode(self: *@This()) core.HResult!InteractionChainingMode {
         var _r: InteractionChainingMode = undefined;
         const _c = self.vtable.get_PositionXChainingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionXChainingMode(self: *@This(), value: InteractionChainingMode) core.HResult!void {
         const _c = self.vtable.put_PositionXChainingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionXSourceMode(self: *@This()) core.HResult!InteractionSourceMode {
         var _r: InteractionSourceMode = undefined;
         const _c = self.vtable.get_PositionXSourceMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionXSourceMode(self: *@This(), value: InteractionSourceMode) core.HResult!void {
         const _c = self.vtable.put_PositionXSourceMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionYChainingMode(self: *@This()) core.HResult!InteractionChainingMode {
         var _r: InteractionChainingMode = undefined;
         const _c = self.vtable.get_PositionYChainingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionYChainingMode(self: *@This(), value: InteractionChainingMode) core.HResult!void {
         const _c = self.vtable.put_PositionYChainingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPositionYSourceMode(self: *@This()) core.HResult!InteractionSourceMode {
         var _r: InteractionSourceMode = undefined;
         const _c = self.vtable.get_PositionYSourceMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putPositionYSourceMode(self: *@This(), value: InteractionSourceMode) core.HResult!void {
         const _c = self.vtable.put_PositionYSourceMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScaleChainingMode(self: *@This()) core.HResult!InteractionChainingMode {
         var _r: InteractionChainingMode = undefined;
         const _c = self.vtable.get_ScaleChainingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScaleChainingMode(self: *@This(), value: InteractionChainingMode) core.HResult!void {
         const _c = self.vtable.put_ScaleChainingMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getScaleSourceMode(self: *@This()) core.HResult!InteractionSourceMode {
         var _r: InteractionSourceMode = undefined;
         const _c = self.vtable.get_ScaleSourceMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putScaleSourceMode(self: *@This(), value: InteractionSourceMode) core.HResult!void {
         const _c = self.vtable.put_ScaleSourceMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSource(self: *@This()) core.HResult!*Visual {
         var _r: *Visual = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryRedirectForManipulation(self: *@This(), pointerPoint: *PointerPoint) core.HResult!void {
         const _c = self.vtable.TryRedirectForManipulation(@ptrCast(self), pointerPoint);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IVisualInteractionSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1673,8 +1777,11 @@ pub const IVisualInteractionSource = extern struct {
 };
 pub const IVisualInteractionSource2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1682,58 +1789,58 @@ pub const IVisualInteractionSource2 = extern struct {
     pub fn getDeltaPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_DeltaPosition(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDeltaScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_DeltaScale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPositionVelocity(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_PositionVelocity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScale(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Scale(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getScaleVelocity(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_ScaleVelocity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ConfigureCenterPointXModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         const _c = self.vtable.ConfigureCenterPointXModifiers(@ptrCast(self), conditionalValues);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigureCenterPointYModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         const _c = self.vtable.ConfigureCenterPointYModifiers(@ptrCast(self), conditionalValues);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigureDeltaPositionXModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         const _c = self.vtable.ConfigureDeltaPositionXModifiers(@ptrCast(self), conditionalValues);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigureDeltaPositionYModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         const _c = self.vtable.ConfigureDeltaPositionYModifiers(@ptrCast(self), conditionalValues);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ConfigureDeltaScaleModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         const _c = self.vtable.ConfigureDeltaScaleModifiers(@ptrCast(self), conditionalValues);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IVisualInteractionSource2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1762,8 +1869,11 @@ pub const IVisualInteractionSource2 = extern struct {
 };
 pub const IVisualInteractionSource3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1771,7 +1881,7 @@ pub const IVisualInteractionSource3 = extern struct {
     pub fn getPointerWheelConfig(self: *@This()) core.HResult!*InteractionSourceConfiguration {
         var _r: *InteractionSourceConfiguration = undefined;
         const _c = self.vtable.get_PointerWheelConfig(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IVisualInteractionSource3";
@@ -1791,8 +1901,11 @@ pub const IVisualInteractionSource3 = extern struct {
 };
 pub const IVisualInteractionSourceObjectFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1813,8 +1926,11 @@ pub const IVisualInteractionSourceObjectFactory = extern struct {
 };
 pub const IVisualInteractionSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1822,7 +1938,7 @@ pub const IVisualInteractionSourceStatics = extern struct {
     pub fn Create(self: *@This(), source: *Visual) core.HResult!*VisualInteractionSource {
         var _r: *VisualInteractionSource = undefined;
         const _c = self.vtable.Create(@ptrCast(self), source, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IVisualInteractionSourceStatics";
@@ -1842,8 +1958,11 @@ pub const IVisualInteractionSourceStatics = extern struct {
 };
 pub const IVisualInteractionSourceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1851,7 +1970,7 @@ pub const IVisualInteractionSourceStatics2 = extern struct {
     pub fn CreateFromIVisualElement(self: *@This(), source: *IVisualElement) core.HResult!*VisualInteractionSource {
         var _r: *VisualInteractionSource = undefined;
         const _c = self.vtable.CreateFromIVisualElement(@ptrCast(self), source, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.IVisualInteractionSourceStatics2";
@@ -1882,14 +2001,11 @@ pub const InteractionChainingMode = enum(i32) {
 };
 pub const InteractionSourceConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1935,14 +2051,11 @@ pub const InteractionSourceRedirectionMode = enum(i32) {
 };
 pub const InteractionTracker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2082,50 +2195,43 @@ pub const InteractionTracker = extern struct {
     pub fn ConfigureCenterPointXInertiaModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IInteractionTracker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker2.IID, @ptrCast(&this));
         return try this.?.ConfigureCenterPointXInertiaModifiers(conditionalValues);
     }
     pub fn ConfigureCenterPointYInertiaModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IInteractionTracker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker2.IID, @ptrCast(&this));
         return try this.?.ConfigureCenterPointYInertiaModifiers(conditionalValues);
     }
     pub fn ConfigureVector2PositionInertiaModifiers(self: *@This(), modifiers: *IIterable(InteractionTrackerVector2InertiaModifier)) core.HResult!void {
         var this: ?*IInteractionTracker3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker3.IID, @ptrCast(&this));
         return try this.?.ConfigureVector2PositionInertiaModifiers(modifiers);
     }
     pub fn TryUpdatePositionWithOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var this: ?*IInteractionTracker4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         return try this.?.TryUpdatePositionWithOption(value, option);
     }
     pub fn TryUpdatePositionByWithOption(self: *@This(), amount: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var this: ?*IInteractionTracker4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         return try this.?.TryUpdatePositionByWithOption(amount, option);
     }
     pub fn getIsInertiaFromImpulse(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTracker4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         return try this.?.getIsInertiaFromImpulse();
     }
     pub fn TryUpdatePositionWithOptionAndPosUpdateOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
         var this: ?*IInteractionTracker5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
         return try this.?.TryUpdatePositionWithOptionAndPosUpdateOption(value, option, posUpdateOption);
     }
     pub fn SetBindingMode(boundTracker1: *InteractionTracker, boundTracker2: *InteractionTracker, axisMode: InteractionBindingAxisModes) core.HResult!void {
@@ -2158,14 +2264,11 @@ pub const InteractionTrackerClampingOption = enum(i32) {
 };
 pub const InteractionTrackerCustomAnimationStateEnteredArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2177,8 +2280,7 @@ pub const InteractionTrackerCustomAnimationStateEnteredArgs = extern struct {
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerCustomAnimationStateEnteredArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerCustomAnimationStateEnteredArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerCustomAnimationStateEnteredArgs2.IID, @ptrCast(&this));
         return try this.?.getIsFromBinding();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerCustomAnimationStateEnteredArgs";
@@ -2189,14 +2291,11 @@ pub const InteractionTrackerCustomAnimationStateEnteredArgs = extern struct {
 };
 pub const InteractionTrackerIdleStateEnteredArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2208,8 +2307,7 @@ pub const InteractionTrackerIdleStateEnteredArgs = extern struct {
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerIdleStateEnteredArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerIdleStateEnteredArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerIdleStateEnteredArgs2.IID, @ptrCast(&this));
         return try this.?.getIsFromBinding();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerIdleStateEnteredArgs";
@@ -2220,14 +2318,11 @@ pub const InteractionTrackerIdleStateEnteredArgs = extern struct {
 };
 pub const InteractionTrackerInertiaModifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2241,14 +2336,11 @@ pub const InteractionTrackerInertiaModifier = extern struct {
 };
 pub const InteractionTrackerInertiaMotion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2282,14 +2374,11 @@ pub const InteractionTrackerInertiaMotion = extern struct {
 };
 pub const InteractionTrackerInertiaNaturalMotion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2323,14 +2412,11 @@ pub const InteractionTrackerInertiaNaturalMotion = extern struct {
 };
 pub const InteractionTrackerInertiaRestingValue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2364,14 +2450,11 @@ pub const InteractionTrackerInertiaRestingValue = extern struct {
 };
 pub const InteractionTrackerInertiaStateEnteredArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2407,15 +2490,13 @@ pub const InteractionTrackerInertiaStateEnteredArgs = extern struct {
     pub fn getIsInertiaFromImpulse(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerInertiaStateEnteredArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInertiaStateEnteredArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInertiaStateEnteredArgs2.IID, @ptrCast(&this));
         return try this.?.getIsInertiaFromImpulse();
     }
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerInertiaStateEnteredArgs3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInertiaStateEnteredArgs3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInertiaStateEnteredArgs3.IID, @ptrCast(&this));
         return try this.?.getIsFromBinding();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInertiaStateEnteredArgs";
@@ -2426,14 +2507,11 @@ pub const InteractionTrackerInertiaStateEnteredArgs = extern struct {
 };
 pub const InteractionTrackerInteractingStateEnteredArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2445,8 +2523,7 @@ pub const InteractionTrackerInteractingStateEnteredArgs = extern struct {
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerInteractingStateEnteredArgs2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInteractingStateEnteredArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInteractingStateEnteredArgs2.IID, @ptrCast(&this));
         return try this.?.getIsFromBinding();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInteractingStateEnteredArgs";
@@ -2461,14 +2538,11 @@ pub const InteractionTrackerPositionUpdateOption = enum(i32) {
 };
 pub const InteractionTrackerRequestIgnoredArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2485,14 +2559,11 @@ pub const InteractionTrackerRequestIgnoredArgs = extern struct {
 };
 pub const InteractionTrackerValuesChangedArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2517,14 +2588,11 @@ pub const InteractionTrackerValuesChangedArgs = extern struct {
 };
 pub const InteractionTrackerVector2InertiaModifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2538,14 +2606,11 @@ pub const InteractionTrackerVector2InertiaModifier = extern struct {
 };
 pub const InteractionTrackerVector2InertiaNaturalMotion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2579,14 +2644,11 @@ pub const InteractionTrackerVector2InertiaNaturalMotion = extern struct {
 };
 pub const VisualInteractionSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2674,85 +2736,73 @@ pub const VisualInteractionSource = extern struct {
     pub fn getDeltaPosition(self: *@This()) core.HResult!Vector3 {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.getDeltaPosition();
     }
     pub fn getDeltaScale(self: *@This()) core.HResult!f32 {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.getDeltaScale();
     }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.getPosition();
     }
     pub fn getPositionVelocity(self: *@This()) core.HResult!Vector3 {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.getPositionVelocity();
     }
     pub fn getScale(self: *@This()) core.HResult!f32 {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.getScale();
     }
     pub fn getScaleVelocity(self: *@This()) core.HResult!f32 {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.getScaleVelocity();
     }
     pub fn ConfigureCenterPointXModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.ConfigureCenterPointXModifiers(conditionalValues);
     }
     pub fn ConfigureCenterPointYModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.ConfigureCenterPointYModifiers(conditionalValues);
     }
     pub fn ConfigureDeltaPositionXModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.ConfigureDeltaPositionXModifiers(conditionalValues);
     }
     pub fn ConfigureDeltaPositionYModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.ConfigureDeltaPositionYModifiers(conditionalValues);
     }
     pub fn ConfigureDeltaScaleModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         return try this.?.ConfigureDeltaScaleModifiers(conditionalValues);
     }
     pub fn getPointerWheelConfig(self: *@This()) core.HResult!*InteractionSourceConfiguration {
         var this: ?*IVisualInteractionSource3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource3.IID, @ptrCast(&this));
         return try this.?.getPointerWheelConfig();
     }
     pub fn Create(source: *Visual) core.HResult!*VisualInteractionSource {

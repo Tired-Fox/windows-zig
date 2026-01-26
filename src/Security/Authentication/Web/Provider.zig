@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IWebAccountClientView = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,19 +13,19 @@ pub const IWebAccountClientView = extern struct {
     pub fn getApplicationCallbackUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ApplicationCallbackUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getType(self: *@This()) core.HResult!WebAccountClientViewType {
         var _r: WebAccountClientViewType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAccountPairwiseId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountPairwiseId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountClientView";
@@ -44,8 +47,11 @@ pub const IWebAccountClientView = extern struct {
 };
 pub const IWebAccountClientViewFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -53,13 +59,13 @@ pub const IWebAccountClientViewFactory = extern struct {
     pub fn Create(self: *@This(), viewType: WebAccountClientViewType, applicationCallbackUri: *Uri) core.HResult!*WebAccountClientView {
         var _r: *WebAccountClientView = undefined;
         const _c = self.vtable.Create(@ptrCast(self), viewType, applicationCallbackUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithPairwiseId(self: *@This(), viewType: WebAccountClientViewType, applicationCallbackUri: *Uri, accountPairwiseId: ?HSTRING) core.HResult!*WebAccountClientView {
         var _r: *WebAccountClientView = undefined;
         const _c = self.vtable.CreateWithPairwiseId(@ptrCast(self), viewType, applicationCallbackUri, accountPairwiseId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountClientViewFactory";
@@ -80,8 +86,11 @@ pub const IWebAccountClientViewFactory = extern struct {
 };
 pub const IWebAccountManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -89,61 +98,61 @@ pub const IWebAccountManagerStatics = extern struct {
     pub fn UpdateWebAccountPropertiesAsync(self: *@This(), webAccount: *WebAccount, webAccountUserName: ?HSTRING, additionalProperties: *IMapView(?HSTRING,?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateWebAccountPropertiesAsync(@ptrCast(self), webAccount, webAccountUserName, additionalProperties, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddWebAccountAsync(self: *@This(), webAccountId: ?HSTRING, webAccountUserName: ?HSTRING, props: *IMapView(?HSTRING,?HSTRING)) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.AddWebAccountAsync(@ptrCast(self), webAccountId, webAccountUserName, props, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteWebAccountAsync(self: *@This(), webAccount: *WebAccount) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteWebAccountAsync(@ptrCast(self), webAccount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllProviderWebAccountsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(WebAccount)) {
         var _r: *IAsyncOperation(IVectorView(WebAccount)) = undefined;
         const _c = self.vtable.FindAllProviderWebAccountsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn PushCookiesAsync(self: *@This(), uri: *Uri, cookies: *IVectorView(HttpCookie)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.PushCookiesAsync(@ptrCast(self), uri, cookies, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetViewAsync(self: *@This(), webAccount: *WebAccount, view: *WebAccountClientView) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetViewAsync(@ptrCast(self), webAccount, view, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearViewAsync(self: *@This(), webAccount: *WebAccount, applicationCallbackUri: *Uri) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ClearViewAsync(@ptrCast(self), webAccount, applicationCallbackUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetViewsAsync(self: *@This(), webAccount: *WebAccount) core.HResult!*IAsyncOperation(IVectorView(WebAccountClientView)) {
         var _r: *IAsyncOperation(IVectorView(WebAccountClientView)) = undefined;
         const _c = self.vtable.GetViewsAsync(@ptrCast(self), webAccount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetWebAccountPictureAsync(self: *@This(), webAccount: *WebAccount, webAccountPicture: *IRandomAccessStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetWebAccountPictureAsync(@ptrCast(self), webAccount, webAccountPicture, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearWebAccountPictureAsync(self: *@This(), webAccount: *WebAccount) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ClearWebAccountPictureAsync(@ptrCast(self), webAccount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountManagerStatics";
@@ -172,8 +181,11 @@ pub const IWebAccountManagerStatics = extern struct {
 };
 pub const IWebAccountManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -181,7 +193,7 @@ pub const IWebAccountManagerStatics2 = extern struct {
     pub fn PullCookiesAsync(self: *@This(), uriString: ?HSTRING, callerPFN: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.PullCookiesAsync(@ptrCast(self), uriString, callerPFN, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountManagerStatics2";
@@ -201,8 +213,11 @@ pub const IWebAccountManagerStatics2 = extern struct {
 };
 pub const IWebAccountManagerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -210,25 +225,25 @@ pub const IWebAccountManagerStatics3 = extern struct {
     pub fn FindAllProviderWebAccountsForUserAsync(self: *@This(), user: *User) core.HResult!*IAsyncOperation(IVectorView(WebAccount)) {
         var _r: *IAsyncOperation(IVectorView(WebAccount)) = undefined;
         const _c = self.vtable.FindAllProviderWebAccountsForUserAsync(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddWebAccountForUserAsync(self: *@This(), user: *User, webAccountId: ?HSTRING, webAccountUserName: ?HSTRING, props: *IMapView(?HSTRING,?HSTRING)) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.AddWebAccountForUserAsync(@ptrCast(self), user, webAccountId, webAccountUserName, props, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddWebAccountForUserAsyncWithScope(self: *@This(), user: *User, webAccountId: ?HSTRING, webAccountUserName: ?HSTRING, props: *IMapView(?HSTRING,?HSTRING), scope: WebAccountScope) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.AddWebAccountForUserAsyncWithScope(@ptrCast(self), user, webAccountId, webAccountUserName, props, scope, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AddWebAccountForUserAsyncWithScopeAndPerUserWebAccountId(self: *@This(), user: *User, webAccountId: ?HSTRING, webAccountUserName: ?HSTRING, props: *IMapView(?HSTRING,?HSTRING), scope: WebAccountScope, perUserWebAccountId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.AddWebAccountForUserAsyncWithScopeAndPerUserWebAccountId(@ptrCast(self), user, webAccountId, webAccountUserName, props, scope, perUserWebAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountManagerStatics3";
@@ -251,8 +266,11 @@ pub const IWebAccountManagerStatics3 = extern struct {
 };
 pub const IWebAccountManagerStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -260,13 +278,13 @@ pub const IWebAccountManagerStatics4 = extern struct {
     pub fn InvalidateAppCacheForAllAccountsAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InvalidateAppCacheForAllAccountsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn InvalidateAppCacheForAccountAsync(self: *@This(), webAccount: *WebAccount) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InvalidateAppCacheForAccountAsync(@ptrCast(self), webAccount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountManagerStatics4";
@@ -287,8 +305,11 @@ pub const IWebAccountManagerStatics4 = extern struct {
 };
 pub const IWebAccountMapManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -296,25 +317,25 @@ pub const IWebAccountMapManagerStatics = extern struct {
     pub fn AddWebAccountAsync(self: *@This(), webAccountId: ?HSTRING, webAccountUserName: ?HSTRING, props: *IMapView(?HSTRING,?HSTRING), scope: WebAccountScope, perUserWebAccountId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.AddWebAccountAsync(@ptrCast(self), webAccountId, webAccountUserName, props, scope, perUserWebAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetPerAppToPerUserAccountAsync(self: *@This(), perAppAccount: *WebAccount, perUserWebAccountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetPerAppToPerUserAccountAsync(@ptrCast(self), perAppAccount, perUserWebAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPerUserFromPerAppAccountAsync(self: *@This(), perAppAccount: *WebAccount) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.GetPerUserFromPerAppAccountAsync(@ptrCast(self), perAppAccount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ClearPerUserFromPerAppAccountAsync(self: *@This(), perAppAccount: *WebAccount) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ClearPerUserFromPerAppAccountAsync(@ptrCast(self), perAppAccount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountMapManagerStatics";
@@ -337,15 +358,18 @@ pub const IWebAccountMapManagerStatics = extern struct {
 };
 pub const IWebAccountProviderAddAccountOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         const _c = self.vtable.ReportCompleted(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderAddAccountOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -364,19 +388,22 @@ pub const IWebAccountProviderAddAccountOperation = extern struct {
 };
 pub const IWebAccountProviderBaseReportOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         const _c = self.vtable.ReportCompleted(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         const _c = self.vtable.ReportError(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderBaseReportOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -396,8 +423,11 @@ pub const IWebAccountProviderBaseReportOperation = extern struct {
 };
 pub const IWebAccountProviderDeleteAccountOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -405,7 +435,7 @@ pub const IWebAccountProviderDeleteAccountOperation = extern struct {
     pub fn getWebAccount(self: *@This()) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.get_WebAccount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderDeleteAccountOperation";
@@ -425,8 +455,11 @@ pub const IWebAccountProviderDeleteAccountOperation = extern struct {
 };
 pub const IWebAccountProviderManageAccountOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -434,12 +467,12 @@ pub const IWebAccountProviderManageAccountOperation = extern struct {
     pub fn getWebAccount(self: *@This()) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.get_WebAccount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         const _c = self.vtable.ReportCompleted(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderManageAccountOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -459,8 +492,11 @@ pub const IWebAccountProviderManageAccountOperation = extern struct {
 };
 pub const IWebAccountProviderOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -468,7 +504,7 @@ pub const IWebAccountProviderOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var _r: WebAccountProviderOperationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderOperation";
@@ -488,8 +524,11 @@ pub const IWebAccountProviderOperation = extern struct {
 };
 pub const IWebAccountProviderRetrieveCookiesOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -497,29 +536,29 @@ pub const IWebAccountProviderRetrieveCookiesOperation = extern struct {
     pub fn getContext(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCookies(self: *@This()) core.HResult!*IVector(HttpCookie) {
         var _r: *IVector(HttpCookie) = undefined;
         const _c = self.vtable.get_Cookies(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), uri: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), uri);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getApplicationCallbackUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ApplicationCallbackUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderRetrieveCookiesOperation";
@@ -543,8 +582,11 @@ pub const IWebAccountProviderRetrieveCookiesOperation = extern struct {
 };
 pub const IWebAccountProviderSignOutAccountOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -552,19 +594,19 @@ pub const IWebAccountProviderSignOutAccountOperation = extern struct {
     pub fn getWebAccount(self: *@This()) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.get_WebAccount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getApplicationCallbackUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ApplicationCallbackUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClientId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClientId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderSignOutAccountOperation";
@@ -586,19 +628,22 @@ pub const IWebAccountProviderSignOutAccountOperation = extern struct {
 };
 pub const IWebAccountProviderSilentReportOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportUserInteractionRequired(self: *@This()) core.HResult!void {
         const _c = self.vtable.ReportUserInteractionRequired(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReportUserInteractionRequiredWithValue(self: *@This(), value: *WebProviderError) core.HResult!void {
         const _c = self.vtable.ReportUserInteractionRequiredWithValue(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderSilentReportOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -618,8 +663,11 @@ pub const IWebAccountProviderSilentReportOperation = extern struct {
 };
 pub const IWebAccountProviderTokenObjects = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -627,7 +675,7 @@ pub const IWebAccountProviderTokenObjects = extern struct {
     pub fn getOperation(self: *@This()) core.HResult!*IWebAccountProviderOperation {
         var _r: *IWebAccountProviderOperation = undefined;
         const _c = self.vtable.get_Operation(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderTokenObjects";
@@ -647,8 +695,11 @@ pub const IWebAccountProviderTokenObjects = extern struct {
 };
 pub const IWebAccountProviderTokenObjects2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -656,7 +707,7 @@ pub const IWebAccountProviderTokenObjects2 = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderTokenObjects2";
@@ -676,8 +727,11 @@ pub const IWebAccountProviderTokenObjects2 = extern struct {
 };
 pub const IWebAccountProviderTokenOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -685,23 +739,23 @@ pub const IWebAccountProviderTokenOperation = extern struct {
     pub fn getProviderRequest(self: *@This()) core.HResult!*WebProviderTokenRequest {
         var _r: *WebProviderTokenRequest = undefined;
         const _c = self.vtable.get_ProviderRequest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getProviderResponses(self: *@This()) core.HResult!*IVector(WebProviderTokenResponse) {
         var _r: *IVector(WebProviderTokenResponse) = undefined;
         const _c = self.vtable.get_ProviderResponses(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCacheExpirationTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_CacheExpirationTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCacheExpirationTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_CacheExpirationTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderTokenOperation";
@@ -724,15 +778,18 @@ pub const IWebAccountProviderTokenOperation = extern struct {
 };
 pub const IWebAccountProviderUIReportOperation = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportUserCanceled(self: *@This()) core.HResult!void {
         const _c = self.vtable.ReportUserCanceled(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountProviderUIReportOperation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -751,8 +808,11 @@ pub const IWebAccountProviderUIReportOperation = extern struct {
 };
 pub const IWebAccountScopeManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -760,19 +820,19 @@ pub const IWebAccountScopeManagerStatics = extern struct {
     pub fn AddWebAccountAsync(self: *@This(), webAccountId: ?HSTRING, webAccountUserName: ?HSTRING, props: *IMapView(?HSTRING,?HSTRING), scope: WebAccountScope) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.AddWebAccountAsync(@ptrCast(self), webAccountId, webAccountUserName, props, scope, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetScopeAsync(self: *@This(), webAccount: *WebAccount, scope: WebAccountScope) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetScopeAsync(@ptrCast(self), webAccount, scope, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetScope(self: *@This(), webAccount: *WebAccount) core.HResult!WebAccountScope {
         var _r: WebAccountScope = undefined;
         const _c = self.vtable.GetScope(@ptrCast(self), webAccount, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebAccountScopeManagerStatics";
@@ -794,8 +854,11 @@ pub const IWebAccountScopeManagerStatics = extern struct {
 };
 pub const IWebProviderTokenRequest = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -803,31 +866,31 @@ pub const IWebProviderTokenRequest = extern struct {
     pub fn getClientRequest(self: *@This()) core.HResult!*WebTokenRequest {
         var _r: *WebTokenRequest = undefined;
         const _c = self.vtable.get_ClientRequest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWebAccounts(self: *@This()) core.HResult!*IVectorView(WebAccount) {
         var _r: *IVectorView(WebAccount) = undefined;
         const _c = self.vtable.get_WebAccounts(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWebAccountSelectionOptions(self: *@This()) core.HResult!WebAccountSelectionOptions {
         var _r: WebAccountSelectionOptions = undefined;
         const _c = self.vtable.get_WebAccountSelectionOptions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getApplicationCallbackUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ApplicationCallbackUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetApplicationTokenBindingKeyAsync(self: *@This(), keyType: TokenBindingKeyType, target: *Uri) core.HResult!*IAsyncOperation(CryptographicKey) {
         var _r: *IAsyncOperation(CryptographicKey) = undefined;
         const _c = self.vtable.GetApplicationTokenBindingKeyAsync(@ptrCast(self), keyType, target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebProviderTokenRequest";
@@ -851,8 +914,11 @@ pub const IWebProviderTokenRequest = extern struct {
 };
 pub const IWebProviderTokenRequest2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -860,7 +926,7 @@ pub const IWebProviderTokenRequest2 = extern struct {
     pub fn GetApplicationTokenBindingKeyIdAsync(self: *@This(), keyType: TokenBindingKeyType, target: *Uri) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.GetApplicationTokenBindingKeyIdAsync(@ptrCast(self), keyType, target, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebProviderTokenRequest2";
@@ -880,8 +946,11 @@ pub const IWebProviderTokenRequest2 = extern struct {
 };
 pub const IWebProviderTokenRequest3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -889,19 +958,19 @@ pub const IWebProviderTokenRequest3 = extern struct {
     pub fn getApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationPackageFamilyName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getApplicationProcessName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationProcessName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CheckApplicationForCapabilityAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.CheckApplicationForCapabilityAsync(@ptrCast(self), capabilityName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebProviderTokenRequest3";
@@ -923,8 +992,11 @@ pub const IWebProviderTokenRequest3 = extern struct {
 };
 pub const IWebProviderTokenResponse = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -932,7 +1004,7 @@ pub const IWebProviderTokenResponse = extern struct {
     pub fn getClientResponse(self: *@This()) core.HResult!*WebTokenResponse {
         var _r: *WebTokenResponse = undefined;
         const _c = self.vtable.get_ClientResponse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebProviderTokenResponse";
@@ -952,8 +1024,11 @@ pub const IWebProviderTokenResponse = extern struct {
 };
 pub const IWebProviderTokenResponseFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -961,7 +1036,7 @@ pub const IWebProviderTokenResponseFactory = extern struct {
     pub fn Create(self: *@This(), webTokenResponse: *WebTokenResponse) core.HResult!*WebProviderTokenResponse {
         var _r: *WebProviderTokenResponse = undefined;
         const _c = self.vtable.Create(@ptrCast(self), webTokenResponse, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.IWebProviderTokenResponseFactory";
@@ -981,14 +1056,11 @@ pub const IWebProviderTokenResponseFactory = extern struct {
 };
 pub const WebAccountClientView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1026,14 +1098,11 @@ pub const WebAccountClientViewType = enum(i32) {
 };
 pub const WebAccountManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1145,14 +1214,11 @@ pub const WebAccountManager = extern struct {
 };
 pub const WebAccountProviderAddAccountOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1164,8 +1230,7 @@ pub const WebAccountProviderAddAccountOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderAddAccountOperation";
@@ -1176,14 +1241,11 @@ pub const WebAccountProviderAddAccountOperation = extern struct {
 };
 pub const WebAccountProviderDeleteAccountOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1195,22 +1257,19 @@ pub const WebAccountProviderDeleteAccountOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportError(value);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderDeleteAccountOperation";
@@ -1221,14 +1280,11 @@ pub const WebAccountProviderDeleteAccountOperation = extern struct {
 };
 pub const WebAccountProviderGetTokenSilentOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1252,36 +1308,31 @@ pub const WebAccountProviderGetTokenSilentOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn ReportUserInteractionRequired(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderSilentReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderSilentReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderSilentReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportUserInteractionRequired();
     }
     pub fn ReportUserInteractionRequiredWithValue(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderSilentReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderSilentReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderSilentReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportUserInteractionRequiredWithValue(value);
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportError(value);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderGetTokenSilentOperation";
@@ -1292,14 +1343,11 @@ pub const WebAccountProviderGetTokenSilentOperation = extern struct {
 };
 pub const WebAccountProviderManageAccountOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1315,8 +1363,7 @@ pub const WebAccountProviderManageAccountOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderManageAccountOperation";
@@ -1336,14 +1383,11 @@ pub const WebAccountProviderOperationKind = enum(i32) {
 };
 pub const WebAccountProviderRequestTokenOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1367,29 +1411,25 @@ pub const WebAccountProviderRequestTokenOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn ReportUserCanceled(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderUIReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderUIReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderUIReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportUserCanceled();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportError(value);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderRequestTokenOperation";
@@ -1400,14 +1440,11 @@ pub const WebAccountProviderRequestTokenOperation = extern struct {
 };
 pub const WebAccountProviderRetrieveCookiesOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1435,22 +1472,19 @@ pub const WebAccountProviderRetrieveCookiesOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportError(value);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderRetrieveCookiesOperation";
@@ -1461,14 +1495,11 @@ pub const WebAccountProviderRetrieveCookiesOperation = extern struct {
 };
 pub const WebAccountProviderSignOutAccountOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1488,22 +1519,19 @@ pub const WebAccountProviderSignOutAccountOperation = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         return try this.?.getKind();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         return try this.?.ReportError(value);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderSignOutAccountOperation";
@@ -1514,14 +1542,11 @@ pub const WebAccountProviderSignOutAccountOperation = extern struct {
 };
 pub const WebAccountProviderTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1533,8 +1558,7 @@ pub const WebAccountProviderTriggerDetails = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IWebAccountProviderTokenObjects2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderTokenObjects2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderTokenObjects2.IID, @ptrCast(&this));
         return try this.?.getUser();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebAccountProviderTriggerDetails";
@@ -1553,14 +1577,11 @@ pub const WebAccountSelectionOptions = enum(i32) {
 };
 pub const WebProviderTokenRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1588,29 +1609,25 @@ pub const WebProviderTokenRequest = extern struct {
     pub fn GetApplicationTokenBindingKeyIdAsync(self: *@This(), keyType: TokenBindingKeyType, target: *Uri) core.HResult!*IAsyncOperation(IBuffer) {
         var this: ?*IWebProviderTokenRequest2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest2.IID, @ptrCast(&this));
         return try this.?.GetApplicationTokenBindingKeyIdAsync(keyType, target);
     }
     pub fn getApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebProviderTokenRequest3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
         return try this.?.getApplicationPackageFamilyName();
     }
     pub fn getApplicationProcessName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebProviderTokenRequest3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
         return try this.?.getApplicationProcessName();
     }
     pub fn CheckApplicationForCapabilityAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IWebProviderTokenRequest3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
         return try this.?.CheckApplicationForCapabilityAsync(capabilityName);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Provider.WebProviderTokenRequest";
@@ -1621,14 +1638,11 @@ pub const WebProviderTokenRequest = extern struct {
 };
 pub const WebProviderTokenResponse = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DateTimeFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -88,8 +85,7 @@ pub const DateTimeFormatter = extern struct {
     pub fn FormatWithTimeZoneId(self: *@This(), datetime: DateTime, timeZoneId: ?HSTRING) core.HResult!?HSTRING {
         var this: ?*IDateTimeFormatter2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDateTimeFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDateTimeFormatter2.IID, @ptrCast(&this));
         return try this.?.FormatWithTimeZoneId(datetime, timeZoneId);
     }
     pub fn CreateDateTimeFormatter(formatTemplate: ?HSTRING) core.HResult!*DateTimeFormatter {
@@ -160,8 +156,11 @@ pub const HourFormat = enum(i32) {
 };
 pub const IDateTimeFormatter = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -169,107 +168,107 @@ pub const IDateTimeFormatter = extern struct {
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GeographicRegion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCalendar(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Calendar(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getClock(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Clock(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumeralSystem(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NumeralSystem(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPatterns(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Patterns(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTemplate(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Template(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Format(self: *@This(), value: DateTime) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Format(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeYear(self: *@This()) core.HResult!YearFormat {
         var _r: YearFormat = undefined;
         const _c = self.vtable.get_IncludeYear(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeMonth(self: *@This()) core.HResult!MonthFormat {
         var _r: MonthFormat = undefined;
         const _c = self.vtable.get_IncludeMonth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeDayOfWeek(self: *@This()) core.HResult!DayOfWeekFormat {
         var _r: DayOfWeekFormat = undefined;
         const _c = self.vtable.get_IncludeDayOfWeek(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeDay(self: *@This()) core.HResult!DayFormat {
         var _r: DayFormat = undefined;
         const _c = self.vtable.get_IncludeDay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeHour(self: *@This()) core.HResult!HourFormat {
         var _r: HourFormat = undefined;
         const _c = self.vtable.get_IncludeHour(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeMinute(self: *@This()) core.HResult!MinuteFormat {
         var _r: MinuteFormat = undefined;
         const _c = self.vtable.get_IncludeMinute(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeSecond(self: *@This()) core.HResult!SecondFormat {
         var _r: SecondFormat = undefined;
         const _c = self.vtable.get_IncludeSecond(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedGeographicRegion(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.DateTimeFormatting.IDateTimeFormatter";
@@ -306,8 +305,11 @@ pub const IDateTimeFormatter = extern struct {
 };
 pub const IDateTimeFormatter2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -315,7 +317,7 @@ pub const IDateTimeFormatter2 = extern struct {
     pub fn Format(self: *@This(), datetime: DateTime, timeZoneId: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Format(@ptrCast(self), datetime, timeZoneId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.DateTimeFormatting.IDateTimeFormatter2";
@@ -335,8 +337,11 @@ pub const IDateTimeFormatter2 = extern struct {
 };
 pub const IDateTimeFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -344,43 +349,43 @@ pub const IDateTimeFormatterFactory = extern struct {
     pub fn CreateDateTimeFormatter(self: *@This(), formatTemplate: ?HSTRING) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatter(@ptrCast(self), formatTemplate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTimeFormatterLanguages(self: *@This(), formatTemplate: ?HSTRING, languages: *IIterable(?HSTRING)) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatterLanguages(@ptrCast(self), formatTemplate, languages, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTimeFormatterContext(self: *@This(), formatTemplate: ?HSTRING, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING, calendar: ?HSTRING, clock: ?HSTRING) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatterContext(@ptrCast(self), formatTemplate, languages, geographicRegion, calendar, clock, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTimeFormatterDate(self: *@This(), yearFormat: YearFormat, monthFormat: MonthFormat, dayFormat: DayFormat, dayOfWeekFormat: DayOfWeekFormat) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatterDate(@ptrCast(self), yearFormat, monthFormat, dayFormat, dayOfWeekFormat, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTimeFormatterTime(self: *@This(), hourFormat: HourFormat, minuteFormat: MinuteFormat, secondFormat: SecondFormat) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatterTime(@ptrCast(self), hourFormat, minuteFormat, secondFormat, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTimeFormatterDateTimeLanguages(self: *@This(), yearFormat: YearFormat, monthFormat: MonthFormat, dayFormat: DayFormat, dayOfWeekFormat: DayOfWeekFormat, hourFormat: HourFormat, minuteFormat: MinuteFormat, secondFormat: SecondFormat, languages: *IIterable(?HSTRING)) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatterDateTimeLanguages(@ptrCast(self), yearFormat, monthFormat, dayFormat, dayOfWeekFormat, hourFormat, minuteFormat, secondFormat, languages, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTimeFormatterDateTimeContext(self: *@This(), yearFormat: YearFormat, monthFormat: MonthFormat, dayFormat: DayFormat, dayOfWeekFormat: DayOfWeekFormat, hourFormat: HourFormat, minuteFormat: MinuteFormat, secondFormat: SecondFormat, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING, calendar: ?HSTRING, clock: ?HSTRING) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatterDateTimeContext(@ptrCast(self), yearFormat, monthFormat, dayFormat, dayOfWeekFormat, hourFormat, minuteFormat, secondFormat, languages, geographicRegion, calendar, clock, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.DateTimeFormatting.IDateTimeFormatterFactory";
@@ -406,8 +411,11 @@ pub const IDateTimeFormatterFactory = extern struct {
 };
 pub const IDateTimeFormatterStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -415,25 +423,25 @@ pub const IDateTimeFormatterStatics = extern struct {
     pub fn getLongDate(self: *@This()) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.get_LongDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLongTime(self: *@This()) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.get_LongTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShortDate(self: *@This()) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.get_ShortDate(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getShortTime(self: *@This()) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.get_ShortTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Globalization.DateTimeFormatting.IDateTimeFormatterStatics";

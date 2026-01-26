@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const IRemoteTextConnection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,24 +13,24 @@ pub const IRemoteTextConnection = extern struct {
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn RegisterThread(self: *@This(), threadId: u32) core.HResult!void {
         const _c = self.vtable.RegisterThread(@ptrCast(self), threadId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn UnregisterThread(self: *@This(), threadId: u32) core.HResult!void {
         const _c = self.vtable.UnregisterThread(@ptrCast(self), threadId);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn ReportDataReceived(self: *@This(), pduData: [*]u8) core.HResult!void {
         const _c = self.vtable.ReportDataReceived(@ptrCast(self), pduData);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Input.IRemoteTextConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50,15 +53,18 @@ pub const IRemoteTextConnection = extern struct {
 };
 pub const IRemoteTextConnection2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportPredictedKeyEvent(self: *@This(), scanCode: u16, attributes: RemoteKeyEventAttributes) core.HResult!void {
         const _c = self.vtable.ReportPredictedKeyEvent(@ptrCast(self), scanCode, attributes);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Input.IRemoteTextConnection2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -77,8 +83,11 @@ pub const IRemoteTextConnection2 = extern struct {
 };
 pub const IRemoteTextConnectionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -86,7 +95,7 @@ pub const IRemoteTextConnectionFactory = extern struct {
     pub fn CreateInstance(self: *@This(), connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler) core.HResult!*RemoteTextConnection {
         var _r: *RemoteTextConnection = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), connectionId, pduForwarder, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory";
@@ -106,8 +115,11 @@ pub const IRemoteTextConnectionFactory = extern struct {
 };
 pub const IRemoteTextConnectionFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -115,7 +127,7 @@ pub const IRemoteTextConnectionFactory2 = extern struct {
     pub fn CreateInstance(self: *@This(), connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler, options: RemoteTextConnectionOptions) core.HResult!*RemoteTextConnection {
         var _r: *RemoteTextConnection = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), connectionId, pduForwarder, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory2";
@@ -142,14 +154,11 @@ pub const RemoteKeyEventAttributes = enum(i32) {
 };
 pub const RemoteTextConnection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -177,15 +186,13 @@ pub const RemoteTextConnection = extern struct {
     pub fn ReportPredictedKeyEvent(self: *@This(), scanCode: u16, attributes: RemoteKeyEventAttributes) core.HResult!void {
         var this: ?*IRemoteTextConnection2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteTextConnection2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IRemoteTextConnection2.IID, @ptrCast(&this));
         return try this.?.ReportPredictedKeyEvent(scanCode, attributes);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn CreateInstance(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler) core.HResult!*RemoteTextConnection {

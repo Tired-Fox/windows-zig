@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const Direct3D11CaptureFrame = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -28,22 +25,19 @@ pub const Direct3D11CaptureFrame = extern struct {
     pub fn getDirtyRegions(self: *@This()) core.HResult!*IVectorView(RectInt32) {
         var this: ?*IDirect3D11CaptureFrame2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDirect3D11CaptureFrame2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDirect3D11CaptureFrame2.IID, @ptrCast(&this));
         return try this.?.getDirtyRegions();
     }
     pub fn getDirtyRegionMode(self: *@This()) core.HResult!GraphicsCaptureDirtyRegionMode {
         var this: ?*IDirect3D11CaptureFrame2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDirect3D11CaptureFrame2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDirect3D11CaptureFrame2.IID, @ptrCast(&this));
         return try this.?.getDirtyRegionMode();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.Direct3D11CaptureFrame";
@@ -54,14 +48,11 @@ pub const Direct3D11CaptureFrame = extern struct {
 };
 pub const Direct3D11CaptureFramePool = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -93,8 +84,7 @@ pub const Direct3D11CaptureFramePool = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create(device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
@@ -115,14 +105,11 @@ pub const Direct3D11CaptureFramePool = extern struct {
 };
 pub const GraphicsCaptureAccess = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -145,14 +132,11 @@ pub const GraphicsCaptureDirtyRegionMode = enum(i32) {
 };
 pub const GraphicsCaptureItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -195,14 +179,11 @@ pub const GraphicsCaptureItem = extern struct {
 };
 pub const GraphicsCapturePicker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -224,14 +205,11 @@ pub const GraphicsCapturePicker = extern struct {
 };
 pub const GraphicsCaptureSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -243,78 +221,67 @@ pub const GraphicsCaptureSession = extern struct {
     pub fn getIsCursorCaptureEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IGraphicsCaptureSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession2.IID, @ptrCast(&this));
         return try this.?.getIsCursorCaptureEnabled();
     }
     pub fn putIsCursorCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGraphicsCaptureSession2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession2.IID, @ptrCast(&this));
         return try this.?.putIsCursorCaptureEnabled(value);
     }
     pub fn getIsBorderRequired(self: *@This()) core.HResult!bool {
         var this: ?*IGraphicsCaptureSession3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession3.IID, @ptrCast(&this));
         return try this.?.getIsBorderRequired();
     }
     pub fn putIsBorderRequired(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGraphicsCaptureSession3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession3.IID, @ptrCast(&this));
         return try this.?.putIsBorderRequired(value);
     }
     pub fn getDirtyRegionMode(self: *@This()) core.HResult!GraphicsCaptureDirtyRegionMode {
         var this: ?*IGraphicsCaptureSession4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession4.IID, @ptrCast(&this));
         return try this.?.getDirtyRegionMode();
     }
     pub fn putDirtyRegionMode(self: *@This(), value: GraphicsCaptureDirtyRegionMode) core.HResult!void {
         var this: ?*IGraphicsCaptureSession4 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession4.IID, @ptrCast(&this));
         return try this.?.putDirtyRegionMode(value);
     }
     pub fn getMinUpdateInterval(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IGraphicsCaptureSession5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession5.IID, @ptrCast(&this));
         return try this.?.getMinUpdateInterval();
     }
     pub fn putMinUpdateInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IGraphicsCaptureSession5 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession5.IID, @ptrCast(&this));
         return try this.?.putMinUpdateInterval(value);
     }
     pub fn getIncludeSecondaryWindows(self: *@This()) core.HResult!bool {
         var this: ?*IGraphicsCaptureSession6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession6.IID, @ptrCast(&this));
         return try this.?.getIncludeSecondaryWindows();
     }
     pub fn putIncludeSecondaryWindows(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGraphicsCaptureSession6 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession6.IID, @ptrCast(&this));
         return try this.?.putIncludeSecondaryWindows(value);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn IsSupported() core.HResult!bool {
@@ -330,8 +297,11 @@ pub const GraphicsCaptureSession = extern struct {
 };
 pub const IDirect3D11CaptureFrame = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -339,19 +309,19 @@ pub const IDirect3D11CaptureFrame = extern struct {
     pub fn getSurface(self: *@This()) core.HResult!*IDirect3DSurface {
         var _r: *IDirect3DSurface = undefined;
         const _c = self.vtable.get_Surface(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSystemRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SystemRelativeTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getContentSize(self: *@This()) core.HResult!SizeInt32 {
         var _r: SizeInt32 = undefined;
         const _c = self.vtable.get_ContentSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IDirect3D11CaptureFrame";
@@ -373,8 +343,11 @@ pub const IDirect3D11CaptureFrame = extern struct {
 };
 pub const IDirect3D11CaptureFrame2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -382,13 +355,13 @@ pub const IDirect3D11CaptureFrame2 = extern struct {
     pub fn getDirtyRegions(self: *@This()) core.HResult!*IVectorView(RectInt32) {
         var _r: *IVectorView(RectInt32) = undefined;
         const _c = self.vtable.get_DirtyRegions(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDirtyRegionMode(self: *@This()) core.HResult!GraphicsCaptureDirtyRegionMode {
         var _r: GraphicsCaptureDirtyRegionMode = undefined;
         const _c = self.vtable.get_DirtyRegionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IDirect3D11CaptureFrame2";
@@ -409,42 +382,45 @@ pub const IDirect3D11CaptureFrame2 = extern struct {
 };
 pub const IDirect3D11CaptureFramePool = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Recreate(self: *@This(), device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!void {
         const _c = self.vtable.Recreate(@ptrCast(self), device, pixelFormat, numberOfBuffers, size);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryGetNextFrame(self: *@This()) core.HResult!*Direct3D11CaptureFrame {
         var _r: *Direct3D11CaptureFrame = undefined;
         const _c = self.vtable.TryGetNextFrame(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(Direct3D11CaptureFramePool,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeFrameArrived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_FrameArrived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateCaptureSession(self: *@This(), item: *GraphicsCaptureItem) core.HResult!*GraphicsCaptureSession {
         var _r: *GraphicsCaptureSession = undefined;
         const _c = self.vtable.CreateCaptureSession(@ptrCast(self), item, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var _r: *DispatcherQueue = undefined;
         const _c = self.vtable.get_DispatcherQueue(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IDirect3D11CaptureFramePool";
@@ -469,8 +445,11 @@ pub const IDirect3D11CaptureFramePool = extern struct {
 };
 pub const IDirect3D11CaptureFramePoolStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -478,7 +457,7 @@ pub const IDirect3D11CaptureFramePoolStatics = extern struct {
     pub fn Create(self: *@This(), device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
         var _r: *Direct3D11CaptureFramePool = undefined;
         const _c = self.vtable.Create(@ptrCast(self), device, pixelFormat, numberOfBuffers, size, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics";
@@ -498,8 +477,11 @@ pub const IDirect3D11CaptureFramePoolStatics = extern struct {
 };
 pub const IDirect3D11CaptureFramePoolStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -507,7 +489,7 @@ pub const IDirect3D11CaptureFramePoolStatics2 = extern struct {
     pub fn CreateFreeThreaded(self: *@This(), device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
         var _r: *Direct3D11CaptureFramePool = undefined;
         const _c = self.vtable.CreateFreeThreaded(@ptrCast(self), device, pixelFormat, numberOfBuffers, size, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics2";
@@ -527,8 +509,11 @@ pub const IDirect3D11CaptureFramePoolStatics2 = extern struct {
 };
 pub const IGraphicsCaptureAccessStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -536,7 +521,7 @@ pub const IGraphicsCaptureAccessStatics = extern struct {
     pub fn RequestAccessAsync(self: *@This(), request: GraphicsCaptureAccessKind) core.HResult!*IAsyncOperation(AppCapabilityAccessStatus) {
         var _r: *IAsyncOperation(AppCapabilityAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), request, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureAccessStatics";
@@ -556,8 +541,11 @@ pub const IGraphicsCaptureAccessStatics = extern struct {
 };
 pub const IGraphicsCaptureItem = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -565,24 +553,24 @@ pub const IGraphicsCaptureItem = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSize(self: *@This()) core.HResult!SizeInt32 {
         var _r: SizeInt32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(GraphicsCaptureItem,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -604,8 +592,11 @@ pub const IGraphicsCaptureItem = extern struct {
 };
 pub const IGraphicsCaptureItemStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -613,7 +604,7 @@ pub const IGraphicsCaptureItemStatics = extern struct {
     pub fn CreateFromVisual(self: *@This(), visual: *Visual) core.HResult!*GraphicsCaptureItem {
         var _r: *GraphicsCaptureItem = undefined;
         const _c = self.vtable.CreateFromVisual(@ptrCast(self), visual, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureItemStatics";
@@ -633,8 +624,11 @@ pub const IGraphicsCaptureItemStatics = extern struct {
 };
 pub const IGraphicsCaptureItemStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -642,13 +636,13 @@ pub const IGraphicsCaptureItemStatics2 = extern struct {
     pub fn TryCreateFromWindowId(self: *@This(), windowId: WindowId) core.HResult!*GraphicsCaptureItem {
         var _r: *GraphicsCaptureItem = undefined;
         const _c = self.vtable.TryCreateFromWindowId(@ptrCast(self), windowId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryCreateFromDisplayId(self: *@This(), displayId: DisplayId) core.HResult!*GraphicsCaptureItem {
         var _r: *GraphicsCaptureItem = undefined;
         const _c = self.vtable.TryCreateFromDisplayId(@ptrCast(self), displayId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureItemStatics2";
@@ -669,8 +663,11 @@ pub const IGraphicsCaptureItemStatics2 = extern struct {
 };
 pub const IGraphicsCapturePicker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -678,7 +675,7 @@ pub const IGraphicsCapturePicker = extern struct {
     pub fn PickSingleItemAsync(self: *@This()) core.HResult!*IAsyncOperation(GraphicsCaptureItem) {
         var _r: *IAsyncOperation(GraphicsCaptureItem) = undefined;
         const _c = self.vtable.PickSingleItemAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCapturePicker";
@@ -698,15 +695,18 @@ pub const IGraphicsCapturePicker = extern struct {
 };
 pub const IGraphicsCaptureSession = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StartCapture(self: *@This()) core.HResult!void {
         const _c = self.vtable.StartCapture(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -725,8 +725,11 @@ pub const IGraphicsCaptureSession = extern struct {
 };
 pub const IGraphicsCaptureSession2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -734,12 +737,12 @@ pub const IGraphicsCaptureSession2 = extern struct {
     pub fn getIsCursorCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCursorCaptureEnabled(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCursorCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCursorCaptureEnabled(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureSession2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -759,8 +762,11 @@ pub const IGraphicsCaptureSession2 = extern struct {
 };
 pub const IGraphicsCaptureSession3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -768,12 +774,12 @@ pub const IGraphicsCaptureSession3 = extern struct {
     pub fn getIsBorderRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBorderRequired(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsBorderRequired(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsBorderRequired(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureSession3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -793,8 +799,11 @@ pub const IGraphicsCaptureSession3 = extern struct {
 };
 pub const IGraphicsCaptureSession4 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -802,12 +811,12 @@ pub const IGraphicsCaptureSession4 = extern struct {
     pub fn getDirtyRegionMode(self: *@This()) core.HResult!GraphicsCaptureDirtyRegionMode {
         var _r: GraphicsCaptureDirtyRegionMode = undefined;
         const _c = self.vtable.get_DirtyRegionMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDirtyRegionMode(self: *@This(), value: GraphicsCaptureDirtyRegionMode) core.HResult!void {
         const _c = self.vtable.put_DirtyRegionMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureSession4";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -827,8 +836,11 @@ pub const IGraphicsCaptureSession4 = extern struct {
 };
 pub const IGraphicsCaptureSession5 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -836,12 +848,12 @@ pub const IGraphicsCaptureSession5 = extern struct {
     pub fn getMinUpdateInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_MinUpdateInterval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMinUpdateInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_MinUpdateInterval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureSession5";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -861,8 +873,11 @@ pub const IGraphicsCaptureSession5 = extern struct {
 };
 pub const IGraphicsCaptureSession6 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -870,12 +885,12 @@ pub const IGraphicsCaptureSession6 = extern struct {
     pub fn getIncludeSecondaryWindows(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IncludeSecondaryWindows(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncludeSecondaryWindows(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IncludeSecondaryWindows(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureSession6";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -895,8 +910,11 @@ pub const IGraphicsCaptureSession6 = extern struct {
 };
 pub const IGraphicsCaptureSessionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -904,7 +922,7 @@ pub const IGraphicsCaptureSessionStatics = extern struct {
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.IGraphicsCaptureSessionStatics";

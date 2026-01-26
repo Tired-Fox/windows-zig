@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const Appointment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -116,176 +113,151 @@ pub const Appointment = extern struct {
     pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getLocalId();
     }
     pub fn getCalendarId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getCalendarId();
     }
     pub fn getRoamingId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getRoamingId();
     }
     pub fn putRoamingId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putRoamingId(value);
     }
     pub fn getOriginalStartTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getOriginalStartTime();
     }
     pub fn getIsResponseRequested(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getIsResponseRequested();
     }
     pub fn putIsResponseRequested(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putIsResponseRequested(value);
     }
     pub fn getAllowNewTimeProposal(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getAllowNewTimeProposal();
     }
     pub fn putAllowNewTimeProposal(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putAllowNewTimeProposal(value);
     }
     pub fn getOnlineMeetingLink(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getOnlineMeetingLink();
     }
     pub fn putOnlineMeetingLink(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putOnlineMeetingLink(value);
     }
     pub fn getReplyTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getReplyTime();
     }
     pub fn putReplyTime(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putReplyTime(value);
     }
     pub fn getUserResponse(self: *@This()) core.HResult!AppointmentParticipantResponse {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getUserResponse();
     }
     pub fn putUserResponse(self: *@This(), value: AppointmentParticipantResponse) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putUserResponse(value);
     }
     pub fn getHasInvitees(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getHasInvitees();
     }
     pub fn getIsCanceledMeeting(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getIsCanceledMeeting();
     }
     pub fn putIsCanceledMeeting(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putIsCanceledMeeting(value);
     }
     pub fn getIsOrganizedByUser(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.getIsOrganizedByUser();
     }
     pub fn putIsOrganizedByUser(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         return try this.?.putIsOrganizedByUser(value);
     }
     pub fn getChangeNumber(self: *@This()) core.HResult!u64 {
         var this: ?*IAppointment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         return try this.?.getChangeNumber();
     }
     pub fn getRemoteChangeNumber(self: *@This()) core.HResult!u64 {
         var this: ?*IAppointment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         return try this.?.getRemoteChangeNumber();
     }
     pub fn putRemoteChangeNumber(self: *@This(), value: u64) core.HResult!void {
         var this: ?*IAppointment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         return try this.?.putRemoteChangeNumber(value);
     }
     pub fn getDetailsKind(self: *@This()) core.HResult!AppointmentDetailsKind {
         var this: ?*IAppointment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         return try this.?.getDetailsKind();
     }
     pub fn putDetailsKind(self: *@This(), value: AppointmentDetailsKind) core.HResult!void {
         var this: ?*IAppointment3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         return try this.?.putDetailsKind(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -308,14 +280,11 @@ pub const AppointmentBusyStatus = enum(i32) {
 };
 pub const AppointmentCalendar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -427,183 +396,157 @@ pub const AppointmentCalendar = extern struct {
     pub fn getSyncManager(self: *@This()) core.HResult!*AppointmentCalendarSyncManager {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getSyncManager();
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getRemoteId();
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putRemoteId(value);
     }
     pub fn putDisplayColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putDisplayColor(value);
     }
     pub fn putIsHidden(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putIsHidden(value);
     }
     pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getUserDataAccountId();
     }
     pub fn getCanCreateOrUpdateAppointments(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getCanCreateOrUpdateAppointments();
     }
     pub fn putCanCreateOrUpdateAppointments(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putCanCreateOrUpdateAppointments(value);
     }
     pub fn getCanCancelMeetings(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getCanCancelMeetings();
     }
     pub fn putCanCancelMeetings(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putCanCancelMeetings(value);
     }
     pub fn getCanForwardMeetings(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getCanForwardMeetings();
     }
     pub fn putCanForwardMeetings(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putCanForwardMeetings(value);
     }
     pub fn getCanProposeNewTimeForMeetings(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getCanProposeNewTimeForMeetings();
     }
     pub fn putCanProposeNewTimeForMeetings(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putCanProposeNewTimeForMeetings(value);
     }
     pub fn getCanUpdateMeetingResponses(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getCanUpdateMeetingResponses();
     }
     pub fn putCanUpdateMeetingResponses(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putCanUpdateMeetingResponses(value);
     }
     pub fn getCanNotifyInvitees(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getCanNotifyInvitees();
     }
     pub fn putCanNotifyInvitees(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putCanNotifyInvitees(value);
     }
     pub fn getMustNofityInvitees(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.getMustNofityInvitees();
     }
     pub fn putMustNofityInvitees(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.putMustNofityInvitees(value);
     }
     pub fn TryCreateOrUpdateAppointmentAsync(self: *@This(), appointment: *Appointment, notifyInvitees: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.TryCreateOrUpdateAppointmentAsync(appointment, notifyInvitees);
     }
     pub fn TryCancelMeetingAsync(self: *@This(), meeting: *Appointment, subject: ?HSTRING, comment: ?HSTRING, notifyInvitees: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.TryCancelMeetingAsync(meeting, subject, comment, notifyInvitees);
     }
     pub fn TryForwardMeetingAsync(self: *@This(), meeting: *Appointment, invitees: *IIterable(AppointmentInvitee), subject: ?HSTRING, forwardHeader: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.TryForwardMeetingAsync(meeting, invitees, subject, forwardHeader, comment);
     }
     pub fn TryProposeNewTimeForMeetingAsync(self: *@This(), meeting: *Appointment, newStartTime: DateTime, newDuration: TimeSpan, subject: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.TryProposeNewTimeForMeetingAsync(meeting, newStartTime, newDuration, subject, comment);
     }
     pub fn TryUpdateMeetingResponseAsync(self: *@This(), meeting: *Appointment, response: AppointmentParticipantResponse, subject: ?HSTRING, comment: ?HSTRING, sendUpdate: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         return try this.?.TryUpdateMeetingResponseAsync(meeting, response, subject, comment, sendUpdate);
     }
     pub fn RegisterSyncManagerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IAppointmentCalendar3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar3.IID, @ptrCast(&this));
         return try this.?.RegisterSyncManagerAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentCalendar";
@@ -625,14 +568,11 @@ pub const AppointmentCalendarOtherAppWriteAccess = enum(i32) {
 };
 pub const AppointmentCalendarSyncManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -664,22 +604,19 @@ pub const AppointmentCalendarSyncManager = extern struct {
     pub fn putStatus(self: *@This(), value: AppointmentCalendarSyncStatus) core.HResult!void {
         var this: ?*IAppointmentCalendarSyncManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
         return try this.?.putStatus(value);
     }
     pub fn putLastSuccessfulSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IAppointmentCalendarSyncManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
         return try this.?.putLastSuccessfulSyncTime(value);
     }
     pub fn putLastAttemptedSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IAppointmentCalendarSyncManager2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
         return try this.?.putLastAttemptedSyncTime(value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentCalendarSyncManager";
@@ -699,14 +636,11 @@ pub const AppointmentCalendarSyncStatus = enum(i32) {
 };
 pub const AppointmentConflictResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -746,14 +680,11 @@ pub const AppointmentDetailsKind = enum(i32) {
 };
 pub const AppointmentException = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -778,14 +709,11 @@ pub const AppointmentException = extern struct {
 };
 pub const AppointmentInvitee = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -809,29 +737,25 @@ pub const AppointmentInvitee = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentParticipant = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         return try this.?.getDisplayName();
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentParticipant = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         return try this.?.putDisplayName(value);
     }
     pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentParticipant = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         return try this.?.getAddress();
     }
     pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentParticipant = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         return try this.?.putAddress(value);
     }
     pub fn init() core.HResult!*@This() {
@@ -847,14 +771,11 @@ pub const AppointmentInvitee = extern struct {
 };
 pub const AppointmentManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -923,14 +844,11 @@ pub const AppointmentManager = extern struct {
 };
 pub const AppointmentManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -999,14 +917,11 @@ pub const AppointmentManagerForUser = extern struct {
 };
 pub const AppointmentOrganizer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1052,14 +967,11 @@ pub const AppointmentParticipantRole = enum(i32) {
 };
 pub const AppointmentProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1175,14 +1087,11 @@ pub const AppointmentProperties = extern struct {
 };
 pub const AppointmentRecurrence = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1254,29 +1163,25 @@ pub const AppointmentRecurrence = extern struct {
     pub fn getRecurrenceType(self: *@This()) core.HResult!RecurrenceType {
         var this: ?*IAppointmentRecurrence2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
         return try this.?.getRecurrenceType();
     }
     pub fn getTimeZone(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentRecurrence2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
         return try this.?.getTimeZone();
     }
     pub fn putTimeZone(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentRecurrence2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
         return try this.?.putTimeZone(value);
     }
     pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentRecurrence3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence3.IID, @ptrCast(&this));
         return try this.?.getCalendarIdentifier();
     }
     pub fn init() core.HResult!*@This() {
@@ -1304,14 +1209,11 @@ pub const AppointmentSensitivity = enum(i32) {
 };
 pub const AppointmentStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1403,29 +1305,25 @@ pub const AppointmentStore = extern struct {
     pub fn addStoreChanged(self: *@This(), pHandler: *TypedEventHandler(AppointmentStore,AppointmentStoreChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IAppointmentStore2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
         return try this.?.addStoreChanged(pHandler);
     }
     pub fn removeStoreChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppointmentStore2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
         return try this.?.removeStoreChanged(token);
     }
     pub fn CreateAppointmentCalendarAsyncWithUserDataAccountId(self: *@This(), name: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(AppointmentCalendar) {
         var this: ?*IAppointmentStore2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
         return try this.?.CreateAppointmentCalendarAsyncWithUserDataAccountId(name, userDataAccountId);
     }
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*AppointmentStoreChangeTracker {
         var this: ?*IAppointmentStore3 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore3.IID, @ptrCast(&this));
         return try this.?.GetChangeTracker(identity);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentStore";
@@ -1441,14 +1339,11 @@ pub const AppointmentStoreAccessType = enum(i32) {
 };
 pub const AppointmentStoreChange = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1464,8 +1359,7 @@ pub const AppointmentStoreChange = extern struct {
     pub fn getAppointmentCalendar(self: *@This()) core.HResult!*AppointmentCalendar {
         var this: ?*IAppointmentStoreChange2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStoreChange2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStoreChange2.IID, @ptrCast(&this));
         return try this.?.getAppointmentCalendar();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentStoreChange";
@@ -1476,14 +1370,11 @@ pub const AppointmentStoreChange = extern struct {
 };
 pub const AppointmentStoreChangeReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1508,14 +1399,11 @@ pub const AppointmentStoreChangeReader = extern struct {
 };
 pub const AppointmentStoreChangeTracker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1535,8 +1423,7 @@ pub const AppointmentStoreChangeTracker = extern struct {
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentStoreChangeTracker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStoreChangeTracker2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStoreChangeTracker2.IID, @ptrCast(&this));
         return try this.?.getIsTracking();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentStoreChangeTracker";
@@ -1556,14 +1443,11 @@ pub const AppointmentStoreChangeType = enum(i32) {
 };
 pub const AppointmentStoreChangedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1580,14 +1464,11 @@ pub const AppointmentStoreChangedDeferral = extern struct {
 };
 pub const AppointmentStoreChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1604,14 +1485,11 @@ pub const AppointmentStoreChangedEventArgs = extern struct {
 };
 pub const AppointmentStoreNotificationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1639,14 +1517,11 @@ pub const FindAppointmentCalendarsOptions = enum(i32) {
 };
 pub const FindAppointmentsOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1688,8 +1563,11 @@ pub const FindAppointmentsOptions = extern struct {
 };
 pub const IAppointment = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1697,128 +1575,128 @@ pub const IAppointment = extern struct {
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putStartTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_StartTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_Duration(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLocation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subject(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDetails(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Details(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Details(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReminder(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_Reminder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReminder(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         const _c = self.vtable.put_Reminder(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOrganizer(self: *@This()) core.HResult!*AppointmentOrganizer {
         var _r: *AppointmentOrganizer = undefined;
         const _c = self.vtable.get_Organizer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOrganizer(self: *@This(), value: *AppointmentOrganizer) core.HResult!void {
         const _c = self.vtable.put_Organizer(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInvitees(self: *@This()) core.HResult!*IVector(AppointmentInvitee) {
         var _r: *IVector(AppointmentInvitee) = undefined;
         const _c = self.vtable.get_Invitees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRecurrence(self: *@This()) core.HResult!*AppointmentRecurrence {
         var _r: *AppointmentRecurrence = undefined;
         const _c = self.vtable.get_Recurrence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRecurrence(self: *@This(), value: *AppointmentRecurrence) core.HResult!void {
         const _c = self.vtable.put_Recurrence(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getBusyStatus(self: *@This()) core.HResult!AppointmentBusyStatus {
         var _r: AppointmentBusyStatus = undefined;
         const _c = self.vtable.get_BusyStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putBusyStatus(self: *@This(), value: AppointmentBusyStatus) core.HResult!void {
         const _c = self.vtable.put_BusyStatus(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllDay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllDay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllDay(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllDay(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSensitivity(self: *@This()) core.HResult!AppointmentSensitivity {
         var _r: AppointmentSensitivity = undefined;
         const _c = self.vtable.get_Sensitivity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSensitivity(self: *@This(), value: AppointmentSensitivity) core.HResult!void {
         const _c = self.vtable.put_Sensitivity(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1861,8 +1739,11 @@ pub const IAppointment = extern struct {
 };
 pub const IAppointment2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1870,106 +1751,106 @@ pub const IAppointment2 = extern struct {
     pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCalendarId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CalendarId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRoamingId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoamingId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRoamingId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RoamingId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOriginalStartTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_OriginalStartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsResponseRequested(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsResponseRequested(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsResponseRequested(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsResponseRequested(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAllowNewTimeProposal(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowNewTimeProposal(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAllowNewTimeProposal(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowNewTimeProposal(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOnlineMeetingLink(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OnlineMeetingLink(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOnlineMeetingLink(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OnlineMeetingLink(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getReplyTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_ReplyTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putReplyTime(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         const _c = self.vtable.put_ReplyTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUserResponse(self: *@This()) core.HResult!AppointmentParticipantResponse {
         var _r: AppointmentParticipantResponse = undefined;
         const _c = self.vtable.get_UserResponse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUserResponse(self: *@This(), value: AppointmentParticipantResponse) core.HResult!void {
         const _c = self.vtable.put_UserResponse(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getHasInvitees(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasInvitees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCanceledMeeting(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCanceledMeeting(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsCanceledMeeting(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsCanceledMeeting(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getIsOrganizedByUser(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOrganizedByUser(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIsOrganizedByUser(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsOrganizedByUser(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointment2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2007,8 +1888,11 @@ pub const IAppointment2 = extern struct {
 };
 pub const IAppointment3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2016,28 +1900,28 @@ pub const IAppointment3 = extern struct {
     pub fn getChangeNumber(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_ChangeNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemoteChangeNumber(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_RemoteChangeNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRemoteChangeNumber(self: *@This(), value: u64) core.HResult!void {
         const _c = self.vtable.put_RemoteChangeNumber(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDetailsKind(self: *@This()) core.HResult!AppointmentDetailsKind {
         var _r: AppointmentDetailsKind = undefined;
         const _c = self.vtable.get_DetailsKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDetailsKind(self: *@This(), value: AppointmentDetailsKind) core.HResult!void {
         const _c = self.vtable.put_DetailsKind(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointment3";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2060,8 +1944,11 @@ pub const IAppointment3 = extern struct {
 };
 pub const IAppointmentCalendar = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2069,149 +1956,149 @@ pub const IAppointmentCalendar = extern struct {
     pub fn getDisplayColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_DisplayColor(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsHidden(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHidden(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOtherAppReadAccess(self: *@This()) core.HResult!AppointmentCalendarOtherAppReadAccess {
         var _r: AppointmentCalendarOtherAppReadAccess = undefined;
         const _c = self.vtable.get_OtherAppReadAccess(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOtherAppReadAccess(self: *@This(), value: AppointmentCalendarOtherAppReadAccess) core.HResult!void {
         const _c = self.vtable.put_OtherAppReadAccess(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOtherAppWriteAccess(self: *@This()) core.HResult!AppointmentCalendarOtherAppWriteAccess {
         var _r: AppointmentCalendarOtherAppWriteAccess = undefined;
         const _c = self.vtable.get_OtherAppWriteAccess(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOtherAppWriteAccess(self: *@This(), value: AppointmentCalendarOtherAppWriteAccess) core.HResult!void {
         const _c = self.vtable.put_OtherAppWriteAccess(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSummaryCardView(self: *@This()) core.HResult!AppointmentSummaryCardView {
         var _r: AppointmentSummaryCardView = undefined;
         const _c = self.vtable.get_SummaryCardView(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putSummaryCardView(self: *@This(), value: AppointmentSummaryCardView) core.HResult!void {
         const _c = self.vtable.put_SummaryCardView(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn FindAppointmentsAsync(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindAppointmentsAsync(@ptrCast(self), rangeStart, rangeLength, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAppointmentsAsyncWithOptions(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan, options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindAppointmentsAsyncWithOptions(@ptrCast(self), rangeStart, rangeLength, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindExceptionsFromMasterAsync(self: *@This(), masterLocalId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppointmentException)) {
         var _r: *IAsyncOperation(IVectorView(AppointmentException)) = undefined;
         const _c = self.vtable.FindExceptionsFromMasterAsync(@ptrCast(self), masterLocalId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllInstancesAsync(self: *@This(), masterLocalId: ?HSTRING, rangeStart: DateTime, rangeLength: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindAllInstancesAsync(@ptrCast(self), masterLocalId, rangeStart, rangeLength, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAllInstancesAsyncWithPOptions(self: *@This(), masterLocalId: ?HSTRING, rangeStart: DateTime, rangeLength: TimeSpan, pOptions: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindAllInstancesAsyncWithPOptions(@ptrCast(self), masterLocalId, rangeStart, rangeLength, pOptions, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAppointmentAsync(self: *@This(), localId: ?HSTRING) core.HResult!*IAsyncOperation(Appointment) {
         var _r: *IAsyncOperation(Appointment) = undefined;
         const _c = self.vtable.GetAppointmentAsync(@ptrCast(self), localId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAppointmentInstanceAsync(self: *@This(), localId: ?HSTRING, instanceStartTime: DateTime) core.HResult!*IAsyncOperation(Appointment) {
         var _r: *IAsyncOperation(Appointment) = undefined;
         const _c = self.vtable.GetAppointmentInstanceAsync(@ptrCast(self), localId, instanceStartTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindUnexpandedAppointmentsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindUnexpandedAppointmentsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindUnexpandedAppointmentsAsyncWithOptions(self: *@This(), options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindUnexpandedAppointmentsAsyncWithOptions(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteAppointmentAsync(self: *@This(), localId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteAppointmentAsync(@ptrCast(self), localId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn DeleteAppointmentInstanceAsync(self: *@This(), localId: ?HSTRING, instanceStartTime: DateTime) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteAppointmentInstanceAsync(@ptrCast(self), localId, instanceStartTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SaveAppointmentAsync(self: *@This(), pAppointment: *Appointment) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveAppointmentAsync(@ptrCast(self), pAppointment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentCalendar";
@@ -2256,8 +2143,11 @@ pub const IAppointmentCalendar = extern struct {
 };
 pub const IAppointmentCalendar2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2265,131 +2155,131 @@ pub const IAppointmentCalendar2 = extern struct {
     pub fn getSyncManager(self: *@This()) core.HResult!*AppointmentCalendarSyncManager {
         var _r: *AppointmentCalendarSyncManager = undefined;
         const _c = self.vtable.get_SyncManager(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putDisplayColor(self: *@This(), value: Color) core.HResult!void {
         const _c = self.vtable.put_DisplayColor(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putIsHidden(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsHidden(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getCanCreateOrUpdateAppointments(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCreateOrUpdateAppointments(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanCreateOrUpdateAppointments(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanCreateOrUpdateAppointments(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanCancelMeetings(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCancelMeetings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanCancelMeetings(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanCancelMeetings(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanForwardMeetings(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanForwardMeetings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanForwardMeetings(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanForwardMeetings(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanProposeNewTimeForMeetings(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanProposeNewTimeForMeetings(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanProposeNewTimeForMeetings(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanProposeNewTimeForMeetings(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanUpdateMeetingResponses(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanUpdateMeetingResponses(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanUpdateMeetingResponses(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanUpdateMeetingResponses(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCanNotifyInvitees(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanNotifyInvitees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putCanNotifyInvitees(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanNotifyInvitees(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMustNofityInvitees(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_MustNofityInvitees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMustNofityInvitees(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_MustNofityInvitees(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn TryCreateOrUpdateAppointmentAsync(self: *@This(), appointment: *Appointment, notifyInvitees: bool) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryCreateOrUpdateAppointmentAsync(@ptrCast(self), appointment, notifyInvitees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryCancelMeetingAsync(self: *@This(), meeting: *Appointment, subject: ?HSTRING, comment: ?HSTRING, notifyInvitees: bool) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryCancelMeetingAsync(@ptrCast(self), meeting, subject, comment, notifyInvitees, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryForwardMeetingAsync(self: *@This(), meeting: *Appointment, invitees: *IIterable(AppointmentInvitee), subject: ?HSTRING, forwardHeader: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryForwardMeetingAsync(@ptrCast(self), meeting, invitees, subject, forwardHeader, comment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryProposeNewTimeForMeetingAsync(self: *@This(), meeting: *Appointment, newStartTime: DateTime, newDuration: TimeSpan, subject: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryProposeNewTimeForMeetingAsync(@ptrCast(self), meeting, newStartTime, newDuration, subject, comment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn TryUpdateMeetingResponseAsync(self: *@This(), meeting: *Appointment, response: AppointmentParticipantResponse, subject: ?HSTRING, comment: ?HSTRING, sendUpdate: bool) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryUpdateMeetingResponseAsync(@ptrCast(self), meeting, response, subject, comment, sendUpdate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentCalendar2";
@@ -2433,8 +2323,11 @@ pub const IAppointmentCalendar2 = extern struct {
 };
 pub const IAppointmentCalendar3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2442,7 +2335,7 @@ pub const IAppointmentCalendar3 = extern struct {
     pub fn RegisterSyncManagerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RegisterSyncManagerAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentCalendar3";
@@ -2462,8 +2355,11 @@ pub const IAppointmentCalendar3 = extern struct {
 };
 pub const IAppointmentCalendarSyncManager = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2471,36 +2367,36 @@ pub const IAppointmentCalendarSyncManager = extern struct {
     pub fn getStatus(self: *@This()) core.HResult!AppointmentCalendarSyncStatus {
         var _r: AppointmentCalendarSyncStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastSuccessfulSyncTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_LastSuccessfulSyncTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLastAttemptedSyncTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_LastAttemptedSyncTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SyncAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.SyncAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addSyncStatusChanged(self: *@This(), handler: *TypedEventHandler(AppointmentCalendarSyncManager,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SyncStatusChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeSyncStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_SyncStatusChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentCalendarSyncManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2524,23 +2420,26 @@ pub const IAppointmentCalendarSyncManager = extern struct {
 };
 pub const IAppointmentCalendarSyncManager2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putStatus(self: *@This(), value: AppointmentCalendarSyncStatus) core.HResult!void {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putLastSuccessfulSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_LastSuccessfulSyncTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn putLastAttemptedSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.put_LastAttemptedSyncTime(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentCalendarSyncManager2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2561,8 +2460,11 @@ pub const IAppointmentCalendarSyncManager2 = extern struct {
 };
 pub const IAppointmentConflictResult = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2570,13 +2472,13 @@ pub const IAppointmentConflictResult = extern struct {
     pub fn getType(self: *@This()) core.HResult!AppointmentConflictType {
         var _r: AppointmentConflictType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDate(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Date(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentConflictResult";
@@ -2597,8 +2499,11 @@ pub const IAppointmentConflictResult = extern struct {
 };
 pub const IAppointmentException = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2606,19 +2511,19 @@ pub const IAppointmentException = extern struct {
     pub fn getAppointment(self: *@This()) core.HResult!*Appointment {
         var _r: *Appointment = undefined;
         const _c = self.vtable.get_Appointment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExceptionProperties(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_ExceptionProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsDeleted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDeleted(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentException";
@@ -2640,8 +2545,11 @@ pub const IAppointmentException = extern struct {
 };
 pub const IAppointmentInvitee = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2649,22 +2557,22 @@ pub const IAppointmentInvitee = extern struct {
     pub fn getRole(self: *@This()) core.HResult!AppointmentParticipantRole {
         var _r: AppointmentParticipantRole = undefined;
         const _c = self.vtable.get_Role(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putRole(self: *@This(), value: AppointmentParticipantRole) core.HResult!void {
         const _c = self.vtable.put_Role(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getResponse(self: *@This()) core.HResult!AppointmentParticipantResponse {
         var _r: AppointmentParticipantResponse = undefined;
         const _c = self.vtable.get_Response(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putResponse(self: *@This(), value: AppointmentParticipantResponse) core.HResult!void {
         const _c = self.vtable.put_Response(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentInvitee";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2686,8 +2594,11 @@ pub const IAppointmentInvitee = extern struct {
 };
 pub const IAppointmentManagerForUser = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2695,85 +2606,85 @@ pub const IAppointmentManagerForUser = extern struct {
     pub fn ShowAddAppointmentAsync(self: *@This(), appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAppointmentAsync(@ptrCast(self), appointment, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAddAppointmentAsyncWithPreferredPlacement(self: *@This(), appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAppointmentAsyncWithPreferredPlacement(@ptrCast(self), appointment, selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsync(self: *@This(), appointmentId: ?HSTRING, appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsync(@ptrCast(self), appointmentId, appointment, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsyncWithPreferredPlacement(self: *@This(), appointmentId: ?HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsyncWithPreferredPlacement(@ptrCast(self), appointmentId, appointment, selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(self: *@This(), appointmentId: ?HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(@ptrCast(self), appointmentId, appointment, selection, preferredPlacement, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsync(self: *@This(), appointmentId: ?HSTRING, selection: Rect) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsync(@ptrCast(self), appointmentId, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacement(self: *@This(), appointmentId: ?HSTRING, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsyncWithPreferredPlacement(@ptrCast(self), appointmentId, selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(self: *@This(), appointmentId: ?HSTRING, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(@ptrCast(self), appointmentId, selection, preferredPlacement, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowTimeFrameAsync(self: *@This(), timeToShow: DateTime, duration: TimeSpan) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowTimeFrameAsync(@ptrCast(self), timeToShow, duration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAppointmentDetailsAsync(self: *@This(), appointmentId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAppointmentDetailsAsync(@ptrCast(self), appointmentId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAppointmentDetailsAsyncWithInstanceStartDate(self: *@This(), appointmentId: ?HSTRING, instanceStartDate: DateTime) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAppointmentDetailsAsyncWithInstanceStartDate(@ptrCast(self), appointmentId, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowEditNewAppointmentAsync(self: *@This(), appointment: *Appointment) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowEditNewAppointmentAsync(@ptrCast(self), appointment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestStoreAsync(self: *@This(), options: AppointmentStoreAccessType) core.HResult!*IAsyncOperation(AppointmentStore) {
         var _r: *IAsyncOperation(AppointmentStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentManagerForUser";
@@ -2806,8 +2717,11 @@ pub const IAppointmentManagerForUser = extern struct {
 };
 pub const IAppointmentManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2815,55 +2729,55 @@ pub const IAppointmentManagerStatics = extern struct {
     pub fn ShowAddAppointmentAsync(self: *@This(), appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAppointmentAsync(@ptrCast(self), appointment, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAddAppointmentAsyncWithPreferredPlacement(self: *@This(), appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAppointmentAsyncWithPreferredPlacement(@ptrCast(self), appointment, selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsync(self: *@This(), appointmentId: ?HSTRING, appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsync(@ptrCast(self), appointmentId, appointment, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsyncWithPreferredPlacement(self: *@This(), appointmentId: ?HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsyncWithPreferredPlacement(@ptrCast(self), appointmentId, appointment, selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(self: *@This(), appointmentId: ?HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(@ptrCast(self), appointmentId, appointment, selection, preferredPlacement, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsync(self: *@This(), appointmentId: ?HSTRING, selection: Rect) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsync(@ptrCast(self), appointmentId, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacement(self: *@This(), appointmentId: ?HSTRING, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsyncWithPreferredPlacement(@ptrCast(self), appointmentId, selection, preferredPlacement, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(self: *@This(), appointmentId: ?HSTRING, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(@ptrCast(self), appointmentId, selection, preferredPlacement, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowTimeFrameAsync(self: *@This(), timeToShow: DateTime, duration: TimeSpan) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowTimeFrameAsync(@ptrCast(self), timeToShow, duration, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentManagerStatics";
@@ -2891,8 +2805,11 @@ pub const IAppointmentManagerStatics = extern struct {
 };
 pub const IAppointmentManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2900,25 +2817,25 @@ pub const IAppointmentManagerStatics2 = extern struct {
     pub fn ShowAppointmentDetailsAsync(self: *@This(), appointmentId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAppointmentDetailsAsync(@ptrCast(self), appointmentId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAppointmentDetailsAsyncWithInstanceStartDate(self: *@This(), appointmentId: ?HSTRING, instanceStartDate: DateTime) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAppointmentDetailsAsyncWithInstanceStartDate(@ptrCast(self), appointmentId, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowEditNewAppointmentAsync(self: *@This(), appointment: *Appointment) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowEditNewAppointmentAsync(@ptrCast(self), appointment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn RequestStoreAsync(self: *@This(), options: AppointmentStoreAccessType) core.HResult!*IAsyncOperation(AppointmentStore) {
         var _r: *IAsyncOperation(AppointmentStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentManagerStatics2";
@@ -2941,8 +2858,11 @@ pub const IAppointmentManagerStatics2 = extern struct {
 };
 pub const IAppointmentManagerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2950,7 +2870,7 @@ pub const IAppointmentManagerStatics3 = extern struct {
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*AppointmentManagerForUser {
         var _r: *AppointmentManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentManagerStatics3";
@@ -2970,8 +2890,11 @@ pub const IAppointmentManagerStatics3 = extern struct {
 };
 pub const IAppointmentParticipant = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2979,22 +2902,22 @@ pub const IAppointmentParticipant = extern struct {
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Address(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentParticipant";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3016,8 +2939,11 @@ pub const IAppointmentParticipant = extern struct {
 };
 pub const IAppointmentPropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3025,139 +2951,139 @@ pub const IAppointmentPropertiesStatics = extern struct {
     pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getLocation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStartTime(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDuration(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReminder(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Reminder(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getBusyStatus(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BusyStatus(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSensitivity(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sensitivity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOriginalStartTime(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OriginalStartTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsResponseRequested(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IsResponseRequested(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllowNewTimeProposal(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AllowNewTimeProposal(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getAllDay(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AllDay(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDetails(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Details(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOnlineMeetingLink(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OnlineMeetingLink(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getReplyTime(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ReplyTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getOrganizer(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Organizer(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUserResponse(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserResponse(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHasInvitees(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HasInvitees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsCanceledMeeting(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IsCanceledMeeting(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsOrganizedByUser(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IsOrganizedByUser(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRecurrence(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Recurrence(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getInvitees(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Invitees(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDefaultProperties(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DefaultProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentPropertiesStatics";
@@ -3199,8 +3125,11 @@ pub const IAppointmentPropertiesStatics = extern struct {
 };
 pub const IAppointmentPropertiesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3208,19 +3137,19 @@ pub const IAppointmentPropertiesStatics2 = extern struct {
     pub fn getChangeNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ChangeNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRemoteChangeNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteChangeNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDetailsKind(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DetailsKind(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentPropertiesStatics2";
@@ -3242,8 +3171,11 @@ pub const IAppointmentPropertiesStatics2 = extern struct {
 };
 pub const IAppointmentRecurrence = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3251,82 +3183,82 @@ pub const IAppointmentRecurrence = extern struct {
     pub fn getUnit(self: *@This()) core.HResult!AppointmentRecurrenceUnit {
         var _r: AppointmentRecurrenceUnit = undefined;
         const _c = self.vtable.get_Unit(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUnit(self: *@This(), value: AppointmentRecurrenceUnit) core.HResult!void {
         const _c = self.vtable.put_Unit(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getOccurrences(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_Occurrences(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putOccurrences(self: *@This(), value: *IReference(u32)) core.HResult!void {
         const _c = self.vtable.put_Occurrences(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getUntil(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_Until(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putUntil(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         const _c = self.vtable.put_Until(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getInterval(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Interval(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putInterval(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Interval(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDaysOfWeek(self: *@This()) core.HResult!AppointmentDaysOfWeek {
         var _r: AppointmentDaysOfWeek = undefined;
         const _c = self.vtable.get_DaysOfWeek(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDaysOfWeek(self: *@This(), value: AppointmentDaysOfWeek) core.HResult!void {
         const _c = self.vtable.put_DaysOfWeek(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getWeekOfMonth(self: *@This()) core.HResult!AppointmentWeekOfMonth {
         var _r: AppointmentWeekOfMonth = undefined;
         const _c = self.vtable.get_WeekOfMonth(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putWeekOfMonth(self: *@This(), value: AppointmentWeekOfMonth) core.HResult!void {
         const _c = self.vtable.put_WeekOfMonth(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMonth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Month(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMonth(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Month(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDay(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Day(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDay(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Day(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentRecurrence";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3360,8 +3292,11 @@ pub const IAppointmentRecurrence = extern struct {
 };
 pub const IAppointmentRecurrence2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3369,18 +3304,18 @@ pub const IAppointmentRecurrence2 = extern struct {
     pub fn getRecurrenceType(self: *@This()) core.HResult!RecurrenceType {
         var _r: RecurrenceType = undefined;
         const _c = self.vtable.get_RecurrenceType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getTimeZone(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TimeZone(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putTimeZone(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TimeZone(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentRecurrence2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3401,8 +3336,11 @@ pub const IAppointmentRecurrence2 = extern struct {
 };
 pub const IAppointmentRecurrence3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3410,7 +3348,7 @@ pub const IAppointmentRecurrence3 = extern struct {
     pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CalendarIdentifier(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentRecurrence3";
@@ -3430,8 +3368,11 @@ pub const IAppointmentRecurrence3 = extern struct {
 };
 pub const IAppointmentStore = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3439,127 +3380,127 @@ pub const IAppointmentStore = extern struct {
     pub fn getChangeTracker(self: *@This()) core.HResult!*AppointmentStoreChangeTracker {
         var _r: *AppointmentStoreChangeTracker = undefined;
         const _c = self.vtable.get_ChangeTracker(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateAppointmentCalendarAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(AppointmentCalendar) {
         var _r: *IAsyncOperation(AppointmentCalendar) = undefined;
         const _c = self.vtable.CreateAppointmentCalendarAsync(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAppointmentCalendarAsync(self: *@This(), calendarId: ?HSTRING) core.HResult!*IAsyncOperation(AppointmentCalendar) {
         var _r: *IAsyncOperation(AppointmentCalendar) = undefined;
         const _c = self.vtable.GetAppointmentCalendarAsync(@ptrCast(self), calendarId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAppointmentAsync(self: *@This(), localId: ?HSTRING) core.HResult!*IAsyncOperation(Appointment) {
         var _r: *IAsyncOperation(Appointment) = undefined;
         const _c = self.vtable.GetAppointmentAsync(@ptrCast(self), localId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetAppointmentInstanceAsync(self: *@This(), localId: ?HSTRING, instanceStartTime: DateTime) core.HResult!*IAsyncOperation(Appointment) {
         var _r: *IAsyncOperation(Appointment) = undefined;
         const _c = self.vtable.GetAppointmentInstanceAsync(@ptrCast(self), localId, instanceStartTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAppointmentCalendarsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppointmentCalendar)) {
         var _r: *IAsyncOperation(IVectorView(AppointmentCalendar)) = undefined;
         const _c = self.vtable.FindAppointmentCalendarsAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAppointmentCalendarsAsyncWithOptions(self: *@This(), options: FindAppointmentCalendarsOptions) core.HResult!*IAsyncOperation(IVectorView(AppointmentCalendar)) {
         var _r: *IAsyncOperation(IVectorView(AppointmentCalendar)) = undefined;
         const _c = self.vtable.FindAppointmentCalendarsAsyncWithOptions(@ptrCast(self), options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAppointmentsAsync(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindAppointmentsAsync(@ptrCast(self), rangeStart, rangeLength, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindAppointmentsAsyncWithOptions(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan, options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         var _r: *IAsyncOperation(IVectorView(Appointment)) = undefined;
         const _c = self.vtable.FindAppointmentsAsyncWithOptions(@ptrCast(self), rangeStart, rangeLength, options, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindConflictAsync(self: *@This(), appointment: *Appointment) core.HResult!*IAsyncOperation(AppointmentConflictResult) {
         var _r: *IAsyncOperation(AppointmentConflictResult) = undefined;
         const _c = self.vtable.FindConflictAsync(@ptrCast(self), appointment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindConflictAsyncWithInstanceStartTime(self: *@This(), appointment: *Appointment, instanceStartTime: DateTime) core.HResult!*IAsyncOperation(AppointmentConflictResult) {
         var _r: *IAsyncOperation(AppointmentConflictResult) = undefined;
         const _c = self.vtable.FindConflictAsyncWithInstanceStartTime(@ptrCast(self), appointment, instanceStartTime, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn MoveAppointmentAsync(self: *@This(), appointment: *Appointment, destinationCalendar: *AppointmentCalendar) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MoveAppointmentAsync(@ptrCast(self), appointment, destinationCalendar, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAddAppointmentAsync(self: *@This(), appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAppointmentAsync(@ptrCast(self), appointment, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsync(self: *@This(), localId: ?HSTRING, appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsync(@ptrCast(self), localId, appointment, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(self: *@This(), localId: ?HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(@ptrCast(self), localId, appointment, selection, preferredPlacement, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsync(self: *@This(), localId: ?HSTRING, selection: Rect) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsync(@ptrCast(self), localId, selection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(self: *@This(), localId: ?HSTRING, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(@ptrCast(self), localId, selection, preferredPlacement, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAppointmentDetailsAsync(self: *@This(), localId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAppointmentDetailsAsync(@ptrCast(self), localId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowAppointmentDetailsAsyncWithInstanceStartDate(self: *@This(), localId: ?HSTRING, instanceStartDate: DateTime) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAppointmentDetailsAsyncWithInstanceStartDate(@ptrCast(self), localId, instanceStartDate, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn ShowEditNewAppointmentAsync(self: *@This(), appointment: *Appointment) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowEditNewAppointmentAsync(@ptrCast(self), appointment, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn FindLocalIdsFromRoamingIdAsync(self: *@This(), roamingId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.FindLocalIdsFromRoamingIdAsync(@ptrCast(self), roamingId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStore";
@@ -3599,8 +3540,11 @@ pub const IAppointmentStore = extern struct {
 };
 pub const IAppointmentStore2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3608,17 +3552,17 @@ pub const IAppointmentStore2 = extern struct {
     pub fn addStoreChanged(self: *@This(), pHandler: *TypedEventHandler(AppointmentStore,AppointmentStoreChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StoreChanged(@ptrCast(self), pHandler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeStoreChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_StoreChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn CreateAppointmentCalendarAsync(self: *@This(), name: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(AppointmentCalendar) {
         var _r: *IAsyncOperation(AppointmentCalendar) = undefined;
         const _c = self.vtable.CreateAppointmentCalendarAsync(@ptrCast(self), name, userDataAccountId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStore2";
@@ -3640,8 +3584,11 @@ pub const IAppointmentStore2 = extern struct {
 };
 pub const IAppointmentStore3 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3649,7 +3596,7 @@ pub const IAppointmentStore3 = extern struct {
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*AppointmentStoreChangeTracker {
         var _r: *AppointmentStoreChangeTracker = undefined;
         const _c = self.vtable.GetChangeTracker(@ptrCast(self), identity, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStore3";
@@ -3669,8 +3616,11 @@ pub const IAppointmentStore3 = extern struct {
 };
 pub const IAppointmentStoreChange = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3678,13 +3628,13 @@ pub const IAppointmentStoreChange = extern struct {
     pub fn getAppointment(self: *@This()) core.HResult!*Appointment {
         var _r: *Appointment = undefined;
         const _c = self.vtable.get_Appointment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getChangeType(self: *@This()) core.HResult!AppointmentStoreChangeType {
         var _r: AppointmentStoreChangeType = undefined;
         const _c = self.vtable.get_ChangeType(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreChange";
@@ -3705,8 +3655,11 @@ pub const IAppointmentStoreChange = extern struct {
 };
 pub const IAppointmentStoreChange2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3714,7 +3667,7 @@ pub const IAppointmentStoreChange2 = extern struct {
     pub fn getAppointmentCalendar(self: *@This()) core.HResult!*AppointmentCalendar {
         var _r: *AppointmentCalendar = undefined;
         const _c = self.vtable.get_AppointmentCalendar(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreChange2";
@@ -3734,8 +3687,11 @@ pub const IAppointmentStoreChange2 = extern struct {
 };
 pub const IAppointmentStoreChangeReader = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3743,16 +3699,16 @@ pub const IAppointmentStoreChangeReader = extern struct {
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppointmentStoreChange)) {
         var _r: *IAsyncOperation(IVectorView(AppointmentStoreChange)) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn AcceptChanges(self: *@This()) core.HResult!void {
         const _c = self.vtable.AcceptChanges(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn AcceptChangesThrough(self: *@This(), lastChangeToAccept: *AppointmentStoreChange) core.HResult!void {
         const _c = self.vtable.AcceptChangesThrough(@ptrCast(self), lastChangeToAccept);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreChangeReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3773,8 +3729,11 @@ pub const IAppointmentStoreChangeReader = extern struct {
 };
 pub const IAppointmentStoreChangeTracker = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3782,16 +3741,16 @@ pub const IAppointmentStoreChangeTracker = extern struct {
     pub fn GetChangeReader(self: *@This()) core.HResult!*AppointmentStoreChangeReader {
         var _r: *AppointmentStoreChangeReader = undefined;
         const _c = self.vtable.GetChangeReader(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Enable(self: *@This()) core.HResult!void {
         const _c = self.vtable.Enable(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         const _c = self.vtable.Reset(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreChangeTracker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3812,8 +3771,11 @@ pub const IAppointmentStoreChangeTracker = extern struct {
 };
 pub const IAppointmentStoreChangeTracker2 = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3821,7 +3783,7 @@ pub const IAppointmentStoreChangeTracker2 = extern struct {
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTracking(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreChangeTracker2";
@@ -3841,15 +3803,18 @@ pub const IAppointmentStoreChangeTracker2 = extern struct {
 };
 pub const IAppointmentStoreChangedDeferral = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreChangedDeferral";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3868,8 +3833,11 @@ pub const IAppointmentStoreChangedDeferral = extern struct {
 };
 pub const IAppointmentStoreChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3877,7 +3845,7 @@ pub const IAppointmentStoreChangedEventArgs = extern struct {
     pub fn GetDeferral(self: *@This()) core.HResult!*AppointmentStoreChangedDeferral {
         var _r: *AppointmentStoreChangedDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreChangedEventArgs";
@@ -3897,8 +3865,11 @@ pub const IAppointmentStoreChangedEventArgs = extern struct {
 };
 pub const IAppointmentStoreNotificationTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3919,8 +3890,11 @@ pub const IAppointmentStoreNotificationTriggerDetails = extern struct {
 };
 pub const IFindAppointmentsOptions = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3928,34 +3902,34 @@ pub const IFindAppointmentsOptions = extern struct {
     pub fn getCalendarIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_CalendarIds(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFetchProperties(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FetchProperties(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIncludeHidden(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IncludeHidden(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putIncludeHidden(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IncludeHidden(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getMaxCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putMaxCount(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_MaxCount(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IFindAppointmentsOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -2,16 +2,30 @@
 pub const IInspectable = extern struct {
     vtable: *const VTable,
 
-    pub fn GetIids(self: *@This(), count: *u32, iids: *[*]const Guid) HRESULT {
-        return self.vtable.GetIids(@ptrCast(self), count, iids);
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
 
-    pub fn GetRuntimeClassName(self: *@This(), class_name: *?HSTRING) HRESULT {
-        return self.vtable.GetRuntimeClassName(@ptrCast(self), class_name);
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
     }
 
-    pub fn GetTrustLevel(self: *@This(), trust_level: *TrustLevel) HRESULT {
-        return self.vtable.GetTrustLevel(@ptrCast(self), trust_level);
+    pub fn GetIids(self: *@This(), count: *u32, iids: *[*]const Guid) core.HResult!void {
+        const _r = self.vtable.GetIids(@ptrCast(self), count, iids);
+        try core.hresultToError(_r);
+    }
+
+    pub fn GetRuntimeClassName(self: *@This(), class_name: *?HSTRING) core.HResult!void {
+        const _r = self.vtable.GetRuntimeClassName(@ptrCast(self), class_name);
+        try core.hresultToError(_r);
+    }
+
+    pub fn GetTrustLevel(self: *@This(), trust_level: *TrustLevel) core.HResult!void {
+        const _r = self.vtable.GetTrustLevel(@ptrCast(self), trust_level);
+        try core.hresultToError(_r);
     }
 
     pub const GUID: []const u8 = "af86e2e0-b12d-4c6a-9c5a-d7aa65101e90";
@@ -33,16 +47,14 @@ pub const IInspectable = extern struct {
 pub const IActivationFactory = extern struct {
     vtable: *const VTable,
 
-    pub fn ActivateInstance(self: *@This(), iid: *const Guid) error{E_NOINTERFACE}!*anyopaque {
+    pub fn ActivateInstance(self: *@This(), iid: *const Guid) core.HResult!*anyopaque {
         var inspectable: *IInspectable = undefined;
         if (self.vtable.ActivateInstance(self, &inspectable) != 0) {
-            return error.E_NOINTERFACE;
+            return core.HResult.E_NOINTERFACE;
         }
 
         var interface: ?*anyopaque = undefined;
-        if (IUnknown.QueryInterface(@ptrCast(inspectable), iid, &interface) != 0 or interface == null) {
-            return error.E_NOINTERFACE;
-        }
+        try IUnknown.QueryInterface(@ptrCast(inspectable), iid, &interface);
 
         return interface.?;
     }
@@ -152,7 +164,7 @@ pub fn AsyncActionProgressHandler(TProgress: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.genericArg(TProgress)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
@@ -165,7 +177,7 @@ pub fn AsyncActionProgressHandler(TProgress: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.genericArg(TProgress)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
@@ -209,9 +221,9 @@ pub fn AsyncActionProgressHandler(TProgress: type) type {
             if (left == 0) @import("std").heap.c_allocator.destroy(this);
             return left;
         }
-        pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) HRESULT {
+        pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.genericArg(TProgress)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) void = @ptrCast(@alignCast(this._cb));
+            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.genericArg(TProgress)) void = @ptrCast(@alignCast(this._cb));
             _callback(this._context, asyncInfo, progressInfo);
             return 0;
         }
@@ -224,7 +236,7 @@ pub fn AsyncActionProgressHandler(TProgress: type) type {
             QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
             AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
             Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-            Invoke: *const fn(self: *anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) HRESULT
+            Invoke: *const fn(self: *anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.genericArg(TProgress)) callconv(.winapi) HRESULT
         };
         pub const VTABLE = VTable {
             .QueryInterface = QueryInterface,
@@ -425,7 +437,7 @@ pub fn AsyncOperationProgressHandler(TResult: type, TProgress: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.genericArg(TProgress)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
@@ -438,7 +450,7 @@ pub fn AsyncOperationProgressHandler(TResult: type, TProgress: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.genericArg(TProgress)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
@@ -482,9 +494,9 @@ pub fn AsyncOperationProgressHandler(TResult: type, TProgress: type) type {
             if (left == 0) @import("std").heap.c_allocator.destroy(this);
             return left;
         }
-        pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) HRESULT {
+        pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.genericArg(TProgress)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) void = @ptrCast(@alignCast(this._cb));
+            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.genericArg(TProgress)) void = @ptrCast(@alignCast(this._cb));
             _callback(this._context, asyncInfo, progressInfo);
             return 0;
         }
@@ -497,7 +509,7 @@ pub fn AsyncOperationProgressHandler(TResult: type, TProgress: type) type {
             QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
             AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
             Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-            Invoke: *const fn(self: *anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) HRESULT
+            Invoke: *const fn(self: *anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.genericArg(TProgress)) callconv(.winapi) HRESULT
         };
         pub const VTABLE = VTable {
             .QueryInterface = QueryInterface,
@@ -609,14 +621,11 @@ pub const DateTime = extern struct {
 };
 pub const Deferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -628,8 +637,7 @@ pub const Deferral = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create(handler: *DeferralCompletedHandler) core.HResult!*Deferral {
@@ -741,7 +749,7 @@ pub fn EventHandler(T: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) void,
+            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.genericArg(T)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
@@ -754,7 +762,7 @@ pub fn EventHandler(T: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) void,
+            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.genericArg(T)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
@@ -798,9 +806,9 @@ pub fn EventHandler(T: type) type {
             if (left == 0) @import("std").heap.c_allocator.destroy(this);
             return left;
         }
-        pub fn Invoke(self: *anyopaque, sender: *IInspectable, args: core.generic(T)) callconv(.winapi) HRESULT {
+        pub fn Invoke(self: *anyopaque, sender: *IInspectable, args: core.genericArg(T)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            const _callback: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) void = @ptrCast(@alignCast(this._cb));
+            const _callback: *const fn(?*anyopaque, sender: *IInspectable, args: core.genericArg(T)) void = @ptrCast(@alignCast(this._cb));
             _callback(this._context, sender, args);
             return 0;
         }
@@ -813,7 +821,7 @@ pub fn EventHandler(T: type) type {
             QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
             AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
             Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-            Invoke: *const fn(self: *anyopaque, sender: *IInspectable, args: core.generic(T)) callconv(.winapi) HRESULT
+            Invoke: *const fn(self: *anyopaque, sender: *IInspectable, args: core.genericArg(T)) callconv(.winapi) HRESULT
         };
         pub const VTABLE = VTable {
             .QueryInterface = QueryInterface,
@@ -831,25 +839,28 @@ pub const HResult = extern struct {
 };
 pub const IAsyncAction = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
         const _c = self.vtable.put_Completed(@ptrCast(self), handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionCompletedHandler {
         var _r: *AsyncActionCompletedHandler = undefined;
         const _c = self.vtable.get_Completed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetResults(self: *@This()) core.HResult!void {
         const _c = self.vtable.GetResults(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.IAsyncAction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -871,35 +882,38 @@ pub const IAsyncAction = extern struct {
 pub fn IAsyncActionWithProgress(TProgress: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
         pub fn putProgress(self: *@This(), handler: *AsyncActionProgressHandler(TProgress)) core.HResult!void {
             const _c = self.vtable.put_Progress(@ptrCast(self), handler);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn getProgress(self: *@This()) core.HResult!*AsyncActionProgressHandler(TProgress) {
             var _r: *AsyncActionProgressHandler(TProgress) = undefined;
             const _c = self.vtable.get_Progress(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn putCompleted(self: *@This(), handler: *AsyncActionWithProgressCompletedHandler(TProgress)) core.HResult!void {
             const _c = self.vtable.put_Completed(@ptrCast(self), handler);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionWithProgressCompletedHandler(TProgress) {
             var _r: *AsyncActionWithProgressCompletedHandler(TProgress) = undefined;
             const _c = self.vtable.get_Completed(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn GetResults(self: *@This()) core.HResult!void {
             const _c = self.vtable.GetResults(@ptrCast(self));
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub const NAME: []const u8 = "Windows.Foundation.IAsyncActionWithProgress";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -923,8 +937,11 @@ pub fn IAsyncActionWithProgress(TProgress: type) type {
 }
 pub const IAsyncInfo = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -932,28 +949,28 @@ pub const IAsyncInfo = extern struct {
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
         var _r: AsyncStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getErrorCode(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.IAsyncInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -977,36 +994,39 @@ pub const IAsyncInfo = extern struct {
 pub fn IAsyncOperationWithProgress(TResult: type, TProgress: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
         pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(TResult,TProgress)) core.HResult!void {
             const _c = self.vtable.put_Progress(@ptrCast(self), handler);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(TResult,TProgress) {
             var _r: *AsyncOperationProgressHandler(TResult,TProgress) = undefined;
             const _c = self.vtable.get_Progress(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress)) core.HResult!void {
             const _c = self.vtable.put_Completed(@ptrCast(self), handler);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(TResult,TProgress) {
             var _r: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress) = undefined;
             const _c = self.vtable.get_Completed(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-            var _r: core.generic(TResult) = undefined;
+        pub fn GetResults(self: *@This()) core.HResult!core.genericArg(TResult) {
+            var _r: core.genericArg(TResult) = undefined;
             const _c = self.vtable.GetResults(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.IAsyncOperationWithProgress";
@@ -1025,33 +1045,36 @@ pub fn IAsyncOperationWithProgress(TResult: type, TProgress: type) type {
             get_Progress: *const fn(self: *anyopaque, _r: **AsyncOperationProgressHandler(TResult,TProgress)) callconv(.winapi) HRESULT,
             put_Completed: *const fn(self: *anyopaque, handler: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress)) callconv(.winapi) HRESULT,
             get_Completed: *const fn(self: *anyopaque, _r: **AsyncOperationWithProgressCompletedHandler(TResult,TProgress)) callconv(.winapi) HRESULT,
-            GetResults: *const fn(self: *anyopaque, _r: *core.generic(TResult)) callconv(.winapi) HRESULT,
+            GetResults: *const fn(self: *anyopaque, _r: *core.genericArg(TResult)) callconv(.winapi) HRESULT,
         };
     };
 }
 pub fn IAsyncOperation(TResult: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
         pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
             const _c = self.vtable.put_Completed(@ptrCast(self), handler);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
         }
         pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
             var _r: *AsyncOperationCompletedHandler(TResult) = undefined;
             const _c = self.vtable.get_Completed(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
-        pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-            var _r: core.generic(TResult) = undefined;
+        pub fn GetResults(self: *@This()) core.HResult!core.genericArg(TResult) {
+            var _r: core.genericArg(TResult) = undefined;
             const _c = self.vtable.GetResults(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub fn wait(self: *@This()) !void {
@@ -1086,21 +1109,24 @@ pub fn IAsyncOperation(TResult: type) type {
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
             put_Completed: *const fn(self: *anyopaque, handler: *AsyncOperationCompletedHandler(TResult)) callconv(.winapi) HRESULT,
             get_Completed: *const fn(self: *anyopaque, _r: **AsyncOperationCompletedHandler(TResult)) callconv(.winapi) HRESULT,
-            GetResults: *const fn(self: *anyopaque, _r: *core.generic(TResult)) callconv(.winapi) HRESULT,
+            GetResults: *const fn(self: *anyopaque, _r: *core.genericArg(TResult)) callconv(.winapi) HRESULT,
         };
     };
 }
 pub const IClosable = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.IClosable";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1119,15 +1145,18 @@ pub const IClosable = extern struct {
 };
 pub const IDeferral = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.IDeferral";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1146,8 +1175,11 @@ pub const IDeferral = extern struct {
 };
 pub const IDeferralFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1155,7 +1187,7 @@ pub const IDeferralFactory = extern struct {
     pub fn Create(self: *@This(), handler: *DeferralCompletedHandler) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.Create(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IDeferralFactory";
@@ -1175,8 +1207,11 @@ pub const IDeferralFactory = extern struct {
 };
 pub const IPropertyValue = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1184,198 +1219,198 @@ pub const IPropertyValue = extern struct {
     pub fn getType(self: *@This()) core.HResult!PropertyType {
         var _r: PropertyType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getIsNumericScalar(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsNumericScalar(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetUInt8(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.GetUInt8(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetInt16(self: *@This()) core.HResult!i16 {
         var _r: i16 = undefined;
         const _c = self.vtable.GetInt16(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetUInt16(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.GetUInt16(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetInt32(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetInt32(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetUInt32(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetUInt32(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetInt64(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.GetInt64(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetUInt64(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.GetUInt64(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSingle(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.GetSingle(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDouble(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetDouble(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetChar16(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.GetChar16(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetBoolean(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetBoolean(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetGuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.GetGuid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDateTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.GetDateTime(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetTimeSpan(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.GetTimeSpan(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetPoint(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.GetPoint(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetSize(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.GetSize(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.GetRect(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetUInt8Array(self: *@This(), value: u8) core.HResult!void {
         const _c = self.vtable.GetUInt8Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetInt16Array(self: *@This(), value: i16) core.HResult!void {
         const _c = self.vtable.GetInt16Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetUInt16Array(self: *@This(), value: u16) core.HResult!void {
         const _c = self.vtable.GetUInt16Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetInt32Array(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.GetInt32Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetUInt32Array(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.GetUInt32Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetInt64Array(self: *@This(), value: i64) core.HResult!void {
         const _c = self.vtable.GetInt64Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetUInt64Array(self: *@This(), value: u64) core.HResult!void {
         const _c = self.vtable.GetUInt64Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetSingleArray(self: *@This(), value: f32) core.HResult!void {
         const _c = self.vtable.GetSingleArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDoubleArray(self: *@This(), value: f64) core.HResult!void {
         const _c = self.vtable.GetDoubleArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetChar16Array(self: *@This(), value: u16) core.HResult!void {
         const _c = self.vtable.GetChar16Array(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetBooleanArray(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.GetBooleanArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetStringArray(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetStringArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetInspectableArray(self: *@This(), value: *IInspectable) core.HResult!void {
         const _c = self.vtable.GetInspectableArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetGuidArray(self: *@This(), value: *Guid) core.HResult!void {
         const _c = self.vtable.GetGuidArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetDateTimeArray(self: *@This(), value: DateTime) core.HResult!void {
         const _c = self.vtable.GetDateTimeArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetTimeSpanArray(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.GetTimeSpanArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetPointArray(self: *@This(), value: Point) core.HResult!void {
         const _c = self.vtable.GetPointArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetSizeArray(self: *@This(), value: Size) core.HResult!void {
         const _c = self.vtable.GetSizeArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn GetRectArray(self: *@This(), value: Rect) core.HResult!void {
         const _c = self.vtable.GetRectArray(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.IPropertyValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1432,8 +1467,11 @@ pub const IPropertyValue = extern struct {
 };
 pub const IPropertyValueStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1441,235 +1479,235 @@ pub const IPropertyValueStatics = extern struct {
     pub fn CreateEmpty(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateEmpty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt8(self: *@This(), value: u8) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt8(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInt16(self: *@This(), value: i16) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInt16(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt16(self: *@This(), value: u16) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt16(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInt32(self: *@This(), value: i32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInt32(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt32(self: *@This(), value: u32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt32(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInt64(self: *@This(), value: i64) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInt64(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt64(self: *@This(), value: u64) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt64(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSingle(self: *@This(), value: f32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateSingle(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDouble(self: *@This(), value: f64) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateDouble(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateChar16(self: *@This(), value: u16) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateChar16(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateBoolean(self: *@This(), value: bool) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateBoolean(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateString(self: *@This(), value: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateString(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInspectable(self: *@This(), value: *IInspectable) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInspectable(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateGuid(self: *@This(), value: *Guid) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateGuid(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTime(self: *@This(), value: DateTime) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateDateTime(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateTimeSpan(self: *@This(), value: TimeSpan) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateTimeSpan(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreatePoint(self: *@This(), value: Point) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreatePoint(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSize(self: *@This(), value: Size) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateSize(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateRect(self: *@This(), value: Rect) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateRect(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt8Array(self: *@This(), value: [*]u8) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt8Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInt16Array(self: *@This(), value: [*]i16) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInt16Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt16Array(self: *@This(), value: [*]u16) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt16Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInt32Array(self: *@This(), value: [*]i32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInt32Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt32Array(self: *@This(), value: [*]u32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt32Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInt64Array(self: *@This(), value: [*]i64) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInt64Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateUInt64Array(self: *@This(), value: [*]u64) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateUInt64Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSingleArray(self: *@This(), value: [*]f32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateSingleArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDoubleArray(self: *@This(), value: [*]f64) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateDoubleArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateChar16Array(self: *@This(), value: [*]u16) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateChar16Array(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateBooleanArray(self: *@This(), value: [*]bool) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateBooleanArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateStringArray(self: *@This(), value: ?[*]HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateStringArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateInspectableArray(self: *@This(), value: [*]IInspectable) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateInspectableArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateGuidArray(self: *@This(), value: [*]Guid) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateGuidArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateDateTimeArray(self: *@This(), value: [*]DateTime) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateDateTimeArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateTimeSpanArray(self: *@This(), value: [*]TimeSpan) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateTimeSpanArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreatePointArray(self: *@This(), value: [*]Point) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreatePointArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateSizeArray(self: *@This(), value: [*]Size) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateSizeArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateRectArray(self: *@This(), value: [*]Rect) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateRectArray(@ptrCast(self), value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IPropertyValueStatics";
@@ -1728,16 +1766,19 @@ pub const IPropertyValueStatics = extern struct {
 pub fn IReferenceArray(T: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn getValue(self: *@This()) core.HResult![*]core.generic(T) {
-            var _r: [*]core.generic(T) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn getValue(self: *@This()) core.HResult![*]core.genericArg(T) {
+            var _r: [*]core.genericArg(T) = undefined;
             const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.IReferenceArray";
@@ -1752,23 +1793,26 @@ pub fn IReferenceArray(T: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            get_Value: *const fn(self: *anyopaque, _r: *[*]core.generic(T)) callconv(.winapi) HRESULT,
+            get_Value: *const fn(self: *anyopaque, _r: *[*]core.genericArg(T)) callconv(.winapi) HRESULT,
         };
     };
 }
 pub fn IReference(T: type) type {
     return extern struct {
         vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-        pub fn getValue(self: *@This()) core.HResult!core.generic(T) {
-            var _r: core.generic(T) = undefined;
+        /// Must call `deinit` or `IUnknown.Release` on returned pointer
+        pub fn cast(self: *@This(), AS: type) !*AS {
+            var _r: ?*AS = undefined;
+            try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+            return _r.?;
+        }
+        pub fn deinit(self: *@This()) void {
+            _ = IUnknown.Release(@ptrCast(self));
+        }
+        pub fn getValue(self: *@This()) core.HResult!core.genericArg(T) {
+            var _r: core.genericArg(T) = undefined;
             const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-            if (_c != 0) return core.hresultToError(_c).err;
+            try core.hresultToError(_c);
             return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.IReference";
@@ -1783,14 +1827,17 @@ pub fn IReference(T: type) type {
             GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
             GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
             GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-            get_Value: *const fn(self: *anyopaque, _r: *core.generic(T)) callconv(.winapi) HRESULT,
+            get_Value: *const fn(self: *anyopaque, _r: *core.genericArg(T)) callconv(.winapi) HRESULT,
         };
     };
 }
 pub const IStringable = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1798,7 +1845,7 @@ pub const IStringable = extern struct {
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToString(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IStringable";
@@ -1865,14 +1912,11 @@ pub const PropertyType = enum(i32) {
 };
 pub const PropertyValue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2059,7 +2103,7 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) void,
+            cb: *const fn(?*anyopaque, sender: core.genericArg(TSender), args: core.genericArg(TResult)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
@@ -2072,7 +2116,7 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) void,
+            cb: *const fn(?*anyopaque, sender: core.genericArg(TSender), args: core.genericArg(TResult)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
@@ -2116,9 +2160,9 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
             if (left == 0) @import("std").heap.c_allocator.destroy(this);
             return left;
         }
-        pub fn Invoke(self: *anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) callconv(.winapi) HRESULT {
+        pub fn Invoke(self: *anyopaque, sender: core.genericArg(TSender), args: core.genericArg(TResult)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            const _callback: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) void = @ptrCast(@alignCast(this._cb));
+            const _callback: *const fn(?*anyopaque, sender: core.genericArg(TSender), args: core.genericArg(TResult)) void = @ptrCast(@alignCast(this._cb));
             _callback(this._context, sender, args);
             return 0;
         }
@@ -2131,7 +2175,7 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
             QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
             AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
             Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-            Invoke: *const fn(self: *anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) callconv(.winapi) HRESULT
+            Invoke: *const fn(self: *anyopaque, sender: core.genericArg(TSender), args: core.genericArg(TResult)) callconv(.winapi) HRESULT
         };
         pub const VTABLE = VTable {
             .QueryInterface = QueryInterface,
@@ -2143,14 +2187,11 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
 }
 pub const GuidHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2173,8 +2214,11 @@ pub const GuidHelper = extern struct {
 };
 pub const IGetActivationFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2182,7 +2226,7 @@ pub const IGetActivationFactory = extern struct {
     pub fn GetActivationFactory(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetActivationFactory(@ptrCast(self), activatableClassId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IGetActivationFactory";
@@ -2202,8 +2246,11 @@ pub const IGetActivationFactory = extern struct {
 };
 pub const IGuidHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2211,19 +2258,19 @@ pub const IGuidHelperStatics = extern struct {
     pub fn CreateNewGuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.CreateNewGuid(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getEmpty(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Empty(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Equals(self: *@This(), target: *Guid, value: *Guid) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Equals(@ptrCast(self), target, value, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IGuidHelperStatics";
@@ -2245,8 +2292,11 @@ pub const IGuidHelperStatics = extern struct {
 };
 pub const IMemoryBuffer = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2254,7 +2304,7 @@ pub const IMemoryBuffer = extern struct {
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var _r: *IMemoryBufferReference = undefined;
         const _c = self.vtable.CreateReference(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IMemoryBuffer";
@@ -2274,8 +2324,11 @@ pub const IMemoryBuffer = extern struct {
 };
 pub const IMemoryBufferFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2283,7 +2336,7 @@ pub const IMemoryBufferFactory = extern struct {
     pub fn Create(self: *@This(), capacity: u32) core.HResult!*MemoryBuffer {
         var _r: *MemoryBuffer = undefined;
         const _c = self.vtable.Create(@ptrCast(self), capacity, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IMemoryBufferFactory";
@@ -2303,8 +2356,11 @@ pub const IMemoryBufferFactory = extern struct {
 };
 pub const IMemoryBufferReference = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2312,18 +2368,18 @@ pub const IMemoryBufferReference = extern struct {
     pub fn getCapacity(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Capacity(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(IMemoryBufferReference,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), cookie);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.Foundation.IMemoryBufferReference";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2344,8 +2400,11 @@ pub const IMemoryBufferReference = extern struct {
 };
 pub const IUriEscapeStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2353,13 +2412,13 @@ pub const IUriEscapeStatics = extern struct {
     pub fn UnescapeComponent(self: *@This(), toUnescape: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.UnescapeComponent(@ptrCast(self), toUnescape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn EscapeComponent(self: *@This(), toEscape: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.EscapeComponent(@ptrCast(self), toEscape, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IUriEscapeStatics";
@@ -2380,8 +2439,11 @@ pub const IUriEscapeStatics = extern struct {
 };
 pub const IUriRuntimeClass = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2389,103 +2451,103 @@ pub const IUriRuntimeClass = extern struct {
     pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbsoluteUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Extension(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getFragment(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Fragment(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getHost(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Host(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Password(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getQuery(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Query(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getQueryParsed(self: *@This()) core.HResult!*WwwFormUrlDecoder {
         var _r: *WwwFormUrlDecoder = undefined;
         const _c = self.vtable.get_QueryParsed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getRawUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RawUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSchemeName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SchemeName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getPort(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Port(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSuspicious(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Suspicious(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn Equals(self: *@This(), pUri: *Uri) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Equals(@ptrCast(self), pUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CombineUri(self: *@This(), relativeUri: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.CombineUri(@ptrCast(self), relativeUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClass";
@@ -2521,8 +2583,11 @@ pub const IUriRuntimeClass = extern struct {
 };
 pub const IUriRuntimeClassFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2530,13 +2595,13 @@ pub const IUriRuntimeClassFactory = extern struct {
     pub fn CreateUri(self: *@This(), uri: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.CreateUri(@ptrCast(self), uri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn CreateWithRelativeUri(self: *@This(), baseUri: ?HSTRING, relativeUri: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.CreateWithRelativeUri(@ptrCast(self), baseUri, relativeUri, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClassFactory";
@@ -2557,8 +2622,11 @@ pub const IUriRuntimeClassFactory = extern struct {
 };
 pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2566,13 +2634,13 @@ pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
     pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbsoluteCanonicalUri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayIri(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClassWithAbsoluteCanonicalUri";
@@ -2593,8 +2661,11 @@ pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
 };
 pub const IWwwFormUrlDecoderEntry = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2602,13 +2673,13 @@ pub const IWwwFormUrlDecoderEntry = extern struct {
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderEntry";
@@ -2629,8 +2700,11 @@ pub const IWwwFormUrlDecoderEntry = extern struct {
 };
 pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2638,7 +2712,7 @@ pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
     pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFirstValueByName(@ptrCast(self), name, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderRuntimeClass";
@@ -2658,8 +2732,11 @@ pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
 };
 pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2667,7 +2744,7 @@ pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
     pub fn CreateWwwFormUrlDecoder(self: *@This(), query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
         var _r: *WwwFormUrlDecoder = undefined;
         const _c = self.vtable.CreateWwwFormUrlDecoder(@ptrCast(self), query, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderRuntimeClassFactory";
@@ -2687,14 +2764,11 @@ pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
 };
 pub const MemoryBuffer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2706,8 +2780,7 @@ pub const MemoryBuffer = extern struct {
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         return try this.?.Close();
     }
     pub fn Create(capacity: u32) core.HResult!*MemoryBuffer {
@@ -2723,14 +2796,11 @@ pub const MemoryBuffer = extern struct {
 };
 pub const Uri = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2806,22 +2876,19 @@ pub const Uri = extern struct {
     pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
         return try this.?.getAbsoluteCanonicalUri();
     }
     pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
         return try this.?.getDisplayIri();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         return try this.?.ToString();
     }
     pub fn CreateUri(uri: ?HSTRING) core.HResult!*Uri {
@@ -2850,14 +2917,11 @@ pub const Uri = extern struct {
 };
 pub const WwwFormUrlDecoder = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2869,15 +2933,13 @@ pub const WwwFormUrlDecoder = extern struct {
     pub fn First(self: *@This()) core.HResult!*IIterator(IWwwFormUrlDecoderEntry) {
         var this: ?*IIterable(IWwwFormUrlDecoderEntry) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
         return try this.?.getSize();
     }
     pub fn CreateWwwFormUrlDecoder(query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
@@ -2893,14 +2955,11 @@ pub const WwwFormUrlDecoder = extern struct {
 };
 pub const WwwFormUrlDecoderEntry = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

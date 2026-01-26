@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const GpioPinProviderValueChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -30,8 +27,11 @@ pub const GpioPinProviderValueChangedEventArgs = extern struct {
 };
 pub const IGpioControllerProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,13 +39,13 @@ pub const IGpioControllerProvider = extern struct {
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PinCount(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn OpenPinProvider(self: *@This(), pin: i32, sharingMode: ProviderGpioSharingMode) core.HResult!*IGpioPinProvider {
         var _r: *IGpioPinProvider = undefined;
         const _c = self.vtable.OpenPinProvider(@ptrCast(self), pin, sharingMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.Provider.IGpioControllerProvider";
@@ -66,8 +66,11 @@ pub const IGpioControllerProvider = extern struct {
 };
 pub const IGpioPinProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -75,59 +78,59 @@ pub const IGpioPinProvider = extern struct {
     pub fn addValueChanged(self: *@This(), handler: *TypedEventHandler(IGpioPinProvider,GpioPinProviderValueChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ValueChanged(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeValueChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_ValueChanged(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getDebounceTimeout(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DebounceTimeout(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn putDebounceTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_DebounceTimeout(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn getPinNumber(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PinNumber(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getSharingMode(self: *@This()) core.HResult!ProviderGpioSharingMode {
         var _r: ProviderGpioSharingMode = undefined;
         const _c = self.vtable.get_SharingMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn IsDriveModeSupported(self: *@This(), driveMode: ProviderGpioPinDriveMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDriveModeSupported(@ptrCast(self), driveMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDriveMode(self: *@This()) core.HResult!ProviderGpioPinDriveMode {
         var _r: ProviderGpioPinDriveMode = undefined;
         const _c = self.vtable.GetDriveMode(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn SetDriveMode(self: *@This(), value: ProviderGpioPinDriveMode) core.HResult!void {
         const _c = self.vtable.SetDriveMode(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Write(self: *@This(), value: ProviderGpioPinValue) core.HResult!void {
         const _c = self.vtable.Write(@ptrCast(self), value);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn Read(self: *@This()) core.HResult!ProviderGpioPinValue {
         var _r: ProviderGpioPinValue = undefined;
         const _c = self.vtable.Read(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.Provider.IGpioPinProvider";
@@ -157,8 +160,11 @@ pub const IGpioPinProvider = extern struct {
 };
 pub const IGpioPinProviderValueChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -166,7 +172,7 @@ pub const IGpioPinProviderValueChangedEventArgs = extern struct {
     pub fn getEdge(self: *@This()) core.HResult!ProviderGpioPinEdge {
         var _r: ProviderGpioPinEdge = undefined;
         const _c = self.vtable.get_Edge(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.Provider.IGpioPinProviderValueChangedEventArgs";
@@ -186,8 +192,11 @@ pub const IGpioPinProviderValueChangedEventArgs = extern struct {
 };
 pub const IGpioPinProviderValueChangedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -195,7 +204,7 @@ pub const IGpioPinProviderValueChangedEventArgsFactory = extern struct {
     pub fn Create(self: *@This(), edge: ProviderGpioPinEdge) core.HResult!*GpioPinProviderValueChangedEventArgs {
         var _r: *GpioPinProviderValueChangedEventArgs = undefined;
         const _c = self.vtable.Create(@ptrCast(self), edge, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.Provider.IGpioPinProviderValueChangedEventArgsFactory";
@@ -215,8 +224,11 @@ pub const IGpioPinProviderValueChangedEventArgsFactory = extern struct {
 };
 pub const IGpioProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -224,7 +236,7 @@ pub const IGpioProvider = extern struct {
     pub fn GetControllers(self: *@This()) core.HResult!*IVectorView(IGpioControllerProvider) {
         var _r: *IVectorView(IGpioControllerProvider) = undefined;
         const _c = self.vtable.GetControllers(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.Provider.IGpioProvider";

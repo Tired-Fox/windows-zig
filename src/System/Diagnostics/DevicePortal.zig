@@ -1,14 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DevicePortalConnection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -32,36 +29,31 @@ pub const DevicePortalConnection = extern struct {
     pub fn GetServerMessageWebSocketForRequest(self: *@This(), request: *HttpRequestMessage) core.HResult!*ServerMessageWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         return try this.?.GetServerMessageWebSocketForRequest(request);
     }
     pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: ?HSTRING) core.HResult!*ServerMessageWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         return try this.?.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(request, messageType, protocol);
     }
     pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: ?HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode) core.HResult!*ServerMessageWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         return try this.?.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(request, messageType, protocol, outboundBufferSizeInBytes, maxMessageSize, receiveMode);
     }
     pub fn GetServerStreamWebSocketForRequest(self: *@This(), request: *HttpRequestMessage) core.HResult!*ServerStreamWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         return try this.?.GetServerStreamWebSocketForRequest(request);
     }
     pub fn GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(self: *@This(), request: *HttpRequestMessage, protocol: ?HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool) core.HResult!*ServerStreamWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         return try this.?.GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(request, protocol, outboundBufferSizeInBytes, noDelay);
     }
     pub fn GetForAppServiceConnection(appServiceConnection: *AppServiceConnection) core.HResult!*DevicePortalConnection {
@@ -77,14 +69,11 @@ pub const DevicePortalConnection = extern struct {
 };
 pub const DevicePortalConnectionClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -109,14 +98,11 @@ pub const DevicePortalConnectionClosedReason = enum(i32) {
 };
 pub const DevicePortalConnectionRequestReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -132,22 +118,19 @@ pub const DevicePortalConnectionRequestReceivedEventArgs = extern struct {
     pub fn getIsWebSocketUpgradeRequest(self: *@This()) core.HResult!bool {
         var this: ?*IDevicePortalWebSocketConnectionRequestReceivedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnectionRequestReceivedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnectionRequestReceivedEventArgs.IID, @ptrCast(&this));
         return try this.?.getIsWebSocketUpgradeRequest();
     }
     pub fn getWebSocketProtocolsRequested(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*IDevicePortalWebSocketConnectionRequestReceivedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnectionRequestReceivedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnectionRequestReceivedEventArgs.IID, @ptrCast(&this));
         return try this.?.getWebSocketProtocolsRequested();
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var this: ?*IDevicePortalWebSocketConnectionRequestReceivedEventArgs = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnectionRequestReceivedEventArgs.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        try IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnectionRequestReceivedEventArgs.IID, @ptrCast(&this));
         return try this.?.GetDeferral();
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.DevicePortalConnectionRequestReceivedEventArgs";
@@ -158,8 +141,11 @@ pub const DevicePortalConnectionRequestReceivedEventArgs = extern struct {
 };
 pub const IDevicePortalConnection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -167,22 +153,22 @@ pub const IDevicePortalConnection = extern struct {
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(DevicePortalConnection,DevicePortalConnectionClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub fn addRequestReceived(self: *@This(), handler: *TypedEventHandler(DevicePortalConnection,DevicePortalConnectionRequestReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RequestReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeRequestReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_RequestReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.IDevicePortalConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -204,8 +190,11 @@ pub const IDevicePortalConnection = extern struct {
 };
 pub const IDevicePortalConnectionClosedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -213,7 +202,7 @@ pub const IDevicePortalConnectionClosedEventArgs = extern struct {
     pub fn getReason(self: *@This()) core.HResult!DevicePortalConnectionClosedReason {
         var _r: DevicePortalConnectionClosedReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.IDevicePortalConnectionClosedEventArgs";
@@ -233,8 +222,11 @@ pub const IDevicePortalConnectionClosedEventArgs = extern struct {
 };
 pub const IDevicePortalConnectionRequestReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -242,13 +234,13 @@ pub const IDevicePortalConnectionRequestReceivedEventArgs = extern struct {
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getResponseMessage(self: *@This()) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.get_ResponseMessage(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.IDevicePortalConnectionRequestReceivedEventArgs";
@@ -269,8 +261,11 @@ pub const IDevicePortalConnectionRequestReceivedEventArgs = extern struct {
 };
 pub const IDevicePortalConnectionStatics = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -278,7 +273,7 @@ pub const IDevicePortalConnectionStatics = extern struct {
     pub fn GetForAppServiceConnection(self: *@This(), appServiceConnection: *AppServiceConnection) core.HResult!*DevicePortalConnection {
         var _r: *DevicePortalConnection = undefined;
         const _c = self.vtable.GetForAppServiceConnection(@ptrCast(self), appServiceConnection, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.IDevicePortalConnectionStatics";
@@ -298,8 +293,11 @@ pub const IDevicePortalConnectionStatics = extern struct {
 };
 pub const IDevicePortalWebSocketConnection = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -307,31 +305,31 @@ pub const IDevicePortalWebSocketConnection = extern struct {
     pub fn GetServerMessageWebSocketForRequest(self: *@This(), request: *HttpRequestMessage) core.HResult!*ServerMessageWebSocket {
         var _r: *ServerMessageWebSocket = undefined;
         const _c = self.vtable.GetServerMessageWebSocketForRequest(@ptrCast(self), request, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: ?HSTRING) core.HResult!*ServerMessageWebSocket {
         var _r: *ServerMessageWebSocket = undefined;
         const _c = self.vtable.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(@ptrCast(self), request, messageType, protocol, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: ?HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode) core.HResult!*ServerMessageWebSocket {
         var _r: *ServerMessageWebSocket = undefined;
         const _c = self.vtable.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(@ptrCast(self), request, messageType, protocol, outboundBufferSizeInBytes, maxMessageSize, receiveMode, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetServerStreamWebSocketForRequest(self: *@This(), request: *HttpRequestMessage) core.HResult!*ServerStreamWebSocket {
         var _r: *ServerStreamWebSocket = undefined;
         const _c = self.vtable.GetServerStreamWebSocketForRequest(@ptrCast(self), request, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(self: *@This(), request: *HttpRequestMessage, protocol: ?HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool) core.HResult!*ServerStreamWebSocket {
         var _r: *ServerStreamWebSocket = undefined;
         const _c = self.vtable.GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(@ptrCast(self), request, protocol, outboundBufferSizeInBytes, noDelay, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.IDevicePortalWebSocketConnection";
@@ -355,8 +353,11 @@ pub const IDevicePortalWebSocketConnection = extern struct {
 };
 pub const IDevicePortalWebSocketConnectionRequestReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -364,19 +365,19 @@ pub const IDevicePortalWebSocketConnectionRequestReceivedEventArgs = extern stru
     pub fn getIsWebSocketUpgradeRequest(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWebSocketUpgradeRequest(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn getWebSocketProtocolsRequested(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_WebSocketProtocolsRequested(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.IDevicePortalWebSocketConnectionRequestReceivedEventArgs";

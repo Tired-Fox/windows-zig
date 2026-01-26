@@ -1,8 +1,11 @@
 // ----- This code is automatically generated -----
 pub const ISysStorageProviderEventReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -10,7 +13,7 @@ pub const ISysStorageProviderEventReceivedEventArgs = extern struct {
     pub fn getJson(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Json(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Implementation.FileExplorer.ISysStorageProviderEventReceivedEventArgs";
@@ -30,8 +33,11 @@ pub const ISysStorageProviderEventReceivedEventArgs = extern struct {
 };
 pub const ISysStorageProviderEventReceivedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -39,7 +45,7 @@ pub const ISysStorageProviderEventReceivedEventArgsFactory = extern struct {
     pub fn CreateInstance(self: *@This(), json: ?HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
         var _r: *SysStorageProviderEventReceivedEventArgs = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), json, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Implementation.FileExplorer.ISysStorageProviderEventReceivedEventArgsFactory";
@@ -59,8 +65,11 @@ pub const ISysStorageProviderEventReceivedEventArgsFactory = extern struct {
 };
 pub const ISysStorageProviderEventSource = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -68,12 +77,12 @@ pub const ISysStorageProviderEventSource = extern struct {
     pub fn addEventReceived(self: *@This(), handler: *TypedEventHandler(ISysStorageProviderEventSource,SysStorageProviderEventReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EventReceived(@ptrCast(self), handler, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn removeEventReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const _c = self.vtable.remove_EventReceived(@ptrCast(self), token);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
     }
     pub const NAME: []const u8 = "Windows.System.Implementation.FileExplorer.ISysStorageProviderEventSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -93,8 +102,11 @@ pub const ISysStorageProviderEventSource = extern struct {
 };
 pub const ISysStorageProviderHandlerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -102,13 +114,13 @@ pub const ISysStorageProviderHandlerFactory = extern struct {
     pub fn GetHttpRequestProvider(self: *@This(), syncRootId: ?HSTRING) core.HResult!*ISysStorageProviderHttpRequestProvider {
         var _r: *ISysStorageProviderHttpRequestProvider = undefined;
         const _c = self.vtable.GetHttpRequestProvider(@ptrCast(self), syncRootId, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub fn GetEventSource(self: *@This(), syncRootId: ?HSTRING, eventName: ?HSTRING) core.HResult!*ISysStorageProviderEventSource {
         var _r: *ISysStorageProviderEventSource = undefined;
         const _c = self.vtable.GetEventSource(@ptrCast(self), syncRootId, eventName, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Implementation.FileExplorer.ISysStorageProviderHandlerFactory";
@@ -129,8 +141,11 @@ pub const ISysStorageProviderHandlerFactory = extern struct {
 };
 pub const ISysStorageProviderHttpRequestProvider = extern struct {
     vtable: *const VTable,
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -138,7 +153,7 @@ pub const ISysStorageProviderHttpRequestProvider = extern struct {
     pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperation(HttpResponseMessage) {
         var _r: *IAsyncOperation(HttpResponseMessage) = undefined;
         const _c = self.vtable.SendRequestAsync(@ptrCast(self), request, &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
+        try core.hresultToError(_c);
         return _r;
     }
     pub const NAME: []const u8 = "Windows.System.Implementation.FileExplorer.ISysStorageProviderHttpRequestProvider";
@@ -158,14 +173,11 @@ pub const ISysStorageProviderHttpRequestProvider = extern struct {
 };
 pub const SysStorageProviderEventReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn cast(self: *@This(), T: type) !*T {
-        var _r: ?*T = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
-        if (_c != 0 or _r == null) return error.NoInterface;
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
         return _r.?;
-    }
-    pub fn Release(self: *@This()) u32 {
-        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
