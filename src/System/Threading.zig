@@ -482,9 +482,9 @@ pub const WorkItemHandler = extern struct {
         .Invoke = Invoke,
     };
 };
-pub const WorkItemOptions = enum(i32) {
-    None = 0,
-    TimeSliced = 1,
+pub const WorkItemOptions = packed struct(u32) {
+    TimeSliced: bool = false,
+    _m: u31 = 0,
 };
 pub const WorkItemPriority = enum(i32) {
     Low = -1,

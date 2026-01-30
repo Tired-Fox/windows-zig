@@ -281,11 +281,11 @@ pub const CastingDeviceSelectedEventArgs = extern struct {
     pub const IID: Guid = ICastingDeviceSelectedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICastingDeviceSelectedEventArgs.SIGNATURE);
 };
-pub const CastingPlaybackTypes = enum(i32) {
-    None = 0,
-    Audio = 1,
-    Video = 2,
-    Picture = 4,
+pub const CastingPlaybackTypes = packed struct(u32) {
+    Audio: bool = false,
+    Video: bool = false,
+    Picture: bool = false,
+    _m: u29 = 0,
 };
 pub const CastingSource = extern struct {
     vtable: *const IInspectable.VTable,

@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
-pub const BitmapCreateOptions = enum(i32) {
-    None = 0,
-    IgnoreImageCache = 8,
+pub const BitmapCreateOptions = packed struct(u32) {
+    IgnoreImageCache: bool = false,
+    _m: u31 = 0,
 };
 pub const BitmapSource = extern struct {
     vtable: *const IInspectable.VTable,

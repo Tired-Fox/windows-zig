@@ -1,166 +1,22 @@
 // ----- This code is automatically generated -----
-pub const INetworkOperatorNotificationEventDetails = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getNotificationType(self: *@This()) core.HResult!NetworkOperatorEventMessageType {
-        var _r: NetworkOperatorEventMessageType = undefined;
-        const _c = self.vtable.get_NotificationType(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getEncodingType(self: *@This()) core.HResult!u8 {
-        var _r: u8 = undefined;
-        const _c = self.vtable.get_EncodingType(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Message(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getRuleId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_RuleId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSmsMessage(self: *@This()) core.HResult!*ISmsMessage {
-        var _r: *ISmsMessage = undefined;
-        const _c = self.vtable.get_SmsMessage(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorNotificationEventDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "bc68a9d1-82e1-4488-9f2c-1276c2468fac";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_NotificationType: *const fn(self: *anyopaque, _r: *NetworkOperatorEventMessageType) callconv(.winapi) HRESULT,
-        get_NetworkAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_EncodingType: *const fn(self: *anyopaque, _r: *u8) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_RuleId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_SmsMessage: *const fn(self: *anyopaque, _r: **ISmsMessage) callconv(.winapi) HRESULT,
-    };
-};
-pub const INetworkOperatorTetheringEntitlementCheck = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn AuthorizeTethering(self: *@This(), allow: bool, entitlementFailureReason: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.AuthorizeTethering(@ptrCast(self), allow, entitlementFailureReason);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringEntitlementCheck";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "0108916d-9e9a-4af6-8da3-60493b19c204";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AuthorizeTethering: *const fn(self: *anyopaque, allow: bool, entitlementFailureReason: ?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const NetworkOperatorNotificationEventDetails = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getNotificationType(self: *@This()) core.HResult!NetworkOperatorEventMessageType {
-        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
-        return try this.getNotificationType();
-    }
-    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
-        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
-        return try this.getNetworkAccountId();
-    }
-    pub fn getEncodingType(self: *@This()) core.HResult!u8 {
-        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
-        return try this.getEncodingType();
-    }
-    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
-        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
-        return try this.getMessage();
-    }
-    pub fn getRuleId(self: *@This()) core.HResult!?HSTRING {
-        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
-        return try this.getRuleId();
-    }
-    pub fn getSmsMessage(self: *@This()) core.HResult!*ISmsMessage {
-        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
-        return try this.getSmsMessage();
-    }
-    pub fn AuthorizeTethering(self: *@This(), allow: bool, entitlementFailureReason: ?HSTRING) core.HResult!void {
-        var this: ?*INetworkOperatorTetheringEntitlementCheck = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringEntitlementCheck.IID, @ptrCast(&this));
-        return try this.?.AuthorizeTethering(allow, entitlementFailureReason);
-    }
-    pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.NetworkOperatorNotificationEventDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = INetworkOperatorNotificationEventDetails.GUID;
-    pub const IID: Guid = INetworkOperatorNotificationEventDetails.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, INetworkOperatorNotificationEventDetails.SIGNATURE);
-};
-pub const DataClasses = enum(i32) {
-    None = 0,
-    Gprs = 1,
-    Edge = 2,
-    Umts = 4,
-    Hsdpa = 8,
-    Hsupa = 16,
-    LteAdvanced = 32,
-    NewRadioNonStandalone = 64,
-    NewRadioStandalone = 128,
-    Cdma1xRtt = 65536,
-    Cdma1xEvdo = 131072,
-    Cdma1xEvdoRevA = 262144,
-    Cdma1xEvdv = 524288,
-    Cdma3xRtt = 1048576,
-    Cdma1xEvdoRevB = 2097152,
-    CdmaUmb = 4194304,
-    Custom = -2147483648,
+pub const DataClasses = packed struct(u32) {
+    Gprs: bool = false,
+    Edge: bool = false,
+    Umts: bool = false,
+    Hsdpa: bool = false,
+    Hsupa: bool = false,
+    LteAdvanced: bool = false,
+    NewRadioNonStandalone: bool = false,
+    NewRadioStandalone: bool = false,
+    Cdma1xRtt: bool = false,
+    Cdma1xEvdo: bool = false,
+    Cdma1xEvdoRevA: bool = false,
+    Cdma1xEvdv: bool = false,
+    Cdma3xRtt: bool = false,
+    Cdma1xEvdoRevB: bool = false,
+    CdmaUmb: bool = false,
+    Custom: bool = false,
+    _m: u16 = 0,
 };
 pub const ESim = extern struct {
     vtable: *const IInspectable.VTable,
@@ -9544,15 +9400,159 @@ pub const UssdSession = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUssdSession.SIGNATURE);
     var _IUssdSessionStaticsCache: FactoryCache(IUssdSessionStatics, RUNTIME_NAME) = .{};
 };
+pub const INetworkOperatorNotificationEventDetails = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getNotificationType(self: *@This()) core.HResult!NetworkOperatorEventMessageType {
+        var _r: NetworkOperatorEventMessageType = undefined;
+        const _c = self.vtable.get_NotificationType(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getEncodingType(self: *@This()) core.HResult!u8 {
+        var _r: u8 = undefined;
+        const _c = self.vtable.get_EncodingType(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Message(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getRuleId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_RuleId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSmsMessage(self: *@This()) core.HResult!*ISmsMessage {
+        var _r: *ISmsMessage = undefined;
+        const _c = self.vtable.get_SmsMessage(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorNotificationEventDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "bc68a9d1-82e1-4488-9f2c-1276c2468fac";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_NotificationType: *const fn(self: *anyopaque, _r: *NetworkOperatorEventMessageType) callconv(.winapi) HRESULT,
+        get_NetworkAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EncodingType: *const fn(self: *anyopaque, _r: *u8) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RuleId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SmsMessage: *const fn(self: *anyopaque, _r: **ISmsMessage) callconv(.winapi) HRESULT,
+    };
+};
+pub const INetworkOperatorTetheringEntitlementCheck = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn AuthorizeTethering(self: *@This(), allow: bool, entitlementFailureReason: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.AuthorizeTethering(@ptrCast(self), allow, entitlementFailureReason);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.INetworkOperatorTetheringEntitlementCheck";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "0108916d-9e9a-4af6-8da3-60493b19c204";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        AuthorizeTethering: *const fn(self: *anyopaque, allow: bool, entitlementFailureReason: ?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const NetworkOperatorNotificationEventDetails = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getNotificationType(self: *@This()) core.HResult!NetworkOperatorEventMessageType {
+        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
+        return try this.getNotificationType();
+    }
+    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
+        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
+        return try this.getNetworkAccountId();
+    }
+    pub fn getEncodingType(self: *@This()) core.HResult!u8 {
+        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
+        return try this.getEncodingType();
+    }
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
+        return try this.getMessage();
+    }
+    pub fn getRuleId(self: *@This()) core.HResult!?HSTRING {
+        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
+        return try this.getRuleId();
+    }
+    pub fn getSmsMessage(self: *@This()) core.HResult!*ISmsMessage {
+        const this: *INetworkOperatorNotificationEventDetails = @ptrCast(self);
+        return try this.getSmsMessage();
+    }
+    pub fn AuthorizeTethering(self: *@This(), allow: bool, entitlementFailureReason: ?HSTRING) core.HResult!void {
+        var this: ?*INetworkOperatorTetheringEntitlementCheck = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringEntitlementCheck.IID, @ptrCast(&this));
+        return try this.?.AuthorizeTethering(allow, entitlementFailureReason);
+    }
+    pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.NetworkOperatorNotificationEventDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = INetworkOperatorNotificationEventDetails.GUID;
+    pub const IID: Guid = INetworkOperatorNotificationEventDetails.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, INetworkOperatorNotificationEventDetails.SIGNATURE);
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const ConnectionProfile = @import("./Connectivity.zig").ConnectionProfile;
 const NetworkAdapter = @import("./Connectivity.zig").NetworkAdapter;
 const IAsyncOperationWithProgress = @import("../Foundation.zig").IAsyncOperationWithProgress;
 const XmlDocument = @import("../Data/Xml/Dom.zig").XmlDocument;
-const ISmsMessage = @import("../Devices/Sms.zig").ISmsMessage;
-const IInspectable = @import("../Foundation.zig").IInspectable;
 const IIterable = @import("../Foundation/Collections.zig").IIterable;
+const IInspectable = @import("../Foundation.zig").IInspectable;
+const ISmsMessage = @import("../Devices/Sms.zig").ISmsMessage;
 const Uri = @import("../Foundation.zig").Uri;
 const HostName = @import("../Networking.zig").HostName;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;

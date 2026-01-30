@@ -1,873 +1,4 @@
 // ----- This code is automatically generated -----
-pub const IMapControlBusinessLandmarkClickEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        var _r: *IVectorView(LocalLocation) = undefined;
-        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkClickEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5e464922-4a1a-4797-beb7-5cf7754cb867";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        var _r: *IVectorView(LocalLocation) = undefined;
-        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkPointerEnteredEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5e4081a6-ea98-4f95-8caf-5b42696ff504";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        var _r: *IVectorView(LocalLocation) = undefined;
-        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkPointerExitedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2bb52caf-f24a-46d0-b463-65f719731057";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlBusinessLandmarkRightTappedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        var _r: *IVectorView(LocalLocation) = undefined;
-        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkRightTappedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "59ab8ae7-f184-4ab1-b0b0-35c8bf0654b2";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlDataHelper = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addBusinessLandmarkClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_BusinessLandmarkClick(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeBusinessLandmarkClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_BusinessLandmarkClick(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addTransitFeatureClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureClickEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_TransitFeatureClick(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeTransitFeatureClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_TransitFeatureClick(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addBusinessLandmarkRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkRightTappedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_BusinessLandmarkRightTapped(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeBusinessLandmarkRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_BusinessLandmarkRightTapped(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addTransitFeatureRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureRightTappedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_TransitFeatureRightTapped(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeTransitFeatureRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_TransitFeatureRightTapped(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelper";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "8bb0f09c-14ab-486c-9de5-5a5def0205a2";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        add_BusinessLandmarkClick: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_BusinessLandmarkClick: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_TransitFeatureClick: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeatureClickEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_TransitFeatureClick: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_BusinessLandmarkRightTapped: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkRightTappedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_BusinessLandmarkRightTapped: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_TransitFeatureRightTapped: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeatureRightTappedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_TransitFeatureRightTapped: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlDataHelper2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_BusinessLandmarkPointerEntered(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeBusinessLandmarkPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_BusinessLandmarkPointerEntered(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addTransitFeaturePointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_TransitFeaturePointerEntered(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeTransitFeaturePointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_TransitFeaturePointerEntered(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addBusinessLandmarkPointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_BusinessLandmarkPointerExited(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeBusinessLandmarkPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_BusinessLandmarkPointerExited(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addTransitFeaturePointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_TransitFeaturePointerExited(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeTransitFeaturePointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_TransitFeaturePointerExited(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelper2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "59ce429e-562f-4c21-a674-0f11decf0fb3";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        add_BusinessLandmarkPointerEntered: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_BusinessLandmarkPointerEntered: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_TransitFeaturePointerEntered: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_TransitFeaturePointerEntered: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_BusinessLandmarkPointerExited: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_BusinessLandmarkPointerExited: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_TransitFeaturePointerExited: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_TransitFeaturePointerExited: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlDataHelperFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateInstance(self: *@This(), map: *MapControl) core.HResult!*MapControlDataHelper {
-        var _r: *MapControlDataHelper = undefined;
-        const _c = self.vtable.CreateInstance(@ptrCast(self), map, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelperFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "3b70aa8e-02ef-469c-bbaf-dc2158d4289b";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, map: *MapControl, _r: **MapControlDataHelper) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlDataHelperStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateMapControl(self: *@This(), rasterRenderMode: bool) core.HResult!*MapControl {
-        var _r: *MapControl = undefined;
-        const _c = self.vtable.CreateMapControl(@ptrCast(self), rasterRenderMode, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelperStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "7a6632d6-e944-4110-83cf-314d0722e2e5";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateMapControl: *const fn(self: *anyopaque, rasterRenderMode: bool, _r: **MapControl) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlTransitFeatureClickEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        var _r: *Geopoint = undefined;
-        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
-        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeatureClickEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "76179969-b765-4622-b08a-3072745a4541";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        var _r: *Geopoint = undefined;
-        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
-        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeaturePointerEnteredEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "73911a4e-ec4f-479e-94a1-36e081d0d897";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        var _r: *Geopoint = undefined;
-        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
-        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeaturePointerExitedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "6a11258d-448d-44e7-bc69-d13d497154e9";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        var _r: *Geopoint = undefined;
-        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
-        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeatureRightTappedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "aea1cc49-a729-4eae-a59a-3ec9a125a028";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
-    };
-};
-pub const MapControlBusinessLandmarkClickEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkClickEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkClickEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkClickEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlBusinessLandmarkClickEventArgs.GUID;
-    pub const IID: Guid = IMapControlBusinessLandmarkClickEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkClickEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const MapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkPointerEnteredEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkPointerEnteredEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkPointerEnteredEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlBusinessLandmarkPointerEnteredEventArgs.GUID;
-    pub const IID: Guid = IMapControlBusinessLandmarkPointerEnteredEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkPointerEnteredEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const MapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkPointerExitedEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkPointerExitedEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkPointerExitedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlBusinessLandmarkPointerExitedEventArgs.GUID;
-    pub const IID: Guid = IMapControlBusinessLandmarkPointerExitedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkPointerExitedEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const MapControlBusinessLandmarkRightTappedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkRightTappedEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkRightTappedEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkRightTappedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlBusinessLandmarkRightTappedEventArgs.GUID;
-    pub const IID: Guid = IMapControlBusinessLandmarkRightTappedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkRightTappedEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const MapControlDataHelper = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addBusinessLandmarkClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.addBusinessLandmarkClick(value);
-    }
-    pub fn removeBusinessLandmarkClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.removeBusinessLandmarkClick(token);
-    }
-    pub fn addTransitFeatureClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureClickEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.addTransitFeatureClick(value);
-    }
-    pub fn removeTransitFeatureClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.removeTransitFeatureClick(token);
-    }
-    pub fn addBusinessLandmarkRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkRightTappedEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.addBusinessLandmarkRightTapped(value);
-    }
-    pub fn removeBusinessLandmarkRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.removeBusinessLandmarkRightTapped(token);
-    }
-    pub fn addTransitFeatureRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureRightTappedEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.addTransitFeatureRightTapped(value);
-    }
-    pub fn removeTransitFeatureRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IMapControlDataHelper = @ptrCast(self);
-        return try this.removeTransitFeatureRightTapped(token);
-    }
-    pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.addBusinessLandmarkPointerEntered(value);
-    }
-    pub fn removeBusinessLandmarkPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.removeBusinessLandmarkPointerEntered(token);
-    }
-    pub fn addTransitFeaturePointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.addTransitFeaturePointerEntered(value);
-    }
-    pub fn removeTransitFeaturePointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.removeTransitFeaturePointerEntered(token);
-    }
-    pub fn addBusinessLandmarkPointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.addBusinessLandmarkPointerExited(value);
-    }
-    pub fn removeBusinessLandmarkPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.removeBusinessLandmarkPointerExited(token);
-    }
-    pub fn addTransitFeaturePointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs)) core.HResult!EventRegistrationToken {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.addTransitFeaturePointerExited(value);
-    }
-    pub fn removeTransitFeaturePointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IMapControlDataHelper2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
-        return try this.?.removeTransitFeaturePointerExited(token);
-    }
-    pub fn CreateInstance(map: *MapControl) core.HResult!*MapControlDataHelper {
-        const _f = try @This()._IMapControlDataHelperFactoryCache.get();
-        return try _f.CreateInstance(map);
-    }
-    pub fn CreateMapControl(rasterRenderMode: bool) core.HResult!*MapControl {
-        const _f = try @This()._IMapControlDataHelperStaticsCache.get();
-        return try _f.CreateMapControl(rasterRenderMode);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlDataHelper";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlDataHelper.GUID;
-    pub const IID: Guid = IMapControlDataHelper.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlDataHelper.SIGNATURE);
-    var _IMapControlDataHelperFactoryCache: FactoryCache(IMapControlDataHelperFactory, RUNTIME_NAME) = .{};
-    var _IMapControlDataHelperStaticsCache: FactoryCache(IMapControlDataHelperStatics, RUNTIME_NAME) = .{};
-};
-pub const MapControlTransitFeatureClickEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
-        return try this.getDisplayName();
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
-        return try this.getLocation();
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
-        return try this.getTransitProperties();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeatureClickEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeatureClickEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlTransitFeatureClickEventArgs.GUID;
-    pub const IID: Guid = IMapControlTransitFeatureClickEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeatureClickEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
-        return try this.getDisplayName();
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
-        return try this.getLocation();
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
-        return try this.getTransitProperties();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeaturePointerEnteredEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeaturePointerEnteredEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlTransitFeaturePointerEnteredEventArgs.GUID;
-    pub const IID: Guid = IMapControlTransitFeaturePointerEnteredEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeaturePointerEnteredEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
-        return try this.getDisplayName();
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
-        return try this.getLocation();
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
-        return try this.getTransitProperties();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeaturePointerExitedEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeaturePointerExitedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlTransitFeaturePointerExitedEventArgs.GUID;
-    pub const IID: Guid = IMapControlTransitFeaturePointerExitedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeaturePointerExitedEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
-        return try this.getDisplayName();
-    }
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
-        return try this.getLocation();
-    }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
-        return try this.getTransitProperties();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeatureRightTappedEventArgs.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeatureRightTappedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMapControlTransitFeatureRightTappedEventArgs.GUID;
-    pub const IID: Guid = IMapControlTransitFeatureRightTappedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeatureRightTappedEventArgs.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
 pub const MapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -10462,6 +9593,875 @@ pub const StreetsidePanorama = extern struct {
     pub const IID: Guid = IStreetsidePanorama.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IStreetsidePanorama.SIGNATURE);
     var _IStreetsidePanoramaStaticsCache: FactoryCache(IStreetsidePanoramaStatics, RUNTIME_NAME) = .{};
+};
+pub const IMapControlBusinessLandmarkClickEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        var _r: *IVectorView(LocalLocation) = undefined;
+        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkClickEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5e464922-4a1a-4797-beb7-5cf7754cb867";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        var _r: *IVectorView(LocalLocation) = undefined;
+        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkPointerEnteredEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5e4081a6-ea98-4f95-8caf-5b42696ff504";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        var _r: *IVectorView(LocalLocation) = undefined;
+        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkPointerExitedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2bb52caf-f24a-46d0-b463-65f719731057";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlBusinessLandmarkRightTappedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        var _r: *IVectorView(LocalLocation) = undefined;
+        const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlBusinessLandmarkRightTappedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "59ab8ae7-f184-4ab1-b0b0-35c8bf0654b2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_LocalLocations: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocation)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlDataHelper = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addBusinessLandmarkClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_BusinessLandmarkClick(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeBusinessLandmarkClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_BusinessLandmarkClick(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addTransitFeatureClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureClickEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_TransitFeatureClick(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeTransitFeatureClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_TransitFeatureClick(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addBusinessLandmarkRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkRightTappedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_BusinessLandmarkRightTapped(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeBusinessLandmarkRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_BusinessLandmarkRightTapped(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addTransitFeatureRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureRightTappedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_TransitFeatureRightTapped(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeTransitFeatureRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_TransitFeatureRightTapped(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelper";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "8bb0f09c-14ab-486c-9de5-5a5def0205a2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        add_BusinessLandmarkClick: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_BusinessLandmarkClick: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_TransitFeatureClick: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeatureClickEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_TransitFeatureClick: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_BusinessLandmarkRightTapped: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkRightTappedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_BusinessLandmarkRightTapped: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_TransitFeatureRightTapped: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeatureRightTappedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_TransitFeatureRightTapped: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlDataHelper2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_BusinessLandmarkPointerEntered(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeBusinessLandmarkPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_BusinessLandmarkPointerEntered(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addTransitFeaturePointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_TransitFeaturePointerEntered(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeTransitFeaturePointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_TransitFeaturePointerEntered(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addBusinessLandmarkPointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_BusinessLandmarkPointerExited(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeBusinessLandmarkPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_BusinessLandmarkPointerExited(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addTransitFeaturePointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_TransitFeaturePointerExited(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeTransitFeaturePointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_TransitFeaturePointerExited(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelper2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "59ce429e-562f-4c21-a674-0f11decf0fb3";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        add_BusinessLandmarkPointerEntered: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_BusinessLandmarkPointerEntered: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_TransitFeaturePointerEntered: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_TransitFeaturePointerEntered: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_BusinessLandmarkPointerExited: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_BusinessLandmarkPointerExited: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_TransitFeaturePointerExited: *const fn(self: *anyopaque, value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_TransitFeaturePointerExited: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlDataHelperFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateInstance(self: *@This(), map: *MapControl) core.HResult!*MapControlDataHelper {
+        var _r: *MapControlDataHelper = undefined;
+        const _c = self.vtable.CreateInstance(@ptrCast(self), map, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelperFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "3b70aa8e-02ef-469c-bbaf-dc2158d4289b";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, map: *MapControl, _r: **MapControlDataHelper) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlDataHelperStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateMapControl(self: *@This(), rasterRenderMode: bool) core.HResult!*MapControl {
+        var _r: *MapControl = undefined;
+        const _c = self.vtable.CreateMapControl(@ptrCast(self), rasterRenderMode, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlDataHelperStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "7a6632d6-e944-4110-83cf-314d0722e2e5";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateMapControl: *const fn(self: *anyopaque, rasterRenderMode: bool, _r: **MapControl) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlTransitFeatureClickEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        var _r: *Geopoint = undefined;
+        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
+        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeatureClickEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "76179969-b765-4622-b08a-3072745a4541";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        var _r: *Geopoint = undefined;
+        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
+        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeaturePointerEnteredEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "73911a4e-ec4f-479e-94a1-36e081d0d897";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        var _r: *Geopoint = undefined;
+        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
+        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeaturePointerExitedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "6a11258d-448d-44e7-bc69-d13d497154e9";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        var _r: *Geopoint = undefined;
+        const _c = self.vtable.get_Location(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
+        const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapControlTransitFeatureRightTappedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "aea1cc49-a729-4eae-a59a-3ec9a125a028";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+    };
+};
+pub const MapControlBusinessLandmarkClickEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkClickEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkClickEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkClickEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlBusinessLandmarkClickEventArgs.GUID;
+    pub const IID: Guid = IMapControlBusinessLandmarkClickEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkClickEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const MapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkPointerEnteredEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkPointerEnteredEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkPointerEnteredEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlBusinessLandmarkPointerEnteredEventArgs.GUID;
+    pub const IID: Guid = IMapControlBusinessLandmarkPointerEnteredEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkPointerEnteredEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const MapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkPointerExitedEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkPointerExitedEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkPointerExitedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlBusinessLandmarkPointerExitedEventArgs.GUID;
+    pub const IID: Guid = IMapControlBusinessLandmarkPointerExitedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkPointerExitedEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const MapControlBusinessLandmarkRightTappedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkRightTappedEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlBusinessLandmarkRightTappedEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlBusinessLandmarkRightTappedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlBusinessLandmarkRightTappedEventArgs.GUID;
+    pub const IID: Guid = IMapControlBusinessLandmarkRightTappedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlBusinessLandmarkRightTappedEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const MapControlDataHelper = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addBusinessLandmarkClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.addBusinessLandmarkClick(value);
+    }
+    pub fn removeBusinessLandmarkClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.removeBusinessLandmarkClick(token);
+    }
+    pub fn addTransitFeatureClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureClickEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.addTransitFeatureClick(value);
+    }
+    pub fn removeTransitFeatureClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.removeTransitFeatureClick(token);
+    }
+    pub fn addBusinessLandmarkRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkRightTappedEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.addBusinessLandmarkRightTapped(value);
+    }
+    pub fn removeBusinessLandmarkRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.removeBusinessLandmarkRightTapped(token);
+    }
+    pub fn addTransitFeatureRightTapped(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeatureRightTappedEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.addTransitFeatureRightTapped(value);
+    }
+    pub fn removeTransitFeatureRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *IMapControlDataHelper = @ptrCast(self);
+        return try this.removeTransitFeatureRightTapped(token);
+    }
+    pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.addBusinessLandmarkPointerEntered(value);
+    }
+    pub fn removeBusinessLandmarkPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.removeBusinessLandmarkPointerEntered(token);
+    }
+    pub fn addTransitFeaturePointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.addTransitFeaturePointerEntered(value);
+    }
+    pub fn removeTransitFeaturePointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.removeTransitFeaturePointerEntered(token);
+    }
+    pub fn addBusinessLandmarkPointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.addBusinessLandmarkPointerExited(value);
+    }
+    pub fn removeBusinessLandmarkPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.removeBusinessLandmarkPointerExited(token);
+    }
+    pub fn addTransitFeaturePointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs)) core.HResult!EventRegistrationToken {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.addTransitFeaturePointerExited(value);
+    }
+    pub fn removeTransitFeaturePointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
+        return try this.?.removeTransitFeaturePointerExited(token);
+    }
+    pub fn CreateInstance(map: *MapControl) core.HResult!*MapControlDataHelper {
+        const _f = try @This()._IMapControlDataHelperFactoryCache.get();
+        return try _f.CreateInstance(map);
+    }
+    pub fn CreateMapControl(rasterRenderMode: bool) core.HResult!*MapControl {
+        const _f = try @This()._IMapControlDataHelperStaticsCache.get();
+        return try _f.CreateMapControl(rasterRenderMode);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlDataHelper";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlDataHelper.GUID;
+    pub const IID: Guid = IMapControlDataHelper.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlDataHelper.SIGNATURE);
+    var _IMapControlDataHelperFactoryCache: FactoryCache(IMapControlDataHelperFactory, RUNTIME_NAME) = .{};
+    var _IMapControlDataHelperStaticsCache: FactoryCache(IMapControlDataHelperStatics, RUNTIME_NAME) = .{};
+};
+pub const MapControlTransitFeatureClickEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
+        return try this.getDisplayName();
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
+        return try this.getLocation();
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
+        return try this.getTransitProperties();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeatureClickEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeatureClickEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlTransitFeatureClickEventArgs.GUID;
+    pub const IID: Guid = IMapControlTransitFeatureClickEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeatureClickEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
+        return try this.getDisplayName();
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
+        return try this.getLocation();
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
+        return try this.getTransitProperties();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeaturePointerEnteredEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeaturePointerEnteredEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlTransitFeaturePointerEnteredEventArgs.GUID;
+    pub const IID: Guid = IMapControlTransitFeaturePointerEnteredEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeaturePointerEnteredEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
+        return try this.getDisplayName();
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
+        return try this.getLocation();
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
+        return try this.getTransitProperties();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeaturePointerExitedEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeaturePointerExitedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlTransitFeaturePointerExitedEventArgs.GUID;
+    pub const IID: Guid = IMapControlTransitFeaturePointerExitedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeaturePointerExitedEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
+        return try this.getDisplayName();
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
+        return try this.getLocation();
+    }
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
+        return try this.getTransitProperties();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControlTransitFeatureRightTappedEventArgs.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlTransitFeatureRightTappedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMapControlTransitFeatureRightTappedEventArgs.GUID;
+    pub const IID: Guid = IMapControlTransitFeatureRightTappedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMapControlTransitFeatureRightTappedEventArgs.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
 const IUnknown = @import("../../../root.zig").IUnknown;
 const IActivationFactory = @import("../../../Foundation.zig").IActivationFactory;

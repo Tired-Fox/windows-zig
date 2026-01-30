@@ -1054,12 +1054,12 @@ pub const CompositionBatchCompletedEventArgs = extern struct {
     pub const IID: Guid = ICompositionBatchCompletedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICompositionBatchCompletedEventArgs.SIGNATURE);
 };
-pub const CompositionBatchTypes = enum(i32) {
-    None = 0,
-    Animation = 1,
-    Effect = 2,
-    InfiniteAnimation = 4,
-    AllAnimations = 5,
+pub const CompositionBatchTypes = packed struct(u32) {
+    Animation: bool = false,
+    Effect: bool = false,
+    InfiniteAnimation: bool = false,
+    AllAnimations: bool = false,
+    _m: u28 = 0,
 };
 pub const CompositionBitmapInterpolationMode = enum(i32) {
     NearestNeighbor = 0,

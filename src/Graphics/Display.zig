@@ -215,9 +215,9 @@ pub const ColorOverrideSettings = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IColorOverrideSettings.SIGNATURE);
     var _IColorOverrideSettingsStaticsCache: FactoryCache(IColorOverrideSettingsStatics, RUNTIME_NAME) = .{};
 };
-pub const DisplayBrightnessOverrideOptions = enum(i32) {
-    None = 0,
-    UseDimmedPolicyWhenBatteryIsLow = 1,
+pub const DisplayBrightnessOverrideOptions = packed struct(u32) {
+    UseDimmedPolicyWhenBatteryIsLow: bool = false,
+    _m: u31 = 0,
 };
 pub const DisplayBrightnessOverrideScenario = enum(i32) {
     IdleBrightness = 0,
@@ -509,12 +509,12 @@ pub const DisplayInformation = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDisplayInformation.SIGNATURE);
     var _IDisplayInformationStaticsCache: FactoryCache(IDisplayInformationStatics, RUNTIME_NAME) = .{};
 };
-pub const DisplayOrientations = enum(i32) {
-    None = 0,
-    Landscape = 1,
-    Portrait = 2,
-    LandscapeFlipped = 4,
-    PortraitFlipped = 8,
+pub const DisplayOrientations = packed struct(u32) {
+    Landscape: bool = false,
+    Portrait: bool = false,
+    LandscapeFlipped: bool = false,
+    PortraitFlipped: bool = false,
+    _m: u28 = 0,
 };
 pub const DisplayProperties = extern struct {
     vtable: *const IInspectable.VTable,

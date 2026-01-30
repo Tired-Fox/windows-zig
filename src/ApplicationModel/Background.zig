@@ -1,310 +1,4 @@
 // ----- This code is automatically generated -----
-pub const CommunicationBlockingAppSetAsActiveTrigger = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&ICommunicationBlockingAppSetAsActiveTrigger.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.CommunicationBlockingAppSetAsActiveTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICommunicationBlockingAppSetAsActiveTrigger.GUID;
-    pub const IID: Guid = ICommunicationBlockingAppSetAsActiveTrigger.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICommunicationBlockingAppSetAsActiveTrigger.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const ICommunicationBlockingAppSetAsActiveTrigger = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ICommunicationBlockingAppSetAsActiveTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fb91f28a-16a5-486d-974c-7835a8477be2";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneTrigger = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getOneShot(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_OneShot(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTriggerType(self: *@This()) core.HResult!PhoneTriggerType {
-        var _r: PhoneTriggerType = undefined;
-        const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IPhoneTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "8dcfe99b-d4c5-49f1-b7d3-82e87a0e9dde";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OneShot: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_TriggerType: *const fn(self: *anyopaque, _r: *PhoneTriggerType) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneTriggerFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Create(self: *@This(), ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
-        var _r: *PhoneTrigger = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), ty, oneShot, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IPhoneTriggerFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "a0d93cda-5fc1-48fb-a546-32262040157b";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, ty: PhoneTriggerType, oneShot: bool, _r: **PhoneTrigger) callconv(.winapi) HRESULT,
-    };
-};
-pub const PhoneTrigger = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getOneShot(self: *@This()) core.HResult!bool {
-        const this: *IPhoneTrigger = @ptrCast(self);
-        return try this.getOneShot();
-    }
-    pub fn getTriggerType(self: *@This()) core.HResult!PhoneTriggerType {
-        const this: *IPhoneTrigger = @ptrCast(self);
-        return try this.getTriggerType();
-    }
-    pub fn Create(ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
-        const _f = try @This()._IPhoneTriggerFactoryCache.get();
-        return try _f.Create(ty, oneShot);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.PhoneTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPhoneTrigger.GUID;
-    pub const IID: Guid = IPhoneTrigger.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneTrigger.SIGNATURE);
-    var _IPhoneTriggerFactoryCache: FactoryCache(IPhoneTriggerFactory, RUNTIME_NAME) = .{};
-};
-pub const ISmartCardTrigger = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
-        var _r: SmartCardTriggerType = undefined;
-        const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ISmartCardTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "f53bc5ac-84ca-4972-8ce9-e58f97b37a50";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TriggerType: *const fn(self: *anyopaque, _r: *SmartCardTriggerType) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardTriggerFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Create(self: *@This(), triggerType: SmartCardTriggerType) core.HResult!*SmartCardTrigger {
-        var _r: *SmartCardTrigger = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), triggerType, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ISmartCardTriggerFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "63bf54c3-89c1-4e00-a9d3-97c629269dad";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, triggerType: SmartCardTriggerType, _r: **SmartCardTrigger) callconv(.winapi) HRESULT,
-    };
-};
-pub const SmartCardTrigger = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
-        const this: *ISmartCardTrigger = @ptrCast(self);
-        return try this.getTriggerType();
-    }
-    pub fn Create(triggerType: SmartCardTriggerType) core.HResult!*SmartCardTrigger {
-        const _f = try @This()._ISmartCardTriggerFactoryCache.get();
-        return try _f.Create(triggerType);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.SmartCardTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardTrigger.GUID;
-    pub const IID: Guid = ISmartCardTrigger.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardTrigger.SIGNATURE);
-    var _ISmartCardTriggerFactoryCache: FactoryCache(ISmartCardTriggerFactory, RUNTIME_NAME) = .{};
-};
-pub const AlarmAccessStatus = enum(i32) {
-    Unspecified = 0,
-    AllowedWithWakeupCapability = 1,
-    AllowedWithoutWakeupCapability = 2,
-    Denied = 3,
-};
-pub const AlarmApplicationManager = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(AlarmAccessStatus) {
-        const _f = try @This()._IAlarmApplicationManagerStaticsCache.get();
-        return try _f.RequestAccessAsync();
-    }
-    pub fn GetAccessStatus() core.HResult!AlarmAccessStatus {
-        const _f = try @This()._IAlarmApplicationManagerStaticsCache.get();
-        return try _f.GetAccessStatus();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.AlarmApplicationManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IAlarmApplicationManagerStaticsCache: FactoryCache(IAlarmApplicationManagerStatics, RUNTIME_NAME) = .{};
-};
-pub const IAlarmApplicationManagerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(AlarmAccessStatus) {
-        var _r: *IAsyncOperation(AlarmAccessStatus) = undefined;
-        const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetAccessStatus(self: *@This()) core.HResult!AlarmAccessStatus {
-        var _r: AlarmAccessStatus = undefined;
-        const _c = self.vtable.GetAccessStatus(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IAlarmApplicationManagerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "ca03fa3b-cce6-4de2-b09b-9628bd33bbbe";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(AlarmAccessStatus)) callconv(.winapi) HRESULT,
-        GetAccessStatus: *const fn(self: *anyopaque, _r: *AlarmAccessStatus) callconv(.winapi) HRESULT,
-    };
-};
 pub const ActivitySensorTrigger = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -6130,6 +5824,143 @@ pub const WiFiOnDemandHotspotUpdateMetadataTrigger = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IBackgroundTrigger.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
+pub const CommunicationBlockingAppSetAsActiveTrigger = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&ICommunicationBlockingAppSetAsActiveTrigger.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.CommunicationBlockingAppSetAsActiveTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICommunicationBlockingAppSetAsActiveTrigger.GUID;
+    pub const IID: Guid = ICommunicationBlockingAppSetAsActiveTrigger.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICommunicationBlockingAppSetAsActiveTrigger.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const ICommunicationBlockingAppSetAsActiveTrigger = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ICommunicationBlockingAppSetAsActiveTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fb91f28a-16a5-486d-974c-7835a8477be2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardTrigger = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
+        var _r: SmartCardTriggerType = undefined;
+        const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ISmartCardTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "f53bc5ac-84ca-4972-8ce9-e58f97b37a50";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_TriggerType: *const fn(self: *anyopaque, _r: *SmartCardTriggerType) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardTriggerFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Create(self: *@This(), triggerType: SmartCardTriggerType) core.HResult!*SmartCardTrigger {
+        var _r: *SmartCardTrigger = undefined;
+        const _c = self.vtable.Create(@ptrCast(self), triggerType, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ISmartCardTriggerFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "63bf54c3-89c1-4e00-a9d3-97c629269dad";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, triggerType: SmartCardTriggerType, _r: **SmartCardTrigger) callconv(.winapi) HRESULT,
+    };
+};
+pub const SmartCardTrigger = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
+        const this: *ISmartCardTrigger = @ptrCast(self);
+        return try this.getTriggerType();
+    }
+    pub fn Create(triggerType: SmartCardTriggerType) core.HResult!*SmartCardTrigger {
+        const _f = try @This()._ISmartCardTriggerFactoryCache.get();
+        return try _f.Create(triggerType);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.SmartCardTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardTrigger.GUID;
+    pub const IID: Guid = ISmartCardTrigger.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardTrigger.SIGNATURE);
+    var _ISmartCardTriggerFactoryCache: FactoryCache(ISmartCardTriggerFactory, RUNTIME_NAME) = .{};
+};
 pub const AppBroadcastTrigger = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -6390,6 +6221,175 @@ pub const IAppBroadcastTriggerProviderInfo = extern struct {
         put_MaxVideoHeight: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_MaxVideoHeight: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
+};
+pub const AlarmAccessStatus = enum(i32) {
+    Unspecified = 0,
+    AllowedWithWakeupCapability = 1,
+    AllowedWithoutWakeupCapability = 2,
+    Denied = 3,
+};
+pub const AlarmApplicationManager = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(AlarmAccessStatus) {
+        const _f = try @This()._IAlarmApplicationManagerStaticsCache.get();
+        return try _f.RequestAccessAsync();
+    }
+    pub fn GetAccessStatus() core.HResult!AlarmAccessStatus {
+        const _f = try @This()._IAlarmApplicationManagerStaticsCache.get();
+        return try _f.GetAccessStatus();
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.AlarmApplicationManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IAlarmApplicationManagerStaticsCache: FactoryCache(IAlarmApplicationManagerStatics, RUNTIME_NAME) = .{};
+};
+pub const IAlarmApplicationManagerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(AlarmAccessStatus) {
+        var _r: *IAsyncOperation(AlarmAccessStatus) = undefined;
+        const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetAccessStatus(self: *@This()) core.HResult!AlarmAccessStatus {
+        var _r: AlarmAccessStatus = undefined;
+        const _c = self.vtable.GetAccessStatus(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IAlarmApplicationManagerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "ca03fa3b-cce6-4de2-b09b-9628bd33bbbe";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(AlarmAccessStatus)) callconv(.winapi) HRESULT,
+        GetAccessStatus: *const fn(self: *anyopaque, _r: *AlarmAccessStatus) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneTrigger = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getOneShot(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_OneShot(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!PhoneTriggerType {
+        var _r: PhoneTriggerType = undefined;
+        const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IPhoneTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "8dcfe99b-d4c5-49f1-b7d3-82e87a0e9dde";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_OneShot: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        get_TriggerType: *const fn(self: *anyopaque, _r: *PhoneTriggerType) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneTriggerFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Create(self: *@This(), ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
+        var _r: *PhoneTrigger = undefined;
+        const _c = self.vtable.Create(@ptrCast(self), ty, oneShot, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IPhoneTriggerFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "a0d93cda-5fc1-48fb-a546-32262040157b";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, ty: PhoneTriggerType, oneShot: bool, _r: **PhoneTrigger) callconv(.winapi) HRESULT,
+    };
+};
+pub const PhoneTrigger = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getOneShot(self: *@This()) core.HResult!bool {
+        const this: *IPhoneTrigger = @ptrCast(self);
+        return try this.getOneShot();
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!PhoneTriggerType {
+        const this: *IPhoneTrigger = @ptrCast(self);
+        return try this.getTriggerType();
+    }
+    pub fn Create(ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
+        const _f = try @This()._IPhoneTriggerFactoryCache.get();
+        return try _f.Create(ty, oneShot);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Background.PhoneTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPhoneTrigger.GUID;
+    pub const IID: Guid = IPhoneTrigger.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneTrigger.SIGNATURE);
+    var _IPhoneTriggerFactoryCache: FactoryCache(IPhoneTriggerFactory, RUNTIME_NAME) = .{};
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

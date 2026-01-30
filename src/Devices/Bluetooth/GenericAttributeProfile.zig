@@ -139,18 +139,18 @@ pub const GattCharacteristic = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IGattCharacteristic.SIGNATURE);
     var _IGattCharacteristicStaticsCache: FactoryCache(IGattCharacteristicStatics, RUNTIME_NAME) = .{};
 };
-pub const GattCharacteristicProperties = enum(i32) {
-    None = 0,
-    Broadcast = 1,
-    Read = 2,
-    WriteWithoutResponse = 4,
-    Write = 8,
-    Notify = 16,
-    Indicate = 32,
-    AuthenticatedSignedWrites = 64,
-    ExtendedProperties = 128,
-    ReliableWrites = 256,
-    WritableAuxiliaries = 512,
+pub const GattCharacteristicProperties = packed struct(u32) {
+    Broadcast: bool = false,
+    Read: bool = false,
+    WriteWithoutResponse: bool = false,
+    Write: bool = false,
+    Notify: bool = false,
+    Indicate: bool = false,
+    AuthenticatedSignedWrites: bool = false,
+    ExtendedProperties: bool = false,
+    ReliableWrites: bool = false,
+    WritableAuxiliaries: bool = false,
+    _m: u22 = 0,
 };
 pub const GattCharacteristicUuids = extern struct {
     vtable: *const IInspectable.VTable,

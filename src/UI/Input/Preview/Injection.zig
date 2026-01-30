@@ -750,12 +750,12 @@ pub const InjectedInputGamepadInfo = extern struct {
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
     var _IInjectedInputGamepadInfoFactoryCache: FactoryCache(IInjectedInputGamepadInfoFactory, RUNTIME_NAME) = .{};
 };
-pub const InjectedInputKeyOptions = enum(i32) {
-    None = 0,
-    ExtendedKey = 1,
-    KeyUp = 2,
-    ScanCode = 8,
-    Unicode = 4,
+pub const InjectedInputKeyOptions = packed struct(u32) {
+    ExtendedKey: bool = false,
+    KeyUp: bool = false,
+    ScanCode: bool = false,
+    Unicode: bool = false,
+    _m: u28 = 0,
 };
 pub const InjectedInputKeyboardInfo = extern struct {
     vtable: *const IInspectable.VTable,
@@ -865,28 +865,28 @@ pub const InjectedInputMouseInfo = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IInjectedInputMouseInfo.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const InjectedInputMouseOptions = enum(i32) {
-    None = 0,
-    Move = 1,
-    LeftDown = 2,
-    LeftUp = 4,
-    RightDown = 8,
-    RightUp = 16,
-    MiddleDown = 32,
-    MiddleUp = 64,
-    XDown = 128,
-    XUp = 256,
-    Wheel = 2048,
-    HWheel = 4096,
-    MoveNoCoalesce = 8192,
-    VirtualDesk = 16384,
-    Absolute = 32768,
+pub const InjectedInputMouseOptions = packed struct(u32) {
+    Move: bool = false,
+    LeftDown: bool = false,
+    LeftUp: bool = false,
+    RightDown: bool = false,
+    RightUp: bool = false,
+    MiddleDown: bool = false,
+    MiddleUp: bool = false,
+    XDown: bool = false,
+    XUp: bool = false,
+    Wheel: bool = false,
+    HWheel: bool = false,
+    MoveNoCoalesce: bool = false,
+    VirtualDesk: bool = false,
+    Absolute: bool = false,
+    _m: u18 = 0,
 };
-pub const InjectedInputPenButtons = enum(i32) {
-    None = 0,
-    Barrel = 1,
-    Inverted = 2,
-    Eraser = 4,
+pub const InjectedInputPenButtons = packed struct(u32) {
+    Barrel: bool = false,
+    Inverted: bool = false,
+    Eraser: bool = false,
+    _m: u29 = 0,
 };
 pub const InjectedInputPenInfo = extern struct {
     vtable: *const IInspectable.VTable,
@@ -966,12 +966,12 @@ pub const InjectedInputPenInfo = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IInjectedInputPenInfo.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const InjectedInputPenParameters = enum(i32) {
-    None = 0,
-    Pressure = 1,
-    Rotation = 2,
-    TiltX = 4,
-    TiltY = 8,
+pub const InjectedInputPenParameters = packed struct(u32) {
+    Pressure: bool = false,
+    Rotation: bool = false,
+    TiltX: bool = false,
+    TiltY: bool = false,
+    _m: u28 = 0,
 };
 pub const InjectedInputPoint = extern struct {
     PositionX: i32,
@@ -984,20 +984,20 @@ pub const InjectedInputPointerInfo = extern struct {
     TimeOffsetInMilliseconds: u32,
     PerformanceCount: u64,
 };
-pub const InjectedInputPointerOptions = enum(i32) {
-    None = 0,
-    New = 1,
-    InRange = 2,
-    InContact = 4,
-    FirstButton = 16,
-    SecondButton = 32,
-    Primary = 8192,
-    Confidence = 16384,
-    Canceled = 32768,
-    PointerDown = 65536,
-    Update = 131072,
-    PointerUp = 262144,
-    CaptureChanged = 2097152,
+pub const InjectedInputPointerOptions = packed struct(u32) {
+    New: bool = false,
+    InRange: bool = false,
+    InContact: bool = false,
+    FirstButton: bool = false,
+    SecondButton: bool = false,
+    Primary: bool = false,
+    Confidence: bool = false,
+    Canceled: bool = false,
+    PointerDown: bool = false,
+    Update: bool = false,
+    PointerUp: bool = false,
+    CaptureChanged: bool = false,
+    _m: u20 = 0,
 };
 pub const InjectedInputRectangle = extern struct {
     Left: i32,
@@ -1072,11 +1072,11 @@ pub const InjectedInputTouchInfo = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IInjectedInputTouchInfo.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const InjectedInputTouchParameters = enum(i32) {
-    None = 0,
-    Contact = 1,
-    Orientation = 2,
-    Pressure = 4,
+pub const InjectedInputTouchParameters = packed struct(u32) {
+    Contact: bool = false,
+    Orientation: bool = false,
+    Pressure: bool = false,
+    _m: u29 = 0,
 };
 pub const InjectedInputVisualizationMode = enum(i32) {
     None = 0,

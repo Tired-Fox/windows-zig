@@ -888,9 +888,9 @@ pub const StoreHardwareManufacturerInfo = extern struct {
     pub const IID: Guid = IStoreHardwareManufacturerInfo.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IStoreHardwareManufacturerInfo.SIGNATURE);
 };
-pub const StoreLogOptions = enum(i32) {
-    None = 0,
-    TryElevate = 1,
+pub const StoreLogOptions = packed struct(u32) {
+    TryElevate: bool = false,
+    _m: u31 = 0,
 };
 pub const StorePreview = extern struct {
     vtable: *const IInspectable.VTable,

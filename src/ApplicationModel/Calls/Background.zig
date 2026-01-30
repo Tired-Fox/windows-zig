@@ -447,17 +447,17 @@ pub const PhoneLineChangedTriggerDetails = extern struct {
     pub const IID: Guid = IPhoneLineChangedTriggerDetails.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneLineChangedTriggerDetails.SIGNATURE);
 };
-pub const PhoneLineProperties = enum(i32) {
-    None = 0,
-    BrandingOptions = 1,
-    CanDial = 2,
-    CellularDetails = 4,
-    DisplayColor = 8,
-    DisplayName = 16,
-    NetworkName = 32,
-    NetworkState = 64,
-    Transport = 128,
-    Voicemail = 256,
+pub const PhoneLineProperties = packed struct(u32) {
+    BrandingOptions: bool = false,
+    CanDial: bool = false,
+    CellularDetails: bool = false,
+    DisplayColor: bool = false,
+    DisplayName: bool = false,
+    NetworkName: bool = false,
+    NetworkState: bool = false,
+    Transport: bool = false,
+    Voicemail: bool = false,
+    _m: u23 = 0,
 };
 pub const PhoneNewVoicemailMessageTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,

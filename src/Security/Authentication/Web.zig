@@ -198,12 +198,12 @@ pub const WebAuthenticationBroker = extern struct {
     var _IWebAuthenticationBrokerStatics2Cache: FactoryCache(IWebAuthenticationBrokerStatics2, RUNTIME_NAME) = .{};
     var _IWebAuthenticationBrokerStaticsCache: FactoryCache(IWebAuthenticationBrokerStatics, RUNTIME_NAME) = .{};
 };
-pub const WebAuthenticationOptions = enum(i32) {
-    None = 0,
-    SilentMode = 1,
-    UseTitle = 2,
-    UseHttpPost = 4,
-    UseCorporateNetwork = 8,
+pub const WebAuthenticationOptions = packed struct(u32) {
+    SilentMode: bool = false,
+    UseTitle: bool = false,
+    UseHttpPost: bool = false,
+    UseCorporateNetwork: bool = false,
+    _m: u28 = 0,
 };
 pub const WebAuthenticationResult = extern struct {
     vtable: *const IInspectable.VTable,

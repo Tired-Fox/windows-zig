@@ -1558,23 +1558,23 @@ pub const IsolatedWindowsEnvironmentActivator = enum(i32) {
     System = 0,
     User = 1,
 };
-pub const IsolatedWindowsEnvironmentAllowedClipboardFormats = enum(i32) {
-    None = 0,
-    Text = 1,
-    Image = 2,
-    Rtf = 4,
+pub const IsolatedWindowsEnvironmentAllowedClipboardFormats = packed struct(u32) {
+    Text: bool = false,
+    Image: bool = false,
+    Rtf: bool = false,
+    _m: u29 = 0,
 };
-pub const IsolatedWindowsEnvironmentAvailablePrinters = enum(i32) {
-    None = 0,
-    Local = 1,
-    Network = 2,
-    SystemPrintToPdf = 4,
-    SystemPrintToXps = 8,
+pub const IsolatedWindowsEnvironmentAvailablePrinters = packed struct(u32) {
+    Local: bool = false,
+    Network: bool = false,
+    SystemPrintToPdf: bool = false,
+    SystemPrintToXps: bool = false,
+    _m: u28 = 0,
 };
-pub const IsolatedWindowsEnvironmentClipboardCopyPasteDirections = enum(i32) {
-    None = 0,
-    HostToIsolatedWindowsEnvironment = 1,
-    IsolatedWindowsEnvironmentToHost = 2,
+pub const IsolatedWindowsEnvironmentClipboardCopyPasteDirections = packed struct(u32) {
+    HostToIsolatedWindowsEnvironment: bool = false,
+    IsolatedWindowsEnvironmentToHost: bool = false,
+    _m: u30 = 0,
 };
 pub const IsolatedWindowsEnvironmentCreateProgress = extern struct {
     State: IsolatedWindowsEnvironmentProgressState,

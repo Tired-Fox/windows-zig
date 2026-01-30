@@ -714,15 +714,15 @@ pub const SecondaryAuthenticationFactorAuthenticationStatus = enum(i32) {
     DisabledByPolicy = 3,
     InvalidAuthenticationStage = 4,
 };
-pub const SecondaryAuthenticationFactorDeviceCapabilities = enum(i32) {
-    None = 0,
-    SecureStorage = 1,
-    StoreKeys = 2,
-    ConfirmUserIntentToAuthenticate = 4,
-    SupportSecureUserPresenceCheck = 8,
-    TransmittedDataIsEncrypted = 16,
-    HMacSha256 = 32,
-    CloseRangeDataTransmission = 64,
+pub const SecondaryAuthenticationFactorDeviceCapabilities = packed struct(u32) {
+    SecureStorage: bool = false,
+    StoreKeys: bool = false,
+    ConfirmUserIntentToAuthenticate: bool = false,
+    SupportSecureUserPresenceCheck: bool = false,
+    TransmittedDataIsEncrypted: bool = false,
+    HMacSha256: bool = false,
+    CloseRangeDataTransmission: bool = false,
+    _m: u25 = 0,
 };
 pub const SecondaryAuthenticationFactorDeviceFindScope = enum(i32) {
     User = 0,

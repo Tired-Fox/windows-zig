@@ -1,4 +1,18 @@
 // ----- This code is automatically generated -----
+pub const CreateFromStringAttribute = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.Metadata.CreateFromStringAttribute";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+};
 pub const ActivatableAttribute = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -124,20 +138,21 @@ pub const AttributeNameAttribute = extern struct {
     pub const NAME: []const u8 = "Windows.Foundation.Metadata.AttributeNameAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
-pub const AttributeTargets = enum(i32) {
-    All = -1,
-    Delegate = 1,
-    Enum = 2,
-    Event = 4,
-    Field = 8,
-    Interface = 16,
-    Method = 64,
-    Parameter = 128,
-    Property = 256,
-    RuntimeClass = 512,
-    Struct = 1024,
-    InterfaceImpl = 2048,
-    ApiContract = 8192,
+pub const AttributeTargets = packed struct(u32) {
+    All: bool = false,
+    Delegate: bool = false,
+    Enum: bool = false,
+    Event: bool = false,
+    Field: bool = false,
+    Interface: bool = false,
+    Method: bool = false,
+    Parameter: bool = false,
+    Property: bool = false,
+    RuntimeClass: bool = false,
+    Struct: bool = false,
+    InterfaceImpl: bool = false,
+    ApiContract: bool = false,
+    _m: u19 = 0,
 };
 pub const AttributeUsageAttribute = extern struct {
     vtable: *const IInspectable.VTable,
@@ -715,20 +730,6 @@ pub const WebHostHiddenAttribute = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub const NAME: []const u8 = "Windows.Foundation.Metadata.WebHostHiddenAttribute";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-};
-pub const CreateFromStringAttribute = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.Metadata.CreateFromStringAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
 const IUnknown = @import("../root.zig").IUnknown;

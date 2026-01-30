@@ -1,176 +1,4 @@
 // ----- This code is automatically generated -----
-pub const IWwanConnectionProfileDetails = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_HomeProviderId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_AccessPointName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetNetworkRegistrationState(self: *@This()) core.HResult!WwanNetworkRegistrationState {
-        var _r: WwanNetworkRegistrationState = undefined;
-        const _c = self.vtable.GetNetworkRegistrationState(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetCurrentDataClass(self: *@This()) core.HResult!WwanDataClass {
-        var _r: WwanDataClass = undefined;
-        const _c = self.vtable.GetCurrentDataClass(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Connectivity.IWwanConnectionProfileDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "0e4da8fe-835f-4df3-82fd-df556ebc09ef";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_HomeProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_AccessPointName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        GetNetworkRegistrationState: *const fn(self: *anyopaque, _r: *WwanNetworkRegistrationState) callconv(.winapi) HRESULT,
-        GetCurrentDataClass: *const fn(self: *anyopaque, _r: *WwanDataClass) callconv(.winapi) HRESULT,
-    };
-};
-pub const IWwanConnectionProfileDetails2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIPKind(self: *@This()) core.HResult!WwanNetworkIPKind {
-        var _r: WwanNetworkIPKind = undefined;
-        const _c = self.vtable.get_IPKind(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPurposeGuids(self: *@This()) core.HResult!*IVectorView(Guid) {
-        var _r: *IVectorView(Guid) = undefined;
-        const _c = self.vtable.get_PurposeGuids(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Connectivity.IWwanConnectionProfileDetails2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "7a754ede-a1ed-48b2-8e92-b460033d52e2";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_IPKind: *const fn(self: *anyopaque, _r: *WwanNetworkIPKind) callconv(.winapi) HRESULT,
-        get_PurposeGuids: *const fn(self: *anyopaque, _r: **IVectorView(Guid)) callconv(.winapi) HRESULT,
-    };
-};
-pub const WwanConnectionProfileDetails = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
-        return try this.getHomeProviderId();
-    }
-    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
-        return try this.getAccessPointName();
-    }
-    pub fn GetNetworkRegistrationState(self: *@This()) core.HResult!WwanNetworkRegistrationState {
-        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
-        return try this.GetNetworkRegistrationState();
-    }
-    pub fn GetCurrentDataClass(self: *@This()) core.HResult!WwanDataClass {
-        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
-        return try this.GetCurrentDataClass();
-    }
-    pub fn getIPKind(self: *@This()) core.HResult!WwanNetworkIPKind {
-        var this: ?*IWwanConnectionProfileDetails2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
-        return try this.?.getIPKind();
-    }
-    pub fn getPurposeGuids(self: *@This()) core.HResult!*IVectorView(Guid) {
-        var this: ?*IWwanConnectionProfileDetails2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
-        return try this.?.getPurposeGuids();
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Connectivity.WwanConnectionProfileDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IWwanConnectionProfileDetails.GUID;
-    pub const IID: Guid = IWwanConnectionProfileDetails.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWwanConnectionProfileDetails.SIGNATURE);
-};
-pub const WwanDataClass = enum(i32) {
-    None = 0,
-    Gprs = 1,
-    Edge = 2,
-    Umts = 4,
-    Hsdpa = 8,
-    Hsupa = 16,
-    LteAdvanced = 32,
-    NewRadioNonStandalone = 64,
-    NewRadioStandalone = 128,
-    Cdma1xRtt = 65536,
-    Cdma1xEvdo = 131072,
-    Cdma1xEvdoRevA = 262144,
-    Cdma1xEvdv = 524288,
-    Cdma3xRtt = 1048576,
-    Cdma1xEvdoRevB = 2097152,
-    CdmaUmb = 4194304,
-    Custom = -2147483648,
-};
-pub const WwanNetworkIPKind = enum(i32) {
-    None = 0,
-    Ipv4 = 1,
-    Ipv6 = 2,
-    Ipv4v6 = 3,
-    Ipv4v6v4Xlat = 4,
-};
-pub const WwanNetworkRegistrationState = enum(i32) {
-    None = 0,
-    Deregistered = 1,
-    Searching = 2,
-    Home = 3,
-    Roaming = 4,
-    Partner = 5,
-    Denied = 6,
-};
 pub const AttributedNetworkUsage = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -2952,10 +2780,10 @@ pub const NetworkStatusChangedEventHandler = extern struct {
         .Invoke = Invoke,
     };
 };
-pub const NetworkTypes = enum(i32) {
-    None = 0,
-    Internet = 1,
-    PrivateNetwork = 2,
+pub const NetworkTypes = packed struct(u32) {
+    Internet: bool = false,
+    PrivateNetwork: bool = false,
+    _m: u30 = 0,
 };
 pub const NetworkUsage = extern struct {
     vtable: *const IInspectable.VTable,
@@ -3044,10 +2872,10 @@ pub const ProxyConfiguration = extern struct {
     pub const IID: Guid = IProxyConfiguration.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IProxyConfiguration.SIGNATURE);
 };
-pub const RoamingStates = enum(i32) {
-    None = 0,
-    NotRoaming = 1,
-    Roaming = 2,
+pub const RoamingStates = packed struct(u32) {
+    NotRoaming: bool = false,
+    Roaming: bool = false,
+    _m: u30 = 0,
 };
 pub const RoutePolicy = extern struct {
     vtable: *const IInspectable.VTable,
@@ -3108,6 +2936,178 @@ pub const WlanConnectionProfileDetails = extern struct {
     pub const GUID: []const u8 = IWlanConnectionProfileDetails.GUID;
     pub const IID: Guid = IWlanConnectionProfileDetails.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWlanConnectionProfileDetails.SIGNATURE);
+};
+pub const IWwanConnectionProfileDetails = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_HomeProviderId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_AccessPointName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetNetworkRegistrationState(self: *@This()) core.HResult!WwanNetworkRegistrationState {
+        var _r: WwanNetworkRegistrationState = undefined;
+        const _c = self.vtable.GetNetworkRegistrationState(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetCurrentDataClass(self: *@This()) core.HResult!WwanDataClass {
+        var _r: WwanDataClass = undefined;
+        const _c = self.vtable.GetCurrentDataClass(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Connectivity.IWwanConnectionProfileDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "0e4da8fe-835f-4df3-82fd-df556ebc09ef";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_HomeProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AccessPointName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetNetworkRegistrationState: *const fn(self: *anyopaque, _r: *WwanNetworkRegistrationState) callconv(.winapi) HRESULT,
+        GetCurrentDataClass: *const fn(self: *anyopaque, _r: *WwanDataClass) callconv(.winapi) HRESULT,
+    };
+};
+pub const IWwanConnectionProfileDetails2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIPKind(self: *@This()) core.HResult!WwanNetworkIPKind {
+        var _r: WwanNetworkIPKind = undefined;
+        const _c = self.vtable.get_IPKind(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPurposeGuids(self: *@This()) core.HResult!*IVectorView(Guid) {
+        var _r: *IVectorView(Guid) = undefined;
+        const _c = self.vtable.get_PurposeGuids(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Connectivity.IWwanConnectionProfileDetails2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "7a754ede-a1ed-48b2-8e92-b460033d52e2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_IPKind: *const fn(self: *anyopaque, _r: *WwanNetworkIPKind) callconv(.winapi) HRESULT,
+        get_PurposeGuids: *const fn(self: *anyopaque, _r: **IVectorView(Guid)) callconv(.winapi) HRESULT,
+    };
+};
+pub const WwanConnectionProfileDetails = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
+        return try this.getHomeProviderId();
+    }
+    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
+        return try this.getAccessPointName();
+    }
+    pub fn GetNetworkRegistrationState(self: *@This()) core.HResult!WwanNetworkRegistrationState {
+        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
+        return try this.GetNetworkRegistrationState();
+    }
+    pub fn GetCurrentDataClass(self: *@This()) core.HResult!WwanDataClass {
+        const this: *IWwanConnectionProfileDetails = @ptrCast(self);
+        return try this.GetCurrentDataClass();
+    }
+    pub fn getIPKind(self: *@This()) core.HResult!WwanNetworkIPKind {
+        var this: ?*IWwanConnectionProfileDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
+        return try this.?.getIPKind();
+    }
+    pub fn getPurposeGuids(self: *@This()) core.HResult!*IVectorView(Guid) {
+        var this: ?*IWwanConnectionProfileDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
+        return try this.?.getPurposeGuids();
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Connectivity.WwanConnectionProfileDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IWwanConnectionProfileDetails.GUID;
+    pub const IID: Guid = IWwanConnectionProfileDetails.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWwanConnectionProfileDetails.SIGNATURE);
+};
+pub const WwanDataClass = packed struct(u32) {
+    Gprs: bool = false,
+    Edge: bool = false,
+    Umts: bool = false,
+    Hsdpa: bool = false,
+    Hsupa: bool = false,
+    LteAdvanced: bool = false,
+    NewRadioNonStandalone: bool = false,
+    NewRadioStandalone: bool = false,
+    Cdma1xRtt: bool = false,
+    Cdma1xEvdo: bool = false,
+    Cdma1xEvdoRevA: bool = false,
+    Cdma1xEvdv: bool = false,
+    Cdma3xRtt: bool = false,
+    Cdma1xEvdoRevB: bool = false,
+    CdmaUmb: bool = false,
+    Custom: bool = false,
+    _m: u16 = 0,
+};
+pub const WwanNetworkIPKind = enum(i32) {
+    None = 0,
+    Ipv4 = 1,
+    Ipv6 = 2,
+    Ipv4v6 = 3,
+    Ipv4v6v4Xlat = 4,
+};
+pub const WwanNetworkRegistrationState = enum(i32) {
+    None = 0,
+    Deregistered = 1,
+    Searching = 2,
+    Home = 3,
+    Roaming = 4,
+    Partner = 5,
+    Denied = 6,
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

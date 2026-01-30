@@ -1,147 +1,8 @@
 // ----- This code is automatically generated -----
-pub const IStartupTask = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestEnableAsync(self: *@This()) core.HResult!*IAsyncOperation(StartupTaskState) {
-        var _r: *IAsyncOperation(StartupTaskState) = undefined;
-        const _c = self.vtable.RequestEnableAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn Disable(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Disable(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn getState(self: *@This()) core.HResult!StartupTaskState {
-        var _r: StartupTaskState = undefined;
-        const _c = self.vtable.get_State(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_TaskId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.IStartupTask";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "f75c23c8-b5f2-4f6c-88dd-36cb1d599d17";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestEnableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StartupTaskState)) callconv(.winapi) HRESULT,
-        Disable: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        get_State: *const fn(self: *anyopaque, _r: *StartupTaskState) callconv(.winapi) HRESULT,
-        get_TaskId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IStartupTaskStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetForCurrentPackageAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StartupTask)) {
-        var _r: *IAsyncOperation(IVectorView(StartupTask)) = undefined;
-        const _c = self.vtable.GetForCurrentPackageAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetAsync(self: *@This(), taskId: ?HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
-        var _r: *IAsyncOperation(StartupTask) = undefined;
-        const _c = self.vtable.GetAsync(@ptrCast(self), taskId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.IStartupTaskStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "ee5b60bd-a148-41a7-b26e-e8b88a1e62f8";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForCurrentPackageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StartupTask))) callconv(.winapi) HRESULT,
-        GetAsync: *const fn(self: *anyopaque, taskId: ?HSTRING, _r: **IAsyncOperation(StartupTask)) callconv(.winapi) HRESULT,
-    };
-};
-pub const StartupTask = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestEnableAsync(self: *@This()) core.HResult!*IAsyncOperation(StartupTaskState) {
-        const this: *IStartupTask = @ptrCast(self);
-        return try this.RequestEnableAsync();
-    }
-    pub fn Disable(self: *@This()) core.HResult!void {
-        const this: *IStartupTask = @ptrCast(self);
-        return try this.Disable();
-    }
-    pub fn getState(self: *@This()) core.HResult!StartupTaskState {
-        const this: *IStartupTask = @ptrCast(self);
-        return try this.getState();
-    }
-    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IStartupTask = @ptrCast(self);
-        return try this.getTaskId();
-    }
-    pub fn GetForCurrentPackageAsync() core.HResult!*IAsyncOperation(IVectorView(StartupTask)) {
-        const _f = try @This()._IStartupTaskStaticsCache.get();
-        return try _f.GetForCurrentPackageAsync();
-    }
-    pub fn GetAsync(taskId: ?HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
-        const _f = try @This()._IStartupTaskStaticsCache.get();
-        return try _f.GetAsync(taskId);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.StartupTask";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IStartupTask.GUID;
-    pub const IID: Guid = IStartupTask.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IStartupTask.SIGNATURE);
-    var _IStartupTaskStaticsCache: FactoryCache(IStartupTaskStatics, RUNTIME_NAME) = .{};
-};
-pub const StartupTaskState = enum(i32) {
-    Disabled = 0,
-    DisabledByUser = 1,
-    Enabled = 2,
-    DisabledByPolicy = 3,
-    EnabledByPolicy = 4,
-};
-pub const AddResourcePackageOptions = enum(i32) {
-    None = 0,
-    ForceTargetAppShutdown = 1,
-    ApplyUpdateIfAvailable = 2,
+pub const AddResourcePackageOptions = packed struct(u32) {
+    ForceTargetAppShutdown: bool = false,
+    ApplyUpdateIfAvailable: bool = false,
+    _m: u30 = 0,
 };
 pub const AppDisplayInfo = extern struct {
     vtable: *const IInspectable.VTable,
@@ -4267,6 +4128,145 @@ pub const SuspendingOperation = extern struct {
     pub const IID: Guid = ISuspendingOperation.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISuspendingOperation.SIGNATURE);
 };
+pub const IStartupTask = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestEnableAsync(self: *@This()) core.HResult!*IAsyncOperation(StartupTaskState) {
+        var _r: *IAsyncOperation(StartupTaskState) = undefined;
+        const _c = self.vtable.RequestEnableAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn Disable(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Disable(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn getState(self: *@This()) core.HResult!StartupTaskState {
+        var _r: StartupTaskState = undefined;
+        const _c = self.vtable.get_State(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_TaskId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.IStartupTask";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "f75c23c8-b5f2-4f6c-88dd-36cb1d599d17";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        RequestEnableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StartupTaskState)) callconv(.winapi) HRESULT,
+        Disable: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        get_State: *const fn(self: *anyopaque, _r: *StartupTaskState) callconv(.winapi) HRESULT,
+        get_TaskId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IStartupTaskStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetForCurrentPackageAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StartupTask)) {
+        var _r: *IAsyncOperation(IVectorView(StartupTask)) = undefined;
+        const _c = self.vtable.GetForCurrentPackageAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetAsync(self: *@This(), taskId: ?HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
+        var _r: *IAsyncOperation(StartupTask) = undefined;
+        const _c = self.vtable.GetAsync(@ptrCast(self), taskId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.IStartupTaskStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "ee5b60bd-a148-41a7-b26e-e8b88a1e62f8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetForCurrentPackageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StartupTask))) callconv(.winapi) HRESULT,
+        GetAsync: *const fn(self: *anyopaque, taskId: ?HSTRING, _r: **IAsyncOperation(StartupTask)) callconv(.winapi) HRESULT,
+    };
+};
+pub const StartupTask = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestEnableAsync(self: *@This()) core.HResult!*IAsyncOperation(StartupTaskState) {
+        const this: *IStartupTask = @ptrCast(self);
+        return try this.RequestEnableAsync();
+    }
+    pub fn Disable(self: *@This()) core.HResult!void {
+        const this: *IStartupTask = @ptrCast(self);
+        return try this.Disable();
+    }
+    pub fn getState(self: *@This()) core.HResult!StartupTaskState {
+        const this: *IStartupTask = @ptrCast(self);
+        return try this.getState();
+    }
+    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IStartupTask = @ptrCast(self);
+        return try this.getTaskId();
+    }
+    pub fn GetForCurrentPackageAsync() core.HResult!*IAsyncOperation(IVectorView(StartupTask)) {
+        const _f = try @This()._IStartupTaskStaticsCache.get();
+        return try _f.GetForCurrentPackageAsync();
+    }
+    pub fn GetAsync(taskId: ?HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
+        const _f = try @This()._IStartupTaskStaticsCache.get();
+        return try _f.GetAsync(taskId);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.StartupTask";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IStartupTask.GUID;
+    pub const IID: Guid = IStartupTask.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IStartupTask.SIGNATURE);
+    var _IStartupTaskStaticsCache: FactoryCache(IStartupTaskStatics, RUNTIME_NAME) = .{};
+};
+pub const StartupTaskState = enum(i32) {
+    Disabled = 0,
+    DisabledByUser = 1,
+    Enabled = 2,
+    DisabledByPolicy = 3,
+    EnabledByPolicy = 4,
+};
 pub const FullTrustLaunchResult = enum(i32) {
     Success = 0,
     AccessDenied = 1,
@@ -4492,8 +4492,8 @@ const TypedEventHandler = @import("./Foundation.zig").TypedEventHandler;
 const ProcessorArchitecture = @import("./System.zig").ProcessorArchitecture;
 const HSTRING = @import("./root.zig").HSTRING;
 const HResult = @import("./Foundation.zig").HResult;
-const IAsyncOperation = @import("./Foundation.zig").IAsyncOperation;
 const core = @import("./root.zig").core;
+const IAsyncOperation = @import("./Foundation.zig").IAsyncOperation;
 const IActivatedEventArgs = @import("./ApplicationModel/Activation.zig").IActivatedEventArgs;
 const User = @import("./System.zig").User;
 const StorageFolder = @import("./Storage.zig").StorageFolder;

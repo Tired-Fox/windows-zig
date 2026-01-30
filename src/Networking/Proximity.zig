@@ -1090,10 +1090,10 @@ pub const MessageTransmittedHandler = extern struct {
         .Invoke = Invoke,
     };
 };
-pub const PeerDiscoveryTypes = enum(i32) {
-    None = 0,
-    Browse = 1,
-    Triggered = 2,
+pub const PeerDiscoveryTypes = packed struct(u32) {
+    Browse: bool = false,
+    Triggered: bool = false,
+    _m: u30 = 0,
 };
 pub const PeerFinder = extern struct {
     vtable: *const IInspectable.VTable,

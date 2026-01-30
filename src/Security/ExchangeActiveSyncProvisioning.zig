@@ -1,4 +1,168 @@
 // ----- This code is automatically generated -----
+pub const EasClientDeviceInformation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!*Guid {
+        const this: *IEasClientDeviceInformation = @ptrCast(self);
+        return try this.getId();
+    }
+    pub fn getOperatingSystem(self: *@This()) core.HResult!?HSTRING {
+        const this: *IEasClientDeviceInformation = @ptrCast(self);
+        return try this.getOperatingSystem();
+    }
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IEasClientDeviceInformation = @ptrCast(self);
+        return try this.getFriendlyName();
+    }
+    pub fn getSystemManufacturer(self: *@This()) core.HResult!?HSTRING {
+        const this: *IEasClientDeviceInformation = @ptrCast(self);
+        return try this.getSystemManufacturer();
+    }
+    pub fn getSystemProductName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IEasClientDeviceInformation = @ptrCast(self);
+        return try this.getSystemProductName();
+    }
+    pub fn getSystemSku(self: *@This()) core.HResult!?HSTRING {
+        const this: *IEasClientDeviceInformation = @ptrCast(self);
+        return try this.getSystemSku();
+    }
+    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*IEasClientDeviceInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
+        return try this.?.getSystemHardwareVersion();
+    }
+    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*IEasClientDeviceInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
+        return try this.?.getSystemFirmwareVersion();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasClientDeviceInformation.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IEasClientDeviceInformation.GUID;
+    pub const IID: Guid = IEasClientDeviceInformation.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IEasClientDeviceInformation.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const IEasClientDeviceInformation = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!*Guid {
+        var _r: *Guid = undefined;
+        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getOperatingSystem(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_OperatingSystem(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSystemManufacturer(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SystemManufacturer(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSystemProductName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SystemProductName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSystemSku(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SystemSku(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasClientDeviceInformation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "54dfd981-1968-4ca3-b958-e595d16505eb";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
+        get_OperatingSystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemManufacturer: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemProductName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemSku: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IEasClientDeviceInformation2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SystemHardwareVersion(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SystemFirmwareVersion(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasClientDeviceInformation2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "ffb35923-bb26-4d6a-81bc-165aee0ad754";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_SystemHardwareVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemFirmwareVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
 pub const EasClientSecurityPolicy = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -505,178 +669,14 @@ pub const IEasComplianceResults2 = extern struct {
         get_EncryptionProviderType: *const fn(self: *anyopaque, _r: *EasEncryptionProviderType) callconv(.winapi) HRESULT,
     };
 };
-pub const EasClientDeviceInformation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getId(self: *@This()) core.HResult!*Guid {
-        const this: *IEasClientDeviceInformation = @ptrCast(self);
-        return try this.getId();
-    }
-    pub fn getOperatingSystem(self: *@This()) core.HResult!?HSTRING {
-        const this: *IEasClientDeviceInformation = @ptrCast(self);
-        return try this.getOperatingSystem();
-    }
-    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IEasClientDeviceInformation = @ptrCast(self);
-        return try this.getFriendlyName();
-    }
-    pub fn getSystemManufacturer(self: *@This()) core.HResult!?HSTRING {
-        const this: *IEasClientDeviceInformation = @ptrCast(self);
-        return try this.getSystemManufacturer();
-    }
-    pub fn getSystemProductName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IEasClientDeviceInformation = @ptrCast(self);
-        return try this.getSystemProductName();
-    }
-    pub fn getSystemSku(self: *@This()) core.HResult!?HSTRING {
-        const this: *IEasClientDeviceInformation = @ptrCast(self);
-        return try this.getSystemSku();
-    }
-    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*IEasClientDeviceInformation2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
-        return try this.?.getSystemHardwareVersion();
-    }
-    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*IEasClientDeviceInformation2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
-        return try this.?.getSystemFirmwareVersion();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasClientDeviceInformation.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IEasClientDeviceInformation.GUID;
-    pub const IID: Guid = IEasClientDeviceInformation.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IEasClientDeviceInformation.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const IEasClientDeviceInformation = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getId(self: *@This()) core.HResult!*Guid {
-        var _r: *Guid = undefined;
-        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getOperatingSystem(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_OperatingSystem(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSystemManufacturer(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SystemManufacturer(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSystemProductName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SystemProductName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSystemSku(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SystemSku(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasClientDeviceInformation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "54dfd981-1968-4ca3-b958-e595d16505eb";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_OperatingSystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_SystemManufacturer: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_SystemProductName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_SystemSku: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IEasClientDeviceInformation2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SystemHardwareVersion(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SystemFirmwareVersion(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Security.ExchangeActiveSyncProvisioning.IEasClientDeviceInformation2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "ffb35923-bb26-4d6a-81bc-165aee0ad754";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SystemHardwareVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_SystemFirmwareVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const TimeSpan = @import("../Foundation.zig").TimeSpan;
 const HRESULT = @import("../root.zig").HRESULT;
-const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
-const core = @import("../root.zig").core;
 const FactoryCache = @import("../core.zig").FactoryCache;
+const core = @import("../root.zig").core;
+const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const HSTRING = @import("../root.zig").HSTRING;

@@ -1,141 +1,4 @@
 // ----- This code is automatically generated -----
-pub const IJapanesePhoneme = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getYomiText(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_YomiText(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getIsPhraseStart(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsPhraseStart(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Globalization.IJapanesePhoneme";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2f6a9300-e85b-43e6-897d-5d82f862df21";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_YomiText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_IsPhraseStart: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IJapanesePhoneticAnalyzerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetWords(self: *@This(), input: ?HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
-        var _r: *IVectorView(JapanesePhoneme) = undefined;
-        const _c = self.vtable.GetWords(@ptrCast(self), input, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetWordsWithMonoRuby(self: *@This(), input: ?HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
-        var _r: *IVectorView(JapanesePhoneme) = undefined;
-        const _c = self.vtable.GetWordsWithMonoRuby(@ptrCast(self), input, monoRuby, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Globalization.IJapanesePhoneticAnalyzerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "88ab9e90-93de-41b2-b4d5-8edb227fd1c2";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetWords: *const fn(self: *anyopaque, input: ?HSTRING, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
-        GetWordsWithMonoRuby: *const fn(self: *anyopaque, input: ?HSTRING, monoRuby: bool, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
-    };
-};
-pub const JapanesePhoneme = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
-        const this: *IJapanesePhoneme = @ptrCast(self);
-        return try this.getDisplayText();
-    }
-    pub fn getYomiText(self: *@This()) core.HResult!?HSTRING {
-        const this: *IJapanesePhoneme = @ptrCast(self);
-        return try this.getYomiText();
-    }
-    pub fn getIsPhraseStart(self: *@This()) core.HResult!bool {
-        const this: *IJapanesePhoneme = @ptrCast(self);
-        return try this.getIsPhraseStart();
-    }
-    pub const NAME: []const u8 = "Windows.Globalization.JapanesePhoneme";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IJapanesePhoneme.GUID;
-    pub const IID: Guid = IJapanesePhoneme.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IJapanesePhoneme.SIGNATURE);
-};
-pub const JapanesePhoneticAnalyzer = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetWords(input: ?HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
-        const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
-        return try _f.GetWords(input);
-    }
-    pub fn GetWordsWithMonoRuby(input: ?HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
-        const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
-        return try _f.GetWordsWithMonoRuby(input, monoRuby);
-    }
-    pub const NAME: []const u8 = "Windows.Globalization.JapanesePhoneticAnalyzer";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IJapanesePhoneticAnalyzerStaticsCache: FactoryCache(IJapanesePhoneticAnalyzerStatics, RUNTIME_NAME) = .{};
-};
 pub const ApplicationLanguages = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -4946,12 +4809,149 @@ pub const NumeralSystemIdentifiers = extern struct {
     var _INumeralSystemIdentifiersStatics2Cache: FactoryCache(INumeralSystemIdentifiersStatics2, RUNTIME_NAME) = .{};
     var _INumeralSystemIdentifiersStaticsCache: FactoryCache(INumeralSystemIdentifiersStatics, RUNTIME_NAME) = .{};
 };
+pub const IJapanesePhoneme = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getYomiText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_YomiText(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getIsPhraseStart(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsPhraseStart(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Globalization.IJapanesePhoneme";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2f6a9300-e85b-43e6-897d-5d82f862df21";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_YomiText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IsPhraseStart: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IJapanesePhoneticAnalyzerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetWords(self: *@This(), input: ?HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
+        var _r: *IVectorView(JapanesePhoneme) = undefined;
+        const _c = self.vtable.GetWords(@ptrCast(self), input, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetWordsWithMonoRuby(self: *@This(), input: ?HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
+        var _r: *IVectorView(JapanesePhoneme) = undefined;
+        const _c = self.vtable.GetWordsWithMonoRuby(@ptrCast(self), input, monoRuby, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Globalization.IJapanesePhoneticAnalyzerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "88ab9e90-93de-41b2-b4d5-8edb227fd1c2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetWords: *const fn(self: *anyopaque, input: ?HSTRING, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
+        GetWordsWithMonoRuby: *const fn(self: *anyopaque, input: ?HSTRING, monoRuby: bool, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
+    };
+};
+pub const JapanesePhoneme = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        const this: *IJapanesePhoneme = @ptrCast(self);
+        return try this.getDisplayText();
+    }
+    pub fn getYomiText(self: *@This()) core.HResult!?HSTRING {
+        const this: *IJapanesePhoneme = @ptrCast(self);
+        return try this.getYomiText();
+    }
+    pub fn getIsPhraseStart(self: *@This()) core.HResult!bool {
+        const this: *IJapanesePhoneme = @ptrCast(self);
+        return try this.getIsPhraseStart();
+    }
+    pub const NAME: []const u8 = "Windows.Globalization.JapanesePhoneme";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IJapanesePhoneme.GUID;
+    pub const IID: Guid = IJapanesePhoneme.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IJapanesePhoneme.SIGNATURE);
+};
+pub const JapanesePhoneticAnalyzer = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetWords(input: ?HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
+        const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
+        return try _f.GetWords(input);
+    }
+    pub fn GetWordsWithMonoRuby(input: ?HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
+        const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
+        return try _f.GetWordsWithMonoRuby(input, monoRuby);
+    }
+    pub const NAME: []const u8 = "Windows.Globalization.JapanesePhoneticAnalyzer";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IJapanesePhoneticAnalyzerStaticsCache: FactoryCache(IJapanesePhoneticAnalyzerStatics, RUNTIME_NAME) = .{};
+};
 const IUnknown = @import("./root.zig").IUnknown;
 const IActivationFactory = @import("./Foundation.zig").IActivationFactory;
 const Guid = @import("./root.zig").Guid;
 const IVectorView = @import("./Foundation/Collections.zig").IVectorView;
-const IInspectable = @import("./Foundation.zig").IInspectable;
 const IIterable = @import("./Foundation/Collections.zig").IIterable;
+const IInspectable = @import("./Foundation.zig").IInspectable;
 const IVector = @import("./Foundation/Collections.zig").IVector;
 const DateTime = @import("./Foundation.zig").DateTime;
 const HRESULT = @import("./root.zig").HRESULT;

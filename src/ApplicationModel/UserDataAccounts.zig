@@ -705,10 +705,11 @@ pub const UserDataAccount = extern struct {
     pub const IID: Guid = IUserDataAccount.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUserDataAccount.SIGNATURE);
 };
-pub const UserDataAccountContentKinds = enum(i32) {
-    Email = 1,
-    Contact = 2,
-    Appointment = 4,
+pub const UserDataAccountContentKinds = packed struct(u32) {
+    Email: bool = false,
+    Contact: bool = false,
+    Appointment: bool = false,
+    _m: u29 = 0,
 };
 pub const UserDataAccountManager = extern struct {
     vtable: *const IInspectable.VTable,

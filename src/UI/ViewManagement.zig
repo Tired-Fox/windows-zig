@@ -1,94 +1,4 @@
 // ----- This code is automatically generated -----
-pub const ApplicationViewScaling = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisableLayoutScaling() core.HResult!bool {
-        const _f = try @This()._IApplicationViewScalingStaticsCache.get();
-        return try _f.getDisableLayoutScaling();
-    }
-    pub fn TrySetDisableLayoutScaling(disableLayoutScaling: bool) core.HResult!bool {
-        const _f = try @This()._IApplicationViewScalingStaticsCache.get();
-        return try _f.TrySetDisableLayoutScaling(disableLayoutScaling);
-    }
-    pub const NAME: []const u8 = "Windows.UI.ViewManagement.ApplicationViewScaling";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IApplicationViewScaling.GUID;
-    pub const IID: Guid = IApplicationViewScaling.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IApplicationViewScaling.SIGNATURE);
-    var _IApplicationViewScalingStaticsCache: FactoryCache(IApplicationViewScalingStatics, RUNTIME_NAME) = .{};
-};
-pub const IApplicationViewScaling = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewScaling";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "1d0ddc23-23f3-4b2d-84fe-74bf37b48b66";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-    };
-};
-pub const IApplicationViewScalingStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDisableLayoutScaling(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_DisableLayoutScaling(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn TrySetDisableLayoutScaling(self: *@This(), disableLayoutScaling: bool) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.TrySetDisableLayoutScaling(@ptrCast(self), disableLayoutScaling, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewScalingStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "b08fecf0-b946-45c8-a5e3-71f5aa78f861";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisableLayoutScaling: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        TrySetDisableLayoutScaling: *const fn(self: *anyopaque, disableLayoutScaling: bool, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
 pub const AccessibilitySettings = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -541,10 +451,10 @@ pub const ApplicationViewSwitcher = extern struct {
     var _IApplicationViewSwitcherStatics3Cache: FactoryCache(IApplicationViewSwitcherStatics3, RUNTIME_NAME) = .{};
     var _IApplicationViewSwitcherStatics2Cache: FactoryCache(IApplicationViewSwitcherStatics2, RUNTIME_NAME) = .{};
 };
-pub const ApplicationViewSwitchingOptions = enum(i32) {
-    Default = 0,
-    SkipAnimation = 1,
-    ConsolidateViews = 2,
+pub const ApplicationViewSwitchingOptions = packed struct(u32) {
+    SkipAnimation: bool = false,
+    ConsolidateViews: bool = false,
+    _m: u30 = 0,
 };
 pub const ApplicationViewTitleBar = extern struct {
     vtable: *const IInspectable.VTable,
@@ -3386,6 +3296,96 @@ pub const ViewSizePreference = enum(i32) {
     UseMinimum = 4,
     UseNone = 5,
     Custom = 6,
+};
+pub const ApplicationViewScaling = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisableLayoutScaling() core.HResult!bool {
+        const _f = try @This()._IApplicationViewScalingStaticsCache.get();
+        return try _f.getDisableLayoutScaling();
+    }
+    pub fn TrySetDisableLayoutScaling(disableLayoutScaling: bool) core.HResult!bool {
+        const _f = try @This()._IApplicationViewScalingStaticsCache.get();
+        return try _f.TrySetDisableLayoutScaling(disableLayoutScaling);
+    }
+    pub const NAME: []const u8 = "Windows.UI.ViewManagement.ApplicationViewScaling";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IApplicationViewScaling.GUID;
+    pub const IID: Guid = IApplicationViewScaling.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IApplicationViewScaling.SIGNATURE);
+    var _IApplicationViewScalingStaticsCache: FactoryCache(IApplicationViewScalingStatics, RUNTIME_NAME) = .{};
+};
+pub const IApplicationViewScaling = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewScaling";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "1d0ddc23-23f3-4b2d-84fe-74bf37b48b66";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+    };
+};
+pub const IApplicationViewScalingStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDisableLayoutScaling(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_DisableLayoutScaling(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn TrySetDisableLayoutScaling(self: *@This(), disableLayoutScaling: bool) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.TrySetDisableLayoutScaling(@ptrCast(self), disableLayoutScaling, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.ViewManagement.IApplicationViewScalingStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "b08fecf0-b946-45c8-a5e3-71f5aa78f861";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DisableLayoutScaling: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        TrySetDisableLayoutScaling: *const fn(self: *anyopaque, disableLayoutScaling: bool, _r: *bool) callconv(.winapi) HRESULT,
+    };
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

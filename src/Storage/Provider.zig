@@ -1,518 +1,4 @@
 // ----- This code is automatically generated -----
-pub const CachedFileOptions = enum(i32) {
-    None = 0,
-    RequireUpdateOnAccess = 1,
-    UseCachedFileWhenOffline = 2,
-    DenyAccessWhenOffline = 4,
-};
-pub const CachedFileTarget = enum(i32) {
-    Local = 0,
-    Remote = 1,
-};
-pub const CachedFileUpdater = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SetUpdateInformation(file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
-        const _f = try @This()._ICachedFileUpdaterStaticsCache.get();
-        return try _f.SetUpdateInformation(file, contentId, readMode, writeMode, options);
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.CachedFileUpdater";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _ICachedFileUpdaterStaticsCache: FactoryCache(ICachedFileUpdaterStatics, RUNTIME_NAME) = .{};
-};
-pub const CachedFileUpdaterUI = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.getTitle();
-    }
-    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.putTitle(value);
-    }
-    pub fn getUpdateTarget(self: *@This()) core.HResult!CachedFileTarget {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.getUpdateTarget();
-    }
-    pub fn addFileUpdateRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,FileUpdateRequestedEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.addFileUpdateRequested(handler);
-    }
-    pub fn removeFileUpdateRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.removeFileUpdateRequested(token);
-    }
-    pub fn addUIRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,IInspectable)) core.HResult!EventRegistrationToken {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.addUIRequested(handler);
-    }
-    pub fn removeUIRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.removeUIRequested(token);
-    }
-    pub fn getUIStatus(self: *@This()) core.HResult!UIStatus {
-        const this: *ICachedFileUpdaterUI = @ptrCast(self);
-        return try this.getUIStatus();
-    }
-    pub fn getUpdateRequest(self: *@This()) core.HResult!*FileUpdateRequest {
-        var this: ?*ICachedFileUpdaterUI2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ICachedFileUpdaterUI2.IID, @ptrCast(&this));
-        return try this.?.getUpdateRequest();
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
-        var this: ?*ICachedFileUpdaterUI2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ICachedFileUpdaterUI2.IID, @ptrCast(&this));
-        return try this.?.GetDeferral();
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.CachedFileUpdaterUI";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICachedFileUpdaterUI.GUID;
-    pub const IID: Guid = ICachedFileUpdaterUI.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICachedFileUpdaterUI.SIGNATURE);
-};
-pub const FileUpdateRequest = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IFileUpdateRequest = @ptrCast(self);
-        return try this.getContentId();
-    }
-    pub fn getFile(self: *@This()) core.HResult!*StorageFile {
-        const this: *IFileUpdateRequest = @ptrCast(self);
-        return try this.getFile();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!FileUpdateStatus {
-        const this: *IFileUpdateRequest = @ptrCast(self);
-        return try this.getStatus();
-    }
-    pub fn putStatus(self: *@This(), value: FileUpdateStatus) core.HResult!void {
-        const this: *IFileUpdateRequest = @ptrCast(self);
-        return try this.putStatus(value);
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
-        const this: *IFileUpdateRequest = @ptrCast(self);
-        return try this.GetDeferral();
-    }
-    pub fn UpdateLocalFile(self: *@This(), value: *IStorageFile) core.HResult!void {
-        const this: *IFileUpdateRequest = @ptrCast(self);
-        return try this.UpdateLocalFile(value);
-    }
-    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*IFileUpdateRequest2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
-        return try this.?.getUserInputNeededMessage();
-    }
-    pub fn putUserInputNeededMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
-        var this: ?*IFileUpdateRequest2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
-        return try this.?.putUserInputNeededMessage(value);
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.FileUpdateRequest";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IFileUpdateRequest.GUID;
-    pub const IID: Guid = IFileUpdateRequest.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFileUpdateRequest.SIGNATURE);
-};
-pub const FileUpdateRequestDeferral = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const this: *IFileUpdateRequestDeferral = @ptrCast(self);
-        return try this.Complete();
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.FileUpdateRequestDeferral";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IFileUpdateRequestDeferral.GUID;
-    pub const IID: Guid = IFileUpdateRequestDeferral.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFileUpdateRequestDeferral.SIGNATURE);
-};
-pub const FileUpdateRequestedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getRequest(self: *@This()) core.HResult!*FileUpdateRequest {
-        const this: *IFileUpdateRequestedEventArgs = @ptrCast(self);
-        return try this.getRequest();
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.FileUpdateRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IFileUpdateRequestedEventArgs.GUID;
-    pub const IID: Guid = IFileUpdateRequestedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFileUpdateRequestedEventArgs.SIGNATURE);
-};
-pub const FileUpdateStatus = enum(i32) {
-    Incomplete = 0,
-    Complete = 1,
-    UserInputNeeded = 2,
-    CurrentlyUnavailable = 3,
-    Failed = 4,
-    CompleteAndRenamed = 5,
-};
-pub const ICachedFileUpdaterStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SetUpdateInformation(self: *@This(), file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
-        const _c = self.vtable.SetUpdateInformation(@ptrCast(self), file, contentId, readMode, writeMode, options);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.ICachedFileUpdaterStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "9fc90920-7bcf-4888-a81e-102d7034d7ce";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetUpdateInformation: *const fn(self: *anyopaque, file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICachedFileUpdaterUI = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_Title(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getUpdateTarget(self: *@This()) core.HResult!CachedFileTarget {
-        var _r: CachedFileTarget = undefined;
-        const _c = self.vtable.get_UpdateTarget(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn addFileUpdateRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,FileUpdateRequestedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_FileUpdateRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeFileUpdateRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_FileUpdateRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addUIRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_UIRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeUIRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_UIRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn getUIStatus(self: *@This()) core.HResult!UIStatus {
-        var _r: UIStatus = undefined;
-        const _c = self.vtable.get_UIStatus(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.ICachedFileUpdaterUI";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "9e6f41e6-baf2-4a97-b600-9333f5df80fd";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_UpdateTarget: *const fn(self: *anyopaque, _r: *CachedFileTarget) callconv(.winapi) HRESULT,
-        add_FileUpdateRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(CachedFileUpdaterUI,FileUpdateRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_FileUpdateRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_UIRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(CachedFileUpdaterUI,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_UIRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_UIStatus: *const fn(self: *anyopaque, _r: *UIStatus) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICachedFileUpdaterUI2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getUpdateRequest(self: *@This()) core.HResult!*FileUpdateRequest {
-        var _r: *FileUpdateRequest = undefined;
-        const _c = self.vtable.get_UpdateRequest(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
-        var _r: *FileUpdateRequestDeferral = undefined;
-        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.ICachedFileUpdaterUI2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "8856a21c-8699-4340-9f49-f7cad7fe8991";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UpdateRequest: *const fn(self: *anyopaque, _r: **FileUpdateRequest) callconv(.winapi) HRESULT,
-        GetDeferral: *const fn(self: *anyopaque, _r: **FileUpdateRequestDeferral) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFileUpdateRequest = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ContentId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getFile(self: *@This()) core.HResult!*StorageFile {
-        var _r: *StorageFile = undefined;
-        const _c = self.vtable.get_File(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getStatus(self: *@This()) core.HResult!FileUpdateStatus {
-        var _r: FileUpdateStatus = undefined;
-        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putStatus(self: *@This(), value: FileUpdateStatus) core.HResult!void {
-        const _c = self.vtable.put_Status(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
-        var _r: *FileUpdateRequestDeferral = undefined;
-        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn UpdateLocalFile(self: *@This(), value: *IStorageFile) core.HResult!void {
-        const _c = self.vtable.UpdateLocalFile(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequest";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "40c82536-c1fe-4d93-a792-1e736bc70837";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContentId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_File: *const fn(self: *anyopaque, _r: **StorageFile) callconv(.winapi) HRESULT,
-        get_Status: *const fn(self: *anyopaque, _r: *FileUpdateStatus) callconv(.winapi) HRESULT,
-        put_Status: *const fn(self: *anyopaque, value: FileUpdateStatus) callconv(.winapi) HRESULT,
-        GetDeferral: *const fn(self: *anyopaque, _r: **FileUpdateRequestDeferral) callconv(.winapi) HRESULT,
-        UpdateLocalFile: *const fn(self: *anyopaque, value: *IStorageFile) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFileUpdateRequest2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_UserInputNeededMessage(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putUserInputNeededMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_UserInputNeededMessage(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequest2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "82484648-bdbe-447b-a2ee-7afe6a032a94";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserInputNeededMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_UserInputNeededMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFileUpdateRequestDeferral = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Complete(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequestDeferral";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "ffcedb2b-8ade-44a5-bb00-164c4e72f13a";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Complete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFileUpdateRequestedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getRequest(self: *@This()) core.HResult!*FileUpdateRequest {
-        var _r: *FileUpdateRequest = undefined;
-        const _c = self.vtable.get_Request(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "7b0a9342-3905-438d-aaef-78ae265f8dd2";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Request: *const fn(self: *anyopaque, _r: **FileUpdateRequest) callconv(.winapi) HRESULT,
-    };
-};
-pub const ReadActivationMode = enum(i32) {
-    NotNeeded = 0,
-    BeforeAccess = 1,
-};
-pub const UIStatus = enum(i32) {
-    Unavailable = 0,
-    Hidden = 1,
-    Visible = 2,
-    Complete = 3,
-};
-pub const WriteActivationMode = enum(i32) {
-    ReadOnly = 0,
-    NotNeeded = 1,
-    AfterWrite = 2,
-};
 pub const IStorageProviderFileTypeInfo = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -2586,9 +2072,9 @@ pub const StorageProviderGetPathForContentUriResult = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IStorageProviderGetPathForContentUriResult.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const StorageProviderHardlinkPolicy = enum(i32) {
-    None = 0,
-    Allowed = 1,
+pub const StorageProviderHardlinkPolicy = packed struct(u32) {
+    Allowed: bool = false,
+    _m: u31 = 0,
 };
 pub const StorageProviderHydrationPolicy = enum(i32) {
     Partial = 0,
@@ -2596,26 +2082,26 @@ pub const StorageProviderHydrationPolicy = enum(i32) {
     Full = 2,
     AlwaysFull = 3,
 };
-pub const StorageProviderHydrationPolicyModifier = enum(i32) {
-    None = 0,
-    ValidationRequired = 1,
-    StreamingAllowed = 2,
-    AutoDehydrationAllowed = 4,
-    AllowFullRestartHydration = 8,
+pub const StorageProviderHydrationPolicyModifier = packed struct(u32) {
+    ValidationRequired: bool = false,
+    StreamingAllowed: bool = false,
+    AutoDehydrationAllowed: bool = false,
+    AllowFullRestartHydration: bool = false,
+    _m: u28 = 0,
 };
-pub const StorageProviderInSyncPolicy = enum(i32) {
-    Default = 0,
-    FileCreationTime = 1,
-    FileReadOnlyAttribute = 2,
-    FileHiddenAttribute = 4,
-    FileSystemAttribute = 8,
-    DirectoryCreationTime = 16,
-    DirectoryReadOnlyAttribute = 32,
-    DirectoryHiddenAttribute = 64,
-    DirectorySystemAttribute = 128,
-    FileLastWriteTime = 256,
-    DirectoryLastWriteTime = 512,
-    PreserveInsyncForSyncEngine = -2147483648,
+pub const StorageProviderInSyncPolicy = packed struct(u32) {
+    FileCreationTime: bool = false,
+    FileReadOnlyAttribute: bool = false,
+    FileHiddenAttribute: bool = false,
+    FileSystemAttribute: bool = false,
+    DirectoryCreationTime: bool = false,
+    DirectoryReadOnlyAttribute: bool = false,
+    DirectoryHiddenAttribute: bool = false,
+    DirectorySystemAttribute: bool = false,
+    FileLastWriteTime: bool = false,
+    DirectoryLastWriteTime: bool = false,
+    PreserveInsyncForSyncEngine: bool = false,
+    _m: u21 = 0,
 };
 pub const StorageProviderItemProperties = extern struct {
     vtable: *const IInspectable.VTable,
@@ -3645,6 +3131,520 @@ pub const StorageProviderUriSourceStatus = enum(i32) {
     NoSyncRoot = 1,
     FileNotFound = 2,
 };
+pub const CachedFileOptions = packed struct(u32) {
+    RequireUpdateOnAccess: bool = false,
+    UseCachedFileWhenOffline: bool = false,
+    DenyAccessWhenOffline: bool = false,
+    _m: u29 = 0,
+};
+pub const CachedFileTarget = enum(i32) {
+    Local = 0,
+    Remote = 1,
+};
+pub const CachedFileUpdater = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SetUpdateInformation(file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
+        const _f = try @This()._ICachedFileUpdaterStaticsCache.get();
+        return try _f.SetUpdateInformation(file, contentId, readMode, writeMode, options);
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.CachedFileUpdater";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _ICachedFileUpdaterStaticsCache: FactoryCache(ICachedFileUpdaterStatics, RUNTIME_NAME) = .{};
+};
+pub const CachedFileUpdaterUI = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.getTitle();
+    }
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.putTitle(value);
+    }
+    pub fn getUpdateTarget(self: *@This()) core.HResult!CachedFileTarget {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.getUpdateTarget();
+    }
+    pub fn addFileUpdateRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,FileUpdateRequestedEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.addFileUpdateRequested(handler);
+    }
+    pub fn removeFileUpdateRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.removeFileUpdateRequested(token);
+    }
+    pub fn addUIRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,IInspectable)) core.HResult!EventRegistrationToken {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.addUIRequested(handler);
+    }
+    pub fn removeUIRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.removeUIRequested(token);
+    }
+    pub fn getUIStatus(self: *@This()) core.HResult!UIStatus {
+        const this: *ICachedFileUpdaterUI = @ptrCast(self);
+        return try this.getUIStatus();
+    }
+    pub fn getUpdateRequest(self: *@This()) core.HResult!*FileUpdateRequest {
+        var this: ?*ICachedFileUpdaterUI2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ICachedFileUpdaterUI2.IID, @ptrCast(&this));
+        return try this.?.getUpdateRequest();
+    }
+    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
+        var this: ?*ICachedFileUpdaterUI2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ICachedFileUpdaterUI2.IID, @ptrCast(&this));
+        return try this.?.GetDeferral();
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.CachedFileUpdaterUI";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICachedFileUpdaterUI.GUID;
+    pub const IID: Guid = ICachedFileUpdaterUI.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICachedFileUpdaterUI.SIGNATURE);
+};
+pub const FileUpdateRequest = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IFileUpdateRequest = @ptrCast(self);
+        return try this.getContentId();
+    }
+    pub fn getFile(self: *@This()) core.HResult!*StorageFile {
+        const this: *IFileUpdateRequest = @ptrCast(self);
+        return try this.getFile();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!FileUpdateStatus {
+        const this: *IFileUpdateRequest = @ptrCast(self);
+        return try this.getStatus();
+    }
+    pub fn putStatus(self: *@This(), value: FileUpdateStatus) core.HResult!void {
+        const this: *IFileUpdateRequest = @ptrCast(self);
+        return try this.putStatus(value);
+    }
+    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
+        const this: *IFileUpdateRequest = @ptrCast(self);
+        return try this.GetDeferral();
+    }
+    pub fn UpdateLocalFile(self: *@This(), value: *IStorageFile) core.HResult!void {
+        const this: *IFileUpdateRequest = @ptrCast(self);
+        return try this.UpdateLocalFile(value);
+    }
+    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*IFileUpdateRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
+        return try this.?.getUserInputNeededMessage();
+    }
+    pub fn putUserInputNeededMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
+        var this: ?*IFileUpdateRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
+        return try this.?.putUserInputNeededMessage(value);
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.FileUpdateRequest";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IFileUpdateRequest.GUID;
+    pub const IID: Guid = IFileUpdateRequest.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFileUpdateRequest.SIGNATURE);
+};
+pub const FileUpdateRequestDeferral = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const this: *IFileUpdateRequestDeferral = @ptrCast(self);
+        return try this.Complete();
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.FileUpdateRequestDeferral";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IFileUpdateRequestDeferral.GUID;
+    pub const IID: Guid = IFileUpdateRequestDeferral.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFileUpdateRequestDeferral.SIGNATURE);
+};
+pub const FileUpdateRequestedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRequest(self: *@This()) core.HResult!*FileUpdateRequest {
+        const this: *IFileUpdateRequestedEventArgs = @ptrCast(self);
+        return try this.getRequest();
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.FileUpdateRequestedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IFileUpdateRequestedEventArgs.GUID;
+    pub const IID: Guid = IFileUpdateRequestedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFileUpdateRequestedEventArgs.SIGNATURE);
+};
+pub const FileUpdateStatus = enum(i32) {
+    Incomplete = 0,
+    Complete = 1,
+    UserInputNeeded = 2,
+    CurrentlyUnavailable = 3,
+    Failed = 4,
+    CompleteAndRenamed = 5,
+};
+pub const ICachedFileUpdaterStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SetUpdateInformation(self: *@This(), file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
+        const _c = self.vtable.SetUpdateInformation(@ptrCast(self), file, contentId, readMode, writeMode, options);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.ICachedFileUpdaterStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "9fc90920-7bcf-4888-a81e-102d7034d7ce";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        SetUpdateInformation: *const fn(self: *anyopaque, file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICachedFileUpdaterUI = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Title(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_Title(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getUpdateTarget(self: *@This()) core.HResult!CachedFileTarget {
+        var _r: CachedFileTarget = undefined;
+        const _c = self.vtable.get_UpdateTarget(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn addFileUpdateRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,FileUpdateRequestedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_FileUpdateRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeFileUpdateRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_FileUpdateRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addUIRequested(self: *@This(), handler: *TypedEventHandler(CachedFileUpdaterUI,IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_UIRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeUIRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_UIRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn getUIStatus(self: *@This()) core.HResult!UIStatus {
+        var _r: UIStatus = undefined;
+        const _c = self.vtable.get_UIStatus(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.ICachedFileUpdaterUI";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "9e6f41e6-baf2-4a97-b600-9333f5df80fd";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UpdateTarget: *const fn(self: *anyopaque, _r: *CachedFileTarget) callconv(.winapi) HRESULT,
+        add_FileUpdateRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(CachedFileUpdaterUI,FileUpdateRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_FileUpdateRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_UIRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(CachedFileUpdaterUI,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_UIRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        get_UIStatus: *const fn(self: *anyopaque, _r: *UIStatus) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICachedFileUpdaterUI2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getUpdateRequest(self: *@This()) core.HResult!*FileUpdateRequest {
+        var _r: *FileUpdateRequest = undefined;
+        const _c = self.vtable.get_UpdateRequest(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
+        var _r: *FileUpdateRequestDeferral = undefined;
+        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.ICachedFileUpdaterUI2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "8856a21c-8699-4340-9f49-f7cad7fe8991";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_UpdateRequest: *const fn(self: *anyopaque, _r: **FileUpdateRequest) callconv(.winapi) HRESULT,
+        GetDeferral: *const fn(self: *anyopaque, _r: **FileUpdateRequestDeferral) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFileUpdateRequest = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ContentId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getFile(self: *@This()) core.HResult!*StorageFile {
+        var _r: *StorageFile = undefined;
+        const _c = self.vtable.get_File(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getStatus(self: *@This()) core.HResult!FileUpdateStatus {
+        var _r: FileUpdateStatus = undefined;
+        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putStatus(self: *@This(), value: FileUpdateStatus) core.HResult!void {
+        const _c = self.vtable.put_Status(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
+        var _r: *FileUpdateRequestDeferral = undefined;
+        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn UpdateLocalFile(self: *@This(), value: *IStorageFile) core.HResult!void {
+        const _c = self.vtable.UpdateLocalFile(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequest";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "40c82536-c1fe-4d93-a792-1e736bc70837";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ContentId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_File: *const fn(self: *anyopaque, _r: **StorageFile) callconv(.winapi) HRESULT,
+        get_Status: *const fn(self: *anyopaque, _r: *FileUpdateStatus) callconv(.winapi) HRESULT,
+        put_Status: *const fn(self: *anyopaque, value: FileUpdateStatus) callconv(.winapi) HRESULT,
+        GetDeferral: *const fn(self: *anyopaque, _r: **FileUpdateRequestDeferral) callconv(.winapi) HRESULT,
+        UpdateLocalFile: *const fn(self: *anyopaque, value: *IStorageFile) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFileUpdateRequest2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_UserInputNeededMessage(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putUserInputNeededMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_UserInputNeededMessage(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequest2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "82484648-bdbe-447b-a2ee-7afe6a032a94";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_UserInputNeededMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UserInputNeededMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFileUpdateRequestDeferral = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Complete(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequestDeferral";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "ffcedb2b-8ade-44a5-bb00-164c4e72f13a";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Complete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFileUpdateRequestedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRequest(self: *@This()) core.HResult!*FileUpdateRequest {
+        var _r: *FileUpdateRequest = undefined;
+        const _c = self.vtable.get_Request(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Storage.Provider.IFileUpdateRequestedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "7b0a9342-3905-438d-aaef-78ae265f8dd2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Request: *const fn(self: *anyopaque, _r: **FileUpdateRequest) callconv(.winapi) HRESULT,
+    };
+};
+pub const ReadActivationMode = enum(i32) {
+    NotNeeded = 0,
+    BeforeAccess = 1,
+};
+pub const UIStatus = enum(i32) {
+    Unavailable = 0,
+    Hidden = 1,
+    Visible = 2,
+    Complete = 3,
+};
+pub const WriteActivationMode = enum(i32) {
+    ReadOnly = 0,
+    NotNeeded = 1,
+    AfterWrite = 2,
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
@@ -3661,8 +3661,8 @@ const StorageFile = @import("../Storage.zig").StorageFile;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IStorageFolder = @import("../Storage.zig").IStorageFolder;
 const IReference = @import("../Foundation.zig").IReference;
-const IStorageItem = @import("../Storage.zig").IStorageItem;
 const IBuffer = @import("./Streams.zig").IBuffer;
+const IStorageItem = @import("../Storage.zig").IStorageItem;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const IStorageFile = @import("../Storage.zig").IStorageFile;
 const TrustLevel = @import("../root.zig").TrustLevel;

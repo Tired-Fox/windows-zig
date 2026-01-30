@@ -5050,19 +5050,19 @@ pub const ManipulationInertiaStartingRoutedEventArgs = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IManipulationInertiaStartingRoutedEventArgs.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const ManipulationModes = enum(i32) {
-    None = 0,
-    TranslateX = 1,
-    TranslateY = 2,
-    TranslateRailsX = 4,
-    TranslateRailsY = 8,
-    Rotate = 16,
-    Scale = 32,
-    TranslateInertia = 64,
-    RotateInertia = 128,
-    ScaleInertia = 256,
-    All = 65535,
-    System = 65536,
+pub const ManipulationModes = packed struct(u32) {
+    TranslateX: bool = false,
+    TranslateY: bool = false,
+    TranslateRailsX: bool = false,
+    TranslateRailsY: bool = false,
+    Rotate: bool = false,
+    Scale: bool = false,
+    TranslateInertia: bool = false,
+    RotateInertia: bool = false,
+    ScaleInertia: bool = false,
+    All: bool = false,
+    System: bool = false,
+    _m: u21 = 0,
 };
 pub const ManipulationPivot = extern struct {
     vtable: *const IInspectable.VTable,

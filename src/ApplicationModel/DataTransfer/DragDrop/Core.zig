@@ -134,9 +134,9 @@ pub const CoreDragOperation = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreDragOperation.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const CoreDragUIContentMode = enum(i32) {
-    Auto = 0,
-    Deferred = 1,
+pub const CoreDragUIContentMode = packed struct(u32) {
+    Deferred: bool = false,
+    _m: u31 = 0,
 };
 pub const CoreDragUIOverride = extern struct {
     vtable: *const IInspectable.VTable,

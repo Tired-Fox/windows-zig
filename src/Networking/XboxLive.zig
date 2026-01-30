@@ -1030,9 +1030,9 @@ pub const XboxLiveEndpointPair = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IXboxLiveEndpointPair.SIGNATURE);
     var _IXboxLiveEndpointPairStaticsCache: FactoryCache(IXboxLiveEndpointPairStatics, RUNTIME_NAME) = .{};
 };
-pub const XboxLiveEndpointPairCreationBehaviors = enum(i32) {
-    None = 0,
-    ReevaluatePath = 1,
+pub const XboxLiveEndpointPairCreationBehaviors = packed struct(u32) {
+    ReevaluatePath: bool = false,
+    _m: u31 = 0,
 };
 pub const XboxLiveEndpointPairCreationResult = extern struct {
     vtable: *const IInspectable.VTable,

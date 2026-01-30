@@ -1,618 +1,4 @@
 // ----- This code is automatically generated -----
-pub const IKnownRetailInfoPropertiesStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getRetailAccessCode(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_RetailAccessCode(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getManufacturerName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ManufacturerName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ModelName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDisplayModelName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayModelName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPrice(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Price(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getIsFeatured(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_IsFeatured(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getFormFactor(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_FormFactor(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getScreenSize(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ScreenSize(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getWeight(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Weight(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDisplayDescription(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayDescription(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getBatteryLifeDescription(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_BatteryLifeDescription(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getProcessorDescription(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ProcessorDescription(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMemory(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Memory(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getStorageDescription(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_StorageDescription(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getGraphicsDescription(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_GraphicsDescription(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getFrontCameraDescription(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_FrontCameraDescription(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getRearCameraDescription(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_RearCameraDescription(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getHasNfc(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_HasNfc(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getHasSdSlot(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_HasSdSlot(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getHasOpticalDrive(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_HasOpticalDrive(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getIsOfficeInstalled(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_IsOfficeInstalled(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getWindowsEdition(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_WindowsEdition(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.IKnownRetailInfoPropertiesStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "99571178-500f-487e-8e75-29e551728712";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RetailAccessCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_ManufacturerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_ModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Price: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_IsFeatured: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_FormFactor: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_ScreenSize: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Weight: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_BatteryLifeDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_ProcessorDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Memory: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_StorageDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_GraphicsDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_FrontCameraDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_RearCameraDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_HasNfc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_HasSdSlot: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_HasOpticalDrive: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_IsOfficeInstalled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_WindowsEdition: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IRetailInfoStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsDemoModeEnabled(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsDemoModeEnabled(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
-        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
-        const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.IRetailInfoStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "0712c6b8-8b92-4f2a-8499-031f1798d6ef";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_IsDemoModeEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
-    };
-};
-pub const KnownRetailInfoProperties = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getRetailAccessCode() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getRetailAccessCode();
-    }
-    pub fn getManufacturerName() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getManufacturerName();
-    }
-    pub fn getModelName() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getModelName();
-    }
-    pub fn getDisplayModelName() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getDisplayModelName();
-    }
-    pub fn getPrice() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getPrice();
-    }
-    pub fn getIsFeatured() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getIsFeatured();
-    }
-    pub fn getFormFactor() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getFormFactor();
-    }
-    pub fn getScreenSize() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getScreenSize();
-    }
-    pub fn getWeight() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getWeight();
-    }
-    pub fn getDisplayDescription() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getDisplayDescription();
-    }
-    pub fn getBatteryLifeDescription() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getBatteryLifeDescription();
-    }
-    pub fn getProcessorDescription() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getProcessorDescription();
-    }
-    pub fn getMemory() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getMemory();
-    }
-    pub fn getStorageDescription() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getStorageDescription();
-    }
-    pub fn getGraphicsDescription() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getGraphicsDescription();
-    }
-    pub fn getFrontCameraDescription() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getFrontCameraDescription();
-    }
-    pub fn getRearCameraDescription() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getRearCameraDescription();
-    }
-    pub fn getHasNfc() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getHasNfc();
-    }
-    pub fn getHasSdSlot() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getHasSdSlot();
-    }
-    pub fn getHasOpticalDrive() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getHasOpticalDrive();
-    }
-    pub fn getIsOfficeInstalled() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getIsOfficeInstalled();
-    }
-    pub fn getWindowsEdition() core.HResult!?HSTRING {
-        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
-        return try _f.getWindowsEdition();
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.KnownRetailInfoProperties";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IKnownRetailInfoPropertiesStaticsCache: FactoryCache(IKnownRetailInfoPropertiesStatics, RUNTIME_NAME) = .{};
-};
-pub const RetailInfo = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsDemoModeEnabled() core.HResult!bool {
-        const _f = try @This()._IRetailInfoStaticsCache.get();
-        return try _f.getIsDemoModeEnabled();
-    }
-    pub fn getProperties() core.HResult!*IMapView(?HSTRING,IInspectable) {
-        const _f = try @This()._IRetailInfoStaticsCache.get();
-        return try _f.getProperties();
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.RetailInfo";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IRetailInfoStaticsCache: FactoryCache(IRetailInfoStatics, RUNTIME_NAME) = .{};
-};
-pub const HardwareIdentification = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetPackageSpecificToken(nonce: *IBuffer) core.HResult!*HardwareToken {
-        const _f = try @This()._IHardwareIdentificationStaticsCache.get();
-        return try _f.GetPackageSpecificToken(nonce);
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.HardwareIdentification";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IHardwareIdentificationStaticsCache: FactoryCache(IHardwareIdentificationStatics, RUNTIME_NAME) = .{};
-};
-pub const HardwareToken = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getId(self: *@This()) core.HResult!*IBuffer {
-        const this: *IHardwareToken = @ptrCast(self);
-        return try this.getId();
-    }
-    pub fn getSignature(self: *@This()) core.HResult!*IBuffer {
-        const this: *IHardwareToken = @ptrCast(self);
-        return try this.getSignature();
-    }
-    pub fn getCertificate(self: *@This()) core.HResult!*IBuffer {
-        const this: *IHardwareToken = @ptrCast(self);
-        return try this.getCertificate();
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.HardwareToken";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IHardwareToken.GUID;
-    pub const IID: Guid = IHardwareToken.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IHardwareToken.SIGNATURE);
-};
-pub const IHardwareIdentificationStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetPackageSpecificToken(self: *@This(), nonce: *IBuffer) core.HResult!*HardwareToken {
-        var _r: *HardwareToken = undefined;
-        const _c = self.vtable.GetPackageSpecificToken(@ptrCast(self), nonce, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.IHardwareIdentificationStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "971260e0-f170-4a42-bd55-a900b212dae2";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetPackageSpecificToken: *const fn(self: *anyopaque, nonce: *IBuffer, _r: **HardwareToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const IHardwareToken = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getId(self: *@This()) core.HResult!*IBuffer {
-        var _r: *IBuffer = undefined;
-        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSignature(self: *@This()) core.HResult!*IBuffer {
-        var _r: *IBuffer = undefined;
-        const _c = self.vtable.get_Signature(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getCertificate(self: *@This()) core.HResult!*IBuffer {
-        var _r: *IBuffer = undefined;
-        const _c = self.vtable.get_Certificate(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.IHardwareToken";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "28f6d4c0-fb12-40a4-8167-7f4e03d2724c";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_Signature: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_Certificate: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISharedModeSettingsStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsEnabled(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.ISharedModeSettingsStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "893df40e-cad6-4d50-8c49-6fcfc03edb29";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISharedModeSettingsStatics2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getShouldAvoidLocalStorage(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_ShouldAvoidLocalStorage(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.ISharedModeSettingsStatics2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "608988a4-ccf1-4ee8-a5e2-fd6a1d0cfac8";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ShouldAvoidLocalStorage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const SharedModeSettings = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getShouldAvoidLocalStorage() core.HResult!bool {
-        const _f = try @This()._ISharedModeSettingsStatics2Cache.get();
-        return try _f.getShouldAvoidLocalStorage();
-    }
-    pub fn getIsEnabled() core.HResult!bool {
-        const _f = try @This()._ISharedModeSettingsStaticsCache.get();
-        return try _f.getIsEnabled();
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.SharedModeSettings";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _ISharedModeSettingsStatics2Cache: FactoryCache(ISharedModeSettingsStatics2, RUNTIME_NAME) = .{};
-    var _ISharedModeSettingsStaticsCache: FactoryCache(ISharedModeSettingsStatics, RUNTIME_NAME) = .{};
-};
-pub const IPlatformAutomaticAppSignInManagerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getPolicy(self: *@This()) core.HResult!PlatformAutomaticAppSignInPolicy {
-        var _r: PlatformAutomaticAppSignInPolicy = undefined;
-        const _c = self.vtable.get_Policy(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.IPlatformAutomaticAppSignInManagerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "1ac9afce-8dd5-5c2d-b420-767d1f3b7d03";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Policy: *const fn(self: *anyopaque, _r: *PlatformAutomaticAppSignInPolicy) callconv(.winapi) HRESULT,
-    };
-};
-pub const PlatformAutomaticAppSignInManager = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getPolicy() core.HResult!PlatformAutomaticAppSignInPolicy {
-        const _f = try @This()._IPlatformAutomaticAppSignInManagerStaticsCache.get();
-        return try _f.getPolicy();
-    }
-    pub const NAME: []const u8 = "Windows.System.Profile.PlatformAutomaticAppSignInManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IPlatformAutomaticAppSignInManagerStaticsCache: FactoryCache(IPlatformAutomaticAppSignInManagerStatics, RUNTIME_NAME) = .{};
-};
-pub const PlatformAutomaticAppSignInPolicy = enum(i32) {
-    Unknown = 0,
-    PermissionRequired = 1,
-    AlwaysAllowed = 2,
-};
 pub const AnalyticsInfo = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1412,9 +798,9 @@ pub const UnsupportedAppRequirement = extern struct {
     pub const IID: Guid = IUnsupportedAppRequirement.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUnsupportedAppRequirement.SIGNATURE);
 };
-pub const UnsupportedAppRequirementReasons = enum(i32) {
-    Unknown = 0,
-    DeniedBySystem = 1,
+pub const UnsupportedAppRequirementReasons = packed struct(u32) {
+    DeniedBySystem: bool = false,
+    _m: u31 = 0,
 };
 pub const WindowsIntegrityPolicy = extern struct {
     vtable: *const IInspectable.VTable,
@@ -1455,18 +841,632 @@ pub const WindowsIntegrityPolicy = extern struct {
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     var _IWindowsIntegrityPolicyStaticsCache: FactoryCache(IWindowsIntegrityPolicyStatics, RUNTIME_NAME) = .{};
 };
+pub const IPlatformAutomaticAppSignInManagerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPolicy(self: *@This()) core.HResult!PlatformAutomaticAppSignInPolicy {
+        var _r: PlatformAutomaticAppSignInPolicy = undefined;
+        const _c = self.vtable.get_Policy(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.IPlatformAutomaticAppSignInManagerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "1ac9afce-8dd5-5c2d-b420-767d1f3b7d03";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Policy: *const fn(self: *anyopaque, _r: *PlatformAutomaticAppSignInPolicy) callconv(.winapi) HRESULT,
+    };
+};
+pub const PlatformAutomaticAppSignInManager = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPolicy() core.HResult!PlatformAutomaticAppSignInPolicy {
+        const _f = try @This()._IPlatformAutomaticAppSignInManagerStaticsCache.get();
+        return try _f.getPolicy();
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.PlatformAutomaticAppSignInManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IPlatformAutomaticAppSignInManagerStaticsCache: FactoryCache(IPlatformAutomaticAppSignInManagerStatics, RUNTIME_NAME) = .{};
+};
+pub const PlatformAutomaticAppSignInPolicy = enum(i32) {
+    Unknown = 0,
+    PermissionRequired = 1,
+    AlwaysAllowed = 2,
+};
+pub const IKnownRetailInfoPropertiesStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRetailAccessCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_RetailAccessCode(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getManufacturerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ManufacturerName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ModelName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDisplayModelName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayModelName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Price(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getIsFeatured(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_IsFeatured(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getFormFactor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_FormFactor(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getScreenSize(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ScreenSize(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getWeight(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Weight(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDisplayDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayDescription(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getBatteryLifeDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_BatteryLifeDescription(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getProcessorDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ProcessorDescription(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMemory(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Memory(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getStorageDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_StorageDescription(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getGraphicsDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_GraphicsDescription(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getFrontCameraDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_FrontCameraDescription(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getRearCameraDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_RearCameraDescription(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getHasNfc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_HasNfc(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getHasSdSlot(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_HasSdSlot(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getHasOpticalDrive(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_HasOpticalDrive(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getIsOfficeInstalled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_IsOfficeInstalled(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getWindowsEdition(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_WindowsEdition(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.IKnownRetailInfoPropertiesStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "99571178-500f-487e-8e75-29e551728712";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_RetailAccessCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ManufacturerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Price: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IsFeatured: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FormFactor: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ScreenSize: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Weight: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BatteryLifeDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ProcessorDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Memory: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_StorageDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GraphicsDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FrontCameraDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RearCameraDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HasNfc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HasSdSlot: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HasOpticalDrive: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IsOfficeInstalled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WindowsEdition: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IRetailInfoStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsDemoModeEnabled(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsDemoModeEnabled(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
+        const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.IRetailInfoStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "0712c6b8-8b92-4f2a-8499-031f1798d6ef";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_IsDemoModeEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+    };
+};
+pub const KnownRetailInfoProperties = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRetailAccessCode() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getRetailAccessCode();
+    }
+    pub fn getManufacturerName() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getManufacturerName();
+    }
+    pub fn getModelName() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getModelName();
+    }
+    pub fn getDisplayModelName() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getDisplayModelName();
+    }
+    pub fn getPrice() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getPrice();
+    }
+    pub fn getIsFeatured() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getIsFeatured();
+    }
+    pub fn getFormFactor() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getFormFactor();
+    }
+    pub fn getScreenSize() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getScreenSize();
+    }
+    pub fn getWeight() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getWeight();
+    }
+    pub fn getDisplayDescription() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getDisplayDescription();
+    }
+    pub fn getBatteryLifeDescription() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getBatteryLifeDescription();
+    }
+    pub fn getProcessorDescription() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getProcessorDescription();
+    }
+    pub fn getMemory() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getMemory();
+    }
+    pub fn getStorageDescription() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getStorageDescription();
+    }
+    pub fn getGraphicsDescription() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getGraphicsDescription();
+    }
+    pub fn getFrontCameraDescription() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getFrontCameraDescription();
+    }
+    pub fn getRearCameraDescription() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getRearCameraDescription();
+    }
+    pub fn getHasNfc() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getHasNfc();
+    }
+    pub fn getHasSdSlot() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getHasSdSlot();
+    }
+    pub fn getHasOpticalDrive() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getHasOpticalDrive();
+    }
+    pub fn getIsOfficeInstalled() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getIsOfficeInstalled();
+    }
+    pub fn getWindowsEdition() core.HResult!?HSTRING {
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
+        return try _f.getWindowsEdition();
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.KnownRetailInfoProperties";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IKnownRetailInfoPropertiesStaticsCache: FactoryCache(IKnownRetailInfoPropertiesStatics, RUNTIME_NAME) = .{};
+};
+pub const RetailInfo = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsDemoModeEnabled() core.HResult!bool {
+        const _f = try @This()._IRetailInfoStaticsCache.get();
+        return try _f.getIsDemoModeEnabled();
+    }
+    pub fn getProperties() core.HResult!*IMapView(?HSTRING,IInspectable) {
+        const _f = try @This()._IRetailInfoStaticsCache.get();
+        return try _f.getProperties();
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.RetailInfo";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IRetailInfoStaticsCache: FactoryCache(IRetailInfoStatics, RUNTIME_NAME) = .{};
+};
+pub const ISharedModeSettingsStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsEnabled(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.ISharedModeSettingsStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "893df40e-cad6-4d50-8c49-6fcfc03edb29";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISharedModeSettingsStatics2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getShouldAvoidLocalStorage(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_ShouldAvoidLocalStorage(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.ISharedModeSettingsStatics2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "608988a4-ccf1-4ee8-a5e2-fd6a1d0cfac8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ShouldAvoidLocalStorage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const SharedModeSettings = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getShouldAvoidLocalStorage() core.HResult!bool {
+        const _f = try @This()._ISharedModeSettingsStatics2Cache.get();
+        return try _f.getShouldAvoidLocalStorage();
+    }
+    pub fn getIsEnabled() core.HResult!bool {
+        const _f = try @This()._ISharedModeSettingsStaticsCache.get();
+        return try _f.getIsEnabled();
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.SharedModeSettings";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _ISharedModeSettingsStatics2Cache: FactoryCache(ISharedModeSettingsStatics2, RUNTIME_NAME) = .{};
+    var _ISharedModeSettingsStaticsCache: FactoryCache(ISharedModeSettingsStatics, RUNTIME_NAME) = .{};
+};
+pub const HardwareIdentification = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetPackageSpecificToken(nonce: *IBuffer) core.HResult!*HardwareToken {
+        const _f = try @This()._IHardwareIdentificationStaticsCache.get();
+        return try _f.GetPackageSpecificToken(nonce);
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.HardwareIdentification";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IHardwareIdentificationStaticsCache: FactoryCache(IHardwareIdentificationStatics, RUNTIME_NAME) = .{};
+};
+pub const HardwareToken = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!*IBuffer {
+        const this: *IHardwareToken = @ptrCast(self);
+        return try this.getId();
+    }
+    pub fn getSignature(self: *@This()) core.HResult!*IBuffer {
+        const this: *IHardwareToken = @ptrCast(self);
+        return try this.getSignature();
+    }
+    pub fn getCertificate(self: *@This()) core.HResult!*IBuffer {
+        const this: *IHardwareToken = @ptrCast(self);
+        return try this.getCertificate();
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.HardwareToken";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IHardwareToken.GUID;
+    pub const IID: Guid = IHardwareToken.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IHardwareToken.SIGNATURE);
+};
+pub const IHardwareIdentificationStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetPackageSpecificToken(self: *@This(), nonce: *IBuffer) core.HResult!*HardwareToken {
+        var _r: *HardwareToken = undefined;
+        const _c = self.vtable.GetPackageSpecificToken(@ptrCast(self), nonce, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.IHardwareIdentificationStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "971260e0-f170-4a42-bd55-a900b212dae2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetPackageSpecificToken: *const fn(self: *anyopaque, nonce: *IBuffer, _r: **HardwareToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const IHardwareToken = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!*IBuffer {
+        var _r: *IBuffer = undefined;
+        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSignature(self: *@This()) core.HResult!*IBuffer {
+        var _r: *IBuffer = undefined;
+        const _c = self.vtable.get_Signature(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getCertificate(self: *@This()) core.HResult!*IBuffer {
+        var _r: *IBuffer = undefined;
+        const _c = self.vtable.get_Certificate(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.Profile.IHardwareToken";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "28f6d4c0-fb12-40a4-8167-7f4e03d2724c";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
+        get_Signature: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
+        get_Certificate: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
+    };
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const Guid = @import("../root.zig").Guid;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
-const IInspectable = @import("../Foundation.zig").IInspectable;
 const IIterable = @import("../Foundation/Collections.zig").IIterable;
+const IInspectable = @import("../Foundation.zig").IInspectable;
 const IMapView = @import("../Foundation/Collections.zig").IMapView;
 const IBuffer = @import("../Storage/Streams.zig").IBuffer;
 const EventHandler = @import("../Foundation.zig").EventHandler;
 const HRESULT = @import("../root.zig").HRESULT;
-const FactoryCache = @import("../core.zig").FactoryCache;
-const core = @import("../root.zig").core;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
+const core = @import("../root.zig").core;
+const FactoryCache = @import("../core.zig").FactoryCache;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const User = @import("../System.zig").User;

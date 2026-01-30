@@ -1063,15 +1063,15 @@ pub const UserDataTaskBatch = extern struct {
     pub const IID: Guid = IUserDataTaskBatch.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUserDataTaskBatch.SIGNATURE);
 };
-pub const UserDataTaskDaysOfWeek = enum(i32) {
-    None = 0,
-    Sunday = 1,
-    Monday = 2,
-    Tuesday = 4,
-    Wednesday = 8,
-    Thursday = 16,
-    Friday = 32,
-    Saturday = 64,
+pub const UserDataTaskDaysOfWeek = packed struct(u32) {
+    Sunday: bool = false,
+    Monday: bool = false,
+    Tuesday: bool = false,
+    Wednesday: bool = false,
+    Thursday: bool = false,
+    Friday: bool = false,
+    Saturday: bool = false,
+    _m: u25 = 0,
 };
 pub const UserDataTaskDetailsKind = enum(i32) {
     PlainText = 0,

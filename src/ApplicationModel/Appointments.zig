@@ -664,15 +664,15 @@ pub const AppointmentConflictType = enum(i32) {
     Adjacent = 1,
     Overlap = 2,
 };
-pub const AppointmentDaysOfWeek = enum(i32) {
-    None = 0,
-    Sunday = 1,
-    Monday = 2,
-    Tuesday = 4,
-    Wednesday = 8,
-    Thursday = 16,
-    Friday = 32,
-    Saturday = 64,
+pub const AppointmentDaysOfWeek = packed struct(u32) {
+    Sunday: bool = false,
+    Monday: bool = false,
+    Tuesday: bool = false,
+    Wednesday: bool = false,
+    Thursday: bool = false,
+    Friday: bool = false,
+    Saturday: bool = false,
+    _m: u25 = 0,
 };
 pub const AppointmentDetailsKind = enum(i32) {
     PlainText = 0,
@@ -1511,9 +1511,9 @@ pub const AppointmentWeekOfMonth = enum(i32) {
     Fourth = 3,
     Last = 4,
 };
-pub const FindAppointmentCalendarsOptions = enum(i32) {
-    None = 0,
-    IncludeHidden = 1,
+pub const FindAppointmentCalendarsOptions = packed struct(u32) {
+    IncludeHidden: bool = false,
+    _m: u31 = 0,
 };
 pub const FindAppointmentsOptions = extern struct {
     vtable: *const IInspectable.VTable,

@@ -127,11 +127,11 @@ pub const GeofenceRemovalReason = enum(i32) {
     Used = 0,
     Expired = 1,
 };
-pub const GeofenceState = enum(i32) {
-    None = 0,
-    Entered = 1,
-    Exited = 2,
-    Removed = 4,
+pub const GeofenceState = packed struct(u32) {
+    Entered: bool = false,
+    Exited: bool = false,
+    Removed: bool = false,
+    _m: u29 = 0,
 };
 pub const GeofenceStateChangeReport = extern struct {
     vtable: *const IInspectable.VTable,
@@ -455,11 +455,11 @@ pub const IGeofenceStateChangeReport = extern struct {
         get_RemovalReason: *const fn(self: *anyopaque, _r: *GeofenceRemovalReason) callconv(.winapi) HRESULT,
     };
 };
-pub const MonitoredGeofenceStates = enum(i32) {
-    None = 0,
-    Entered = 1,
-    Exited = 2,
-    Removed = 4,
+pub const MonitoredGeofenceStates = packed struct(u32) {
+    Entered: bool = false,
+    Exited: bool = false,
+    Removed: bool = false,
+    _m: u29 = 0,
 };
 const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;

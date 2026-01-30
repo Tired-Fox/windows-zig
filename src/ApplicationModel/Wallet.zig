@@ -1,11 +1,4 @@
 // ----- This code is automatically generated -----
-pub const WalletActionKind = enum(i32) {
-    OpenItem = 0,
-    Transaction = 1,
-    MoreTransactions = 2,
-    Message = 3,
-    Verb = 4,
-};
 pub const IWalletBarcode = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1550,6 +1543,13 @@ pub const WalletVerb = extern struct {
     pub const IID: Guid = IWalletVerb.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWalletVerb.SIGNATURE);
     var _IWalletVerbFactoryCache: FactoryCache(IWalletVerbFactory, RUNTIME_NAME) = .{};
+};
+pub const WalletActionKind = enum(i32) {
+    OpenItem = 0,
+    Transaction = 1,
+    MoreTransactions = 2,
+    Message = 3,
+    Verb = 4,
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const Guid = @import("../root.zig").Guid;

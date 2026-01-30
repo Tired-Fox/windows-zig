@@ -1,15 +1,16 @@
 // ----- This code is automatically generated -----
-pub const Direct3DBindings = enum(i32) {
-    VertexBuffer = 1,
-    IndexBuffer = 2,
-    ConstantBuffer = 4,
-    ShaderResource = 8,
-    StreamOutput = 16,
-    RenderTarget = 32,
-    DepthStencil = 64,
-    UnorderedAccess = 128,
-    Decoder = 512,
-    VideoEncoder = 1024,
+pub const Direct3DBindings = packed struct(u32) {
+    VertexBuffer: bool = false,
+    IndexBuffer: bool = false,
+    ConstantBuffer: bool = false,
+    ShaderResource: bool = false,
+    StreamOutput: bool = false,
+    RenderTarget: bool = false,
+    DepthStencil: bool = false,
+    UnorderedAccess: bool = false,
+    Decoder: bool = false,
+    VideoEncoder: bool = false,
+    _m: u22 = 0,
 };
 pub const Direct3DMultisampleDescription = extern struct {
     Count: i32,

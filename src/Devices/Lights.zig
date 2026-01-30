@@ -849,14 +849,14 @@ pub const LampInfo = extern struct {
     pub const IID: Guid = ILampInfo.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILampInfo.SIGNATURE);
 };
-pub const LampPurposes = enum(i32) {
-    Undefined = 0,
-    Control = 1,
-    Accent = 2,
-    Branding = 4,
-    Status = 8,
-    Illumination = 16,
-    Presentation = 32,
+pub const LampPurposes = packed struct(u32) {
+    Control: bool = false,
+    Accent: bool = false,
+    Branding: bool = false,
+    Status: bool = false,
+    Illumination: bool = false,
+    Presentation: bool = false,
+    _m: u26 = 0,
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const Guid = @import("../root.zig").Guid;

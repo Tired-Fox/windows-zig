@@ -1,928 +1,10 @@
 // ----- This code is automatically generated -----
-pub const CreateSharedPackageContainerOptions = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
-        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getMembers();
-    }
-    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
-        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getForceAppShutdown();
-    }
-    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
-        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putForceAppShutdown(value);
-    }
-    pub fn getCreateCollisionOption(self: *@This()) core.HResult!SharedPackageContainerCreationCollisionOptions {
-        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getCreateCollisionOption();
-    }
-    pub fn putCreateCollisionOption(self: *@This(), value: SharedPackageContainerCreationCollisionOptions) core.HResult!void {
-        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putCreateCollisionOption(value);
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&ICreateSharedPackageContainerOptions.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.CreateSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICreateSharedPackageContainerOptions.GUID;
-    pub const IID: Guid = ICreateSharedPackageContainerOptions.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICreateSharedPackageContainerOptions.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const CreateSharedPackageContainerResult = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getContainer(self: *@This()) core.HResult!*SharedPackageContainer {
-        const this: *ICreateSharedPackageContainerResult = @ptrCast(self);
-        return try this.getContainer();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
-        const this: *ICreateSharedPackageContainerResult = @ptrCast(self);
-        return try this.getStatus();
-    }
-    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
-        const this: *ICreateSharedPackageContainerResult = @ptrCast(self);
-        return try this.getExtendedError();
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.CreateSharedPackageContainerResult";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICreateSharedPackageContainerResult.GUID;
-    pub const IID: Guid = ICreateSharedPackageContainerResult.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICreateSharedPackageContainerResult.SIGNATURE);
-};
-pub const DeleteSharedPackageContainerOptions = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
-        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getForceAppShutdown();
-    }
-    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
-        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putForceAppShutdown(value);
-    }
-    pub fn getAllUsers(self: *@This()) core.HResult!bool {
-        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getAllUsers();
-    }
-    pub fn putAllUsers(self: *@This(), value: bool) core.HResult!void {
-        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putAllUsers(value);
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IDeleteSharedPackageContainerOptions.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.DeleteSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IDeleteSharedPackageContainerOptions.GUID;
-    pub const IID: Guid = IDeleteSharedPackageContainerOptions.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDeleteSharedPackageContainerOptions.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const DeleteSharedPackageContainerResult = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
-        const this: *IDeleteSharedPackageContainerResult = @ptrCast(self);
-        return try this.getStatus();
-    }
-    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
-        const this: *IDeleteSharedPackageContainerResult = @ptrCast(self);
-        return try this.getExtendedError();
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.DeleteSharedPackageContainerResult";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IDeleteSharedPackageContainerResult.GUID;
-    pub const IID: Guid = IDeleteSharedPackageContainerResult.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDeleteSharedPackageContainerResult.SIGNATURE);
-};
-pub const FindSharedPackageContainerOptions = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getName();
-    }
-    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putName(value);
-    }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getPackageFamilyName();
-    }
-    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putPackageFamilyName(value);
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IFindSharedPackageContainerOptions.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.FindSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IFindSharedPackageContainerOptions.GUID;
-    pub const IID: Guid = IFindSharedPackageContainerOptions.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFindSharedPackageContainerOptions.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const ICreateSharedPackageContainerOptions = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
-        var _r: *IVector(SharedPackageContainerMember) = undefined;
-        const _c = self.vtable.get_Members(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_ForceAppShutdown(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_ForceAppShutdown(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getCreateCollisionOption(self: *@This()) core.HResult!SharedPackageContainerCreationCollisionOptions {
-        var _r: SharedPackageContainerCreationCollisionOptions = undefined;
-        const _c = self.vtable.get_CreateCollisionOption(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putCreateCollisionOption(self: *@This(), value: SharedPackageContainerCreationCollisionOptions) core.HResult!void {
-        const _c = self.vtable.put_CreateCollisionOption(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.ICreateSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "c2ab6ece-f664-5c8e-a4b3-2a33276d3dde";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Members: *const fn(self: *anyopaque, _r: **IVector(SharedPackageContainerMember)) callconv(.winapi) HRESULT,
-        get_ForceAppShutdown: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_ForceAppShutdown: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_CreateCollisionOption: *const fn(self: *anyopaque, _r: *SharedPackageContainerCreationCollisionOptions) callconv(.winapi) HRESULT,
-        put_CreateCollisionOption: *const fn(self: *anyopaque, value: SharedPackageContainerCreationCollisionOptions) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICreateSharedPackageContainerResult = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getContainer(self: *@This()) core.HResult!*SharedPackageContainer {
-        var _r: *SharedPackageContainer = undefined;
-        const _c = self.vtable.get_Container(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
-        var _r: SharedPackageContainerOperationStatus = undefined;
-        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
-        var _r: HResult = undefined;
-        const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.ICreateSharedPackageContainerResult";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "ce8810bf-151c-5707-b936-497e564afc7a";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Container: *const fn(self: *anyopaque, _r: **SharedPackageContainer) callconv(.winapi) HRESULT,
-        get_Status: *const fn(self: *anyopaque, _r: *SharedPackageContainerOperationStatus) callconv(.winapi) HRESULT,
-        get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-    };
-};
-pub const IDeleteSharedPackageContainerOptions = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_ForceAppShutdown(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_ForceAppShutdown(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getAllUsers(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_AllUsers(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putAllUsers(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_AllUsers(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.IDeleteSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "9d81865f-986e-5138-8b5d-384d8e66ed6c";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ForceAppShutdown: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_ForceAppShutdown: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_AllUsers: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_AllUsers: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IDeleteSharedPackageContainerResult = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
-        var _r: SharedPackageContainerOperationStatus = undefined;
-        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
-        var _r: HResult = undefined;
-        const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.IDeleteSharedPackageContainerResult";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "35398884-5736-517b-85bc-e598c81ab284";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Status: *const fn(self: *anyopaque, _r: *SharedPackageContainerOperationStatus) callconv(.winapi) HRESULT,
-        get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFindSharedPackageContainerOptions = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_Name(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_PackageFamilyName(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.IFindSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "b40fc8fe-8384-54cc-817d-ae09d3b6a606";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_PackageFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISharedPackageContainer = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
-        var _r: *IVector(SharedPackageContainerMember) = undefined;
-        const _c = self.vtable.GetMembers(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RemovePackageFamily(self: *@This(), packageFamilyName: ?HSTRING, options: *UpdateSharedPackageContainerOptions) core.HResult!*UpdateSharedPackageContainerResult {
-        var _r: *UpdateSharedPackageContainerResult = undefined;
-        const _c = self.vtable.RemovePackageFamily(@ptrCast(self), packageFamilyName, options, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn ResetData(self: *@This()) core.HResult!*UpdateSharedPackageContainerResult {
-        var _r: *UpdateSharedPackageContainerResult = undefined;
-        const _c = self.vtable.ResetData(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainer";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "177f1aa9-151e-5ef7-b1d9-2fba0b4b0d17";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        GetMembers: *const fn(self: *anyopaque, _r: **IVector(SharedPackageContainerMember)) callconv(.winapi) HRESULT,
-        RemovePackageFamily: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, options: *UpdateSharedPackageContainerOptions, _r: **UpdateSharedPackageContainerResult) callconv(.winapi) HRESULT,
-        ResetData: *const fn(self: *anyopaque, _r: **UpdateSharedPackageContainerResult) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISharedPackageContainerManager = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateContainer(self: *@This(), name: ?HSTRING, options: *CreateSharedPackageContainerOptions) core.HResult!*CreateSharedPackageContainerResult {
-        var _r: *CreateSharedPackageContainerResult = undefined;
-        const _c = self.vtable.CreateContainer(@ptrCast(self), name, options, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn DeleteContainer(self: *@This(), id: ?HSTRING, options: *DeleteSharedPackageContainerOptions) core.HResult!*DeleteSharedPackageContainerResult {
-        var _r: *DeleteSharedPackageContainerResult = undefined;
-        const _c = self.vtable.DeleteContainer(@ptrCast(self), id, options, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetContainer(self: *@This(), id: ?HSTRING) core.HResult!*SharedPackageContainer {
-        var _r: *SharedPackageContainer = undefined;
-        const _c = self.vtable.GetContainer(@ptrCast(self), id, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn FindContainers(self: *@This()) core.HResult!*IVector(SharedPackageContainer) {
-        var _r: *IVector(SharedPackageContainer) = undefined;
-        const _c = self.vtable.FindContainers(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn FindContainersWithOptions(self: *@This(), options: *FindSharedPackageContainerOptions) core.HResult!*IVector(SharedPackageContainer) {
-        var _r: *IVector(SharedPackageContainer) = undefined;
-        const _c = self.vtable.FindContainersWithOptions(@ptrCast(self), options, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "be353068-1ef7-5ac8-ab3f-0b9f612f0274";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateContainer: *const fn(self: *anyopaque, name: ?HSTRING, options: *CreateSharedPackageContainerOptions, _r: **CreateSharedPackageContainerResult) callconv(.winapi) HRESULT,
-        DeleteContainer: *const fn(self: *anyopaque, id: ?HSTRING, options: *DeleteSharedPackageContainerOptions, _r: **DeleteSharedPackageContainerResult) callconv(.winapi) HRESULT,
-        GetContainer: *const fn(self: *anyopaque, id: ?HSTRING, _r: **SharedPackageContainer) callconv(.winapi) HRESULT,
-        FindContainers: *const fn(self: *anyopaque, _r: **IVector(SharedPackageContainer)) callconv(.winapi) HRESULT,
-        FindContainersWithOptions: *const fn(self: *anyopaque, options: *FindSharedPackageContainerOptions, _r: **IVector(SharedPackageContainer)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISharedPackageContainerManagerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefault(self: *@This()) core.HResult!*SharedPackageContainerManager {
-        var _r: *SharedPackageContainerManager = undefined;
-        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetForUser(self: *@This(), userSid: ?HSTRING) core.HResult!*SharedPackageContainerManager {
-        var _r: *SharedPackageContainerManager = undefined;
-        const _c = self.vtable.GetForUser(@ptrCast(self), userSid, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetForProvisioning(self: *@This()) core.HResult!*SharedPackageContainerManager {
-        var _r: *SharedPackageContainerManager = undefined;
-        const _c = self.vtable.GetForProvisioning(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerManagerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2ef56348-838a-5f55-a89e-1198a2c627e6";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefault: *const fn(self: *anyopaque, _r: **SharedPackageContainerManager) callconv(.winapi) HRESULT,
-        GetForUser: *const fn(self: *anyopaque, userSid: ?HSTRING, _r: **SharedPackageContainerManager) callconv(.winapi) HRESULT,
-        GetForProvisioning: *const fn(self: *anyopaque, _r: **SharedPackageContainerManager) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISharedPackageContainerMember = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerMember";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fe0d0438-43c9-5426-b89c-f79bf85ddff4";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISharedPackageContainerMemberFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateInstance(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*SharedPackageContainerMember {
-        var _r: *SharedPackageContainerMember = undefined;
-        const _c = self.vtable.CreateInstance(@ptrCast(self), packageFamilyName, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerMemberFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "49b0ceeb-498f-5a62-b738-b3ca0d436704";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, _r: **SharedPackageContainerMember) callconv(.winapi) HRESULT,
-    };
-};
-pub const IUpdateSharedPackageContainerOptions = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_ForceAppShutdown(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_ForceAppShutdown(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getRequirePackagesPresent(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_RequirePackagesPresent(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putRequirePackagesPresent(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_RequirePackagesPresent(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.IUpdateSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "80672e83-7194-59f9-b5b9-daa5375f130a";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ForceAppShutdown: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_ForceAppShutdown: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_RequirePackagesPresent: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_RequirePackagesPresent: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IUpdateSharedPackageContainerResult = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
-        var _r: SharedPackageContainerOperationStatus = undefined;
-        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
-        var _r: HResult = undefined;
-        const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.IUpdateSharedPackageContainerResult";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "aa407df7-c72d-5458-aea3-4645b6a8ee99";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Status: *const fn(self: *anyopaque, _r: *SharedPackageContainerOperationStatus) callconv(.winapi) HRESULT,
-        get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-    };
-};
-pub const SharedPackageContainer = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISharedPackageContainer = @ptrCast(self);
-        return try this.getName();
-    }
-    pub fn getId(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISharedPackageContainer = @ptrCast(self);
-        return try this.getId();
-    }
-    pub fn GetMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
-        const this: *ISharedPackageContainer = @ptrCast(self);
-        return try this.GetMembers();
-    }
-    pub fn RemovePackageFamily(self: *@This(), packageFamilyName: ?HSTRING, options: *UpdateSharedPackageContainerOptions) core.HResult!*UpdateSharedPackageContainerResult {
-        const this: *ISharedPackageContainer = @ptrCast(self);
-        return try this.RemovePackageFamily(packageFamilyName, options);
-    }
-    pub fn ResetData(self: *@This()) core.HResult!*UpdateSharedPackageContainerResult {
-        const this: *ISharedPackageContainer = @ptrCast(self);
-        return try this.ResetData();
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainer";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISharedPackageContainer.GUID;
-    pub const IID: Guid = ISharedPackageContainer.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISharedPackageContainer.SIGNATURE);
-};
-pub const SharedPackageContainerCreationCollisionOptions = enum(i32) {
-    FailIfExists = 0,
-    MergeWithExisting = 1,
-    ReplaceExisting = 2,
-};
-pub const SharedPackageContainerManager = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateContainer(self: *@This(), name: ?HSTRING, options: *CreateSharedPackageContainerOptions) core.HResult!*CreateSharedPackageContainerResult {
-        const this: *ISharedPackageContainerManager = @ptrCast(self);
-        return try this.CreateContainer(name, options);
-    }
-    pub fn DeleteContainer(self: *@This(), id: ?HSTRING, options: *DeleteSharedPackageContainerOptions) core.HResult!*DeleteSharedPackageContainerResult {
-        const this: *ISharedPackageContainerManager = @ptrCast(self);
-        return try this.DeleteContainer(id, options);
-    }
-    pub fn GetContainer(self: *@This(), id: ?HSTRING) core.HResult!*SharedPackageContainer {
-        const this: *ISharedPackageContainerManager = @ptrCast(self);
-        return try this.GetContainer(id);
-    }
-    pub fn FindContainers(self: *@This()) core.HResult!*IVector(SharedPackageContainer) {
-        const this: *ISharedPackageContainerManager = @ptrCast(self);
-        return try this.FindContainers();
-    }
-    pub fn FindContainersWithOptions(self: *@This(), options: *FindSharedPackageContainerOptions) core.HResult!*IVector(SharedPackageContainer) {
-        const this: *ISharedPackageContainerManager = @ptrCast(self);
-        return try this.FindContainersWithOptions(options);
-    }
-    pub fn GetDefault() core.HResult!*SharedPackageContainerManager {
-        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
-        return try _f.GetDefault();
-    }
-    pub fn GetForUser(userSid: ?HSTRING) core.HResult!*SharedPackageContainerManager {
-        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
-        return try _f.GetForUser(userSid);
-    }
-    pub fn GetForProvisioning() core.HResult!*SharedPackageContainerManager {
-        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
-        return try _f.GetForProvisioning();
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainerManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISharedPackageContainerManager.GUID;
-    pub const IID: Guid = ISharedPackageContainerManager.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISharedPackageContainerManager.SIGNATURE);
-    var _ISharedPackageContainerManagerStaticsCache: FactoryCache(ISharedPackageContainerManagerStatics, RUNTIME_NAME) = .{};
-};
-pub const SharedPackageContainerMember = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISharedPackageContainerMember = @ptrCast(self);
-        return try this.getPackageFamilyName();
-    }
-    pub fn CreateInstance(packageFamilyName: ?HSTRING) core.HResult!*SharedPackageContainerMember {
-        const _f = try @This()._ISharedPackageContainerMemberFactoryCache.get();
-        return try _f.CreateInstance(packageFamilyName);
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainerMember";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISharedPackageContainerMember.GUID;
-    pub const IID: Guid = ISharedPackageContainerMember.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISharedPackageContainerMember.SIGNATURE);
-    var _ISharedPackageContainerMemberFactoryCache: FactoryCache(ISharedPackageContainerMemberFactory, RUNTIME_NAME) = .{};
-};
-pub const SharedPackageContainerOperationStatus = enum(i32) {
-    Success = 0,
-    BlockedByPolicy = 1,
-    AlreadyExists = 2,
-    PackageFamilyExistsInAnotherContainer = 3,
-    NotFound = 4,
-    UnknownFailure = 5,
-};
-pub const UpdateSharedPackageContainerOptions = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
-        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getForceAppShutdown();
-    }
-    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
-        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putForceAppShutdown(value);
-    }
-    pub fn getRequirePackagesPresent(self: *@This()) core.HResult!bool {
-        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.getRequirePackagesPresent();
-    }
-    pub fn putRequirePackagesPresent(self: *@This(), value: bool) core.HResult!void {
-        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
-        return try this.putRequirePackagesPresent(value);
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IUpdateSharedPackageContainerOptions.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.UpdateSharedPackageContainerOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IUpdateSharedPackageContainerOptions.GUID;
-    pub const IID: Guid = IUpdateSharedPackageContainerOptions.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUpdateSharedPackageContainerOptions.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const UpdateSharedPackageContainerResult = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
-        const this: *IUpdateSharedPackageContainerResult = @ptrCast(self);
-        return try this.getStatus();
-    }
-    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
-        const this: *IUpdateSharedPackageContainerResult = @ptrCast(self);
-        return try this.getExtendedError();
-    }
-    pub const NAME: []const u8 = "Windows.Management.Deployment.UpdateSharedPackageContainerResult";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IUpdateSharedPackageContainerResult.GUID;
-    pub const IID: Guid = IUpdateSharedPackageContainerResult.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUpdateSharedPackageContainerResult.SIGNATURE);
-};
-pub const AddPackageByAppInstallerOptions = enum(i32) {
-    None = 0,
-    InstallAllResources = 32,
-    ForceTargetAppShutdown = 64,
-    RequiredContentGroupOnly = 256,
-    LimitToExistingPackages = 512,
+pub const AddPackageByAppInstallerOptions = packed struct(u32) {
+    InstallAllResources: bool = false,
+    ForceTargetAppShutdown: bool = false,
+    RequiredContentGroupOnly: bool = false,
+    LimitToExistingPackages: bool = false,
+    _m: u28 = 0,
 };
 pub const AddPackageOptions = extern struct {
     vtable: *const IInspectable.VTable,
@@ -1237,16 +319,16 @@ pub const AutoUpdateSettingsOptions = extern struct {
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
     var _IAutoUpdateSettingsOptionsStaticsCache: FactoryCache(IAutoUpdateSettingsOptionsStatics, RUNTIME_NAME) = .{};
 };
-pub const DeploymentOptions = enum(i32) {
-    None = 0,
-    ForceApplicationShutdown = 1,
-    DevelopmentMode = 2,
-    InstallAllResources = 32,
-    ForceTargetApplicationShutdown = 64,
-    RequiredContentGroupOnly = 256,
-    ForceUpdateFromAnyVersion = 262144,
-    RetainFilesOnFailure = 2097152,
-    StageInPlace = 4194304,
+pub const DeploymentOptions = packed struct(u32) {
+    ForceApplicationShutdown: bool = false,
+    DevelopmentMode: bool = false,
+    InstallAllResources: bool = false,
+    ForceTargetApplicationShutdown: bool = false,
+    RequiredContentGroupOnly: bool = false,
+    ForceUpdateFromAnyVersion: bool = false,
+    RetainFilesOnFailure: bool = false,
+    StageInPlace: bool = false,
+    _m: u24 = 0,
 };
 pub const DeploymentProgress = extern struct {
     state: DeploymentProgressState,
@@ -3971,26 +3053,26 @@ pub const PackageState = enum(i32) {
     Modified = 2,
     Tampered = 3,
 };
-pub const PackageStatus = enum(i32) {
-    OK = 0,
-    LicenseIssue = 1,
-    Modified = 2,
-    Tampered = 4,
-    Disabled = 8,
+pub const PackageStatus = packed struct(u32) {
+    LicenseIssue: bool = false,
+    Modified: bool = false,
+    Tampered: bool = false,
+    Disabled: bool = false,
+    _m: u28 = 0,
 };
 pub const PackageStubPreference = enum(i32) {
     Full = 0,
     Stub = 1,
 };
-pub const PackageTypes = enum(i32) {
-    None = 0,
-    Main = 1,
-    Framework = 2,
-    Resource = 4,
-    Bundle = 8,
-    Xap = 16,
-    Optional = 32,
-    All = -1,
+pub const PackageTypes = packed struct(u32) {
+    Main: bool = false,
+    Framework: bool = false,
+    Resource: bool = false,
+    Bundle: bool = false,
+    Xap: bool = false,
+    Optional: bool = false,
+    All: bool = false,
+    _m: u25 = 0,
 };
 pub const PackageUserInformation = extern struct {
     vtable: *const IInspectable.VTable,
@@ -4248,12 +3330,12 @@ pub const RegisterPackageOptions = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IRegisterPackageOptions.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const RemovalOptions = enum(i32) {
-    None = 0,
-    PreserveApplicationData = 4096,
-    PreserveRoamableApplicationData = 128,
-    DeferRemovalWhenPackagesAreInUse = 8192,
-    RemoveForAllUsers = 524288,
+pub const RemovalOptions = packed struct(u32) {
+    PreserveApplicationData: bool = false,
+    PreserveRoamableApplicationData: bool = false,
+    DeferRemovalWhenPackagesAreInUse: bool = false,
+    RemoveForAllUsers: bool = false,
+    _m: u28 = 0,
 };
 pub const RemovePackageOptions = extern struct {
     vtable: *const IInspectable.VTable,
@@ -4435,6 +3517,924 @@ pub const StubPackageOption = enum(i32) {
     InstallStub = 2,
     UsePreference = 3,
 };
+pub const CreateSharedPackageContainerOptions = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
+        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getMembers();
+    }
+    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
+        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getForceAppShutdown();
+    }
+    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
+        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putForceAppShutdown(value);
+    }
+    pub fn getCreateCollisionOption(self: *@This()) core.HResult!SharedPackageContainerCreationCollisionOptions {
+        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getCreateCollisionOption();
+    }
+    pub fn putCreateCollisionOption(self: *@This(), value: SharedPackageContainerCreationCollisionOptions) core.HResult!void {
+        const this: *ICreateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putCreateCollisionOption(value);
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&ICreateSharedPackageContainerOptions.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.CreateSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICreateSharedPackageContainerOptions.GUID;
+    pub const IID: Guid = ICreateSharedPackageContainerOptions.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICreateSharedPackageContainerOptions.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const CreateSharedPackageContainerResult = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getContainer(self: *@This()) core.HResult!*SharedPackageContainer {
+        const this: *ICreateSharedPackageContainerResult = @ptrCast(self);
+        return try this.getContainer();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
+        const this: *ICreateSharedPackageContainerResult = @ptrCast(self);
+        return try this.getStatus();
+    }
+    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
+        const this: *ICreateSharedPackageContainerResult = @ptrCast(self);
+        return try this.getExtendedError();
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.CreateSharedPackageContainerResult";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICreateSharedPackageContainerResult.GUID;
+    pub const IID: Guid = ICreateSharedPackageContainerResult.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICreateSharedPackageContainerResult.SIGNATURE);
+};
+pub const DeleteSharedPackageContainerOptions = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
+        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getForceAppShutdown();
+    }
+    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
+        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putForceAppShutdown(value);
+    }
+    pub fn getAllUsers(self: *@This()) core.HResult!bool {
+        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getAllUsers();
+    }
+    pub fn putAllUsers(self: *@This(), value: bool) core.HResult!void {
+        const this: *IDeleteSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putAllUsers(value);
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IDeleteSharedPackageContainerOptions.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.DeleteSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IDeleteSharedPackageContainerOptions.GUID;
+    pub const IID: Guid = IDeleteSharedPackageContainerOptions.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDeleteSharedPackageContainerOptions.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const DeleteSharedPackageContainerResult = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
+        const this: *IDeleteSharedPackageContainerResult = @ptrCast(self);
+        return try this.getStatus();
+    }
+    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
+        const this: *IDeleteSharedPackageContainerResult = @ptrCast(self);
+        return try this.getExtendedError();
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.DeleteSharedPackageContainerResult";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IDeleteSharedPackageContainerResult.GUID;
+    pub const IID: Guid = IDeleteSharedPackageContainerResult.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDeleteSharedPackageContainerResult.SIGNATURE);
+};
+pub const FindSharedPackageContainerOptions = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getName();
+    }
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putName(value);
+    }
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getPackageFamilyName();
+    }
+    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *IFindSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putPackageFamilyName(value);
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IFindSharedPackageContainerOptions.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.FindSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IFindSharedPackageContainerOptions.GUID;
+    pub const IID: Guid = IFindSharedPackageContainerOptions.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFindSharedPackageContainerOptions.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const ICreateSharedPackageContainerOptions = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
+        var _r: *IVector(SharedPackageContainerMember) = undefined;
+        const _c = self.vtable.get_Members(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_ForceAppShutdown(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_ForceAppShutdown(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getCreateCollisionOption(self: *@This()) core.HResult!SharedPackageContainerCreationCollisionOptions {
+        var _r: SharedPackageContainerCreationCollisionOptions = undefined;
+        const _c = self.vtable.get_CreateCollisionOption(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putCreateCollisionOption(self: *@This(), value: SharedPackageContainerCreationCollisionOptions) core.HResult!void {
+        const _c = self.vtable.put_CreateCollisionOption(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.ICreateSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "c2ab6ece-f664-5c8e-a4b3-2a33276d3dde";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Members: *const fn(self: *anyopaque, _r: **IVector(SharedPackageContainerMember)) callconv(.winapi) HRESULT,
+        get_ForceAppShutdown: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_ForceAppShutdown: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_CreateCollisionOption: *const fn(self: *anyopaque, _r: *SharedPackageContainerCreationCollisionOptions) callconv(.winapi) HRESULT,
+        put_CreateCollisionOption: *const fn(self: *anyopaque, value: SharedPackageContainerCreationCollisionOptions) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICreateSharedPackageContainerResult = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getContainer(self: *@This()) core.HResult!*SharedPackageContainer {
+        var _r: *SharedPackageContainer = undefined;
+        const _c = self.vtable.get_Container(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
+        var _r: SharedPackageContainerOperationStatus = undefined;
+        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
+        var _r: HResult = undefined;
+        const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.ICreateSharedPackageContainerResult";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "ce8810bf-151c-5707-b936-497e564afc7a";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Container: *const fn(self: *anyopaque, _r: **SharedPackageContainer) callconv(.winapi) HRESULT,
+        get_Status: *const fn(self: *anyopaque, _r: *SharedPackageContainerOperationStatus) callconv(.winapi) HRESULT,
+        get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
+    };
+};
+pub const IDeleteSharedPackageContainerOptions = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_ForceAppShutdown(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_ForceAppShutdown(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getAllUsers(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_AllUsers(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putAllUsers(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_AllUsers(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.IDeleteSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "9d81865f-986e-5138-8b5d-384d8e66ed6c";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ForceAppShutdown: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_ForceAppShutdown: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_AllUsers: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_AllUsers: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IDeleteSharedPackageContainerResult = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
+        var _r: SharedPackageContainerOperationStatus = undefined;
+        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
+        var _r: HResult = undefined;
+        const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.IDeleteSharedPackageContainerResult";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "35398884-5736-517b-85bc-e598c81ab284";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Status: *const fn(self: *anyopaque, _r: *SharedPackageContainerOperationStatus) callconv(.winapi) HRESULT,
+        get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFindSharedPackageContainerOptions = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_Name(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_PackageFamilyName(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.IFindSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "b40fc8fe-8384-54cc-817d-ae09d3b6a606";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PackageFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISharedPackageContainer = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
+        var _r: *IVector(SharedPackageContainerMember) = undefined;
+        const _c = self.vtable.GetMembers(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RemovePackageFamily(self: *@This(), packageFamilyName: ?HSTRING, options: *UpdateSharedPackageContainerOptions) core.HResult!*UpdateSharedPackageContainerResult {
+        var _r: *UpdateSharedPackageContainerResult = undefined;
+        const _c = self.vtable.RemovePackageFamily(@ptrCast(self), packageFamilyName, options, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn ResetData(self: *@This()) core.HResult!*UpdateSharedPackageContainerResult {
+        var _r: *UpdateSharedPackageContainerResult = undefined;
+        const _c = self.vtable.ResetData(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainer";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "177f1aa9-151e-5ef7-b1d9-2fba0b4b0d17";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetMembers: *const fn(self: *anyopaque, _r: **IVector(SharedPackageContainerMember)) callconv(.winapi) HRESULT,
+        RemovePackageFamily: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, options: *UpdateSharedPackageContainerOptions, _r: **UpdateSharedPackageContainerResult) callconv(.winapi) HRESULT,
+        ResetData: *const fn(self: *anyopaque, _r: **UpdateSharedPackageContainerResult) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISharedPackageContainerManager = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateContainer(self: *@This(), name: ?HSTRING, options: *CreateSharedPackageContainerOptions) core.HResult!*CreateSharedPackageContainerResult {
+        var _r: *CreateSharedPackageContainerResult = undefined;
+        const _c = self.vtable.CreateContainer(@ptrCast(self), name, options, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn DeleteContainer(self: *@This(), id: ?HSTRING, options: *DeleteSharedPackageContainerOptions) core.HResult!*DeleteSharedPackageContainerResult {
+        var _r: *DeleteSharedPackageContainerResult = undefined;
+        const _c = self.vtable.DeleteContainer(@ptrCast(self), id, options, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetContainer(self: *@This(), id: ?HSTRING) core.HResult!*SharedPackageContainer {
+        var _r: *SharedPackageContainer = undefined;
+        const _c = self.vtable.GetContainer(@ptrCast(self), id, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn FindContainers(self: *@This()) core.HResult!*IVector(SharedPackageContainer) {
+        var _r: *IVector(SharedPackageContainer) = undefined;
+        const _c = self.vtable.FindContainers(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn FindContainersWithOptions(self: *@This(), options: *FindSharedPackageContainerOptions) core.HResult!*IVector(SharedPackageContainer) {
+        var _r: *IVector(SharedPackageContainer) = undefined;
+        const _c = self.vtable.FindContainersWithOptions(@ptrCast(self), options, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "be353068-1ef7-5ac8-ab3f-0b9f612f0274";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateContainer: *const fn(self: *anyopaque, name: ?HSTRING, options: *CreateSharedPackageContainerOptions, _r: **CreateSharedPackageContainerResult) callconv(.winapi) HRESULT,
+        DeleteContainer: *const fn(self: *anyopaque, id: ?HSTRING, options: *DeleteSharedPackageContainerOptions, _r: **DeleteSharedPackageContainerResult) callconv(.winapi) HRESULT,
+        GetContainer: *const fn(self: *anyopaque, id: ?HSTRING, _r: **SharedPackageContainer) callconv(.winapi) HRESULT,
+        FindContainers: *const fn(self: *anyopaque, _r: **IVector(SharedPackageContainer)) callconv(.winapi) HRESULT,
+        FindContainersWithOptions: *const fn(self: *anyopaque, options: *FindSharedPackageContainerOptions, _r: **IVector(SharedPackageContainer)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISharedPackageContainerManagerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefault(self: *@This()) core.HResult!*SharedPackageContainerManager {
+        var _r: *SharedPackageContainerManager = undefined;
+        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetForUser(self: *@This(), userSid: ?HSTRING) core.HResult!*SharedPackageContainerManager {
+        var _r: *SharedPackageContainerManager = undefined;
+        const _c = self.vtable.GetForUser(@ptrCast(self), userSid, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetForProvisioning(self: *@This()) core.HResult!*SharedPackageContainerManager {
+        var _r: *SharedPackageContainerManager = undefined;
+        const _c = self.vtable.GetForProvisioning(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerManagerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2ef56348-838a-5f55-a89e-1198a2c627e6";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDefault: *const fn(self: *anyopaque, _r: **SharedPackageContainerManager) callconv(.winapi) HRESULT,
+        GetForUser: *const fn(self: *anyopaque, userSid: ?HSTRING, _r: **SharedPackageContainerManager) callconv(.winapi) HRESULT,
+        GetForProvisioning: *const fn(self: *anyopaque, _r: **SharedPackageContainerManager) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISharedPackageContainerMember = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerMember";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fe0d0438-43c9-5426-b89c-f79bf85ddff4";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISharedPackageContainerMemberFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateInstance(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*SharedPackageContainerMember {
+        var _r: *SharedPackageContainerMember = undefined;
+        const _c = self.vtable.CreateInstance(@ptrCast(self), packageFamilyName, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.ISharedPackageContainerMemberFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "49b0ceeb-498f-5a62-b738-b3ca0d436704";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, _r: **SharedPackageContainerMember) callconv(.winapi) HRESULT,
+    };
+};
+pub const IUpdateSharedPackageContainerOptions = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_ForceAppShutdown(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_ForceAppShutdown(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getRequirePackagesPresent(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_RequirePackagesPresent(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putRequirePackagesPresent(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_RequirePackagesPresent(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.IUpdateSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "80672e83-7194-59f9-b5b9-daa5375f130a";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ForceAppShutdown: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_ForceAppShutdown: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_RequirePackagesPresent: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_RequirePackagesPresent: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IUpdateSharedPackageContainerResult = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
+        var _r: SharedPackageContainerOperationStatus = undefined;
+        const _c = self.vtable.get_Status(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
+        var _r: HResult = undefined;
+        const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.IUpdateSharedPackageContainerResult";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "aa407df7-c72d-5458-aea3-4645b6a8ee99";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Status: *const fn(self: *anyopaque, _r: *SharedPackageContainerOperationStatus) callconv(.winapi) HRESULT,
+        get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
+    };
+};
+pub const SharedPackageContainer = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISharedPackageContainer = @ptrCast(self);
+        return try this.getName();
+    }
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISharedPackageContainer = @ptrCast(self);
+        return try this.getId();
+    }
+    pub fn GetMembers(self: *@This()) core.HResult!*IVector(SharedPackageContainerMember) {
+        const this: *ISharedPackageContainer = @ptrCast(self);
+        return try this.GetMembers();
+    }
+    pub fn RemovePackageFamily(self: *@This(), packageFamilyName: ?HSTRING, options: *UpdateSharedPackageContainerOptions) core.HResult!*UpdateSharedPackageContainerResult {
+        const this: *ISharedPackageContainer = @ptrCast(self);
+        return try this.RemovePackageFamily(packageFamilyName, options);
+    }
+    pub fn ResetData(self: *@This()) core.HResult!*UpdateSharedPackageContainerResult {
+        const this: *ISharedPackageContainer = @ptrCast(self);
+        return try this.ResetData();
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainer";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISharedPackageContainer.GUID;
+    pub const IID: Guid = ISharedPackageContainer.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISharedPackageContainer.SIGNATURE);
+};
+pub const SharedPackageContainerCreationCollisionOptions = enum(i32) {
+    FailIfExists = 0,
+    MergeWithExisting = 1,
+    ReplaceExisting = 2,
+};
+pub const SharedPackageContainerManager = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateContainer(self: *@This(), name: ?HSTRING, options: *CreateSharedPackageContainerOptions) core.HResult!*CreateSharedPackageContainerResult {
+        const this: *ISharedPackageContainerManager = @ptrCast(self);
+        return try this.CreateContainer(name, options);
+    }
+    pub fn DeleteContainer(self: *@This(), id: ?HSTRING, options: *DeleteSharedPackageContainerOptions) core.HResult!*DeleteSharedPackageContainerResult {
+        const this: *ISharedPackageContainerManager = @ptrCast(self);
+        return try this.DeleteContainer(id, options);
+    }
+    pub fn GetContainer(self: *@This(), id: ?HSTRING) core.HResult!*SharedPackageContainer {
+        const this: *ISharedPackageContainerManager = @ptrCast(self);
+        return try this.GetContainer(id);
+    }
+    pub fn FindContainers(self: *@This()) core.HResult!*IVector(SharedPackageContainer) {
+        const this: *ISharedPackageContainerManager = @ptrCast(self);
+        return try this.FindContainers();
+    }
+    pub fn FindContainersWithOptions(self: *@This(), options: *FindSharedPackageContainerOptions) core.HResult!*IVector(SharedPackageContainer) {
+        const this: *ISharedPackageContainerManager = @ptrCast(self);
+        return try this.FindContainersWithOptions(options);
+    }
+    pub fn GetDefault() core.HResult!*SharedPackageContainerManager {
+        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
+        return try _f.GetDefault();
+    }
+    pub fn GetForUser(userSid: ?HSTRING) core.HResult!*SharedPackageContainerManager {
+        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
+        return try _f.GetForUser(userSid);
+    }
+    pub fn GetForProvisioning() core.HResult!*SharedPackageContainerManager {
+        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
+        return try _f.GetForProvisioning();
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainerManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISharedPackageContainerManager.GUID;
+    pub const IID: Guid = ISharedPackageContainerManager.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISharedPackageContainerManager.SIGNATURE);
+    var _ISharedPackageContainerManagerStaticsCache: FactoryCache(ISharedPackageContainerManagerStatics, RUNTIME_NAME) = .{};
+};
+pub const SharedPackageContainerMember = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISharedPackageContainerMember = @ptrCast(self);
+        return try this.getPackageFamilyName();
+    }
+    pub fn CreateInstance(packageFamilyName: ?HSTRING) core.HResult!*SharedPackageContainerMember {
+        const _f = try @This()._ISharedPackageContainerMemberFactoryCache.get();
+        return try _f.CreateInstance(packageFamilyName);
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainerMember";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISharedPackageContainerMember.GUID;
+    pub const IID: Guid = ISharedPackageContainerMember.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISharedPackageContainerMember.SIGNATURE);
+    var _ISharedPackageContainerMemberFactoryCache: FactoryCache(ISharedPackageContainerMemberFactory, RUNTIME_NAME) = .{};
+};
+pub const SharedPackageContainerOperationStatus = enum(i32) {
+    Success = 0,
+    BlockedByPolicy = 1,
+    AlreadyExists = 2,
+    PackageFamilyExistsInAnotherContainer = 3,
+    NotFound = 4,
+    UnknownFailure = 5,
+};
+pub const UpdateSharedPackageContainerOptions = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getForceAppShutdown(self: *@This()) core.HResult!bool {
+        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getForceAppShutdown();
+    }
+    pub fn putForceAppShutdown(self: *@This(), value: bool) core.HResult!void {
+        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putForceAppShutdown(value);
+    }
+    pub fn getRequirePackagesPresent(self: *@This()) core.HResult!bool {
+        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.getRequirePackagesPresent();
+    }
+    pub fn putRequirePackagesPresent(self: *@This(), value: bool) core.HResult!void {
+        const this: *IUpdateSharedPackageContainerOptions = @ptrCast(self);
+        return try this.putRequirePackagesPresent(value);
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IUpdateSharedPackageContainerOptions.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.UpdateSharedPackageContainerOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IUpdateSharedPackageContainerOptions.GUID;
+    pub const IID: Guid = IUpdateSharedPackageContainerOptions.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUpdateSharedPackageContainerOptions.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const UpdateSharedPackageContainerResult = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getStatus(self: *@This()) core.HResult!SharedPackageContainerOperationStatus {
+        const this: *IUpdateSharedPackageContainerResult = @ptrCast(self);
+        return try this.getStatus();
+    }
+    pub fn getExtendedError(self: *@This()) core.HResult!HResult {
+        const this: *IUpdateSharedPackageContainerResult = @ptrCast(self);
+        return try this.getExtendedError();
+    }
+    pub const NAME: []const u8 = "Windows.Management.Deployment.UpdateSharedPackageContainerResult";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IUpdateSharedPackageContainerResult.GUID;
+    pub const IID: Guid = IUpdateSharedPackageContainerResult.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUpdateSharedPackageContainerResult.SIGNATURE);
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
@@ -4446,8 +4446,8 @@ const FactoryCache = @import("../core.zig").FactoryCache;
 const IAsyncOperationWithProgress = @import("../Foundation.zig").IAsyncOperationWithProgress;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const HSTRING = @import("../root.zig").HSTRING;
-const IInspectable = @import("../Foundation.zig").IInspectable;
 const IIterable = @import("../Foundation/Collections.zig").IIterable;
+const IInspectable = @import("../Foundation.zig").IInspectable;
 const PackageContentGroupState = @import("../ApplicationModel.zig").PackageContentGroupState;
 const Uri = @import("../Foundation.zig").Uri;
 const HResult = @import("../Foundation.zig").HResult;

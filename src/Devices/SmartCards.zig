@@ -1,4 +1,1450 @@
 // ----- This code is automatically generated -----
+pub const CardAddedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        const this: *ICardAddedEventArgs = @ptrCast(self);
+        return try this.getSmartCard();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.CardAddedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICardAddedEventArgs.GUID;
+    pub const IID: Guid = ICardAddedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICardAddedEventArgs.SIGNATURE);
+};
+pub const CardRemovedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        const this: *ICardRemovedEventArgs = @ptrCast(self);
+        return try this.getSmartCard();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.CardRemovedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICardRemovedEventArgs.GUID;
+    pub const IID: Guid = ICardRemovedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICardRemovedEventArgs.SIGNATURE);
+};
+pub const ICardAddedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        var _r: *SmartCard = undefined;
+        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ICardAddedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "18bbef98-f18b-4dd3-b118-dfb2c8e23cc6";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICardRemovedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        var _r: *SmartCard = undefined;
+        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ICardRemovedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "15331aaf-22d7-4945-afc9-03b46f42a6cd";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCard = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getReader(self: *@This()) core.HResult!*SmartCardReader {
+        var _r: *SmartCardReader = undefined;
+        const _c = self.vtable.get_Reader(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardStatus) {
+        var _r: *IAsyncOperation(SmartCardStatus) = undefined;
+        const _c = self.vtable.GetStatusAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetAnswerToResetAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
+        var _r: *IAsyncOperation(IBuffer) = undefined;
+        const _c = self.vtable.GetAnswerToResetAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCard";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "1b718871-6434-43f4-b55a-6a29623870aa";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Reader: *const fn(self: *anyopaque, _r: **SmartCardReader) callconv(.winapi) HRESULT,
+        GetStatusAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardStatus)) callconv(.winapi) HRESULT,
+        GetAnswerToResetAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardChallengeContext = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
+        var _r: *IBuffer = undefined;
+        const _c = self.vtable.get_Challenge(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn VerifyResponseAsync(self: *@This(), response: *IBuffer) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.VerifyResponseAsync(@ptrCast(self), response, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn ProvisionAsync(self: *@This(), response: *IBuffer, formatCard: bool) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.ProvisionAsync(@ptrCast(self), response, formatCard, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn ProvisionAsyncWithNewCardId(self: *@This(), response: *IBuffer, formatCard: bool, newCardId: *Guid) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.ProvisionAsyncWithNewCardId(@ptrCast(self), response, formatCard, newCardId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn ChangeAdministrativeKeyAsync(self: *@This(), response: *IBuffer, newAdministrativeKey: *IBuffer) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.ChangeAdministrativeKeyAsync(@ptrCast(self), response, newAdministrativeKey, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardChallengeContext";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "192a5319-c9c4-4947-81cc-44794a61ef91";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Challenge: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
+        VerifyResponseAsync: *const fn(self: *anyopaque, response: *IBuffer, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        ProvisionAsync: *const fn(self: *anyopaque, response: *IBuffer, formatCard: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ProvisionAsyncWithNewCardId: *const fn(self: *anyopaque, response: *IBuffer, formatCard: bool, newCardId: *Guid, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ChangeAdministrativeKeyAsync: *const fn(self: *anyopaque, response: *IBuffer, newAdministrativeKey: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardConnect = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardConnection) {
+        var _r: *IAsyncOperation(SmartCardConnection) = undefined;
+        const _c = self.vtable.ConnectAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardConnect";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2fdf87e5-028d-491e-a058-3382c3986f40";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        ConnectAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardConnection)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardConnection = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn TransmitAsync(self: *@This(), command: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
+        var _r: *IAsyncOperation(IBuffer) = undefined;
+        const _c = self.vtable.TransmitAsync(@ptrCast(self), command, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardConnection";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "7edb991a-a81a-47bc-a649-156be6b7f231";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        TransmitAsync: *const fn(self: *anyopaque, command: *IBuffer, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardPinPolicy = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getMinLength(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_MinLength(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putMinLength(self: *@This(), value: u32) core.HResult!void {
+        const _c = self.vtable.put_MinLength(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getMaxLength(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_MaxLength(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putMaxLength(self: *@This(), value: u32) core.HResult!void {
+        const _c = self.vtable.put_MaxLength(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getUppercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        var _r: SmartCardPinCharacterPolicyOption = undefined;
+        const _c = self.vtable.get_UppercaseLetters(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putUppercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const _c = self.vtable.put_UppercaseLetters(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getLowercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        var _r: SmartCardPinCharacterPolicyOption = undefined;
+        const _c = self.vtable.get_LowercaseLetters(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putLowercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const _c = self.vtable.put_LowercaseLetters(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getDigits(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        var _r: SmartCardPinCharacterPolicyOption = undefined;
+        const _c = self.vtable.get_Digits(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putDigits(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const _c = self.vtable.put_Digits(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getSpecialCharacters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        var _r: SmartCardPinCharacterPolicyOption = undefined;
+        const _c = self.vtable.get_SpecialCharacters(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putSpecialCharacters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const _c = self.vtable.put_SpecialCharacters(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardPinPolicy";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "183ce184-4db6-4841-ac9e-2ac1f39b7304";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_MinLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        put_MinLength: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
+        get_MaxLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        put_MaxLength: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
+        get_UppercaseLetters: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+        put_UppercaseLetters: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+        get_LowercaseLetters: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+        put_LowercaseLetters: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+        get_Digits: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+        put_Digits: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+        get_SpecialCharacters: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+        put_SpecialCharacters: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardPinResetDeferral = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Complete(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardPinResetDeferral";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "18c94aac-7805-4004-85e4-bbefac8f6884";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Complete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardPinResetRequest = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
+        var _r: *IBuffer = undefined;
+        const _c = self.vtable.get_Challenge(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
+        var _r: DateTime = undefined;
+        const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetDeferral(self: *@This()) core.HResult!*SmartCardPinResetDeferral {
+        var _r: *SmartCardPinResetDeferral = undefined;
+        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetResponse(self: *@This(), response: *IBuffer) core.HResult!void {
+        const _c = self.vtable.SetResponse(@ptrCast(self), response);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardPinResetRequest";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "12fe3c4d-5fb9-4e8e-9ff6-61f475124fef";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Challenge: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
+        get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
+        GetDeferral: *const fn(self: *anyopaque, _r: **SmartCardPinResetDeferral) callconv(.winapi) HRESULT,
+        SetResponse: *const fn(self: *anyopaque, response: *IBuffer) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardProvisioning = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        var _r: *SmartCard = undefined;
+        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetIdAsync(self: *@This()) core.HResult!*IAsyncOperation(Guid) {
+        var _r: *IAsyncOperation(Guid) = undefined;
+        const _c = self.vtable.GetIdAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
+        const _c = self.vtable.GetNameAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetChallengeContextAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardChallengeContext) {
+        var _r: *IAsyncOperation(SmartCardChallengeContext) = undefined;
+        const _c = self.vtable.GetChallengeContextAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestPinChangeAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.RequestPinChangeAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestPinResetAsync(self: *@This(), handler: *SmartCardPinResetHandler) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.RequestPinResetAsync(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioning";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "19eeedbd-1fab-477c-b712-1a2c5af1fd6e";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
+        GetIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Guid)) callconv(.winapi) HRESULT,
+        GetNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetChallengeContextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardChallengeContext)) callconv(.winapi) HRESULT,
+        RequestPinChangeAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestPinResetAsync: *const fn(self: *anyopaque, handler: *SmartCardPinResetHandler, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardProvisioning2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
+        const _c = self.vtable.GetAuthorityKeyContainerNameAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioning2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "10fd28eb-3f79-4b66-9b7c-11c149b7d0bc";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetAuthorityKeyContainerNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardProvisioningStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn FromSmartCardAsync(self: *@This(), card: *SmartCard) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
+        const _c = self.vtable.FromSmartCardAsync(@ptrCast(self), card, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestVirtualSmartCardCreationAsync(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
+        const _c = self.vtable.RequestVirtualSmartCardCreationAsync(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
+        const _c = self.vtable.RequestVirtualSmartCardCreationAsyncWithCardId(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, cardId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestVirtualSmartCardDeletionAsync(self: *@This(), card: *SmartCard) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.RequestVirtualSmartCardDeletionAsync(@ptrCast(self), card, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioningStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "13882848-0d13-4e70-9735-51daeca5254f";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        FromSmartCardAsync: *const fn(self: *anyopaque, card: *SmartCard, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestVirtualSmartCardDeletionAsync: *const fn(self: *anyopaque, card: *SmartCard, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardProvisioningStatics2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestAttestedVirtualSmartCardCreationAsync(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
+        const _c = self.vtable.RequestAttestedVirtualSmartCardCreationAsync(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
+        const _c = self.vtable.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, cardId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioningStatics2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "3447c6a8-c9a0-4bd6-b50d-251f4e8d3a62";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        RequestAttestedVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestAttestedVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardReader = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getKind(self: *@This()) core.HResult!SmartCardReaderKind {
+        var _r: SmartCardReaderKind = undefined;
+        const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardReaderStatus) {
+        var _r: *IAsyncOperation(SmartCardReaderStatus) = undefined;
+        const _c = self.vtable.GetStatusAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn FindAllCardsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(SmartCard)) {
+        var _r: *IAsyncOperation(IVectorView(SmartCard)) = undefined;
+        const _c = self.vtable.FindAllCardsAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn addCardAdded(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardAddedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_CardAdded(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeCardAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_CardAdded(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addCardRemoved(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardRemovedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_CardRemoved(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeCardRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_CardRemoved(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardReader";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "1074b4e0-54c2-4df0-817a-14c14378f06c";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Kind: *const fn(self: *anyopaque, _r: *SmartCardReaderKind) callconv(.winapi) HRESULT,
+        GetStatusAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardReaderStatus)) callconv(.winapi) HRESULT,
+        FindAllCardsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(SmartCard))) callconv(.winapi) HRESULT,
+        add_CardAdded: *const fn(self: *anyopaque, handler: *TypedEventHandler(SmartCardReader,CardAddedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_CardAdded: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_CardRemoved: *const fn(self: *anyopaque, handler: *TypedEventHandler(SmartCardReader,CardRemovedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_CardRemoved: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardReaderStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetDeviceSelectorWithKind(self: *@This(), kind: SmartCardReaderKind) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.GetDeviceSelectorWithKind(@ptrCast(self), kind, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
+        var _r: *IAsyncOperation(SmartCardReader) = undefined;
+        const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardReaderStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "103c04e1-a1ca-48f2-a281-5b6f669af107";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithKind: *const fn(self: *anyopaque, kind: SmartCardReaderKind, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SmartCardReader)) callconv(.winapi) HRESULT,
+    };
+};
+pub const SmartCard = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getReader(self: *@This()) core.HResult!*SmartCardReader {
+        const this: *ISmartCard = @ptrCast(self);
+        return try this.getReader();
+    }
+    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardStatus) {
+        const this: *ISmartCard = @ptrCast(self);
+        return try this.GetStatusAsync();
+    }
+    pub fn GetAnswerToResetAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
+        const this: *ISmartCard = @ptrCast(self);
+        return try this.GetAnswerToResetAsync();
+    }
+    pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardConnection) {
+        var this: ?*ISmartCardConnect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardConnect.IID, @ptrCast(&this));
+        return try this.?.ConnectAsync();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCard";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCard.GUID;
+    pub const IID: Guid = ISmartCard.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCard.SIGNATURE);
+};
+pub const SmartCardChallengeContext = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
+        const this: *ISmartCardChallengeContext = @ptrCast(self);
+        return try this.getChallenge();
+    }
+    pub fn VerifyResponseAsync(self: *@This(), response: *IBuffer) core.HResult!*IAsyncOperation(bool) {
+        const this: *ISmartCardChallengeContext = @ptrCast(self);
+        return try this.VerifyResponseAsync(response);
+    }
+    pub fn ProvisionAsync(self: *@This(), response: *IBuffer, formatCard: bool) core.HResult!*IAsyncAction {
+        const this: *ISmartCardChallengeContext = @ptrCast(self);
+        return try this.ProvisionAsync(response, formatCard);
+    }
+    pub fn ProvisionAsyncWithNewCardId(self: *@This(), response: *IBuffer, formatCard: bool, newCardId: *Guid) core.HResult!*IAsyncAction {
+        const this: *ISmartCardChallengeContext = @ptrCast(self);
+        return try this.ProvisionAsyncWithNewCardId(response, formatCard, newCardId);
+    }
+    pub fn ChangeAdministrativeKeyAsync(self: *@This(), response: *IBuffer, newAdministrativeKey: *IBuffer) core.HResult!*IAsyncAction {
+        const this: *ISmartCardChallengeContext = @ptrCast(self);
+        return try this.ChangeAdministrativeKeyAsync(response, newAdministrativeKey);
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardChallengeContext";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardChallengeContext.GUID;
+    pub const IID: Guid = ISmartCardChallengeContext.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardChallengeContext.SIGNATURE);
+};
+pub const SmartCardConnection = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn TransmitAsync(self: *@This(), command: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
+        const this: *ISmartCardConnection = @ptrCast(self);
+        return try this.TransmitAsync(command);
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardConnection";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardConnection.GUID;
+    pub const IID: Guid = ISmartCardConnection.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardConnection.SIGNATURE);
+};
+pub const SmartCardPinCharacterPolicyOption = enum(i32) {
+    Allow = 0,
+    RequireAtLeastOne = 1,
+    Disallow = 2,
+};
+pub const SmartCardPinPolicy = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getMinLength(self: *@This()) core.HResult!u32 {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.getMinLength();
+    }
+    pub fn putMinLength(self: *@This(), value: u32) core.HResult!void {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.putMinLength(value);
+    }
+    pub fn getMaxLength(self: *@This()) core.HResult!u32 {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.getMaxLength();
+    }
+    pub fn putMaxLength(self: *@This(), value: u32) core.HResult!void {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.putMaxLength(value);
+    }
+    pub fn getUppercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.getUppercaseLetters();
+    }
+    pub fn putUppercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.putUppercaseLetters(value);
+    }
+    pub fn getLowercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.getLowercaseLetters();
+    }
+    pub fn putLowercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.putLowercaseLetters(value);
+    }
+    pub fn getDigits(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.getDigits();
+    }
+    pub fn putDigits(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.putDigits(value);
+    }
+    pub fn getSpecialCharacters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.getSpecialCharacters();
+    }
+    pub fn putSpecialCharacters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
+        const this: *ISmartCardPinPolicy = @ptrCast(self);
+        return try this.putSpecialCharacters(value);
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardPinPolicy.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinPolicy";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardPinPolicy.GUID;
+    pub const IID: Guid = ISmartCardPinPolicy.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardPinPolicy.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const SmartCardPinResetDeferral = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const this: *ISmartCardPinResetDeferral = @ptrCast(self);
+        return try this.Complete();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinResetDeferral";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardPinResetDeferral.GUID;
+    pub const IID: Guid = ISmartCardPinResetDeferral.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardPinResetDeferral.SIGNATURE);
+};
+pub const SmartCardPinResetHandler = extern struct {
+    vtable: *const VTable,
+    _refs: @import("std").atomic.Value(u32),
+    _cb: *anyopaque,
+    _context: ?*anyopaque = null,
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn init(
+        cb: *const fn(?*anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) void,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+        };
+        return _r;
+    }
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn initWithState(
+        cb: *const fn(?*anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) void,
+        context: anytype,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+            ._context = @ptrCast(context),
+        };
+        return _r;
+    }
+    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
+    /// Otherwise the memory stays until all references are released, including all references Windows holds.
+    ///
+    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
+    pub fn deinit(self: *@This()) void {
+        _ = Release(@ptrCast(self));
+    }
+    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = AddRef(self);
+            return 0;
+        }
+        out.* = null;
+        return -2147467262; // E_NOINTERFACE
+    }
+    fn AddRef(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        return this._refs.fetchAdd(1, .monotonic) + 1;
+    }
+    fn Release(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const left = this._refs.fetchSub(1, .acq_rel) - 1;
+        if (left == 0) @import("std").heap.c_allocator.destroy(this);
+        return left;
+    }
+    pub fn Invoke(self: *anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) callconv(.winapi) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const _callback: *const fn(?*anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, request);
+        return 0;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinResetHandler";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "138d5e40-f3bc-4a5c-b41d-4b4ef684e237";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        Invoke: *const fn(self: *anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) callconv(.winapi) HRESULT
+    };
+    pub const VTABLE = VTable {
+        .QueryInterface = QueryInterface,
+        .AddRef = AddRef,
+        .Release = Release,
+        .Invoke = Invoke,
+    };
+};
+pub const SmartCardPinResetRequest = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
+        const this: *ISmartCardPinResetRequest = @ptrCast(self);
+        return try this.getChallenge();
+    }
+    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
+        const this: *ISmartCardPinResetRequest = @ptrCast(self);
+        return try this.getDeadline();
+    }
+    pub fn GetDeferral(self: *@This()) core.HResult!*SmartCardPinResetDeferral {
+        const this: *ISmartCardPinResetRequest = @ptrCast(self);
+        return try this.GetDeferral();
+    }
+    pub fn SetResponse(self: *@This(), response: *IBuffer) core.HResult!void {
+        const this: *ISmartCardPinResetRequest = @ptrCast(self);
+        return try this.SetResponse(response);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinResetRequest";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardPinResetRequest.GUID;
+    pub const IID: Guid = ISmartCardPinResetRequest.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardPinResetRequest.SIGNATURE);
+};
+pub const SmartCardProvisioning = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        const this: *ISmartCardProvisioning = @ptrCast(self);
+        return try this.getSmartCard();
+    }
+    pub fn GetIdAsync(self: *@This()) core.HResult!*IAsyncOperation(Guid) {
+        const this: *ISmartCardProvisioning = @ptrCast(self);
+        return try this.GetIdAsync();
+    }
+    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        const this: *ISmartCardProvisioning = @ptrCast(self);
+        return try this.GetNameAsync();
+    }
+    pub fn GetChallengeContextAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardChallengeContext) {
+        const this: *ISmartCardProvisioning = @ptrCast(self);
+        return try this.GetChallengeContextAsync();
+    }
+    pub fn RequestPinChangeAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        const this: *ISmartCardProvisioning = @ptrCast(self);
+        return try this.RequestPinChangeAsync();
+    }
+    pub fn RequestPinResetAsync(self: *@This(), handler: *SmartCardPinResetHandler) core.HResult!*IAsyncOperation(bool) {
+        const this: *ISmartCardProvisioning = @ptrCast(self);
+        return try this.RequestPinResetAsync(handler);
+    }
+    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var this: ?*ISmartCardProvisioning2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardProvisioning2.IID, @ptrCast(&this));
+        return try this.?.GetAuthorityKeyContainerNameAsync();
+    }
+    pub fn RequestAttestedVirtualSmartCardCreationAsync(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
+        return try _f.RequestAttestedVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
+    }
+    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
+        return try _f.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
+    }
+    pub fn FromSmartCardAsync(card: *SmartCard) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
+        return try _f.FromSmartCardAsync(card);
+    }
+    pub fn RequestVirtualSmartCardCreationAsync(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
+        return try _f.RequestVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
+    }
+    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
+        return try _f.RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
+    }
+    pub fn RequestVirtualSmartCardDeletionAsync(card: *SmartCard) core.HResult!*IAsyncOperation(bool) {
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
+        return try _f.RequestVirtualSmartCardDeletionAsync(card);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardProvisioning";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardProvisioning.GUID;
+    pub const IID: Guid = ISmartCardProvisioning.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardProvisioning.SIGNATURE);
+    var _ISmartCardProvisioningStatics2Cache: FactoryCache(ISmartCardProvisioningStatics2, RUNTIME_NAME) = .{};
+    var _ISmartCardProvisioningStaticsCache: FactoryCache(ISmartCardProvisioningStatics, RUNTIME_NAME) = .{};
+};
+pub const SmartCardReader = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.getDeviceId();
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.getName();
+    }
+    pub fn getKind(self: *@This()) core.HResult!SmartCardReaderKind {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.getKind();
+    }
+    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardReaderStatus) {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.GetStatusAsync();
+    }
+    pub fn FindAllCardsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(SmartCard)) {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.FindAllCardsAsync();
+    }
+    pub fn addCardAdded(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardAddedEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.addCardAdded(handler);
+    }
+    pub fn removeCardAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.removeCardAdded(token);
+    }
+    pub fn addCardRemoved(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardRemovedEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.addCardRemoved(handler);
+    }
+    pub fn removeCardRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ISmartCardReader = @ptrCast(self);
+        return try this.removeCardRemoved(token);
+    }
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
+        const _f = try @This()._ISmartCardReaderStaticsCache.get();
+        return try _f.GetDeviceSelector();
+    }
+    pub fn GetDeviceSelectorWithKind(kind: SmartCardReaderKind) core.HResult!?HSTRING {
+        const _f = try @This()._ISmartCardReaderStaticsCache.get();
+        return try _f.GetDeviceSelectorWithKind(kind);
+    }
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
+        const _f = try @This()._ISmartCardReaderStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardReader";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardReader.GUID;
+    pub const IID: Guid = ISmartCardReader.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardReader.SIGNATURE);
+    var _ISmartCardReaderStaticsCache: FactoryCache(ISmartCardReaderStatics, RUNTIME_NAME) = .{};
+};
+pub const SmartCardReaderKind = enum(i32) {
+    Any = 0,
+    Generic = 1,
+    Tpm = 2,
+    Nfc = 3,
+    Uicc = 4,
+    EmbeddedSE = 5,
+};
+pub const SmartCardReaderStatus = enum(i32) {
+    Disconnected = 0,
+    Ready = 1,
+    Exclusive = 2,
+};
+pub const SmartCardStatus = enum(i32) {
+    Disconnected = 0,
+    Ready = 1,
+    Shared = 2,
+    Exclusive = 3,
+    Unresponsive = 4,
+};
+pub const ISmartCardTriggerDetails = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
+        var _r: SmartCardTriggerType = undefined;
+        const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSourceAppletId(self: *@This()) core.HResult!*IBuffer {
+        var _r: *IBuffer = undefined;
+        const _c = self.vtable.get_SourceAppletId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTriggerData(self: *@This()) core.HResult!*IBuffer {
+        var _r: *IBuffer = undefined;
+        const _c = self.vtable.get_TriggerData(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardTriggerDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5f9bf11e-39ef-4f2b-b44f-0a9155b177bc";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_TriggerType: *const fn(self: *anyopaque, _r: *SmartCardTriggerType) callconv(.winapi) HRESULT,
+        get_SourceAppletId: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
+        get_TriggerData: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardTriggerDetails2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getEmulator(self: *@This()) core.HResult!*SmartCardEmulator {
+        var _r: *SmartCardEmulator = undefined;
+        const _c = self.vtable.get_Emulator(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.TryLaunchCurrentAppAsync(@ptrCast(self), arguments, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: ?HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.TryLaunchCurrentAppAsyncWithBehavior(@ptrCast(self), arguments, behavior, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardTriggerDetails2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2945c569-8975-4a51-9e1a-5f8a76ee51af";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Emulator: *const fn(self: *anyopaque, _r: **SmartCardEmulator) callconv(.winapi) HRESULT,
+        TryLaunchCurrentAppAsync: *const fn(self: *anyopaque, arguments: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryLaunchCurrentAppAsyncWithBehavior: *const fn(self: *anyopaque, arguments: ?HSTRING, behavior: SmartCardLaunchBehavior, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmartCardTriggerDetails3 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        var _r: *SmartCard = undefined;
+        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardTriggerDetails3";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "b3e2c27d-18c6-4ba8-8376-ef03d4912666";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
+    };
+};
+pub const SmartCardLaunchBehavior = enum(i32) {
+    Default = 0,
+    AboveLock = 1,
+};
+pub const SmartCardTriggerDetails = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
+        const this: *ISmartCardTriggerDetails = @ptrCast(self);
+        return try this.getTriggerType();
+    }
+    pub fn getSourceAppletId(self: *@This()) core.HResult!*IBuffer {
+        const this: *ISmartCardTriggerDetails = @ptrCast(self);
+        return try this.getSourceAppletId();
+    }
+    pub fn getTriggerData(self: *@This()) core.HResult!*IBuffer {
+        const this: *ISmartCardTriggerDetails = @ptrCast(self);
+        return try this.getTriggerData();
+    }
+    pub fn getEmulator(self: *@This()) core.HResult!*SmartCardEmulator {
+        var this: ?*ISmartCardTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
+        return try this.?.getEmulator();
+    }
+    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
+        var this: ?*ISmartCardTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
+        return try this.?.TryLaunchCurrentAppAsync(arguments);
+    }
+    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: ?HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
+        var this: ?*ISmartCardTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
+        return try this.?.TryLaunchCurrentAppAsyncWithBehavior(arguments, behavior);
+    }
+    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
+        var this: ?*ISmartCardTriggerDetails3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails3.IID, @ptrCast(&this));
+        return try this.?.getSmartCard();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardTriggerDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmartCardTriggerDetails.GUID;
+    pub const IID: Guid = ISmartCardTriggerDetails.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardTriggerDetails.SIGNATURE);
+};
+pub const SmartCardTriggerType = enum(i32) {
+    EmulatorTransaction = 0,
+    EmulatorNearFieldEntry = 1,
+    EmulatorNearFieldExit = 2,
+    EmulatorHostApplicationActivated = 3,
+    EmulatorAppletIdGroupRegistrationChanged = 4,
+    ReaderCardAdded = 5,
+};
 pub const IKnownSmartCardAppletIds = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -2438,10 +3884,10 @@ pub const SmartCardCryptogramMaterialType = enum(i32) {
     Aes = 3,
     RsaPkcs1 = 4,
 };
-pub const SmartCardCryptogramPlacementOptions = enum(i32) {
-    None = 0,
-    UnitsAreInNibbles = 1,
-    ChainOutput = 2,
+pub const SmartCardCryptogramPlacementOptions = packed struct(u32) {
+    UnitsAreInNibbles: bool = false,
+    ChainOutput: bool = false,
+    _m: u30 = 0,
 };
 pub const SmartCardCryptogramPlacementStep = extern struct {
     vtable: *const IInspectable.VTable,
@@ -2541,10 +3987,10 @@ pub const SmartCardCryptogramStorageKeyAlgorithm = enum(i32) {
     None = 0,
     Rsa2048 = 1,
 };
-pub const SmartCardCryptogramStorageKeyCapabilities = enum(i32) {
-    None = 0,
-    HardwareProtection = 1,
-    UnlockPrompt = 2,
+pub const SmartCardCryptogramStorageKeyCapabilities = packed struct(u32) {
+    HardwareProtection: bool = false,
+    UnlockPrompt: bool = false,
+    _m: u30 = 0,
 };
 pub const SmartCardCryptogramStorageKeyCharacteristics = extern struct {
     vtable: *const IInspectable.VTable,
@@ -2864,1460 +4310,14 @@ pub const SmartCardUnlockPromptingBehavior = enum(i32) {
     RequireUnlockPrompt = 1,
     PreventUnlockPrompt = 2,
 };
-pub const ISmartCardTriggerDetails = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
-        var _r: SmartCardTriggerType = undefined;
-        const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSourceAppletId(self: *@This()) core.HResult!*IBuffer {
-        var _r: *IBuffer = undefined;
-        const _c = self.vtable.get_SourceAppletId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTriggerData(self: *@This()) core.HResult!*IBuffer {
-        var _r: *IBuffer = undefined;
-        const _c = self.vtable.get_TriggerData(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardTriggerDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5f9bf11e-39ef-4f2b-b44f-0a9155b177bc";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TriggerType: *const fn(self: *anyopaque, _r: *SmartCardTriggerType) callconv(.winapi) HRESULT,
-        get_SourceAppletId: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_TriggerData: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardTriggerDetails2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getEmulator(self: *@This()) core.HResult!*SmartCardEmulator {
-        var _r: *SmartCardEmulator = undefined;
-        const _c = self.vtable.get_Emulator(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryLaunchCurrentAppAsync(@ptrCast(self), arguments, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: ?HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryLaunchCurrentAppAsyncWithBehavior(@ptrCast(self), arguments, behavior, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardTriggerDetails2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2945c569-8975-4a51-9e1a-5f8a76ee51af";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Emulator: *const fn(self: *anyopaque, _r: **SmartCardEmulator) callconv(.winapi) HRESULT,
-        TryLaunchCurrentAppAsync: *const fn(self: *anyopaque, arguments: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryLaunchCurrentAppAsyncWithBehavior: *const fn(self: *anyopaque, arguments: ?HSTRING, behavior: SmartCardLaunchBehavior, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardTriggerDetails3 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        var _r: *SmartCard = undefined;
-        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardTriggerDetails3";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "b3e2c27d-18c6-4ba8-8376-ef03d4912666";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
-    };
-};
-pub const SmartCardLaunchBehavior = enum(i32) {
-    Default = 0,
-    AboveLock = 1,
-};
-pub const SmartCardTriggerDetails = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
-        const this: *ISmartCardTriggerDetails = @ptrCast(self);
-        return try this.getTriggerType();
-    }
-    pub fn getSourceAppletId(self: *@This()) core.HResult!*IBuffer {
-        const this: *ISmartCardTriggerDetails = @ptrCast(self);
-        return try this.getSourceAppletId();
-    }
-    pub fn getTriggerData(self: *@This()) core.HResult!*IBuffer {
-        const this: *ISmartCardTriggerDetails = @ptrCast(self);
-        return try this.getTriggerData();
-    }
-    pub fn getEmulator(self: *@This()) core.HResult!*SmartCardEmulator {
-        var this: ?*ISmartCardTriggerDetails2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
-        return try this.?.getEmulator();
-    }
-    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*ISmartCardTriggerDetails2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
-        return try this.?.TryLaunchCurrentAppAsync(arguments);
-    }
-    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: ?HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*ISmartCardTriggerDetails2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
-        return try this.?.TryLaunchCurrentAppAsyncWithBehavior(arguments, behavior);
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        var this: ?*ISmartCardTriggerDetails3 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails3.IID, @ptrCast(&this));
-        return try this.?.getSmartCard();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardTriggerDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardTriggerDetails.GUID;
-    pub const IID: Guid = ISmartCardTriggerDetails.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardTriggerDetails.SIGNATURE);
-};
-pub const SmartCardTriggerType = enum(i32) {
-    EmulatorTransaction = 0,
-    EmulatorNearFieldEntry = 1,
-    EmulatorNearFieldExit = 2,
-    EmulatorHostApplicationActivated = 3,
-    EmulatorAppletIdGroupRegistrationChanged = 4,
-    ReaderCardAdded = 5,
-};
-pub const CardAddedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        const this: *ICardAddedEventArgs = @ptrCast(self);
-        return try this.getSmartCard();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.CardAddedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICardAddedEventArgs.GUID;
-    pub const IID: Guid = ICardAddedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICardAddedEventArgs.SIGNATURE);
-};
-pub const CardRemovedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        const this: *ICardRemovedEventArgs = @ptrCast(self);
-        return try this.getSmartCard();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.CardRemovedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICardRemovedEventArgs.GUID;
-    pub const IID: Guid = ICardRemovedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICardRemovedEventArgs.SIGNATURE);
-};
-pub const ICardAddedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        var _r: *SmartCard = undefined;
-        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ICardAddedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "18bbef98-f18b-4dd3-b118-dfb2c8e23cc6";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICardRemovedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        var _r: *SmartCard = undefined;
-        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ICardRemovedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "15331aaf-22d7-4945-afc9-03b46f42a6cd";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCard = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getReader(self: *@This()) core.HResult!*SmartCardReader {
-        var _r: *SmartCardReader = undefined;
-        const _c = self.vtable.get_Reader(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardStatus) {
-        var _r: *IAsyncOperation(SmartCardStatus) = undefined;
-        const _c = self.vtable.GetStatusAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetAnswerToResetAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
-        var _r: *IAsyncOperation(IBuffer) = undefined;
-        const _c = self.vtable.GetAnswerToResetAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCard";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "1b718871-6434-43f4-b55a-6a29623870aa";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Reader: *const fn(self: *anyopaque, _r: **SmartCardReader) callconv(.winapi) HRESULT,
-        GetStatusAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardStatus)) callconv(.winapi) HRESULT,
-        GetAnswerToResetAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardChallengeContext = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
-        var _r: *IBuffer = undefined;
-        const _c = self.vtable.get_Challenge(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn VerifyResponseAsync(self: *@This(), response: *IBuffer) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.VerifyResponseAsync(@ptrCast(self), response, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn ProvisionAsync(self: *@This(), response: *IBuffer, formatCard: bool) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ProvisionAsync(@ptrCast(self), response, formatCard, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn ProvisionAsyncWithNewCardId(self: *@This(), response: *IBuffer, formatCard: bool, newCardId: *Guid) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ProvisionAsyncWithNewCardId(@ptrCast(self), response, formatCard, newCardId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn ChangeAdministrativeKeyAsync(self: *@This(), response: *IBuffer, newAdministrativeKey: *IBuffer) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ChangeAdministrativeKeyAsync(@ptrCast(self), response, newAdministrativeKey, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardChallengeContext";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "192a5319-c9c4-4947-81cc-44794a61ef91";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Challenge: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        VerifyResponseAsync: *const fn(self: *anyopaque, response: *IBuffer, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        ProvisionAsync: *const fn(self: *anyopaque, response: *IBuffer, formatCard: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ProvisionAsyncWithNewCardId: *const fn(self: *anyopaque, response: *IBuffer, formatCard: bool, newCardId: *Guid, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ChangeAdministrativeKeyAsync: *const fn(self: *anyopaque, response: *IBuffer, newAdministrativeKey: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardConnect = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardConnection) {
-        var _r: *IAsyncOperation(SmartCardConnection) = undefined;
-        const _c = self.vtable.ConnectAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardConnect";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2fdf87e5-028d-491e-a058-3382c3986f40";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ConnectAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardConnection)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardConnection = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn TransmitAsync(self: *@This(), command: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
-        var _r: *IAsyncOperation(IBuffer) = undefined;
-        const _c = self.vtable.TransmitAsync(@ptrCast(self), command, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardConnection";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "7edb991a-a81a-47bc-a649-156be6b7f231";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TransmitAsync: *const fn(self: *anyopaque, command: *IBuffer, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardPinPolicy = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getMinLength(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_MinLength(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putMinLength(self: *@This(), value: u32) core.HResult!void {
-        const _c = self.vtable.put_MinLength(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getMaxLength(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_MaxLength(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putMaxLength(self: *@This(), value: u32) core.HResult!void {
-        const _c = self.vtable.put_MaxLength(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getUppercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        var _r: SmartCardPinCharacterPolicyOption = undefined;
-        const _c = self.vtable.get_UppercaseLetters(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putUppercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const _c = self.vtable.put_UppercaseLetters(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getLowercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        var _r: SmartCardPinCharacterPolicyOption = undefined;
-        const _c = self.vtable.get_LowercaseLetters(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putLowercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const _c = self.vtable.put_LowercaseLetters(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getDigits(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        var _r: SmartCardPinCharacterPolicyOption = undefined;
-        const _c = self.vtable.get_Digits(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putDigits(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const _c = self.vtable.put_Digits(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getSpecialCharacters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        var _r: SmartCardPinCharacterPolicyOption = undefined;
-        const _c = self.vtable.get_SpecialCharacters(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putSpecialCharacters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const _c = self.vtable.put_SpecialCharacters(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardPinPolicy";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "183ce184-4db6-4841-ac9e-2ac1f39b7304";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MinLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_MinLength: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_MaxLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_MaxLength: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_UppercaseLetters: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-        put_UppercaseLetters: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-        get_LowercaseLetters: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-        put_LowercaseLetters: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-        get_Digits: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-        put_Digits: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-        get_SpecialCharacters: *const fn(self: *anyopaque, _r: *SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-        put_SpecialCharacters: *const fn(self: *anyopaque, value: SmartCardPinCharacterPolicyOption) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardPinResetDeferral = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Complete(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardPinResetDeferral";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "18c94aac-7805-4004-85e4-bbefac8f6884";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Complete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardPinResetRequest = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
-        var _r: *IBuffer = undefined;
-        const _c = self.vtable.get_Challenge(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
-        var _r: DateTime = undefined;
-        const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*SmartCardPinResetDeferral {
-        var _r: *SmartCardPinResetDeferral = undefined;
-        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetResponse(self: *@This(), response: *IBuffer) core.HResult!void {
-        const _c = self.vtable.SetResponse(@ptrCast(self), response);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardPinResetRequest";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "12fe3c4d-5fb9-4e8e-9ff6-61f475124fef";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Challenge: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        GetDeferral: *const fn(self: *anyopaque, _r: **SmartCardPinResetDeferral) callconv(.winapi) HRESULT,
-        SetResponse: *const fn(self: *anyopaque, response: *IBuffer) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardProvisioning = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        var _r: *SmartCard = undefined;
-        const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetIdAsync(self: *@This()) core.HResult!*IAsyncOperation(Guid) {
-        var _r: *IAsyncOperation(Guid) = undefined;
-        const _c = self.vtable.GetIdAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var _r: *IAsyncOperation(?HSTRING) = undefined;
-        const _c = self.vtable.GetNameAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetChallengeContextAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardChallengeContext) {
-        var _r: *IAsyncOperation(SmartCardChallengeContext) = undefined;
-        const _c = self.vtable.GetChallengeContextAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestPinChangeAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestPinChangeAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestPinResetAsync(self: *@This(), handler: *SmartCardPinResetHandler) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestPinResetAsync(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioning";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "19eeedbd-1fab-477c-b712-1a2c5af1fd6e";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
-        GetIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Guid)) callconv(.winapi) HRESULT,
-        GetNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
-        GetChallengeContextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardChallengeContext)) callconv(.winapi) HRESULT,
-        RequestPinChangeAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestPinResetAsync: *const fn(self: *anyopaque, handler: *SmartCardPinResetHandler, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardProvisioning2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var _r: *IAsyncOperation(?HSTRING) = undefined;
-        const _c = self.vtable.GetAuthorityKeyContainerNameAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioning2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "10fd28eb-3f79-4b66-9b7c-11c149b7d0bc";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAuthorityKeyContainerNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardProvisioningStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn FromSmartCardAsync(self: *@This(), card: *SmartCard) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
-        const _c = self.vtable.FromSmartCardAsync(@ptrCast(self), card, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestVirtualSmartCardCreationAsync(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
-        const _c = self.vtable.RequestVirtualSmartCardCreationAsync(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
-        const _c = self.vtable.RequestVirtualSmartCardCreationAsyncWithCardId(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, cardId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestVirtualSmartCardDeletionAsync(self: *@This(), card: *SmartCard) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestVirtualSmartCardDeletionAsync(@ptrCast(self), card, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioningStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "13882848-0d13-4e70-9735-51daeca5254f";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromSmartCardAsync: *const fn(self: *anyopaque, card: *SmartCard, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-        RequestVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-        RequestVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-        RequestVirtualSmartCardDeletionAsync: *const fn(self: *anyopaque, card: *SmartCard, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardProvisioningStatics2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestAttestedVirtualSmartCardCreationAsync(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
-        const _c = self.vtable.RequestAttestedVirtualSmartCardCreationAsync(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
-        const _c = self.vtable.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, cardId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardProvisioningStatics2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "3447c6a8-c9a0-4bd6-b50d-251f4e8d3a62";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAttestedVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-        RequestAttestedVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardReader = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getKind(self: *@This()) core.HResult!SmartCardReaderKind {
-        var _r: SmartCardReaderKind = undefined;
-        const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardReaderStatus) {
-        var _r: *IAsyncOperation(SmartCardReaderStatus) = undefined;
-        const _c = self.vtable.GetStatusAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn FindAllCardsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(SmartCard)) {
-        var _r: *IAsyncOperation(IVectorView(SmartCard)) = undefined;
-        const _c = self.vtable.FindAllCardsAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn addCardAdded(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardAddedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_CardAdded(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeCardAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_CardAdded(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addCardRemoved(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardRemovedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_CardRemoved(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeCardRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_CardRemoved(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardReader";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "1074b4e0-54c2-4df0-817a-14c14378f06c";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Kind: *const fn(self: *anyopaque, _r: *SmartCardReaderKind) callconv(.winapi) HRESULT,
-        GetStatusAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardReaderStatus)) callconv(.winapi) HRESULT,
-        FindAllCardsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(SmartCard))) callconv(.winapi) HRESULT,
-        add_CardAdded: *const fn(self: *anyopaque, handler: *TypedEventHandler(SmartCardReader,CardAddedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_CardAdded: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_CardRemoved: *const fn(self: *anyopaque, handler: *TypedEventHandler(SmartCardReader,CardRemovedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_CardRemoved: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmartCardReaderStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetDeviceSelectorWithKind(self: *@This(), kind: SmartCardReaderKind) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorWithKind(@ptrCast(self), kind, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
-        var _r: *IAsyncOperation(SmartCardReader) = undefined;
-        const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.ISmartCardReaderStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "103c04e1-a1ca-48f2-a281-5b6f669af107";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithKind: *const fn(self: *anyopaque, kind: SmartCardReaderKind, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SmartCardReader)) callconv(.winapi) HRESULT,
-    };
-};
-pub const SmartCard = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getReader(self: *@This()) core.HResult!*SmartCardReader {
-        const this: *ISmartCard = @ptrCast(self);
-        return try this.getReader();
-    }
-    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardStatus) {
-        const this: *ISmartCard = @ptrCast(self);
-        return try this.GetStatusAsync();
-    }
-    pub fn GetAnswerToResetAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
-        const this: *ISmartCard = @ptrCast(self);
-        return try this.GetAnswerToResetAsync();
-    }
-    pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardConnection) {
-        var this: ?*ISmartCardConnect = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardConnect.IID, @ptrCast(&this));
-        return try this.?.ConnectAsync();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCard";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCard.GUID;
-    pub const IID: Guid = ISmartCard.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCard.SIGNATURE);
-};
-pub const SmartCardChallengeContext = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
-        const this: *ISmartCardChallengeContext = @ptrCast(self);
-        return try this.getChallenge();
-    }
-    pub fn VerifyResponseAsync(self: *@This(), response: *IBuffer) core.HResult!*IAsyncOperation(bool) {
-        const this: *ISmartCardChallengeContext = @ptrCast(self);
-        return try this.VerifyResponseAsync(response);
-    }
-    pub fn ProvisionAsync(self: *@This(), response: *IBuffer, formatCard: bool) core.HResult!*IAsyncAction {
-        const this: *ISmartCardChallengeContext = @ptrCast(self);
-        return try this.ProvisionAsync(response, formatCard);
-    }
-    pub fn ProvisionAsyncWithNewCardId(self: *@This(), response: *IBuffer, formatCard: bool, newCardId: *Guid) core.HResult!*IAsyncAction {
-        const this: *ISmartCardChallengeContext = @ptrCast(self);
-        return try this.ProvisionAsyncWithNewCardId(response, formatCard, newCardId);
-    }
-    pub fn ChangeAdministrativeKeyAsync(self: *@This(), response: *IBuffer, newAdministrativeKey: *IBuffer) core.HResult!*IAsyncAction {
-        const this: *ISmartCardChallengeContext = @ptrCast(self);
-        return try this.ChangeAdministrativeKeyAsync(response, newAdministrativeKey);
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardChallengeContext";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardChallengeContext.GUID;
-    pub const IID: Guid = ISmartCardChallengeContext.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardChallengeContext.SIGNATURE);
-};
-pub const SmartCardConnection = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn TransmitAsync(self: *@This(), command: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
-        const this: *ISmartCardConnection = @ptrCast(self);
-        return try this.TransmitAsync(command);
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardConnection";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardConnection.GUID;
-    pub const IID: Guid = ISmartCardConnection.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardConnection.SIGNATURE);
-};
-pub const SmartCardPinCharacterPolicyOption = enum(i32) {
-    Allow = 0,
-    RequireAtLeastOne = 1,
-    Disallow = 2,
-};
-pub const SmartCardPinPolicy = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getMinLength(self: *@This()) core.HResult!u32 {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.getMinLength();
-    }
-    pub fn putMinLength(self: *@This(), value: u32) core.HResult!void {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.putMinLength(value);
-    }
-    pub fn getMaxLength(self: *@This()) core.HResult!u32 {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.getMaxLength();
-    }
-    pub fn putMaxLength(self: *@This(), value: u32) core.HResult!void {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.putMaxLength(value);
-    }
-    pub fn getUppercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.getUppercaseLetters();
-    }
-    pub fn putUppercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.putUppercaseLetters(value);
-    }
-    pub fn getLowercaseLetters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.getLowercaseLetters();
-    }
-    pub fn putLowercaseLetters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.putLowercaseLetters(value);
-    }
-    pub fn getDigits(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.getDigits();
-    }
-    pub fn putDigits(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.putDigits(value);
-    }
-    pub fn getSpecialCharacters(self: *@This()) core.HResult!SmartCardPinCharacterPolicyOption {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.getSpecialCharacters();
-    }
-    pub fn putSpecialCharacters(self: *@This(), value: SmartCardPinCharacterPolicyOption) core.HResult!void {
-        const this: *ISmartCardPinPolicy = @ptrCast(self);
-        return try this.putSpecialCharacters(value);
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardPinPolicy.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinPolicy";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardPinPolicy.GUID;
-    pub const IID: Guid = ISmartCardPinPolicy.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardPinPolicy.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const SmartCardPinResetDeferral = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const this: *ISmartCardPinResetDeferral = @ptrCast(self);
-        return try this.Complete();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinResetDeferral";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardPinResetDeferral.GUID;
-    pub const IID: Guid = ISmartCardPinResetDeferral.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardPinResetDeferral.SIGNATURE);
-};
-pub const SmartCardPinResetHandler = extern struct {
-    vtable: *const VTable,
-    _refs: @import("std").atomic.Value(u32),
-    _cb: *anyopaque,
-    _context: ?*anyopaque = null,
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn init(
-        cb: *const fn(?*anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) void,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-        };
-        return _r;
-    }
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) void,
-        context: anytype,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-            ._context = @ptrCast(context),
-        };
-        return _r;
-    }
-    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
-    /// Otherwise the memory stays until all references are released, including all references Windows holds.
-    ///
-    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
-    pub fn deinit(self: *@This()) void {
-        _ = Release(@ptrCast(self));
-    }
-    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
-        const std = @import("std");
-        const me: *@This() = @ptrCast(@alignCast(self));
-        // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
-        {
-            out.* = @as(?*anyopaque, @ptrCast(me));
-            _ = AddRef(self);
-            return 0;
-        }
-        out.* = null;
-        return -2147467262; // E_NOINTERFACE
-    }
-    fn AddRef(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        return this._refs.fetchAdd(1, .monotonic) + 1;
-    }
-    fn Release(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const left = this._refs.fetchSub(1, .acq_rel) - 1;
-        if (left == 0) @import("std").heap.c_allocator.destroy(this);
-        return left;
-    }
-    pub fn Invoke(self: *anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) callconv(.winapi) HRESULT {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const _callback: *const fn(?*anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) void = @ptrCast(@alignCast(this._cb));
-        _callback(this._context, sender, request);
-        return 0;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinResetHandler";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "138d5e40-f3bc-4a5c-b41d-4b4ef684e237";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, sender: *SmartCardProvisioning, request: *SmartCardPinResetRequest) callconv(.winapi) HRESULT
-    };
-    pub const VTABLE = VTable {
-        .QueryInterface = QueryInterface,
-        .AddRef = AddRef,
-        .Release = Release,
-        .Invoke = Invoke,
-    };
-};
-pub const SmartCardPinResetRequest = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
-        const this: *ISmartCardPinResetRequest = @ptrCast(self);
-        return try this.getChallenge();
-    }
-    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
-        const this: *ISmartCardPinResetRequest = @ptrCast(self);
-        return try this.getDeadline();
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*SmartCardPinResetDeferral {
-        const this: *ISmartCardPinResetRequest = @ptrCast(self);
-        return try this.GetDeferral();
-    }
-    pub fn SetResponse(self: *@This(), response: *IBuffer) core.HResult!void {
-        const this: *ISmartCardPinResetRequest = @ptrCast(self);
-        return try this.SetResponse(response);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardPinResetRequest";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardPinResetRequest.GUID;
-    pub const IID: Guid = ISmartCardPinResetRequest.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardPinResetRequest.SIGNATURE);
-};
-pub const SmartCardProvisioning = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
-        const this: *ISmartCardProvisioning = @ptrCast(self);
-        return try this.getSmartCard();
-    }
-    pub fn GetIdAsync(self: *@This()) core.HResult!*IAsyncOperation(Guid) {
-        const this: *ISmartCardProvisioning = @ptrCast(self);
-        return try this.GetIdAsync();
-    }
-    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        const this: *ISmartCardProvisioning = @ptrCast(self);
-        return try this.GetNameAsync();
-    }
-    pub fn GetChallengeContextAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardChallengeContext) {
-        const this: *ISmartCardProvisioning = @ptrCast(self);
-        return try this.GetChallengeContextAsync();
-    }
-    pub fn RequestPinChangeAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        const this: *ISmartCardProvisioning = @ptrCast(self);
-        return try this.RequestPinChangeAsync();
-    }
-    pub fn RequestPinResetAsync(self: *@This(), handler: *SmartCardPinResetHandler) core.HResult!*IAsyncOperation(bool) {
-        const this: *ISmartCardProvisioning = @ptrCast(self);
-        return try this.RequestPinResetAsync(handler);
-    }
-    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var this: ?*ISmartCardProvisioning2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmartCardProvisioning2.IID, @ptrCast(&this));
-        return try this.?.GetAuthorityKeyContainerNameAsync();
-    }
-    pub fn RequestAttestedVirtualSmartCardCreationAsync(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
-        return try _f.RequestAttestedVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
-    }
-    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
-        return try _f.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
-    }
-    pub fn FromSmartCardAsync(card: *SmartCard) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
-        return try _f.FromSmartCardAsync(card);
-    }
-    pub fn RequestVirtualSmartCardCreationAsync(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
-        return try _f.RequestVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
-    }
-    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
-        return try _f.RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
-    }
-    pub fn RequestVirtualSmartCardDeletionAsync(card: *SmartCard) core.HResult!*IAsyncOperation(bool) {
-        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
-        return try _f.RequestVirtualSmartCardDeletionAsync(card);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardProvisioning";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardProvisioning.GUID;
-    pub const IID: Guid = ISmartCardProvisioning.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardProvisioning.SIGNATURE);
-    var _ISmartCardProvisioningStatics2Cache: FactoryCache(ISmartCardProvisioningStatics2, RUNTIME_NAME) = .{};
-    var _ISmartCardProvisioningStaticsCache: FactoryCache(ISmartCardProvisioningStatics, RUNTIME_NAME) = .{};
-};
-pub const SmartCardReader = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.getDeviceId();
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.getName();
-    }
-    pub fn getKind(self: *@This()) core.HResult!SmartCardReaderKind {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.getKind();
-    }
-    pub fn GetStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardReaderStatus) {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.GetStatusAsync();
-    }
-    pub fn FindAllCardsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(SmartCard)) {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.FindAllCardsAsync();
-    }
-    pub fn addCardAdded(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardAddedEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.addCardAdded(handler);
-    }
-    pub fn removeCardAdded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.removeCardAdded(token);
-    }
-    pub fn addCardRemoved(self: *@This(), handler: *TypedEventHandler(SmartCardReader,CardRemovedEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.addCardRemoved(handler);
-    }
-    pub fn removeCardRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ISmartCardReader = @ptrCast(self);
-        return try this.removeCardRemoved(token);
-    }
-    pub fn GetDeviceSelector() core.HResult!?HSTRING {
-        const _f = try @This()._ISmartCardReaderStaticsCache.get();
-        return try _f.GetDeviceSelector();
-    }
-    pub fn GetDeviceSelectorWithKind(kind: SmartCardReaderKind) core.HResult!?HSTRING {
-        const _f = try @This()._ISmartCardReaderStaticsCache.get();
-        return try _f.GetDeviceSelectorWithKind(kind);
-    }
-    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
-        const _f = try @This()._ISmartCardReaderStaticsCache.get();
-        return try _f.FromIdAsync(deviceId);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardReader";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmartCardReader.GUID;
-    pub const IID: Guid = ISmartCardReader.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmartCardReader.SIGNATURE);
-    var _ISmartCardReaderStaticsCache: FactoryCache(ISmartCardReaderStatics, RUNTIME_NAME) = .{};
-};
-pub const SmartCardReaderKind = enum(i32) {
-    Any = 0,
-    Generic = 1,
-    Tpm = 2,
-    Nfc = 3,
-    Uicc = 4,
-    EmbeddedSE = 5,
-};
-pub const SmartCardReaderStatus = enum(i32) {
-    Disconnected = 0,
-    Ready = 1,
-    Exclusive = 2,
-};
-pub const SmartCardStatus = enum(i32) {
-    Disconnected = 0,
-    Ready = 1,
-    Shared = 2,
-    Exclusive = 3,
-    Unresponsive = 4,
-};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
 const IVector = @import("../Foundation/Collections.zig").IVector;
 const ValueSet = @import("../Foundation/Collections.zig").ValueSet;
 const IClosable = @import("../Foundation.zig").IClosable;
-const IIterable = @import("../Foundation/Collections.zig").IIterable;
 const IInspectable = @import("../Foundation.zig").IInspectable;
+const IIterable = @import("../Foundation/Collections.zig").IIterable;
 const HRESULT = @import("../root.zig").HRESULT;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const IAsyncAction = @import("../Foundation.zig").IAsyncAction;

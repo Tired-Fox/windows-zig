@@ -98,12 +98,12 @@ pub const ErrorDetails = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IErrorDetails.SIGNATURE);
     var _IErrorDetailsStaticsCache: FactoryCache(IErrorDetailsStatics, RUNTIME_NAME) = .{};
 };
-pub const ErrorOptions = enum(i32) {
-    None = 0,
-    SuppressExceptions = 1,
-    ForceExceptions = 2,
-    UseSetErrorInfo = 4,
-    SuppressSetErrorInfo = 8,
+pub const ErrorOptions = packed struct(u32) {
+    SuppressExceptions: bool = false,
+    ForceExceptions: bool = false,
+    UseSetErrorInfo: bool = false,
+    SuppressSetErrorInfo: bool = false,
+    _m: u28 = 0,
 };
 pub const FileLoggingSession = extern struct {
     vtable: *const IInspectable.VTable,

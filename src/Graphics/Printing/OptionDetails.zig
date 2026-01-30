@@ -2338,10 +2338,10 @@ pub const PrintMediaTypeOptionDetails = extern struct {
     pub const IID: Guid = IPrintOptionDetails.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrintOptionDetails.SIGNATURE);
 };
-pub const PrintOptionStates = enum(i32) {
-    None = 0,
-    Enabled = 1,
-    Constrained = 2,
+pub const PrintOptionStates = packed struct(u32) {
+    Enabled: bool = false,
+    Constrained: bool = false,
+    _m: u30 = 0,
 };
 pub const PrintOptionType = enum(i32) {
     Unknown = 0,

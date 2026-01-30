@@ -288,13 +288,13 @@ pub const BluetoothLEAdvertisementFilter = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IBluetoothLEAdvertisementFilter.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const BluetoothLEAdvertisementFlags = enum(i32) {
-    None = 0,
-    LimitedDiscoverableMode = 1,
-    GeneralDiscoverableMode = 2,
-    ClassicNotSupported = 4,
-    DualModeControllerCapable = 8,
-    DualModeHostCapable = 16,
+pub const BluetoothLEAdvertisementFlags = packed struct(u32) {
+    LimitedDiscoverableMode: bool = false,
+    GeneralDiscoverableMode: bool = false,
+    ClassicNotSupported: bool = false,
+    DualModeControllerCapable: bool = false,
+    DualModeHostCapable: bool = false,
+    _m: u27 = 0,
 };
 pub const BluetoothLEAdvertisementPhyType = enum(i32) {
     Unspecified = 0,

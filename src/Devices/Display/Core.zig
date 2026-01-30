@@ -65,14 +65,14 @@ pub const DisplayAdapter = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDisplayAdapter.SIGNATURE);
     var _IDisplayAdapterStaticsCache: FactoryCache(IDisplayAdapterStatics, RUNTIME_NAME) = .{};
 };
-pub const DisplayBitsPerChannel = enum(i32) {
-    None = 0,
-    Bpc6 = 1,
-    Bpc8 = 2,
-    Bpc10 = 4,
-    Bpc12 = 8,
-    Bpc14 = 16,
-    Bpc16 = 32,
+pub const DisplayBitsPerChannel = packed struct(u32) {
+    Bpc6: bool = false,
+    Bpc8: bool = false,
+    Bpc10: bool = false,
+    Bpc12: bool = false,
+    Bpc14: bool = false,
+    Bpc16: bool = false,
+    _m: u26 = 0,
 };
 pub const DisplayDevice = extern struct {
     vtable: *const IInspectable.VTable,
@@ -354,10 +354,10 @@ pub const DisplayManagerEnabledEventArgs = extern struct {
     pub const IID: Guid = IDisplayManagerEnabledEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDisplayManagerEnabledEventArgs.SIGNATURE);
 };
-pub const DisplayManagerOptions = enum(i32) {
-    None = 0,
-    EnforceSourceOwnership = 1,
-    VirtualRefreshRateAware = 2,
+pub const DisplayManagerOptions = packed struct(u32) {
+    EnforceSourceOwnership: bool = false,
+    VirtualRefreshRateAware: bool = false,
+    _m: u30 = 0,
 };
 pub const DisplayManagerPathsFailedOrInvalidatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
@@ -483,9 +483,9 @@ pub const DisplayModeInfo = extern struct {
     pub const IID: Guid = IDisplayModeInfo.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDisplayModeInfo.SIGNATURE);
 };
-pub const DisplayModeQueryOptions = enum(i32) {
-    None = 0,
-    OnlyPreferredResolution = 1,
+pub const DisplayModeQueryOptions = packed struct(u32) {
+    OnlyPreferredResolution: bool = false,
+    _m: u31 = 0,
 };
 pub const DisplayMuxDevice = extern struct {
     vtable: *const IInspectable.VTable,
@@ -790,9 +790,9 @@ pub const DisplayScanout = extern struct {
     pub const IID: Guid = IDisplayScanout.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDisplayScanout.SIGNATURE);
 };
-pub const DisplayScanoutOptions = enum(i32) {
-    None = 0,
-    AllowTearing = 2,
+pub const DisplayScanoutOptions = packed struct(u32) {
+    AllowTearing: bool = false,
+    _m: u31 = 0,
 };
 pub const DisplaySource = extern struct {
     vtable: *const IInspectable.VTable,
@@ -921,16 +921,16 @@ pub const DisplayState = extern struct {
     pub const IID: Guid = IDisplayState.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDisplayState.SIGNATURE);
 };
-pub const DisplayStateApplyOptions = enum(i32) {
-    None = 0,
-    FailIfStateChanged = 1,
-    ForceReapply = 2,
-    ForceModeEnumeration = 4,
+pub const DisplayStateApplyOptions = packed struct(u32) {
+    FailIfStateChanged: bool = false,
+    ForceReapply: bool = false,
+    ForceModeEnumeration: bool = false,
+    _m: u29 = 0,
 };
-pub const DisplayStateFunctionalizeOptions = enum(i32) {
-    None = 0,
-    FailIfStateChanged = 1,
-    ValidateTopologyOnly = 2,
+pub const DisplayStateFunctionalizeOptions = packed struct(u32) {
+    FailIfStateChanged: bool = false,
+    ValidateTopologyOnly: bool = false,
+    _m: u30 = 0,
 };
 pub const DisplayStateOperationResult = extern struct {
     vtable: *const IInspectable.VTable,

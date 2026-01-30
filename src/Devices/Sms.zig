@@ -1,1439 +1,4 @@
 // ----- This code is automatically generated -----
-pub const DeleteSmsMessageOperation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.putCompleted(handler);
-    }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionCompletedHandler {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.getCompleted();
-    }
-    pub fn GetResults(self: *@This()) core.HResult!void {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.GetResults();
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getStatus();
-    }
-    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getErrorCode();
-    }
-    pub fn Cancel(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Cancel();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.DeleteSmsMessageOperation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IAsyncAction.GUID;
-    pub const IID: Guid = IAsyncAction.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncAction.SIGNATURE);
-};
-pub const DeleteSmsMessagesOperation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.putCompleted(handler);
-    }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionCompletedHandler {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.getCompleted();
-    }
-    pub fn GetResults(self: *@This()) core.HResult!void {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.GetResults();
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getStatus();
-    }
-    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getErrorCode();
-    }
-    pub fn Cancel(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Cancel();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.DeleteSmsMessagesOperation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IAsyncAction.GUID;
-    pub const IID: Guid = IAsyncAction.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncAction.SIGNATURE);
-};
-pub const GetSmsDeviceOperation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(SmsDevice)) core.HResult!void {
-        const this: *IAsyncOperation(SmsDevice) = @ptrCast(self);
-        return try this.putCompleted(handler);
-    }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(SmsDevice) {
-        const this: *IAsyncOperation(SmsDevice) = @ptrCast(self);
-        return try this.getCompleted();
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getStatus();
-    }
-    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getErrorCode();
-    }
-    pub fn Cancel(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Cancel();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsDeviceOperation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IAsyncOperation.GUID;
-    pub const IID: Guid = IAsyncOperation.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncOperation.SIGNATURE);
-};
-pub const GetSmsMessageOperation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(ISmsMessage)) core.HResult!void {
-        const this: *IAsyncOperation(ISmsMessage) = @ptrCast(self);
-        return try this.putCompleted(handler);
-    }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(ISmsMessage) {
-        const this: *IAsyncOperation(ISmsMessage) = @ptrCast(self);
-        return try this.getCompleted();
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getStatus();
-    }
-    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getErrorCode();
-    }
-    pub fn Cancel(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Cancel();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsMessageOperation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IAsyncOperation.GUID;
-    pub const IID: Guid = IAsyncOperation.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncOperation.SIGNATURE);
-};
-pub const GetSmsMessagesOperation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
-        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
-        return try this.putProgress(handler);
-    }
-    pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32) {
-        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
-        return try this.getProgress();
-    }
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
-        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
-        return try this.putCompleted(handler);
-    }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32) {
-        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
-        return try this.getCompleted();
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getStatus();
-    }
-    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getErrorCode();
-    }
-    pub fn Cancel(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Cancel();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsMessagesOperation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IAsyncOperationWithProgress.GUID;
-    pub const IID: Guid = IAsyncOperationWithProgress.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncOperationWithProgress.SIGNATURE);
-};
-pub const ISmsBinaryMessage = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getFormat(self: *@This()) core.HResult!SmsDataFormat {
-        var _r: SmsDataFormat = undefined;
-        const _c = self.vtable.get_Format(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putFormat(self: *@This(), value: SmsDataFormat) core.HResult!void {
-        const _c = self.vtable.put_Format(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn GetData(self: *@This()) core.HResult![*]u8 {
-        var _r: [*]u8 = undefined;
-        const _c = self.vtable.GetData(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetData(self: *@This(), value: [*]u8) core.HResult!void {
-        const _c = self.vtable.SetData(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsBinaryMessage";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5bf4e813-3b53-4c6e-b61a-d86a63755650";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Format: *const fn(self: *anyopaque, _r: *SmsDataFormat) callconv(.winapi) HRESULT,
-        put_Format: *const fn(self: *anyopaque, value: SmsDataFormat) callconv(.winapi) HRESULT,
-        GetData: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
-        SetData: *const fn(self: *anyopaque, value: [*]u8) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsDevice = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SendMessageAsync(self: *@This(), message: *ISmsMessage) core.HResult!*SendSmsMessageOperation {
-        var _r: *SendSmsMessageOperation = undefined;
-        const _c = self.vtable.SendMessageAsync(@ptrCast(self), message, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn CalculateLength(self: *@This(), message: *SmsTextMessage) core.HResult!SmsEncodedLength {
-        var _r: SmsEncodedLength = undefined;
-        const _c = self.vtable.CalculateLength(@ptrCast(self), message, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_AccountPhoneNumber(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
-        var _r: CellularClass = undefined;
-        const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMessageStore(self: *@This()) core.HResult!*SmsDeviceMessageStore {
-        var _r: *SmsDeviceMessageStore = undefined;
-        const _c = self.vtable.get_MessageStore(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDeviceStatus(self: *@This()) core.HResult!SmsDeviceStatus {
-        var _r: SmsDeviceStatus = undefined;
-        const _c = self.vtable.get_DeviceStatus(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn addSmsMessageReceived(self: *@This(), eventHandler: *SmsMessageReceivedEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_SmsMessageReceived(@ptrCast(self), eventHandler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeSmsMessageReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_SmsMessageReceived(@ptrCast(self), eventCookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addSmsDeviceStatusChanged(self: *@This(), eventHandler: *SmsDeviceStatusChangedEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_SmsDeviceStatusChanged(@ptrCast(self), eventHandler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeSmsDeviceStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_SmsDeviceStatusChanged(@ptrCast(self), eventCookie);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDevice";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "091791ed-872b-4eec-9c72-ab11627b34ec";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SendMessageAsync: *const fn(self: *anyopaque, message: *ISmsMessage, _r: **SendSmsMessageOperation) callconv(.winapi) HRESULT,
-        CalculateLength: *const fn(self: *anyopaque, message: *SmsTextMessage, _r: *SmsEncodedLength) callconv(.winapi) HRESULT,
-        get_AccountPhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_CellularClass: *const fn(self: *anyopaque, _r: *CellularClass) callconv(.winapi) HRESULT,
-        get_MessageStore: *const fn(self: *anyopaque, _r: **SmsDeviceMessageStore) callconv(.winapi) HRESULT,
-        get_DeviceStatus: *const fn(self: *anyopaque, _r: *SmsDeviceStatus) callconv(.winapi) HRESULT,
-        add_SmsMessageReceived: *const fn(self: *anyopaque, eventHandler: *SmsMessageReceivedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_SmsMessageReceived: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_SmsDeviceStatusChanged: *const fn(self: *anyopaque, eventHandler: *SmsDeviceStatusChangedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_SmsDeviceStatusChanged: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsDeviceMessageStore = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn DeleteMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.DeleteMessageAsync(@ptrCast(self), messageId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn DeleteMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.DeleteMessagesAsync(@ptrCast(self), messageFilter, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncOperation(ISmsMessage) {
-        var _r: *IAsyncOperation(ISmsMessage) = undefined;
-        const _c = self.vtable.GetMessageAsync(@ptrCast(self), messageId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) {
-        var _r: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = undefined;
-        const _c = self.vtable.GetMessagesAsync(@ptrCast(self), messageFilter, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMaxMessages(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_MaxMessages(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceMessageStore";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "9889f253-f188-4427-8d54-ce0c2423c5c1";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        DeleteMessageAsync: *const fn(self: *anyopaque, messageId: u32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DeleteMessagesAsync: *const fn(self: *anyopaque, messageFilter: SmsMessageFilter, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetMessageAsync: *const fn(self: *anyopaque, messageId: u32, _r: **IAsyncOperation(ISmsMessage)) callconv(.winapi) HRESULT,
-        GetMessagesAsync: *const fn(self: *anyopaque, messageFilter: SmsMessageFilter, _r: **IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32)) callconv(.winapi) HRESULT,
-        get_MaxMessages: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsDeviceStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        var _r: *IAsyncOperation(SmsDevice) = undefined;
-        const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(SmsDevice) {
-        var _r: *IAsyncOperation(SmsDevice) = undefined;
-        const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "f88d07ea-d815-4dd1-a234-4520ce4604a4";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
-        GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsDeviceStatics2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn FromNetworkAccountIdAsync(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        var _r: *IAsyncOperation(SmsDevice) = undefined;
-        const _c = self.vtable.FromNetworkAccountIdAsync(@ptrCast(self), networkAccountId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceStatics2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2ca11c87-0873-4caf-8a7d-bd471e8586d1";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromNetworkAccountIdAsync: *const fn(self: *anyopaque, networkAccountId: ?HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsMessage = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
-        var _r: SmsMessageClass = undefined;
-        const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessage";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "ed3c5e28-6984-4b07-811d-8d5906ed3cea";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_MessageClass: *const fn(self: *anyopaque, _r: *SmsMessageClass) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsMessageReceivedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage {
-        var _r: *SmsTextMessage = undefined;
-        const _c = self.vtable.get_TextMessage(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
-        var _r: *SmsBinaryMessage = undefined;
-        const _c = self.vtable.get_BinaryMessage(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessageReceivedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "08e80a98-b8e5-41c1-a3d8-d3abfae22675";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TextMessage: *const fn(self: *anyopaque, _r: **SmsTextMessage) callconv(.winapi) HRESULT,
-        get_BinaryMessage: *const fn(self: *anyopaque, _r: **SmsBinaryMessage) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsReceivedEventDetails = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMessageIndex(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_MessageIndex(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsReceivedEventDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5bb50f15-e46d-4c82-847d-5a0304c1d53d";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_MessageIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsReceivedEventDetails2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
-        var _r: SmsMessageClass = undefined;
-        const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
-        var _r: *SmsBinaryMessage = undefined;
-        const _c = self.vtable.get_BinaryMessage(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsReceivedEventDetails2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "40e05c86-a7b4-4771-9ae7-0b5ffb12c03a";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MessageClass: *const fn(self: *anyopaque, _r: *SmsMessageClass) callconv(.winapi) HRESULT,
-        get_BinaryMessage: *const fn(self: *anyopaque, _r: **SmsBinaryMessage) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsTextMessage = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
-        var _r: DateTime = undefined;
-        const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPartReferenceId(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_PartReferenceId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPartNumber(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_PartNumber(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPartCount(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_PartCount(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_To(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_To(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_From(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_From(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Body(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_Body(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getEncoding(self: *@This()) core.HResult!SmsEncoding {
-        var _r: SmsEncoding = undefined;
-        const _c = self.vtable.get_Encoding(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putEncoding(self: *@This(), value: SmsEncoding) core.HResult!void {
-        const _c = self.vtable.put_Encoding(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn ToBinaryMessages(self: *@This(), format: SmsDataFormat) core.HResult!*IVectorView(ISmsBinaryMessage) {
-        var _r: *IVectorView(ISmsBinaryMessage) = undefined;
-        const _c = self.vtable.ToBinaryMessages(@ptrCast(self), format, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsTextMessage";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "d61c904c-a495-487f-9a6f-971548c5bc9f";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_PartReferenceId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_PartNumber: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_PartCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_To: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_From: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_Body: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_Encoding: *const fn(self: *anyopaque, _r: *SmsEncoding) callconv(.winapi) HRESULT,
-        put_Encoding: *const fn(self: *anyopaque, value: SmsEncoding) callconv(.winapi) HRESULT,
-        ToBinaryMessages: *const fn(self: *anyopaque, format: SmsDataFormat, _r: **IVectorView(ISmsBinaryMessage)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ISmsTextMessageStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn FromBinaryMessage(self: *@This(), binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
-        var _r: *SmsTextMessage = undefined;
-        const _c = self.vtable.FromBinaryMessage(@ptrCast(self), binaryMessage, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn FromBinaryData(self: *@This(), format: SmsDataFormat, value: [*]u8) core.HResult!*SmsTextMessage {
-        var _r: *SmsTextMessage = undefined;
-        const _c = self.vtable.FromBinaryData(@ptrCast(self), format, value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsTextMessageStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "7f68c5ed-3ccc-47a3-8c55-380d3b010892";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromBinaryMessage: *const fn(self: *anyopaque, binaryMessage: *SmsBinaryMessage, _r: **SmsTextMessage) callconv(.winapi) HRESULT,
-        FromBinaryData: *const fn(self: *anyopaque, format: SmsDataFormat, value: [*]u8, _r: **SmsTextMessage) callconv(.winapi) HRESULT,
-    };
-};
-pub const SendSmsMessageOperation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.putCompleted(handler);
-    }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionCompletedHandler {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.getCompleted();
-    }
-    pub fn GetResults(self: *@This()) core.HResult!void {
-        const this: *IAsyncAction = @ptrCast(self);
-        return try this.GetResults();
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getStatus();
-    }
-    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.getErrorCode();
-    }
-    pub fn Cancel(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Cancel();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IAsyncInfo = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SendSmsMessageOperation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IAsyncAction.GUID;
-    pub const IID: Guid = IAsyncAction.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncAction.SIGNATURE);
-};
-pub const SmsBinaryMessage = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getFormat(self: *@This()) core.HResult!SmsDataFormat {
-        const this: *ISmsBinaryMessage = @ptrCast(self);
-        return try this.getFormat();
-    }
-    pub fn putFormat(self: *@This(), value: SmsDataFormat) core.HResult!void {
-        const this: *ISmsBinaryMessage = @ptrCast(self);
-        return try this.putFormat(value);
-    }
-    pub fn GetData(self: *@This()) core.HResult![*]u8 {
-        const this: *ISmsBinaryMessage = @ptrCast(self);
-        return try this.GetData();
-    }
-    pub fn SetData(self: *@This(), value: [*]u8) core.HResult!void {
-        const this: *ISmsBinaryMessage = @ptrCast(self);
-        return try this.SetData(value);
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*ISmsMessage = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
-        var this: ?*ISmsMessage = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        return try this.?.getMessageClass();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsBinaryMessage.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsBinaryMessage";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmsBinaryMessage.GUID;
-    pub const IID: Guid = ISmsBinaryMessage.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsBinaryMessage.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const SmsDevice = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SendMessageAsync(self: *@This(), message: *ISmsMessage) core.HResult!*SendSmsMessageOperation {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.SendMessageAsync(message);
-    }
-    pub fn CalculateLength(self: *@This(), message: *SmsTextMessage) core.HResult!SmsEncodedLength {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.CalculateLength(message);
-    }
-    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.getAccountPhoneNumber();
-    }
-    pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.getCellularClass();
-    }
-    pub fn getMessageStore(self: *@This()) core.HResult!*SmsDeviceMessageStore {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.getMessageStore();
-    }
-    pub fn getDeviceStatus(self: *@This()) core.HResult!SmsDeviceStatus {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.getDeviceStatus();
-    }
-    pub fn addSmsMessageReceived(self: *@This(), eventHandler: *SmsMessageReceivedEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.addSmsMessageReceived(eventHandler);
-    }
-    pub fn removeSmsMessageReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.removeSmsMessageReceived(eventCookie);
-    }
-    pub fn addSmsDeviceStatusChanged(self: *@This(), eventHandler: *SmsDeviceStatusChangedEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.addSmsDeviceStatusChanged(eventHandler);
-    }
-    pub fn removeSmsDeviceStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
-        const this: *ISmsDevice = @ptrCast(self);
-        return try this.removeSmsDeviceStatusChanged(eventCookie);
-    }
-    pub fn FromNetworkAccountIdAsync(networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        const _f = try @This()._ISmsDeviceStatics2Cache.get();
-        return try _f.FromNetworkAccountIdAsync(networkAccountId);
-    }
-    pub fn GetDeviceSelector() core.HResult!?HSTRING {
-        const _f = try @This()._ISmsDeviceStaticsCache.get();
-        return try _f.GetDeviceSelector();
-    }
-    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        const _f = try @This()._ISmsDeviceStaticsCache.get();
-        return try _f.FromIdAsync(deviceId);
-    }
-    pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(SmsDevice) {
-        const _f = try @This()._ISmsDeviceStaticsCache.get();
-        return try _f.GetDefaultAsync();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDevice";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmsDevice.GUID;
-    pub const IID: Guid = ISmsDevice.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsDevice.SIGNATURE);
-    var _ISmsDeviceStatics2Cache: FactoryCache(ISmsDeviceStatics2, RUNTIME_NAME) = .{};
-    var _ISmsDeviceStaticsCache: FactoryCache(ISmsDeviceStatics, RUNTIME_NAME) = .{};
-};
-pub const SmsDeviceMessageStore = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn DeleteMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncAction {
-        const this: *ISmsDeviceMessageStore = @ptrCast(self);
-        return try this.DeleteMessageAsync(messageId);
-    }
-    pub fn DeleteMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncAction {
-        const this: *ISmsDeviceMessageStore = @ptrCast(self);
-        return try this.DeleteMessagesAsync(messageFilter);
-    }
-    pub fn GetMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncOperation(ISmsMessage) {
-        const this: *ISmsDeviceMessageStore = @ptrCast(self);
-        return try this.GetMessageAsync(messageId);
-    }
-    pub fn GetMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) {
-        const this: *ISmsDeviceMessageStore = @ptrCast(self);
-        return try this.GetMessagesAsync(messageFilter);
-    }
-    pub fn getMaxMessages(self: *@This()) core.HResult!u32 {
-        const this: *ISmsDeviceMessageStore = @ptrCast(self);
-        return try this.getMaxMessages();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDeviceMessageStore";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmsDeviceMessageStore.GUID;
-    pub const IID: Guid = ISmsDeviceMessageStore.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsDeviceMessageStore.SIGNATURE);
-};
-pub const SmsDeviceStatusChangedEventHandler = extern struct {
-    vtable: *const VTable,
-    _refs: @import("std").atomic.Value(u32),
-    _cb: *anyopaque,
-    _context: ?*anyopaque = null,
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn init(
-        cb: *const fn(?*anyopaque, sender: *SmsDevice) void,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-        };
-        return _r;
-    }
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *SmsDevice) void,
-        context: anytype,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-            ._context = @ptrCast(context),
-        };
-        return _r;
-    }
-    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
-    /// Otherwise the memory stays until all references are released, including all references Windows holds.
-    ///
-    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
-    pub fn deinit(self: *@This()) void {
-        _ = Release(@ptrCast(self));
-    }
-    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
-        const std = @import("std");
-        const me: *@This() = @ptrCast(@alignCast(self));
-        // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
-        {
-            out.* = @as(?*anyopaque, @ptrCast(me));
-            _ = AddRef(self);
-            return 0;
-        }
-        out.* = null;
-        return -2147467262; // E_NOINTERFACE
-    }
-    fn AddRef(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        return this._refs.fetchAdd(1, .monotonic) + 1;
-    }
-    fn Release(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const left = this._refs.fetchSub(1, .acq_rel) - 1;
-        if (left == 0) @import("std").heap.c_allocator.destroy(this);
-        return left;
-    }
-    pub fn Invoke(self: *anyopaque, sender: *SmsDevice) callconv(.winapi) HRESULT {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const _callback: *const fn(?*anyopaque, sender: *SmsDevice) void = @ptrCast(@alignCast(this._cb));
-        _callback(this._context, sender);
-        return 0;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDeviceStatusChangedEventHandler";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "982b1162-3dd7-4618-af89-0c272d5d06d8";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, sender: *SmsDevice) callconv(.winapi) HRESULT
-    };
-    pub const VTABLE = VTable {
-        .QueryInterface = QueryInterface,
-        .AddRef = AddRef,
-        .Release = Release,
-        .Invoke = Invoke,
-    };
-};
-pub const SmsMessageFilter = enum(i32) {
-    All = 0,
-    Unread = 1,
-    Read = 2,
-    Sent = 3,
-    Draft = 4,
-};
-pub const SmsMessageReceivedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage {
-        const this: *ISmsMessageReceivedEventArgs = @ptrCast(self);
-        return try this.getTextMessage();
-    }
-    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
-        const this: *ISmsMessageReceivedEventArgs = @ptrCast(self);
-        return try this.getBinaryMessage();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsMessageReceivedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmsMessageReceivedEventArgs.GUID;
-    pub const IID: Guid = ISmsMessageReceivedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsMessageReceivedEventArgs.SIGNATURE);
-};
-pub const SmsMessageReceivedEventHandler = extern struct {
-    vtable: *const VTable,
-    _refs: @import("std").atomic.Value(u32),
-    _cb: *anyopaque,
-    _context: ?*anyopaque = null,
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn init(
-        cb: *const fn(?*anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) void,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-        };
-        return _r;
-    }
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) void,
-        context: anytype,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-            ._context = @ptrCast(context),
-        };
-        return _r;
-    }
-    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
-    /// Otherwise the memory stays until all references are released, including all references Windows holds.
-    ///
-    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
-    pub fn deinit(self: *@This()) void {
-        _ = Release(@ptrCast(self));
-    }
-    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
-        const std = @import("std");
-        const me: *@This() = @ptrCast(@alignCast(self));
-        // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
-        {
-            out.* = @as(?*anyopaque, @ptrCast(me));
-            _ = AddRef(self);
-            return 0;
-        }
-        out.* = null;
-        return -2147467262; // E_NOINTERFACE
-    }
-    fn AddRef(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        return this._refs.fetchAdd(1, .monotonic) + 1;
-    }
-    fn Release(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const left = this._refs.fetchSub(1, .acq_rel) - 1;
-        if (left == 0) @import("std").heap.c_allocator.destroy(this);
-        return left;
-    }
-    pub fn Invoke(self: *anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) callconv(.winapi) HRESULT {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const _callback: *const fn(?*anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) void = @ptrCast(@alignCast(this._cb));
-        _callback(this._context, sender, e);
-        return 0;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsMessageReceivedEventHandler";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "0b7ad409-ec2d-47ce-a253-732beeebcacd";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) callconv(.winapi) HRESULT
-    };
-    pub const VTABLE = VTable {
-        .QueryInterface = QueryInterface,
-        .AddRef = AddRef,
-        .Release = Release,
-        .Invoke = Invoke,
-    };
-};
-pub const SmsReceivedEventDetails = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISmsReceivedEventDetails = @ptrCast(self);
-        return try this.getDeviceId();
-    }
-    pub fn getMessageIndex(self: *@This()) core.HResult!u32 {
-        const this: *ISmsReceivedEventDetails = @ptrCast(self);
-        return try this.getMessageIndex();
-    }
-    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
-        var this: ?*ISmsReceivedEventDetails2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
-        return try this.?.getMessageClass();
-    }
-    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
-        var this: ?*ISmsReceivedEventDetails2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
-        return try this.?.getBinaryMessage();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsReceivedEventDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmsReceivedEventDetails.GUID;
-    pub const IID: Guid = ISmsReceivedEventDetails.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsReceivedEventDetails.SIGNATURE);
-};
-pub const SmsTextMessage = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getTimestamp();
-    }
-    pub fn getPartReferenceId(self: *@This()) core.HResult!u32 {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getPartReferenceId();
-    }
-    pub fn getPartNumber(self: *@This()) core.HResult!u32 {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getPartNumber();
-    }
-    pub fn getPartCount(self: *@This()) core.HResult!u32 {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getPartCount();
-    }
-    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getTo();
-    }
-    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.putTo(value);
-    }
-    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getFrom();
-    }
-    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.putFrom(value);
-    }
-    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getBody();
-    }
-    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.putBody(value);
-    }
-    pub fn getEncoding(self: *@This()) core.HResult!SmsEncoding {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.getEncoding();
-    }
-    pub fn putEncoding(self: *@This(), value: SmsEncoding) core.HResult!void {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.putEncoding(value);
-    }
-    pub fn ToBinaryMessages(self: *@This(), format: SmsDataFormat) core.HResult!*IVectorView(ISmsBinaryMessage) {
-        const this: *ISmsTextMessage = @ptrCast(self);
-        return try this.ToBinaryMessages(format);
-    }
-    pub fn getId(self: *@This()) core.HResult!u32 {
-        var this: ?*ISmsMessage = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        return try this.?.getId();
-    }
-    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
-        var this: ?*ISmsMessage = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
-        return try this.?.getMessageClass();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsTextMessage.IID)));
-    }
-    pub fn FromBinaryMessage(binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
-        const _f = try @This()._ISmsTextMessageStaticsCache.get();
-        return try _f.FromBinaryMessage(binaryMessage);
-    }
-    pub fn FromBinaryData(format: SmsDataFormat, value: [*]u8) core.HResult!*SmsTextMessage {
-        const _f = try @This()._ISmsTextMessageStaticsCache.get();
-        return try _f.FromBinaryData(format, value);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsTextMessage";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISmsTextMessage.GUID;
-    pub const IID: Guid = ISmsTextMessage.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsTextMessage.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-    var _ISmsTextMessageStaticsCache: FactoryCache(ISmsTextMessageStatics, RUNTIME_NAME) = .{};
-};
 pub const CellularClass = enum(i32) {
     None = 0,
     Gsm = 1,
@@ -3679,16 +2244,1451 @@ pub const SmsWapMessage = extern struct {
     pub const IID: Guid = ISmsWapMessage.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsWapMessage.SIGNATURE);
 };
+pub const DeleteSmsMessageOperation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.putCompleted(handler);
+    }
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionCompletedHandler {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.getCompleted();
+    }
+    pub fn GetResults(self: *@This()) core.HResult!void {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.GetResults();
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getStatus();
+    }
+    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getErrorCode();
+    }
+    pub fn Cancel(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Cancel();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.DeleteSmsMessageOperation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IAsyncAction.GUID;
+    pub const IID: Guid = IAsyncAction.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncAction.SIGNATURE);
+};
+pub const DeleteSmsMessagesOperation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.putCompleted(handler);
+    }
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionCompletedHandler {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.getCompleted();
+    }
+    pub fn GetResults(self: *@This()) core.HResult!void {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.GetResults();
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getStatus();
+    }
+    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getErrorCode();
+    }
+    pub fn Cancel(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Cancel();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.DeleteSmsMessagesOperation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IAsyncAction.GUID;
+    pub const IID: Guid = IAsyncAction.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncAction.SIGNATURE);
+};
+pub const GetSmsDeviceOperation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(SmsDevice)) core.HResult!void {
+        const this: *IAsyncOperation(SmsDevice) = @ptrCast(self);
+        return try this.putCompleted(handler);
+    }
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(SmsDevice) {
+        const this: *IAsyncOperation(SmsDevice) = @ptrCast(self);
+        return try this.getCompleted();
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getStatus();
+    }
+    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getErrorCode();
+    }
+    pub fn Cancel(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Cancel();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsDeviceOperation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IAsyncOperation.GUID;
+    pub const IID: Guid = IAsyncOperation.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncOperation.SIGNATURE);
+};
+pub const GetSmsMessageOperation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(ISmsMessage)) core.HResult!void {
+        const this: *IAsyncOperation(ISmsMessage) = @ptrCast(self);
+        return try this.putCompleted(handler);
+    }
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(ISmsMessage) {
+        const this: *IAsyncOperation(ISmsMessage) = @ptrCast(self);
+        return try this.getCompleted();
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getStatus();
+    }
+    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getErrorCode();
+    }
+    pub fn Cancel(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Cancel();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsMessageOperation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IAsyncOperation.GUID;
+    pub const IID: Guid = IAsyncOperation.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncOperation.SIGNATURE);
+};
+pub const GetSmsMessagesOperation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
+        return try this.putProgress(handler);
+    }
+    pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32) {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
+        return try this.getProgress();
+    }
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
+        return try this.putCompleted(handler);
+    }
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32) {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
+        return try this.getCompleted();
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getStatus();
+    }
+    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getErrorCode();
+    }
+    pub fn Cancel(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Cancel();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.GetSmsMessagesOperation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IAsyncOperationWithProgress.GUID;
+    pub const IID: Guid = IAsyncOperationWithProgress.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncOperationWithProgress.SIGNATURE);
+};
+pub const ISmsBinaryMessage = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getFormat(self: *@This()) core.HResult!SmsDataFormat {
+        var _r: SmsDataFormat = undefined;
+        const _c = self.vtable.get_Format(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putFormat(self: *@This(), value: SmsDataFormat) core.HResult!void {
+        const _c = self.vtable.put_Format(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn GetData(self: *@This()) core.HResult![*]u8 {
+        var _r: [*]u8 = undefined;
+        const _c = self.vtable.GetData(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetData(self: *@This(), value: [*]u8) core.HResult!void {
+        const _c = self.vtable.SetData(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsBinaryMessage";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5bf4e813-3b53-4c6e-b61a-d86a63755650";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Format: *const fn(self: *anyopaque, _r: *SmsDataFormat) callconv(.winapi) HRESULT,
+        put_Format: *const fn(self: *anyopaque, value: SmsDataFormat) callconv(.winapi) HRESULT,
+        GetData: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
+        SetData: *const fn(self: *anyopaque, value: [*]u8) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsDevice = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SendMessageAsync(self: *@This(), message: *ISmsMessage) core.HResult!*SendSmsMessageOperation {
+        var _r: *SendSmsMessageOperation = undefined;
+        const _c = self.vtable.SendMessageAsync(@ptrCast(self), message, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn CalculateLength(self: *@This(), message: *SmsTextMessage) core.HResult!SmsEncodedLength {
+        var _r: SmsEncodedLength = undefined;
+        const _c = self.vtable.CalculateLength(@ptrCast(self), message, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_AccountPhoneNumber(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
+        var _r: CellularClass = undefined;
+        const _c = self.vtable.get_CellularClass(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMessageStore(self: *@This()) core.HResult!*SmsDeviceMessageStore {
+        var _r: *SmsDeviceMessageStore = undefined;
+        const _c = self.vtable.get_MessageStore(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDeviceStatus(self: *@This()) core.HResult!SmsDeviceStatus {
+        var _r: SmsDeviceStatus = undefined;
+        const _c = self.vtable.get_DeviceStatus(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn addSmsMessageReceived(self: *@This(), eventHandler: *SmsMessageReceivedEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_SmsMessageReceived(@ptrCast(self), eventHandler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeSmsMessageReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_SmsMessageReceived(@ptrCast(self), eventCookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addSmsDeviceStatusChanged(self: *@This(), eventHandler: *SmsDeviceStatusChangedEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_SmsDeviceStatusChanged(@ptrCast(self), eventHandler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeSmsDeviceStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_SmsDeviceStatusChanged(@ptrCast(self), eventCookie);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDevice";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "091791ed-872b-4eec-9c72-ab11627b34ec";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        SendMessageAsync: *const fn(self: *anyopaque, message: *ISmsMessage, _r: **SendSmsMessageOperation) callconv(.winapi) HRESULT,
+        CalculateLength: *const fn(self: *anyopaque, message: *SmsTextMessage, _r: *SmsEncodedLength) callconv(.winapi) HRESULT,
+        get_AccountPhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CellularClass: *const fn(self: *anyopaque, _r: *CellularClass) callconv(.winapi) HRESULT,
+        get_MessageStore: *const fn(self: *anyopaque, _r: **SmsDeviceMessageStore) callconv(.winapi) HRESULT,
+        get_DeviceStatus: *const fn(self: *anyopaque, _r: *SmsDeviceStatus) callconv(.winapi) HRESULT,
+        add_SmsMessageReceived: *const fn(self: *anyopaque, eventHandler: *SmsMessageReceivedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_SmsMessageReceived: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_SmsDeviceStatusChanged: *const fn(self: *anyopaque, eventHandler: *SmsDeviceStatusChangedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_SmsDeviceStatusChanged: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsDeviceMessageStore = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn DeleteMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.DeleteMessageAsync(@ptrCast(self), messageId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn DeleteMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.DeleteMessagesAsync(@ptrCast(self), messageFilter, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncOperation(ISmsMessage) {
+        var _r: *IAsyncOperation(ISmsMessage) = undefined;
+        const _c = self.vtable.GetMessageAsync(@ptrCast(self), messageId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) {
+        var _r: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = undefined;
+        const _c = self.vtable.GetMessagesAsync(@ptrCast(self), messageFilter, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMaxMessages(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_MaxMessages(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceMessageStore";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "9889f253-f188-4427-8d54-ce0c2423c5c1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        DeleteMessageAsync: *const fn(self: *anyopaque, messageId: u32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DeleteMessagesAsync: *const fn(self: *anyopaque, messageFilter: SmsMessageFilter, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetMessageAsync: *const fn(self: *anyopaque, messageId: u32, _r: **IAsyncOperation(ISmsMessage)) callconv(.winapi) HRESULT,
+        GetMessagesAsync: *const fn(self: *anyopaque, messageFilter: SmsMessageFilter, _r: **IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32)) callconv(.winapi) HRESULT,
+        get_MaxMessages: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsDeviceStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+        var _r: *IAsyncOperation(SmsDevice) = undefined;
+        const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(SmsDevice) {
+        var _r: *IAsyncOperation(SmsDevice) = undefined;
+        const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "f88d07ea-d815-4dd1-a234-4520ce4604a4";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
+        GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsDeviceStatics2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn FromNetworkAccountIdAsync(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+        var _r: *IAsyncOperation(SmsDevice) = undefined;
+        const _c = self.vtable.FromNetworkAccountIdAsync(@ptrCast(self), networkAccountId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsDeviceStatics2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2ca11c87-0873-4caf-8a7d-bd471e8586d1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        FromNetworkAccountIdAsync: *const fn(self: *anyopaque, networkAccountId: ?HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsMessage = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
+        var _r: SmsMessageClass = undefined;
+        const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessage";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "ed3c5e28-6984-4b07-811d-8d5906ed3cea";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        get_MessageClass: *const fn(self: *anyopaque, _r: *SmsMessageClass) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsMessageReceivedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage {
+        var _r: *SmsTextMessage = undefined;
+        const _c = self.vtable.get_TextMessage(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
+        var _r: *SmsBinaryMessage = undefined;
+        const _c = self.vtable.get_BinaryMessage(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsMessageReceivedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "08e80a98-b8e5-41c1-a3d8-d3abfae22675";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_TextMessage: *const fn(self: *anyopaque, _r: **SmsTextMessage) callconv(.winapi) HRESULT,
+        get_BinaryMessage: *const fn(self: *anyopaque, _r: **SmsBinaryMessage) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsReceivedEventDetails = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMessageIndex(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_MessageIndex(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsReceivedEventDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5bb50f15-e46d-4c82-847d-5a0304c1d53d";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MessageIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsReceivedEventDetails2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
+        var _r: SmsMessageClass = undefined;
+        const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
+        var _r: *SmsBinaryMessage = undefined;
+        const _c = self.vtable.get_BinaryMessage(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsReceivedEventDetails2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "40e05c86-a7b4-4771-9ae7-0b5ffb12c03a";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_MessageClass: *const fn(self: *anyopaque, _r: *SmsMessageClass) callconv(.winapi) HRESULT,
+        get_BinaryMessage: *const fn(self: *anyopaque, _r: **SmsBinaryMessage) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsTextMessage = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
+        var _r: DateTime = undefined;
+        const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPartReferenceId(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_PartReferenceId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPartNumber(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_PartNumber(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPartCount(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_PartCount(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_To(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_To(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_From(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_From(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Body(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_Body(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getEncoding(self: *@This()) core.HResult!SmsEncoding {
+        var _r: SmsEncoding = undefined;
+        const _c = self.vtable.get_Encoding(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putEncoding(self: *@This(), value: SmsEncoding) core.HResult!void {
+        const _c = self.vtable.put_Encoding(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn ToBinaryMessages(self: *@This(), format: SmsDataFormat) core.HResult!*IVectorView(ISmsBinaryMessage) {
+        var _r: *IVectorView(ISmsBinaryMessage) = undefined;
+        const _c = self.vtable.ToBinaryMessages(@ptrCast(self), format, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsTextMessage";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "d61c904c-a495-487f-9a6f-971548c5bc9f";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
+        get_PartReferenceId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        get_PartNumber: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        get_PartCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_To: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_From: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Body: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Encoding: *const fn(self: *anyopaque, _r: *SmsEncoding) callconv(.winapi) HRESULT,
+        put_Encoding: *const fn(self: *anyopaque, value: SmsEncoding) callconv(.winapi) HRESULT,
+        ToBinaryMessages: *const fn(self: *anyopaque, format: SmsDataFormat, _r: **IVectorView(ISmsBinaryMessage)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ISmsTextMessageStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn FromBinaryMessage(self: *@This(), binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
+        var _r: *SmsTextMessage = undefined;
+        const _c = self.vtable.FromBinaryMessage(@ptrCast(self), binaryMessage, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn FromBinaryData(self: *@This(), format: SmsDataFormat, value: [*]u8) core.HResult!*SmsTextMessage {
+        var _r: *SmsTextMessage = undefined;
+        const _c = self.vtable.FromBinaryData(@ptrCast(self), format, value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.ISmsTextMessageStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "7f68c5ed-3ccc-47a3-8c55-380d3b010892";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        FromBinaryMessage: *const fn(self: *anyopaque, binaryMessage: *SmsBinaryMessage, _r: **SmsTextMessage) callconv(.winapi) HRESULT,
+        FromBinaryData: *const fn(self: *anyopaque, format: SmsDataFormat, value: [*]u8, _r: **SmsTextMessage) callconv(.winapi) HRESULT,
+    };
+};
+pub const SendSmsMessageOperation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.putCompleted(handler);
+    }
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionCompletedHandler {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.getCompleted();
+    }
+    pub fn GetResults(self: *@This()) core.HResult!void {
+        const this: *IAsyncAction = @ptrCast(self);
+        return try this.GetResults();
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getStatus(self: *@This()) core.HResult!AsyncStatus {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getStatus();
+    }
+    pub fn getErrorCode(self: *@This()) core.HResult!HResult {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.getErrorCode();
+    }
+    pub fn Cancel(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Cancel();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IAsyncInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IAsyncInfo.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SendSmsMessageOperation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IAsyncAction.GUID;
+    pub const IID: Guid = IAsyncAction.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAsyncAction.SIGNATURE);
+};
+pub const SmsBinaryMessage = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getFormat(self: *@This()) core.HResult!SmsDataFormat {
+        const this: *ISmsBinaryMessage = @ptrCast(self);
+        return try this.getFormat();
+    }
+    pub fn putFormat(self: *@This(), value: SmsDataFormat) core.HResult!void {
+        const this: *ISmsBinaryMessage = @ptrCast(self);
+        return try this.putFormat(value);
+    }
+    pub fn GetData(self: *@This()) core.HResult![*]u8 {
+        const this: *ISmsBinaryMessage = @ptrCast(self);
+        return try this.GetData();
+    }
+    pub fn SetData(self: *@This(), value: [*]u8) core.HResult!void {
+        const this: *ISmsBinaryMessage = @ptrCast(self);
+        return try this.SetData(value);
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*ISmsMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
+        var this: ?*ISmsMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
+        return try this.?.getMessageClass();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsBinaryMessage.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsBinaryMessage";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmsBinaryMessage.GUID;
+    pub const IID: Guid = ISmsBinaryMessage.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsBinaryMessage.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const SmsDevice = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SendMessageAsync(self: *@This(), message: *ISmsMessage) core.HResult!*SendSmsMessageOperation {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.SendMessageAsync(message);
+    }
+    pub fn CalculateLength(self: *@This(), message: *SmsTextMessage) core.HResult!SmsEncodedLength {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.CalculateLength(message);
+    }
+    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.getAccountPhoneNumber();
+    }
+    pub fn getCellularClass(self: *@This()) core.HResult!CellularClass {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.getCellularClass();
+    }
+    pub fn getMessageStore(self: *@This()) core.HResult!*SmsDeviceMessageStore {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.getMessageStore();
+    }
+    pub fn getDeviceStatus(self: *@This()) core.HResult!SmsDeviceStatus {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.getDeviceStatus();
+    }
+    pub fn addSmsMessageReceived(self: *@This(), eventHandler: *SmsMessageReceivedEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.addSmsMessageReceived(eventHandler);
+    }
+    pub fn removeSmsMessageReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.removeSmsMessageReceived(eventCookie);
+    }
+    pub fn addSmsDeviceStatusChanged(self: *@This(), eventHandler: *SmsDeviceStatusChangedEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.addSmsDeviceStatusChanged(eventHandler);
+    }
+    pub fn removeSmsDeviceStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
+        const this: *ISmsDevice = @ptrCast(self);
+        return try this.removeSmsDeviceStatusChanged(eventCookie);
+    }
+    pub fn FromNetworkAccountIdAsync(networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+        const _f = try @This()._ISmsDeviceStatics2Cache.get();
+        return try _f.FromNetworkAccountIdAsync(networkAccountId);
+    }
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
+        const _f = try @This()._ISmsDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
+    }
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+        const _f = try @This()._ISmsDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
+    }
+    pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(SmsDevice) {
+        const _f = try @This()._ISmsDeviceStaticsCache.get();
+        return try _f.GetDefaultAsync();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDevice";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmsDevice.GUID;
+    pub const IID: Guid = ISmsDevice.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsDevice.SIGNATURE);
+    var _ISmsDeviceStatics2Cache: FactoryCache(ISmsDeviceStatics2, RUNTIME_NAME) = .{};
+    var _ISmsDeviceStaticsCache: FactoryCache(ISmsDeviceStatics, RUNTIME_NAME) = .{};
+};
+pub const SmsDeviceMessageStore = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn DeleteMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncAction {
+        const this: *ISmsDeviceMessageStore = @ptrCast(self);
+        return try this.DeleteMessageAsync(messageId);
+    }
+    pub fn DeleteMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncAction {
+        const this: *ISmsDeviceMessageStore = @ptrCast(self);
+        return try this.DeleteMessagesAsync(messageFilter);
+    }
+    pub fn GetMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncOperation(ISmsMessage) {
+        const this: *ISmsDeviceMessageStore = @ptrCast(self);
+        return try this.GetMessageAsync(messageId);
+    }
+    pub fn GetMessagesAsync(self: *@This(), messageFilter: SmsMessageFilter) core.HResult!*IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) {
+        const this: *ISmsDeviceMessageStore = @ptrCast(self);
+        return try this.GetMessagesAsync(messageFilter);
+    }
+    pub fn getMaxMessages(self: *@This()) core.HResult!u32 {
+        const this: *ISmsDeviceMessageStore = @ptrCast(self);
+        return try this.getMaxMessages();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDeviceMessageStore";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmsDeviceMessageStore.GUID;
+    pub const IID: Guid = ISmsDeviceMessageStore.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsDeviceMessageStore.SIGNATURE);
+};
+pub const SmsDeviceStatusChangedEventHandler = extern struct {
+    vtable: *const VTable,
+    _refs: @import("std").atomic.Value(u32),
+    _cb: *anyopaque,
+    _context: ?*anyopaque = null,
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn init(
+        cb: *const fn(?*anyopaque, sender: *SmsDevice) void,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+        };
+        return _r;
+    }
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn initWithState(
+        cb: *const fn(?*anyopaque, sender: *SmsDevice) void,
+        context: anytype,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+            ._context = @ptrCast(context),
+        };
+        return _r;
+    }
+    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
+    /// Otherwise the memory stays until all references are released, including all references Windows holds.
+    ///
+    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
+    pub fn deinit(self: *@This()) void {
+        _ = Release(@ptrCast(self));
+    }
+    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = AddRef(self);
+            return 0;
+        }
+        out.* = null;
+        return -2147467262; // E_NOINTERFACE
+    }
+    fn AddRef(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        return this._refs.fetchAdd(1, .monotonic) + 1;
+    }
+    fn Release(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const left = this._refs.fetchSub(1, .acq_rel) - 1;
+        if (left == 0) @import("std").heap.c_allocator.destroy(this);
+        return left;
+    }
+    pub fn Invoke(self: *anyopaque, sender: *SmsDevice) callconv(.winapi) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const _callback: *const fn(?*anyopaque, sender: *SmsDevice) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender);
+        return 0;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDeviceStatusChangedEventHandler";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "982b1162-3dd7-4618-af89-0c272d5d06d8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        Invoke: *const fn(self: *anyopaque, sender: *SmsDevice) callconv(.winapi) HRESULT
+    };
+    pub const VTABLE = VTable {
+        .QueryInterface = QueryInterface,
+        .AddRef = AddRef,
+        .Release = Release,
+        .Invoke = Invoke,
+    };
+};
+pub const SmsMessageFilter = enum(i32) {
+    All = 0,
+    Unread = 1,
+    Read = 2,
+    Sent = 3,
+    Draft = 4,
+};
+pub const SmsMessageReceivedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage {
+        const this: *ISmsMessageReceivedEventArgs = @ptrCast(self);
+        return try this.getTextMessage();
+    }
+    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
+        const this: *ISmsMessageReceivedEventArgs = @ptrCast(self);
+        return try this.getBinaryMessage();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsMessageReceivedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmsMessageReceivedEventArgs.GUID;
+    pub const IID: Guid = ISmsMessageReceivedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsMessageReceivedEventArgs.SIGNATURE);
+};
+pub const SmsMessageReceivedEventHandler = extern struct {
+    vtable: *const VTable,
+    _refs: @import("std").atomic.Value(u32),
+    _cb: *anyopaque,
+    _context: ?*anyopaque = null,
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn init(
+        cb: *const fn(?*anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) void,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+        };
+        return _r;
+    }
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn initWithState(
+        cb: *const fn(?*anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) void,
+        context: anytype,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+            ._context = @ptrCast(context),
+        };
+        return _r;
+    }
+    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
+    /// Otherwise the memory stays until all references are released, including all references Windows holds.
+    ///
+    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
+    pub fn deinit(self: *@This()) void {
+        _ = Release(@ptrCast(self));
+    }
+    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = AddRef(self);
+            return 0;
+        }
+        out.* = null;
+        return -2147467262; // E_NOINTERFACE
+    }
+    fn AddRef(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        return this._refs.fetchAdd(1, .monotonic) + 1;
+    }
+    fn Release(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const left = this._refs.fetchSub(1, .acq_rel) - 1;
+        if (left == 0) @import("std").heap.c_allocator.destroy(this);
+        return left;
+    }
+    pub fn Invoke(self: *anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) callconv(.winapi) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const _callback: *const fn(?*anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
+        return 0;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsMessageReceivedEventHandler";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "0b7ad409-ec2d-47ce-a253-732beeebcacd";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        Invoke: *const fn(self: *anyopaque, sender: *SmsDevice, e: *SmsMessageReceivedEventArgs) callconv(.winapi) HRESULT
+    };
+    pub const VTABLE = VTable {
+        .QueryInterface = QueryInterface,
+        .AddRef = AddRef,
+        .Release = Release,
+        .Invoke = Invoke,
+    };
+};
+pub const SmsReceivedEventDetails = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISmsReceivedEventDetails = @ptrCast(self);
+        return try this.getDeviceId();
+    }
+    pub fn getMessageIndex(self: *@This()) core.HResult!u32 {
+        const this: *ISmsReceivedEventDetails = @ptrCast(self);
+        return try this.getMessageIndex();
+    }
+    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
+        var this: ?*ISmsReceivedEventDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
+        return try this.?.getMessageClass();
+    }
+    pub fn getBinaryMessage(self: *@This()) core.HResult!*SmsBinaryMessage {
+        var this: ?*ISmsReceivedEventDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsReceivedEventDetails2.IID, @ptrCast(&this));
+        return try this.?.getBinaryMessage();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsReceivedEventDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmsReceivedEventDetails.GUID;
+    pub const IID: Guid = ISmsReceivedEventDetails.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsReceivedEventDetails.SIGNATURE);
+};
+pub const SmsTextMessage = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getTimestamp();
+    }
+    pub fn getPartReferenceId(self: *@This()) core.HResult!u32 {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getPartReferenceId();
+    }
+    pub fn getPartNumber(self: *@This()) core.HResult!u32 {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getPartNumber();
+    }
+    pub fn getPartCount(self: *@This()) core.HResult!u32 {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getPartCount();
+    }
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getTo();
+    }
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.putTo(value);
+    }
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getFrom();
+    }
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.putFrom(value);
+    }
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getBody();
+    }
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.putBody(value);
+    }
+    pub fn getEncoding(self: *@This()) core.HResult!SmsEncoding {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.getEncoding();
+    }
+    pub fn putEncoding(self: *@This(), value: SmsEncoding) core.HResult!void {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.putEncoding(value);
+    }
+    pub fn ToBinaryMessages(self: *@This(), format: SmsDataFormat) core.HResult!*IVectorView(ISmsBinaryMessage) {
+        const this: *ISmsTextMessage = @ptrCast(self);
+        return try this.ToBinaryMessages(format);
+    }
+    pub fn getId(self: *@This()) core.HResult!u32 {
+        var this: ?*ISmsMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
+        return try this.?.getId();
+    }
+    pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
+        var this: ?*ISmsMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ISmsMessage.IID, @ptrCast(&this));
+        return try this.?.getMessageClass();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsTextMessage.IID)));
+    }
+    pub fn FromBinaryMessage(binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
+        const _f = try @This()._ISmsTextMessageStaticsCache.get();
+        return try _f.FromBinaryMessage(binaryMessage);
+    }
+    pub fn FromBinaryData(format: SmsDataFormat, value: [*]u8) core.HResult!*SmsTextMessage {
+        const _f = try @This()._ISmsTextMessageStaticsCache.get();
+        return try _f.FromBinaryData(format, value);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Sms.SmsTextMessage";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ISmsTextMessage.GUID;
+    pub const IID: Guid = ISmsTextMessage.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISmsTextMessage.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+    var _ISmsTextMessageStaticsCache: FactoryCache(ISmsTextMessageStatics, RUNTIME_NAME) = .{};
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const AsyncOperationCompletedHandler = @import("../Foundation.zig").AsyncOperationCompletedHandler;
 const IVector = @import("../Foundation/Collections.zig").IVector;
-const AsyncOperationProgressHandler = @import("../Foundation.zig").AsyncOperationProgressHandler;
 const IBuffer = @import("../Storage/Streams.zig").IBuffer;
 const IReference = @import("../Foundation.zig").IReference;
 const IMap = @import("../Foundation/Collections.zig").IMap;
+const AsyncOperationProgressHandler = @import("../Foundation.zig").AsyncOperationProgressHandler;
 const DateTime = @import("../Foundation.zig").DateTime;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const IAsyncOperationWithProgress = @import("../Foundation.zig").IAsyncOperationWithProgress;

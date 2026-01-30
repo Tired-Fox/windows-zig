@@ -41,14 +41,14 @@ pub const GuidanceAudioNotificationRequestedEventArgs = extern struct {
     pub const IID: Guid = IGuidanceAudioNotificationRequestedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IGuidanceAudioNotificationRequestedEventArgs.SIGNATURE);
 };
-pub const GuidanceAudioNotifications = enum(i32) {
-    None = 0,
-    Maneuver = 1,
-    Route = 2,
-    Gps = 4,
-    SpeedLimit = 8,
-    Traffic = 16,
-    TrafficCamera = 32,
+pub const GuidanceAudioNotifications = packed struct(u32) {
+    Maneuver: bool = false,
+    Route: bool = false,
+    Gps: bool = false,
+    SpeedLimit: bool = false,
+    Traffic: bool = false,
+    TrafficCamera: bool = false,
+    _m: u26 = 0,
 };
 pub const GuidanceLaneInfo = extern struct {
     vtable: *const IInspectable.VTable,
@@ -75,18 +75,18 @@ pub const GuidanceLaneInfo = extern struct {
     pub const IID: Guid = IGuidanceLaneInfo.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IGuidanceLaneInfo.SIGNATURE);
 };
-pub const GuidanceLaneMarkers = enum(i32) {
-    None = 0,
-    LightRight = 1,
-    Right = 2,
-    HardRight = 4,
-    Straight = 8,
-    UTurnLeft = 16,
-    HardLeft = 32,
-    Left = 64,
-    LightLeft = 128,
-    UTurnRight = 256,
-    Unknown = -1,
+pub const GuidanceLaneMarkers = packed struct(u32) {
+    LightRight: bool = false,
+    Right: bool = false,
+    HardRight: bool = false,
+    Straight: bool = false,
+    UTurnLeft: bool = false,
+    HardLeft: bool = false,
+    Left: bool = false,
+    LightLeft: bool = false,
+    UTurnRight: bool = false,
+    Unknown: bool = false,
+    _m: u22 = 0,
 };
 pub const GuidanceManeuver = extern struct {
     vtable: *const IInspectable.VTable,

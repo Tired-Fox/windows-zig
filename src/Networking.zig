@@ -114,9 +114,9 @@ pub const HostName = extern struct {
     var _IHostNameFactoryCache: FactoryCache(IHostNameFactory, RUNTIME_NAME) = .{};
     var _IHostNameStaticsCache: FactoryCache(IHostNameStatics, RUNTIME_NAME) = .{};
 };
-pub const HostNameSortOptions = enum(i32) {
-    None = 0,
-    OptimizeForLongConnections = 2,
+pub const HostNameSortOptions = packed struct(u32) {
+    OptimizeForLongConnections: bool = false,
+    _m: u31 = 0,
 };
 pub const HostNameType = enum(i32) {
     DomainName = 0,

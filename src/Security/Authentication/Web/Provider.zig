@@ -1571,9 +1571,9 @@ pub const WebAccountScope = enum(i32) {
     PerUser = 0,
     PerApplication = 1,
 };
-pub const WebAccountSelectionOptions = enum(i32) {
-    Default = 0,
-    New = 1,
+pub const WebAccountSelectionOptions = packed struct(u32) {
+    New: bool = false,
+    _m: u31 = 0,
 };
 pub const WebProviderTokenRequest = extern struct {
     vtable: *const IInspectable.VTable,

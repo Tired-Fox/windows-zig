@@ -1902,13 +1902,13 @@ pub const IPrintWorkflowXpsDataAvailableEventArgs = extern struct {
         GetDeferral: *const fn(self: *anyopaque, _r: **Deferral) callconv(.winapi) HRESULT,
     };
 };
-pub const PdlConversionHostBasedProcessingOperations = enum(i32) {
-    None = 0,
-    PageRotation = 1,
-    PageOrdering = 2,
-    Copies = 4,
-    BlankPageInsertion = 8,
-    All = -1,
+pub const PdlConversionHostBasedProcessingOperations = packed struct(u32) {
+    PageRotation: bool = false,
+    PageOrdering: bool = false,
+    Copies: bool = false,
+    BlankPageInsertion: bool = false,
+    All: bool = false,
+    _m: u27 = 0,
 };
 pub const PrintWorkflowAttributesMergePolicy = enum(i32) {
     MergePreferPrintTicketOnConflict = 0,

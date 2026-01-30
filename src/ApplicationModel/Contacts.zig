@@ -608,14 +608,14 @@ pub const ContactAnnotationList = extern struct {
     pub const IID: Guid = IContactAnnotationList.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IContactAnnotationList.SIGNATURE);
 };
-pub const ContactAnnotationOperations = enum(i32) {
-    None = 0,
-    ContactProfile = 1,
-    Message = 2,
-    AudioCall = 4,
-    VideoCall = 8,
-    SocialFeeds = 16,
-    Share = 32,
+pub const ContactAnnotationOperations = packed struct(u32) {
+    ContactProfile: bool = false,
+    Message: bool = false,
+    AudioCall: bool = false,
+    VideoCall: bool = false,
+    SocialFeeds: bool = false,
+    Share: bool = false,
+    _m: u26 = 0,
 };
 pub const ContactAnnotationStore = extern struct {
     vtable: *const IInspectable.VTable,
@@ -2490,11 +2490,11 @@ pub const ContactPicker = extern struct {
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
     var _IContactPickerStaticsCache: FactoryCache(IContactPickerStatics, RUNTIME_NAME) = .{};
 };
-pub const ContactQueryDesiredFields = enum(i32) {
-    None = 0,
-    PhoneNumber = 1,
-    EmailAddress = 2,
-    PostalAddress = 4,
+pub const ContactQueryDesiredFields = packed struct(u32) {
+    PhoneNumber: bool = false,
+    EmailAddress: bool = false,
+    PostalAddress: bool = false,
+    _m: u29 = 0,
 };
 pub const ContactQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
@@ -2563,12 +2563,12 @@ pub const ContactQueryOptions = extern struct {
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
     var _IContactQueryOptionsFactoryCache: FactoryCache(IContactQueryOptionsFactory, RUNTIME_NAME) = .{};
 };
-pub const ContactQuerySearchFields = enum(i32) {
-    None = 0,
-    Name = 1,
-    Email = 2,
-    Phone = 4,
-    All = -1,
+pub const ContactQuerySearchFields = packed struct(u32) {
+    Name: bool = false,
+    Email: bool = false,
+    Phone: bool = false,
+    All: bool = false,
+    _m: u28 = 0,
 };
 pub const ContactQuerySearchScope = enum(i32) {
     Local = 0,

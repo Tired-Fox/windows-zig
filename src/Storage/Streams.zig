@@ -1765,10 +1765,10 @@ pub const InMemoryRandomAccessStream = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IRandomAccessStream.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const InputStreamOptions = enum(i32) {
-    None = 0,
-    Partial = 1,
-    ReadAhead = 2,
+pub const InputStreamOptions = packed struct(u32) {
+    Partial: bool = false,
+    ReadAhead: bool = false,
+    _m: u30 = 0,
 };
 pub const InputStreamOverStream = extern struct {
     vtable: *const IInspectable.VTable,

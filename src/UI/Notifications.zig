@@ -3640,9 +3640,9 @@ pub const NotificationData = extern struct {
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
     var _INotificationDataFactoryCache: FactoryCache(INotificationDataFactory, RUNTIME_NAME) = .{};
 };
-pub const NotificationKinds = enum(i32) {
-    Unknown = 0,
-    Toast = 1,
+pub const NotificationKinds = packed struct(u32) {
+    Toast: bool = false,
+    _m: u31 = 0,
 };
 pub const NotificationMirroring = enum(i32) {
     Allowed = 0,

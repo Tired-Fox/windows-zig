@@ -1822,11 +1822,11 @@ pub const TileMixedRealityModelActivationBehavior = enum(i32) {
     Default = 0,
     None = 1,
 };
-pub const TileOptions = enum(i32) {
-    None = 0,
-    ShowNameOnLogo = 1,
-    ShowNameOnWideLogo = 2,
-    CopyOnDeployment = 4,
+pub const TileOptions = packed struct(u32) {
+    ShowNameOnLogo: bool = false,
+    ShowNameOnWideLogo: bool = false,
+    CopyOnDeployment: bool = false,
+    _m: u29 = 0,
 };
 pub const TileSize = enum(i32) {
     Default = 0,

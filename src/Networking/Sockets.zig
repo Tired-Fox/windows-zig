@@ -1,339 +1,4 @@
 // ----- This code is automatically generated -----
-pub const ControlChannelTrigger = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getControlChannelTriggerId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.getControlChannelTriggerId();
-    }
-    pub fn getServerKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.getServerKeepAliveIntervalInMinutes();
-    }
-    pub fn putServerKeepAliveIntervalInMinutes(self: *@This(), value: u32) core.HResult!void {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.putServerKeepAliveIntervalInMinutes(value);
-    }
-    pub fn getCurrentKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.getCurrentKeepAliveIntervalInMinutes();
-    }
-    pub fn getTransportObject(self: *@This()) core.HResult!*IInspectable {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.getTransportObject();
-    }
-    pub fn getKeepAliveTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.getKeepAliveTrigger();
-    }
-    pub fn getPushNotificationTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.getPushNotificationTrigger();
-    }
-    pub fn UsingTransport(self: *@This(), transport: *IInspectable) core.HResult!void {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.UsingTransport(transport);
-    }
-    pub fn WaitForPushEnabled(self: *@This()) core.HResult!ControlChannelTriggerStatus {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.WaitForPushEnabled();
-    }
-    pub fn DecreaseNetworkKeepAliveInterval(self: *@This()) core.HResult!void {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.DecreaseNetworkKeepAliveInterval();
-    }
-    pub fn FlushTransport(self: *@This()) core.HResult!void {
-        const this: *IControlChannelTrigger = @ptrCast(self);
-        return try this.FlushTransport();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
-        var this: ?*IControlChannelTrigger2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IControlChannelTrigger2.IID, @ptrCast(&this));
-        return try this.?.getIsWakeFromLowPowerSupported();
-    }
-    pub fn CreateControlChannelTrigger(channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
-        const _f = try @This()._IControlChannelTriggerFactoryCache.get();
-        return try _f.CreateControlChannelTrigger(channelId, serverKeepAliveIntervalInMinutes);
-    }
-    pub fn CreateControlChannelTriggerEx(channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType) core.HResult!*ControlChannelTrigger {
-        const _f = try @This()._IControlChannelTriggerFactoryCache.get();
-        return try _f.CreateControlChannelTriggerEx(channelId, serverKeepAliveIntervalInMinutes, resourceRequestType);
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Sockets.ControlChannelTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IControlChannelTrigger.GUID;
-    pub const IID: Guid = IControlChannelTrigger.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IControlChannelTrigger.SIGNATURE);
-    var _IControlChannelTriggerFactoryCache: FactoryCache(IControlChannelTriggerFactory, RUNTIME_NAME) = .{};
-};
-pub const ControlChannelTriggerResetReason = enum(i32) {
-    FastUserSwitched = 0,
-    LowPowerExit = 1,
-    QuietHoursExit = 2,
-    ApplicationRestart = 3,
-};
-pub const ControlChannelTriggerResourceType = enum(i32) {
-    RequestSoftwareSlot = 0,
-    RequestHardwareSlot = 1,
-};
-pub const IControlChannelTrigger = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getControlChannelTriggerId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ControlChannelTriggerId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getServerKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_ServerKeepAliveIntervalInMinutes(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putServerKeepAliveIntervalInMinutes(self: *@This(), value: u32) core.HResult!void {
-        const _c = self.vtable.put_ServerKeepAliveIntervalInMinutes(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getCurrentKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_CurrentKeepAliveIntervalInMinutes(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTransportObject(self: *@This()) core.HResult!*IInspectable {
-        var _r: *IInspectable = undefined;
-        const _c = self.vtable.get_TransportObject(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getKeepAliveTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
-        var _r: *IBackgroundTrigger = undefined;
-        const _c = self.vtable.get_KeepAliveTrigger(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPushNotificationTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
-        var _r: *IBackgroundTrigger = undefined;
-        const _c = self.vtable.get_PushNotificationTrigger(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn UsingTransport(self: *@This(), transport: *IInspectable) core.HResult!void {
-        const _c = self.vtable.UsingTransport(@ptrCast(self), transport);
-        try core.hresultToError(_c);
-    }
-    pub fn WaitForPushEnabled(self: *@This()) core.HResult!ControlChannelTriggerStatus {
-        var _r: ControlChannelTriggerStatus = undefined;
-        const _c = self.vtable.WaitForPushEnabled(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn DecreaseNetworkKeepAliveInterval(self: *@This()) core.HResult!void {
-        const _c = self.vtable.DecreaseNetworkKeepAliveInterval(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn FlushTransport(self: *@This()) core.HResult!void {
-        const _c = self.vtable.FlushTransport(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTrigger";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "7d1431a7-ee96-40e8-a199-8703cd969ec3";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ControlChannelTriggerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_ServerKeepAliveIntervalInMinutes: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_ServerKeepAliveIntervalInMinutes: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_CurrentKeepAliveIntervalInMinutes: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_TransportObject: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
-        get_KeepAliveTrigger: *const fn(self: *anyopaque, _r: **IBackgroundTrigger) callconv(.winapi) HRESULT,
-        get_PushNotificationTrigger: *const fn(self: *anyopaque, _r: **IBackgroundTrigger) callconv(.winapi) HRESULT,
-        UsingTransport: *const fn(self: *anyopaque, transport: *IInspectable) callconv(.winapi) HRESULT,
-        WaitForPushEnabled: *const fn(self: *anyopaque, _r: *ControlChannelTriggerStatus) callconv(.winapi) HRESULT,
-        DecreaseNetworkKeepAliveInterval: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        FlushTransport: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-    };
-};
-pub const IControlChannelTrigger2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsWakeFromLowPowerSupported(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTrigger2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "af00d237-51be-4514-9725-3556e1879580";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_IsWakeFromLowPowerSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IControlChannelTriggerEventDetails = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getControlChannelTrigger(self: *@This()) core.HResult!*ControlChannelTrigger {
-        var _r: *ControlChannelTrigger = undefined;
-        const _c = self.vtable.get_ControlChannelTrigger(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTriggerEventDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "1b36e047-89bb-4236-96ac-71d012bb4869";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ControlChannelTrigger: *const fn(self: *anyopaque, _r: **ControlChannelTrigger) callconv(.winapi) HRESULT,
-    };
-};
-pub const IControlChannelTriggerFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateControlChannelTrigger(self: *@This(), channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
-        var _r: *ControlChannelTrigger = undefined;
-        const _c = self.vtable.CreateControlChannelTrigger(@ptrCast(self), channelId, serverKeepAliveIntervalInMinutes, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn CreateControlChannelTriggerEx(self: *@This(), channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType) core.HResult!*ControlChannelTrigger {
-        var _r: *ControlChannelTrigger = undefined;
-        const _c = self.vtable.CreateControlChannelTriggerEx(@ptrCast(self), channelId, serverKeepAliveIntervalInMinutes, resourceRequestType, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTriggerFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "da4b7cf0-8d71-446f-88c3-b95184a2d6cd";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateControlChannelTrigger: *const fn(self: *anyopaque, channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, _r: **ControlChannelTrigger) callconv(.winapi) HRESULT,
-        CreateControlChannelTriggerEx: *const fn(self: *anyopaque, channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType, _r: **ControlChannelTrigger) callconv(.winapi) HRESULT,
-    };
-};
-pub const IControlChannelTriggerResetEventDetails = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getResetReason(self: *@This()) core.HResult!ControlChannelTriggerResetReason {
-        var _r: ControlChannelTriggerResetReason = undefined;
-        const _c = self.vtable.get_ResetReason(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getHardwareSlotReset(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_HardwareSlotReset(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSoftwareSlotReset(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_SoftwareSlotReset(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTriggerResetEventDetails";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "6851038e-8ec4-42fe-9bb2-21e91b7bfcb1";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ResetReason: *const fn(self: *anyopaque, _r: *ControlChannelTriggerResetReason) callconv(.winapi) HRESULT,
-        get_HardwareSlotReset: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_SoftwareSlotReset: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
 pub const BandwidthStatistics = extern struct {
     OutboundBitsPerSecond: u64,
     InboundBitsPerSecond: u64,
@@ -4961,6 +4626,341 @@ pub const WebSocketServerCustomValidationRequestedEventArgs = extern struct {
     pub const GUID: []const u8 = IWebSocketServerCustomValidationRequestedEventArgs.GUID;
     pub const IID: Guid = IWebSocketServerCustomValidationRequestedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWebSocketServerCustomValidationRequestedEventArgs.SIGNATURE);
+};
+pub const ControlChannelTrigger = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getControlChannelTriggerId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.getControlChannelTriggerId();
+    }
+    pub fn getServerKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.getServerKeepAliveIntervalInMinutes();
+    }
+    pub fn putServerKeepAliveIntervalInMinutes(self: *@This(), value: u32) core.HResult!void {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.putServerKeepAliveIntervalInMinutes(value);
+    }
+    pub fn getCurrentKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.getCurrentKeepAliveIntervalInMinutes();
+    }
+    pub fn getTransportObject(self: *@This()) core.HResult!*IInspectable {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.getTransportObject();
+    }
+    pub fn getKeepAliveTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.getKeepAliveTrigger();
+    }
+    pub fn getPushNotificationTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.getPushNotificationTrigger();
+    }
+    pub fn UsingTransport(self: *@This(), transport: *IInspectable) core.HResult!void {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.UsingTransport(transport);
+    }
+    pub fn WaitForPushEnabled(self: *@This()) core.HResult!ControlChannelTriggerStatus {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.WaitForPushEnabled();
+    }
+    pub fn DecreaseNetworkKeepAliveInterval(self: *@This()) core.HResult!void {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.DecreaseNetworkKeepAliveInterval();
+    }
+    pub fn FlushTransport(self: *@This()) core.HResult!void {
+        const this: *IControlChannelTrigger = @ptrCast(self);
+        return try this.FlushTransport();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
+        var this: ?*IControlChannelTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IControlChannelTrigger2.IID, @ptrCast(&this));
+        return try this.?.getIsWakeFromLowPowerSupported();
+    }
+    pub fn CreateControlChannelTrigger(channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
+        const _f = try @This()._IControlChannelTriggerFactoryCache.get();
+        return try _f.CreateControlChannelTrigger(channelId, serverKeepAliveIntervalInMinutes);
+    }
+    pub fn CreateControlChannelTriggerEx(channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType) core.HResult!*ControlChannelTrigger {
+        const _f = try @This()._IControlChannelTriggerFactoryCache.get();
+        return try _f.CreateControlChannelTriggerEx(channelId, serverKeepAliveIntervalInMinutes, resourceRequestType);
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Sockets.ControlChannelTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IControlChannelTrigger.GUID;
+    pub const IID: Guid = IControlChannelTrigger.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IControlChannelTrigger.SIGNATURE);
+    var _IControlChannelTriggerFactoryCache: FactoryCache(IControlChannelTriggerFactory, RUNTIME_NAME) = .{};
+};
+pub const ControlChannelTriggerResetReason = enum(i32) {
+    FastUserSwitched = 0,
+    LowPowerExit = 1,
+    QuietHoursExit = 2,
+    ApplicationRestart = 3,
+};
+pub const ControlChannelTriggerResourceType = enum(i32) {
+    RequestSoftwareSlot = 0,
+    RequestHardwareSlot = 1,
+};
+pub const IControlChannelTrigger = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getControlChannelTriggerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ControlChannelTriggerId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getServerKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_ServerKeepAliveIntervalInMinutes(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putServerKeepAliveIntervalInMinutes(self: *@This(), value: u32) core.HResult!void {
+        const _c = self.vtable.put_ServerKeepAliveIntervalInMinutes(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getCurrentKeepAliveIntervalInMinutes(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_CurrentKeepAliveIntervalInMinutes(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTransportObject(self: *@This()) core.HResult!*IInspectable {
+        var _r: *IInspectable = undefined;
+        const _c = self.vtable.get_TransportObject(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getKeepAliveTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
+        var _r: *IBackgroundTrigger = undefined;
+        const _c = self.vtable.get_KeepAliveTrigger(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPushNotificationTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
+        var _r: *IBackgroundTrigger = undefined;
+        const _c = self.vtable.get_PushNotificationTrigger(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn UsingTransport(self: *@This(), transport: *IInspectable) core.HResult!void {
+        const _c = self.vtable.UsingTransport(@ptrCast(self), transport);
+        try core.hresultToError(_c);
+    }
+    pub fn WaitForPushEnabled(self: *@This()) core.HResult!ControlChannelTriggerStatus {
+        var _r: ControlChannelTriggerStatus = undefined;
+        const _c = self.vtable.WaitForPushEnabled(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn DecreaseNetworkKeepAliveInterval(self: *@This()) core.HResult!void {
+        const _c = self.vtable.DecreaseNetworkKeepAliveInterval(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn FlushTransport(self: *@This()) core.HResult!void {
+        const _c = self.vtable.FlushTransport(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTrigger";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "7d1431a7-ee96-40e8-a199-8703cd969ec3";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ControlChannelTriggerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ServerKeepAliveIntervalInMinutes: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        put_ServerKeepAliveIntervalInMinutes: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
+        get_CurrentKeepAliveIntervalInMinutes: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        get_TransportObject: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
+        get_KeepAliveTrigger: *const fn(self: *anyopaque, _r: **IBackgroundTrigger) callconv(.winapi) HRESULT,
+        get_PushNotificationTrigger: *const fn(self: *anyopaque, _r: **IBackgroundTrigger) callconv(.winapi) HRESULT,
+        UsingTransport: *const fn(self: *anyopaque, transport: *IInspectable) callconv(.winapi) HRESULT,
+        WaitForPushEnabled: *const fn(self: *anyopaque, _r: *ControlChannelTriggerStatus) callconv(.winapi) HRESULT,
+        DecreaseNetworkKeepAliveInterval: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        FlushTransport: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+    };
+};
+pub const IControlChannelTrigger2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsWakeFromLowPowerSupported(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTrigger2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "af00d237-51be-4514-9725-3556e1879580";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_IsWakeFromLowPowerSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IControlChannelTriggerEventDetails = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getControlChannelTrigger(self: *@This()) core.HResult!*ControlChannelTrigger {
+        var _r: *ControlChannelTrigger = undefined;
+        const _c = self.vtable.get_ControlChannelTrigger(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTriggerEventDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "1b36e047-89bb-4236-96ac-71d012bb4869";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ControlChannelTrigger: *const fn(self: *anyopaque, _r: **ControlChannelTrigger) callconv(.winapi) HRESULT,
+    };
+};
+pub const IControlChannelTriggerFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateControlChannelTrigger(self: *@This(), channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
+        var _r: *ControlChannelTrigger = undefined;
+        const _c = self.vtable.CreateControlChannelTrigger(@ptrCast(self), channelId, serverKeepAliveIntervalInMinutes, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn CreateControlChannelTriggerEx(self: *@This(), channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType) core.HResult!*ControlChannelTrigger {
+        var _r: *ControlChannelTrigger = undefined;
+        const _c = self.vtable.CreateControlChannelTriggerEx(@ptrCast(self), channelId, serverKeepAliveIntervalInMinutes, resourceRequestType, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTriggerFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "da4b7cf0-8d71-446f-88c3-b95184a2d6cd";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateControlChannelTrigger: *const fn(self: *anyopaque, channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, _r: **ControlChannelTrigger) callconv(.winapi) HRESULT,
+        CreateControlChannelTriggerEx: *const fn(self: *anyopaque, channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType, _r: **ControlChannelTrigger) callconv(.winapi) HRESULT,
+    };
+};
+pub const IControlChannelTriggerResetEventDetails = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getResetReason(self: *@This()) core.HResult!ControlChannelTriggerResetReason {
+        var _r: ControlChannelTriggerResetReason = undefined;
+        const _c = self.vtable.get_ResetReason(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getHardwareSlotReset(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_HardwareSlotReset(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSoftwareSlotReset(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_SoftwareSlotReset(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Networking.Sockets.IControlChannelTriggerResetEventDetails";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "6851038e-8ec4-42fe-9bb2-21e91b7bfcb1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ResetReason: *const fn(self: *anyopaque, _r: *ControlChannelTriggerResetReason) callconv(.winapi) HRESULT,
+        get_HardwareSlotReset: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        get_SoftwareSlotReset: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

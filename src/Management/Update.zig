@@ -1,4 +1,189 @@
 // ----- This code is automatically generated -----
+pub const IPreviewBuildsManager = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getArePreviewBuildsAllowed(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_ArePreviewBuildsAllowed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putArePreviewBuildsAllowed(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_ArePreviewBuildsAllowed(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn GetCurrentState(self: *@This()) core.HResult!*PreviewBuildsState {
+        var _r: *PreviewBuildsState = undefined;
+        const _c = self.vtable.GetCurrentState(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SyncAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.SyncAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Update.IPreviewBuildsManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fa07dd61-7e4f-59f7-7c9f-def9051c5f62";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ArePreviewBuildsAllowed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_ArePreviewBuildsAllowed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        GetCurrentState: *const fn(self: *anyopaque, _r: **PreviewBuildsState) callconv(.winapi) HRESULT,
+        SyncAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPreviewBuildsManagerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefault(self: *@This()) core.HResult!*PreviewBuildsManager {
+        var _r: *PreviewBuildsManager = undefined;
+        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn IsSupported(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Update.IPreviewBuildsManagerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "3e422887-b112-5a70-7da1-97d78d32aa29";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDefault: *const fn(self: *anyopaque, _r: **PreviewBuildsManager) callconv(.winapi) HRESULT,
+        IsSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPreviewBuildsState = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
+        var _r: *ValueSet = undefined;
+        const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Management.Update.IPreviewBuildsState";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "a2f2903e-b223-5f63-7546-3e8eac070a2e";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
+    };
+};
+pub const PreviewBuildsManager = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getArePreviewBuildsAllowed(self: *@This()) core.HResult!bool {
+        const this: *IPreviewBuildsManager = @ptrCast(self);
+        return try this.getArePreviewBuildsAllowed();
+    }
+    pub fn putArePreviewBuildsAllowed(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPreviewBuildsManager = @ptrCast(self);
+        return try this.putArePreviewBuildsAllowed(value);
+    }
+    pub fn GetCurrentState(self: *@This()) core.HResult!*PreviewBuildsState {
+        const this: *IPreviewBuildsManager = @ptrCast(self);
+        return try this.GetCurrentState();
+    }
+    pub fn SyncAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        const this: *IPreviewBuildsManager = @ptrCast(self);
+        return try this.SyncAsync();
+    }
+    pub fn GetDefault() core.HResult!*PreviewBuildsManager {
+        const _f = try @This()._IPreviewBuildsManagerStaticsCache.get();
+        return try _f.GetDefault();
+    }
+    pub fn IsSupported() core.HResult!bool {
+        const _f = try @This()._IPreviewBuildsManagerStaticsCache.get();
+        return try _f.IsSupported();
+    }
+    pub const NAME: []const u8 = "Windows.Management.Update.PreviewBuildsManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPreviewBuildsManager.GUID;
+    pub const IID: Guid = IPreviewBuildsManager.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPreviewBuildsManager.SIGNATURE);
+    var _IPreviewBuildsManagerStaticsCache: FactoryCache(IPreviewBuildsManagerStatics, RUNTIME_NAME) = .{};
+};
+pub const PreviewBuildsState = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
+        const this: *IPreviewBuildsState = @ptrCast(self);
+        return try this.getProperties();
+    }
+    pub const NAME: []const u8 = "Windows.Management.Update.PreviewBuildsState";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPreviewBuildsState.GUID;
+    pub const IID: Guid = IPreviewBuildsState.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPreviewBuildsState.SIGNATURE);
+};
 pub const IWindowsUpdate = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1419,11 +1604,11 @@ pub const WindowsUpdateAdministrator = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWindowsUpdateAdministrator.SIGNATURE);
     var _IWindowsUpdateAdministratorStaticsCache: FactoryCache(IWindowsUpdateAdministratorStatics, RUNTIME_NAME) = .{};
 };
-pub const WindowsUpdateAdministratorOptions = enum(i32) {
-    None = 0,
-    RequireAdministratorApprovalForScans = 1,
-    RequireAdministratorApprovalForUpdates = 2,
-    RequireAdministratorApprovalForActions = 4,
+pub const WindowsUpdateAdministratorOptions = packed struct(u32) {
+    RequireAdministratorApprovalForScans: bool = false,
+    RequireAdministratorApprovalForUpdates: bool = false,
+    RequireAdministratorApprovalForActions: bool = false,
+    _m: u29 = 0,
 };
 pub const WindowsUpdateAdministratorStatus = enum(i32) {
     Succeeded = 0,
@@ -1889,191 +2074,6 @@ pub const WindowsUpdateScanCompletedEventArgs = extern struct {
     pub const GUID: []const u8 = IWindowsUpdateScanCompletedEventArgs.GUID;
     pub const IID: Guid = IWindowsUpdateScanCompletedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWindowsUpdateScanCompletedEventArgs.SIGNATURE);
-};
-pub const IPreviewBuildsManager = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getArePreviewBuildsAllowed(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_ArePreviewBuildsAllowed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putArePreviewBuildsAllowed(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_ArePreviewBuildsAllowed(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn GetCurrentState(self: *@This()) core.HResult!*PreviewBuildsState {
-        var _r: *PreviewBuildsState = undefined;
-        const _c = self.vtable.GetCurrentState(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SyncAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.SyncAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Update.IPreviewBuildsManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fa07dd61-7e4f-59f7-7c9f-def9051c5f62";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ArePreviewBuildsAllowed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_ArePreviewBuildsAllowed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        GetCurrentState: *const fn(self: *anyopaque, _r: **PreviewBuildsState) callconv(.winapi) HRESULT,
-        SyncAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPreviewBuildsManagerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefault(self: *@This()) core.HResult!*PreviewBuildsManager {
-        var _r: *PreviewBuildsManager = undefined;
-        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn IsSupported(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Update.IPreviewBuildsManagerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "3e422887-b112-5a70-7da1-97d78d32aa29";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefault: *const fn(self: *anyopaque, _r: **PreviewBuildsManager) callconv(.winapi) HRESULT,
-        IsSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPreviewBuildsState = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
-        var _r: *ValueSet = undefined;
-        const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Management.Update.IPreviewBuildsState";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "a2f2903e-b223-5f63-7546-3e8eac070a2e";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
-    };
-};
-pub const PreviewBuildsManager = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getArePreviewBuildsAllowed(self: *@This()) core.HResult!bool {
-        const this: *IPreviewBuildsManager = @ptrCast(self);
-        return try this.getArePreviewBuildsAllowed();
-    }
-    pub fn putArePreviewBuildsAllowed(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPreviewBuildsManager = @ptrCast(self);
-        return try this.putArePreviewBuildsAllowed(value);
-    }
-    pub fn GetCurrentState(self: *@This()) core.HResult!*PreviewBuildsState {
-        const this: *IPreviewBuildsManager = @ptrCast(self);
-        return try this.GetCurrentState();
-    }
-    pub fn SyncAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        const this: *IPreviewBuildsManager = @ptrCast(self);
-        return try this.SyncAsync();
-    }
-    pub fn GetDefault() core.HResult!*PreviewBuildsManager {
-        const _f = try @This()._IPreviewBuildsManagerStaticsCache.get();
-        return try _f.GetDefault();
-    }
-    pub fn IsSupported() core.HResult!bool {
-        const _f = try @This()._IPreviewBuildsManagerStaticsCache.get();
-        return try _f.IsSupported();
-    }
-    pub const NAME: []const u8 = "Windows.Management.Update.PreviewBuildsManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPreviewBuildsManager.GUID;
-    pub const IID: Guid = IPreviewBuildsManager.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPreviewBuildsManager.SIGNATURE);
-    var _IPreviewBuildsManagerStaticsCache: FactoryCache(IPreviewBuildsManagerStatics, RUNTIME_NAME) = .{};
-};
-pub const PreviewBuildsState = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
-        const this: *IPreviewBuildsState = @ptrCast(self);
-        return try this.getProperties();
-    }
-    pub const NAME: []const u8 = "Windows.Management.Update.PreviewBuildsState";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPreviewBuildsState.GUID;
-    pub const IID: Guid = IPreviewBuildsState.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPreviewBuildsState.SIGNATURE);
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

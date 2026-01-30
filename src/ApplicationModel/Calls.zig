@@ -1,230 +1,4 @@
 // ----- This code is automatically generated -----
-pub const ILockScreenCallEndCallDeferral = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Complete(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallEndCallDeferral";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2dd7ed0d-98ed-4041-9632-50ff812b773f";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Complete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-    };
-};
-pub const ILockScreenCallEndRequestedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*LockScreenCallEndCallDeferral {
-        var _r: *LockScreenCallEndCallDeferral = undefined;
-        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
-        var _r: DateTime = undefined;
-        const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallEndRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "8190a363-6f27-46e9-aeb6-c0ae83e47dc7";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeferral: *const fn(self: *anyopaque, _r: **LockScreenCallEndCallDeferral) callconv(.winapi) HRESULT,
-        get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-    };
-};
-pub const ILockScreenCallUI = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Dismiss(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Dismiss(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn addEndRequested(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,LockScreenCallEndRequestedEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_EndRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeEndRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_EndRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addClosed(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_Closed(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn getCallTitle(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_CallTitle(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putCallTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_CallTitle(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallUI";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "c596fd8d-73c9-4a14-b021-ec1c50a3b727";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Dismiss: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        add_EndRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(LockScreenCallUI,LockScreenCallEndRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_EndRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_Closed: *const fn(self: *anyopaque, handler: *TypedEventHandler(LockScreenCallUI,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_Closed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_CallTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_CallTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const LockScreenCallEndCallDeferral = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const this: *ILockScreenCallEndCallDeferral = @ptrCast(self);
-        return try this.Complete();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.LockScreenCallEndCallDeferral";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ILockScreenCallEndCallDeferral.GUID;
-    pub const IID: Guid = ILockScreenCallEndCallDeferral.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallEndCallDeferral.SIGNATURE);
-};
-pub const LockScreenCallEndRequestedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDeferral(self: *@This()) core.HResult!*LockScreenCallEndCallDeferral {
-        const this: *ILockScreenCallEndRequestedEventArgs = @ptrCast(self);
-        return try this.GetDeferral();
-    }
-    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
-        const this: *ILockScreenCallEndRequestedEventArgs = @ptrCast(self);
-        return try this.getDeadline();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.LockScreenCallEndRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ILockScreenCallEndRequestedEventArgs.GUID;
-    pub const IID: Guid = ILockScreenCallEndRequestedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallEndRequestedEventArgs.SIGNATURE);
-};
-pub const LockScreenCallUI = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Dismiss(self: *@This()) core.HResult!void {
-        const this: *ILockScreenCallUI = @ptrCast(self);
-        return try this.Dismiss();
-    }
-    pub fn addEndRequested(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,LockScreenCallEndRequestedEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *ILockScreenCallUI = @ptrCast(self);
-        return try this.addEndRequested(handler);
-    }
-    pub fn removeEndRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ILockScreenCallUI = @ptrCast(self);
-        return try this.removeEndRequested(token);
-    }
-    pub fn addClosed(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,IInspectable)) core.HResult!EventRegistrationToken {
-        const this: *ILockScreenCallUI = @ptrCast(self);
-        return try this.addClosed(handler);
-    }
-    pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ILockScreenCallUI = @ptrCast(self);
-        return try this.removeClosed(token);
-    }
-    pub fn getCallTitle(self: *@This()) core.HResult!?HSTRING {
-        const this: *ILockScreenCallUI = @ptrCast(self);
-        return try this.getCallTitle();
-    }
-    pub fn putCallTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *ILockScreenCallUI = @ptrCast(self);
-        return try this.putCallTitle(value);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.LockScreenCallUI";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ILockScreenCallUI.GUID;
-    pub const IID: Guid = ILockScreenCallUI.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallUI.SIGNATURE);
-};
 pub const CellularDtmfMode = enum(i32) {
     Continuous = 0,
     Burst = 1,
@@ -2708,6 +2482,1043 @@ pub const TransportDeviceAudioRoutingStatus = enum(i32) {
     CanRouteToLocalDevice = 1,
     CannotRouteToLocalDevice = 2,
 };
+pub const IPhoneCallHistoryEntry = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getAddress(self: *@This()) core.HResult!*PhoneCallHistoryEntryAddress {
+        var _r: *PhoneCallHistoryEntryAddress = undefined;
+        const _c = self.vtable.get_Address(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putAddress(self: *@This(), value: *PhoneCallHistoryEntryAddress) core.HResult!void {
+        const _c = self.vtable.put_Address(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
+        var _r: *IReference(TimeSpan) = undefined;
+        const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
+        const _c = self.vtable.put_Duration(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsCallerIdBlocked(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsCallerIdBlocked(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsCallerIdBlocked(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsCallerIdBlocked(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsEmergency(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsEmergency(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsEmergency(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsEmergency(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsIncoming(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsIncoming(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsIncoming(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsIncoming(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsMissed(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsMissed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsMissed(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsMissed(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsRinging(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsRinging(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsRinging(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsRinging(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsSeen(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsSeen(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsSeen(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsSeen(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsSuppressed(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsSuppressed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsSuppressed(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsSuppressed(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsVoicemail(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsVoicemail(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsVoicemail(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsVoicemail(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryMedia {
+        var _r: PhoneCallHistoryEntryMedia = undefined;
+        const _c = self.vtable.get_Media(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putMedia(self: *@This(), value: PhoneCallHistoryEntryMedia) core.HResult!void {
+        const _c = self.vtable.put_Media(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getOtherAppReadAccess(self: *@This()) core.HResult!PhoneCallHistoryEntryOtherAppReadAccess {
+        var _r: PhoneCallHistoryEntryOtherAppReadAccess = undefined;
+        const _c = self.vtable.get_OtherAppReadAccess(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putOtherAppReadAccess(self: *@This(), value: PhoneCallHistoryEntryOtherAppReadAccess) core.HResult!void {
+        const _c = self.vtable.put_OtherAppReadAccess(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SourceId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putSourceId(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_SourceId(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getSourceIdKind(self: *@This()) core.HResult!PhoneCallHistorySourceIdKind {
+        var _r: PhoneCallHistorySourceIdKind = undefined;
+        const _c = self.vtable.get_SourceIdKind(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putSourceIdKind(self: *@This(), value: PhoneCallHistorySourceIdKind) core.HResult!void {
+        const _c = self.vtable.put_SourceIdKind(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
+        var _r: DateTime = undefined;
+        const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putStartTime(self: *@This(), value: DateTime) core.HResult!void {
+        const _c = self.vtable.put_StartTime(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntry";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fab0e129-32a4-4b85-83d1-f90d8c23a857";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Address: *const fn(self: *anyopaque, _r: **PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
+        put_Address: *const fn(self: *anyopaque, value: *PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
+        get_Duration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
+        put_Duration: *const fn(self: *anyopaque, value: *IReference(TimeSpan)) callconv(.winapi) HRESULT,
+        get_IsCallerIdBlocked: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsCallerIdBlocked: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsEmergency: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsEmergency: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsIncoming: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsIncoming: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsMissed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsMissed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsRinging: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsRinging: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsSeen: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsSeen: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsSuppressed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsSuppressed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsVoicemail: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_IsVoicemail: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_Media: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryMedia) callconv(.winapi) HRESULT,
+        put_Media: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryMedia) callconv(.winapi) HRESULT,
+        get_OtherAppReadAccess: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryOtherAppReadAccess) callconv(.winapi) HRESULT,
+        put_OtherAppReadAccess: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryOtherAppReadAccess) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SourceId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceIdKind: *const fn(self: *anyopaque, _r: *PhoneCallHistorySourceIdKind) callconv(.winapi) HRESULT,
+        put_SourceIdKind: *const fn(self: *anyopaque, value: PhoneCallHistorySourceIdKind) callconv(.winapi) HRESULT,
+        get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
+        put_StartTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryEntryAddress = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_ContactId(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getRawAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_RawAddress(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putRawAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_RawAddress(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getRawAddressKind(self: *@This()) core.HResult!PhoneCallHistoryEntryRawAddressKind {
+        var _r: PhoneCallHistoryEntryRawAddressKind = undefined;
+        const _c = self.vtable.get_RawAddressKind(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putRawAddressKind(self: *@This(), value: PhoneCallHistoryEntryRawAddressKind) core.HResult!void {
+        const _c = self.vtable.put_RawAddressKind(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryAddress";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "30f159da-3955-4042-84e6-66eebf82e67f";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ContactId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RawAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RawAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RawAddressKind: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryRawAddressKind) callconv(.winapi) HRESULT,
+        put_RawAddressKind: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryRawAddressKind) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryEntryAddressFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Create(self: *@This(), rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
+        var _r: *PhoneCallHistoryEntryAddress = undefined;
+        const _c = self.vtable.Create(@ptrCast(self), rawAddress, rawAddressKind, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryAddressFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fb0fadba-c7f0-4bb6-9f6b-ba5d73209aca";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind, _r: **PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDesiredMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryQueryDesiredMedia {
+        var _r: PhoneCallHistoryEntryQueryDesiredMedia = undefined;
+        const _c = self.vtable.get_DesiredMedia(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putDesiredMedia(self: *@This(), value: PhoneCallHistoryEntryQueryDesiredMedia) core.HResult!void {
+        const _c = self.vtable.put_DesiredMedia(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
+        const _c = self.vtable.get_SourceIds(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryQueryOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "9c5fe15c-8bed-40ca-b06e-c4ca8eae5c87";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DesiredMedia: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryQueryDesiredMedia) callconv(.winapi) HRESULT,
+        put_DesiredMedia: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryQueryDesiredMedia) callconv(.winapi) HRESULT,
+        get_SourceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryEntryReader = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) {
+        var _r: *IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) = undefined;
+        const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryReader";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "61ece4be-8d86-479f-8404-a9846920fee6";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        ReadBatchAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(PhoneCallHistoryEntry))) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryManagerForUser = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
+        var _r: *IAsyncOperation(PhoneCallHistoryStore) = undefined;
+        const _c = self.vtable.RequestStoreAsync(@ptrCast(self), accessType, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getUser(self: *@This()) core.HResult!*User {
+        var _r: *User = undefined;
+        const _c = self.vtable.get_User(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerForUser";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "d925c523-f55f-4353-9db4-0205a5265a55";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        RequestStoreAsync: *const fn(self: *anyopaque, accessType: PhoneCallHistoryStoreAccessType, _r: **IAsyncOperation(PhoneCallHistoryStore)) callconv(.winapi) HRESULT,
+        get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryManagerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
+        var _r: *IAsyncOperation(PhoneCallHistoryStore) = undefined;
+        const _c = self.vtable.RequestStoreAsync(@ptrCast(self), accessType, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "f5a6da39-b31f-4f45-ac8e-1b08893c1b50";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        RequestStoreAsync: *const fn(self: *anyopaque, accessType: PhoneCallHistoryStoreAccessType, _r: **IAsyncOperation(PhoneCallHistoryStore)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryManagerStatics2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetForUser(self: *@This(), user: *User) core.HResult!*PhoneCallHistoryManagerForUser {
+        var _r: *PhoneCallHistoryManagerForUser = undefined;
+        const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerStatics2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "efd474f0-a2db-4188-9e92-bc3cfa6813cf";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetForUser: *const fn(self: *anyopaque, user: *User, _r: **PhoneCallHistoryManagerForUser) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPhoneCallHistoryStore = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
+        var _r: *IAsyncOperation(PhoneCallHistoryEntry) = undefined;
+        const _c = self.vtable.GetEntryAsync(@ptrCast(self), callHistoryEntryId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetEntryReader(self: *@This()) core.HResult!*PhoneCallHistoryEntryReader {
+        var _r: *PhoneCallHistoryEntryReader = undefined;
+        const _c = self.vtable.GetEntryReader(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetEntryReaderWithQueryOptions(self: *@This(), queryOptions: *PhoneCallHistoryEntryQueryOptions) core.HResult!*PhoneCallHistoryEntryReader {
+        var _r: *PhoneCallHistoryEntryReader = undefined;
+        const _c = self.vtable.GetEntryReaderWithQueryOptions(@ptrCast(self), queryOptions, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SaveEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.SaveEntryAsync(@ptrCast(self), callHistoryEntry, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn DeleteEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.DeleteEntryAsync(@ptrCast(self), callHistoryEntry, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn DeleteEntriesAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.DeleteEntriesAsync(@ptrCast(self), callHistoryEntries, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn MarkEntryAsSeenAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.MarkEntryAsSeenAsync(@ptrCast(self), callHistoryEntry, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn MarkEntriesAsSeenAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.MarkEntriesAsSeenAsync(@ptrCast(self), callHistoryEntries, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetUnseenCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
+        var _r: *IAsyncOperation(u32) = undefined;
+        const _c = self.vtable.GetUnseenCountAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn MarkAllAsSeenAsync(self: *@This()) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.MarkAllAsSeenAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(u32) {
+        var _r: *IAsyncOperation(u32) = undefined;
+        const _c = self.vtable.GetSourcesUnseenCountAsync(@ptrCast(self), sourceIds, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.MarkSourcesAsSeenAsync(@ptrCast(self), sourceIds, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryStore";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2f907db8-b40e-422b-8545-cb1910a61c52";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetEntryAsync: *const fn(self: *anyopaque, callHistoryEntryId: ?HSTRING, _r: **IAsyncOperation(PhoneCallHistoryEntry)) callconv(.winapi) HRESULT,
+        GetEntryReader: *const fn(self: *anyopaque, _r: **PhoneCallHistoryEntryReader) callconv(.winapi) HRESULT,
+        GetEntryReaderWithQueryOptions: *const fn(self: *anyopaque, queryOptions: *PhoneCallHistoryEntryQueryOptions, _r: **PhoneCallHistoryEntryReader) callconv(.winapi) HRESULT,
+        SaveEntryAsync: *const fn(self: *anyopaque, callHistoryEntry: *PhoneCallHistoryEntry, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DeleteEntryAsync: *const fn(self: *anyopaque, callHistoryEntry: *PhoneCallHistoryEntry, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DeleteEntriesAsync: *const fn(self: *anyopaque, callHistoryEntries: *IIterable(PhoneCallHistoryEntry), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkEntryAsSeenAsync: *const fn(self: *anyopaque, callHistoryEntry: *PhoneCallHistoryEntry, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkEntriesAsSeenAsync: *const fn(self: *anyopaque, callHistoryEntries: *IIterable(PhoneCallHistoryEntry), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetUnseenCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
+        MarkAllAsSeenAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetSourcesUnseenCountAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(?HSTRING), _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
+        MarkSourcesAsSeenAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+    };
+};
+pub const PhoneCallHistoryEntry = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getId();
+    }
+    pub fn getAddress(self: *@This()) core.HResult!*PhoneCallHistoryEntryAddress {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getAddress();
+    }
+    pub fn putAddress(self: *@This(), value: *PhoneCallHistoryEntryAddress) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putAddress(value);
+    }
+    pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getDuration();
+    }
+    pub fn putDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putDuration(value);
+    }
+    pub fn getIsCallerIdBlocked(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsCallerIdBlocked();
+    }
+    pub fn putIsCallerIdBlocked(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsCallerIdBlocked(value);
+    }
+    pub fn getIsEmergency(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsEmergency();
+    }
+    pub fn putIsEmergency(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsEmergency(value);
+    }
+    pub fn getIsIncoming(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsIncoming();
+    }
+    pub fn putIsIncoming(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsIncoming(value);
+    }
+    pub fn getIsMissed(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsMissed();
+    }
+    pub fn putIsMissed(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsMissed(value);
+    }
+    pub fn getIsRinging(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsRinging();
+    }
+    pub fn putIsRinging(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsRinging(value);
+    }
+    pub fn getIsSeen(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsSeen();
+    }
+    pub fn putIsSeen(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsSeen(value);
+    }
+    pub fn getIsSuppressed(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsSuppressed();
+    }
+    pub fn putIsSuppressed(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsSuppressed(value);
+    }
+    pub fn getIsVoicemail(self: *@This()) core.HResult!bool {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getIsVoicemail();
+    }
+    pub fn putIsVoicemail(self: *@This(), value: bool) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putIsVoicemail(value);
+    }
+    pub fn getMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryMedia {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getMedia();
+    }
+    pub fn putMedia(self: *@This(), value: PhoneCallHistoryEntryMedia) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putMedia(value);
+    }
+    pub fn getOtherAppReadAccess(self: *@This()) core.HResult!PhoneCallHistoryEntryOtherAppReadAccess {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getOtherAppReadAccess();
+    }
+    pub fn putOtherAppReadAccess(self: *@This(), value: PhoneCallHistoryEntryOtherAppReadAccess) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putOtherAppReadAccess(value);
+    }
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getRemoteId();
+    }
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putRemoteId(value);
+    }
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getSourceDisplayName();
+    }
+    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getSourceId();
+    }
+    pub fn putSourceId(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putSourceId(value);
+    }
+    pub fn getSourceIdKind(self: *@This()) core.HResult!PhoneCallHistorySourceIdKind {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getSourceIdKind();
+    }
+    pub fn putSourceIdKind(self: *@This(), value: PhoneCallHistorySourceIdKind) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putSourceIdKind(value);
+    }
+    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.getStartTime();
+    }
+    pub fn putStartTime(self: *@This(), value: DateTime) core.HResult!void {
+        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
+        return try this.putStartTime(value);
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntry.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntry";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPhoneCallHistoryEntry.GUID;
+    pub const IID: Guid = IPhoneCallHistoryEntry.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntry.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const PhoneCallHistoryEntryAddress = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.getContactId();
+    }
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.putContactId(value);
+    }
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.getDisplayName();
+    }
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.putDisplayName(value);
+    }
+    pub fn getRawAddress(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.getRawAddress();
+    }
+    pub fn putRawAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.putRawAddress(value);
+    }
+    pub fn getRawAddressKind(self: *@This()) core.HResult!PhoneCallHistoryEntryRawAddressKind {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.getRawAddressKind();
+    }
+    pub fn putRawAddressKind(self: *@This(), value: PhoneCallHistoryEntryRawAddressKind) core.HResult!void {
+        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
+        return try this.putRawAddressKind(value);
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntryAddress.IID)));
+    }
+    pub fn Create(rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
+        const _f = try @This()._IPhoneCallHistoryEntryAddressFactoryCache.get();
+        return try _f.Create(rawAddress, rawAddressKind);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntryAddress";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPhoneCallHistoryEntryAddress.GUID;
+    pub const IID: Guid = IPhoneCallHistoryEntryAddress.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntryAddress.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+    var _IPhoneCallHistoryEntryAddressFactoryCache: FactoryCache(IPhoneCallHistoryEntryAddressFactory, RUNTIME_NAME) = .{};
+};
+pub const PhoneCallHistoryEntryMedia = enum(i32) {
+    Audio = 0,
+    Video = 1,
+};
+pub const PhoneCallHistoryEntryOtherAppReadAccess = enum(i32) {
+    Full = 0,
+    SystemOnly = 1,
+};
+pub const PhoneCallHistoryEntryQueryDesiredMedia = packed struct(u32) {
+    Audio: bool = false,
+    Video: bool = false,
+    All: bool = false,
+    _m: u29 = 0,
+};
+pub const PhoneCallHistoryEntryQueryOptions = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDesiredMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryQueryDesiredMedia {
+        const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
+        return try this.getDesiredMedia();
+    }
+    pub fn putDesiredMedia(self: *@This(), value: PhoneCallHistoryEntryQueryDesiredMedia) core.HResult!void {
+        const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
+        return try this.putDesiredMedia(value);
+    }
+    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
+        return try this.getSourceIds();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntryQueryOptions.IID)));
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntryQueryOptions";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPhoneCallHistoryEntryQueryOptions.GUID;
+    pub const IID: Guid = IPhoneCallHistoryEntryQueryOptions.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntryQueryOptions.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+};
+pub const PhoneCallHistoryEntryRawAddressKind = enum(i32) {
+    PhoneNumber = 0,
+    Custom = 1,
+};
+pub const PhoneCallHistoryEntryReader = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) {
+        const this: *IPhoneCallHistoryEntryReader = @ptrCast(self);
+        return try this.ReadBatchAsync();
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntryReader";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPhoneCallHistoryEntryReader.GUID;
+    pub const IID: Guid = IPhoneCallHistoryEntryReader.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntryReader.SIGNATURE);
+};
+pub const PhoneCallHistoryManager = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestStoreAsync(accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
+        const _f = try @This()._IPhoneCallHistoryManagerStaticsCache.get();
+        return try _f.RequestStoreAsync(accessType);
+    }
+    pub fn GetForUser(user: *User) core.HResult!*PhoneCallHistoryManagerForUser {
+        const _f = try @This()._IPhoneCallHistoryManagerStatics2Cache.get();
+        return try _f.GetForUser(user);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IPhoneCallHistoryManagerStaticsCache: FactoryCache(IPhoneCallHistoryManagerStatics, RUNTIME_NAME) = .{};
+    var _IPhoneCallHistoryManagerStatics2Cache: FactoryCache(IPhoneCallHistoryManagerStatics2, RUNTIME_NAME) = .{};
+};
+pub const PhoneCallHistoryManagerForUser = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
+        const this: *IPhoneCallHistoryManagerForUser = @ptrCast(self);
+        return try this.RequestStoreAsync(accessType);
+    }
+    pub fn getUser(self: *@This()) core.HResult!*User {
+        const this: *IPhoneCallHistoryManagerForUser = @ptrCast(self);
+        return try this.getUser();
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryManagerForUser";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPhoneCallHistoryManagerForUser.GUID;
+    pub const IID: Guid = IPhoneCallHistoryManagerForUser.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryManagerForUser.SIGNATURE);
+};
+pub const PhoneCallHistorySourceIdKind = enum(i32) {
+    CellularPhoneLineId = 0,
+    PackageFamilyName = 1,
+};
+pub const PhoneCallHistoryStore = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.GetEntryAsync(callHistoryEntryId);
+    }
+    pub fn GetEntryReader(self: *@This()) core.HResult!*PhoneCallHistoryEntryReader {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.GetEntryReader();
+    }
+    pub fn GetEntryReaderWithQueryOptions(self: *@This(), queryOptions: *PhoneCallHistoryEntryQueryOptions) core.HResult!*PhoneCallHistoryEntryReader {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.GetEntryReaderWithQueryOptions(queryOptions);
+    }
+    pub fn SaveEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.SaveEntryAsync(callHistoryEntry);
+    }
+    pub fn DeleteEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.DeleteEntryAsync(callHistoryEntry);
+    }
+    pub fn DeleteEntriesAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.DeleteEntriesAsync(callHistoryEntries);
+    }
+    pub fn MarkEntryAsSeenAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.MarkEntryAsSeenAsync(callHistoryEntry);
+    }
+    pub fn MarkEntriesAsSeenAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.MarkEntriesAsSeenAsync(callHistoryEntries);
+    }
+    pub fn GetUnseenCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.GetUnseenCountAsync();
+    }
+    pub fn MarkAllAsSeenAsync(self: *@This()) core.HResult!*IAsyncAction {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.MarkAllAsSeenAsync();
+    }
+    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(u32) {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.GetSourcesUnseenCountAsync(sourceIds);
+    }
+    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
+        const this: *IPhoneCallHistoryStore = @ptrCast(self);
+        return try this.MarkSourcesAsSeenAsync(sourceIds);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryStore";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPhoneCallHistoryStore.GUID;
+    pub const IID: Guid = IPhoneCallHistoryStore.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryStore.SIGNATURE);
+};
+pub const PhoneCallHistoryStoreAccessType = enum(i32) {
+    AppEntriesReadWrite = 0,
+    AllEntriesLimitedReadWrite = 1,
+    AllEntriesReadWrite = 2,
+};
 pub const AcceptedVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -4689,10 +5500,10 @@ pub const VoipPhoneCall = extern struct {
     pub const IID: Guid = IVoipPhoneCall.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IVoipPhoneCall.SIGNATURE);
 };
-pub const VoipPhoneCallMedia = enum(i32) {
-    None = 0,
-    Audio = 1,
-    Video = 2,
+pub const VoipPhoneCallMedia = packed struct(u32) {
+    Audio: bool = false,
+    Video: bool = false,
+    _m: u30 = 0,
 };
 pub const VoipPhoneCallRejectReason = enum(i32) {
     UserIgnored = 0,
@@ -4712,7 +5523,7 @@ pub const VoipPhoneCallState = enum(i32) {
     Incoming = 3,
     Outgoing = 4,
 };
-pub const IPhoneCallHistoryEntry = extern struct {
+pub const ILockScreenCallEndCallDeferral = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
     pub fn cast(self: *@This(), AS: type) !*AS {
@@ -4723,181 +5534,51 @@ pub const IPhoneCallHistoryEntry = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Complete(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallEndCallDeferral";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2dd7ed0d-98ed-4041-9632-50ff812b773f";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Complete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+    };
+};
+pub const ILockScreenCallEndRequestedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDeferral(self: *@This()) core.HResult!*LockScreenCallEndCallDeferral {
+        var _r: *LockScreenCallEndCallDeferral = undefined;
+        const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
         try core.hresultToError(_c);
         return _r;
     }
-    pub fn getAddress(self: *@This()) core.HResult!*PhoneCallHistoryEntryAddress {
-        var _r: *PhoneCallHistoryEntryAddress = undefined;
-        const _c = self.vtable.get_Address(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putAddress(self: *@This(), value: *PhoneCallHistoryEntryAddress) core.HResult!void {
-        const _c = self.vtable.put_Address(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
-        var _r: *IReference(TimeSpan) = undefined;
-        const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
-        const _c = self.vtable.put_Duration(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsCallerIdBlocked(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsCallerIdBlocked(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsCallerIdBlocked(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsCallerIdBlocked(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsEmergency(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsEmergency(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsEmergency(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsEmergency(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsIncoming(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsIncoming(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsIncoming(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsIncoming(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsMissed(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsMissed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsMissed(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsMissed(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsRinging(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsRinging(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsRinging(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsRinging(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsSeen(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsSeen(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsSeen(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsSeen(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsSuppressed(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsSuppressed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsSuppressed(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsSuppressed(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsVoicemail(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsVoicemail(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsVoicemail(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsVoicemail(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryMedia {
-        var _r: PhoneCallHistoryEntryMedia = undefined;
-        const _c = self.vtable.get_Media(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putMedia(self: *@This(), value: PhoneCallHistoryEntryMedia) core.HResult!void {
-        const _c = self.vtable.put_Media(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getOtherAppReadAccess(self: *@This()) core.HResult!PhoneCallHistoryEntryOtherAppReadAccess {
-        var _r: PhoneCallHistoryEntryOtherAppReadAccess = undefined;
-        const _c = self.vtable.get_OtherAppReadAccess(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putOtherAppReadAccess(self: *@This(), value: PhoneCallHistoryEntryOtherAppReadAccess) core.HResult!void {
-        const _c = self.vtable.put_OtherAppReadAccess(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SourceId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putSourceId(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_SourceId(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getSourceIdKind(self: *@This()) core.HResult!PhoneCallHistorySourceIdKind {
-        var _r: PhoneCallHistorySourceIdKind = undefined;
-        const _c = self.vtable.get_SourceIdKind(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putSourceIdKind(self: *@This(), value: PhoneCallHistorySourceIdKind) core.HResult!void {
-        const _c = self.vtable.put_SourceIdKind(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
+    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
-        const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
+        const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
         try core.hresultToError(_c);
         return _r;
     }
-    pub fn putStartTime(self: *@This(), value: DateTime) core.HResult!void {
-        const _c = self.vtable.put_StartTime(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntry";
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallEndRequestedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fab0e129-32a4-4b85-83d1-f90d8c23a857";
+    pub const GUID: []const u8 = "8190a363-6f27-46e9-aeb6-c0ae83e47dc7";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
     pub const VTable = extern struct {
@@ -4907,43 +5588,11 @@ pub const IPhoneCallHistoryEntry = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Address: *const fn(self: *anyopaque, _r: **PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
-        put_Address: *const fn(self: *anyopaque, value: *PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
-        get_Duration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        put_Duration: *const fn(self: *anyopaque, value: *IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_IsCallerIdBlocked: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsCallerIdBlocked: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsEmergency: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsEmergency: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsIncoming: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsIncoming: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsMissed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsMissed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsRinging: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsRinging: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsSeen: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsSeen: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsSuppressed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsSuppressed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsVoicemail: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_IsVoicemail: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Media: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryMedia) callconv(.winapi) HRESULT,
-        put_Media: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryMedia) callconv(.winapi) HRESULT,
-        get_OtherAppReadAccess: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryOtherAppReadAccess) callconv(.winapi) HRESULT,
-        put_OtherAppReadAccess: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryOtherAppReadAccess) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_SourceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_SourceId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_SourceIdKind: *const fn(self: *anyopaque, _r: *PhoneCallHistorySourceIdKind) callconv(.winapi) HRESULT,
-        put_SourceIdKind: *const fn(self: *anyopaque, value: PhoneCallHistorySourceIdKind) callconv(.winapi) HRESULT,
-        get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        put_StartTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
+        GetDeferral: *const fn(self: *anyopaque, _r: **LockScreenCallEndCallDeferral) callconv(.winapi) HRESULT,
+        get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
     };
 };
-pub const IPhoneCallHistoryEntryAddress = extern struct {
+pub const ILockScreenCallUI = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
     pub fn cast(self: *@This(), AS: type) !*AS {
@@ -4954,49 +5603,43 @@ pub const IPhoneCallHistoryEntryAddress = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
+    pub fn Dismiss(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Dismiss(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn addEndRequested(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,LockScreenCallEndRequestedEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_EndRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeEndRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_EndRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addClosed(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_Closed(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn getCallTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
+        const _c = self.vtable.get_CallTitle(@ptrCast(self), &_r);
         try core.hresultToError(_c);
         return _r;
     }
-    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_ContactId(@ptrCast(self), value);
+    pub fn putCallTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_CallTitle(@ptrCast(self), value);
         try core.hresultToError(_c);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getRawAddress(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_RawAddress(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putRawAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_RawAddress(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getRawAddressKind(self: *@This()) core.HResult!PhoneCallHistoryEntryRawAddressKind {
-        var _r: PhoneCallHistoryEntryRawAddressKind = undefined;
-        const _c = self.vtable.get_RawAddressKind(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putRawAddressKind(self: *@This(), value: PhoneCallHistoryEntryRawAddressKind) core.HResult!void {
-        const _c = self.vtable.put_RawAddressKind(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryAddress";
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.ILockScreenCallUI";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "30f159da-3955-4042-84e6-66eebf82e67f";
+    pub const GUID: []const u8 = "c596fd8d-73c9-4a14-b021-ec1c50a3b727";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
     pub const VTable = extern struct {
@@ -5006,337 +5649,16 @@ pub const IPhoneCallHistoryEntryAddress = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_ContactId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_RawAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_RawAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_RawAddressKind: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryRawAddressKind) callconv(.winapi) HRESULT,
-        put_RawAddressKind: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryRawAddressKind) callconv(.winapi) HRESULT,
+        Dismiss: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        add_EndRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(LockScreenCallUI,LockScreenCallEndRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_EndRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_Closed: *const fn(self: *anyopaque, handler: *TypedEventHandler(LockScreenCallUI,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_Closed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        get_CallTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CallTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
-pub const IPhoneCallHistoryEntryAddressFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Create(self: *@This(), rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
-        var _r: *PhoneCallHistoryEntryAddress = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), rawAddress, rawAddressKind, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryAddressFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fb0fadba-c7f0-4bb6-9f6b-ba5d73209aca";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind, _r: **PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDesiredMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryQueryDesiredMedia {
-        var _r: PhoneCallHistoryEntryQueryDesiredMedia = undefined;
-        const _c = self.vtable.get_DesiredMedia(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putDesiredMedia(self: *@This(), value: PhoneCallHistoryEntryQueryDesiredMedia) core.HResult!void {
-        const _c = self.vtable.put_DesiredMedia(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
-        var _r: *IVector(?HSTRING) = undefined;
-        const _c = self.vtable.get_SourceIds(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryQueryOptions";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "9c5fe15c-8bed-40ca-b06e-c4ca8eae5c87";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DesiredMedia: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryQueryDesiredMedia) callconv(.winapi) HRESULT,
-        put_DesiredMedia: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryQueryDesiredMedia) callconv(.winapi) HRESULT,
-        get_SourceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneCallHistoryEntryReader = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) {
-        var _r: *IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) = undefined;
-        const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryEntryReader";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "61ece4be-8d86-479f-8404-a9846920fee6";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ReadBatchAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(PhoneCallHistoryEntry))) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneCallHistoryManagerForUser = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
-        var _r: *IAsyncOperation(PhoneCallHistoryStore) = undefined;
-        const _c = self.vtable.RequestStoreAsync(@ptrCast(self), accessType, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getUser(self: *@This()) core.HResult!*User {
-        var _r: *User = undefined;
-        const _c = self.vtable.get_User(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerForUser";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "d925c523-f55f-4353-9db4-0205a5265a55";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestStoreAsync: *const fn(self: *anyopaque, accessType: PhoneCallHistoryStoreAccessType, _r: **IAsyncOperation(PhoneCallHistoryStore)) callconv(.winapi) HRESULT,
-        get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneCallHistoryManagerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
-        var _r: *IAsyncOperation(PhoneCallHistoryStore) = undefined;
-        const _c = self.vtable.RequestStoreAsync(@ptrCast(self), accessType, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "f5a6da39-b31f-4f45-ac8e-1b08893c1b50";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestStoreAsync: *const fn(self: *anyopaque, accessType: PhoneCallHistoryStoreAccessType, _r: **IAsyncOperation(PhoneCallHistoryStore)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneCallHistoryManagerStatics2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetForUser(self: *@This(), user: *User) core.HResult!*PhoneCallHistoryManagerForUser {
-        var _r: *PhoneCallHistoryManagerForUser = undefined;
-        const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryManagerStatics2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "efd474f0-a2db-4188-9e92-bc3cfa6813cf";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForUser: *const fn(self: *anyopaque, user: *User, _r: **PhoneCallHistoryManagerForUser) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPhoneCallHistoryStore = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
-        var _r: *IAsyncOperation(PhoneCallHistoryEntry) = undefined;
-        const _c = self.vtable.GetEntryAsync(@ptrCast(self), callHistoryEntryId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetEntryReader(self: *@This()) core.HResult!*PhoneCallHistoryEntryReader {
-        var _r: *PhoneCallHistoryEntryReader = undefined;
-        const _c = self.vtable.GetEntryReader(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetEntryReaderWithQueryOptions(self: *@This(), queryOptions: *PhoneCallHistoryEntryQueryOptions) core.HResult!*PhoneCallHistoryEntryReader {
-        var _r: *PhoneCallHistoryEntryReader = undefined;
-        const _c = self.vtable.GetEntryReaderWithQueryOptions(@ptrCast(self), queryOptions, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SaveEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SaveEntryAsync(@ptrCast(self), callHistoryEntry, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn DeleteEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.DeleteEntryAsync(@ptrCast(self), callHistoryEntry, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn DeleteEntriesAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.DeleteEntriesAsync(@ptrCast(self), callHistoryEntries, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn MarkEntryAsSeenAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MarkEntryAsSeenAsync(@ptrCast(self), callHistoryEntry, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn MarkEntriesAsSeenAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MarkEntriesAsSeenAsync(@ptrCast(self), callHistoryEntries, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetUnseenCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
-        var _r: *IAsyncOperation(u32) = undefined;
-        const _c = self.vtable.GetUnseenCountAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn MarkAllAsSeenAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MarkAllAsSeenAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(u32) {
-        var _r: *IAsyncOperation(u32) = undefined;
-        const _c = self.vtable.GetSourcesUnseenCountAsync(@ptrCast(self), sourceIds, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MarkSourcesAsSeenAsync(@ptrCast(self), sourceIds, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IPhoneCallHistoryStore";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2f907db8-b40e-422b-8545-cb1910a61c52";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetEntryAsync: *const fn(self: *anyopaque, callHistoryEntryId: ?HSTRING, _r: **IAsyncOperation(PhoneCallHistoryEntry)) callconv(.winapi) HRESULT,
-        GetEntryReader: *const fn(self: *anyopaque, _r: **PhoneCallHistoryEntryReader) callconv(.winapi) HRESULT,
-        GetEntryReaderWithQueryOptions: *const fn(self: *anyopaque, queryOptions: *PhoneCallHistoryEntryQueryOptions, _r: **PhoneCallHistoryEntryReader) callconv(.winapi) HRESULT,
-        SaveEntryAsync: *const fn(self: *anyopaque, callHistoryEntry: *PhoneCallHistoryEntry, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DeleteEntryAsync: *const fn(self: *anyopaque, callHistoryEntry: *PhoneCallHistoryEntry, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DeleteEntriesAsync: *const fn(self: *anyopaque, callHistoryEntries: *IIterable(PhoneCallHistoryEntry), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkEntryAsSeenAsync: *const fn(self: *anyopaque, callHistoryEntry: *PhoneCallHistoryEntry, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkEntriesAsSeenAsync: *const fn(self: *anyopaque, callHistoryEntries: *IIterable(PhoneCallHistoryEntry), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetUnseenCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
-        MarkAllAsSeenAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetSourcesUnseenCountAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(?HSTRING), _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
-        MarkSourcesAsSeenAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-    };
-};
-pub const PhoneCallHistoryEntry = extern struct {
+pub const LockScreenCallEndCallDeferral = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
     pub fn cast(self: *@This(), AS: type) !*AS {
@@ -5347,154 +5669,17 @@ pub const PhoneCallHistoryEntry = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getId();
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const this: *ILockScreenCallEndCallDeferral = @ptrCast(self);
+        return try this.Complete();
     }
-    pub fn getAddress(self: *@This()) core.HResult!*PhoneCallHistoryEntryAddress {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getAddress();
-    }
-    pub fn putAddress(self: *@This(), value: *PhoneCallHistoryEntryAddress) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putAddress(value);
-    }
-    pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getDuration();
-    }
-    pub fn putDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putDuration(value);
-    }
-    pub fn getIsCallerIdBlocked(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsCallerIdBlocked();
-    }
-    pub fn putIsCallerIdBlocked(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsCallerIdBlocked(value);
-    }
-    pub fn getIsEmergency(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsEmergency();
-    }
-    pub fn putIsEmergency(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsEmergency(value);
-    }
-    pub fn getIsIncoming(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsIncoming();
-    }
-    pub fn putIsIncoming(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsIncoming(value);
-    }
-    pub fn getIsMissed(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsMissed();
-    }
-    pub fn putIsMissed(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsMissed(value);
-    }
-    pub fn getIsRinging(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsRinging();
-    }
-    pub fn putIsRinging(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsRinging(value);
-    }
-    pub fn getIsSeen(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsSeen();
-    }
-    pub fn putIsSeen(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsSeen(value);
-    }
-    pub fn getIsSuppressed(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsSuppressed();
-    }
-    pub fn putIsSuppressed(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsSuppressed(value);
-    }
-    pub fn getIsVoicemail(self: *@This()) core.HResult!bool {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getIsVoicemail();
-    }
-    pub fn putIsVoicemail(self: *@This(), value: bool) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putIsVoicemail(value);
-    }
-    pub fn getMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryMedia {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getMedia();
-    }
-    pub fn putMedia(self: *@This(), value: PhoneCallHistoryEntryMedia) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putMedia(value);
-    }
-    pub fn getOtherAppReadAccess(self: *@This()) core.HResult!PhoneCallHistoryEntryOtherAppReadAccess {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getOtherAppReadAccess();
-    }
-    pub fn putOtherAppReadAccess(self: *@This(), value: PhoneCallHistoryEntryOtherAppReadAccess) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putOtherAppReadAccess(value);
-    }
-    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getRemoteId();
-    }
-    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putRemoteId(value);
-    }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getSourceDisplayName();
-    }
-    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getSourceId();
-    }
-    pub fn putSourceId(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putSourceId(value);
-    }
-    pub fn getSourceIdKind(self: *@This()) core.HResult!PhoneCallHistorySourceIdKind {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getSourceIdKind();
-    }
-    pub fn putSourceIdKind(self: *@This(), value: PhoneCallHistorySourceIdKind) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putSourceIdKind(value);
-    }
-    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.getStartTime();
-    }
-    pub fn putStartTime(self: *@This(), value: DateTime) core.HResult!void {
-        const this: *IPhoneCallHistoryEntry = @ptrCast(self);
-        return try this.putStartTime(value);
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntry.IID)));
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntry";
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.LockScreenCallEndCallDeferral";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPhoneCallHistoryEntry.GUID;
-    pub const IID: Guid = IPhoneCallHistoryEntry.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntry.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+    pub const GUID: []const u8 = ILockScreenCallEndCallDeferral.GUID;
+    pub const IID: Guid = ILockScreenCallEndCallDeferral.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallEndCallDeferral.SIGNATURE);
 };
-pub const PhoneCallHistoryEntryAddress = extern struct {
+pub const LockScreenCallEndRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
     pub fn cast(self: *@This(), AS: type) !*AS {
@@ -5505,69 +5690,21 @@ pub const PhoneCallHistoryEntryAddress = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.getContactId();
+    pub fn GetDeferral(self: *@This()) core.HResult!*LockScreenCallEndCallDeferral {
+        const this: *ILockScreenCallEndRequestedEventArgs = @ptrCast(self);
+        return try this.GetDeferral();
     }
-    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.putContactId(value);
+    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
+        const this: *ILockScreenCallEndRequestedEventArgs = @ptrCast(self);
+        return try this.getDeadline();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.getDisplayName();
-    }
-    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.putDisplayName(value);
-    }
-    pub fn getRawAddress(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.getRawAddress();
-    }
-    pub fn putRawAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.putRawAddress(value);
-    }
-    pub fn getRawAddressKind(self: *@This()) core.HResult!PhoneCallHistoryEntryRawAddressKind {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.getRawAddressKind();
-    }
-    pub fn putRawAddressKind(self: *@This(), value: PhoneCallHistoryEntryRawAddressKind) core.HResult!void {
-        const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
-        return try this.putRawAddressKind(value);
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntryAddress.IID)));
-    }
-    pub fn Create(rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
-        const _f = try @This()._IPhoneCallHistoryEntryAddressFactoryCache.get();
-        return try _f.Create(rawAddress, rawAddressKind);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntryAddress";
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.LockScreenCallEndRequestedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPhoneCallHistoryEntryAddress.GUID;
-    pub const IID: Guid = IPhoneCallHistoryEntryAddress.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntryAddress.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-    var _IPhoneCallHistoryEntryAddressFactoryCache: FactoryCache(IPhoneCallHistoryEntryAddressFactory, RUNTIME_NAME) = .{};
+    pub const GUID: []const u8 = ILockScreenCallEndRequestedEventArgs.GUID;
+    pub const IID: Guid = ILockScreenCallEndRequestedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallEndRequestedEventArgs.SIGNATURE);
 };
-pub const PhoneCallHistoryEntryMedia = enum(i32) {
-    Audio = 0,
-    Video = 1,
-};
-pub const PhoneCallHistoryEntryOtherAppReadAccess = enum(i32) {
-    Full = 0,
-    SystemOnly = 1,
-};
-pub const PhoneCallHistoryEntryQueryDesiredMedia = enum(i32) {
-    None = 0,
-    Audio = 1,
-    Video = 2,
-    All = -1,
-};
-pub const PhoneCallHistoryEntryQueryOptions = extern struct {
+pub const LockScreenCallUI = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
     pub fn cast(self: *@This(), AS: type) !*AS {
@@ -5578,176 +5715,39 @@ pub const PhoneCallHistoryEntryQueryOptions = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDesiredMedia(self: *@This()) core.HResult!PhoneCallHistoryEntryQueryDesiredMedia {
-        const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
-        return try this.getDesiredMedia();
+    pub fn Dismiss(self: *@This()) core.HResult!void {
+        const this: *ILockScreenCallUI = @ptrCast(self);
+        return try this.Dismiss();
     }
-    pub fn putDesiredMedia(self: *@This(), value: PhoneCallHistoryEntryQueryDesiredMedia) core.HResult!void {
-        const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
-        return try this.putDesiredMedia(value);
+    pub fn addEndRequested(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,LockScreenCallEndRequestedEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *ILockScreenCallUI = @ptrCast(self);
+        return try this.addEndRequested(handler);
     }
-    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
-        const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
-        return try this.getSourceIds();
+    pub fn removeEndRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ILockScreenCallUI = @ptrCast(self);
+        return try this.removeEndRequested(token);
     }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntryQueryOptions.IID)));
+    pub fn addClosed(self: *@This(), handler: *TypedEventHandler(LockScreenCallUI,IInspectable)) core.HResult!EventRegistrationToken {
+        const this: *ILockScreenCallUI = @ptrCast(self);
+        return try this.addClosed(handler);
     }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntryQueryOptions";
+    pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ILockScreenCallUI = @ptrCast(self);
+        return try this.removeClosed(token);
+    }
+    pub fn getCallTitle(self: *@This()) core.HResult!?HSTRING {
+        const this: *ILockScreenCallUI = @ptrCast(self);
+        return try this.getCallTitle();
+    }
+    pub fn putCallTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *ILockScreenCallUI = @ptrCast(self);
+        return try this.putCallTitle(value);
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.LockScreenCallUI";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPhoneCallHistoryEntryQueryOptions.GUID;
-    pub const IID: Guid = IPhoneCallHistoryEntryQueryOptions.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntryQueryOptions.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-};
-pub const PhoneCallHistoryEntryRawAddressKind = enum(i32) {
-    PhoneNumber = 0,
-    Custom = 1,
-};
-pub const PhoneCallHistoryEntryReader = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(PhoneCallHistoryEntry)) {
-        const this: *IPhoneCallHistoryEntryReader = @ptrCast(self);
-        return try this.ReadBatchAsync();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntryReader";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPhoneCallHistoryEntryReader.GUID;
-    pub const IID: Guid = IPhoneCallHistoryEntryReader.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryEntryReader.SIGNATURE);
-};
-pub const PhoneCallHistoryManager = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestStoreAsync(accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
-        const _f = try @This()._IPhoneCallHistoryManagerStaticsCache.get();
-        return try _f.RequestStoreAsync(accessType);
-    }
-    pub fn GetForUser(user: *User) core.HResult!*PhoneCallHistoryManagerForUser {
-        const _f = try @This()._IPhoneCallHistoryManagerStatics2Cache.get();
-        return try _f.GetForUser(user);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IPhoneCallHistoryManagerStaticsCache: FactoryCache(IPhoneCallHistoryManagerStatics, RUNTIME_NAME) = .{};
-    var _IPhoneCallHistoryManagerStatics2Cache: FactoryCache(IPhoneCallHistoryManagerStatics2, RUNTIME_NAME) = .{};
-};
-pub const PhoneCallHistoryManagerForUser = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestStoreAsync(self: *@This(), accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
-        const this: *IPhoneCallHistoryManagerForUser = @ptrCast(self);
-        return try this.RequestStoreAsync(accessType);
-    }
-    pub fn getUser(self: *@This()) core.HResult!*User {
-        const this: *IPhoneCallHistoryManagerForUser = @ptrCast(self);
-        return try this.getUser();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryManagerForUser";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPhoneCallHistoryManagerForUser.GUID;
-    pub const IID: Guid = IPhoneCallHistoryManagerForUser.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryManagerForUser.SIGNATURE);
-};
-pub const PhoneCallHistorySourceIdKind = enum(i32) {
-    CellularPhoneLineId = 0,
-    PackageFamilyName = 1,
-};
-pub const PhoneCallHistoryStore = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.GetEntryAsync(callHistoryEntryId);
-    }
-    pub fn GetEntryReader(self: *@This()) core.HResult!*PhoneCallHistoryEntryReader {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.GetEntryReader();
-    }
-    pub fn GetEntryReaderWithQueryOptions(self: *@This(), queryOptions: *PhoneCallHistoryEntryQueryOptions) core.HResult!*PhoneCallHistoryEntryReader {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.GetEntryReaderWithQueryOptions(queryOptions);
-    }
-    pub fn SaveEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.SaveEntryAsync(callHistoryEntry);
-    }
-    pub fn DeleteEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.DeleteEntryAsync(callHistoryEntry);
-    }
-    pub fn DeleteEntriesAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.DeleteEntriesAsync(callHistoryEntries);
-    }
-    pub fn MarkEntryAsSeenAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.MarkEntryAsSeenAsync(callHistoryEntry);
-    }
-    pub fn MarkEntriesAsSeenAsync(self: *@This(), callHistoryEntries: *IIterable(PhoneCallHistoryEntry)) core.HResult!*IAsyncAction {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.MarkEntriesAsSeenAsync(callHistoryEntries);
-    }
-    pub fn GetUnseenCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.GetUnseenCountAsync();
-    }
-    pub fn MarkAllAsSeenAsync(self: *@This()) core.HResult!*IAsyncAction {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.MarkAllAsSeenAsync();
-    }
-    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(u32) {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.GetSourcesUnseenCountAsync(sourceIds);
-    }
-    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
-        const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.MarkSourcesAsSeenAsync(sourceIds);
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryStore";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPhoneCallHistoryStore.GUID;
-    pub const IID: Guid = IPhoneCallHistoryStore.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPhoneCallHistoryStore.SIGNATURE);
-};
-pub const PhoneCallHistoryStoreAccessType = enum(i32) {
-    AppEntriesReadWrite = 0,
-    AllEntriesLimitedReadWrite = 1,
-    AllEntriesReadWrite = 2,
+    pub const GUID: []const u8 = ILockScreenCallUI.GUID;
+    pub const IID: Guid = ILockScreenCallUI.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallUI.SIGNATURE);
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

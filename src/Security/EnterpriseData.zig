@@ -1,4 +1,9 @@
 // ----- This code is automatically generated -----
+pub const ProtectionPolicyEvaluationResult = enum(i32) {
+    Allowed = 0,
+    Blocked = 1,
+    ConsentRequired = 2,
+};
 pub const BufferProtectUnprotectResult = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -2041,11 +2046,6 @@ pub const ThreadNetworkContext = extern struct {
     pub const GUID: []const u8 = IThreadNetworkContext.GUID;
     pub const IID: Guid = IThreadNetworkContext.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IThreadNetworkContext.SIGNATURE);
-};
-pub const ProtectionPolicyEvaluationResult = enum(i32) {
-    Allowed = 0,
-    Blocked = 1,
-    ConsentRequired = 2,
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const NameCollisionOption = @import("../Storage.zig").NameCollisionOption;

@@ -1233,10 +1233,10 @@ pub const TextPredictionGenerator = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITextPredictionGenerator.SIGNATURE);
     var _ITextPredictionGeneratorFactoryCache: FactoryCache(ITextPredictionGeneratorFactory, RUNTIME_NAME) = .{};
 };
-pub const TextPredictionOptions = enum(i32) {
-    None = 0,
-    Predictions = 1,
-    Corrections = 2,
+pub const TextPredictionOptions = packed struct(u32) {
+    Predictions: bool = false,
+    Corrections: bool = false,
+    _m: u30 = 0,
 };
 pub const TextReverseConversionGenerator = extern struct {
     vtable: *const IInspectable.VTable,

@@ -1,180 +1,4 @@
 // ----- This code is automatically generated -----
-pub const IPrint3DDevice = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getPrintSchema(self: *@This()) core.HResult!*PrintSchema {
-        var _r: *PrintSchema = undefined;
-        const _c = self.vtable.get_PrintSchema(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Printers.IPrint3DDevice";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "041c3d19-9713-42a2-9813-7dc3337428d3";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PrintSchema: *const fn(self: *anyopaque, _r: **PrintSchema) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPrint3DDeviceStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
-        var _r: *IAsyncOperation(Print3DDevice) = undefined;
-        const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Printers.IPrint3DDeviceStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fde3620a-67cd-41b7-a344-5150a1fd75b5";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Print3DDevice)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPrintSchema = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefaultPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
-        const _c = self.vtable.GetDefaultPrintTicketAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetCapabilitiesAsync(self: *@This(), constrainTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
-        const _c = self.vtable.GetCapabilitiesAsync(@ptrCast(self), constrainTicket, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn MergeAndValidateWithDefaultPrintTicketAsync(self: *@This(), deltaTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
-        const _c = self.vtable.MergeAndValidateWithDefaultPrintTicketAsync(@ptrCast(self), deltaTicket, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Printers.IPrintSchema";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "c2b98316-26b8-4bfb-8138-9f962c22a35b";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefaultPrintTicketAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IRandomAccessStreamWithContentType)) callconv(.winapi) HRESULT,
-        GetCapabilitiesAsync: *const fn(self: *anyopaque, constrainTicket: *IRandomAccessStreamWithContentType, _r: **IAsyncOperation(IRandomAccessStreamWithContentType)) callconv(.winapi) HRESULT,
-        MergeAndValidateWithDefaultPrintTicketAsync: *const fn(self: *anyopaque, deltaTicket: *IRandomAccessStreamWithContentType, _r: **IAsyncOperation(IRandomAccessStreamWithContentType)) callconv(.winapi) HRESULT,
-    };
-};
-pub const Print3DDevice = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getPrintSchema(self: *@This()) core.HResult!*PrintSchema {
-        const this: *IPrint3DDevice = @ptrCast(self);
-        return try this.getPrintSchema();
-    }
-    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
-        const _f = try @This()._IPrint3DDeviceStaticsCache.get();
-        return try _f.FromIdAsync(deviceId);
-    }
-    pub fn GetDeviceSelector() core.HResult!?HSTRING {
-        const _f = try @This()._IPrint3DDeviceStaticsCache.get();
-        return try _f.GetDeviceSelector();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Printers.Print3DDevice";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPrint3DDevice.GUID;
-    pub const IID: Guid = IPrint3DDevice.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrint3DDevice.SIGNATURE);
-    var _IPrint3DDeviceStaticsCache: FactoryCache(IPrint3DDeviceStatics, RUNTIME_NAME) = .{};
-};
-pub const PrintSchema = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefaultPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        const this: *IPrintSchema = @ptrCast(self);
-        return try this.GetDefaultPrintTicketAsync();
-    }
-    pub fn GetCapabilitiesAsync(self: *@This(), constrainTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        const this: *IPrintSchema = @ptrCast(self);
-        return try this.GetCapabilitiesAsync(constrainTicket);
-    }
-    pub fn MergeAndValidateWithDefaultPrintTicketAsync(self: *@This(), deltaTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        const this: *IPrintSchema = @ptrCast(self);
-        return try this.MergeAndValidateWithDefaultPrintTicketAsync(deltaTicket);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Printers.PrintSchema";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPrintSchema.GUID;
-    pub const IID: Guid = IPrintSchema.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrintSchema.SIGNATURE);
-};
 pub const IIppAttributeError = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -2640,6 +2464,182 @@ pub const VirtualPrinterSupportedFormat = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IVirtualPrinterSupportedFormat.SIGNATURE);
     var _IVirtualPrinterSupportedFormatFactoryCache: FactoryCache(IVirtualPrinterSupportedFormatFactory, RUNTIME_NAME) = .{};
 };
+pub const IPrint3DDevice = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPrintSchema(self: *@This()) core.HResult!*PrintSchema {
+        var _r: *PrintSchema = undefined;
+        const _c = self.vtable.get_PrintSchema(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Printers.IPrint3DDevice";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "041c3d19-9713-42a2-9813-7dc3337428d3";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_PrintSchema: *const fn(self: *anyopaque, _r: **PrintSchema) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPrint3DDeviceStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
+        var _r: *IAsyncOperation(Print3DDevice) = undefined;
+        const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Printers.IPrint3DDeviceStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fde3620a-67cd-41b7-a344-5150a1fd75b5";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Print3DDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPrintSchema = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefaultPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
+        const _c = self.vtable.GetDefaultPrintTicketAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetCapabilitiesAsync(self: *@This(), constrainTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
+        const _c = self.vtable.GetCapabilitiesAsync(@ptrCast(self), constrainTicket, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn MergeAndValidateWithDefaultPrintTicketAsync(self: *@This(), deltaTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
+        const _c = self.vtable.MergeAndValidateWithDefaultPrintTicketAsync(@ptrCast(self), deltaTicket, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Printers.IPrintSchema";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "c2b98316-26b8-4bfb-8138-9f962c22a35b";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDefaultPrintTicketAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IRandomAccessStreamWithContentType)) callconv(.winapi) HRESULT,
+        GetCapabilitiesAsync: *const fn(self: *anyopaque, constrainTicket: *IRandomAccessStreamWithContentType, _r: **IAsyncOperation(IRandomAccessStreamWithContentType)) callconv(.winapi) HRESULT,
+        MergeAndValidateWithDefaultPrintTicketAsync: *const fn(self: *anyopaque, deltaTicket: *IRandomAccessStreamWithContentType, _r: **IAsyncOperation(IRandomAccessStreamWithContentType)) callconv(.winapi) HRESULT,
+    };
+};
+pub const Print3DDevice = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPrintSchema(self: *@This()) core.HResult!*PrintSchema {
+        const this: *IPrint3DDevice = @ptrCast(self);
+        return try this.getPrintSchema();
+    }
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
+        const _f = try @This()._IPrint3DDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
+    }
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
+        const _f = try @This()._IPrint3DDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Printers.Print3DDevice";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPrint3DDevice.GUID;
+    pub const IID: Guid = IPrint3DDevice.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrint3DDevice.SIGNATURE);
+    var _IPrint3DDeviceStaticsCache: FactoryCache(IPrint3DDeviceStatics, RUNTIME_NAME) = .{};
+};
+pub const PrintSchema = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefaultPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        const this: *IPrintSchema = @ptrCast(self);
+        return try this.GetDefaultPrintTicketAsync();
+    }
+    pub fn GetCapabilitiesAsync(self: *@This(), constrainTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        const this: *IPrintSchema = @ptrCast(self);
+        return try this.GetCapabilitiesAsync(constrainTicket);
+    }
+    pub fn MergeAndValidateWithDefaultPrintTicketAsync(self: *@This(), deltaTicket: *IRandomAccessStreamWithContentType) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        const this: *IPrintSchema = @ptrCast(self);
+        return try this.MergeAndValidateWithDefaultPrintTicketAsync(deltaTicket);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Printers.PrintSchema";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPrintSchema.GUID;
+    pub const IID: Guid = IPrintSchema.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrintSchema.SIGNATURE);
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
@@ -2664,7 +2664,7 @@ const IOutputStream = @import("../Storage/Streams.zig").IOutputStream;
 const Uri = @import("../Foundation.zig").Uri;
 const HResult = @import("../Foundation.zig").HResult;
 const HRESULT = @import("../root.zig").HRESULT;
-const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const core = @import("../root.zig").core;
+const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const PrintTaskOptions = @import("../Graphics/Printing.zig").PrintTaskOptions;
 pub const Extensions = @import("./Printers/Extensions.zig");

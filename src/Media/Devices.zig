@@ -1,805 +1,4 @@
 // ----- This code is automatically generated -----
-pub const CallControl = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.IndicateNewIncomingCall(enableRinger, callerId);
-    }
-    pub fn IndicateNewOutgoingCall(self: *@This()) core.HResult!u64 {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.IndicateNewOutgoingCall();
-    }
-    pub fn IndicateActiveCall(self: *@This(), callToken: u64) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.IndicateActiveCall(callToken);
-    }
-    pub fn EndCall(self: *@This(), callToken: u64) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.EndCall(callToken);
-    }
-    pub fn getHasRinger(self: *@This()) core.HResult!bool {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.getHasRinger();
-    }
-    pub fn addAnswerRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.addAnswerRequested(handler);
-    }
-    pub fn removeAnswerRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.removeAnswerRequested(token);
-    }
-    pub fn addHangUpRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.addHangUpRequested(handler);
-    }
-    pub fn removeHangUpRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.removeHangUpRequested(token);
-    }
-    pub fn addDialRequested(self: *@This(), handler: *DialRequestedEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.addDialRequested(handler);
-    }
-    pub fn removeDialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.removeDialRequested(token);
-    }
-    pub fn addRedialRequested(self: *@This(), handler: *RedialRequestedEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.addRedialRequested(handler);
-    }
-    pub fn removeRedialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.removeRedialRequested(token);
-    }
-    pub fn addKeypadPressed(self: *@This(), handler: *KeypadPressedEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.addKeypadPressed(handler);
-    }
-    pub fn removeKeypadPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.removeKeypadPressed(token);
-    }
-    pub fn addAudioTransferRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.addAudioTransferRequested(handler);
-    }
-    pub fn removeAudioTransferRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *ICallControl = @ptrCast(self);
-        return try this.removeAudioTransferRequested(token);
-    }
-    pub fn GetDefault() core.HResult!*CallControl {
-        const _f = try @This()._ICallControlStaticsCache.get();
-        return try _f.GetDefault();
-    }
-    pub fn FromId(deviceId: ?HSTRING) core.HResult!*CallControl {
-        const _f = try @This()._ICallControlStaticsCache.get();
-        return try _f.FromId(deviceId);
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.CallControl";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICallControl.GUID;
-    pub const IID: Guid = ICallControl.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICallControl.SIGNATURE);
-    var _ICallControlStaticsCache: FactoryCache(ICallControlStatics, RUNTIME_NAME) = .{};
-};
-pub const CallControlEventHandler = extern struct {
-    vtable: *const VTable,
-    _refs: @import("std").atomic.Value(u32),
-    _cb: *anyopaque,
-    _context: ?*anyopaque = null,
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl) void,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-        };
-        return _r;
-    }
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl) void,
-        context: anytype,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-            ._context = @ptrCast(context),
-        };
-        return _r;
-    }
-    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
-    /// Otherwise the memory stays until all references are released, including all references Windows holds.
-    ///
-    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
-    pub fn deinit(self: *@This()) void {
-        _ = Release(@ptrCast(self));
-    }
-    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
-        const std = @import("std");
-        const me: *@This() = @ptrCast(@alignCast(self));
-        // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
-        {
-            out.* = @as(?*anyopaque, @ptrCast(me));
-            _ = AddRef(self);
-            return 0;
-        }
-        out.* = null;
-        return -2147467262; // E_NOINTERFACE
-    }
-    fn AddRef(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        return this._refs.fetchAdd(1, .monotonic) + 1;
-    }
-    fn Release(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const left = this._refs.fetchSub(1, .acq_rel) - 1;
-        if (left == 0) @import("std").heap.c_allocator.destroy(this);
-        return left;
-    }
-    pub fn Invoke(self: *anyopaque, sender: *CallControl) callconv(.winapi) HRESULT {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const _callback: *const fn(?*anyopaque, sender: *CallControl) void = @ptrCast(@alignCast(this._cb));
-        _callback(this._context, sender);
-        return 0;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.CallControlEventHandler";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "596f759f-50df-4454-bc63-4d3d01b61958";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, sender: *CallControl) callconv(.winapi) HRESULT
-    };
-    pub const VTABLE = VTable {
-        .QueryInterface = QueryInterface,
-        .AddRef = AddRef,
-        .Release = Release,
-        .Invoke = Invoke,
-    };
-};
-pub const DialRequestedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Handled(self: *@This()) core.HResult!void {
-        const this: *IDialRequestedEventArgs = @ptrCast(self);
-        return try this.Handled();
-    }
-    pub fn getContact(self: *@This()) core.HResult!*IInspectable {
-        const this: *IDialRequestedEventArgs = @ptrCast(self);
-        return try this.getContact();
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.DialRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IDialRequestedEventArgs.GUID;
-    pub const IID: Guid = IDialRequestedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDialRequestedEventArgs.SIGNATURE);
-};
-pub const DialRequestedEventHandler = extern struct {
-    vtable: *const VTable,
-    _refs: @import("std").atomic.Value(u32),
-    _cb: *anyopaque,
-    _context: ?*anyopaque = null,
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-        };
-        return _r;
-    }
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void,
-        context: anytype,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-            ._context = @ptrCast(context),
-        };
-        return _r;
-    }
-    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
-    /// Otherwise the memory stays until all references are released, including all references Windows holds.
-    ///
-    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
-    pub fn deinit(self: *@This()) void {
-        _ = Release(@ptrCast(self));
-    }
-    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
-        const std = @import("std");
-        const me: *@This() = @ptrCast(@alignCast(self));
-        // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
-        {
-            out.* = @as(?*anyopaque, @ptrCast(me));
-            _ = AddRef(self);
-            return 0;
-        }
-        out.* = null;
-        return -2147467262; // E_NOINTERFACE
-    }
-    fn AddRef(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        return this._refs.fetchAdd(1, .monotonic) + 1;
-    }
-    fn Release(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const left = this._refs.fetchSub(1, .acq_rel) - 1;
-        if (left == 0) @import("std").heap.c_allocator.destroy(this);
-        return left;
-    }
-    pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) callconv(.winapi) HRESULT {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void = @ptrCast(@alignCast(this._cb));
-        _callback(this._context, sender, e);
-        return 0;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.DialRequestedEventHandler";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5abbffdb-c21f-4bc4-891b-257e28c1b1a4";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) callconv(.winapi) HRESULT
-    };
-    pub const VTABLE = VTable {
-        .QueryInterface = QueryInterface,
-        .AddRef = AddRef,
-        .Release = Release,
-        .Invoke = Invoke,
-    };
-};
-pub const ICallControl = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
-        var _r: u64 = undefined;
-        const _c = self.vtable.IndicateNewIncomingCall(@ptrCast(self), enableRinger, callerId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn IndicateNewOutgoingCall(self: *@This()) core.HResult!u64 {
-        var _r: u64 = undefined;
-        const _c = self.vtable.IndicateNewOutgoingCall(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn IndicateActiveCall(self: *@This(), callToken: u64) core.HResult!void {
-        const _c = self.vtable.IndicateActiveCall(@ptrCast(self), callToken);
-        try core.hresultToError(_c);
-    }
-    pub fn EndCall(self: *@This(), callToken: u64) core.HResult!void {
-        const _c = self.vtable.EndCall(@ptrCast(self), callToken);
-        try core.hresultToError(_c);
-    }
-    pub fn getHasRinger(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_HasRinger(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn addAnswerRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_AnswerRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeAnswerRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_AnswerRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addHangUpRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_HangUpRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeHangUpRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_HangUpRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addDialRequested(self: *@This(), handler: *DialRequestedEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_DialRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeDialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_DialRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addRedialRequested(self: *@This(), handler: *RedialRequestedEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_RedialRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeRedialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_RedialRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addKeypadPressed(self: *@This(), handler: *KeypadPressedEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_KeypadPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeKeypadPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_KeypadPressed(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addAudioTransferRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_AudioTransferRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeAudioTransferRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_AudioTransferRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.ICallControl";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "a520d0d6-ae8d-45db-8011-ca49d3b3e578";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IndicateNewIncomingCall: *const fn(self: *anyopaque, enableRinger: bool, callerId: ?HSTRING, _r: *u64) callconv(.winapi) HRESULT,
-        IndicateNewOutgoingCall: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
-        IndicateActiveCall: *const fn(self: *anyopaque, callToken: u64) callconv(.winapi) HRESULT,
-        EndCall: *const fn(self: *anyopaque, callToken: u64) callconv(.winapi) HRESULT,
-        get_HasRinger: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        add_AnswerRequested: *const fn(self: *anyopaque, handler: *CallControlEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_AnswerRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_HangUpRequested: *const fn(self: *anyopaque, handler: *CallControlEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_HangUpRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_DialRequested: *const fn(self: *anyopaque, handler: *DialRequestedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_DialRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_RedialRequested: *const fn(self: *anyopaque, handler: *RedialRequestedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_RedialRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_KeypadPressed: *const fn(self: *anyopaque, handler: *KeypadPressedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_KeypadPressed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_AudioTransferRequested: *const fn(self: *anyopaque, handler: *CallControlEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_AudioTransferRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICallControlStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefault(self: *@This()) core.HResult!*CallControl {
-        var _r: *CallControl = undefined;
-        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*CallControl {
-        var _r: *CallControl = undefined;
-        const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.ICallControlStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "03945ad5-85ab-40e1-af19-56c94303b019";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefault: *const fn(self: *anyopaque, _r: **CallControl) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **CallControl) callconv(.winapi) HRESULT,
-    };
-};
-pub const IDialRequestedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Handled(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Handled(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn getContact(self: *@This()) core.HResult!*IInspectable {
-        var _r: *IInspectable = undefined;
-        const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.IDialRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "037b929e-953c-4286-8866-4f0f376c855a";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Handled: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        get_Contact: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
-    };
-};
-pub const IKeypadPressedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTelephonyKey(self: *@This()) core.HResult!TelephonyKey {
-        var _r: TelephonyKey = undefined;
-        const _c = self.vtable.get_TelephonyKey(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.IKeypadPressedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "d3a43900-b4fa-49cd-9442-89af6568f601";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TelephonyKey: *const fn(self: *anyopaque, _r: *TelephonyKey) callconv(.winapi) HRESULT,
-    };
-};
-pub const IRedialRequestedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Handled(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Handled(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.IRedialRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "7eb55209-76ab-4c31-b40e-4b58379d580c";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Handled: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-    };
-};
-pub const KeypadPressedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getTelephonyKey(self: *@This()) core.HResult!TelephonyKey {
-        const this: *IKeypadPressedEventArgs = @ptrCast(self);
-        return try this.getTelephonyKey();
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.KeypadPressedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IKeypadPressedEventArgs.GUID;
-    pub const IID: Guid = IKeypadPressedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IKeypadPressedEventArgs.SIGNATURE);
-};
-pub const KeypadPressedEventHandler = extern struct {
-    vtable: *const VTable,
-    _refs: @import("std").atomic.Value(u32),
-    _cb: *anyopaque,
-    _context: ?*anyopaque = null,
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-        };
-        return _r;
-    }
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void,
-        context: anytype,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-            ._context = @ptrCast(context),
-        };
-        return _r;
-    }
-    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
-    /// Otherwise the memory stays until all references are released, including all references Windows holds.
-    ///
-    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
-    pub fn deinit(self: *@This()) void {
-        _ = Release(@ptrCast(self));
-    }
-    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
-        const std = @import("std");
-        const me: *@This() = @ptrCast(@alignCast(self));
-        // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
-        {
-            out.* = @as(?*anyopaque, @ptrCast(me));
-            _ = AddRef(self);
-            return 0;
-        }
-        out.* = null;
-        return -2147467262; // E_NOINTERFACE
-    }
-    fn AddRef(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        return this._refs.fetchAdd(1, .monotonic) + 1;
-    }
-    fn Release(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const left = this._refs.fetchSub(1, .acq_rel) - 1;
-        if (left == 0) @import("std").heap.c_allocator.destroy(this);
-        return left;
-    }
-    pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) callconv(.winapi) HRESULT {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void = @ptrCast(@alignCast(this._cb));
-        _callback(this._context, sender, e);
-        return 0;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.KeypadPressedEventHandler";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "e637a454-c527-422c-8926-c9af83b559a0";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) callconv(.winapi) HRESULT
-    };
-    pub const VTABLE = VTable {
-        .QueryInterface = QueryInterface,
-        .AddRef = AddRef,
-        .Release = Release,
-        .Invoke = Invoke,
-    };
-};
-pub const RedialRequestedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Handled(self: *@This()) core.HResult!void {
-        const this: *IRedialRequestedEventArgs = @ptrCast(self);
-        return try this.Handled();
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.RedialRequestedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IRedialRequestedEventArgs.GUID;
-    pub const IID: Guid = IRedialRequestedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IRedialRequestedEventArgs.SIGNATURE);
-};
-pub const RedialRequestedEventHandler = extern struct {
-    vtable: *const VTable,
-    _refs: @import("std").atomic.Value(u32),
-    _cb: *anyopaque,
-    _context: ?*anyopaque = null,
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-        };
-        return _r;
-    }
-    /// This creates a heap allocated instance that only frees/destroys when all
-    /// references are released including any references Windows makes.
-    pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void,
-        context: anytype,
-    ) !*@This() {
-        const _r = try @import("std").heap.c_allocator.create(@This());
-        _r.* = .{
-            .vtable = &VTABLE,
-            ._cb = @ptrCast(@constCast(cb)),
-            ._refs = .init(1),
-            ._context = @ptrCast(context),
-        };
-        return _r;
-    }
-    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
-    /// Otherwise the memory stays until all references are released, including all references Windows holds.
-    ///
-    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
-    pub fn deinit(self: *@This()) void {
-        _ = Release(@ptrCast(self));
-    }
-    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
-        const std = @import("std");
-        const me: *@This() = @ptrCast(@alignCast(self));
-        // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
-        {
-            out.* = @as(?*anyopaque, @ptrCast(me));
-            _ = AddRef(self);
-            return 0;
-        }
-        out.* = null;
-        return -2147467262; // E_NOINTERFACE
-    }
-    fn AddRef(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        return this._refs.fetchAdd(1, .monotonic) + 1;
-    }
-    fn Release(self: *anyopaque) callconv(.c) u32 {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const left = this._refs.fetchSub(1, .acq_rel) - 1;
-        if (left == 0) @import("std").heap.c_allocator.destroy(this);
-        return left;
-    }
-    pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) callconv(.winapi) HRESULT {
-        const this: *@This() = @ptrCast(@alignCast(self));
-        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void = @ptrCast(@alignCast(this._cb));
-        _callback(this._context, sender, e);
-        return 0;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Devices.RedialRequestedEventHandler";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "baf257d1-4ebd-4b84-9f47-6ec43d75d8b1";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) callconv(.winapi) HRESULT
-    };
-    pub const VTABLE = VTable {
-        .QueryInterface = QueryInterface,
-        .AddRef = AddRef,
-        .Release = Release,
-        .Invoke = Invoke,
-    };
-};
-pub const TelephonyKey = enum(i32) {
-    D0 = 0,
-    D1 = 1,
-    D2 = 2,
-    D3 = 3,
-    D4 = 4,
-    D5 = 5,
-    D6 = 6,
-    D7 = 7,
-    D8 = 8,
-    D9 = 9,
-    Star = 10,
-    Pound = 11,
-    A = 12,
-    B = 13,
-    C = 14,
-    D = 15,
-};
 pub const AdvancedPhotoCaptureSettings = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -6635,6 +5834,807 @@ pub const ZoomTransitionMode = enum(i32) {
     Direct = 1,
     Smooth = 2,
 };
+pub const CallControl = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.IndicateNewIncomingCall(enableRinger, callerId);
+    }
+    pub fn IndicateNewOutgoingCall(self: *@This()) core.HResult!u64 {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.IndicateNewOutgoingCall();
+    }
+    pub fn IndicateActiveCall(self: *@This(), callToken: u64) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.IndicateActiveCall(callToken);
+    }
+    pub fn EndCall(self: *@This(), callToken: u64) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.EndCall(callToken);
+    }
+    pub fn getHasRinger(self: *@This()) core.HResult!bool {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.getHasRinger();
+    }
+    pub fn addAnswerRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.addAnswerRequested(handler);
+    }
+    pub fn removeAnswerRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.removeAnswerRequested(token);
+    }
+    pub fn addHangUpRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.addHangUpRequested(handler);
+    }
+    pub fn removeHangUpRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.removeHangUpRequested(token);
+    }
+    pub fn addDialRequested(self: *@This(), handler: *DialRequestedEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.addDialRequested(handler);
+    }
+    pub fn removeDialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.removeDialRequested(token);
+    }
+    pub fn addRedialRequested(self: *@This(), handler: *RedialRequestedEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.addRedialRequested(handler);
+    }
+    pub fn removeRedialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.removeRedialRequested(token);
+    }
+    pub fn addKeypadPressed(self: *@This(), handler: *KeypadPressedEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.addKeypadPressed(handler);
+    }
+    pub fn removeKeypadPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.removeKeypadPressed(token);
+    }
+    pub fn addAudioTransferRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.addAudioTransferRequested(handler);
+    }
+    pub fn removeAudioTransferRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *ICallControl = @ptrCast(self);
+        return try this.removeAudioTransferRequested(token);
+    }
+    pub fn GetDefault() core.HResult!*CallControl {
+        const _f = try @This()._ICallControlStaticsCache.get();
+        return try _f.GetDefault();
+    }
+    pub fn FromId(deviceId: ?HSTRING) core.HResult!*CallControl {
+        const _f = try @This()._ICallControlStaticsCache.get();
+        return try _f.FromId(deviceId);
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.CallControl";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICallControl.GUID;
+    pub const IID: Guid = ICallControl.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICallControl.SIGNATURE);
+    var _ICallControlStaticsCache: FactoryCache(ICallControlStatics, RUNTIME_NAME) = .{};
+};
+pub const CallControlEventHandler = extern struct {
+    vtable: *const VTable,
+    _refs: @import("std").atomic.Value(u32),
+    _cb: *anyopaque,
+    _context: ?*anyopaque = null,
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn init(
+        cb: *const fn(?*anyopaque, sender: *CallControl) void,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+        };
+        return _r;
+    }
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn initWithState(
+        cb: *const fn(?*anyopaque, sender: *CallControl) void,
+        context: anytype,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+            ._context = @ptrCast(context),
+        };
+        return _r;
+    }
+    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
+    /// Otherwise the memory stays until all references are released, including all references Windows holds.
+    ///
+    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
+    pub fn deinit(self: *@This()) void {
+        _ = Release(@ptrCast(self));
+    }
+    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = AddRef(self);
+            return 0;
+        }
+        out.* = null;
+        return -2147467262; // E_NOINTERFACE
+    }
+    fn AddRef(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        return this._refs.fetchAdd(1, .monotonic) + 1;
+    }
+    fn Release(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const left = this._refs.fetchSub(1, .acq_rel) - 1;
+        if (left == 0) @import("std").heap.c_allocator.destroy(this);
+        return left;
+    }
+    pub fn Invoke(self: *anyopaque, sender: *CallControl) callconv(.winapi) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const _callback: *const fn(?*anyopaque, sender: *CallControl) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender);
+        return 0;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.CallControlEventHandler";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "596f759f-50df-4454-bc63-4d3d01b61958";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        Invoke: *const fn(self: *anyopaque, sender: *CallControl) callconv(.winapi) HRESULT
+    };
+    pub const VTABLE = VTable {
+        .QueryInterface = QueryInterface,
+        .AddRef = AddRef,
+        .Release = Release,
+        .Invoke = Invoke,
+    };
+};
+pub const DialRequestedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Handled(self: *@This()) core.HResult!void {
+        const this: *IDialRequestedEventArgs = @ptrCast(self);
+        return try this.Handled();
+    }
+    pub fn getContact(self: *@This()) core.HResult!*IInspectable {
+        const this: *IDialRequestedEventArgs = @ptrCast(self);
+        return try this.getContact();
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.DialRequestedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IDialRequestedEventArgs.GUID;
+    pub const IID: Guid = IDialRequestedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDialRequestedEventArgs.SIGNATURE);
+};
+pub const DialRequestedEventHandler = extern struct {
+    vtable: *const VTable,
+    _refs: @import("std").atomic.Value(u32),
+    _cb: *anyopaque,
+    _context: ?*anyopaque = null,
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn init(
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+        };
+        return _r;
+    }
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn initWithState(
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void,
+        context: anytype,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+            ._context = @ptrCast(context),
+        };
+        return _r;
+    }
+    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
+    /// Otherwise the memory stays until all references are released, including all references Windows holds.
+    ///
+    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
+    pub fn deinit(self: *@This()) void {
+        _ = Release(@ptrCast(self));
+    }
+    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = AddRef(self);
+            return 0;
+        }
+        out.* = null;
+        return -2147467262; // E_NOINTERFACE
+    }
+    fn AddRef(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        return this._refs.fetchAdd(1, .monotonic) + 1;
+    }
+    fn Release(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const left = this._refs.fetchSub(1, .acq_rel) - 1;
+        if (left == 0) @import("std").heap.c_allocator.destroy(this);
+        return left;
+    }
+    pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) callconv(.winapi) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
+        return 0;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.DialRequestedEventHandler";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5abbffdb-c21f-4bc4-891b-257e28c1b1a4";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        Invoke: *const fn(self: *anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) callconv(.winapi) HRESULT
+    };
+    pub const VTABLE = VTable {
+        .QueryInterface = QueryInterface,
+        .AddRef = AddRef,
+        .Release = Release,
+        .Invoke = Invoke,
+    };
+};
+pub const ICallControl = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
+        var _r: u64 = undefined;
+        const _c = self.vtable.IndicateNewIncomingCall(@ptrCast(self), enableRinger, callerId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn IndicateNewOutgoingCall(self: *@This()) core.HResult!u64 {
+        var _r: u64 = undefined;
+        const _c = self.vtable.IndicateNewOutgoingCall(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn IndicateActiveCall(self: *@This(), callToken: u64) core.HResult!void {
+        const _c = self.vtable.IndicateActiveCall(@ptrCast(self), callToken);
+        try core.hresultToError(_c);
+    }
+    pub fn EndCall(self: *@This(), callToken: u64) core.HResult!void {
+        const _c = self.vtable.EndCall(@ptrCast(self), callToken);
+        try core.hresultToError(_c);
+    }
+    pub fn getHasRinger(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_HasRinger(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn addAnswerRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_AnswerRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeAnswerRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_AnswerRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addHangUpRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_HangUpRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeHangUpRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_HangUpRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addDialRequested(self: *@This(), handler: *DialRequestedEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_DialRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeDialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_DialRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addRedialRequested(self: *@This(), handler: *RedialRequestedEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_RedialRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeRedialRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_RedialRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addKeypadPressed(self: *@This(), handler: *KeypadPressedEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_KeypadPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeKeypadPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_KeypadPressed(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addAudioTransferRequested(self: *@This(), handler: *CallControlEventHandler) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_AudioTransferRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeAudioTransferRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_AudioTransferRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.ICallControl";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "a520d0d6-ae8d-45db-8011-ca49d3b3e578";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        IndicateNewIncomingCall: *const fn(self: *anyopaque, enableRinger: bool, callerId: ?HSTRING, _r: *u64) callconv(.winapi) HRESULT,
+        IndicateNewOutgoingCall: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
+        IndicateActiveCall: *const fn(self: *anyopaque, callToken: u64) callconv(.winapi) HRESULT,
+        EndCall: *const fn(self: *anyopaque, callToken: u64) callconv(.winapi) HRESULT,
+        get_HasRinger: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        add_AnswerRequested: *const fn(self: *anyopaque, handler: *CallControlEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_AnswerRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_HangUpRequested: *const fn(self: *anyopaque, handler: *CallControlEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_HangUpRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_DialRequested: *const fn(self: *anyopaque, handler: *DialRequestedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_DialRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_RedialRequested: *const fn(self: *anyopaque, handler: *RedialRequestedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_RedialRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_KeypadPressed: *const fn(self: *anyopaque, handler: *KeypadPressedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_KeypadPressed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_AudioTransferRequested: *const fn(self: *anyopaque, handler: *CallControlEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_AudioTransferRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICallControlStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefault(self: *@This()) core.HResult!*CallControl {
+        var _r: *CallControl = undefined;
+        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*CallControl {
+        var _r: *CallControl = undefined;
+        const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.ICallControlStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "03945ad5-85ab-40e1-af19-56c94303b019";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDefault: *const fn(self: *anyopaque, _r: **CallControl) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **CallControl) callconv(.winapi) HRESULT,
+    };
+};
+pub const IDialRequestedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Handled(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Handled(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn getContact(self: *@This()) core.HResult!*IInspectable {
+        var _r: *IInspectable = undefined;
+        const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.IDialRequestedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "037b929e-953c-4286-8866-4f0f376c855a";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Handled: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        get_Contact: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
+    };
+};
+pub const IKeypadPressedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTelephonyKey(self: *@This()) core.HResult!TelephonyKey {
+        var _r: TelephonyKey = undefined;
+        const _c = self.vtable.get_TelephonyKey(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.IKeypadPressedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "d3a43900-b4fa-49cd-9442-89af6568f601";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_TelephonyKey: *const fn(self: *anyopaque, _r: *TelephonyKey) callconv(.winapi) HRESULT,
+    };
+};
+pub const IRedialRequestedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Handled(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Handled(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.IRedialRequestedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "7eb55209-76ab-4c31-b40e-4b58379d580c";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Handled: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+    };
+};
+pub const KeypadPressedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTelephonyKey(self: *@This()) core.HResult!TelephonyKey {
+        const this: *IKeypadPressedEventArgs = @ptrCast(self);
+        return try this.getTelephonyKey();
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.KeypadPressedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IKeypadPressedEventArgs.GUID;
+    pub const IID: Guid = IKeypadPressedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IKeypadPressedEventArgs.SIGNATURE);
+};
+pub const KeypadPressedEventHandler = extern struct {
+    vtable: *const VTable,
+    _refs: @import("std").atomic.Value(u32),
+    _cb: *anyopaque,
+    _context: ?*anyopaque = null,
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn init(
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+        };
+        return _r;
+    }
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn initWithState(
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void,
+        context: anytype,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+            ._context = @ptrCast(context),
+        };
+        return _r;
+    }
+    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
+    /// Otherwise the memory stays until all references are released, including all references Windows holds.
+    ///
+    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
+    pub fn deinit(self: *@This()) void {
+        _ = Release(@ptrCast(self));
+    }
+    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = AddRef(self);
+            return 0;
+        }
+        out.* = null;
+        return -2147467262; // E_NOINTERFACE
+    }
+    fn AddRef(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        return this._refs.fetchAdd(1, .monotonic) + 1;
+    }
+    fn Release(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const left = this._refs.fetchSub(1, .acq_rel) - 1;
+        if (left == 0) @import("std").heap.c_allocator.destroy(this);
+        return left;
+    }
+    pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) callconv(.winapi) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
+        return 0;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.KeypadPressedEventHandler";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "e637a454-c527-422c-8926-c9af83b559a0";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        Invoke: *const fn(self: *anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) callconv(.winapi) HRESULT
+    };
+    pub const VTABLE = VTable {
+        .QueryInterface = QueryInterface,
+        .AddRef = AddRef,
+        .Release = Release,
+        .Invoke = Invoke,
+    };
+};
+pub const RedialRequestedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Handled(self: *@This()) core.HResult!void {
+        const this: *IRedialRequestedEventArgs = @ptrCast(self);
+        return try this.Handled();
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.RedialRequestedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IRedialRequestedEventArgs.GUID;
+    pub const IID: Guid = IRedialRequestedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IRedialRequestedEventArgs.SIGNATURE);
+};
+pub const RedialRequestedEventHandler = extern struct {
+    vtable: *const VTable,
+    _refs: @import("std").atomic.Value(u32),
+    _cb: *anyopaque,
+    _context: ?*anyopaque = null,
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn init(
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+        };
+        return _r;
+    }
+    /// This creates a heap allocated instance that only frees/destroys when all
+    /// references are released including any references Windows makes.
+    pub fn initWithState(
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void,
+        context: anytype,
+    ) !*@This() {
+        const _r = try @import("std").heap.c_allocator.create(@This());
+        _r.* = .{
+            .vtable = &VTABLE,
+            ._cb = @ptrCast(@constCast(cb)),
+            ._refs = .init(1),
+            ._context = @ptrCast(context),
+        };
+        return _r;
+    }
+    /// This calls Release and voids the returned ref count. If ref count is 0 the memory is released,
+    /// Otherwise the memory stays until all references are released, including all references Windows holds.
+    ///
+    /// The caller *MUST* always call deinit/Release at least once for every AddRef and init called.
+    pub fn deinit(self: *@This()) void {
+        _ = Release(@ptrCast(self));
+    }
+    fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = AddRef(self);
+            return 0;
+        }
+        out.* = null;
+        return -2147467262; // E_NOINTERFACE
+    }
+    fn AddRef(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        return this._refs.fetchAdd(1, .monotonic) + 1;
+    }
+    fn Release(self: *anyopaque) callconv(.c) u32 {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const left = this._refs.fetchSub(1, .acq_rel) - 1;
+        if (left == 0) @import("std").heap.c_allocator.destroy(this);
+        return left;
+    }
+    pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) callconv(.winapi) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
+        return 0;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Devices.RedialRequestedEventHandler";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "baf257d1-4ebd-4b84-9f47-6ec43d75d8b1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        Invoke: *const fn(self: *anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) callconv(.winapi) HRESULT
+    };
+    pub const VTABLE = VTable {
+        .QueryInterface = QueryInterface,
+        .AddRef = AddRef,
+        .Release = Release,
+        .Invoke = Invoke,
+    };
+};
+pub const TelephonyKey = enum(i32) {
+    D0 = 0,
+    D1 = 1,
+    D2 = 2,
+    D3 = 3,
+    D4 = 4,
+    D5 = 5,
+    D6 = 6,
+    D7 = 7,
+    D8 = 8,
+    D9 = 9,
+    Star = 10,
+    Pound = 11,
+    A = 12,
+    B = 13,
+    C = 14,
+    D = 15,
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
@@ -6660,9 +6660,9 @@ const Panel = @import("../Devices/Enumeration.zig").Panel;
 const HSTRING = @import("../root.zig").HSTRING;
 const MediaCaptureDeviceExclusiveControlReleaseMode = @import("./Capture.zig").MediaCaptureDeviceExclusiveControlReleaseMode;
 const IMediaEncodingProperties = @import("./MediaProperties.zig").IMediaEncodingProperties;
-const IAgileObject = @import("../root.zig").IAgileObject;
 const TimeSpan = @import("../Foundation.zig").TimeSpan;
-const core = @import("../root.zig").core;
+const IAgileObject = @import("../root.zig").IAgileObject;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
+const core = @import("../root.zig").core;
 const MediaPixelFormat = @import("./MediaProperties.zig").MediaPixelFormat;
 pub const Core = @import("./Devices/Core.zig");

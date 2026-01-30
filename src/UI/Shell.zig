@@ -88,6 +88,773 @@ pub const SecurityAppSubstatus = enum(i32) {
     ActionRecommended = 2,
     ActionNeeded = 3,
 };
+pub const AdaptiveCardBuilder = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateAdaptiveCardFromJson(value: ?HSTRING) core.HResult!*IAdaptiveCard {
+        const _f = try @This()._IAdaptiveCardBuilderStaticsCache.get();
+        return try _f.CreateAdaptiveCardFromJson(value);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.AdaptiveCardBuilder";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IAdaptiveCardBuilderStaticsCache: FactoryCache(IAdaptiveCardBuilderStatics, RUNTIME_NAME) = .{};
+};
+pub const FocusSession = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IFocusSession = @ptrCast(self);
+        return try this.getId();
+    }
+    pub fn End(self: *@This()) core.HResult!void {
+        const this: *IFocusSession = @ptrCast(self);
+        return try this.End();
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.FocusSession";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IFocusSession.GUID;
+    pub const IID: Guid = IFocusSession.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFocusSession.SIGNATURE);
+};
+pub const FocusSessionManager = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsFocusActive(self: *@This()) core.HResult!bool {
+        const this: *IFocusSessionManager = @ptrCast(self);
+        return try this.getIsFocusActive();
+    }
+    pub fn GetSession(self: *@This(), id: ?HSTRING) core.HResult!*FocusSession {
+        const this: *IFocusSessionManager = @ptrCast(self);
+        return try this.GetSession(id);
+    }
+    pub fn TryStartFocusSession(self: *@This()) core.HResult!*FocusSession {
+        const this: *IFocusSessionManager = @ptrCast(self);
+        return try this.TryStartFocusSession();
+    }
+    pub fn TryStartFocusSessionWithEndTime(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
+        const this: *IFocusSessionManager = @ptrCast(self);
+        return try this.TryStartFocusSessionWithEndTime(endTime);
+    }
+    pub fn DeactivateFocus(self: *@This()) core.HResult!void {
+        const this: *IFocusSessionManager = @ptrCast(self);
+        return try this.DeactivateFocus();
+    }
+    pub fn addIsFocusActiveChanged(self: *@This(), handler: *TypedEventHandler(FocusSessionManager,IInspectable)) core.HResult!EventRegistrationToken {
+        const this: *IFocusSessionManager = @ptrCast(self);
+        return try this.addIsFocusActiveChanged(handler);
+    }
+    pub fn removeIsFocusActiveChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *IFocusSessionManager = @ptrCast(self);
+        return try this.removeIsFocusActiveChanged(token);
+    }
+    pub fn GetDefault() core.HResult!*FocusSessionManager {
+        const _f = try @This()._IFocusSessionManagerStaticsCache.get();
+        return try _f.GetDefault();
+    }
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = try @This()._IFocusSessionManagerStaticsCache.get();
+        return try _f.getIsSupported();
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.FocusSessionManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IFocusSessionManager.GUID;
+    pub const IID: Guid = IFocusSessionManager.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFocusSessionManager.SIGNATURE);
+    var _IFocusSessionManagerStaticsCache: FactoryCache(IFocusSessionManagerStatics, RUNTIME_NAME) = .{};
+};
+pub const IAdaptiveCard = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.ToJson(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IAdaptiveCard";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "72d0568c-a274-41cd-82a8-989d40b9b05e";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        ToJson: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IAdaptiveCardBuilderStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateAdaptiveCardFromJson(self: *@This(), value: ?HSTRING) core.HResult!*IAdaptiveCard {
+        var _r: *IAdaptiveCard = undefined;
+        const _c = self.vtable.CreateAdaptiveCardFromJson(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IAdaptiveCardBuilderStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "766d8f08-d3fe-4347-a0bc-b9ea9a6dc28e";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateAdaptiveCardFromJson: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IAdaptiveCard) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFocusSession = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn End(self: *@This()) core.HResult!void {
+        const _c = self.vtable.End(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IFocusSession";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "069fbab8-0e84-5f2f-8614-9b6544326277";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        End: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFocusSessionManager = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsFocusActive(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsFocusActive(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetSession(self: *@This(), id: ?HSTRING) core.HResult!*FocusSession {
+        var _r: *FocusSession = undefined;
+        const _c = self.vtable.GetSession(@ptrCast(self), id, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn TryStartFocusSession(self: *@This()) core.HResult!*FocusSession {
+        var _r: *FocusSession = undefined;
+        const _c = self.vtable.TryStartFocusSession(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn TryStartFocusSessionWithEndTime(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
+        var _r: *FocusSession = undefined;
+        const _c = self.vtable.TryStartFocusSessionWithEndTime(@ptrCast(self), endTime, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn DeactivateFocus(self: *@This()) core.HResult!void {
+        const _c = self.vtable.DeactivateFocus(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn addIsFocusActiveChanged(self: *@This(), handler: *TypedEventHandler(FocusSessionManager,IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_IsFocusActiveChanged(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeIsFocusActiveChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_IsFocusActiveChanged(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IFocusSessionManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "e7ffbaa9-d8be-5dbf-bac6-49364842e37e";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_IsFocusActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        GetSession: *const fn(self: *anyopaque, id: ?HSTRING, _r: **FocusSession) callconv(.winapi) HRESULT,
+        TryStartFocusSession: *const fn(self: *anyopaque, _r: **FocusSession) callconv(.winapi) HRESULT,
+        TryStartFocusSessionWithEndTime: *const fn(self: *anyopaque, endTime: DateTime, _r: **FocusSession) callconv(.winapi) HRESULT,
+        DeactivateFocus: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        add_IsFocusActiveChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(FocusSessionManager,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_IsFocusActiveChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const IFocusSessionManagerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefault(self: *@This()) core.HResult!*FocusSessionManager {
+        var _r: *FocusSessionManager = undefined;
+        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getIsSupported(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IFocusSessionManagerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "834df764-cb9a-5d0a-aa9f-73df4f249395";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDefault: *const fn(self: *anyopaque, _r: **FocusSessionManager) callconv(.winapi) HRESULT,
+        get_IsSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IShareWindowCommandEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getWindowId(self: *@This()) core.HResult!WindowId {
+        var _r: WindowId = undefined;
+        const _c = self.vtable.get_WindowId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getCommand(self: *@This()) core.HResult!ShareWindowCommand {
+        var _r: ShareWindowCommand = undefined;
+        const _c = self.vtable.get_Command(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putCommand(self: *@This(), value: ShareWindowCommand) core.HResult!void {
+        const _c = self.vtable.put_Command(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IShareWindowCommandEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "4578dc09-a523-5756-a995-e4feb991fff0";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_WindowId: *const fn(self: *anyopaque, _r: *WindowId) callconv(.winapi) HRESULT,
+        get_Command: *const fn(self: *anyopaque, _r: *ShareWindowCommand) callconv(.winapi) HRESULT,
+        put_Command: *const fn(self: *anyopaque, value: ShareWindowCommand) callconv(.winapi) HRESULT,
+    };
+};
+pub const IShareWindowCommandSource = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Start(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Start(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn Stop(self: *@This()) core.HResult!void {
+        const _c = self.vtable.Stop(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn ReportCommandChanged(self: *@This()) core.HResult!void {
+        const _c = self.vtable.ReportCommandChanged(@ptrCast(self));
+        try core.hresultToError(_c);
+    }
+    pub fn addCommandRequested(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_CommandRequested(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeCommandRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_CommandRequested(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addCommandInvoked(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_CommandInvoked(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeCommandInvoked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_CommandInvoked(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IShareWindowCommandSource";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "cb3b7ae3-6b9c-561e-bccc-61e68e0abfef";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        ReportCommandChanged: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
+        add_CommandRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_CommandRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_CommandInvoked: *const fn(self: *anyopaque, handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_CommandInvoked: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const IShareWindowCommandSourceStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetForCurrentView(self: *@This()) core.HResult!*ShareWindowCommandSource {
+        var _r: *ShareWindowCommandSource = undefined;
+        const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.IShareWindowCommandSourceStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "b0eb6656-9cac-517c-b6c7-8ef715084295";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetForCurrentView: *const fn(self: *anyopaque, _r: **ShareWindowCommandSource) callconv(.winapi) HRESULT,
+    };
+};
+pub const ITaskbarManager = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsSupported(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getIsPinningAllowed(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsPinningAllowed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn IsCurrentAppPinnedAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.IsCurrentAppPinnedAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn IsAppListEntryPinnedAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.IsAppListEntryPinnedAsync(@ptrCast(self), appListEntry, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestPinCurrentAppAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.RequestPinCurrentAppAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestPinAppListEntryAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.RequestPinAppListEntryAsync(@ptrCast(self), appListEntry, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "87490a19-1ad9-49f4-b2e8-86738dc5ac40";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_IsSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        get_IsPinningAllowed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        IsCurrentAppPinnedAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        IsAppListEntryPinnedAsync: *const fn(self: *anyopaque, appListEntry: *AppListEntry, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestPinCurrentAppAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestPinAppListEntryAsync: *const fn(self: *anyopaque, appListEntry: *AppListEntry, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ITaskbarManager2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.IsSecondaryTilePinnedAsync(@ptrCast(self), tileId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn RequestPinSecondaryTileAsync(self: *@This(), secondaryTile: *SecondaryTile) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.RequestPinSecondaryTileAsync(@ptrCast(self), secondaryTile, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
+        var _r: *IAsyncOperation(bool) = undefined;
+        const _c = self.vtable.TryUnpinSecondaryTileAsync(@ptrCast(self), tileId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManager2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "79f0a06e-7b02-4911-918c-dee0bbd20ba4";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        IsSecondaryTilePinnedAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestPinSecondaryTileAsync: *const fn(self: *anyopaque, secondaryTile: *SecondaryTile, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryUnpinSecondaryTileAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ITaskbarManagerDesktopAppSupportStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManagerDesktopAppSupportStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "cdfefd63-e879-4134-b9a7-8283f05f9480";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+    };
+};
+pub const ITaskbarManagerStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefault(self: *@This()) core.HResult!*TaskbarManager {
+        var _r: *TaskbarManager = undefined;
+        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManagerStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "db32ab74-de52-4fe6-b7b6-95ff9f8395df";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDefault: *const fn(self: *anyopaque, _r: **TaskbarManager) callconv(.winapi) HRESULT,
+    };
+};
+pub const ShareWindowCommand = enum(i32) {
+    None = 0,
+    StartSharing = 1,
+    StopSharing = 2,
+};
+pub const ShareWindowCommandEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getWindowId(self: *@This()) core.HResult!WindowId {
+        const this: *IShareWindowCommandEventArgs = @ptrCast(self);
+        return try this.getWindowId();
+    }
+    pub fn getCommand(self: *@This()) core.HResult!ShareWindowCommand {
+        const this: *IShareWindowCommandEventArgs = @ptrCast(self);
+        return try this.getCommand();
+    }
+    pub fn putCommand(self: *@This(), value: ShareWindowCommand) core.HResult!void {
+        const this: *IShareWindowCommandEventArgs = @ptrCast(self);
+        return try this.putCommand(value);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.ShareWindowCommandEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IShareWindowCommandEventArgs.GUID;
+    pub const IID: Guid = IShareWindowCommandEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IShareWindowCommandEventArgs.SIGNATURE);
+};
+pub const ShareWindowCommandSource = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Start(self: *@This()) core.HResult!void {
+        const this: *IShareWindowCommandSource = @ptrCast(self);
+        return try this.Start();
+    }
+    pub fn Stop(self: *@This()) core.HResult!void {
+        const this: *IShareWindowCommandSource = @ptrCast(self);
+        return try this.Stop();
+    }
+    pub fn ReportCommandChanged(self: *@This()) core.HResult!void {
+        const this: *IShareWindowCommandSource = @ptrCast(self);
+        return try this.ReportCommandChanged();
+    }
+    pub fn addCommandRequested(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *IShareWindowCommandSource = @ptrCast(self);
+        return try this.addCommandRequested(handler);
+    }
+    pub fn removeCommandRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *IShareWindowCommandSource = @ptrCast(self);
+        return try this.removeCommandRequested(token);
+    }
+    pub fn addCommandInvoked(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *IShareWindowCommandSource = @ptrCast(self);
+        return try this.addCommandInvoked(handler);
+    }
+    pub fn removeCommandInvoked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const this: *IShareWindowCommandSource = @ptrCast(self);
+        return try this.removeCommandInvoked(token);
+    }
+    pub fn GetForCurrentView() core.HResult!*ShareWindowCommandSource {
+        const _f = try @This()._IShareWindowCommandSourceStaticsCache.get();
+        return try _f.GetForCurrentView();
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.ShareWindowCommandSource";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IShareWindowCommandSource.GUID;
+    pub const IID: Guid = IShareWindowCommandSource.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IShareWindowCommandSource.SIGNATURE);
+    var _IShareWindowCommandSourceStaticsCache: FactoryCache(IShareWindowCommandSourceStatics, RUNTIME_NAME) = .{};
+};
+pub const TaskbarManager = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsSupported(self: *@This()) core.HResult!bool {
+        const this: *ITaskbarManager = @ptrCast(self);
+        return try this.getIsSupported();
+    }
+    pub fn getIsPinningAllowed(self: *@This()) core.HResult!bool {
+        const this: *ITaskbarManager = @ptrCast(self);
+        return try this.getIsPinningAllowed();
+    }
+    pub fn IsCurrentAppPinnedAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        const this: *ITaskbarManager = @ptrCast(self);
+        return try this.IsCurrentAppPinnedAsync();
+    }
+    pub fn IsAppListEntryPinnedAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
+        const this: *ITaskbarManager = @ptrCast(self);
+        return try this.IsAppListEntryPinnedAsync(appListEntry);
+    }
+    pub fn RequestPinCurrentAppAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
+        const this: *ITaskbarManager = @ptrCast(self);
+        return try this.RequestPinCurrentAppAsync();
+    }
+    pub fn RequestPinAppListEntryAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
+        const this: *ITaskbarManager = @ptrCast(self);
+        return try this.RequestPinAppListEntryAsync(appListEntry);
+    }
+    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
+        var this: ?*ITaskbarManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
+        return try this.?.IsSecondaryTilePinnedAsync(tileId);
+    }
+    pub fn RequestPinSecondaryTileAsync(self: *@This(), secondaryTile: *SecondaryTile) core.HResult!*IAsyncOperation(bool) {
+        var this: ?*ITaskbarManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
+        return try this.?.RequestPinSecondaryTileAsync(secondaryTile);
+    }
+    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
+        var this: ?*ITaskbarManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
+        return try this.?.TryUnpinSecondaryTileAsync(tileId);
+    }
+    pub fn GetDefault() core.HResult!*TaskbarManager {
+        const _f = try @This()._ITaskbarManagerStaticsCache.get();
+        return try _f.GetDefault();
+    }
+    pub const NAME: []const u8 = "Windows.UI.Shell.TaskbarManager";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ITaskbarManager.GUID;
+    pub const IID: Guid = ITaskbarManager.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITaskbarManager.SIGNATURE);
+    var _ITaskbarManagerStaticsCache: FactoryCache(ITaskbarManagerStatics, RUNTIME_NAME) = .{};
+    var _ITaskbarManagerDesktopAppSupportStaticsCache: FactoryCache(ITaskbarManagerDesktopAppSupportStatics, RUNTIME_NAME) = .{};
+};
 pub const IWindowTab = extern struct {
     vtable: *const VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1016,780 +1783,13 @@ pub const WindowTabThumbnailRequestedEventArgs = extern struct {
     pub const IID: Guid = IWindowTabThumbnailRequestedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWindowTabThumbnailRequestedEventArgs.SIGNATURE);
 };
-pub const AdaptiveCardBuilder = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateAdaptiveCardFromJson(value: ?HSTRING) core.HResult!*IAdaptiveCard {
-        const _f = try @This()._IAdaptiveCardBuilderStaticsCache.get();
-        return try _f.CreateAdaptiveCardFromJson(value);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.AdaptiveCardBuilder";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IAdaptiveCardBuilderStaticsCache: FactoryCache(IAdaptiveCardBuilderStatics, RUNTIME_NAME) = .{};
-};
-pub const FocusSession = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IFocusSession = @ptrCast(self);
-        return try this.getId();
-    }
-    pub fn End(self: *@This()) core.HResult!void {
-        const this: *IFocusSession = @ptrCast(self);
-        return try this.End();
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.FocusSession";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IFocusSession.GUID;
-    pub const IID: Guid = IFocusSession.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFocusSession.SIGNATURE);
-};
-pub const FocusSessionManager = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsFocusActive(self: *@This()) core.HResult!bool {
-        const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.getIsFocusActive();
-    }
-    pub fn GetSession(self: *@This(), id: ?HSTRING) core.HResult!*FocusSession {
-        const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.GetSession(id);
-    }
-    pub fn TryStartFocusSession(self: *@This()) core.HResult!*FocusSession {
-        const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.TryStartFocusSession();
-    }
-    pub fn TryStartFocusSessionWithEndTime(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
-        const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.TryStartFocusSessionWithEndTime(endTime);
-    }
-    pub fn DeactivateFocus(self: *@This()) core.HResult!void {
-        const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.DeactivateFocus();
-    }
-    pub fn addIsFocusActiveChanged(self: *@This(), handler: *TypedEventHandler(FocusSessionManager,IInspectable)) core.HResult!EventRegistrationToken {
-        const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.addIsFocusActiveChanged(handler);
-    }
-    pub fn removeIsFocusActiveChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.removeIsFocusActiveChanged(token);
-    }
-    pub fn GetDefault() core.HResult!*FocusSessionManager {
-        const _f = try @This()._IFocusSessionManagerStaticsCache.get();
-        return try _f.GetDefault();
-    }
-    pub fn getIsSupported() core.HResult!bool {
-        const _f = try @This()._IFocusSessionManagerStaticsCache.get();
-        return try _f.getIsSupported();
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.FocusSessionManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IFocusSessionManager.GUID;
-    pub const IID: Guid = IFocusSessionManager.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IFocusSessionManager.SIGNATURE);
-    var _IFocusSessionManagerStaticsCache: FactoryCache(IFocusSessionManagerStatics, RUNTIME_NAME) = .{};
-};
-pub const IAdaptiveCard = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.ToJson(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IAdaptiveCard";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "72d0568c-a274-41cd-82a8-989d40b9b05e";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ToJson: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IAdaptiveCardBuilderStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateAdaptiveCardFromJson(self: *@This(), value: ?HSTRING) core.HResult!*IAdaptiveCard {
-        var _r: *IAdaptiveCard = undefined;
-        const _c = self.vtable.CreateAdaptiveCardFromJson(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IAdaptiveCardBuilderStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "766d8f08-d3fe-4347-a0bc-b9ea9a6dc28e";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateAdaptiveCardFromJson: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IAdaptiveCard) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFocusSession = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Id(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn End(self: *@This()) core.HResult!void {
-        const _c = self.vtable.End(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IFocusSession";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "069fbab8-0e84-5f2f-8614-9b6544326277";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        End: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFocusSessionManager = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsFocusActive(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsFocusActive(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetSession(self: *@This(), id: ?HSTRING) core.HResult!*FocusSession {
-        var _r: *FocusSession = undefined;
-        const _c = self.vtable.GetSession(@ptrCast(self), id, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn TryStartFocusSession(self: *@This()) core.HResult!*FocusSession {
-        var _r: *FocusSession = undefined;
-        const _c = self.vtable.TryStartFocusSession(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn TryStartFocusSessionWithEndTime(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
-        var _r: *FocusSession = undefined;
-        const _c = self.vtable.TryStartFocusSessionWithEndTime(@ptrCast(self), endTime, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn DeactivateFocus(self: *@This()) core.HResult!void {
-        const _c = self.vtable.DeactivateFocus(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn addIsFocusActiveChanged(self: *@This(), handler: *TypedEventHandler(FocusSessionManager,IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_IsFocusActiveChanged(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeIsFocusActiveChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_IsFocusActiveChanged(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IFocusSessionManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "e7ffbaa9-d8be-5dbf-bac6-49364842e37e";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_IsFocusActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetSession: *const fn(self: *anyopaque, id: ?HSTRING, _r: **FocusSession) callconv(.winapi) HRESULT,
-        TryStartFocusSession: *const fn(self: *anyopaque, _r: **FocusSession) callconv(.winapi) HRESULT,
-        TryStartFocusSessionWithEndTime: *const fn(self: *anyopaque, endTime: DateTime, _r: **FocusSession) callconv(.winapi) HRESULT,
-        DeactivateFocus: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        add_IsFocusActiveChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(FocusSessionManager,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_IsFocusActiveChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const IFocusSessionManagerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefault(self: *@This()) core.HResult!*FocusSessionManager {
-        var _r: *FocusSessionManager = undefined;
-        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getIsSupported(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IFocusSessionManagerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "834df764-cb9a-5d0a-aa9f-73df4f249395";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefault: *const fn(self: *anyopaque, _r: **FocusSessionManager) callconv(.winapi) HRESULT,
-        get_IsSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IShareWindowCommandEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getWindowId(self: *@This()) core.HResult!WindowId {
-        var _r: WindowId = undefined;
-        const _c = self.vtable.get_WindowId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getCommand(self: *@This()) core.HResult!ShareWindowCommand {
-        var _r: ShareWindowCommand = undefined;
-        const _c = self.vtable.get_Command(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putCommand(self: *@This(), value: ShareWindowCommand) core.HResult!void {
-        const _c = self.vtable.put_Command(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IShareWindowCommandEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "4578dc09-a523-5756-a995-e4feb991fff0";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_WindowId: *const fn(self: *anyopaque, _r: *WindowId) callconv(.winapi) HRESULT,
-        get_Command: *const fn(self: *anyopaque, _r: *ShareWindowCommand) callconv(.winapi) HRESULT,
-        put_Command: *const fn(self: *anyopaque, value: ShareWindowCommand) callconv(.winapi) HRESULT,
-    };
-};
-pub const IShareWindowCommandSource = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Start(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Start(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn Stop(self: *@This()) core.HResult!void {
-        const _c = self.vtable.Stop(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn ReportCommandChanged(self: *@This()) core.HResult!void {
-        const _c = self.vtable.ReportCommandChanged(@ptrCast(self));
-        try core.hresultToError(_c);
-    }
-    pub fn addCommandRequested(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_CommandRequested(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeCommandRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_CommandRequested(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addCommandInvoked(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_CommandInvoked(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeCommandInvoked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_CommandInvoked(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IShareWindowCommandSource";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "cb3b7ae3-6b9c-561e-bccc-61e68e0abfef";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ReportCommandChanged: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        add_CommandRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_CommandRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_CommandInvoked: *const fn(self: *anyopaque, handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_CommandInvoked: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const IShareWindowCommandSourceStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetForCurrentView(self: *@This()) core.HResult!*ShareWindowCommandSource {
-        var _r: *ShareWindowCommandSource = undefined;
-        const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.IShareWindowCommandSourceStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "b0eb6656-9cac-517c-b6c7-8ef715084295";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForCurrentView: *const fn(self: *anyopaque, _r: **ShareWindowCommandSource) callconv(.winapi) HRESULT,
-    };
-};
-pub const ITaskbarManager = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsSupported(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getIsPinningAllowed(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsPinningAllowed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn IsCurrentAppPinnedAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.IsCurrentAppPinnedAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn IsAppListEntryPinnedAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.IsAppListEntryPinnedAsync(@ptrCast(self), appListEntry, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestPinCurrentAppAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestPinCurrentAppAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestPinAppListEntryAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestPinAppListEntryAsync(@ptrCast(self), appListEntry, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "87490a19-1ad9-49f4-b2e8-86738dc5ac40";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_IsSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_IsPinningAllowed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        IsCurrentAppPinnedAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        IsAppListEntryPinnedAsync: *const fn(self: *anyopaque, appListEntry: *AppListEntry, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestPinCurrentAppAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestPinAppListEntryAsync: *const fn(self: *anyopaque, appListEntry: *AppListEntry, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ITaskbarManager2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.IsSecondaryTilePinnedAsync(@ptrCast(self), tileId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn RequestPinSecondaryTileAsync(self: *@This(), secondaryTile: *SecondaryTile) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestPinSecondaryTileAsync(@ptrCast(self), secondaryTile, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
-        var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryUnpinSecondaryTileAsync(@ptrCast(self), tileId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManager2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "79f0a06e-7b02-4911-918c-dee0bbd20ba4";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsSecondaryTilePinnedAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestPinSecondaryTileAsync: *const fn(self: *anyopaque, secondaryTile: *SecondaryTile, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryUnpinSecondaryTileAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ITaskbarManagerDesktopAppSupportStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManagerDesktopAppSupportStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "cdfefd63-e879-4134-b9a7-8283f05f9480";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-    };
-};
-pub const ITaskbarManagerStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefault(self: *@This()) core.HResult!*TaskbarManager {
-        var _r: *TaskbarManager = undefined;
-        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManagerStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "db32ab74-de52-4fe6-b7b6-95ff9f8395df";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefault: *const fn(self: *anyopaque, _r: **TaskbarManager) callconv(.winapi) HRESULT,
-    };
-};
-pub const ShareWindowCommand = enum(i32) {
-    None = 0,
-    StartSharing = 1,
-    StopSharing = 2,
-};
-pub const ShareWindowCommandEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getWindowId(self: *@This()) core.HResult!WindowId {
-        const this: *IShareWindowCommandEventArgs = @ptrCast(self);
-        return try this.getWindowId();
-    }
-    pub fn getCommand(self: *@This()) core.HResult!ShareWindowCommand {
-        const this: *IShareWindowCommandEventArgs = @ptrCast(self);
-        return try this.getCommand();
-    }
-    pub fn putCommand(self: *@This(), value: ShareWindowCommand) core.HResult!void {
-        const this: *IShareWindowCommandEventArgs = @ptrCast(self);
-        return try this.putCommand(value);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.ShareWindowCommandEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IShareWindowCommandEventArgs.GUID;
-    pub const IID: Guid = IShareWindowCommandEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IShareWindowCommandEventArgs.SIGNATURE);
-};
-pub const ShareWindowCommandSource = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Start(self: *@This()) core.HResult!void {
-        const this: *IShareWindowCommandSource = @ptrCast(self);
-        return try this.Start();
-    }
-    pub fn Stop(self: *@This()) core.HResult!void {
-        const this: *IShareWindowCommandSource = @ptrCast(self);
-        return try this.Stop();
-    }
-    pub fn ReportCommandChanged(self: *@This()) core.HResult!void {
-        const this: *IShareWindowCommandSource = @ptrCast(self);
-        return try this.ReportCommandChanged();
-    }
-    pub fn addCommandRequested(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *IShareWindowCommandSource = @ptrCast(self);
-        return try this.addCommandRequested(handler);
-    }
-    pub fn removeCommandRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IShareWindowCommandSource = @ptrCast(self);
-        return try this.removeCommandRequested(token);
-    }
-    pub fn addCommandInvoked(self: *@This(), handler: *TypedEventHandler(ShareWindowCommandSource,ShareWindowCommandEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *IShareWindowCommandSource = @ptrCast(self);
-        return try this.addCommandInvoked(handler);
-    }
-    pub fn removeCommandInvoked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IShareWindowCommandSource = @ptrCast(self);
-        return try this.removeCommandInvoked(token);
-    }
-    pub fn GetForCurrentView() core.HResult!*ShareWindowCommandSource {
-        const _f = try @This()._IShareWindowCommandSourceStaticsCache.get();
-        return try _f.GetForCurrentView();
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.ShareWindowCommandSource";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IShareWindowCommandSource.GUID;
-    pub const IID: Guid = IShareWindowCommandSource.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IShareWindowCommandSource.SIGNATURE);
-    var _IShareWindowCommandSourceStaticsCache: FactoryCache(IShareWindowCommandSourceStatics, RUNTIME_NAME) = .{};
-};
-pub const TaskbarManager = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getIsSupported(self: *@This()) core.HResult!bool {
-        const this: *ITaskbarManager = @ptrCast(self);
-        return try this.getIsSupported();
-    }
-    pub fn getIsPinningAllowed(self: *@This()) core.HResult!bool {
-        const this: *ITaskbarManager = @ptrCast(self);
-        return try this.getIsPinningAllowed();
-    }
-    pub fn IsCurrentAppPinnedAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        const this: *ITaskbarManager = @ptrCast(self);
-        return try this.IsCurrentAppPinnedAsync();
-    }
-    pub fn IsAppListEntryPinnedAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
-        const this: *ITaskbarManager = @ptrCast(self);
-        return try this.IsAppListEntryPinnedAsync(appListEntry);
-    }
-    pub fn RequestPinCurrentAppAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        const this: *ITaskbarManager = @ptrCast(self);
-        return try this.RequestPinCurrentAppAsync();
-    }
-    pub fn RequestPinAppListEntryAsync(self: *@This(), appListEntry: *AppListEntry) core.HResult!*IAsyncOperation(bool) {
-        const this: *ITaskbarManager = @ptrCast(self);
-        return try this.RequestPinAppListEntryAsync(appListEntry);
-    }
-    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*ITaskbarManager2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
-        return try this.?.IsSecondaryTilePinnedAsync(tileId);
-    }
-    pub fn RequestPinSecondaryTileAsync(self: *@This(), secondaryTile: *SecondaryTile) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*ITaskbarManager2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
-        return try this.?.RequestPinSecondaryTileAsync(secondaryTile);
-    }
-    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*ITaskbarManager2 = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
-        return try this.?.TryUnpinSecondaryTileAsync(tileId);
-    }
-    pub fn GetDefault() core.HResult!*TaskbarManager {
-        const _f = try @This()._ITaskbarManagerStaticsCache.get();
-        return try _f.GetDefault();
-    }
-    pub const NAME: []const u8 = "Windows.UI.Shell.TaskbarManager";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ITaskbarManager.GUID;
-    pub const IID: Guid = ITaskbarManager.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITaskbarManager.SIGNATURE);
-    var _ITaskbarManagerStaticsCache: FactoryCache(ITaskbarManagerStatics, RUNTIME_NAME) = .{};
-    var _ITaskbarManagerDesktopAppSupportStaticsCache: FactoryCache(ITaskbarManagerDesktopAppSupportStatics, RUNTIME_NAME) = .{};
-};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
+const AppListEntry = @import("../ApplicationModel/Core.zig").AppListEntry;
+const WindowId = @import("../UI.zig").WindowId;
 const Deferral = @import("../Foundation.zig").Deferral;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
-const WindowId = @import("../UI.zig").WindowId;
-const AppListEntry = @import("../ApplicationModel/Core.zig").AppListEntry;
 const IVector = @import("../Foundation/Collections.zig").IVector;
 const DateTime = @import("../Foundation.zig").DateTime;
 const IRandomAccessStreamReference = @import("../Storage/Streams.zig").IRandomAccessStreamReference;
@@ -1799,9 +1799,9 @@ const TrustLevel = @import("../root.zig").TrustLevel;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const BitmapSize = @import("../Graphics/Imaging.zig").BitmapSize;
 const HSTRING = @import("../root.zig").HSTRING;
-const IIterable = @import("../Foundation/Collections.zig").IIterable;
-const IInspectable = @import("../Foundation.zig").IInspectable;
 const SecondaryTile = @import("./StartScreen.zig").SecondaryTile;
+const IInspectable = @import("../Foundation.zig").IInspectable;
+const IIterable = @import("../Foundation/Collections.zig").IIterable;
 const Uri = @import("../Foundation.zig").Uri;
 const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;

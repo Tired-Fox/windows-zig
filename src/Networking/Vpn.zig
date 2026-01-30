@@ -3166,10 +3166,10 @@ pub const VpnChannelConfiguration = extern struct {
     pub const IID: Guid = IVpnChannelConfiguration.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IVpnChannelConfiguration.SIGNATURE);
 };
-pub const VpnChannelRequestCredentialsOptions = enum(i32) {
-    None = 0,
-    Retrying = 1,
-    UseForSingleSignIn = 2,
+pub const VpnChannelRequestCredentialsOptions = packed struct(u32) {
+    Retrying: bool = false,
+    UseForSingleSignIn: bool = false,
+    _m: u30 = 0,
 };
 pub const VpnCredential = extern struct {
     vtable: *const IInspectable.VTable,

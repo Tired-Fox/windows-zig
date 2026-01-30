@@ -113,11 +113,11 @@ pub const ConstantForceEffect = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IForceFeedbackEffect.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const ForceFeedbackEffectAxes = enum(i32) {
-    None = 0,
-    X = 1,
-    Y = 2,
-    Z = 4,
+pub const ForceFeedbackEffectAxes = packed struct(u32) {
+    X: bool = false,
+    Y: bool = false,
+    Z: bool = false,
+    _m: u29 = 0,
 };
 pub const ForceFeedbackEffectState = enum(i32) {
     Stopped = 0,

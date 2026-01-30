@@ -1,4 +1,228 @@
 // ----- This code is automatically generated -----
+pub const GameBar = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addVisibilityChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IGameBarStaticsCache.get();
+        return try _f.addVisibilityChanged(handler);
+    }
+    pub fn removeVisibilityChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IGameBarStaticsCache.get();
+        return try _f.removeVisibilityChanged(token);
+    }
+    pub fn addIsInputRedirectedChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IGameBarStaticsCache.get();
+        return try _f.addIsInputRedirectedChanged(handler);
+    }
+    pub fn removeIsInputRedirectedChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IGameBarStaticsCache.get();
+        return try _f.removeIsInputRedirectedChanged(token);
+    }
+    pub fn getVisible() core.HResult!bool {
+        const _f = try @This()._IGameBarStaticsCache.get();
+        return try _f.getVisible();
+    }
+    pub fn getIsInputRedirected() core.HResult!bool {
+        const _f = try @This()._IGameBarStaticsCache.get();
+        return try _f.getIsInputRedirected();
+    }
+    pub const NAME: []const u8 = "Windows.Gaming.UI.GameBar";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IGameBarStaticsCache: FactoryCache(IGameBarStatics, RUNTIME_NAME) = .{};
+};
+pub const GameChatMessageOrigin = enum(i32) {
+    Voice = 0,
+    Text = 1,
+};
+pub const GameChatOverlay = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDesiredPosition(self: *@This()) core.HResult!GameChatOverlayPosition {
+        const this: *IGameChatOverlay = @ptrCast(self);
+        return try this.getDesiredPosition();
+    }
+    pub fn putDesiredPosition(self: *@This(), value: GameChatOverlayPosition) core.HResult!void {
+        const this: *IGameChatOverlay = @ptrCast(self);
+        return try this.putDesiredPosition(value);
+    }
+    pub fn AddMessage(self: *@This(), sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
+        const this: *IGameChatOverlay = @ptrCast(self);
+        return try this.AddMessage(sender, message, origin);
+    }
+    pub fn GetDefault() core.HResult!*GameChatOverlay {
+        const _f = try @This()._IGameChatOverlayStaticsCache.get();
+        return try _f.GetDefault();
+    }
+    pub const NAME: []const u8 = "Windows.Gaming.UI.GameChatOverlay";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IGameChatOverlay.GUID;
+    pub const IID: Guid = IGameChatOverlay.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IGameChatOverlay.SIGNATURE);
+    var _IGameChatOverlayStaticsCache: FactoryCache(IGameChatOverlayStatics, RUNTIME_NAME) = .{};
+};
+pub const GameChatOverlayPosition = enum(i32) {
+    BottomCenter = 0,
+    BottomLeft = 1,
+    BottomRight = 2,
+    MiddleRight = 3,
+    MiddleLeft = 4,
+    TopCenter = 5,
+    TopLeft = 6,
+    TopRight = 7,
+};
+pub const IGameBarStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addVisibilityChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_VisibilityChanged(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeVisibilityChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_VisibilityChanged(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn addIsInputRedirectedChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_IsInputRedirectedChanged(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeIsInputRedirectedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_IsInputRedirectedChanged(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn getVisible(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_Visible(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getIsInputRedirected(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsInputRedirected(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Gaming.UI.IGameBarStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "1db9a292-cc78-4173-be45-b61e67283ea7";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        add_VisibilityChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_VisibilityChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_IsInputRedirectedChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_IsInputRedirectedChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        get_Visible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        get_IsInputRedirected: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IGameChatOverlay = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDesiredPosition(self: *@This()) core.HResult!GameChatOverlayPosition {
+        var _r: GameChatOverlayPosition = undefined;
+        const _c = self.vtable.get_DesiredPosition(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putDesiredPosition(self: *@This(), value: GameChatOverlayPosition) core.HResult!void {
+        const _c = self.vtable.put_DesiredPosition(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn AddMessage(self: *@This(), sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
+        const _c = self.vtable.AddMessage(@ptrCast(self), sender, message, origin);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Gaming.UI.IGameChatOverlay";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fbc64865-f6fc-4a48-ae07-03ac6ed43704";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_DesiredPosition: *const fn(self: *anyopaque, _r: *GameChatOverlayPosition) callconv(.winapi) HRESULT,
+        put_DesiredPosition: *const fn(self: *anyopaque, value: GameChatOverlayPosition) callconv(.winapi) HRESULT,
+        AddMessage: *const fn(self: *anyopaque, sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) callconv(.winapi) HRESULT,
+    };
+};
+pub const IGameChatOverlayStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDefault(self: *@This()) core.HResult!*GameChatOverlay {
+        var _r: *GameChatOverlay = undefined;
+        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Gaming.UI.IGameChatOverlayStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "89acf614-7867-49f7-9687-25d9dbf444d1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetDefault: *const fn(self: *anyopaque, _r: **GameChatOverlay) callconv(.winapi) HRESULT,
+    };
+};
 pub const GameChatMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -252,230 +476,6 @@ pub const IGameUIProviderActivatedEventArgs = extern struct {
         ReportCompleted: *const fn(self: *anyopaque, results: *ValueSet) callconv(.winapi) HRESULT,
     };
 };
-pub const GameBar = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addVisibilityChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IGameBarStaticsCache.get();
-        return try _f.addVisibilityChanged(handler);
-    }
-    pub fn removeVisibilityChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IGameBarStaticsCache.get();
-        return try _f.removeVisibilityChanged(token);
-    }
-    pub fn addIsInputRedirectedChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IGameBarStaticsCache.get();
-        return try _f.addIsInputRedirectedChanged(handler);
-    }
-    pub fn removeIsInputRedirectedChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IGameBarStaticsCache.get();
-        return try _f.removeIsInputRedirectedChanged(token);
-    }
-    pub fn getVisible() core.HResult!bool {
-        const _f = try @This()._IGameBarStaticsCache.get();
-        return try _f.getVisible();
-    }
-    pub fn getIsInputRedirected() core.HResult!bool {
-        const _f = try @This()._IGameBarStaticsCache.get();
-        return try _f.getIsInputRedirected();
-    }
-    pub const NAME: []const u8 = "Windows.Gaming.UI.GameBar";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IGameBarStaticsCache: FactoryCache(IGameBarStatics, RUNTIME_NAME) = .{};
-};
-pub const GameChatMessageOrigin = enum(i32) {
-    Voice = 0,
-    Text = 1,
-};
-pub const GameChatOverlay = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDesiredPosition(self: *@This()) core.HResult!GameChatOverlayPosition {
-        const this: *IGameChatOverlay = @ptrCast(self);
-        return try this.getDesiredPosition();
-    }
-    pub fn putDesiredPosition(self: *@This(), value: GameChatOverlayPosition) core.HResult!void {
-        const this: *IGameChatOverlay = @ptrCast(self);
-        return try this.putDesiredPosition(value);
-    }
-    pub fn AddMessage(self: *@This(), sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
-        const this: *IGameChatOverlay = @ptrCast(self);
-        return try this.AddMessage(sender, message, origin);
-    }
-    pub fn GetDefault() core.HResult!*GameChatOverlay {
-        const _f = try @This()._IGameChatOverlayStaticsCache.get();
-        return try _f.GetDefault();
-    }
-    pub const NAME: []const u8 = "Windows.Gaming.UI.GameChatOverlay";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IGameChatOverlay.GUID;
-    pub const IID: Guid = IGameChatOverlay.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IGameChatOverlay.SIGNATURE);
-    var _IGameChatOverlayStaticsCache: FactoryCache(IGameChatOverlayStatics, RUNTIME_NAME) = .{};
-};
-pub const GameChatOverlayPosition = enum(i32) {
-    BottomCenter = 0,
-    BottomLeft = 1,
-    BottomRight = 2,
-    MiddleRight = 3,
-    MiddleLeft = 4,
-    TopCenter = 5,
-    TopLeft = 6,
-    TopRight = 7,
-};
-pub const IGameBarStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addVisibilityChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_VisibilityChanged(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeVisibilityChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_VisibilityChanged(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn addIsInputRedirectedChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_IsInputRedirectedChanged(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeIsInputRedirectedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_IsInputRedirectedChanged(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn getVisible(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_Visible(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getIsInputRedirected(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsInputRedirected(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Gaming.UI.IGameBarStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "1db9a292-cc78-4173-be45-b61e67283ea7";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        add_VisibilityChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_VisibilityChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_IsInputRedirectedChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_IsInputRedirectedChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_Visible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_IsInputRedirected: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IGameChatOverlay = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getDesiredPosition(self: *@This()) core.HResult!GameChatOverlayPosition {
-        var _r: GameChatOverlayPosition = undefined;
-        const _c = self.vtable.get_DesiredPosition(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putDesiredPosition(self: *@This(), value: GameChatOverlayPosition) core.HResult!void {
-        const _c = self.vtable.put_DesiredPosition(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn AddMessage(self: *@This(), sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
-        const _c = self.vtable.AddMessage(@ptrCast(self), sender, message, origin);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Gaming.UI.IGameChatOverlay";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fbc64865-f6fc-4a48-ae07-03ac6ed43704";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DesiredPosition: *const fn(self: *anyopaque, _r: *GameChatOverlayPosition) callconv(.winapi) HRESULT,
-        put_DesiredPosition: *const fn(self: *anyopaque, value: GameChatOverlayPosition) callconv(.winapi) HRESULT,
-        AddMessage: *const fn(self: *anyopaque, sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) callconv(.winapi) HRESULT,
-    };
-};
-pub const IGameChatOverlayStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetDefault(self: *@This()) core.HResult!*GameChatOverlay {
-        var _r: *GameChatOverlay = undefined;
-        const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Gaming.UI.IGameChatOverlayStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "89acf614-7867-49f7-9687-25d9dbf444d1";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefault: *const fn(self: *anyopaque, _r: **GameChatOverlay) callconv(.winapi) HRESULT,
-    };
-};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
@@ -483,8 +483,8 @@ const IInspectable = @import("../Foundation.zig").IInspectable;
 const TimeSpan = @import("../Foundation.zig").TimeSpan;
 const EventHandler = @import("../Foundation.zig").EventHandler;
 const HRESULT = @import("../root.zig").HRESULT;
-const core = @import("../root.zig").core;
 const FactoryCache = @import("../core.zig").FactoryCache;
+const core = @import("../root.zig").core;
 const ValueSet = @import("../Foundation/Collections.zig").ValueSet;
 const SplashScreen = @import("../ApplicationModel/Activation.zig").SplashScreen;
 const IActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IActivatedEventArgs;

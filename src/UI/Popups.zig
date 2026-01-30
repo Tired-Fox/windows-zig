@@ -371,9 +371,9 @@ pub const MessageDialog = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMessageDialog.SIGNATURE);
     var _IMessageDialogFactoryCache: FactoryCache(IMessageDialogFactory, RUNTIME_NAME) = .{};
 };
-pub const MessageDialogOptions = enum(i32) {
-    None = 0,
-    AcceptUserInputAfterDelay = 1,
+pub const MessageDialogOptions = packed struct(u32) {
+    AcceptUserInputAfterDelay: bool = false,
+    _m: u31 = 0,
 };
 pub const Placement = enum(i32) {
     Default = 0,

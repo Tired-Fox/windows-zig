@@ -1,357 +1,4 @@
 // ----- This code is automatically generated -----
-pub const ILockScreenImageFeedStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestSetImageFeedAsync(self: *@This(), syndicationFeedUri: *Uri) core.HResult!*IAsyncOperation(SetImageFeedResult) {
-        var _r: *IAsyncOperation(SetImageFeedResult) = undefined;
-        const _c = self.vtable.RequestSetImageFeedAsync(@ptrCast(self), syndicationFeedUri, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn TryRemoveImageFeed(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.TryRemoveImageFeed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.UserProfile.ILockScreenImageFeedStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "2c0d73f6-03a9-41a6-9b01-495251ff51d5";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestSetImageFeedAsync: *const fn(self: *anyopaque, syndicationFeedUri: *Uri, _r: **IAsyncOperation(SetImageFeedResult)) callconv(.winapi) HRESULT,
-        TryRemoveImageFeed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const ILockScreenStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getOriginalImageFile(self: *@This()) core.HResult!*Uri {
-        var _r: *Uri = undefined;
-        const _c = self.vtable.get_OriginalImageFile(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetImageStream(self: *@This()) core.HResult!*IRandomAccessStream {
-        var _r: *IRandomAccessStream = undefined;
-        const _c = self.vtable.GetImageStream(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetImageFileAsync(self: *@This(), value: *IStorageFile) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SetImageFileAsync(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetImageStreamAsync(self: *@This(), value: *IRandomAccessStream) core.HResult!*IAsyncAction {
-        var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SetImageStreamAsync(@ptrCast(self), value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.UserProfile.ILockScreenStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "3ee9d3ad-b607-40ae-b426-7631d9821269";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OriginalImageFile: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        GetImageStream: *const fn(self: *anyopaque, _r: **IRandomAccessStream) callconv(.winapi) HRESULT,
-        SetImageFileAsync: *const fn(self: *anyopaque, value: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SetImageStreamAsync: *const fn(self: *anyopaque, value: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-    };
-};
-pub const LockScreen = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RequestSetImageFeedAsync(syndicationFeedUri: *Uri) core.HResult!*IAsyncOperation(SetImageFeedResult) {
-        const _f = try @This()._ILockScreenImageFeedStaticsCache.get();
-        return try _f.RequestSetImageFeedAsync(syndicationFeedUri);
-    }
-    pub fn TryRemoveImageFeed() core.HResult!bool {
-        const _f = try @This()._ILockScreenImageFeedStaticsCache.get();
-        return try _f.TryRemoveImageFeed();
-    }
-    pub fn getOriginalImageFile() core.HResult!*Uri {
-        const _f = try @This()._ILockScreenStaticsCache.get();
-        return try _f.getOriginalImageFile();
-    }
-    pub fn GetImageStream() core.HResult!*IRandomAccessStream {
-        const _f = try @This()._ILockScreenStaticsCache.get();
-        return try _f.GetImageStream();
-    }
-    pub fn SetImageFileAsync(value: *IStorageFile) core.HResult!*IAsyncAction {
-        const _f = try @This()._ILockScreenStaticsCache.get();
-        return try _f.SetImageFileAsync(value);
-    }
-    pub fn SetImageStreamAsync(value: *IRandomAccessStream) core.HResult!*IAsyncAction {
-        const _f = try @This()._ILockScreenStaticsCache.get();
-        return try _f.SetImageStreamAsync(value);
-    }
-    pub const NAME: []const u8 = "Windows.System.UserProfile.LockScreen";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _ILockScreenImageFeedStaticsCache: FactoryCache(ILockScreenImageFeedStatics, RUNTIME_NAME) = .{};
-    var _ILockScreenStaticsCache: FactoryCache(ILockScreenStatics, RUNTIME_NAME) = .{};
-};
-pub const AccountPictureKind = enum(i32) {
-    SmallImage = 0,
-    LargeImage = 1,
-    Video = 2,
-};
-pub const IUserInformationStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getAccountPictureChangeEnabled(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_AccountPictureChangeEnabled(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getNameAccessAllowed(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_NameAccessAllowed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetAccountPicture(self: *@This(), kind: AccountPictureKind) core.HResult!*IStorageFile {
-        var _r: *IStorageFile = undefined;
-        const _c = self.vtable.GetAccountPicture(@ptrCast(self), kind, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetAccountPictureAsync(self: *@This(), image: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
-        const _c = self.vtable.SetAccountPictureAsync(@ptrCast(self), image, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetAccountPicturesAsync(self: *@This(), smallImage: *IStorageFile, largeImage: *IStorageFile, video: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
-        const _c = self.vtable.SetAccountPicturesAsync(@ptrCast(self), smallImage, largeImage, video, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetAccountPictureFromStreamAsync(self: *@This(), image: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
-        const _c = self.vtable.SetAccountPictureFromStreamAsync(@ptrCast(self), image, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetAccountPicturesFromStreamsAsync(self: *@This(), smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
-        const _c = self.vtable.SetAccountPicturesFromStreamsAsync(@ptrCast(self), smallImage, largeImage, video, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn addAccountPictureChanged(self: *@This(), changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_AccountPictureChanged(@ptrCast(self), changeHandler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeAccountPictureChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_AccountPictureChanged(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub fn GetDisplayNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var _r: *IAsyncOperation(?HSTRING) = undefined;
-        const _c = self.vtable.GetDisplayNameAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetFirstNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var _r: *IAsyncOperation(?HSTRING) = undefined;
-        const _c = self.vtable.GetFirstNameAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetLastNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var _r: *IAsyncOperation(?HSTRING) = undefined;
-        const _c = self.vtable.GetLastNameAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetPrincipalNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var _r: *IAsyncOperation(?HSTRING) = undefined;
-        const _c = self.vtable.GetPrincipalNameAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetSessionInitiationProtocolUriAsync(self: *@This()) core.HResult!*IAsyncOperation(Uri) {
-        var _r: *IAsyncOperation(Uri) = undefined;
-        const _c = self.vtable.GetSessionInitiationProtocolUriAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetDomainNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
-        var _r: *IAsyncOperation(?HSTRING) = undefined;
-        const _c = self.vtable.GetDomainNameAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.System.UserProfile.IUserInformationStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "77f3a910-48fa-489c-934e-2ae85ba8f772";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AccountPictureChangeEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_NameAccessAllowed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetAccountPicture: *const fn(self: *anyopaque, kind: AccountPictureKind, _r: **IStorageFile) callconv(.winapi) HRESULT,
-        SetAccountPictureAsync: *const fn(self: *anyopaque, image: *IStorageFile, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
-        SetAccountPicturesAsync: *const fn(self: *anyopaque, smallImage: *IStorageFile, largeImage: *IStorageFile, video: *IStorageFile, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
-        SetAccountPictureFromStreamAsync: *const fn(self: *anyopaque, image: *IRandomAccessStream, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
-        SetAccountPicturesFromStreamsAsync: *const fn(self: *anyopaque, smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
-        add_AccountPictureChanged: *const fn(self: *anyopaque, changeHandler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_AccountPictureChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        GetDisplayNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
-        GetFirstNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
-        GetLastNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
-        GetPrincipalNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
-        GetSessionInitiationProtocolUriAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Uri)) callconv(.winapi) HRESULT,
-        GetDomainNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
-    };
-};
-pub const SetAccountPictureResult = enum(i32) {
-    Success = 0,
-    ChangeDisabled = 1,
-    LargeOrDynamicError = 2,
-    VideoFrameSizeError = 3,
-    FileSizeError = 4,
-    Failure = 5,
-};
-pub const SetImageFeedResult = enum(i32) {
-    Success = 0,
-    ChangeDisabled = 1,
-    UserCanceled = 2,
-};
-pub const UserInformation = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getAccountPictureChangeEnabled() core.HResult!bool {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.getAccountPictureChangeEnabled();
-    }
-    pub fn getNameAccessAllowed() core.HResult!bool {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.getNameAccessAllowed();
-    }
-    pub fn GetAccountPicture(kind: AccountPictureKind) core.HResult!*IStorageFile {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.GetAccountPicture(kind);
-    }
-    pub fn SetAccountPictureAsync(image: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.SetAccountPictureAsync(image);
-    }
-    pub fn SetAccountPicturesAsync(smallImage: *IStorageFile, largeImage: *IStorageFile, video: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.SetAccountPicturesAsync(smallImage, largeImage, video);
-    }
-    pub fn SetAccountPictureFromStreamAsync(image: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.SetAccountPictureFromStreamAsync(image);
-    }
-    pub fn SetAccountPicturesFromStreamsAsync(smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.SetAccountPicturesFromStreamsAsync(smallImage, largeImage, video);
-    }
-    pub fn addAccountPictureChanged(changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.addAccountPictureChanged(changeHandler);
-    }
-    pub fn removeAccountPictureChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.removeAccountPictureChanged(token);
-    }
-    pub fn GetDisplayNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.GetDisplayNameAsync();
-    }
-    pub fn GetFirstNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.GetFirstNameAsync();
-    }
-    pub fn GetLastNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.GetLastNameAsync();
-    }
-    pub fn GetPrincipalNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.GetPrincipalNameAsync();
-    }
-    pub fn GetSessionInitiationProtocolUriAsync() core.HResult!*IAsyncOperation(Uri) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.GetSessionInitiationProtocolUriAsync();
-    }
-    pub fn GetDomainNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
-        const _f = try @This()._IUserInformationStaticsCache.get();
-        return try _f.GetDomainNameAsync();
-    }
-    pub const NAME: []const u8 = "Windows.System.UserProfile.UserInformation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IUserInformationStaticsCache: FactoryCache(IUserInformationStatics, RUNTIME_NAME) = .{};
-};
 pub const AdvertisingManager = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1258,26 +905,379 @@ pub const UserProfilePersonalizationSettings = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUserProfilePersonalizationSettings.SIGNATURE);
     var _IUserProfilePersonalizationSettingsStaticsCache: FactoryCache(IUserProfilePersonalizationSettingsStatics, RUNTIME_NAME) = .{};
 };
+pub const ILockScreenImageFeedStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestSetImageFeedAsync(self: *@This(), syndicationFeedUri: *Uri) core.HResult!*IAsyncOperation(SetImageFeedResult) {
+        var _r: *IAsyncOperation(SetImageFeedResult) = undefined;
+        const _c = self.vtable.RequestSetImageFeedAsync(@ptrCast(self), syndicationFeedUri, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn TryRemoveImageFeed(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.TryRemoveImageFeed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.UserProfile.ILockScreenImageFeedStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "2c0d73f6-03a9-41a6-9b01-495251ff51d5";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        RequestSetImageFeedAsync: *const fn(self: *anyopaque, syndicationFeedUri: *Uri, _r: **IAsyncOperation(SetImageFeedResult)) callconv(.winapi) HRESULT,
+        TryRemoveImageFeed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const ILockScreenStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getOriginalImageFile(self: *@This()) core.HResult!*Uri {
+        var _r: *Uri = undefined;
+        const _c = self.vtable.get_OriginalImageFile(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetImageStream(self: *@This()) core.HResult!*IRandomAccessStream {
+        var _r: *IRandomAccessStream = undefined;
+        const _c = self.vtable.GetImageStream(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetImageFileAsync(self: *@This(), value: *IStorageFile) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.SetImageFileAsync(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetImageStreamAsync(self: *@This(), value: *IRandomAccessStream) core.HResult!*IAsyncAction {
+        var _r: *IAsyncAction = undefined;
+        const _c = self.vtable.SetImageStreamAsync(@ptrCast(self), value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.UserProfile.ILockScreenStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "3ee9d3ad-b607-40ae-b426-7631d9821269";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_OriginalImageFile: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
+        GetImageStream: *const fn(self: *anyopaque, _r: **IRandomAccessStream) callconv(.winapi) HRESULT,
+        SetImageFileAsync: *const fn(self: *anyopaque, value: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetImageStreamAsync: *const fn(self: *anyopaque, value: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+    };
+};
+pub const LockScreen = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RequestSetImageFeedAsync(syndicationFeedUri: *Uri) core.HResult!*IAsyncOperation(SetImageFeedResult) {
+        const _f = try @This()._ILockScreenImageFeedStaticsCache.get();
+        return try _f.RequestSetImageFeedAsync(syndicationFeedUri);
+    }
+    pub fn TryRemoveImageFeed() core.HResult!bool {
+        const _f = try @This()._ILockScreenImageFeedStaticsCache.get();
+        return try _f.TryRemoveImageFeed();
+    }
+    pub fn getOriginalImageFile() core.HResult!*Uri {
+        const _f = try @This()._ILockScreenStaticsCache.get();
+        return try _f.getOriginalImageFile();
+    }
+    pub fn GetImageStream() core.HResult!*IRandomAccessStream {
+        const _f = try @This()._ILockScreenStaticsCache.get();
+        return try _f.GetImageStream();
+    }
+    pub fn SetImageFileAsync(value: *IStorageFile) core.HResult!*IAsyncAction {
+        const _f = try @This()._ILockScreenStaticsCache.get();
+        return try _f.SetImageFileAsync(value);
+    }
+    pub fn SetImageStreamAsync(value: *IRandomAccessStream) core.HResult!*IAsyncAction {
+        const _f = try @This()._ILockScreenStaticsCache.get();
+        return try _f.SetImageStreamAsync(value);
+    }
+    pub const NAME: []const u8 = "Windows.System.UserProfile.LockScreen";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _ILockScreenImageFeedStaticsCache: FactoryCache(ILockScreenImageFeedStatics, RUNTIME_NAME) = .{};
+    var _ILockScreenStaticsCache: FactoryCache(ILockScreenStatics, RUNTIME_NAME) = .{};
+};
+pub const AccountPictureKind = enum(i32) {
+    SmallImage = 0,
+    LargeImage = 1,
+    Video = 2,
+};
+pub const IUserInformationStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getAccountPictureChangeEnabled(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_AccountPictureChangeEnabled(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getNameAccessAllowed(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_NameAccessAllowed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetAccountPicture(self: *@This(), kind: AccountPictureKind) core.HResult!*IStorageFile {
+        var _r: *IStorageFile = undefined;
+        const _c = self.vtable.GetAccountPicture(@ptrCast(self), kind, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetAccountPictureAsync(self: *@This(), image: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
+        const _c = self.vtable.SetAccountPictureAsync(@ptrCast(self), image, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetAccountPicturesAsync(self: *@This(), smallImage: *IStorageFile, largeImage: *IStorageFile, video: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
+        const _c = self.vtable.SetAccountPicturesAsync(@ptrCast(self), smallImage, largeImage, video, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetAccountPictureFromStreamAsync(self: *@This(), image: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
+        const _c = self.vtable.SetAccountPictureFromStreamAsync(@ptrCast(self), image, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetAccountPicturesFromStreamsAsync(self: *@This(), smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        var _r: *IAsyncOperation(SetAccountPictureResult) = undefined;
+        const _c = self.vtable.SetAccountPicturesFromStreamsAsync(@ptrCast(self), smallImage, largeImage, video, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn addAccountPictureChanged(self: *@This(), changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_AccountPictureChanged(@ptrCast(self), changeHandler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeAccountPictureChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_AccountPictureChanged(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub fn GetDisplayNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
+        const _c = self.vtable.GetDisplayNameAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetFirstNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
+        const _c = self.vtable.GetFirstNameAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetLastNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
+        const _c = self.vtable.GetLastNameAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetPrincipalNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
+        const _c = self.vtable.GetPrincipalNameAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetSessionInitiationProtocolUriAsync(self: *@This()) core.HResult!*IAsyncOperation(Uri) {
+        var _r: *IAsyncOperation(Uri) = undefined;
+        const _c = self.vtable.GetSessionInitiationProtocolUriAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetDomainNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
+        const _c = self.vtable.GetDomainNameAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.System.UserProfile.IUserInformationStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "77f3a910-48fa-489c-934e-2ae85ba8f772";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_AccountPictureChangeEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        get_NameAccessAllowed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        GetAccountPicture: *const fn(self: *anyopaque, kind: AccountPictureKind, _r: **IStorageFile) callconv(.winapi) HRESULT,
+        SetAccountPictureAsync: *const fn(self: *anyopaque, image: *IStorageFile, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
+        SetAccountPicturesAsync: *const fn(self: *anyopaque, smallImage: *IStorageFile, largeImage: *IStorageFile, video: *IStorageFile, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
+        SetAccountPictureFromStreamAsync: *const fn(self: *anyopaque, image: *IRandomAccessStream, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
+        SetAccountPicturesFromStreamsAsync: *const fn(self: *anyopaque, smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
+        add_AccountPictureChanged: *const fn(self: *anyopaque, changeHandler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_AccountPictureChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+        GetDisplayNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetFirstNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetLastNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetPrincipalNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetSessionInitiationProtocolUriAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Uri)) callconv(.winapi) HRESULT,
+        GetDomainNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+    };
+};
+pub const SetAccountPictureResult = enum(i32) {
+    Success = 0,
+    ChangeDisabled = 1,
+    LargeOrDynamicError = 2,
+    VideoFrameSizeError = 3,
+    FileSizeError = 4,
+    Failure = 5,
+};
+pub const SetImageFeedResult = enum(i32) {
+    Success = 0,
+    ChangeDisabled = 1,
+    UserCanceled = 2,
+};
+pub const UserInformation = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getAccountPictureChangeEnabled() core.HResult!bool {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.getAccountPictureChangeEnabled();
+    }
+    pub fn getNameAccessAllowed() core.HResult!bool {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.getNameAccessAllowed();
+    }
+    pub fn GetAccountPicture(kind: AccountPictureKind) core.HResult!*IStorageFile {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.GetAccountPicture(kind);
+    }
+    pub fn SetAccountPictureAsync(image: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.SetAccountPictureAsync(image);
+    }
+    pub fn SetAccountPicturesAsync(smallImage: *IStorageFile, largeImage: *IStorageFile, video: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.SetAccountPicturesAsync(smallImage, largeImage, video);
+    }
+    pub fn SetAccountPictureFromStreamAsync(image: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.SetAccountPictureFromStreamAsync(image);
+    }
+    pub fn SetAccountPicturesFromStreamsAsync(smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.SetAccountPicturesFromStreamsAsync(smallImage, largeImage, video);
+    }
+    pub fn addAccountPictureChanged(changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.addAccountPictureChanged(changeHandler);
+    }
+    pub fn removeAccountPictureChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.removeAccountPictureChanged(token);
+    }
+    pub fn GetDisplayNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.GetDisplayNameAsync();
+    }
+    pub fn GetFirstNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.GetFirstNameAsync();
+    }
+    pub fn GetLastNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.GetLastNameAsync();
+    }
+    pub fn GetPrincipalNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.GetPrincipalNameAsync();
+    }
+    pub fn GetSessionInitiationProtocolUriAsync() core.HResult!*IAsyncOperation(Uri) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.GetSessionInitiationProtocolUriAsync();
+    }
+    pub fn GetDomainNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
+        const _f = try @This()._IUserInformationStaticsCache.get();
+        return try _f.GetDomainNameAsync();
+    }
+    pub const NAME: []const u8 = "Windows.System.UserProfile.UserInformation";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IUserInformationStaticsCache: FactoryCache(IUserInformationStatics, RUNTIME_NAME) = .{};
+};
 const IUnknown = @import("../root.zig").IUnknown;
-const HSTRING = @import("../root.zig").HSTRING;
 const Guid = @import("../root.zig").Guid;
+const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IIterable = @import("../Foundation/Collections.zig").IIterable;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const IMapView = @import("../Foundation/Collections.zig").IMapView;
-const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const StorageFile = @import("../Storage.zig").StorageFile;
 const Uri = @import("../Foundation.zig").Uri;
 const IKeyValuePair = @import("../Foundation/Collections.zig").IKeyValuePair;
 const EventHandler = @import("../Foundation.zig").EventHandler;
 const IRandomAccessStream = @import("../Storage/Streams.zig").IRandomAccessStream;
 const HRESULT = @import("../root.zig").HRESULT;
-const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
-const core = @import("../root.zig").core;
 const FactoryCache = @import("../core.zig").FactoryCache;
+const core = @import("../root.zig").core;
 const IIterator = @import("../Foundation/Collections.zig").IIterator;
+const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const IStorageFile = @import("../Storage.zig").IStorageFile;
 const DayOfWeek = @import("../Globalization.zig").DayOfWeek;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const IAsyncAction = @import("../Foundation.zig").IAsyncAction;
 const User = @import("../System.zig").User;
+const HSTRING = @import("../root.zig").HSTRING;

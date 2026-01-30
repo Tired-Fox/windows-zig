@@ -1,200 +1,4 @@
 // ----- This code is automatically generated -----
-pub const IPowerGridData = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSeverity(self: *@This()) core.HResult!f64 {
-        var _r: f64 = undefined;
-        const _c = self.vtable.get_Severity(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getIsLowUserExperienceImpact(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsLowUserExperienceImpact(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Power.IPowerGridData";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "c360fb17-fc92-5f6e-999d-16a4cf9d6c40";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Severity: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
-        get_IsLowUserExperienceImpact: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPowerGridForecast = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
-        var _r: DateTime = undefined;
-        const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getBlockDuration(self: *@This()) core.HResult!TimeSpan {
-        var _r: TimeSpan = undefined;
-        const _c = self.vtable.get_BlockDuration(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getForecast(self: *@This()) core.HResult!*IVectorView(PowerGridData) {
-        var _r: *IVectorView(PowerGridData) = undefined;
-        const _c = self.vtable.get_Forecast(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Power.IPowerGridForecast";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "077e4de9-ed60-58bb-a850-003c6a138685";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_BlockDuration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_Forecast: *const fn(self: *anyopaque, _r: **IVectorView(PowerGridData)) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPowerGridForecastStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetForecast(self: *@This()) core.HResult!*PowerGridForecast {
-        var _r: *PowerGridForecast = undefined;
-        const _c = self.vtable.GetForecast(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn addForecastUpdated(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_ForecastUpdated(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeForecastUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_ForecastUpdated(@ptrCast(self), token);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Power.IPowerGridForecastStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5b78c806-2e4e-5bcc-bb34-cb81c60f9e12";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForecast: *const fn(self: *anyopaque, _r: **PowerGridForecast) callconv(.winapi) HRESULT,
-        add_ForecastUpdated: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_ForecastUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const PowerGridData = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getSeverity(self: *@This()) core.HResult!f64 {
-        const this: *IPowerGridData = @ptrCast(self);
-        return try this.getSeverity();
-    }
-    pub fn getIsLowUserExperienceImpact(self: *@This()) core.HResult!bool {
-        const this: *IPowerGridData = @ptrCast(self);
-        return try this.getIsLowUserExperienceImpact();
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Power.PowerGridData";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPowerGridData.GUID;
-    pub const IID: Guid = IPowerGridData.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPowerGridData.SIGNATURE);
-};
-pub const PowerGridForecast = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
-        const this: *IPowerGridForecast = @ptrCast(self);
-        return try this.getStartTime();
-    }
-    pub fn getBlockDuration(self: *@This()) core.HResult!TimeSpan {
-        const this: *IPowerGridForecast = @ptrCast(self);
-        return try this.getBlockDuration();
-    }
-    pub fn getForecast(self: *@This()) core.HResult!*IVectorView(PowerGridData) {
-        const this: *IPowerGridForecast = @ptrCast(self);
-        return try this.getForecast();
-    }
-    pub fn GetForecast() core.HResult!*PowerGridForecast {
-        const _f = try @This()._IPowerGridForecastStaticsCache.get();
-        return try _f.GetForecast();
-    }
-    pub fn addForecastUpdated(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IPowerGridForecastStaticsCache.get();
-        return try _f.addForecastUpdated(handler);
-    }
-    pub fn removeForecastUpdated(token: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IPowerGridForecastStaticsCache.get();
-        return try _f.removeForecastUpdated(token);
-    }
-    pub const NAME: []const u8 = "Windows.Devices.Power.PowerGridForecast";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPowerGridForecast.GUID;
-    pub const IID: Guid = IPowerGridForecast.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPowerGridForecast.SIGNATURE);
-    var _IPowerGridForecastStaticsCache: FactoryCache(IPowerGridForecastStatics, RUNTIME_NAME) = .{};
-};
 pub const Battery = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -435,6 +239,202 @@ pub const IBatteryStatics = extern struct {
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
+pub const IPowerGridData = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSeverity(self: *@This()) core.HResult!f64 {
+        var _r: f64 = undefined;
+        const _c = self.vtable.get_Severity(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getIsLowUserExperienceImpact(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsLowUserExperienceImpact(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Power.IPowerGridData";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "c360fb17-fc92-5f6e-999d-16a4cf9d6c40";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Severity: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
+        get_IsLowUserExperienceImpact: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPowerGridForecast = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
+        var _r: DateTime = undefined;
+        const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getBlockDuration(self: *@This()) core.HResult!TimeSpan {
+        var _r: TimeSpan = undefined;
+        const _c = self.vtable.get_BlockDuration(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getForecast(self: *@This()) core.HResult!*IVectorView(PowerGridData) {
+        var _r: *IVectorView(PowerGridData) = undefined;
+        const _c = self.vtable.get_Forecast(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Power.IPowerGridForecast";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "077e4de9-ed60-58bb-a850-003c6a138685";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
+        get_BlockDuration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
+        get_Forecast: *const fn(self: *anyopaque, _r: **IVectorView(PowerGridData)) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPowerGridForecastStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetForecast(self: *@This()) core.HResult!*PowerGridForecast {
+        var _r: *PowerGridForecast = undefined;
+        const _c = self.vtable.GetForecast(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn addForecastUpdated(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_ForecastUpdated(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeForecastUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_ForecastUpdated(@ptrCast(self), token);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Power.IPowerGridForecastStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5b78c806-2e4e-5bcc-bb34-cb81c60f9e12";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetForecast: *const fn(self: *anyopaque, _r: **PowerGridForecast) callconv(.winapi) HRESULT,
+        add_ForecastUpdated: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_ForecastUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const PowerGridData = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getSeverity(self: *@This()) core.HResult!f64 {
+        const this: *IPowerGridData = @ptrCast(self);
+        return try this.getSeverity();
+    }
+    pub fn getIsLowUserExperienceImpact(self: *@This()) core.HResult!bool {
+        const this: *IPowerGridData = @ptrCast(self);
+        return try this.getIsLowUserExperienceImpact();
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Power.PowerGridData";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPowerGridData.GUID;
+    pub const IID: Guid = IPowerGridData.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPowerGridData.SIGNATURE);
+};
+pub const PowerGridForecast = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getStartTime(self: *@This()) core.HResult!DateTime {
+        const this: *IPowerGridForecast = @ptrCast(self);
+        return try this.getStartTime();
+    }
+    pub fn getBlockDuration(self: *@This()) core.HResult!TimeSpan {
+        const this: *IPowerGridForecast = @ptrCast(self);
+        return try this.getBlockDuration();
+    }
+    pub fn getForecast(self: *@This()) core.HResult!*IVectorView(PowerGridData) {
+        const this: *IPowerGridForecast = @ptrCast(self);
+        return try this.getForecast();
+    }
+    pub fn GetForecast() core.HResult!*PowerGridForecast {
+        const _f = try @This()._IPowerGridForecastStaticsCache.get();
+        return try _f.GetForecast();
+    }
+    pub fn addForecastUpdated(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IPowerGridForecastStaticsCache.get();
+        return try _f.addForecastUpdated(handler);
+    }
+    pub fn removeForecastUpdated(token: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IPowerGridForecastStaticsCache.get();
+        return try _f.removeForecastUpdated(token);
+    }
+    pub const NAME: []const u8 = "Windows.Devices.Power.PowerGridForecast";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPowerGridForecast.GUID;
+    pub const IID: Guid = IPowerGridForecast.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPowerGridForecast.SIGNATURE);
+    var _IPowerGridForecastStaticsCache: FactoryCache(IPowerGridForecastStatics, RUNTIME_NAME) = .{};
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const HSTRING = @import("../root.zig").HSTRING;
 const Guid = @import("../root.zig").Guid;
@@ -446,9 +446,9 @@ const IReference = @import("../Foundation.zig").IReference;
 const DateTime = @import("../Foundation.zig").DateTime;
 const EventHandler = @import("../Foundation.zig").EventHandler;
 const HRESULT = @import("../root.zig").HRESULT;
-const FactoryCache = @import("../core.zig").FactoryCache;
-const core = @import("../root.zig").core;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
+const core = @import("../root.zig").core;
+const FactoryCache = @import("../core.zig").FactoryCache;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;

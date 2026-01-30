@@ -242,10 +242,11 @@ pub const PlatformDiagnosticEscalationType = enum(i32) {
     OnCompletion = 0,
     OnFailure = 1,
 };
-pub const PlatformDiagnosticEventBufferLatencies = enum(i32) {
-    Normal = 1,
-    CostDeferred = 2,
-    Realtime = 4,
+pub const PlatformDiagnosticEventBufferLatencies = packed struct(u32) {
+    Normal: bool = false,
+    CostDeferred: bool = false,
+    Realtime: bool = false,
+    _m: u29 = 0,
 };
 pub const PlatformDiagnosticTraceInfo = extern struct {
     vtable: *const IInspectable.VTable,

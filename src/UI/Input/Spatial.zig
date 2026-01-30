@@ -2235,18 +2235,18 @@ pub const SpatialGestureRecognizer = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISpatialGestureRecognizer.SIGNATURE);
     var _ISpatialGestureRecognizerFactoryCache: FactoryCache(ISpatialGestureRecognizerFactory, RUNTIME_NAME) = .{};
 };
-pub const SpatialGestureSettings = enum(i32) {
-    None = 0,
-    Tap = 1,
-    DoubleTap = 2,
-    Hold = 4,
-    ManipulationTranslate = 8,
-    NavigationX = 16,
-    NavigationY = 32,
-    NavigationZ = 64,
-    NavigationRailsX = 128,
-    NavigationRailsY = 256,
-    NavigationRailsZ = 512,
+pub const SpatialGestureSettings = packed struct(u32) {
+    Tap: bool = false,
+    DoubleTap: bool = false,
+    Hold: bool = false,
+    ManipulationTranslate: bool = false,
+    NavigationX: bool = false,
+    NavigationY: bool = false,
+    NavigationZ: bool = false,
+    NavigationRailsX: bool = false,
+    NavigationRailsY: bool = false,
+    NavigationRailsZ: bool = false,
+    _m: u22 = 0,
 };
 pub const SpatialHoldCanceledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,

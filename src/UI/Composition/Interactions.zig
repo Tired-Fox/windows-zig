@@ -1988,11 +1988,11 @@ pub const IVisualInteractionSourceStatics2 = extern struct {
         CreateFromIVisualElement: *const fn(self: *anyopaque, source: *IVisualElement, _r: **VisualInteractionSource) callconv(.winapi) HRESULT,
     };
 };
-pub const InteractionBindingAxisModes = enum(i32) {
-    None = 0,
-    PositionX = 1,
-    PositionY = 2,
-    Scale = 4,
+pub const InteractionBindingAxisModes = packed struct(u32) {
+    PositionX: bool = false,
+    PositionY: bool = false,
+    Scale: bool = false,
+    _m: u29 = 0,
 };
 pub const InteractionChainingMode = enum(i32) {
     Auto = 0,

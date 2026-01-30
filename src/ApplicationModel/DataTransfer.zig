@@ -343,11 +343,11 @@ pub const DataPackage = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDataPackage.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-pub const DataPackageOperation = enum(i32) {
-    None = 0,
-    Copy = 1,
-    Move = 2,
-    Link = 4,
+pub const DataPackageOperation = packed struct(u32) {
+    Copy: bool = false,
+    Move: bool = false,
+    Link: bool = false,
+    _m: u29 = 0,
 };
 pub const DataPackagePropertySet = extern struct {
     vtable: *const IInspectable.VTable,

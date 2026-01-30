@@ -997,12 +997,12 @@ pub const CmsTimestampInfo = extern struct {
     pub const IID: Guid = ICmsTimestampInfo.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICmsTimestampInfo.SIGNATURE);
 };
-pub const EnrollKeyUsages = enum(i32) {
-    None = 0,
-    Decryption = 1,
-    Signing = 2,
-    KeyAgreement = 4,
-    All = 16777215,
+pub const EnrollKeyUsages = packed struct(u32) {
+    Decryption: bool = false,
+    Signing: bool = false,
+    KeyAgreement: bool = false,
+    All: bool = false,
+    _m: u28 = 0,
 };
 pub const ExportOption = enum(i32) {
     NotExportable = 0,
@@ -3429,9 +3429,9 @@ pub const IUserCertificateStore = extern struct {
         get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
-pub const InstallOptions = enum(i32) {
-    None = 0,
-    DeleteExpired = 1,
+pub const InstallOptions = packed struct(u32) {
+    DeleteExpired: bool = false,
+    _m: u31 = 0,
 };
 pub const KeyAlgorithmNames = extern struct {
     vtable: *const IInspectable.VTable,

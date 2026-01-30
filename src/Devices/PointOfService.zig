@@ -10859,11 +10859,12 @@ pub const MagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern s
     pub const IID: Guid = IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs.SIGNATURE);
 };
-pub const PosConnectionTypes = enum(i32) {
-    Local = 1,
-    IP = 2,
-    Bluetooth = 4,
-    All = -1,
+pub const PosConnectionTypes = packed struct(u32) {
+    Local: bool = false,
+    IP: bool = false,
+    Bluetooth: bool = false,
+    All: bool = false,
+    _m: u28 = 0,
 };
 pub const PosPrinter = extern struct {
     vtable: *const IInspectable.VTable,
@@ -11025,12 +11026,12 @@ pub const PosPrinterCapabilities = extern struct {
     pub const IID: Guid = IPosPrinterCapabilities.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPosPrinterCapabilities.SIGNATURE);
 };
-pub const PosPrinterCartridgeSensors = enum(i32) {
-    None = 0,
-    Removed = 1,
-    Empty = 2,
-    HeadCleaning = 4,
-    NearEnd = 8,
+pub const PosPrinterCartridgeSensors = packed struct(u32) {
+    Removed: bool = false,
+    Empty: bool = false,
+    HeadCleaning: bool = false,
+    NearEnd: bool = false,
+    _m: u28 = 0,
 };
 pub const PosPrinterCharacterSetIds = extern struct {
     vtable: *const IInspectable.VTable,
@@ -11059,19 +11060,19 @@ pub const PosPrinterCharacterSetIds = extern struct {
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     var _IPosPrinterCharacterSetIdsStaticsCache: FactoryCache(IPosPrinterCharacterSetIdsStatics, RUNTIME_NAME) = .{};
 };
-pub const PosPrinterColorCapabilities = enum(i32) {
-    None = 0,
-    Primary = 1,
-    Custom1 = 2,
-    Custom2 = 4,
-    Custom3 = 8,
-    Custom4 = 16,
-    Custom5 = 32,
-    Custom6 = 64,
-    Cyan = 128,
-    Magenta = 256,
-    Yellow = 512,
-    Full = 1024,
+pub const PosPrinterColorCapabilities = packed struct(u32) {
+    Primary: bool = false,
+    Custom1: bool = false,
+    Custom2: bool = false,
+    Custom3: bool = false,
+    Custom4: bool = false,
+    Custom5: bool = false,
+    Custom6: bool = false,
+    Cyan: bool = false,
+    Magenta: bool = false,
+    Yellow: bool = false,
+    Full: bool = false,
+    _m: u21 = 0,
 };
 pub const PosPrinterColorCartridge = enum(i32) {
     Unknown = 0,
@@ -11131,12 +11132,12 @@ pub const PosPrinterMapMode = enum(i32) {
     English = 2,
     Metric = 3,
 };
-pub const PosPrinterMarkFeedCapabilities = enum(i32) {
-    None = 0,
-    ToTakeUp = 1,
-    ToCutter = 2,
-    ToCurrentTopOfForm = 4,
-    ToNextTopOfForm = 8,
+pub const PosPrinterMarkFeedCapabilities = packed struct(u32) {
+    ToTakeUp: bool = false,
+    ToCutter: bool = false,
+    ToCurrentTopOfForm: bool = false,
+    ToNextTopOfForm: bool = false,
+    _m: u28 = 0,
 };
 pub const PosPrinterMarkFeedKind = enum(i32) {
     ToTakeUp = 0,
@@ -11298,10 +11299,10 @@ pub const PosPrinterRotation = enum(i32) {
     Left90 = 2,
     Rotate180 = 3,
 };
-pub const PosPrinterRuledLineCapabilities = enum(i32) {
-    None = 0,
-    Horizontal = 1,
-    Vertical = 2,
+pub const PosPrinterRuledLineCapabilities = packed struct(u32) {
+    Horizontal: bool = false,
+    Vertical: bool = false,
+    _m: u30 = 0,
 };
 pub const PosPrinterStatus = extern struct {
     vtable: *const IInspectable.VTable,

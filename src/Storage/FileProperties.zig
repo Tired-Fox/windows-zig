@@ -1166,13 +1166,13 @@ pub const PhotoOrientation = enum(i32) {
     Transverse = 7,
     Rotate90 = 8,
 };
-pub const PropertyPrefetchOptions = enum(i32) {
-    None = 0,
-    MusicProperties = 1,
-    VideoProperties = 2,
-    ImageProperties = 4,
-    DocumentProperties = 8,
-    BasicProperties = 16,
+pub const PropertyPrefetchOptions = packed struct(u32) {
+    MusicProperties: bool = false,
+    VideoProperties: bool = false,
+    ImageProperties: bool = false,
+    DocumentProperties: bool = false,
+    BasicProperties: bool = false,
+    _m: u27 = 0,
 };
 pub const StorageItemContentProperties = extern struct {
     vtable: *const IInspectable.VTable,
@@ -1358,11 +1358,11 @@ pub const ThumbnailMode = enum(i32) {
     ListView = 4,
     SingleItem = 5,
 };
-pub const ThumbnailOptions = enum(i32) {
-    None = 0,
-    ReturnOnlyIfCached = 1,
-    ResizeThumbnail = 2,
-    UseCurrentScale = 4,
+pub const ThumbnailOptions = packed struct(u32) {
+    ReturnOnlyIfCached: bool = false,
+    ResizeThumbnail: bool = false,
+    UseCurrentScale: bool = false,
+    _m: u29 = 0,
 };
 pub const ThumbnailType = enum(i32) {
     Image = 0,

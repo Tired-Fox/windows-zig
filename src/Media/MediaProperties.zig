@@ -3316,10 +3316,10 @@ pub const MediaEncodingSubtypes = extern struct {
     var _IMediaEncodingSubtypesStatics4Cache: FactoryCache(IMediaEncodingSubtypesStatics4, RUNTIME_NAME) = .{};
     var _IMediaEncodingSubtypesStatics2Cache: FactoryCache(IMediaEncodingSubtypesStatics2, RUNTIME_NAME) = .{};
 };
-pub const MediaMirroringOptions = enum(i32) {
-    None = 0,
-    Horizontal = 1,
-    Vertical = 2,
+pub const MediaMirroringOptions = packed struct(u32) {
+    Horizontal: bool = false,
+    Vertical: bool = false,
+    _m: u30 = 0,
 };
 pub const MediaPixelFormat = enum(i32) {
     Nv12 = 0,

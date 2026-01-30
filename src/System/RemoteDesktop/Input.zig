@@ -145,12 +145,12 @@ pub const IRemoteTextConnectionFactory2 = extern struct {
         CreateInstance: *const fn(self: *anyopaque, connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler, options: RemoteTextConnectionOptions, _r: **RemoteTextConnection) callconv(.winapi) HRESULT,
     };
 };
-pub const RemoteKeyEventAttributes = enum(i32) {
-    None = 0,
-    KeyUp = 1,
-    Repeat = 2,
-    Extended = 4,
-    Extended1 = 8,
+pub const RemoteKeyEventAttributes = packed struct(u32) {
+    KeyUp: bool = false,
+    Repeat: bool = false,
+    Extended: bool = false,
+    Extended1: bool = false,
+    _m: u28 = 0,
 };
 pub const RemoteTextConnection = extern struct {
     vtable: *const IInspectable.VTable,
@@ -300,9 +300,9 @@ pub const RemoteTextConnectionDataHandler = extern struct {
         .Invoke = Invoke,
     };
 };
-pub const RemoteTextConnectionOptions = enum(i32) {
-    None = 0,
-    EnablePredictedKeyReporting = 1,
+pub const RemoteTextConnectionOptions = packed struct(u32) {
+    EnablePredictedKeyReporting: bool = false,
+    _m: u31 = 0,
 };
 const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;

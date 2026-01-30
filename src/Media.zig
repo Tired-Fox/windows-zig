@@ -1,375 +1,4 @@
 // ----- This code is automatically generated -----
-pub const IMediaControl = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addSoundLevelChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_SoundLevelChanged(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeSoundLevelChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_SoundLevelChanged(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addPlayPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_PlayPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removePlayPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_PlayPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addPausePressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_PausePressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removePausePressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_PausePressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addStopPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_StopPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeStopPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_StopPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addPlayPauseTogglePressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_PlayPauseTogglePressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removePlayPauseTogglePressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_PlayPauseTogglePressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addRecordPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_RecordPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeRecordPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_RecordPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addNextTrackPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_NextTrackPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeNextTrackPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_NextTrackPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addPreviousTrackPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_PreviousTrackPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removePreviousTrackPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_PreviousTrackPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addFastForwardPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_FastForwardPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeFastForwardPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_FastForwardPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addRewindPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_RewindPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeRewindPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_RewindPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addChannelUpPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_ChannelUpPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeChannelUpPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_ChannelUpPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn addChannelDownPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_ChannelDownPressed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeChannelDownPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_ChannelDownPressed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn getSoundLevel(self: *@This()) core.HResult!SoundLevel {
-        var _r: SoundLevel = undefined;
-        const _c = self.vtable.get_SoundLevel(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putTrackName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_TrackName(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getTrackName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_TrackName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putArtistName(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_ArtistName(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getArtistName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ArtistName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsPlaying(self: *@This(), value: bool) core.HResult!void {
-        const _c = self.vtable.put_IsPlaying(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsPlaying(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_IsPlaying(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putAlbumArt(self: *@This(), value: *Uri) core.HResult!void {
-        const _c = self.vtable.put_AlbumArt(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getAlbumArt(self: *@This()) core.HResult!*Uri {
-        var _r: *Uri = undefined;
-        const _c = self.vtable.get_AlbumArt(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Media.IMediaControl";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "98f1fbe1-7a8d-42cb-b6fe-8fe698264f13";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        add_SoundLevelChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_SoundLevelChanged: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_PlayPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_PlayPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_PausePressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_PausePressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_StopPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_StopPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_PlayPauseTogglePressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_PlayPauseTogglePressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_RecordPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_RecordPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_NextTrackPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_NextTrackPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_PreviousTrackPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_PreviousTrackPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_FastForwardPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_FastForwardPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_RewindPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_RewindPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_ChannelUpPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_ChannelUpPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        add_ChannelDownPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_ChannelDownPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_SoundLevel: *const fn(self: *anyopaque, _r: *SoundLevel) callconv(.winapi) HRESULT,
-        put_TrackName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_TrackName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_ArtistName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_ArtistName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_IsPlaying: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IsPlaying: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_AlbumArt: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_AlbumArt: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-    };
-};
-pub const MediaControl = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addSoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addSoundLevelChanged(handler);
-    }
-    pub fn removeSoundLevelChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeSoundLevelChanged(cookie);
-    }
-    pub fn addPlayPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addPlayPressed(handler);
-    }
-    pub fn removePlayPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removePlayPressed(cookie);
-    }
-    pub fn addPausePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addPausePressed(handler);
-    }
-    pub fn removePausePressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removePausePressed(cookie);
-    }
-    pub fn addStopPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addStopPressed(handler);
-    }
-    pub fn removeStopPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeStopPressed(cookie);
-    }
-    pub fn addPlayPauseTogglePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addPlayPauseTogglePressed(handler);
-    }
-    pub fn removePlayPauseTogglePressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removePlayPauseTogglePressed(cookie);
-    }
-    pub fn addRecordPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addRecordPressed(handler);
-    }
-    pub fn removeRecordPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeRecordPressed(cookie);
-    }
-    pub fn addNextTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addNextTrackPressed(handler);
-    }
-    pub fn removeNextTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeNextTrackPressed(cookie);
-    }
-    pub fn addPreviousTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addPreviousTrackPressed(handler);
-    }
-    pub fn removePreviousTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removePreviousTrackPressed(cookie);
-    }
-    pub fn addFastForwardPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addFastForwardPressed(handler);
-    }
-    pub fn removeFastForwardPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeFastForwardPressed(cookie);
-    }
-    pub fn addRewindPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addRewindPressed(handler);
-    }
-    pub fn removeRewindPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeRewindPressed(cookie);
-    }
-    pub fn addChannelUpPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addChannelUpPressed(handler);
-    }
-    pub fn removeChannelUpPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeChannelUpPressed(cookie);
-    }
-    pub fn addChannelDownPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.addChannelDownPressed(handler);
-    }
-    pub fn removeChannelDownPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.removeChannelDownPressed(cookie);
-    }
-    pub fn getSoundLevel() core.HResult!SoundLevel {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.getSoundLevel();
-    }
-    pub fn putTrackName(value: ?HSTRING) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.putTrackName(value);
-    }
-    pub fn getTrackName() core.HResult!?HSTRING {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.getTrackName();
-    }
-    pub fn putArtistName(value: ?HSTRING) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.putArtistName(value);
-    }
-    pub fn getArtistName() core.HResult!?HSTRING {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.getArtistName();
-    }
-    pub fn putIsPlaying(value: bool) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.putIsPlaying(value);
-    }
-    pub fn getIsPlaying() core.HResult!bool {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.getIsPlaying();
-    }
-    pub fn putAlbumArt(value: *Uri) core.HResult!void {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.putAlbumArt(value);
-    }
-    pub fn getAlbumArt() core.HResult!*Uri {
-        const _f = try @This()._IMediaControlCache.get();
-        return try _f.getAlbumArt();
-    }
-    pub const NAME: []const u8 = "Windows.Media.MediaControl";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IMediaControlCache: FactoryCache(IMediaControl, RUNTIME_NAME) = .{};
-};
 pub const AudioBuffer = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -3517,6 +3146,377 @@ pub const VideoFrame = extern struct {
     var _IVideoFrameFactoryCache: FactoryCache(IVideoFrameFactory, RUNTIME_NAME) = .{};
     var _IVideoFrameStaticsCache: FactoryCache(IVideoFrameStatics, RUNTIME_NAME) = .{};
 };
+pub const IMediaControl = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addSoundLevelChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_SoundLevelChanged(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeSoundLevelChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_SoundLevelChanged(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addPlayPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_PlayPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removePlayPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_PlayPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addPausePressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_PausePressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removePausePressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_PausePressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addStopPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_StopPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeStopPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_StopPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addPlayPauseTogglePressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_PlayPauseTogglePressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removePlayPauseTogglePressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_PlayPauseTogglePressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addRecordPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_RecordPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeRecordPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_RecordPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addNextTrackPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_NextTrackPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeNextTrackPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_NextTrackPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addPreviousTrackPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_PreviousTrackPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removePreviousTrackPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_PreviousTrackPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addFastForwardPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_FastForwardPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeFastForwardPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_FastForwardPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addRewindPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_RewindPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeRewindPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_RewindPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addChannelUpPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_ChannelUpPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeChannelUpPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_ChannelUpPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn addChannelDownPressed(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_ChannelDownPressed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeChannelDownPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_ChannelDownPressed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn getSoundLevel(self: *@This()) core.HResult!SoundLevel {
+        var _r: SoundLevel = undefined;
+        const _c = self.vtable.get_SoundLevel(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putTrackName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_TrackName(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getTrackName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_TrackName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putArtistName(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_ArtistName(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getArtistName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ArtistName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsPlaying(self: *@This(), value: bool) core.HResult!void {
+        const _c = self.vtable.put_IsPlaying(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsPlaying(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_IsPlaying(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putAlbumArt(self: *@This(), value: *Uri) core.HResult!void {
+        const _c = self.vtable.put_AlbumArt(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getAlbumArt(self: *@This()) core.HResult!*Uri {
+        var _r: *Uri = undefined;
+        const _c = self.vtable.get_AlbumArt(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Media.IMediaControl";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "98f1fbe1-7a8d-42cb-b6fe-8fe698264f13";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        add_SoundLevelChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_SoundLevelChanged: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_PlayPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_PlayPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_PausePressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_PausePressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_StopPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_StopPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_PlayPauseTogglePressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_PlayPauseTogglePressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_RecordPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_RecordPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_NextTrackPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_NextTrackPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_PreviousTrackPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_PreviousTrackPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_FastForwardPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_FastForwardPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_RewindPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_RewindPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_ChannelUpPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_ChannelUpPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        add_ChannelDownPressed: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_ChannelDownPressed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        get_SoundLevel: *const fn(self: *anyopaque, _r: *SoundLevel) callconv(.winapi) HRESULT,
+        put_TrackName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TrackName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ArtistName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ArtistName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IsPlaying: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
+        get_IsPlaying: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        put_AlbumArt: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
+        get_AlbumArt: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
+    };
+};
+pub const MediaControl = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addSoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addSoundLevelChanged(handler);
+    }
+    pub fn removeSoundLevelChanged(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeSoundLevelChanged(cookie);
+    }
+    pub fn addPlayPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addPlayPressed(handler);
+    }
+    pub fn removePlayPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removePlayPressed(cookie);
+    }
+    pub fn addPausePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addPausePressed(handler);
+    }
+    pub fn removePausePressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removePausePressed(cookie);
+    }
+    pub fn addStopPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addStopPressed(handler);
+    }
+    pub fn removeStopPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeStopPressed(cookie);
+    }
+    pub fn addPlayPauseTogglePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addPlayPauseTogglePressed(handler);
+    }
+    pub fn removePlayPauseTogglePressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removePlayPauseTogglePressed(cookie);
+    }
+    pub fn addRecordPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addRecordPressed(handler);
+    }
+    pub fn removeRecordPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeRecordPressed(cookie);
+    }
+    pub fn addNextTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addNextTrackPressed(handler);
+    }
+    pub fn removeNextTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeNextTrackPressed(cookie);
+    }
+    pub fn addPreviousTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addPreviousTrackPressed(handler);
+    }
+    pub fn removePreviousTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removePreviousTrackPressed(cookie);
+    }
+    pub fn addFastForwardPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addFastForwardPressed(handler);
+    }
+    pub fn removeFastForwardPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeFastForwardPressed(cookie);
+    }
+    pub fn addRewindPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addRewindPressed(handler);
+    }
+    pub fn removeRewindPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeRewindPressed(cookie);
+    }
+    pub fn addChannelUpPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addChannelUpPressed(handler);
+    }
+    pub fn removeChannelUpPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeChannelUpPressed(cookie);
+    }
+    pub fn addChannelDownPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.addChannelDownPressed(handler);
+    }
+    pub fn removeChannelDownPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.removeChannelDownPressed(cookie);
+    }
+    pub fn getSoundLevel() core.HResult!SoundLevel {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.getSoundLevel();
+    }
+    pub fn putTrackName(value: ?HSTRING) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.putTrackName(value);
+    }
+    pub fn getTrackName() core.HResult!?HSTRING {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.getTrackName();
+    }
+    pub fn putArtistName(value: ?HSTRING) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.putArtistName(value);
+    }
+    pub fn getArtistName() core.HResult!?HSTRING {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.getArtistName();
+    }
+    pub fn putIsPlaying(value: bool) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.putIsPlaying(value);
+    }
+    pub fn getIsPlaying() core.HResult!bool {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.getIsPlaying();
+    }
+    pub fn putAlbumArt(value: *Uri) core.HResult!void {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.putAlbumArt(value);
+    }
+    pub fn getAlbumArt() core.HResult!*Uri {
+        const _f = try @This()._IMediaControlCache.get();
+        return try _f.getAlbumArt();
+    }
+    pub const NAME: []const u8 = "Windows.Media.MediaControl";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IMediaControlCache: FactoryCache(IMediaControl, RUNTIME_NAME) = .{};
+};
 const IUnknown = @import("./root.zig").IUnknown;
 const IActivationFactory = @import("./Foundation.zig").IActivationFactory;
 const Guid = @import("./root.zig").Guid;
@@ -3542,12 +3542,12 @@ const TimeSpan = @import("./Foundation.zig").TimeSpan;
 const IMemoryBufferReference = @import("./Foundation.zig").IMemoryBufferReference;
 const Uri = @import("./Foundation.zig").Uri;
 const HResult = @import("./Foundation.zig").HResult;
-const EventHandler = @import("./Foundation.zig").EventHandler;
 const BitmapBounds = @import("./Graphics/Imaging.zig").BitmapBounds;
 const BitmapAlphaMode = @import("./Graphics/Imaging.zig").BitmapAlphaMode;
 const HRESULT = @import("./root.zig").HRESULT;
 const IAsyncOperation = @import("./Foundation.zig").IAsyncOperation;
 const core = @import("./root.zig").core;
+const EventHandler = @import("./Foundation.zig").EventHandler;
 const EventRegistrationToken = @import("./Foundation.zig").EventRegistrationToken;
 const IPropertySet = @import("./Foundation/Collections.zig").IPropertySet;
 const IAsyncAction = @import("./Foundation.zig").IAsyncAction;

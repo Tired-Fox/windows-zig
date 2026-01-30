@@ -1,537 +1,4 @@
 // ----- This code is automatically generated -----
-pub const CoreWindowDialog = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.addShowing(handler);
-    }
-    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.removeShowing(cookie);
-    }
-    pub fn getMaxSize(self: *@This()) core.HResult!Size {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getMaxSize();
-    }
-    pub fn getMinSize(self: *@This()) core.HResult!Size {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getMinSize();
-    }
-    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getTitle();
-    }
-    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.putTitle(value);
-    }
-    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getIsInteractionDelayed();
-    }
-    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.putIsInteractionDelayed(value);
-    }
-    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getCommands();
-    }
-    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getDefaultCommandIndex();
-    }
-    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.putDefaultCommandIndex(value);
-    }
-    pub fn getCancelCommandIndex(self: *@This()) core.HResult!u32 {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getCancelCommandIndex();
-    }
-    pub fn putCancelCommandIndex(self: *@This(), value: u32) core.HResult!void {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.putCancelCommandIndex(value);
-    }
-    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.getBackButtonCommand();
-    }
-    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.putBackButtonCommand(value);
-    }
-    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
-        const this: *ICoreWindowDialog = @ptrCast(self);
-        return try this.ShowAsync();
-    }
-    pub fn init() core.HResult!*@This() {
-        const _f = try @This()._IActivationFactoryCache.get();
-        return @ptrCast(@alignCast(try _f.ActivateInstance(&ICoreWindowDialog.IID)));
-    }
-    pub fn CreateWithTitle(title: ?HSTRING) core.HResult!*CoreWindowDialog {
-        const _f = try @This()._ICoreWindowDialogFactoryCache.get();
-        return try _f.CreateWithTitle(title);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowDialog";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICoreWindowDialog.GUID;
-    pub const IID: Guid = ICoreWindowDialog.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreWindowDialog.SIGNATURE);
-    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
-    var _ICoreWindowDialogFactoryCache: FactoryCache(ICoreWindowDialogFactory, RUNTIME_NAME) = .{};
-};
-pub const CoreWindowFlyout = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.addShowing(handler);
-    }
-    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.removeShowing(cookie);
-    }
-    pub fn getMaxSize(self: *@This()) core.HResult!Size {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.getMaxSize();
-    }
-    pub fn getMinSize(self: *@This()) core.HResult!Size {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.getMinSize();
-    }
-    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.getTitle();
-    }
-    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.putTitle(value);
-    }
-    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.getIsInteractionDelayed();
-    }
-    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.putIsInteractionDelayed(value);
-    }
-    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.getCommands();
-    }
-    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.getDefaultCommandIndex();
-    }
-    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.putDefaultCommandIndex(value);
-    }
-    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.getBackButtonCommand();
-    }
-    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.putBackButtonCommand(value);
-    }
-    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
-        const this: *ICoreWindowFlyout = @ptrCast(self);
-        return try this.ShowAsync();
-    }
-    pub fn Create(position: Point) core.HResult!*CoreWindowFlyout {
-        const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
-        return try _f.Create(position);
-    }
-    pub fn CreateWithTitle(position: Point, title: ?HSTRING) core.HResult!*CoreWindowFlyout {
-        const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
-        return try _f.CreateWithTitle(position, title);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowFlyout";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICoreWindowFlyout.GUID;
-    pub const IID: Guid = ICoreWindowFlyout.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreWindowFlyout.SIGNATURE);
-    var _ICoreWindowFlyoutFactoryCache: FactoryCache(ICoreWindowFlyoutFactory, RUNTIME_NAME) = .{};
-};
-pub const CoreWindowPopupShowingEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SetDesiredSize(self: *@This(), value: Size) core.HResult!void {
-        const this: *ICoreWindowPopupShowingEventArgs = @ptrCast(self);
-        return try this.SetDesiredSize(value);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowPopupShowingEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ICoreWindowPopupShowingEventArgs.GUID;
-    pub const IID: Guid = ICoreWindowPopupShowingEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreWindowPopupShowingEventArgs.SIGNATURE);
-};
-pub const ICoreWindowDialog = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_Showing(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_Showing(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn getMaxSize(self: *@This()) core.HResult!Size {
-        var _r: Size = undefined;
-        const _c = self.vtable.get_MaxSize(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMinSize(self: *@This()) core.HResult!Size {
-        var _r: Size = undefined;
-        const _c = self.vtable.get_MinSize(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_Title(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
-        var _r: i32 = undefined;
-        const _c = self.vtable.get_IsInteractionDelayed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
-        const _c = self.vtable.put_IsInteractionDelayed(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
-        var _r: *IVector(IUICommand) = undefined;
-        const _c = self.vtable.get_Commands(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_DefaultCommandIndex(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
-        const _c = self.vtable.put_DefaultCommandIndex(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getCancelCommandIndex(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_CancelCommandIndex(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putCancelCommandIndex(self: *@This(), value: u32) core.HResult!void {
-        const _c = self.vtable.put_CancelCommandIndex(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
-        var _r: *UICommandInvokedHandler = undefined;
-        const _c = self.vtable.get_BackButtonCommand(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
-        const _c = self.vtable.put_BackButtonCommand(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
-        var _r: *IAsyncOperation(IUICommand) = undefined;
-        const _c = self.vtable.ShowAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowDialog";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "e7392ce0-c78d-427e-8b2c-01ff420c69d5";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        add_Showing: *const fn(self: *anyopaque, handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_Showing: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_MaxSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
-        get_MinSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_IsInteractionDelayed: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        put_IsInteractionDelayed: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
-        get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
-        get_DefaultCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_DefaultCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_CancelCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_CancelCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_BackButtonCommand: *const fn(self: *anyopaque, _r: **UICommandInvokedHandler) callconv(.winapi) HRESULT,
-        put_BackButtonCommand: *const fn(self: *anyopaque, value: *UICommandInvokedHandler) callconv(.winapi) HRESULT,
-        ShowAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICoreWindowDialogFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateWithTitle(self: *@This(), title: ?HSTRING) core.HResult!*CoreWindowDialog {
-        var _r: *CoreWindowDialog = undefined;
-        const _c = self.vtable.CreateWithTitle(@ptrCast(self), title, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowDialogFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "cfb2a855-1c59-4b13-b1e5-16e29805f7c4";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithTitle: *const fn(self: *anyopaque, title: ?HSTRING, _r: **CoreWindowDialog) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICoreWindowFlyout = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_Showing(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_Showing(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub fn getMaxSize(self: *@This()) core.HResult!Size {
-        var _r: Size = undefined;
-        const _c = self.vtable.get_MaxSize(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getMinSize(self: *@This()) core.HResult!Size {
-        var _r: Size = undefined;
-        const _c = self.vtable.get_MinSize(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Title(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
-        const _c = self.vtable.put_Title(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
-        var _r: i32 = undefined;
-        const _c = self.vtable.get_IsInteractionDelayed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
-        const _c = self.vtable.put_IsInteractionDelayed(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
-        var _r: *IVector(IUICommand) = undefined;
-        const _c = self.vtable.get_Commands(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_DefaultCommandIndex(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
-        const _c = self.vtable.put_DefaultCommandIndex(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
-        var _r: *UICommandInvokedHandler = undefined;
-        const _c = self.vtable.get_BackButtonCommand(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
-        const _c = self.vtable.put_BackButtonCommand(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
-        var _r: *IAsyncOperation(IUICommand) = undefined;
-        const _c = self.vtable.ShowAsync(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowFlyout";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "e89d854d-2050-40bb-b344-f6f355eeb314";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        add_Showing: *const fn(self: *anyopaque, handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_Showing: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_MaxSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
-        get_MinSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
-        get_IsInteractionDelayed: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        put_IsInteractionDelayed: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
-        get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
-        get_DefaultCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_DefaultCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_BackButtonCommand: *const fn(self: *anyopaque, _r: **UICommandInvokedHandler) callconv(.winapi) HRESULT,
-        put_BackButtonCommand: *const fn(self: *anyopaque, value: *UICommandInvokedHandler) callconv(.winapi) HRESULT,
-        ShowAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICoreWindowFlyoutFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Create(self: *@This(), position: Point) core.HResult!*CoreWindowFlyout {
-        var _r: *CoreWindowFlyout = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), position, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn CreateWithTitle(self: *@This(), position: Point, title: ?HSTRING) core.HResult!*CoreWindowFlyout {
-        var _r: *CoreWindowFlyout = undefined;
-        const _c = self.vtable.CreateWithTitle(@ptrCast(self), position, title, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowFlyoutFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "dec4c6c4-93e8-4f7c-be27-cefaa1af68a7";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, position: Point, _r: **CoreWindowFlyout) callconv(.winapi) HRESULT,
-        CreateWithTitle: *const fn(self: *anyopaque, position: Point, title: ?HSTRING, _r: **CoreWindowFlyout) callconv(.winapi) HRESULT,
-    };
-};
-pub const ICoreWindowPopupShowingEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SetDesiredSize(self: *@This(), value: Size) core.HResult!void {
-        const _c = self.vtable.SetDesiredSize(@ptrCast(self), value);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowPopupShowingEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "26155fa2-5ba5-4ea4-a3b4-2dc7d63c8e26";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetDesiredSize: *const fn(self: *anyopaque, value: Size) callconv(.winapi) HRESULT,
-    };
-};
 pub const AcceleratorKeyEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1158,13 +625,13 @@ pub const CoreDispatcherPriority = enum(i32) {
     Normal = 0,
     High = 1,
 };
-pub const CoreIndependentInputFilters = enum(i32) {
-    None = 0,
-    MouseButton = 1,
-    MouseWheel = 2,
-    MouseHover = 4,
-    PenWithBarrel = 8,
-    PenInverted = 16,
+pub const CoreIndependentInputFilters = packed struct(u32) {
+    MouseButton: bool = false,
+    MouseWheel: bool = false,
+    MouseHover: bool = false,
+    PenWithBarrel: bool = false,
+    PenInverted: bool = false,
+    _m: u27 = 0,
 };
 pub const CoreIndependentInputSource = extern struct {
     vtable: *const IInspectable.VTable,
@@ -1425,11 +892,11 @@ pub const CoreIndependentInputSourceController = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreIndependentInputSourceController.SIGNATURE);
     var _ICoreIndependentInputSourceControllerStaticsCache: FactoryCache(ICoreIndependentInputSourceControllerStatics, RUNTIME_NAME) = .{};
 };
-pub const CoreInputDeviceTypes = enum(i32) {
-    None = 0,
-    Touch = 1,
-    Pen = 2,
-    Mouse = 4,
+pub const CoreInputDeviceTypes = packed struct(u32) {
+    Touch: bool = false,
+    Pen: bool = false,
+    Mouse: bool = false,
+    _m: u29 = 0,
 };
 pub const CorePhysicalKeyStatus = extern struct {
     RepeatCount: u32,
@@ -1453,10 +920,10 @@ pub const CoreProximityEvaluationScore = enum(i32) {
     Closest = 0,
     Farthest = 2147483647,
 };
-pub const CoreVirtualKeyStates = enum(i32) {
-    None = 0,
-    Down = 1,
-    Locked = 2,
+pub const CoreVirtualKeyStates = packed struct(u32) {
+    Down: bool = false,
+    Locked: bool = false,
+    _m: u30 = 0,
 };
 pub const CoreWindow = extern struct {
     vtable: *const IInspectable.VTable,
@@ -4683,6 +4150,539 @@ pub const WindowSizeChangedEventArgs = extern struct {
     pub const GUID: []const u8 = IWindowSizeChangedEventArgs.GUID;
     pub const IID: Guid = IWindowSizeChangedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWindowSizeChangedEventArgs.SIGNATURE);
+};
+pub const CoreWindowDialog = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.addShowing(handler);
+    }
+    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.removeShowing(cookie);
+    }
+    pub fn getMaxSize(self: *@This()) core.HResult!Size {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getMaxSize();
+    }
+    pub fn getMinSize(self: *@This()) core.HResult!Size {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getMinSize();
+    }
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getTitle();
+    }
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.putTitle(value);
+    }
+    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getIsInteractionDelayed();
+    }
+    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.putIsInteractionDelayed(value);
+    }
+    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getCommands();
+    }
+    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getDefaultCommandIndex();
+    }
+    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.putDefaultCommandIndex(value);
+    }
+    pub fn getCancelCommandIndex(self: *@This()) core.HResult!u32 {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getCancelCommandIndex();
+    }
+    pub fn putCancelCommandIndex(self: *@This(), value: u32) core.HResult!void {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.putCancelCommandIndex(value);
+    }
+    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.getBackButtonCommand();
+    }
+    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.putBackButtonCommand(value);
+    }
+    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
+        const this: *ICoreWindowDialog = @ptrCast(self);
+        return try this.ShowAsync();
+    }
+    pub fn init() core.HResult!*@This() {
+        const _f = try @This()._IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try _f.ActivateInstance(&ICoreWindowDialog.IID)));
+    }
+    pub fn CreateWithTitle(title: ?HSTRING) core.HResult!*CoreWindowDialog {
+        const _f = try @This()._ICoreWindowDialogFactoryCache.get();
+        return try _f.CreateWithTitle(title);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowDialog";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICoreWindowDialog.GUID;
+    pub const IID: Guid = ICoreWindowDialog.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreWindowDialog.SIGNATURE);
+    var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+    var _ICoreWindowDialogFactoryCache: FactoryCache(ICoreWindowDialogFactory, RUNTIME_NAME) = .{};
+};
+pub const CoreWindowFlyout = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.addShowing(handler);
+    }
+    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.removeShowing(cookie);
+    }
+    pub fn getMaxSize(self: *@This()) core.HResult!Size {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.getMaxSize();
+    }
+    pub fn getMinSize(self: *@This()) core.HResult!Size {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.getMinSize();
+    }
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.getTitle();
+    }
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.putTitle(value);
+    }
+    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.getIsInteractionDelayed();
+    }
+    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.putIsInteractionDelayed(value);
+    }
+    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.getCommands();
+    }
+    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.getDefaultCommandIndex();
+    }
+    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.putDefaultCommandIndex(value);
+    }
+    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.getBackButtonCommand();
+    }
+    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.putBackButtonCommand(value);
+    }
+    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
+        const this: *ICoreWindowFlyout = @ptrCast(self);
+        return try this.ShowAsync();
+    }
+    pub fn Create(position: Point) core.HResult!*CoreWindowFlyout {
+        const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
+        return try _f.Create(position);
+    }
+    pub fn CreateWithTitle(position: Point, title: ?HSTRING) core.HResult!*CoreWindowFlyout {
+        const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
+        return try _f.CreateWithTitle(position, title);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowFlyout";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICoreWindowFlyout.GUID;
+    pub const IID: Guid = ICoreWindowFlyout.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreWindowFlyout.SIGNATURE);
+    var _ICoreWindowFlyoutFactoryCache: FactoryCache(ICoreWindowFlyoutFactory, RUNTIME_NAME) = .{};
+};
+pub const CoreWindowPopupShowingEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SetDesiredSize(self: *@This(), value: Size) core.HResult!void {
+        const this: *ICoreWindowPopupShowingEventArgs = @ptrCast(self);
+        return try this.SetDesiredSize(value);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowPopupShowingEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ICoreWindowPopupShowingEventArgs.GUID;
+    pub const IID: Guid = ICoreWindowPopupShowingEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICoreWindowPopupShowingEventArgs.SIGNATURE);
+};
+pub const ICoreWindowDialog = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_Showing(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_Showing(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn getMaxSize(self: *@This()) core.HResult!Size {
+        var _r: Size = undefined;
+        const _c = self.vtable.get_MaxSize(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMinSize(self: *@This()) core.HResult!Size {
+        var _r: Size = undefined;
+        const _c = self.vtable.get_MinSize(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Title(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_Title(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
+        var _r: i32 = undefined;
+        const _c = self.vtable.get_IsInteractionDelayed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
+        const _c = self.vtable.put_IsInteractionDelayed(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
+        var _r: *IVector(IUICommand) = undefined;
+        const _c = self.vtable.get_Commands(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_DefaultCommandIndex(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
+        const _c = self.vtable.put_DefaultCommandIndex(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getCancelCommandIndex(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_CancelCommandIndex(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putCancelCommandIndex(self: *@This(), value: u32) core.HResult!void {
+        const _c = self.vtable.put_CancelCommandIndex(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
+        var _r: *UICommandInvokedHandler = undefined;
+        const _c = self.vtable.get_BackButtonCommand(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
+        const _c = self.vtable.put_BackButtonCommand(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
+        var _r: *IAsyncOperation(IUICommand) = undefined;
+        const _c = self.vtable.ShowAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowDialog";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "e7392ce0-c78d-427e-8b2c-01ff420c69d5";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        add_Showing: *const fn(self: *anyopaque, handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_Showing: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        get_MaxSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
+        get_MinSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_IsInteractionDelayed: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
+        put_IsInteractionDelayed: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
+        get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
+        get_DefaultCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        put_DefaultCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
+        get_CancelCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        put_CancelCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
+        get_BackButtonCommand: *const fn(self: *anyopaque, _r: **UICommandInvokedHandler) callconv(.winapi) HRESULT,
+        put_BackButtonCommand: *const fn(self: *anyopaque, value: *UICommandInvokedHandler) callconv(.winapi) HRESULT,
+        ShowAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICoreWindowDialogFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateWithTitle(self: *@This(), title: ?HSTRING) core.HResult!*CoreWindowDialog {
+        var _r: *CoreWindowDialog = undefined;
+        const _c = self.vtable.CreateWithTitle(@ptrCast(self), title, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowDialogFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "cfb2a855-1c59-4b13-b1e5-16e29805f7c4";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateWithTitle: *const fn(self: *anyopaque, title: ?HSTRING, _r: **CoreWindowDialog) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICoreWindowFlyout = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn addShowing(self: *@This(), handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_Showing(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeShowing(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_Showing(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub fn getMaxSize(self: *@This()) core.HResult!Size {
+        var _r: Size = undefined;
+        const _c = self.vtable.get_MaxSize(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getMinSize(self: *@This()) core.HResult!Size {
+        var _r: Size = undefined;
+        const _c = self.vtable.get_MinSize(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Title(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
+        const _c = self.vtable.put_Title(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getIsInteractionDelayed(self: *@This()) core.HResult!i32 {
+        var _r: i32 = undefined;
+        const _c = self.vtable.get_IsInteractionDelayed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putIsInteractionDelayed(self: *@This(), value: i32) core.HResult!void {
+        const _c = self.vtable.put_IsInteractionDelayed(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
+        var _r: *IVector(IUICommand) = undefined;
+        const _c = self.vtable.get_Commands(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDefaultCommandIndex(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_DefaultCommandIndex(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putDefaultCommandIndex(self: *@This(), value: u32) core.HResult!void {
+        const _c = self.vtable.put_DefaultCommandIndex(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn getBackButtonCommand(self: *@This()) core.HResult!*UICommandInvokedHandler {
+        var _r: *UICommandInvokedHandler = undefined;
+        const _c = self.vtable.get_BackButtonCommand(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn putBackButtonCommand(self: *@This(), value: *UICommandInvokedHandler) core.HResult!void {
+        const _c = self.vtable.put_BackButtonCommand(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub fn ShowAsync(self: *@This()) core.HResult!*IAsyncOperation(IUICommand) {
+        var _r: *IAsyncOperation(IUICommand) = undefined;
+        const _c = self.vtable.ShowAsync(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowFlyout";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "e89d854d-2050-40bb-b344-f6f355eeb314";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        add_Showing: *const fn(self: *anyopaque, handler: *TypedEventHandler(CoreWindow,CoreWindowPopupShowingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_Showing: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+        get_MaxSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
+        get_MinSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_IsInteractionDelayed: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
+        put_IsInteractionDelayed: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
+        get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
+        get_DefaultCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        put_DefaultCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
+        get_BackButtonCommand: *const fn(self: *anyopaque, _r: **UICommandInvokedHandler) callconv(.winapi) HRESULT,
+        put_BackButtonCommand: *const fn(self: *anyopaque, value: *UICommandInvokedHandler) callconv(.winapi) HRESULT,
+        ShowAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICoreWindowFlyoutFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Create(self: *@This(), position: Point) core.HResult!*CoreWindowFlyout {
+        var _r: *CoreWindowFlyout = undefined;
+        const _c = self.vtable.Create(@ptrCast(self), position, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn CreateWithTitle(self: *@This(), position: Point, title: ?HSTRING) core.HResult!*CoreWindowFlyout {
+        var _r: *CoreWindowFlyout = undefined;
+        const _c = self.vtable.CreateWithTitle(@ptrCast(self), position, title, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowFlyoutFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "dec4c6c4-93e8-4f7c-be27-cefaa1af68a7";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, position: Point, _r: **CoreWindowFlyout) callconv(.winapi) HRESULT,
+        CreateWithTitle: *const fn(self: *anyopaque, position: Point, title: ?HSTRING, _r: **CoreWindowFlyout) callconv(.winapi) HRESULT,
+    };
+};
+pub const ICoreWindowPopupShowingEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SetDesiredSize(self: *@This(), value: Size) core.HResult!void {
+        const _c = self.vtable.SetDesiredSize(@ptrCast(self), value);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Core.ICoreWindowPopupShowingEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "26155fa2-5ba5-4ea4-a3b4-2dc7d63c8e26";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        SetDesiredSize: *const fn(self: *anyopaque, value: Size) callconv(.winapi) HRESULT,
+    };
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

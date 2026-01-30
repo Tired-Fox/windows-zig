@@ -7139,12 +7139,12 @@ pub const DatePickerValueChangedEventArgs = extern struct {
     pub const IID: Guid = IDatePickerValueChangedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDatePickerValueChangedEventArgs.SIGNATURE);
 };
-pub const DisabledFormattingAccelerators = enum(i32) {
-    None = 0,
-    Bold = 1,
-    Italic = 2,
-    Underline = 4,
-    All = -1,
+pub const DisabledFormattingAccelerators = packed struct(u32) {
+    Bold: bool = false,
+    Italic: bool = false,
+    Underline: bool = false,
+    All: bool = false,
+    _m: u28 = 0,
 };
 pub const DragItemsCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,

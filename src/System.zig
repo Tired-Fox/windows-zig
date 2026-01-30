@@ -5609,12 +5609,12 @@ pub const VirtualKey = enum(i32) {
     GamepadRightThumbstickRight = 217,
     GamepadRightThumbstickLeft = 218,
 };
-pub const VirtualKeyModifiers = enum(i32) {
-    None = 0,
-    Control = 1,
-    Menu = 2,
-    Shift = 4,
-    Windows = 8,
+pub const VirtualKeyModifiers = packed struct(u32) {
+    Control: bool = false,
+    Menu: bool = false,
+    Shift: bool = false,
+    Windows: bool = false,
+    _m: u28 = 0,
 };
 pub const AutoUpdateTimeZoneStatus = enum(i32) {
     Attempted = 0,

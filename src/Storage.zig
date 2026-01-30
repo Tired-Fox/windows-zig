@@ -509,13 +509,13 @@ pub const FileAccessMode = enum(i32) {
     Read = 0,
     ReadWrite = 1,
 };
-pub const FileAttributes = enum(i32) {
-    Normal = 0,
-    ReadOnly = 1,
-    Directory = 16,
-    Archive = 32,
-    Temporary = 256,
-    LocallyIncomplete = 512,
+pub const FileAttributes = packed struct(u32) {
+    ReadOnly: bool = false,
+    Directory: bool = false,
+    Archive: bool = false,
+    Temporary: bool = false,
+    LocallyIncomplete: bool = false,
+    _m: u27 = 0,
 };
 pub const FileIO = extern struct {
     vtable: *const IInspectable.VTable,
@@ -4932,10 +4932,10 @@ pub const StorageFolder = extern struct {
     var _IStorageFolderStaticsCache: FactoryCache(IStorageFolderStatics, RUNTIME_NAME) = .{};
     var _IStorageFolderStatics2Cache: FactoryCache(IStorageFolderStatics2, RUNTIME_NAME) = .{};
 };
-pub const StorageItemTypes = enum(i32) {
-    None = 0,
-    File = 1,
-    Folder = 2,
+pub const StorageItemTypes = packed struct(u32) {
+    File: bool = false,
+    Folder: bool = false,
+    _m: u30 = 0,
 };
 pub const StorageLibrary = extern struct {
     vtable: *const IInspectable.VTable,
@@ -5173,10 +5173,10 @@ pub const StorageLibraryLastChangeId = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IStorageLibraryLastChangeId.SIGNATURE);
     var _IStorageLibraryLastChangeIdStaticsCache: FactoryCache(IStorageLibraryLastChangeIdStatics, RUNTIME_NAME) = .{};
 };
-pub const StorageOpenOptions = enum(i32) {
-    None = 0,
-    AllowOnlyReaders = 1,
-    AllowReadersAndWriters = 2,
+pub const StorageOpenOptions = packed struct(u32) {
+    AllowOnlyReaders: bool = false,
+    AllowReadersAndWriters: bool = false,
+    _m: u30 = 0,
 };
 pub const StorageProvider = extern struct {
     vtable: *const IInspectable.VTable,

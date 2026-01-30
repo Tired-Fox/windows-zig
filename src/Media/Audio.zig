@@ -1383,9 +1383,9 @@ pub const AudioNodeEmitterNaturalDecayModelProperties = extern struct {
     pub const IID: Guid = IAudioNodeEmitterNaturalDecayModelProperties.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IAudioNodeEmitterNaturalDecayModelProperties.SIGNATURE);
 };
-pub const AudioNodeEmitterSettings = enum(i32) {
-    None = 0,
-    DisableDoppler = 1,
+pub const AudioNodeEmitterSettings = packed struct(u32) {
+    DisableDoppler: bool = false,
+    _m: u31 = 0,
 };
 pub const AudioNodeEmitterShape = extern struct {
     vtable: *const IInspectable.VTable,

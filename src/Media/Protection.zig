@@ -1,62 +1,4 @@
 // ----- This code is automatically generated -----
-pub const ComponentRenewal = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RenewSystemComponentsAsync(information: *RevocationAndRenewalInformation) core.HResult!*IAsyncOperationWithProgress(RenewalStatus,u32) {
-        const _f = try @This()._IComponentRenewalStaticsCache.get();
-        return try _f.RenewSystemComponentsAsync(information);
-    }
-    pub const NAME: []const u8 = "Windows.Media.Protection.ComponentRenewal";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IComponentRenewalStaticsCache: FactoryCache(IComponentRenewalStatics, RUNTIME_NAME) = .{};
-};
-pub const IComponentRenewalStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn RenewSystemComponentsAsync(self: *@This(), information: *RevocationAndRenewalInformation) core.HResult!*IAsyncOperationWithProgress(RenewalStatus,u32) {
-        var _r: *IAsyncOperationWithProgress(RenewalStatus,u32) = undefined;
-        const _c = self.vtable.RenewSystemComponentsAsync(@ptrCast(self), information, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Media.Protection.IComponentRenewalStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "6ffbcd67-b795-48c5-8b7b-a7c4efe202e3";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RenewSystemComponentsAsync: *const fn(self: *anyopaque, information: *RevocationAndRenewalInformation, _r: **IAsyncOperationWithProgress(RenewalStatus,u32)) callconv(.winapi) HRESULT,
-    };
-};
-pub const RenewalStatus = enum(i32) {
-    NotStarted = 0,
-    UpdatesInProgress = 1,
-    UserCancelled = 2,
-    AppComponentsMayNeedUpdating = 3,
-    NoComponentsFound = 4,
-};
 pub const ComponentLoadFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1006,22 +948,23 @@ pub const RevocationAndRenewalItem = extern struct {
     pub const IID: Guid = IRevocationAndRenewalItem.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IRevocationAndRenewalItem.SIGNATURE);
 };
-pub const RevocationAndRenewalReasons = enum(i32) {
-    UserModeComponentLoad = 1,
-    KernelModeComponentLoad = 2,
-    AppComponent = 4,
-    GlobalRevocationListLoadFailed = 16,
-    InvalidGlobalRevocationListSignature = 32,
-    GlobalRevocationListAbsent = 4096,
-    ComponentRevoked = 8192,
-    InvalidComponentCertificateExtendedKeyUse = 16384,
-    ComponentCertificateRevoked = 32768,
-    InvalidComponentCertificateRoot = 65536,
-    ComponentHighSecurityCertificateRevoked = 131072,
-    ComponentLowSecurityCertificateRevoked = 262144,
-    BootDriverVerificationFailed = 1048576,
-    ComponentSignedWithTestCertificate = 16777216,
-    EncryptionFailure = 268435456,
+pub const RevocationAndRenewalReasons = packed struct(u32) {
+    UserModeComponentLoad: bool = false,
+    KernelModeComponentLoad: bool = false,
+    AppComponent: bool = false,
+    GlobalRevocationListLoadFailed: bool = false,
+    InvalidGlobalRevocationListSignature: bool = false,
+    GlobalRevocationListAbsent: bool = false,
+    ComponentRevoked: bool = false,
+    InvalidComponentCertificateExtendedKeyUse: bool = false,
+    ComponentCertificateRevoked: bool = false,
+    InvalidComponentCertificateRoot: bool = false,
+    ComponentHighSecurityCertificateRevoked: bool = false,
+    ComponentLowSecurityCertificateRevoked: bool = false,
+    BootDriverVerificationFailed: bool = false,
+    ComponentSignedWithTestCertificate: bool = false,
+    EncryptionFailure: bool = false,
+    _m: u17 = 0,
 };
 pub const ServiceRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
@@ -1143,6 +1086,64 @@ pub const ServiceRequestedEventHandler = extern struct {
         .Invoke = Invoke,
     };
 };
+pub const ComponentRenewal = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RenewSystemComponentsAsync(information: *RevocationAndRenewalInformation) core.HResult!*IAsyncOperationWithProgress(RenewalStatus,u32) {
+        const _f = try @This()._IComponentRenewalStaticsCache.get();
+        return try _f.RenewSystemComponentsAsync(information);
+    }
+    pub const NAME: []const u8 = "Windows.Media.Protection.ComponentRenewal";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IComponentRenewalStaticsCache: FactoryCache(IComponentRenewalStatics, RUNTIME_NAME) = .{};
+};
+pub const IComponentRenewalStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RenewSystemComponentsAsync(self: *@This(), information: *RevocationAndRenewalInformation) core.HResult!*IAsyncOperationWithProgress(RenewalStatus,u32) {
+        var _r: *IAsyncOperationWithProgress(RenewalStatus,u32) = undefined;
+        const _c = self.vtable.RenewSystemComponentsAsync(@ptrCast(self), information, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Media.Protection.IComponentRenewalStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "6ffbcd67-b795-48c5-8b7b-a7c4efe202e3";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        RenewSystemComponentsAsync: *const fn(self: *anyopaque, information: *RevocationAndRenewalInformation, _r: **IAsyncOperationWithProgress(RenewalStatus,u32)) callconv(.winapi) HRESULT,
+    };
+};
+pub const RenewalStatus = enum(i32) {
+    NotStarted = 0,
+    UpdatesInProgress = 1,
+    UserCancelled = 2,
+    AppComponentsMayNeedUpdating = 3,
+    NoComponentsFound = 4,
+};
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
@@ -1152,10 +1153,10 @@ const IVector = @import("../Foundation/Collections.zig").IVector;
 const IAgileObject = @import("../root.zig").IAgileObject;
 const IReference = @import("../Foundation.zig").IReference;
 const HRESULT = @import("../root.zig").HRESULT;
-const FactoryCache = @import("../core.zig").FactoryCache;
-const core = @import("../root.zig").core;
-const IAsyncOperationWithProgress = @import("../Foundation.zig").IAsyncOperationWithProgress;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
+const core = @import("../root.zig").core;
+const FactoryCache = @import("../core.zig").FactoryCache;
+const IAsyncOperationWithProgress = @import("../Foundation.zig").IAsyncOperationWithProgress;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const IPropertySet = @import("../Foundation/Collections.zig").IPropertySet;
 const TrustLevel = @import("../root.zig").TrustLevel;

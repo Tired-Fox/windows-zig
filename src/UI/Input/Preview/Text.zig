@@ -1454,11 +1454,11 @@ pub const TextBoxContentChangedEventArgs = extern struct {
     pub const IID: Guid = ITextBoxContentChangedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITextBoxContentChangedEventArgs.SIGNATURE);
 };
-pub const TextBoxFeatures = enum(i32) {
-    None = 0,
-    ReadText = 1,
-    WriteText = 2,
-    AugmentText = 4,
+pub const TextBoxFeatures = packed struct(u32) {
+    ReadText: bool = false,
+    WriteText: bool = false,
+    AugmentText: bool = false,
+    _m: u29 = 0,
 };
 pub const TextBoxId = extern struct {
     Value: u32,
@@ -1525,11 +1525,11 @@ pub const TextBoxInfoChangedEventArgs = extern struct {
     pub const IID: Guid = ITextBoxInfoChangedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITextBoxInfoChangedEventArgs.SIGNATURE);
 };
-pub const TextBoxSettings = enum(i32) {
-    None = 0,
-    Private = 1,
-    Multiline = 2,
-    VerticalWriting = 4,
+pub const TextBoxSettings = packed struct(u32) {
+    Private: bool = false,
+    Multiline: bool = false,
+    VerticalWriting: bool = false,
+    _m: u29 = 0,
 };
 pub const TextChangeSource = enum(i32) {
     External = 0,
@@ -1900,12 +1900,12 @@ pub const TextStyle = extern struct {
     underlineColor: Color,
     underlineType: UnderlineType,
 };
-pub const TextStyleAttributes = enum(i32) {
-    None = 0,
-    TextColor = 1,
-    BackgroundColor = 2,
-    UnderlineColor = 4,
-    UnderlineType = 8,
+pub const TextStyleAttributes = packed struct(u32) {
+    TextColor: bool = false,
+    BackgroundColor: bool = false,
+    UnderlineColor: bool = false,
+    UnderlineType: bool = false,
+    _m: u28 = 0,
 };
 const IUnknown = @import("../../../root.zig").IUnknown;
 const Guid = @import("../../../root.zig").Guid;

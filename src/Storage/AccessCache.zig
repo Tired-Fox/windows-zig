@@ -1,10 +1,10 @@
 // ----- This code is automatically generated -----
-pub const AccessCacheOptions = enum(i32) {
-    None = 0,
-    DisallowUserInput = 1,
-    FastLocationsOnly = 2,
-    UseReadOnlyCachedCopy = 4,
-    SuppressAccessTimeUpdate = 8,
+pub const AccessCacheOptions = packed struct(u32) {
+    DisallowUserInput: bool = false,
+    FastLocationsOnly: bool = false,
+    UseReadOnlyCachedCopy: bool = false,
+    SuppressAccessTimeUpdate: bool = false,
+    _m: u28 = 0,
 };
 pub const AccessListEntry = extern struct {
     Token: ?HSTRING,

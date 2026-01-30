@@ -2272,13 +2272,13 @@ pub const EmailQueryOptions = extern struct {
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
     var _IEmailQueryOptionsFactoryCache: FactoryCache(IEmailQueryOptionsFactory, RUNTIME_NAME) = .{};
 };
-pub const EmailQuerySearchFields = enum(i32) {
-    None = 0,
-    Subject = 1,
-    Sender = 2,
-    Preview = 4,
-    Recipients = 8,
-    All = -1,
+pub const EmailQuerySearchFields = packed struct(u32) {
+    Subject: bool = false,
+    Sender: bool = false,
+    Preview: bool = false,
+    Recipients: bool = false,
+    All: bool = false,
+    _m: u27 = 0,
 };
 pub const EmailQuerySearchScope = enum(i32) {
     Local = 0,

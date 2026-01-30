@@ -32,16 +32,16 @@ pub const CompositionDebugHeatMaps = extern struct {
     pub const IID: Guid = ICompositionDebugHeatMaps.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ICompositionDebugHeatMaps.SIGNATURE);
 };
-pub const CompositionDebugOverdrawContentKinds = enum(i32) {
-    None = 0,
-    OffscreenRendered = 1,
-    Colors = 2,
-    Effects = 4,
-    Shadows = 8,
-    Lights = 16,
-    Surfaces = 32,
-    SwapChains = 64,
-    All = -1,
+pub const CompositionDebugOverdrawContentKinds = packed struct(u32) {
+    OffscreenRendered: bool = false,
+    Colors: bool = false,
+    Effects: bool = false,
+    Shadows: bool = false,
+    Lights: bool = false,
+    Surfaces: bool = false,
+    SwapChains: bool = false,
+    All: bool = false,
+    _m: u24 = 0,
 };
 pub const CompositionDebugSettings = extern struct {
     vtable: *const IInspectable.VTable,

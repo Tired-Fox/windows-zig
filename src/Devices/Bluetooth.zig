@@ -1105,17 +1105,17 @@ pub const BluetoothMinorClass = enum(i32) {
     HealthGenericHealthManager = 14,
     HealthPersonalMobilityDevice = 15,
 };
-pub const BluetoothServiceCapabilities = enum(i32) {
-    None = 0,
-    LimitedDiscoverableMode = 1,
-    PositioningService = 8,
-    NetworkingService = 16,
-    RenderingService = 32,
-    CapturingService = 64,
-    ObjectTransferService = 128,
-    AudioService = 256,
-    TelephoneService = 512,
-    InformationService = 1024,
+pub const BluetoothServiceCapabilities = packed struct(u32) {
+    LimitedDiscoverableMode: bool = false,
+    PositioningService: bool = false,
+    NetworkingService: bool = false,
+    RenderingService: bool = false,
+    CapturingService: bool = false,
+    ObjectTransferService: bool = false,
+    AudioService: bool = false,
+    TelephoneService: bool = false,
+    InformationService: bool = false,
+    _m: u23 = 0,
 };
 pub const BluetoothSignalStrengthFilter = extern struct {
     vtable: *const IInspectable.VTable,

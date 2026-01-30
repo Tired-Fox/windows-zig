@@ -2456,12 +2456,12 @@ pub const UsbInterruptOutPipe = extern struct {
     pub const IID: Guid = IUsbInterruptOutPipe.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUsbInterruptOutPipe.SIGNATURE);
 };
-pub const UsbReadOptions = enum(i32) {
-    None = 0,
-    AutoClearStall = 1,
-    OverrideAutomaticBufferManagement = 2,
-    IgnoreShortPacket = 4,
-    AllowPartialReads = 8,
+pub const UsbReadOptions = packed struct(u32) {
+    AutoClearStall: bool = false,
+    OverrideAutomaticBufferManagement: bool = false,
+    IgnoreShortPacket: bool = false,
+    AllowPartialReads: bool = false,
+    _m: u28 = 0,
 };
 pub const UsbSetupPacket = extern struct {
     vtable: *const IInspectable.VTable,
@@ -2534,10 +2534,10 @@ pub const UsbTransferDirection = enum(i32) {
     Out = 0,
     In = 1,
 };
-pub const UsbWriteOptions = enum(i32) {
-    None = 0,
-    AutoClearStall = 1,
-    ShortPacketTerminate = 2,
+pub const UsbWriteOptions = packed struct(u32) {
+    AutoClearStall: bool = false,
+    ShortPacketTerminate: bool = false,
+    _m: u30 = 0,
 };
 const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

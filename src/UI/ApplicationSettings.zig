@@ -906,13 +906,13 @@ pub const SettingsCommand = extern struct {
     var _ISettingsCommandFactoryCache: FactoryCache(ISettingsCommandFactory, RUNTIME_NAME) = .{};
     var _ISettingsCommandStaticsCache: FactoryCache(ISettingsCommandStatics, RUNTIME_NAME) = .{};
 };
-pub const SupportedWebAccountActions = enum(i32) {
-    None = 0,
-    Reconnect = 1,
-    Remove = 2,
-    ViewDetails = 4,
-    Manage = 8,
-    More = 16,
+pub const SupportedWebAccountActions = packed struct(u32) {
+    Reconnect: bool = false,
+    Remove: bool = false,
+    ViewDetails: bool = false,
+    Manage: bool = false,
+    More: bool = false,
+    _m: u27 = 0,
 };
 pub const WebAccountAction = enum(i32) {
     Reconnect = 0,

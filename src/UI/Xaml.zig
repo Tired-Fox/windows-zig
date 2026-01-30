@@ -339,9 +339,9 @@ pub const Application = extern struct {
     var _IApplicationStaticsCache: FactoryCache(IApplicationStatics, RUNTIME_NAME) = .{};
     var _IApplicationFactoryCache: FactoryCache(IApplicationFactory, RUNTIME_NAME) = .{};
 };
-pub const ApplicationHighContrastAdjustment = enum(i32) {
-    None = 0,
-    Auto = -1,
+pub const ApplicationHighContrastAdjustment = packed struct(u32) {
+    Auto: bool = false,
+    _m: u31 = 0,
 };
 pub const ApplicationInitializationCallback = extern struct {
     vtable: *const VTable,
@@ -4297,10 +4297,10 @@ pub const ElementFactoryRecycleArgs = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IElementFactoryRecycleArgs.SIGNATURE);
     var _IElementFactoryRecycleArgsFactoryCache: FactoryCache(IElementFactoryRecycleArgsFactory, RUNTIME_NAME) = .{};
 };
-pub const ElementHighContrastAdjustment = enum(i32) {
-    None = 0,
-    Application = -2147483648,
-    Auto = -1,
+pub const ElementHighContrastAdjustment = packed struct(u32) {
+    Application: bool = false,
+    Auto: bool = false,
+    _m: u30 = 0,
 };
 pub const ElementSoundKind = enum(i32) {
     Focus = 0,
@@ -15715,10 +15715,11 @@ pub const Vector3Transition = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IVector3Transition.SIGNATURE);
     var _IVector3TransitionFactoryCache: FactoryCache(IVector3TransitionFactory, RUNTIME_NAME) = .{};
 };
-pub const Vector3TransitionComponents = enum(i32) {
-    X = 1,
-    Y = 2,
-    Z = 4,
+pub const Vector3TransitionComponents = packed struct(u32) {
+    X: bool = false,
+    Y: bool = false,
+    Z: bool = false,
+    _m: u29 = 0,
 };
 pub const VerticalAlignment = enum(i32) {
     Top = 0,

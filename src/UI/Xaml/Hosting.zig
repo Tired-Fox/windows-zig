@@ -1,4 +1,224 @@
 // ----- This code is automatically generated -----
+pub const ElementCompositionPreview = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SetImplicitShowAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
+        return try _f.SetImplicitShowAnimation(element, animation);
+    }
+    pub fn SetImplicitHideAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
+        return try _f.SetImplicitHideAnimation(element, animation);
+    }
+    pub fn SetIsTranslationEnabled(element: *UIElement, value: bool) core.HResult!void {
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
+        return try _f.SetIsTranslationEnabled(element, value);
+    }
+    pub fn GetPointerPositionPropertySet(targetElement: *UIElement) core.HResult!*CompositionPropertySet {
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
+        return try _f.GetPointerPositionPropertySet(targetElement);
+    }
+    pub fn SetAppWindowContent(appWindow: *AppWindow, xamlContent: *UIElement) core.HResult!void {
+        const _f = try @This()._IElementCompositionPreviewStatics3Cache.get();
+        return try _f.SetAppWindowContent(appWindow, xamlContent);
+    }
+    pub fn GetAppWindowContent(appWindow: *AppWindow) core.HResult!*UIElement {
+        const _f = try @This()._IElementCompositionPreviewStatics3Cache.get();
+        return try _f.GetAppWindowContent(appWindow);
+    }
+    pub fn GetElementVisual(element: *UIElement) core.HResult!*Visual {
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
+        return try _f.GetElementVisual(element);
+    }
+    pub fn GetElementChildVisual(element: *UIElement) core.HResult!*Visual {
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
+        return try _f.GetElementChildVisual(element);
+    }
+    pub fn SetElementChildVisual(element: *UIElement, visual: *Visual) core.HResult!void {
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
+        return try _f.SetElementChildVisual(element, visual);
+    }
+    pub fn GetScrollViewerManipulationPropertySet(scrollViewer: *ScrollViewer) core.HResult!*CompositionPropertySet {
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
+        return try _f.GetScrollViewerManipulationPropertySet(scrollViewer);
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.ElementCompositionPreview";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IElementCompositionPreview.GUID;
+    pub const IID: Guid = IElementCompositionPreview.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IElementCompositionPreview.SIGNATURE);
+    var _IElementCompositionPreviewStatics2Cache: FactoryCache(IElementCompositionPreviewStatics2, RUNTIME_NAME) = .{};
+    var _IElementCompositionPreviewStatics3Cache: FactoryCache(IElementCompositionPreviewStatics3, RUNTIME_NAME) = .{};
+    var _IElementCompositionPreviewStaticsCache: FactoryCache(IElementCompositionPreviewStatics, RUNTIME_NAME) = .{};
+};
+pub const IElementCompositionPreview = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreview";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "b6f1a676-cfe6-46ac-acf6-c4687bb65e60";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+    };
+};
+pub const IElementCompositionPreviewStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetElementVisual(self: *@This(), element: *UIElement) core.HResult!*Visual {
+        var _r: *Visual = undefined;
+        const _c = self.vtable.GetElementVisual(@ptrCast(self), element, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn GetElementChildVisual(self: *@This(), element: *UIElement) core.HResult!*Visual {
+        var _r: *Visual = undefined;
+        const _c = self.vtable.GetElementChildVisual(@ptrCast(self), element, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn SetElementChildVisual(self: *@This(), element: *UIElement, visual: *Visual) core.HResult!void {
+        const _c = self.vtable.SetElementChildVisual(@ptrCast(self), element, visual);
+        try core.hresultToError(_c);
+    }
+    pub fn GetScrollViewerManipulationPropertySet(self: *@This(), scrollViewer: *ScrollViewer) core.HResult!*CompositionPropertySet {
+        var _r: *CompositionPropertySet = undefined;
+        const _c = self.vtable.GetScrollViewerManipulationPropertySet(@ptrCast(self), scrollViewer, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreviewStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "08c92b38-ec99-4c55-bc85-a1c180b27646";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetElementVisual: *const fn(self: *anyopaque, element: *UIElement, _r: **Visual) callconv(.winapi) HRESULT,
+        GetElementChildVisual: *const fn(self: *anyopaque, element: *UIElement, _r: **Visual) callconv(.winapi) HRESULT,
+        SetElementChildVisual: *const fn(self: *anyopaque, element: *UIElement, visual: *Visual) callconv(.winapi) HRESULT,
+        GetScrollViewerManipulationPropertySet: *const fn(self: *anyopaque, scrollViewer: *ScrollViewer, _r: **CompositionPropertySet) callconv(.winapi) HRESULT,
+    };
+};
+pub const IElementCompositionPreviewStatics2 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SetImplicitShowAnimation(self: *@This(), element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
+        const _c = self.vtable.SetImplicitShowAnimation(@ptrCast(self), element, animation);
+        try core.hresultToError(_c);
+    }
+    pub fn SetImplicitHideAnimation(self: *@This(), element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
+        const _c = self.vtable.SetImplicitHideAnimation(@ptrCast(self), element, animation);
+        try core.hresultToError(_c);
+    }
+    pub fn SetIsTranslationEnabled(self: *@This(), element: *UIElement, value: bool) core.HResult!void {
+        const _c = self.vtable.SetIsTranslationEnabled(@ptrCast(self), element, value);
+        try core.hresultToError(_c);
+    }
+    pub fn GetPointerPositionPropertySet(self: *@This(), targetElement: *UIElement) core.HResult!*CompositionPropertySet {
+        var _r: *CompositionPropertySet = undefined;
+        const _c = self.vtable.GetPointerPositionPropertySet(@ptrCast(self), targetElement, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreviewStatics2";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "24148fbb-23d6-4f37-ba0c-0733e799722d";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        SetImplicitShowAnimation: *const fn(self: *anyopaque, element: *UIElement, animation: *ICompositionAnimationBase) callconv(.winapi) HRESULT,
+        SetImplicitHideAnimation: *const fn(self: *anyopaque, element: *UIElement, animation: *ICompositionAnimationBase) callconv(.winapi) HRESULT,
+        SetIsTranslationEnabled: *const fn(self: *anyopaque, element: *UIElement, value: bool) callconv(.winapi) HRESULT,
+        GetPointerPositionPropertySet: *const fn(self: *anyopaque, targetElement: *UIElement, _r: **CompositionPropertySet) callconv(.winapi) HRESULT,
+    };
+};
+pub const IElementCompositionPreviewStatics3 = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn SetAppWindowContent(self: *@This(), appWindow: *AppWindow, xamlContent: *UIElement) core.HResult!void {
+        const _c = self.vtable.SetAppWindowContent(@ptrCast(self), appWindow, xamlContent);
+        try core.hresultToError(_c);
+    }
+    pub fn GetAppWindowContent(self: *@This(), appWindow: *AppWindow) core.HResult!*UIElement {
+        var _r: *UIElement = undefined;
+        const _c = self.vtable.GetAppWindowContent(@ptrCast(self), appWindow, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreviewStatics3";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "843bc4c3-c105-59fe-a3d1-373c1d3e6fbc";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        SetAppWindowContent: *const fn(self: *anyopaque, appWindow: *AppWindow, xamlContent: *UIElement) callconv(.winapi) HRESULT,
+        GetAppWindowContent: *const fn(self: *anyopaque, appWindow: *AppWindow, _r: **UIElement) callconv(.winapi) HRESULT,
+    };
+};
 pub const DesignerAppExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -1226,226 +1446,6 @@ pub const XamlUIPresenter = extern struct {
     var _IXamlUIPresenterStatics2Cache: FactoryCache(IXamlUIPresenterStatics2, RUNTIME_NAME) = .{};
     var _IXamlUIPresenterStaticsCache: FactoryCache(IXamlUIPresenterStatics, RUNTIME_NAME) = .{};
 };
-pub const ElementCompositionPreview = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SetImplicitShowAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
-        return try _f.SetImplicitShowAnimation(element, animation);
-    }
-    pub fn SetImplicitHideAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
-        return try _f.SetImplicitHideAnimation(element, animation);
-    }
-    pub fn SetIsTranslationEnabled(element: *UIElement, value: bool) core.HResult!void {
-        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
-        return try _f.SetIsTranslationEnabled(element, value);
-    }
-    pub fn GetPointerPositionPropertySet(targetElement: *UIElement) core.HResult!*CompositionPropertySet {
-        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
-        return try _f.GetPointerPositionPropertySet(targetElement);
-    }
-    pub fn SetAppWindowContent(appWindow: *AppWindow, xamlContent: *UIElement) core.HResult!void {
-        const _f = try @This()._IElementCompositionPreviewStatics3Cache.get();
-        return try _f.SetAppWindowContent(appWindow, xamlContent);
-    }
-    pub fn GetAppWindowContent(appWindow: *AppWindow) core.HResult!*UIElement {
-        const _f = try @This()._IElementCompositionPreviewStatics3Cache.get();
-        return try _f.GetAppWindowContent(appWindow);
-    }
-    pub fn GetElementVisual(element: *UIElement) core.HResult!*Visual {
-        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
-        return try _f.GetElementVisual(element);
-    }
-    pub fn GetElementChildVisual(element: *UIElement) core.HResult!*Visual {
-        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
-        return try _f.GetElementChildVisual(element);
-    }
-    pub fn SetElementChildVisual(element: *UIElement, visual: *Visual) core.HResult!void {
-        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
-        return try _f.SetElementChildVisual(element, visual);
-    }
-    pub fn GetScrollViewerManipulationPropertySet(scrollViewer: *ScrollViewer) core.HResult!*CompositionPropertySet {
-        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
-        return try _f.GetScrollViewerManipulationPropertySet(scrollViewer);
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.ElementCompositionPreview";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IElementCompositionPreview.GUID;
-    pub const IID: Guid = IElementCompositionPreview.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IElementCompositionPreview.SIGNATURE);
-    var _IElementCompositionPreviewStatics2Cache: FactoryCache(IElementCompositionPreviewStatics2, RUNTIME_NAME) = .{};
-    var _IElementCompositionPreviewStatics3Cache: FactoryCache(IElementCompositionPreviewStatics3, RUNTIME_NAME) = .{};
-    var _IElementCompositionPreviewStaticsCache: FactoryCache(IElementCompositionPreviewStatics, RUNTIME_NAME) = .{};
-};
-pub const IElementCompositionPreview = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreview";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "b6f1a676-cfe6-46ac-acf6-c4687bb65e60";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-    };
-};
-pub const IElementCompositionPreviewStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetElementVisual(self: *@This(), element: *UIElement) core.HResult!*Visual {
-        var _r: *Visual = undefined;
-        const _c = self.vtable.GetElementVisual(@ptrCast(self), element, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn GetElementChildVisual(self: *@This(), element: *UIElement) core.HResult!*Visual {
-        var _r: *Visual = undefined;
-        const _c = self.vtable.GetElementChildVisual(@ptrCast(self), element, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn SetElementChildVisual(self: *@This(), element: *UIElement, visual: *Visual) core.HResult!void {
-        const _c = self.vtable.SetElementChildVisual(@ptrCast(self), element, visual);
-        try core.hresultToError(_c);
-    }
-    pub fn GetScrollViewerManipulationPropertySet(self: *@This(), scrollViewer: *ScrollViewer) core.HResult!*CompositionPropertySet {
-        var _r: *CompositionPropertySet = undefined;
-        const _c = self.vtable.GetScrollViewerManipulationPropertySet(@ptrCast(self), scrollViewer, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreviewStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "08c92b38-ec99-4c55-bc85-a1c180b27646";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetElementVisual: *const fn(self: *anyopaque, element: *UIElement, _r: **Visual) callconv(.winapi) HRESULT,
-        GetElementChildVisual: *const fn(self: *anyopaque, element: *UIElement, _r: **Visual) callconv(.winapi) HRESULT,
-        SetElementChildVisual: *const fn(self: *anyopaque, element: *UIElement, visual: *Visual) callconv(.winapi) HRESULT,
-        GetScrollViewerManipulationPropertySet: *const fn(self: *anyopaque, scrollViewer: *ScrollViewer, _r: **CompositionPropertySet) callconv(.winapi) HRESULT,
-    };
-};
-pub const IElementCompositionPreviewStatics2 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SetImplicitShowAnimation(self: *@This(), element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const _c = self.vtable.SetImplicitShowAnimation(@ptrCast(self), element, animation);
-        try core.hresultToError(_c);
-    }
-    pub fn SetImplicitHideAnimation(self: *@This(), element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const _c = self.vtable.SetImplicitHideAnimation(@ptrCast(self), element, animation);
-        try core.hresultToError(_c);
-    }
-    pub fn SetIsTranslationEnabled(self: *@This(), element: *UIElement, value: bool) core.HResult!void {
-        const _c = self.vtable.SetIsTranslationEnabled(@ptrCast(self), element, value);
-        try core.hresultToError(_c);
-    }
-    pub fn GetPointerPositionPropertySet(self: *@This(), targetElement: *UIElement) core.HResult!*CompositionPropertySet {
-        var _r: *CompositionPropertySet = undefined;
-        const _c = self.vtable.GetPointerPositionPropertySet(@ptrCast(self), targetElement, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreviewStatics2";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "24148fbb-23d6-4f37-ba0c-0733e799722d";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetImplicitShowAnimation: *const fn(self: *anyopaque, element: *UIElement, animation: *ICompositionAnimationBase) callconv(.winapi) HRESULT,
-        SetImplicitHideAnimation: *const fn(self: *anyopaque, element: *UIElement, animation: *ICompositionAnimationBase) callconv(.winapi) HRESULT,
-        SetIsTranslationEnabled: *const fn(self: *anyopaque, element: *UIElement, value: bool) callconv(.winapi) HRESULT,
-        GetPointerPositionPropertySet: *const fn(self: *anyopaque, targetElement: *UIElement, _r: **CompositionPropertySet) callconv(.winapi) HRESULT,
-    };
-};
-pub const IElementCompositionPreviewStatics3 = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn SetAppWindowContent(self: *@This(), appWindow: *AppWindow, xamlContent: *UIElement) core.HResult!void {
-        const _c = self.vtable.SetAppWindowContent(@ptrCast(self), appWindow, xamlContent);
-        try core.hresultToError(_c);
-    }
-    pub fn GetAppWindowContent(self: *@This(), appWindow: *AppWindow) core.HResult!*UIElement {
-        var _r: *UIElement = undefined;
-        const _c = self.vtable.GetAppWindowContent(@ptrCast(self), appWindow, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.IElementCompositionPreviewStatics3";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "843bc4c3-c105-59fe-a3d1-373c1d3e6fbc";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetAppWindowContent: *const fn(self: *anyopaque, appWindow: *AppWindow, xamlContent: *UIElement) callconv(.winapi) HRESULT,
-        GetAppWindowContent: *const fn(self: *anyopaque, appWindow: *AppWindow, _r: **UIElement) callconv(.winapi) HRESULT,
-    };
-};
 const IUnknown = @import("../../root.zig").IUnknown;
 const AppWindow = @import("../WindowManagement.zig").AppWindow;
 const Guid = @import("../../root.zig").Guid;
@@ -1455,8 +1455,8 @@ const FactoryCache = @import("../../core.zig").FactoryCache;
 const Visual = @import("../Composition.zig").Visual;
 const Rect = @import("../../Foundation.zig").Rect;
 const TrustLevel = @import("../../root.zig").TrustLevel;
-const IClosable = @import("../../Foundation.zig").IClosable;
 const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
+const IClosable = @import("../../Foundation.zig").IClosable;
 const HSTRING = @import("../../root.zig").HSTRING;
 const IInspectable = @import("../../Foundation.zig").IInspectable;
 const ICompositionAnimationBase = @import("../Composition.zig").ICompositionAnimationBase;

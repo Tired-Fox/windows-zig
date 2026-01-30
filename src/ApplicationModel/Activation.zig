@@ -1,241 +1,4 @@
 // ----- This code is automatically generated -----
-pub const ILockScreenCallActivatedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getCallUI(self: *@This()) core.HResult!*LockScreenCallUI {
-        var _r: *LockScreenCallUI = undefined;
-        const _c = self.vtable.get_CallUI(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.ILockScreenCallActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "06f37fbe-b5f2-448b-b13e-e328ac1c516a";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CallUI: *const fn(self: *anyopaque, _r: **LockScreenCallUI) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPrint3DWorkflowActivatedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getWorkflow(self: *@This()) core.HResult!*Print3DWorkflow {
-        var _r: *Print3DWorkflow = undefined;
-        const _c = self.vtable.get_Workflow(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.IPrint3DWorkflowActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "3f57e78b-f2ac-4619-8302-ef855e1c9b90";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Workflow: *const fn(self: *anyopaque, _r: **Print3DWorkflow) callconv(.winapi) HRESULT,
-    };
-};
-pub const IPrintTaskSettingsActivatedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getConfiguration(self: *@This()) core.HResult!*PrintTaskConfiguration {
-        var _r: *PrintTaskConfiguration = undefined;
-        const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.IPrintTaskSettingsActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "ee30a0c9-ce56-4865-ba8e-8954ac271107";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Configuration: *const fn(self: *anyopaque, _r: **PrintTaskConfiguration) callconv(.winapi) HRESULT,
-    };
-};
-pub const LockScreenCallActivatedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getCallUI(self: *@This()) core.HResult!*LockScreenCallUI {
-        const this: *ILockScreenCallActivatedEventArgs = @ptrCast(self);
-        return try this.getCallUI();
-    }
-    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*ILaunchActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getArguments();
-    }
-    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*ILaunchActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getTileId();
-    }
-    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getKind();
-    }
-    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getPreviousExecutionState();
-    }
-    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getSplashScreen();
-    }
-    pub fn getCurrentlyShownApplicationViewId(self: *@This()) core.HResult!i32 {
-        var this: ?*IApplicationViewActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getCurrentlyShownApplicationViewId();
-    }
-    pub fn getViewSwitcher(self: *@This()) core.HResult!*ActivationViewSwitcher {
-        var this: ?*IViewSwitcherProvider = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IViewSwitcherProvider.IID, @ptrCast(&this));
-        return try this.?.getViewSwitcher();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.LockScreenCallActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ILockScreenCallActivatedEventArgs.GUID;
-    pub const IID: Guid = ILockScreenCallActivatedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallActivatedEventArgs.SIGNATURE);
-};
-pub const Print3DWorkflowActivatedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getWorkflow(self: *@This()) core.HResult!*Print3DWorkflow {
-        const this: *IPrint3DWorkflowActivatedEventArgs = @ptrCast(self);
-        return try this.getWorkflow();
-    }
-    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getKind();
-    }
-    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getPreviousExecutionState();
-    }
-    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getSplashScreen();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.Print3DWorkflowActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPrint3DWorkflowActivatedEventArgs.GUID;
-    pub const IID: Guid = IPrint3DWorkflowActivatedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrint3DWorkflowActivatedEventArgs.SIGNATURE);
-};
-pub const PrintTaskSettingsActivatedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getConfiguration(self: *@This()) core.HResult!*PrintTaskConfiguration {
-        const this: *IPrintTaskSettingsActivatedEventArgs = @ptrCast(self);
-        return try this.getConfiguration();
-    }
-    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getKind();
-    }
-    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getPreviousExecutionState();
-    }
-    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getSplashScreen();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.PrintTaskSettingsActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IPrintTaskSettingsActivatedEventArgs.GUID;
-    pub const IID: Guid = IPrintTaskSettingsActivatedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrintTaskSettingsActivatedEventArgs.SIGNATURE);
-};
 pub const CameraSettingsActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -317,99 +80,6 @@ pub const ICameraSettingsActivatedEventArgs = extern struct {
         get_VideoDeviceController: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         get_VideoDeviceExtension: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
     };
-};
-pub const IWalletActionActivatedEventArgs = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ItemId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getActionKind(self: *@This()) core.HResult!WalletActionKind {
-        var _r: WalletActionKind = undefined;
-        const _c = self.vtable.get_ActionKind(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_ActionId(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.IWalletActionActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fcfc027b-1a1a-4d22-923f-ae6f45fa52d9";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ItemId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_ActionKind: *const fn(self: *anyopaque, _r: *WalletActionKind) callconv(.winapi) HRESULT,
-        get_ActionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const WalletActionActivatedEventArgs = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
-        return try this.getItemId();
-    }
-    pub fn getActionKind(self: *@This()) core.HResult!WalletActionKind {
-        const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
-        return try this.getActionKind();
-    }
-    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
-        const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
-        return try this.getActionId();
-    }
-    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getKind();
-    }
-    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getPreviousExecutionState();
-    }
-    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
-        var this: ?*IActivatedEventArgs = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
-        return try this.?.getSplashScreen();
-    }
-    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.WalletActionActivatedEventArgs";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IWalletActionActivatedEventArgs.GUID;
-    pub const IID: Guid = IWalletActionActivatedEventArgs.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWalletActionActivatedEventArgs.SIGNATURE);
 };
 pub const ActivationKind = enum(i32) {
     Launch = 0,
@@ -4100,6 +3770,99 @@ pub const WebAuthenticationBrokerContinuationEventArgs = extern struct {
     pub const IID: Guid = IWebAuthenticationBrokerContinuationEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWebAuthenticationBrokerContinuationEventArgs.SIGNATURE);
 };
+pub const IWalletActionActivatedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ItemId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getActionKind(self: *@This()) core.HResult!WalletActionKind {
+        var _r: WalletActionKind = undefined;
+        const _c = self.vtable.get_ActionKind(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_ActionId(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.IWalletActionActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fcfc027b-1a1a-4d22-923f-ae6f45fa52d9";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_ItemId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ActionKind: *const fn(self: *anyopaque, _r: *WalletActionKind) callconv(.winapi) HRESULT,
+        get_ActionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const WalletActionActivatedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
+        return try this.getItemId();
+    }
+    pub fn getActionKind(self: *@This()) core.HResult!WalletActionKind {
+        const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
+        return try this.getActionKind();
+    }
+    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
+        const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
+        return try this.getActionId();
+    }
+    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getKind();
+    }
+    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getPreviousExecutionState();
+    }
+    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getSplashScreen();
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.WalletActionActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IWalletActionActivatedEventArgs.GUID;
+    pub const IID: Guid = IWalletActionActivatedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWalletActionActivatedEventArgs.SIGNATURE);
+};
 pub const ContactCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     /// Must call `deinit` or `IUnknown.Release` on returned pointer
@@ -4719,7 +4482,245 @@ pub const IContactsProviderActivatedEventArgs = extern struct {
         get_Verb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
+pub const ILockScreenCallActivatedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getCallUI(self: *@This()) core.HResult!*LockScreenCallUI {
+        var _r: *LockScreenCallUI = undefined;
+        const _c = self.vtable.get_CallUI(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.ILockScreenCallActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "06f37fbe-b5f2-448b-b13e-e328ac1c516a";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_CallUI: *const fn(self: *anyopaque, _r: **LockScreenCallUI) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPrint3DWorkflowActivatedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getWorkflow(self: *@This()) core.HResult!*Print3DWorkflow {
+        var _r: *Print3DWorkflow = undefined;
+        const _c = self.vtable.get_Workflow(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.IPrint3DWorkflowActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "3f57e78b-f2ac-4619-8302-ef855e1c9b90";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Workflow: *const fn(self: *anyopaque, _r: **Print3DWorkflow) callconv(.winapi) HRESULT,
+    };
+};
+pub const IPrintTaskSettingsActivatedEventArgs = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getConfiguration(self: *@This()) core.HResult!*PrintTaskConfiguration {
+        var _r: *PrintTaskConfiguration = undefined;
+        const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.IPrintTaskSettingsActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "ee30a0c9-ce56-4865-ba8e-8954ac271107";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Configuration: *const fn(self: *anyopaque, _r: **PrintTaskConfiguration) callconv(.winapi) HRESULT,
+    };
+};
+pub const LockScreenCallActivatedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getCallUI(self: *@This()) core.HResult!*LockScreenCallUI {
+        const this: *ILockScreenCallActivatedEventArgs = @ptrCast(self);
+        return try this.getCallUI();
+    }
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*ILaunchActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getArguments();
+    }
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*ILaunchActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getTileId();
+    }
+    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getKind();
+    }
+    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getPreviousExecutionState();
+    }
+    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getSplashScreen();
+    }
+    pub fn getCurrentlyShownApplicationViewId(self: *@This()) core.HResult!i32 {
+        var this: ?*IApplicationViewActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getCurrentlyShownApplicationViewId();
+    }
+    pub fn getViewSwitcher(self: *@This()) core.HResult!*ActivationViewSwitcher {
+        var this: ?*IViewSwitcherProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IViewSwitcherProvider.IID, @ptrCast(&this));
+        return try this.?.getViewSwitcher();
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.LockScreenCallActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = ILockScreenCallActivatedEventArgs.GUID;
+    pub const IID: Guid = ILockScreenCallActivatedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILockScreenCallActivatedEventArgs.SIGNATURE);
+};
+pub const Print3DWorkflowActivatedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getWorkflow(self: *@This()) core.HResult!*Print3DWorkflow {
+        const this: *IPrint3DWorkflowActivatedEventArgs = @ptrCast(self);
+        return try this.getWorkflow();
+    }
+    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getKind();
+    }
+    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getPreviousExecutionState();
+    }
+    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getSplashScreen();
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.Print3DWorkflowActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPrint3DWorkflowActivatedEventArgs.GUID;
+    pub const IID: Guid = IPrint3DWorkflowActivatedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrint3DWorkflowActivatedEventArgs.SIGNATURE);
+};
+pub const PrintTaskSettingsActivatedEventArgs = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getConfiguration(self: *@This()) core.HResult!*PrintTaskConfiguration {
+        const this: *IPrintTaskSettingsActivatedEventArgs = @ptrCast(self);
+        return try this.getConfiguration();
+    }
+    pub fn getKind(self: *@This()) core.HResult!ActivationKind {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getKind();
+    }
+    pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getPreviousExecutionState();
+    }
+    pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
+        var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
+        return try this.?.getSplashScreen();
+    }
+    pub const NAME: []const u8 = "Windows.ApplicationModel.Activation.PrintTaskSettingsActivatedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IPrintTaskSettingsActivatedEventArgs.GUID;
+    pub const IID: Guid = IPrintTaskSettingsActivatedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IPrintTaskSettingsActivatedEventArgs.SIGNATURE);
+};
 const IUnknown = @import("../root.zig").IUnknown;
+const Print3DWorkflow = @import("../Devices/Printers/Extensions.zig").Print3DWorkflow;
 const Guid = @import("../root.zig").Guid;
 const Deferral = @import("../Foundation.zig").Deferral;
 const WalletActionKind = @import("./Wallet.zig").WalletActionKind;
@@ -4752,8 +4753,8 @@ const StorageFileQueryResult = @import("../Storage/Search.zig").StorageFileQuery
 const PrintTaskConfiguration = @import("../Devices/Printers/Extensions.zig").PrintTaskConfiguration;
 const Rect = @import("../Foundation.zig").Rect;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const LockScreenCallUI = @import("./Calls.zig").LockScreenCallUI;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
+const LockScreenCallUI = @import("./Calls.zig").LockScreenCallUI;
 const HSTRING = @import("../root.zig").HSTRING;
 const ContactPanel = @import("./Contacts.zig").ContactPanel;
 const ShownTileNotification = @import("../UI/Notifications.zig").ShownTileNotification;
@@ -4765,4 +4766,3 @@ const core = @import("../root.zig").core;
 const ReplaceAppointmentOperation = @import("./Appointments/AppointmentsProvider.zig").ReplaceAppointmentOperation;
 const User = @import("../System.zig").User;
 const StorageFolder = @import("../Storage.zig").StorageFolder;
-const Print3DWorkflow = @import("../Devices/Printers/Extensions.zig").Print3DWorkflow;

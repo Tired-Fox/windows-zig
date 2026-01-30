@@ -1909,10 +1909,10 @@ pub const MapManager = extern struct {
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     var _IMapManagerStaticsCache: FactoryCache(IMapManagerStatics, RUNTIME_NAME) = .{};
 };
-pub const MapManeuverNotices = enum(i32) {
-    None = 0,
-    Toll = 1,
-    Unpaved = 2,
+pub const MapManeuverNotices = packed struct(u32) {
+    Toll: bool = false,
+    Unpaved: bool = false,
+    _m: u30 = 0,
 };
 pub const MapRoute = extern struct {
     vtable: *const IInspectable.VTable,
@@ -2310,14 +2310,14 @@ pub const MapRouteOptimization = enum(i32) {
     TimeWithTraffic = 2,
     Scenic = 3,
 };
-pub const MapRouteRestrictions = enum(i32) {
-    None = 0,
-    Highways = 1,
-    TollRoads = 2,
-    Ferries = 4,
-    Tunnels = 8,
-    DirtRoads = 16,
-    Motorail = 32,
+pub const MapRouteRestrictions = packed struct(u32) {
+    Highways: bool = false,
+    TollRoads: bool = false,
+    Ferries: bool = false,
+    Tunnels: bool = false,
+    DirtRoads: bool = false,
+    Motorail: bool = false,
+    _m: u26 = 0,
 };
 pub const MapService = extern struct {
     vtable: *const IInspectable.VTable,

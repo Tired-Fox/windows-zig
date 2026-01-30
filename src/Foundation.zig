@@ -66,6 +66,799 @@ pub const IActivationFactory = extern struct {
     ) callconv(.winapi) u32, GetIids: *const fn (self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT, GetRuntimeClassName: *const fn (self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT, GetTrustLevel: *const fn (self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT, ActivateInstance: *const fn (*IActivationFactory, **IInspectable) callconv(.c) HRESULT };
 };
 // ----- This code is automatically generated -----
+pub const GuidHelper = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateNewGuid() core.HResult!*Guid {
+        const _f = try @This()._IGuidHelperStaticsCache.get();
+        return try _f.CreateNewGuid();
+    }
+    pub fn getEmpty() core.HResult!*Guid {
+        const _f = try @This()._IGuidHelperStaticsCache.get();
+        return try _f.getEmpty();
+    }
+    pub fn Equals(target: *Guid, value: *Guid) core.HResult!bool {
+        const _f = try @This()._IGuidHelperStaticsCache.get();
+        return try _f.Equals(target, value);
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.GuidHelper";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    var _IGuidHelperStaticsCache: FactoryCache(IGuidHelperStatics, RUNTIME_NAME) = .{};
+};
+pub const IGetActivationFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetActivationFactory(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*IInspectable {
+        var _r: *IInspectable = undefined;
+        const _c = self.vtable.GetActivationFactory(@ptrCast(self), activatableClassId, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IGetActivationFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "4edb8ee2-96dd-49a7-94f7-4607ddab8e3c";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetActivationFactory: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+    };
+};
+pub const IGuidHelperStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateNewGuid(self: *@This()) core.HResult!*Guid {
+        var _r: *Guid = undefined;
+        const _c = self.vtable.CreateNewGuid(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getEmpty(self: *@This()) core.HResult!*Guid {
+        var _r: *Guid = undefined;
+        const _c = self.vtable.get_Empty(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn Equals(self: *@This(), target: *Guid, value: *Guid) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.Equals(@ptrCast(self), target, value, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IGuidHelperStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "59c7966b-ae52-5283-ad7f-a1b9e9678add";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateNewGuid: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
+        get_Empty: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
+        Equals: *const fn(self: *anyopaque, target: *Guid, value: *Guid, _r: *bool) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMemoryBuffer = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
+        var _r: *IMemoryBufferReference = undefined;
+        const _c = self.vtable.CreateReference(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IMemoryBuffer";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fbc4dd2a-245b-11e4-af98-689423260cf8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateReference: *const fn(self: *anyopaque, _r: **IMemoryBufferReference) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMemoryBufferFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Create(self: *@This(), capacity: u32) core.HResult!*MemoryBuffer {
+        var _r: *MemoryBuffer = undefined;
+        const _c = self.vtable.Create(@ptrCast(self), capacity, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IMemoryBufferFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fbc4dd2b-245b-11e4-af98-689423260cf8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, capacity: u32, _r: **MemoryBuffer) callconv(.winapi) HRESULT,
+    };
+};
+pub const IMemoryBufferReference = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getCapacity(self: *@This()) core.HResult!u32 {
+        var _r: u32 = undefined;
+        const _c = self.vtable.get_Capacity(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn addClosed(self: *@This(), handler: *TypedEventHandler(IMemoryBufferReference,IInspectable)) core.HResult!EventRegistrationToken {
+        var _r: EventRegistrationToken = undefined;
+        const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn removeClosed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
+        const _c = self.vtable.remove_Closed(@ptrCast(self), cookie);
+        try core.hresultToError(_c);
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IMemoryBufferReference";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "fbc4dd29-245b-11e4-af98-689423260cf8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Capacity: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
+        add_Closed: *const fn(self: *anyopaque, handler: *TypedEventHandler(IMemoryBufferReference,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
+        remove_Closed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
+    };
+};
+pub const IUriEscapeStatics = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn UnescapeComponent(self: *@This(), toUnescape: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.UnescapeComponent(@ptrCast(self), toUnescape, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn EscapeComponent(self: *@This(), toEscape: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.EscapeComponent(@ptrCast(self), toEscape, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IUriEscapeStatics";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "c1d432ba-c824-4452-a7fd-512bc3bbe9a1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        UnescapeComponent: *const fn(self: *anyopaque, toUnescape: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        EscapeComponent: *const fn(self: *anyopaque, toEscape: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IUriRuntimeClass = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_AbsoluteUri(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDisplayUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayUri(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Extension(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getFragment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Fragment(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getHost(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Host(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Password(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Path(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getQuery(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Query(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getQueryParsed(self: *@This()) core.HResult!*WwwFormUrlDecoder {
+        var _r: *WwwFormUrlDecoder = undefined;
+        const _c = self.vtable.get_QueryParsed(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getRawUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_RawUri(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSchemeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_SchemeName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getPort(self: *@This()) core.HResult!i32 {
+        var _r: i32 = undefined;
+        const _c = self.vtable.get_Port(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getSuspicious(self: *@This()) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.get_Suspicious(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn Equals(self: *@This(), pUri: *Uri) core.HResult!bool {
+        var _r: bool = undefined;
+        const _c = self.vtable.Equals(@ptrCast(self), pUri, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn CombineUri(self: *@This(), relativeUri: ?HSTRING) core.HResult!*Uri {
+        var _r: *Uri = undefined;
+        const _c = self.vtable.CombineUri(@ptrCast(self), relativeUri, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClass";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "9e365e57-48b2-4160-956f-c7385120bbfc";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_AbsoluteUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Domain: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Extension: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Fragment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Host: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Password: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Query: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_QueryParsed: *const fn(self: *anyopaque, _r: **WwwFormUrlDecoder) callconv(.winapi) HRESULT,
+        get_RawUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SchemeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Port: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
+        get_Suspicious: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
+        Equals: *const fn(self: *anyopaque, pUri: *Uri, _r: *bool) callconv(.winapi) HRESULT,
+        CombineUri: *const fn(self: *anyopaque, relativeUri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+    };
+};
+pub const IUriRuntimeClassFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateUri(self: *@This(), uri: ?HSTRING) core.HResult!*Uri {
+        var _r: *Uri = undefined;
+        const _c = self.vtable.CreateUri(@ptrCast(self), uri, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn CreateWithRelativeUri(self: *@This(), baseUri: ?HSTRING, relativeUri: ?HSTRING) core.HResult!*Uri {
+        var _r: *Uri = undefined;
+        const _c = self.vtable.CreateWithRelativeUri(@ptrCast(self), baseUri, relativeUri, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClassFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "44a9796f-723e-4fdf-a218-033e75b0c084";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateUri: *const fn(self: *anyopaque, uri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+        CreateWithRelativeUri: *const fn(self: *anyopaque, baseUri: ?HSTRING, relativeUri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+    };
+};
+pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_AbsoluteCanonicalUri(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_DisplayIri(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClassWithAbsoluteCanonicalUri";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "758d9661-221c-480f-a339-50656673f46f";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_AbsoluteCanonicalUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayIri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IWwwFormUrlDecoderEntry = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.get_Value(@ptrCast(self), &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderEntry";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "125e7431-f678-4e8e-b670-20a9b06c512d";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
+        const _c = self.vtable.GetFirstValueByName(@ptrCast(self), name, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderRuntimeClass";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "d45a0451-f225-4542-9296-0e1df5d254df";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        GetFirstValueByName: *const fn(self: *anyopaque, name: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+    };
+};
+pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
+    vtable: *const VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateWwwFormUrlDecoder(self: *@This(), query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
+        var _r: *WwwFormUrlDecoder = undefined;
+        const _c = self.vtable.CreateWwwFormUrlDecoder(@ptrCast(self), query, &_r);
+        try core.hresultToError(_c);
+        return _r;
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderRuntimeClassFactory";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = "5b8c6b3d-24ae-41b5-a1bf-f0c3d544845b";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
+    pub const VTable = extern struct {
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
+        CreateWwwFormUrlDecoder: *const fn(self: *anyopaque, query: ?HSTRING, _r: **WwwFormUrlDecoder) callconv(.winapi) HRESULT,
+    };
+};
+pub const MemoryBuffer = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
+        const this: *IMemoryBuffer = @ptrCast(self);
+        return try this.CreateReference();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        return try this.?.Close();
+    }
+    pub fn Create(capacity: u32) core.HResult!*MemoryBuffer {
+        const _f = try @This()._IMemoryBufferFactoryCache.get();
+        return try _f.Create(capacity);
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.MemoryBuffer";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IMemoryBuffer.GUID;
+    pub const IID: Guid = IMemoryBuffer.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMemoryBuffer.SIGNATURE);
+    var _IMemoryBufferFactoryCache: FactoryCache(IMemoryBufferFactory, RUNTIME_NAME) = .{};
+};
+pub const Uri = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getAbsoluteUri();
+    }
+    pub fn getDisplayUri(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getDisplayUri();
+    }
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getDomain();
+    }
+    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getExtension();
+    }
+    pub fn getFragment(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getFragment();
+    }
+    pub fn getHost(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getHost();
+    }
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getPassword();
+    }
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getPath();
+    }
+    pub fn getQuery(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getQuery();
+    }
+    pub fn getQueryParsed(self: *@This()) core.HResult!*WwwFormUrlDecoder {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getQueryParsed();
+    }
+    pub fn getRawUri(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getRawUri();
+    }
+    pub fn getSchemeName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getSchemeName();
+    }
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getUserName();
+    }
+    pub fn getPort(self: *@This()) core.HResult!i32 {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getPort();
+    }
+    pub fn getSuspicious(self: *@This()) core.HResult!bool {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.getSuspicious();
+    }
+    pub fn Equals(self: *@This(), pUri: *Uri) core.HResult!bool {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.Equals(pUri);
+    }
+    pub fn CombineUri(self: *@This(), relativeUri: ?HSTRING) core.HResult!*Uri {
+        const this: *IUriRuntimeClass = @ptrCast(self);
+        return try this.CombineUri(relativeUri);
+    }
+    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
+        return try this.?.getAbsoluteCanonicalUri();
+    }
+    pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
+        return try this.?.getDisplayIri();
+    }
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
+        var this: ?*IStringable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
+        return try this.?.ToString();
+    }
+    pub fn CreateUri(uri: ?HSTRING) core.HResult!*Uri {
+        const _f = try @This()._IUriRuntimeClassFactoryCache.get();
+        return try _f.CreateUri(uri);
+    }
+    pub fn CreateWithRelativeUri(baseUri: ?HSTRING, relativeUri: ?HSTRING) core.HResult!*Uri {
+        const _f = try @This()._IUriRuntimeClassFactoryCache.get();
+        return try _f.CreateWithRelativeUri(baseUri, relativeUri);
+    }
+    pub fn UnescapeComponent(toUnescape: ?HSTRING) core.HResult!?HSTRING {
+        const _f = try @This()._IUriEscapeStaticsCache.get();
+        return try _f.UnescapeComponent(toUnescape);
+    }
+    pub fn EscapeComponent(toEscape: ?HSTRING) core.HResult!?HSTRING {
+        const _f = try @This()._IUriEscapeStaticsCache.get();
+        return try _f.EscapeComponent(toEscape);
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.Uri";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IUriRuntimeClass.GUID;
+    pub const IID: Guid = IUriRuntimeClass.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUriRuntimeClass.SIGNATURE);
+    var _IUriRuntimeClassFactoryCache: FactoryCache(IUriRuntimeClassFactory, RUNTIME_NAME) = .{};
+    var _IUriEscapeStaticsCache: FactoryCache(IUriEscapeStatics, RUNTIME_NAME) = .{};
+};
+pub const WwwFormUrlDecoder = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
+        const this: *IWwwFormUrlDecoderRuntimeClass = @ptrCast(self);
+        return try this.GetFirstValueByName(name);
+    }
+    pub fn First(self: *@This()) core.HResult!*IIterator(IWwwFormUrlDecoderEntry) {
+        var this: ?*IIterable(IWwwFormUrlDecoderEntry) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
+        return try this.?.First();
+    }
+    pub fn getSize(self: *@This()) core.HResult!u32 {
+        var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
+        try IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
+        return try this.?.getSize();
+    }
+    pub fn CreateWwwFormUrlDecoder(query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
+        const _f = try @This()._IWwwFormUrlDecoderRuntimeClassFactoryCache.get();
+        return try _f.CreateWwwFormUrlDecoder(query);
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.WwwFormUrlDecoder";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IWwwFormUrlDecoderRuntimeClass.GUID;
+    pub const IID: Guid = IWwwFormUrlDecoderRuntimeClass.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWwwFormUrlDecoderRuntimeClass.SIGNATURE);
+    var _IWwwFormUrlDecoderRuntimeClassFactoryCache: FactoryCache(IWwwFormUrlDecoderRuntimeClassFactory, RUNTIME_NAME) = .{};
+};
+pub const WwwFormUrlDecoderEntry = extern struct {
+    vtable: *const IInspectable.VTable,
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IWwwFormUrlDecoderEntry = @ptrCast(self);
+        return try this.getName();
+    }
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        const this: *IWwwFormUrlDecoderEntry = @ptrCast(self);
+        return try this.getValue();
+    }
+    pub const NAME: []const u8 = "Windows.Foundation.WwwFormUrlDecoderEntry";
+    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
+    pub const GUID: []const u8 = IWwwFormUrlDecoderEntry.GUID;
+    pub const IID: Guid = IWwwFormUrlDecoderEntry.IID;
+    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWwwFormUrlDecoderEntry.SIGNATURE);
+};
 pub const AsyncActionCompletedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
@@ -2185,799 +2978,6 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
         };
     };
 }
-pub const GuidHelper = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateNewGuid() core.HResult!*Guid {
-        const _f = try @This()._IGuidHelperStaticsCache.get();
-        return try _f.CreateNewGuid();
-    }
-    pub fn getEmpty() core.HResult!*Guid {
-        const _f = try @This()._IGuidHelperStaticsCache.get();
-        return try _f.getEmpty();
-    }
-    pub fn Equals(target: *Guid, value: *Guid) core.HResult!bool {
-        const _f = try @This()._IGuidHelperStaticsCache.get();
-        return try _f.Equals(target, value);
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.GuidHelper";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    var _IGuidHelperStaticsCache: FactoryCache(IGuidHelperStatics, RUNTIME_NAME) = .{};
-};
-pub const IGetActivationFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetActivationFactory(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*IInspectable {
-        var _r: *IInspectable = undefined;
-        const _c = self.vtable.GetActivationFactory(@ptrCast(self), activatableClassId, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IGetActivationFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "4edb8ee2-96dd-49a7-94f7-4607ddab8e3c";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetActivationFactory: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
-    };
-};
-pub const IGuidHelperStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateNewGuid(self: *@This()) core.HResult!*Guid {
-        var _r: *Guid = undefined;
-        const _c = self.vtable.CreateNewGuid(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getEmpty(self: *@This()) core.HResult!*Guid {
-        var _r: *Guid = undefined;
-        const _c = self.vtable.get_Empty(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn Equals(self: *@This(), target: *Guid, value: *Guid) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.Equals(@ptrCast(self), target, value, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IGuidHelperStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "59c7966b-ae52-5283-ad7f-a1b9e9678add";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateNewGuid: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_Empty: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        Equals: *const fn(self: *anyopaque, target: *Guid, value: *Guid, _r: *bool) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMemoryBuffer = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
-        var _r: *IMemoryBufferReference = undefined;
-        const _c = self.vtable.CreateReference(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IMemoryBuffer";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fbc4dd2a-245b-11e4-af98-689423260cf8";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateReference: *const fn(self: *anyopaque, _r: **IMemoryBufferReference) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMemoryBufferFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn Create(self: *@This(), capacity: u32) core.HResult!*MemoryBuffer {
-        var _r: *MemoryBuffer = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), capacity, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IMemoryBufferFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fbc4dd2b-245b-11e4-af98-689423260cf8";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, capacity: u32, _r: **MemoryBuffer) callconv(.winapi) HRESULT,
-    };
-};
-pub const IMemoryBufferReference = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getCapacity(self: *@This()) core.HResult!u32 {
-        var _r: u32 = undefined;
-        const _c = self.vtable.get_Capacity(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn addClosed(self: *@This(), handler: *TypedEventHandler(IMemoryBufferReference,IInspectable)) core.HResult!EventRegistrationToken {
-        var _r: EventRegistrationToken = undefined;
-        const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn removeClosed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
-        const _c = self.vtable.remove_Closed(@ptrCast(self), cookie);
-        try core.hresultToError(_c);
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IMemoryBufferReference";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "fbc4dd29-245b-11e4-af98-689423260cf8";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Capacity: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        add_Closed: *const fn(self: *anyopaque, handler: *TypedEventHandler(IMemoryBufferReference,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
-        remove_Closed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-    };
-};
-pub const IUriEscapeStatics = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn UnescapeComponent(self: *@This(), toUnescape: ?HSTRING) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.UnescapeComponent(@ptrCast(self), toUnescape, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn EscapeComponent(self: *@This(), toEscape: ?HSTRING) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.EscapeComponent(@ptrCast(self), toEscape, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IUriEscapeStatics";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "c1d432ba-c824-4452-a7fd-512bc3bbe9a1";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        UnescapeComponent: *const fn(self: *anyopaque, toUnescape: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        EscapeComponent: *const fn(self: *anyopaque, toEscape: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IUriRuntimeClass = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_AbsoluteUri(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDisplayUri(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayUri(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Extension(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getFragment(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Fragment(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getHost(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Host(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Password(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Path(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getQuery(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Query(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getQueryParsed(self: *@This()) core.HResult!*WwwFormUrlDecoder {
-        var _r: *WwwFormUrlDecoder = undefined;
-        const _c = self.vtable.get_QueryParsed(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getRawUri(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_RawUri(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSchemeName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_SchemeName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getPort(self: *@This()) core.HResult!i32 {
-        var _r: i32 = undefined;
-        const _c = self.vtable.get_Port(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getSuspicious(self: *@This()) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.get_Suspicious(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn Equals(self: *@This(), pUri: *Uri) core.HResult!bool {
-        var _r: bool = undefined;
-        const _c = self.vtable.Equals(@ptrCast(self), pUri, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn CombineUri(self: *@This(), relativeUri: ?HSTRING) core.HResult!*Uri {
-        var _r: *Uri = undefined;
-        const _c = self.vtable.CombineUri(@ptrCast(self), relativeUri, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClass";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "9e365e57-48b2-4160-956f-c7385120bbfc";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AbsoluteUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Domain: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Extension: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Fragment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Host: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Password: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Query: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_QueryParsed: *const fn(self: *anyopaque, _r: **WwwFormUrlDecoder) callconv(.winapi) HRESULT,
-        get_RawUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_SchemeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Port: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_Suspicious: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        Equals: *const fn(self: *anyopaque, pUri: *Uri, _r: *bool) callconv(.winapi) HRESULT,
-        CombineUri: *const fn(self: *anyopaque, relativeUri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
-    };
-};
-pub const IUriRuntimeClassFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateUri(self: *@This(), uri: ?HSTRING) core.HResult!*Uri {
-        var _r: *Uri = undefined;
-        const _c = self.vtable.CreateUri(@ptrCast(self), uri, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn CreateWithRelativeUri(self: *@This(), baseUri: ?HSTRING, relativeUri: ?HSTRING) core.HResult!*Uri {
-        var _r: *Uri = undefined;
-        const _c = self.vtable.CreateWithRelativeUri(@ptrCast(self), baseUri, relativeUri, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClassFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "44a9796f-723e-4fdf-a218-033e75b0c084";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateUri: *const fn(self: *anyopaque, uri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
-        CreateWithRelativeUri: *const fn(self: *anyopaque, baseUri: ?HSTRING, relativeUri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
-    };
-};
-pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_AbsoluteCanonicalUri(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_DisplayIri(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IUriRuntimeClassWithAbsoluteCanonicalUri";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "758d9661-221c-480f-a339-50656673f46f";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AbsoluteCanonicalUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayIri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IWwwFormUrlDecoderEntry = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Name(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderEntry";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "125e7431-f678-4e8e-b670-20a9b06c512d";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
-        var _r: ?HSTRING = undefined;
-        const _c = self.vtable.GetFirstValueByName(@ptrCast(self), name, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderRuntimeClass";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "d45a0451-f225-4542-9296-0e1df5d254df";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetFirstValueByName: *const fn(self: *anyopaque, name: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
-    };
-};
-pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
-    vtable: *const VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateWwwFormUrlDecoder(self: *@This(), query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
-        var _r: *WwwFormUrlDecoder = undefined;
-        const _c = self.vtable.CreateWwwFormUrlDecoder(@ptrCast(self), query, &_r);
-        try core.hresultToError(_c);
-        return _r;
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.IWwwFormUrlDecoderRuntimeClassFactory";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = "5b8c6b3d-24ae-41b5-a1bf-f0c3d544845b";
-    pub const IID: Guid = Guid.initString(GUID);
-    pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);
-    pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWwwFormUrlDecoder: *const fn(self: *anyopaque, query: ?HSTRING, _r: **WwwFormUrlDecoder) callconv(.winapi) HRESULT,
-    };
-};
-pub const MemoryBuffer = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
-        const this: *IMemoryBuffer = @ptrCast(self);
-        return try this.CreateReference();
-    }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        return try this.?.Close();
-    }
-    pub fn Create(capacity: u32) core.HResult!*MemoryBuffer {
-        const _f = try @This()._IMemoryBufferFactoryCache.get();
-        return try _f.Create(capacity);
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.MemoryBuffer";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IMemoryBuffer.GUID;
-    pub const IID: Guid = IMemoryBuffer.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMemoryBuffer.SIGNATURE);
-    var _IMemoryBufferFactoryCache: FactoryCache(IMemoryBufferFactory, RUNTIME_NAME) = .{};
-};
-pub const Uri = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getAbsoluteUri();
-    }
-    pub fn getDisplayUri(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getDisplayUri();
-    }
-    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getDomain();
-    }
-    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getExtension();
-    }
-    pub fn getFragment(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getFragment();
-    }
-    pub fn getHost(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getHost();
-    }
-    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getPassword();
-    }
-    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getPath();
-    }
-    pub fn getQuery(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getQuery();
-    }
-    pub fn getQueryParsed(self: *@This()) core.HResult!*WwwFormUrlDecoder {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getQueryParsed();
-    }
-    pub fn getRawUri(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getRawUri();
-    }
-    pub fn getSchemeName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getSchemeName();
-    }
-    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getUserName();
-    }
-    pub fn getPort(self: *@This()) core.HResult!i32 {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getPort();
-    }
-    pub fn getSuspicious(self: *@This()) core.HResult!bool {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.getSuspicious();
-    }
-    pub fn Equals(self: *@This(), pUri: *Uri) core.HResult!bool {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.Equals(pUri);
-    }
-    pub fn CombineUri(self: *@This(), relativeUri: ?HSTRING) core.HResult!*Uri {
-        const this: *IUriRuntimeClass = @ptrCast(self);
-        return try this.CombineUri(relativeUri);
-    }
-    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
-        return try this.?.getAbsoluteCanonicalUri();
-    }
-    pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
-        return try this.?.getDisplayIri();
-    }
-    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
-        var this: ?*IStringable = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
-        return try this.?.ToString();
-    }
-    pub fn CreateUri(uri: ?HSTRING) core.HResult!*Uri {
-        const _f = try @This()._IUriRuntimeClassFactoryCache.get();
-        return try _f.CreateUri(uri);
-    }
-    pub fn CreateWithRelativeUri(baseUri: ?HSTRING, relativeUri: ?HSTRING) core.HResult!*Uri {
-        const _f = try @This()._IUriRuntimeClassFactoryCache.get();
-        return try _f.CreateWithRelativeUri(baseUri, relativeUri);
-    }
-    pub fn UnescapeComponent(toUnescape: ?HSTRING) core.HResult!?HSTRING {
-        const _f = try @This()._IUriEscapeStaticsCache.get();
-        return try _f.UnescapeComponent(toUnescape);
-    }
-    pub fn EscapeComponent(toEscape: ?HSTRING) core.HResult!?HSTRING {
-        const _f = try @This()._IUriEscapeStaticsCache.get();
-        return try _f.EscapeComponent(toEscape);
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.Uri";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IUriRuntimeClass.GUID;
-    pub const IID: Guid = IUriRuntimeClass.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUriRuntimeClass.SIGNATURE);
-    var _IUriRuntimeClassFactoryCache: FactoryCache(IUriRuntimeClassFactory, RUNTIME_NAME) = .{};
-    var _IUriEscapeStaticsCache: FactoryCache(IUriEscapeStatics, RUNTIME_NAME) = .{};
-};
-pub const WwwFormUrlDecoder = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
-        const this: *IWwwFormUrlDecoderRuntimeClass = @ptrCast(self);
-        return try this.GetFirstValueByName(name);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IWwwFormUrlDecoderEntry) {
-        var this: ?*IIterable(IWwwFormUrlDecoderEntry) = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IIterable(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
-        return try this.?.First();
-    }
-    pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
-        defer _ = IUnknown.Release(@ptrCast(this));
-        try IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
-        return try this.?.getSize();
-    }
-    pub fn CreateWwwFormUrlDecoder(query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
-        const _f = try @This()._IWwwFormUrlDecoderRuntimeClassFactoryCache.get();
-        return try _f.CreateWwwFormUrlDecoder(query);
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.WwwFormUrlDecoder";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IWwwFormUrlDecoderRuntimeClass.GUID;
-    pub const IID: Guid = IWwwFormUrlDecoderRuntimeClass.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWwwFormUrlDecoderRuntimeClass.SIGNATURE);
-    var _IWwwFormUrlDecoderRuntimeClassFactoryCache: FactoryCache(IWwwFormUrlDecoderRuntimeClassFactory, RUNTIME_NAME) = .{};
-};
-pub const WwwFormUrlDecoderEntry = extern struct {
-    vtable: *const IInspectable.VTable,
-    /// Must call `deinit` or `IUnknown.Release` on returned pointer
-    pub fn cast(self: *@This(), AS: type) !*AS {
-        var _r: ?*AS = undefined;
-        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
-        return _r.?;
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IWwwFormUrlDecoderEntry = @ptrCast(self);
-        return try this.getName();
-    }
-    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
-        const this: *IWwwFormUrlDecoderEntry = @ptrCast(self);
-        return try this.getValue();
-    }
-    pub const NAME: []const u8 = "Windows.Foundation.WwwFormUrlDecoderEntry";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = IWwwFormUrlDecoderEntry.GUID;
-    pub const IID: Guid = IWwwFormUrlDecoderEntry.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWwwFormUrlDecoderEntry.SIGNATURE);
-};
 const IUnknown = @import("./root.zig").IUnknown;
 const Guid = @import("./root.zig").Guid;
 const IVectorView = @import("./Foundation/Collections.zig").IVectorView;

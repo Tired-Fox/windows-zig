@@ -1,11 +1,11 @@
 // ----- This code is automatically generated -----
-pub const DragDropModifiers = enum(i32) {
-    None = 0,
-    Shift = 1,
-    Control = 2,
-    Alt = 4,
-    LeftButton = 8,
-    MiddleButton = 16,
-    RightButton = 32,
+pub const DragDropModifiers = packed struct(u32) {
+    Shift: bool = false,
+    Control: bool = false,
+    Alt: bool = false,
+    LeftButton: bool = false,
+    MiddleButton: bool = false,
+    RightButton: bool = false,
+    _m: u26 = 0,
 };
 pub const Core = @import("./DragDrop/Core.zig");

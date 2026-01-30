@@ -473,14 +473,14 @@ pub const DevicePairingAddPairingSetMemberStatus = enum(i32) {
     SetDiscoveryPartiallyCompletedByProtocol = 4,
     Failed = 5,
 };
-pub const DevicePairingKinds = enum(i32) {
-    None = 0,
-    ConfirmOnly = 1,
-    DisplayPin = 2,
-    ProvidePin = 4,
-    ConfirmPinMatch = 8,
-    ProvidePasswordCredential = 16,
-    ProvideAddress = 32,
+pub const DevicePairingKinds = packed struct(u32) {
+    ConfirmOnly: bool = false,
+    DisplayPin: bool = false,
+    ProvidePin: bool = false,
+    ConfirmPinMatch: bool = false,
+    ProvidePasswordCredential: bool = false,
+    ProvideAddress: bool = false,
+    _m: u26 = 0,
 };
 pub const DevicePairingProtectionLevel = enum(i32) {
     Default = 0,
@@ -772,11 +772,11 @@ pub const DevicePickerAppearance = extern struct {
     pub const IID: Guid = IDevicePickerAppearance.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IDevicePickerAppearance.SIGNATURE);
 };
-pub const DevicePickerDisplayStatusOptions = enum(i32) {
-    None = 0,
-    ShowProgress = 1,
-    ShowDisconnectButton = 2,
-    ShowRetryButton = 4,
+pub const DevicePickerDisplayStatusOptions = packed struct(u32) {
+    ShowProgress: bool = false,
+    ShowDisconnectButton: bool = false,
+    ShowRetryButton: bool = false,
+    _m: u29 = 0,
 };
 pub const DevicePickerFilter = extern struct {
     vtable: *const IInspectable.VTable,
