@@ -166,7 +166,7 @@ fn pickFolders(allocator: std.mem.Allocator) !void {
 
     var options: FILEOPENDIALOGOPTIONS = undefined;
     var hresult = file_dialog.GetOptions(&options);
-    if (hresult != 0) return hresultToError(hresult);
+    if (hresult != 0) try hresultToError(hresult);
 
     // Make the picker pick multiple folders
     options.PICKFOLDERS = 1;
@@ -175,7 +175,7 @@ fn pickFolders(allocator: std.mem.Allocator) !void {
     options.PATHMUSTEXIST = 1;
 
     hresult = file_dialog.SetOptions(options);
-    if (hresult != 0) return hresultToError(hresult);
+    if (hresult != 0) try hresultToError(hresult);
 
     var iid: ?*IShellItem = undefined;
     _ = win32.ui.shell.SHGetKnownFolderItem(&win32.ui.shell.FOLDERID_Documents, win32.ui.shell.KF_FLAG_DEFAULT, null, IID_IShellItem, @ptrCast(&iid));
@@ -194,7 +194,7 @@ fn pickFolders(allocator: std.mem.Allocator) !void {
 
     var shell_items: ?*IShellItemArray = null;
     hresult = file_open_dialog.GetResults(&shell_items);
-    if (hresult != 0) return hresultToError(hresult);
+    if (hresult != 0) try hresultToError(hresult);
 
     if (shell_items) |items| {
         defer _ = IUnknown.Release(@ptrCast(items));
@@ -205,18 +205,18 @@ fn pickFolders(allocator: std.mem.Allocator) !void {
         for (0..len) |i| {
             var item: ?*IShellItem = undefined;
             hresult = items.GetItemAt(@intCast(i), &item);
-            if (hresult != 0) return hresultToError(hresult);
+            if (hresult != 0) try hresultToError(hresult);
             defer _ = IUnknown.Release(@ptrCast(item.?));
 
             var attrs: u32 = 0;
             hresult = item.?.GetAttributes(SFGAO_FILESYSTEM, &attrs);
-            if (hresult != 0) return hresultToError(hresult);
+            if (hresult != 0) try hresultToError(hresult);
             // If filesystem isn't in the attributes skip the item
             if (attrs & SFGAO_FILESYSTEM == 0) continue;
 
             var name: ?[*:0]u16 = undefined;
             hresult = item.?.GetDisplayName(.DESKTOPABSOLUTEPARSING, &name);
-            if (hresult != 0) return hresultToError(hresult);
+            if (hresult != 0) try hresultToError(hresult);
 
             if (name) |n| {
                 defer win32.system.com.CoTaskMemFree(@ptrCast(name));
@@ -242,13 +242,13 @@ fn pickFile(allocator: std.mem.Allocator) !void {
 
     var options: FILEOPENDIALOGOPTIONS = undefined;
     var hresult = file_open_dialog.GetOptions(&options);
-    if (hresult != 0) return hresultToError(hresult);
+    if (hresult != 0) try hresultToError(hresult);
 
     options.DONTADDTORECENT = 1;
     options.FILEMUSTEXIST = 1;
 
     hresult = file_open_dialog.SetOptions(options);
-    if (hresult != 0) return hresultToError(hresult);
+    if (hresult != 0) try hresultToError(hresult);
 
     var modal: *IModalWindow = @as(*IModalWindow, @ptrCast(file_open_dialog));
     switch (@as(u32, @bitCast(modal.Show(null)))) {
@@ -259,13 +259,13 @@ fn pickFile(allocator: std.mem.Allocator) !void {
 
     var shell_items: ?*IShellItem = null;
     hresult = file_open_dialog.GetResult(&shell_items);
-    if (hresult != 0) return hresultToError(hresult);
+    if (hresult != 0) try hresultToError(hresult);
 
     if (shell_items) |item| {
         defer _ = IUnknown.Release(@ptrCast(item));
         var name: ?[*:0]u16 = undefined;
         hresult = item.GetDisplayName(.DESKTOPABSOLUTEPARSING, &name);
-        if (hresult != 0) return hresultToError(hresult);
+        if (hresult != 0) try hresultToError(hresult);
 
         if (name) |n| {
             defer win32.system.com.CoTaskMemFree(@ptrCast(name));
@@ -316,13 +316,13 @@ fn saveFile(allocator: std.mem.Allocator) !void {
 
     var shell_items: ?*IShellItem = null;
     var hresult = file_dialog.GetResult(&shell_items);
-    if (hresult != 0) return hresultToError(hresult);
+    if (hresult != 0) try hresultToError(hresult);
 
     if (shell_items) |item| {
         defer _ = IUnknown.Release(@ptrCast(item));
         var name: ?[*:0]u16 = undefined;
         hresult = item.GetDisplayName(.DESKTOPABSOLUTEPARSING, &name);
-        if (hresult != 0) return hresultToError(hresult);
+        if (hresult != 0) try hresultToError(hresult);
 
         if (name) |n| {
             defer win32.system.com.CoTaskMemFree(@ptrCast(name));
